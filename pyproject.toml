@@ -1,0 +1,27 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "fsq-androidworld-eval"
+version = "0.1.0"
+description = "AndroidWorld evaluation harness for the AMKernel agent stack"
+requires-python = ">=3.11,<3.12"
+dependencies = ["android-world", "matplotlib==3.6.1"]
+
+[project.scripts]
+fsq-androidworld-eval = "fsq_androidworld_eval.runner:main"
+fsq-androidworld-campaign = "fsq_androidworld_eval.campaign:main"
+fsq-androidworld-score = "fsq_androidworld_eval.scorer:main"
+
+[dependency-groups]
+dev = ["pytest>=8,<9"]
+
+[tool.uv.sources]
+android-world = { path = "android_world" }
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/fsq_androidworld_eval"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

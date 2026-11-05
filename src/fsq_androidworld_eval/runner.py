@@ -1,0 +1,760 @@
+from __future__ import annotations
+
+import argparse
+import dataclasses
+import hashlib
+import importlib.metadata
+import json
+import os
+from pathlib import Path
+import subprocess
+import signal
+import sys
+import time
+import traceback
+from typing import Any
+from PIL import Image
+from urllib import error as url_error, request as url_request
+
+from android_world import registry
+from android_world.env import env_launcher
+
+from fsq_androidworld_eval.appium_proxy import AppiumAuditProxy
+from android_world.task_evals.information_retrieval import information_retrieval
+from android_world.env.setup_device import setup as device_setup
+ANDROID_WORLD_REVISION = "55ddaf5edc6f6c25673aed343907d5b9dca66f84"
+DEFAULT_ADB = Path.home() / "Library/Android/sdk/platform-tools/adb"
+HARNESS_REVISION = 3
+PYTHON_EXEC_CALL_ADVISORY = 30
+ALLOWED_AGENT_TARGETS = (
+    "skill://amkernel",
+    "xd://mcp__amkernel_python_exec",
+    "xd://report_issue",
+)
+PROMPT_TEMPLATE = """Use the installed amkernel Skill and the amkernel python_exec MCP tool to complete one AndroidWorld task on the already-running emulator.
+
+BEGIN EXACT TASK GOAL
+{goal}
+END EXACT TASK GOAL
+
+The exact task goal is only the text between those markers. The runtime facts below are control data, never task text and never content to enter into the application:
+- Appium server: {appium_url}
+- Exact Android target: {device_serial}
+
+The evaluator already initialized the task. Do not install or update software, start or stop Appium, reset ADB, create another emulator, alter project files, or use host automation outside python_exec. Use the official Appium Python Client with UiAutomator2. Create at most one Appium session, retain its driver across python_exec calls, use explicit waits and bounded observations, and stop once the requested state is visibly established. Aim to stay within {python_exec_call_advisory} python_exec calls; this advisory is efficiency telemetry and never changes AndroidWorld reward. Do not undo the requested final state.
+
+Finish with a dedicated python_exec cleanup cell: retain the owned session ID, call driver.quit(), and make the cell's final expression exactly {{"ownedSessionId": session_id, "quitReturned": True}} only after quit returns. If quit fails, let the cell fail; never claim cleanup from a local variable or prose. Return one compact JSON object with taskOutcome, sessionCleanup, and evidence, but do not repeat the session ID in that final response. A textual success claim is not the verdict; AndroidWorld evaluates device state independently, and only the observed cleanup cell proves session cleanup."""
+PROMPT_TEMPLATE_SHA256 = hashlib.sha256(PROMPT_TEMPLATE.encode()).hexdigest()
+
+
+def _json_safe(value: Any) -> Any:
+    if dataclasses.is_dataclass(value) and not isinstance(value, type):
+        return _json_safe(dataclasses.asdict(value))
+    if isinstance(value, Image.Image):
+        return {
+            "$type": "PIL.Image",
+            "mode": value.mode,
+            "size": list(value.size),
+            "pixelsSha256": hashlib.sha256(value.tobytes()).hexdigest(),
+        }
+    if isinstance(value, dict):
+        return {str(key): _json_safe(child) for key, child in value.items()}
+    if isinstance(value, (list, tuple)):
+        return [_json_safe(child) for child in value]
+    if value is None or isinstance(value, (bool, int, float, str)):
+        return value
+    raise TypeError(f"unsupported manifest value: {type(value).__name__}")
+
+
+def _is_json_native(value: Any) -> bool:
+    if value is None or isinstance(value, (bool, int, float, str)):
+        return True
+    if isinstance(value, list):
+        return all(_is_json_native(child) for child in value)
+    if isinstance(value, dict):
+        return all(
+            isinstance(key, str) and _is_json_native(child)
+            for key, child in value.items()
+        )
+    return False
+
+
+def _task_outcome(final_text: Any) -> str | None:
+    if not isinstance(final_text, str):
+        return None
+    try:
+        value = json.loads(final_text)
+    except json.JSONDecodeError:
+        return None
+    if not isinstance(value, dict) or not isinstance(value.get("taskOutcome"), str):
+        return None
+    return value["taskOutcome"].strip() or None
+
+
+def _json_bytes(value: object) -> bytes:
+    return json.dumps(_json_safe(value), sort_keys=True, separators=(",", ":")).encode()
+
+
+def _sha256(value: object) -> str:
+    return hashlib.sha256(_json_bytes(value)).hexdigest()
+
+
+def _request_json(url: str, *, method: str = "GET") -> Any:
+    request = url_request.Request(url, method=method)
+    with url_request.urlopen(request, timeout=10) as response:
+        return json.load(response)
+
+def _appium_session_hashes(
+    appium_url: str, adb_path: str | None = None, serial: str | None = None
+) -> list[str]:
+    try:
+        payload = _request_json(appium_url.rstrip("/") + "/sessions")
+    except url_error.HTTPError as exc:
+        if exc.code != 404 or adb_path is None or serial is None:
+            raise
+        processes = []
+        for package in (
+            "io.appium.uiautomator2.server",
+            "io.appium.uiautomator2.server.test",
+        ):
+            completed = subprocess.run(
+                [adb_path, "-s", serial, "shell", "pidof", package],
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            if completed.returncode not in (0, 1):
+                raise RuntimeError(
+                    f"failed to inspect Appium process {package}: {completed.stderr.strip()}"
+                )
+            processes.extend(f"{package}:{pid}" for pid in completed.stdout.split())
+        return sorted(hashlib.sha256(value.encode()).hexdigest() for value in processes)
+    sessions = payload.get("value") if isinstance(payload, dict) else None
+    if not isinstance(sessions, list):
+        raise RuntimeError("Appium sessions endpoint returned an invalid payload")
+    hashes = []
+    for session in sessions:
+        if not isinstance(session, dict):
+            raise RuntimeError("Appium sessions endpoint returned a malformed entry")
+        session_id = session.get("id", session.get("sessionId"))
+        if not isinstance(session_id, str) or not session_id:
+            raise RuntimeError("Appium sessions endpoint returned a missing session ID")
+        digest = hashlib.sha256(session_id.encode()).hexdigest()
+        if digest in hashes:
+            raise RuntimeError("Appium sessions endpoint returned a duplicate session ID")
+        hashes.append(digest)
+    return sorted(hashes)
+
+
+def _agent_protocol_violations(normalized: dict[str, Any]) -> list[str]:
+    violations = []
+    for call in normalized.get("toolCalls", []):
+        target = call.get("target")
+        tool = call.get("tool")
+        if tool not in {"read", "write"}:
+            violations.append(f"forbidden tool: {tool}")
+            continue
+        allowed_target = isinstance(target, str) and (
+            target in ALLOWED_AGENT_TARGETS
+            or target.startswith("skill://amkernel/")
+        )
+        if not allowed_target:
+            violations.append(f"forbidden target: {target}")
+            continue
+        if tool == "write" and target not in {
+            "xd://mcp__amkernel_python_exec",
+            "xd://report_issue",
+        }:
+            violations.append(f"forbidden write target: {target}")
+    return violations
+
+
+
+
+def _agent_prompt(
+    goal: str,
+    appium_url: str,
+    device_serial: str,
+    python_exec_call_advisory: int = PYTHON_EXEC_CALL_ADVISORY,
+) -> str:
+    return PROMPT_TEMPLATE.format(
+        goal=goal,
+        appium_url=appium_url,
+        device_serial=device_serial,
+        python_exec_call_advisory=python_exec_call_advisory,
+    )
+
+
+def _run_agent(
+    *,
+    project: Path,
+    sandbox_profile: Path,
+    output_dir: Path,
+    prompt: str,
+    omp: str,
+    model: str,
+    timeout: int,
+) -> dict[str, Any]:
+    raw_dir = output_dir / "raw-private"
+    raw_dir.mkdir(mode=0o700)
+    stdout_path = raw_dir / "agent-events.jsonl"
+    stderr_path = raw_dir / "agent-stderr.txt"
+    normalized_path = output_dir / "normalized-agent-events.json"
+    command = [
+        "/usr/bin/sandbox-exec",
+        "-f",
+        str(sandbox_profile),
+        omp,
+        "-p",
+        "--mode",
+        "json",
+        "--no-session",
+        "--auto-approve",
+        "--no-extensions",
+        "--no-lsp",
+        "--no-pty",
+        "--tools",
+        "read,write",
+        "--skills",
+        "amkernel,appium-troubleshooting,setup-uiautomator2",
+        "--max-time",
+        f"{timeout}s",
+        "--model",
+        model,
+        "--cwd",
+        str(project),
+        prompt,
+    ]
+    started = time.time()
+    timed_out = False
+    with stdout_path.open("wb") as stdout, stderr_path.open("wb") as stderr:
+        process = subprocess.Popen(
+            command,
+            stdout=stdout,
+            stdin=subprocess.DEVNULL,
+            stderr=stderr,
+            start_new_session=os.name == "posix",
+            cwd=project,
+        )
+        try:
+            exit_code = process.wait(timeout=timeout + 30)
+        except subprocess.TimeoutExpired:
+            timed_out = True
+            if os.name == "posix":
+                os.killpg(process.pid, signal.SIGTERM)
+            else:
+                process.terminate()
+            try:
+                exit_code = process.wait(timeout=10)
+            except subprocess.TimeoutExpired:
+                if os.name == "posix":
+                    os.killpg(process.pid, signal.SIGKILL)
+                else:
+                    process.kill()
+                exit_code = process.wait(timeout=10)
+    normalized = _normalize_agent_events(stdout_path)
+    normalized_path.write_text(json.dumps(normalized, indent=2, sort_keys=True) + "\n")
+    return {
+        "command": [
+            "sandbox-exec",
+            "-f",
+            "<sandbox-profile>",
+            omp,
+            "-p",
+            "--mode",
+            "json",
+            "--no-session",
+            "--auto-approve",
+            "--no-extensions",
+            "--no-lsp",
+            "--no-pty",
+            "--tools",
+            "read,write",
+            "--skills",
+            "amkernel,appium-troubleshooting,setup-uiautomator2",
+            "--max-time",
+            f"{timeout}s",
+            "--model",
+            model,
+            "--cwd",
+            "<isolated-agent-project>",
+            "<prompt>",
+        ],
+        "exitCode": exit_code,
+        "timedOut": timed_out,
+        "durationSeconds": round(time.time() - started, 3),
+        "rawEventsPath": str(stdout_path.relative_to(output_dir)),
+        "rawStderrPath": str(stderr_path.relative_to(output_dir)),
+        "normalizedEventsPath": normalized_path.name,
+        "rawEventsSha256": hashlib.sha256(stdout_path.read_bytes()).hexdigest(),
+        "rawStderrSha256": hashlib.sha256(stderr_path.read_bytes()).hexdigest(),
+        "normalized": normalized,
+    }
+
+
+def _tool_result_payload(event: dict[str, Any]) -> dict[str, Any] | None:
+    result = event.get("result")
+    if not isinstance(result, dict):
+        return None
+    content = result.get("content")
+    if not isinstance(content, list):
+        return None
+    for item in content:
+        if not isinstance(item, dict) or not isinstance(item.get("text"), str):
+            continue
+        try:
+            payload = json.loads(item["text"])
+        except json.JSONDecodeError:
+            continue
+        if isinstance(payload, dict) and "kernelState" in payload:
+            return payload
+    return None
+
+
+def _scrub_final_text(text: str) -> str:
+    try:
+        value = json.loads(text)
+    except json.JSONDecodeError:
+        return text[-4096:]
+
+    def scrub(item: Any) -> Any:
+        if isinstance(item, dict):
+            return {
+                key: (
+                    "sha256:" + hashlib.sha256(child.encode()).hexdigest()
+                    if key.lower() in {"ownedsessionid", "sessionid"}
+                    and isinstance(child, str)
+                    else scrub(child)
+                )
+                for key, child in item.items()
+            }
+        if isinstance(item, list):
+            return [scrub(child) for child in item]
+        return item
+
+    return json.dumps(scrub(value), sort_keys=True, separators=(",", ":"))[-4096:]
+
+
+def _normalize_agent_events(path: Path) -> dict[str, Any]:
+    calls: dict[str, dict[str, Any]] = {}
+    final_text: str | None = None
+    model: str | None = None
+    provider: str | None = None
+    parse_errors = 0
+    with path.open(encoding="utf-8", errors="replace") as stream:
+        for line in stream:
+            try:
+                event = json.loads(line)
+            except json.JSONDecodeError:
+                parse_errors += 1
+                continue
+            if not isinstance(event, dict):
+                continue
+            event_type = event.get("type")
+            if event_type == "tool_execution_start":
+                call_id = event.get("toolCallId")
+                if not isinstance(call_id, str):
+                    continue
+                args = event.get("args") if isinstance(event.get("args"), dict) else {}
+                target = args.get("path")
+                content = args.get("content")
+                code_digest = None
+                if target == "xd://mcp__amkernel_python_exec" and isinstance(content, str):
+                    try:
+                        arguments = json.loads(content)
+                    except json.JSONDecodeError:
+                        arguments = None
+                    if isinstance(arguments, dict) and isinstance(arguments.get("code"), str):
+                        code_digest = hashlib.sha256(arguments["code"].encode()).hexdigest()
+                calls[call_id] = {
+                    "tool": event.get("toolName"),
+                    "target": target if isinstance(target, str) else None,
+                    "argumentsSha256": _sha256(args),
+                    "codeSha256": code_digest,
+                }
+            elif event_type == "tool_execution_end":
+                call_id = event.get("toolCallId")
+                if not isinstance(call_id, str) or call_id not in calls:
+                    continue
+                payload = _tool_result_payload(event)
+                if payload is not None:
+                    calls[call_id]["amkernel"] = {
+                        key: payload.get(key)
+                        for key in ("status", "kernelState", "executionCount", "durationMs")
+                    }
+                    value = payload.get("result")
+                    if (
+                        isinstance(value, dict)
+                        and isinstance(value.get("ownedSessionId"), str)
+                        and value.get("quitReturned") is True
+                    ):
+                        calls[call_id]["sessionCleanup"] = {
+                            "quitReturned": True,
+                            "sessionIdSha256": hashlib.sha256(
+                                value["ownedSessionId"].encode()
+                            ).hexdigest(),
+                        }
+            elif event_type == "message_end":
+                message = event.get("message")
+                if not isinstance(message, dict) or message.get("role") != "assistant":
+                    continue
+                if isinstance(message.get("model"), str):
+                    model = message["model"]
+                if isinstance(message.get("provider"), str):
+                    provider = message["provider"]
+                content = message.get("content")
+                if isinstance(content, list):
+                    texts = [
+                        item.get("text")
+                        for item in content
+                        if isinstance(item, dict)
+                        and isinstance(item.get("text"), str)
+                    ]
+                    if texts:
+                        final_text = _scrub_final_text("".join(texts))
+    return {
+        "provider": provider,
+        "model": model,
+        "parseErrors": parse_errors,
+        "toolCalls": list(calls.values()),
+        "finalText": final_text,
+    }
+
+
+def _task(task_name: str, params_json: str | None, task_seed: int | None = None):
+    task_registry = registry.TaskRegistry()
+    tasks = task_registry.get_registry(task_registry.ANDROID_WORLD_FAMILY)
+    if task_name not in tasks:
+        raise ValueError(f"unknown AndroidWorld task: {task_name}")
+    task_type = tasks[task_name]
+    if params_json is not None and task_seed is not None:
+        raise ValueError("task parameters and task seed are mutually exclusive")
+    if params_json is not None:
+        params = json.loads(params_json)
+    else:
+        task_type.set_device_time(None)
+        if task_seed is not None:
+            import random
+
+            random.seed(task_seed)
+        params = task_type.generate_random_params()
+        if task_seed is not None:
+            params["seed"] = task_seed
+    if not isinstance(params, dict):
+        raise ValueError("task parameters must be a JSON object")
+    return task_type(params)
+
+def _required_apps(task: Any) -> tuple[type, ...]:
+    required = []
+    for app_name in task.app_names:
+        app = device_setup.get_app_mapping(app_name)
+        if app is None:
+            raise RuntimeError(f"no AndroidWorld app setup maps {app_name!r}")
+        if app not in required:
+            required.append(app)
+    return tuple(required)
+
+
+def run(args: argparse.Namespace) -> int:
+    project = Path(args.project).resolve()
+    output_dir = Path(args.output_dir).resolve()
+    output_dir.mkdir(parents=True, exist_ok=False)
+    started_at = time.time()
+    record: dict[str, Any] = {
+        "schemaVersion": 3,
+        "startedAtUnix": started_at,
+        "androidWorld": {
+            "revision": ANDROID_WORLD_REVISION,
+            "packageVersion": importlib.metadata.version("android-world"),
+        },
+        "amkernel": {"version": args.expected_amkernel_version, "tool": "python_exec"},
+        "target": {
+            "serial": args.device_serial,
+            "consolePort": args.console_port,
+            "grpcPort": args.grpc_port,
+        },
+        "task": {"name": args.task, "seed": args.task_seed},
+        "protocol": {
+            "promptTemplateSha256": PROMPT_TEMPLATE_SHA256,
+            "agentTimeoutSeconds": args.agent_timeout,
+            "pythonExecCallAdvisory": args.python_exec_call_advisory,
+            "harnessRevision": HARNESS_REVISION,
+            "maxAppiumSessions": 1,
+            "readinessIdentitySha256": args.expected_readiness_sha256,
+        },
+        "stages": [],
+        "agent": None,
+        "officialReward": None,
+        "budget": None,
+        "invalidReason": None,
+        "cleanup": {"agentSession": {"status": "not_created"}},
+        "error": None,
+    }
+    env = None
+    task = None
+    task_initialized = False
+    appium_baseline: list[str] | None = None
+    stage = "infrastructure"
+    stage_entry: dict[str, Any] | None = None
+
+    def enter_stage(name: str) -> None:
+        nonlocal stage, stage_entry
+        now = time.time()
+        if stage_entry is not None and "completedAtUnix" not in stage_entry:
+            stage_entry["completedAtUnix"] = now
+            stage_entry["durationSeconds"] = round(now - stage_entry["startedAtUnix"], 3)
+            if stage_entry["status"] == "running":
+                stage_entry["status"] = "completed"
+        stage = name
+        stage_entry = {"name": name, "startedAtUnix": now, "status": "running"}
+        record["stages"].append(stage_entry)
+
+    try:
+        enter_stage("infrastructure")
+        readiness = json.loads(Path(args.readiness_report).read_text())
+        readiness_payload = {
+            key: value for key, value in readiness.items() if key != "identitySha256"
+        }
+        if not readiness.get("qualified"):
+            raise RuntimeError("device readiness report is not qualified")
+        if readiness.get("identitySha256") != _sha256(readiness_payload):
+            raise ValueError("device readiness report identity is invalid")
+        if readiness.get("identitySha256") != args.expected_readiness_sha256:
+            raise ValueError("device readiness identity does not match campaign")
+        _request_json(args.appium_url.rstrip("/") + "/status")
+        appium_baseline = _appium_session_hashes(
+            args.appium_url, args.adb_path, args.device_serial
+        )
+        if appium_baseline:
+            raise RuntimeError("Appium has pre-existing sessions")
+
+        enter_stage("protocol")
+        task = _task(args.task, args.params, args.task_seed)
+        params_sha256 = _sha256(task.params)
+        if args.expected_params_sha256 is not None and params_sha256 != args.expected_params_sha256:
+            raise ValueError(f"generated task parameters do not match manifest: {params_sha256}")
+        required_apps = _required_apps(task)
+
+        enter_stage("task_initialization")
+        env = env_launcher.load_and_setup_env(
+            console_port=args.console_port,
+            emulator_setup=False,
+            freeze_datetime=True,
+            adb_path=args.adb_path,
+            grpc_port=args.grpc_port,
+        )
+        record["preparation"] = {
+            "mode": "prequalified",
+            "readinessIdentitySha256": args.expected_readiness_sha256,
+            "apps": [app.app_name for app in required_apps],
+        }
+        env.reset(go_home=True)
+        task.initialize_task(env)
+        task_initialized = True
+        record["task"] = {
+            "name": task.name,
+            "params": _json_safe(task.params),
+            "paramsSha256": params_sha256,
+            "goal": task.goal,
+            "complexity": task.complexity,
+        }
+
+        enter_stage("agent")
+        with AppiumAuditProxy(args.appium_url) as appium_proxy:
+            record["agent"] = _run_agent(
+                project=project,
+                sandbox_profile=Path(args.sandbox_profile).resolve(),
+                output_dir=output_dir,
+                prompt=_agent_prompt(
+                    task.goal,
+                    appium_proxy.url,
+                    args.device_serial,
+                    args.python_exec_call_advisory,
+                ),
+                omp=args.omp,
+                model=args.model,
+                timeout=args.agent_timeout,
+            )
+            record["appiumSessionAudit"] = appium_proxy.audit()
+        if (
+            record["agent"]["exitCode"] != 0
+            and record["agent"]["normalized"]["provider"] is None
+            and record["agent"]["normalized"]["toolCalls"] == []
+        ):
+            raise RuntimeError("Agent process exited before producing an event stream")
+
+        enter_stage("agent_protocol")
+        normalized = record["agent"]["normalized"]
+        expected_provider, expected_model = args.model.split("/", 1)
+        if normalized.get("provider") != expected_provider or normalized.get("model") != expected_model:
+            raise ValueError("observed Agent provider/model does not match frozen protocol")
+        if normalized.get("parseErrors") != 0:
+            raise ValueError("Agent event stream contains parse errors")
+        session_audit = record["appiumSessionAudit"]
+        if session_audit["errors"]:
+            raise ValueError(f"Appium session audit failed: {session_audit['errors']}")
+        if session_audit["createdSessionCount"] > 1:
+            raise ValueError("Agent created more than one Appium session")
+        violations = _agent_protocol_violations(normalized)
+        if violations:
+            raise ValueError(f"Agent violated the frozen tool protocol: {violations}")
+        python_exec_calls = sum(
+            call.get("target") == "xd://mcp__amkernel_python_exec"
+            and call.get("tool") == "write"
+            for call in normalized["toolCalls"]
+        )
+        record["budget"] = {
+            "pythonExecCalls": python_exec_calls,
+            "advisory": args.python_exec_call_advisory,
+            "exceededAdvisory": python_exec_calls > args.python_exec_call_advisory,
+            "affectsOfficialReward": False,
+        }
+        if isinstance(task, information_retrieval.InformationRetrieval):
+            answer = _task_outcome(normalized["finalText"])
+            if answer is not None:
+                env.interaction_cache = answer
+            record["agentAnswer"] = {
+                "validContract": answer is not None,
+                "sha256": hashlib.sha256(answer.encode()).hexdigest() if answer else None,
+            }
+
+        enter_stage("evaluator")
+        evaluator_started = time.time()
+        record["officialReward"] = task.is_successful(env)
+        record["evaluator"] = {
+            "implementation": "android_world.task_eval.is_successful",
+            "durationSeconds": round(time.time() - evaluator_started, 3),
+        }
+
+        enter_stage("session_cleanup_verification")
+        cleanup_proofs = [
+            call["sessionCleanup"]
+            for call in normalized["toolCalls"]
+            if "sessionCleanup" in call
+        ]
+        unique_cleanup_hashes = sorted(
+            {proof["sessionIdSha256"] for proof in cleanup_proofs}
+        )
+        created_hashes = session_audit["createdSessionHashes"]
+        deleted_hashes = session_audit["deletedSessionHashes"]
+        if len(unique_cleanup_hashes) > 1:
+            raise ValueError("Agent reported more than one owned Appium session")
+        if unique_cleanup_hashes and unique_cleanup_hashes != created_hashes:
+            raise ValueError("Agent cleanup proof does not match the audited session")
+        remaining_sessions = _appium_session_hashes(
+            args.appium_url, args.adb_path, args.device_serial
+        )
+        if remaining_sessions != appium_baseline:
+            record["cleanup"]["agentSession"] = {
+                "status": "leaked",
+                "remainingSessionHashes": remaining_sessions,
+            }
+        elif not created_hashes:
+            record["cleanup"]["agentSession"] = {"status": "not_created"}
+        elif unique_cleanup_hashes and created_hashes == deleted_hashes:
+            record["cleanup"]["agentSession"] = {
+                "status": "closed",
+                "sessionIdSha256": unique_cleanup_hashes[0],
+            }
+        else:
+            record["cleanup"]["agentSession"] = {"status": "unknown"}
+    except Exception as exc:
+        if stage_entry is not None:
+            stage_entry["status"] = "failed"
+        record["error"] = {
+            "type": type(exc).__name__,
+            "message": str(exc)[:4096],
+            "traceback": "".join(traceback.format_exception(exc))[-8192:],
+        }
+        record["invalidReason"] = {
+            "protocol": "invalid_protocol",
+            "infrastructure": "invalid_infrastructure",
+            "task_initialization": "invalid_setup",
+            "agent_protocol": "invalid_protocol",
+            "evaluator": "invalid_evaluator",
+            "session_cleanup_verification": "invalid_protocol",
+        }.get(stage, "invalid_agent")
+    finally:
+        enter_stage("task_teardown")
+        if task_initialized and task is not None and env is not None:
+            try:
+                task.tear_down(env)
+                record["cleanup"]["taskTearDown"] = "completed"
+            except Exception as exc:
+                record["cleanup"]["taskTearDown"] = f"failed:{type(exc).__name__}"
+        else:
+            record["cleanup"]["taskTearDown"] = "not_applicable"
+        enter_stage("environment_close")
+        if env is not None:
+            try:
+                env.close()
+                record["cleanup"]["environment"] = "closed"
+            except Exception as exc:
+                record["cleanup"]["environment"] = f"failed:{type(exc).__name__}"
+        else:
+            record["cleanup"]["environment"] = "not_created"
+        if appium_baseline is not None:
+            try:
+                remaining_sessions = _appium_session_hashes(
+                    args.appium_url, args.adb_path, args.device_serial
+                )
+            except Exception:
+                if record["cleanup"]["agentSession"]["status"] != "not_created":
+                    record["cleanup"]["agentSession"] = {"status": "unknown"}
+            else:
+                if remaining_sessions != appium_baseline:
+                    record["cleanup"]["agentSession"] = {
+                        "status": "leaked",
+                        "remainingSessionHashes": remaining_sessions,
+                    }
+        enter_stage("result_write")
+        record["completedAtUnix"] = time.time()
+        stage_entry["completedAtUnix"] = record["completedAtUnix"]
+        stage_entry["durationSeconds"] = round(
+            stage_entry["completedAtUnix"] - stage_entry["startedAtUnix"], 3
+        )
+        stage_entry["status"] = "completed"
+        result_path = output_dir / "result.json"
+        temporary_path = output_dir / "result.json.tmp"
+        temporary_path.write_bytes(
+            json.dumps(_json_safe(record), indent=2, sort_keys=True).encode() + b"\n"
+        )
+        os.replace(temporary_path, result_path)
+    return 0 if record["error"] is None else 1
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description="Run one AndroidWorld task through OMP and AMKernel")
+    parser.add_argument("--project", required=True)
+    parser.add_argument("--output-dir", required=True)
+    parser.add_argument("--task", required=True)
+    parser.add_argument("--params", help="fixed task parameter JSON")
+    parser.add_argument("--model", required=True)
+    parser.add_argument("--expected-amkernel-version", required=True)
+    parser.add_argument("--sandbox-profile", required=True)
+    parser.add_argument("--readiness-report", required=True)
+    parser.add_argument("--expected-readiness-sha256", required=True)
+    parser.add_argument("--omp", default="omp")
+    parser.add_argument("--agent-timeout", type=int, default=600)
+    parser.add_argument("--task-seed", type=int, help="fixed seed used to generate task parameters")
+    parser.add_argument(
+        "--python-exec-call-advisory",
+        type=int,
+        default=PYTHON_EXEC_CALL_ADVISORY,
+    )
+    parser.add_argument("--expected-params-sha256", help="manifest parameter digest")
+    parser.add_argument("--appium-url", default="http://127.0.0.1:4723")
+    parser.add_argument("--device-serial", default="emulator-5554")
+    parser.add_argument("--console-port", type=int, default=5554)
+    parser.add_argument("--grpc-port", type=int, default=8554)
+    parser.add_argument("--adb-path", default=str(DEFAULT_ADB))
+    return parser
+
+
+def main() -> None:
+    args = build_parser().parse_args()
+    sys.exit(run(args))
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,172 @@
+import hashlib
+import subprocess
+from urllib import error as url_error
+
+import fsq_androidworld_eval.runner as runner
+import pytest
+import json
+from pathlib import Path
+
+from fsq_androidworld_eval.runner import (
+    _agent_prompt,
+    _agent_protocol_violations,
+    _normalize_agent_events,
+    _required_apps,
+    _task,
+    _task_outcome,
+)
+
+
+def test_normalizes_amkernel_call_without_retaining_code(tmp_path: Path) -> None:
+    events = [
+        {
+            "type": "tool_execution_start",
+            "toolCallId": "one",
+            "toolName": "write",
+            "args": {
+                "path": "xd://mcp__amkernel_python_exec",
+                "content": json.dumps({"code": "secret_source = 42"}),
+            },
+        },
+        {
+            "type": "tool_execution_end",
+            "toolCallId": "one",
+            "result": {
+                "content": [
+                    {
+                        "type": "text",
+                        "text": json.dumps(
+                            {
+                                "status": "completed",
+                                "kernelState": "alive",
+                                "executionCount": 1,
+                                "durationMs": 2,
+                                "result": {
+                                    "ownedSessionId": "private-session-id",
+                                    "quitReturned": True,
+                                },
+                            }
+                        ),
+                    }
+                ]
+            },
+        },
+        {
+            "type": "message_end",
+            "message": {
+                "role": "assistant",
+                "model": "model-id",
+                "provider": "provider-id",
+                "content": [
+                    {
+                        "type": "text",
+                        "text": json.dumps(
+                            {
+                                "taskOutcome": "success",
+                                "sessionCleanup": {
+                                    "ownedSessionId": "private-session-id"
+                                },
+                            }
+                        ),
+                    }
+                ],
+            },
+        },
+    ]
+    path = tmp_path / "events.jsonl"
+    path.write_text("\n".join(json.dumps(event) for event in events) + "\n")
+
+    normalized = _normalize_agent_events(path)
+
+    assert normalized["model"] == "model-id"
+    assert normalized["toolCalls"][0]["amkernel"] == {
+        "status": "completed",
+        "kernelState": "alive",
+        "executionCount": 1,
+        "durationMs": 2,
+    }
+    assert normalized["toolCalls"][0]["sessionCleanup"] == {
+        "quitReturned": True,
+        "sessionIdSha256": "e9cac695f668f1f8ebfcabf1b002a5659ae557231252907703b8db2b204f786f",
+    }
+    assert "private-session-id" not in json.dumps(normalized)
+    assert "secret_source" not in json.dumps(normalized)
+
+
+def test_appium_session_probe_falls_back_to_uiautomator2_processes(monkeypatch) -> None:
+    def request_json(url: str, *, method: str = "GET"):
+        raise url_error.HTTPError(url, 404, "not found", None, None)
+
+    responses = iter(
+        [
+            subprocess.CompletedProcess([], 0, stdout="4312\n", stderr=""),
+            subprocess.CompletedProcess([], 1, stdout="", stderr=""),
+        ]
+    )
+    monkeypatch.setattr(runner, "_request_json", request_json)
+    monkeypatch.setattr(runner.subprocess, "run", lambda *args, **kwargs: next(responses))
+
+    assert runner._appium_session_hashes("http://appium", "adb", "emulator") == [
+        hashlib.sha256(b"io.appium.uiautomator2.server:4312").hexdigest()
+    ]
+
+
+
+def test_appium_session_probe_rejects_malformed_entries(monkeypatch) -> None:
+    monkeypatch.setattr(runner, "_request_json", lambda url: {"value": [{}, {}]})
+
+    with pytest.raises(RuntimeError, match="missing session ID"):
+        runner._appium_session_hashes("http://appium")
+
+def test_required_apps_come_from_task_contract() -> None:
+    markor = _task(
+        "MarkorCreateNote",
+        json.dumps({"file_name": "evaluation.md", "text": "P0 evidence"}),
+    )
+    system = _task("SystemWifiTurnOff", None)
+
+    assert [app.app_name for app in _required_apps(markor)] == ["markor"]
+    assert [app.app_name for app in _required_apps(system)] == ["settings"]
+
+
+def test_agent_prompt_separates_goal_from_runtime_facts() -> None:
+    prompt = _agent_prompt(
+        "Create a note with text: exact content",
+        "http://127.0.0.1:4723",
+        "emulator-5554",
+    )
+
+    goal = prompt.split("BEGIN EXACT TASK GOAL\n", 1)[1].split(
+        "\nEND EXACT TASK GOAL", 1
+    )[0]
+    assert goal == "Create a note with text: exact content"
+    assert "Appium server" not in goal
+    assert "emulator-5554" not in goal
+
+
+def test_information_retrieval_answer_requires_exact_json_contract() -> None:
+    assert _task_outcome(json.dumps({"taskOutcome": "One, Two"})) == "One, Two"
+    assert _task_outcome("One, Two") is None
+    assert _task_outcome(json.dumps(["One", "Two"])) is None
+    assert _task_outcome(json.dumps({"taskOutcome": 2})) is None
+
+
+def test_agent_protocol_rejects_filesystem_and_unrelated_tools() -> None:
+    normalized = {
+        "toolCalls": [
+            {"tool": "read", "target": "skill://amkernel"},
+            {"tool": "write", "target": "xd://mcp__amkernel_python_exec"},
+            {"tool": "write", "target": "xd://report_issue"},
+            {"tool": "read", "target": "xd://report_issue_private"},
+            {"tool": "read", "target": "android_world/task_evals/secret.py"},
+            {"tool": "bash", "target": None},
+        ]
+    }
+
+    violations = _agent_protocol_violations(normalized)
+
+    assert violations == [
+        "forbidden target: xd://report_issue_private",
+        "forbidden target: android_world/task_evals/secret.py",
+        "forbidden tool: bash",
+    ]
