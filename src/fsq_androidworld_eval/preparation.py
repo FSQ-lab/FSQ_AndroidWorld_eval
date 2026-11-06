@@ -1,3 +1,13 @@
+"""Qualify the target without running benchmark tasks or fabricating app state.
+
+After official setup clears Audio Recorder data, complete Get started / Apply
+through the locked official UI controller, wait for the idle main surface and
+app-created recordings directory, then save the official app snapshot. Qualification
+records that prerequisite and live attestation checks it again; neither path
+creates the directory or records audio on the app's behalf.
+Task-initialized database diagnostics remain separate from this startup gate.
+"""
+
 from __future__ import annotations
 
 from contextlib import contextmanager
@@ -10,8 +20,9 @@ import subprocess
 import time
 from typing import Any
 
-from android_world.env import adb_utils, env_launcher
+from android_world.env import adb_utils, device_constants, env_launcher, tools
 from android_world.env.setup_device import setup as device_setup
+from android_world.utils import app_snapshot
 
 from fsq_androidworld_eval.runner import (
     ANDROID_WORLD_REVISION,
@@ -29,6 +40,10 @@ _DATABASE_READINESS = {
     "simple calendar pro": "/data/data/com.simplemobiletools.calendar.pro/databases/events.db",
     "tasks": "/data/data/org.tasks/databases/database",
     "vlc": "/data/data/org.videolan.vlc/app_db/vlc_media.db",
+}
+
+_DIRECTORY_READINESS = {
+    "audio recorder": device_constants.AUDIORECORDER_DATA,
 }
 
 
@@ -72,6 +87,47 @@ def _database_exists(adb_path: str, serial: str, path: str) -> bool:
         f"test -e {path} && echo present || echo missing",
     )
     return output.splitlines()[-1:] == ["present"]
+
+
+def _directory_readiness(
+    adb_path: str, serial: str, app_names: set[str]
+) -> list[dict[str, Any]]:
+    rows = []
+    for app_name, path in _DIRECTORY_READINESS.items():
+        if app_name not in app_names:
+            continue
+        output = _adb(
+            adb_path, serial, "shell",
+            f"test -d {path} && echo present || echo missing",
+        )
+        rows.append({
+            "app": app_name,
+            "pathSha256": hashlib.sha256(path.encode()).hexdigest(),
+            "present": output.splitlines()[-1:] == ["present"],
+        })
+    return rows
+
+
+def _complete_audio_recorder_setup(env: Any, adb_path: str, serial: str) -> None:
+    # Official AppSetup clears data. Complete its real UI before replacing the
+    # snapshot, so later official restores do not return to the welcome screen.
+    try:
+        adb_utils.launch_app("audio recorder", env.controller)
+        controller = tools.AndroidToolController(env=env.controller)
+        controller.click_element("Get started")
+        controller.click_element("Apply")
+        deadline = time.monotonic() + 10
+        while True:
+            directory_ready = _directory_readiness(adb_path, serial, {"audio recorder"})[0]["present"]
+            main_ready = any(element.text == "00:00" for element in env.controller.get_ui_elements())
+            if directory_ready and main_ready:
+                break
+            if time.monotonic() >= deadline:
+                raise RuntimeError("Audio Recorder did not finish its first-launch setup")
+            time.sleep(0.2)
+    finally:
+        adb_utils.close_app("audio recorder", env.controller)
+    app_snapshot.save_snapshot("audio recorder", env.controller)
 
 
 def _required_app_names(manifest: dict[str, Any]) -> list[str]:
@@ -163,11 +219,24 @@ def attest_device(readiness: dict[str, Any], adb_path: str) -> dict[str, Any]:
         path = _DATABASE_READINESS[expected["app"]]
         present = _database_exists(adb_path, serial, path)
         databases.append({"app": expected["app"], "present": present})
+    directories = _directory_readiness(
+        adb_path, serial, {app["name"] for app in readiness.get("apps", [])}
+    )
+    expected_directories = {
+        row["app"]: row for row in readiness.get("directories", [])
+    }
+    for observed in directories:
+        expected = expected_directories.get(observed["app"])
+        if observed != expected or observed["present"] is not True:
+            mismatches[f"directory:{observed['app']}"] = {
+                "expected": expected, "observed": observed,
+            }
     result = {
         "device": device,
         "appiumBuild": observed_build,
         "apps": apps,
         "databases": databases,
+        "directories": directories,
         "mismatches": mismatches,
         "qualified": not mismatches,
     }
@@ -198,6 +267,7 @@ def prepare_device(manifest_path: Path, output_path: Path, adb_path: str) -> dic
         "device": None,
         "apps": [],
         "databases": [],
+        "directories": [],
         "qualified": False,
         "error": None,
     }
@@ -245,6 +315,8 @@ def prepare_device(manifest_path: Path, output_path: Path, adb_path: str) -> dic
         )
         with _launcher_compatible_setup(launcher_activities) as launcher_replacements:
             device_setup.setup_apps(env, tuple(app_classes))
+            if "audio recorder" in app_names:
+                _complete_audio_recorder_setup(env, adb_path, serial)
         report["launcherCompatibility"] = {
             "mode": "main_launcher_intent_replaces_monkey",
             "packages": sorted(set(launcher_replacements)),
@@ -277,6 +349,14 @@ def prepare_device(manifest_path: Path, output_path: Path, adb_path: str) -> dic
                 }
             )
             _adb(adb_path, serial, "shell", "am", "force-stop", package)
+
+        report["directories"] = _directory_readiness(adb_path, serial, set(app_names))
+        missing_directories = [row["app"] for row in report["directories"] if not row["present"]]
+        if missing_directories:
+            raise RuntimeError(
+                "Complete first-launch setup through the app UI before qualification; "
+                f"required app-created directories are missing: {missing_directories}"
+            )
 
         for app_name, database_path in sorted(_DATABASE_READINESS.items()):
             if app_name not in app_names:

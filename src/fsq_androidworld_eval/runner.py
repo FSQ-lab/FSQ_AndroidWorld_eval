@@ -1,3 +1,44 @@
+"""Run the locked AndroidWorld evaluator after a bounded Appium agent episode.
+
+The reference loop and complexity allocation are delegated to AndroidWorld.
+One step grants one classified Appium UI interaction before upstream execution;
+batched/opaque commands are rejected, and observations/quit remain available
+after exhaustion. Exhaustion is not a fabricated failure reward: the unchanged
+official evaluator still inspects the final device state. Process/episode timeouts
+remain disclosed safety bounds, not substitutes for the reference step limit.
+Revision 6 freezes a 120-second MCP transport deadline and requests a 90-second
+session-creation cell; these separate bounds avoid the observed 30-second cutoff
+before a successful 31.462-second Appium startup. AMKernel itself is unchanged.
+Revision 7 requires Audio Recorder's app-created recordings directory before a
+formal episode and keeps unexecuted episodes out of cleanup-failure counts;
+incomplete coverage still blocks qualification and an official campaign score.
+Revision 8 owns OMP RPC stdin until terminal settlement and same-driver cleanup.
+It sets interrupt mode "wait": business expiry queues cleanup without cancelling
+an active MCP request. Process exit is never completion evidence. Only a terminal
+agent_end with a final assistant stop response establishes normal completion;
+"Deadline exceeded" is explicit OMP deadline evidence, otherwise unexplained exits
+remain unknown. The v18.12.6 RPC/agent-loop source documents these distinctions.
+
+Frozen wall-clock envelope for every task: business=max(600,120+60*maxSteps),
+cleanup=180 seconds, SIGTERM only after cleanup, SIGKILL after 10 more seconds.
+Early business completion/step exhaustion starts the same finite cleanup window.
+Independent recovery gets at most 120 seconds and attaches only confirmed owned
+sessions through a fresh AMKernel Runtime and the official Python Client. Agent
+quit, Harness recovery and unknown disappearance have separate evidence. Absence
+alone never establishes Appium idle timeout. No recovery rewrites old episodes.
+
+Business/explicit OMP deadline attempts retain evaluator reward. Unknown/forced
+termination is invalid_agent, with any returned reward still retained separately.
+An evaluator that never returns leaves reward null. Any unproven Agent cleanup,
+including successful Harness recovery, halts before the next task. Revision 8
+requires fresh qualification, all 12 calibration tasks, then a new 116-task run;
+the aborted revision 7 campaign cannot be resumed or spliced into this protocol.
+
+The Appium action representation and continuous OMP reasoning are custom. Matching
+the reference allocator/runner does not establish action-space equivalence or
+official leaderboard acceptance. Historical campaign evidence is never rewritten.
+"""
+
 from __future__ import annotations
 
 import argparse
@@ -8,7 +49,6 @@ import json
 import os
 from pathlib import Path
 import subprocess
-import signal
 import sys
 import time
 import traceback
@@ -16,18 +56,33 @@ from typing import Any
 from PIL import Image
 from urllib import error as url_error, request as url_request
 
-from android_world import registry
+from android_world import episode_runner, registry, suite_utils
 from android_world.env import env_launcher
 
 from fsq_androidworld_eval.appium_proxy import AppiumAuditProxy
+from fsq_androidworld_eval.action_budget import ActionGate, STEP_BUDGET_PROTOCOL
+from fsq_androidworld_eval.stepped_agent import AppiumSteppedAgent, AgentTerminated
+from fsq_androidworld_eval.lifecycle import (
+    EpisodeDeadlines, TIME_BUDGET_PROTOCOL, episode_time_budget,
+)
+from fsq_androidworld_eval.mcp_runtime import RecoveryRuntime
 from android_world.task_evals.information_retrieval import information_retrieval
 from android_world.env.setup_device import setup as device_setup
 ANDROID_WORLD_REVISION = "55ddaf5edc6f6c25673aed343907d5b9dca66f84"
 DEFAULT_ADB = Path.home() / "Library/Android/sdk/platform-tools/adb"
-HARNESS_REVISION = 3
+HARNESS_REVISION = 8
 PYTHON_EXEC_CALL_ADVISORY = 30
-ALLOWED_AGENT_TARGETS = (
-    "skill://amkernel",
+MCP_REQUEST_TIMEOUT_MS = 120_000
+SESSION_CREATION_TIMEOUT_SECONDS = 90
+# Appium mutations require one official-reference-step permit before forwarding.
+ALLOWED_AGENT_SKILLS = (
+    "amkernel",
+    "appium-troubleshooting",
+    "setup-uiautomator2",
+)
+ALLOWED_AGENT_TARGETS = tuple(
+    f"skill://{skill}" for skill in ALLOWED_AGENT_SKILLS
+) + (
     "xd://mcp__amkernel_python_exec",
     "xd://report_issue",
 )
@@ -42,6 +97,10 @@ The exact task goal is only the text between those markers. The runtime facts be
 - Exact Android target: {device_serial}
 
 The evaluator already initialized the task. Do not install or update software, start or stop Appium, reset ADB, create another emulator, alter project files, or use host automation outside python_exec. Use the official Appium Python Client with UiAutomator2. Create at most one Appium session, retain its driver across python_exec calls, use explicit waits and bounded observations, and stop once the requested state is visibly established. Aim to stay within {python_exec_call_advisory} python_exec calls; this advisory is efficiency telemetry and never changes AndroidWorld reward. Do not undo the requested final state.
+
+The official reference budget is {max_steps} steps. Each supported Appium UI interaction consumes one step, including failed attempts; multiple interactions in one Python cell still consume separate steps. Observations and session cleanup remain available after exhaustion. Connect with noReset=True, autoLaunch=False, skipUnlock=True and no app installation/reset capabilities. Use native Appium interactions, not shell, arbitrary scripts, batched gestures, or app-data APIs. Once the proxy reports budget exhaustion, perform no more UI interactions; reconcile with read-only observations, quit, and return your actual outcome. This Appium action representation is custom; it does not imply official leaderboard acceptance.
+
+Session startup can exceed the default 30-second execution deadline. In the python_exec request that creates the session, explicitly set timeout={session_creation_timeout_seconds}; create the driver and capture its session ID in that cell before UI actions. The isolated MCP transport deadline is {mcp_request_timeout_ms} milliseconds, distinct from the active-cell timeout. Neither setting increases the task step limit or total Agent timeout. Do not retry session creation after an uncertain result: reconcile the owned session instead.
 
 Finish with a dedicated python_exec cleanup cell: retain the owned session ID, call driver.quit(), and make the cell's final expression exactly {{"ownedSessionId": session_id, "quitReturned": True}} only after quit returns. If quit fails, let the cell fail; never claim cleanup from a local variable or prose. Return one compact JSON object with taskOutcome, sessionCleanup, and evidence, but do not repeat the session ID in that final response. A textual success claim is not the verdict; AndroidWorld evaluates device state independently, and only the observed cleanup cell proves session cleanup."""
 PROMPT_TEMPLATE_SHA256 = hashlib.sha256(PROMPT_TEMPLATE.encode()).hexdigest()
@@ -156,7 +215,10 @@ def _agent_protocol_violations(normalized: dict[str, Any]) -> list[str]:
             continue
         allowed_target = isinstance(target, str) and (
             target in ALLOWED_AGENT_TARGETS
-            or target.startswith("skill://amkernel/")
+            or any(
+                target.startswith(f"skill://{skill}/")
+                for skill in ALLOWED_AGENT_SKILLS
+            )
         )
         if not allowed_target:
             violations.append(f"forbidden target: {target}")
@@ -176,120 +238,32 @@ def _agent_prompt(
     appium_url: str,
     device_serial: str,
     python_exec_call_advisory: int = PYTHON_EXEC_CALL_ADVISORY,
+    *,
+    max_steps: int,
 ) -> str:
     return PROMPT_TEMPLATE.format(
         goal=goal,
         appium_url=appium_url,
         device_serial=device_serial,
         python_exec_call_advisory=python_exec_call_advisory,
+        max_steps=max_steps,
+        session_creation_timeout_seconds=SESSION_CREATION_TIMEOUT_SECONDS,
+        mcp_request_timeout_ms=MCP_REQUEST_TIMEOUT_MS,
     )
 
 
 def _run_agent(
-    *,
-    project: Path,
-    sandbox_profile: Path,
-    output_dir: Path,
-    prompt: str,
-    omp: str,
-    model: str,
-    timeout: int,
+    *, project: Path, sandbox_profile: Path, output_dir: Path, prompt: str,
+    omp: str, model: str, deadlines: EpisodeDeadlines, action_gate: ActionGate,
 ) -> dict[str, Any]:
-    raw_dir = output_dir / "raw-private"
-    raw_dir.mkdir(mode=0o700)
-    stdout_path = raw_dir / "agent-events.jsonl"
-    stderr_path = raw_dir / "agent-stderr.txt"
-    normalized_path = output_dir / "normalized-agent-events.json"
-    command = [
-        "/usr/bin/sandbox-exec",
-        "-f",
-        str(sandbox_profile),
-        omp,
-        "-p",
-        "--mode",
-        "json",
-        "--no-session",
-        "--auto-approve",
-        "--no-extensions",
-        "--no-lsp",
-        "--no-pty",
-        "--tools",
-        "read,write",
-        "--skills",
-        "amkernel,appium-troubleshooting,setup-uiautomator2",
-        "--max-time",
-        f"{timeout}s",
-        "--model",
-        model,
-        "--cwd",
-        str(project),
-        prompt,
-    ]
-    started = time.time()
-    timed_out = False
-    with stdout_path.open("wb") as stdout, stderr_path.open("wb") as stderr:
-        process = subprocess.Popen(
-            command,
-            stdout=stdout,
-            stdin=subprocess.DEVNULL,
-            stderr=stderr,
-            start_new_session=os.name == "posix",
-            cwd=project,
-        )
-        try:
-            exit_code = process.wait(timeout=timeout + 30)
-        except subprocess.TimeoutExpired:
-            timed_out = True
-            if os.name == "posix":
-                os.killpg(process.pid, signal.SIGTERM)
-            else:
-                process.terminate()
-            try:
-                exit_code = process.wait(timeout=10)
-            except subprocess.TimeoutExpired:
-                if os.name == "posix":
-                    os.killpg(process.pid, signal.SIGKILL)
-                else:
-                    process.kill()
-                exit_code = process.wait(timeout=10)
-    normalized = _normalize_agent_events(stdout_path)
-    normalized_path.write_text(json.dumps(normalized, indent=2, sort_keys=True) + "\n")
-    return {
-        "command": [
-            "sandbox-exec",
-            "-f",
-            "<sandbox-profile>",
-            omp,
-            "-p",
-            "--mode",
-            "json",
-            "--no-session",
-            "--auto-approve",
-            "--no-extensions",
-            "--no-lsp",
-            "--no-pty",
-            "--tools",
-            "read,write",
-            "--skills",
-            "amkernel,appium-troubleshooting,setup-uiautomator2",
-            "--max-time",
-            f"{timeout}s",
-            "--model",
-            model,
-            "--cwd",
-            "<isolated-agent-project>",
-            "<prompt>",
-        ],
-        "exitCode": exit_code,
-        "timedOut": timed_out,
-        "durationSeconds": round(time.time() - started, 3),
-        "rawEventsPath": str(stdout_path.relative_to(output_dir)),
-        "rawStderrPath": str(stderr_path.relative_to(output_dir)),
-        "normalizedEventsPath": normalized_path.name,
-        "rawEventsSha256": hashlib.sha256(stdout_path.read_bytes()).hexdigest(),
-        "rawStderrSha256": hashlib.sha256(stderr_path.read_bytes()).hexdigest(),
-        "normalized": normalized,
-    }
+    from fsq_androidworld_eval.omp_supervisor import run_omp
+
+    return run_omp(
+        project=project, sandbox_profile=sandbox_profile, output_dir=output_dir,
+        prompt=prompt, omp=omp, model=model, deadlines=deadlines,
+        action_gate=action_gate, normalize=_normalize_agent_events,
+        skills=ALLOWED_AGENT_SKILLS,
+    )
 
 
 def _tool_result_payload(event: dict[str, Any]) -> dict[str, Any] | None:
@@ -341,6 +315,10 @@ def _normalize_agent_events(path: Path) -> dict[str, Any]:
     model: str | None = None
     provider: str | None = None
     parse_errors = 0
+    terminal_events: list[dict[str, Any]] = []
+    assistant_stop_reason: str | None = None
+    omp_deadline = False
+    agent_end = False
     with path.open(encoding="utf-8", errors="replace") as stream:
         for line in stream:
             try:
@@ -351,6 +329,12 @@ def _normalize_agent_events(path: Path) -> dict[str, Any]:
             if not isinstance(event, dict):
                 continue
             event_type = event.get("type")
+            if event_type == "agent_end":
+                agent_end = event.get("isTerminal") is True
+            if event_type in {"agent_end", "abort", "session_end", "error"}:
+                terminal_events.append({
+                    key: event[key] for key in ("type", "reason", "stopReason", "isTerminal", "yielded") if key in event
+                })
             if event_type == "tool_execution_start":
                 call_id = event.get("toolCallId")
                 if not isinstance(call_id, str):
@@ -382,9 +366,13 @@ def _normalize_agent_events(path: Path) -> dict[str, Any]:
                         key: payload.get(key)
                         for key in ("status", "kernelState", "executionCount", "durationMs")
                     }
+                    calls[call_id]["isError"] = event.get("isError", False)
                     value = payload.get("result")
                     if (
                         isinstance(value, dict)
+                        and payload.get("status") == "completed"
+                        and payload.get("kernelState") == "alive"
+                        and not event.get("isError", False)
                         and isinstance(value.get("ownedSessionId"), str)
                         and value.get("quitReturned") is True
                     ):
@@ -398,12 +386,16 @@ def _normalize_agent_events(path: Path) -> dict[str, Any]:
                 message = event.get("message")
                 if not isinstance(message, dict) or message.get("role") != "assistant":
                     continue
+                assistant_stop_reason = message.get("stopReason")
+                final_text = None
+                if message.get("errorMessage") == "Deadline exceeded":
+                    omp_deadline = True
                 if isinstance(message.get("model"), str):
                     model = message["model"]
                 if isinstance(message.get("provider"), str):
                     provider = message["provider"]
                 content = message.get("content")
-                if isinstance(content, list):
+                if assistant_stop_reason == "stop" and isinstance(content, list):
                     texts = [
                         item.get("text")
                         for item in content
@@ -418,6 +410,10 @@ def _normalize_agent_events(path: Path) -> dict[str, Any]:
         "parseErrors": parse_errors,
         "toolCalls": list(calls.values()),
         "finalText": final_text,
+        "assistantStopReason": assistant_stop_reason,
+        "terminalEvents": terminal_events,
+        "ompDeadlineObserved": omp_deadline,
+        "agentCompleted": agent_end and assistant_stop_reason == "stop" and final_text is not None,
     }
 
 
@@ -455,11 +451,56 @@ def _required_apps(task: Any) -> tuple[type, ...]:
     return tuple(required)
 
 
+def _cleanup_owned_session(
+    proxy: AppiumAuditProxy, normalized: dict[str, Any], project: Path,
+    recovery_seconds: float,
+) -> dict[str, Any]:
+    """Agent proof and Harness recovery are separate, immutable outcomes."""
+    recovery_end = time.monotonic() + recovery_seconds
+    proxy.wait_for_idle(min(120.0, recovery_seconds))
+    audit = proxy.audit()
+    proofs = {
+        call["sessionCleanup"]["sessionIdSha256"]
+        for call in normalized.get("toolCalls", []) if "sessionCleanup" in call
+    }
+    created = set(audit["createdSessionHashes"])
+    deleted = set(audit["deletedSessionHashes"])
+    if not created and not audit.get("pendingRequestCount") and not audit.get("unknownCreationOutcomeCount"):
+        return {"status": "not_created", "attribution": "none"}
+    try:
+        remaining = max(0.01, recovery_end - time.monotonic())
+        with RecoveryRuntime(project, remaining) as runtime:
+            recovery = proxy.reclaim_owned(
+                runtime.execute, timeout_seconds=max(0.01, recovery_end - time.monotonic())
+            )
+    except Exception as exc:
+        return {"status": "unknown", "attribution": "unknown",
+                "error": type(exc).__name__, "createdSessionHashes": sorted(created)}
+    sessions = recovery.get("sessions", [])
+    if (
+        len(created) == 1 and proofs == created == deleted
+        and recovery.get("reclaimedSessionCount") == 0
+        and recovery.get("pendingRequestCount") == 0
+        and recovery.get("unknownCreationOutcomeCount") == 0
+        and len(sessions) == 1
+        and sessions[0].get("sessionHash") in created
+        and sessions[0].get("alreadyAbsent") is True
+        and sessions[0].get("absentVerified") is True
+    ):
+        return {"status": "closed", "sessionIdSha256": next(iter(created)),
+                "attribution": "agent", "agentQuitReturned": True,
+                "verification": recovery}
+    return {**recovery, "attribution": (
+        "harness" if recovery.get("status") == "harness_reclaimed" else "unknown"
+    )}
+
+
 def run(args: argparse.Namespace) -> int:
     project = Path(args.project).resolve()
     output_dir = Path(args.output_dir).resolve()
     output_dir.mkdir(parents=True, exist_ok=False)
     started_at = time.time()
+    time_budget = episode_time_budget(args.expected_max_steps)
     record: dict[str, Any] = {
         "schemaVersion": 3,
         "startedAtUnix": started_at,
@@ -476,16 +517,21 @@ def run(args: argparse.Namespace) -> int:
         "task": {"name": args.task, "seed": args.task_seed},
         "protocol": {
             "promptTemplateSha256": PROMPT_TEMPLATE_SHA256,
-            "agentTimeoutSeconds": args.agent_timeout,
+            "timeBudget": TIME_BUDGET_PROTOCOL,
+            "mcpRequestTimeoutMs": MCP_REQUEST_TIMEOUT_MS,
+            "sessionCreationTimeoutSeconds": SESSION_CREATION_TIMEOUT_SECONDS,
             "pythonExecCallAdvisory": args.python_exec_call_advisory,
             "harnessRevision": HARNESS_REVISION,
             "maxAppiumSessions": 1,
             "readinessIdentitySha256": args.expected_readiness_sha256,
+            "stepBudget": STEP_BUDGET_PROTOCOL,
         },
         "stages": [],
+        "timeBudget": time_budget,
         "agent": None,
         "officialReward": None,
         "budget": None,
+        "stepBudget": None,
         "invalidReason": None,
         "cleanup": {"agentSession": {"status": "not_created"}},
         "error": None,
@@ -533,6 +579,9 @@ def run(args: argparse.Namespace) -> int:
         params_sha256 = _sha256(task.params)
         if args.expected_params_sha256 is not None and params_sha256 != args.expected_params_sha256:
             raise ValueError(f"generated task parameters do not match manifest: {params_sha256}")
+        max_steps = suite_utils._allocate_step_budget(task.complexity)
+        if max_steps <= 0 or max_steps != args.expected_max_steps:
+            raise ValueError("task step budget does not match frozen manifest")
         required_apps = _required_apps(task)
 
         enter_stage("task_initialization")
@@ -560,22 +609,70 @@ def run(args: argparse.Namespace) -> int:
         }
 
         enter_stage("agent")
-        with AppiumAuditProxy(args.appium_url) as appium_proxy:
-            record["agent"] = _run_agent(
-                project=project,
-                sandbox_profile=Path(args.sandbox_profile).resolve(),
-                output_dir=output_dir,
-                prompt=_agent_prompt(
-                    task.goal,
-                    appium_proxy.url,
-                    args.device_serial,
-                    args.python_exec_call_advisory,
+        action_gate = ActionGate()
+        deadlines = EpisodeDeadlines(
+            time_budget["businessSeconds"], time_budget["cleanupWindowSeconds"],
+            time_budget["terminationGraceSeconds"],
+        )
+        with AppiumAuditProxy(
+            args.appium_url, action_gate=action_gate, expected_udid=args.device_serial,
+            deadlines=deadlines,
+        ) as appium_proxy:
+            adapter = AppiumSteppedAgent(
+                env=env,
+                run_agent=lambda: _run_agent(
+                    project=project,
+                    sandbox_profile=Path(args.sandbox_profile).resolve(),
+                    output_dir=output_dir,
+                    prompt=_agent_prompt(
+                        task.goal,
+                        appium_proxy.url,
+                        args.device_serial,
+                        args.python_exec_call_advisory,
+                        max_steps=max_steps,
+                    ),
+                    omp=args.omp,
+                    model=args.model,
+                    deadlines=deadlines,
+                    action_gate=action_gate,
                 ),
-                omp=args.omp,
-                model=args.model,
-                timeout=args.agent_timeout,
+                action_gate=action_gate,
+                deadlines=deadlines,
             )
-            record["appiumSessionAudit"] = appium_proxy.audit()
+            reference_episode = None
+            try:
+                reference_episode = episode_runner.run_episode(
+                    goal=task.goal,
+                    agent=adapter,
+                    max_n_steps=max_steps,
+                    start_on_home_screen=task.start_on_home_screen,
+                )
+            except AgentTerminated:
+                # Reference loop has no non-success termination result. Retain
+                # the partial attempt without declaring Agent completion.
+                pass
+            finally:
+                try:
+                    record["agent"] = adapter.finish()
+                finally:
+                    try:
+                        normalized = (record.get("agent") or {}).get("normalized", {})
+                        record["cleanup"]["agentSession"] = _cleanup_owned_session(
+                            appium_proxy, normalized, project,
+                            time_budget["recoveryWindowSeconds"],
+                        )
+                    finally:
+                        record["appiumSessionAudit"] = appium_proxy.audit()
+                        steps = adapter.reference_step_count
+                        done = reference_episode.done if reference_episode is not None else False
+                        record["stepBudget"] = {
+                            "protocol": STEP_BUDGET_PROTOCOL,
+                            "maxSteps": max_steps,
+                            "referenceStepsExecuted": steps,
+                            "agentIndicatedDone": done,
+                            "exhausted": steps == max_steps and not done,
+                            **action_gate.snapshot(),
+                        }
         if (
             record["agent"]["exitCode"] != 0
             and record["agent"]["normalized"]["provider"] is None
@@ -626,38 +723,13 @@ def run(args: argparse.Namespace) -> int:
             "durationSeconds": round(time.time() - evaluator_started, 3),
         }
 
-        enter_stage("session_cleanup_verification")
-        cleanup_proofs = [
-            call["sessionCleanup"]
-            for call in normalized["toolCalls"]
-            if "sessionCleanup" in call
-        ]
-        unique_cleanup_hashes = sorted(
-            {proof["sessionIdSha256"] for proof in cleanup_proofs}
-        )
-        created_hashes = session_audit["createdSessionHashes"]
-        deleted_hashes = session_audit["deletedSessionHashes"]
-        if len(unique_cleanup_hashes) > 1:
-            raise ValueError("Agent reported more than one owned Appium session")
-        if unique_cleanup_hashes and unique_cleanup_hashes != created_hashes:
-            raise ValueError("Agent cleanup proof does not match the audited session")
-        remaining_sessions = _appium_session_hashes(
-            args.appium_url, args.adb_path, args.device_serial
-        )
-        if remaining_sessions != appium_baseline:
-            record["cleanup"]["agentSession"] = {
-                "status": "leaked",
-                "remainingSessionHashes": remaining_sessions,
+        termination = record["agent"]["termination"]["reason"]
+        if termination in {"unknown_termination", "forced_termination"}:
+            record["invalidReason"] = "invalid_agent"
+            record["error"] = {
+                "type": "AgentTerminated",
+                "message": termination,
             }
-        elif not created_hashes:
-            record["cleanup"]["agentSession"] = {"status": "not_created"}
-        elif unique_cleanup_hashes and created_hashes == deleted_hashes:
-            record["cleanup"]["agentSession"] = {
-                "status": "closed",
-                "sessionIdSha256": unique_cleanup_hashes[0],
-            }
-        else:
-            record["cleanup"]["agentSession"] = {"status": "unknown"}
     except Exception as exc:
         if stage_entry is not None:
             stage_entry["status"] = "failed"
@@ -699,14 +771,17 @@ def run(args: argparse.Namespace) -> int:
                     args.appium_url, args.adb_path, args.device_serial
                 )
             except Exception:
-                if record["cleanup"]["agentSession"]["status"] != "not_created":
-                    record["cleanup"]["agentSession"] = {"status": "unknown"}
+                cleanup = record["cleanup"]["agentSession"]
+                cleanup["verificationStatus"] = "unknown"
+                if cleanup["status"] == "closed":
+                    cleanup["status"] = "unknown"
             else:
                 if remaining_sessions != appium_baseline:
-                    record["cleanup"]["agentSession"] = {
-                        "status": "leaked",
-                        "remainingSessionHashes": remaining_sessions,
-                    }
+                    cleanup = record["cleanup"]["agentSession"]
+                    cleanup["status"] = "leaked"
+                    cleanup["remainingSessionHashes"] = remaining_sessions
+                else:
+                    record["cleanup"]["agentSession"]["verificationStatus"] = "absent"
         enter_stage("result_write")
         record["completedAtUnix"] = time.time()
         stage_entry["completedAtUnix"] = record["completedAtUnix"]
@@ -735,7 +810,6 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--readiness-report", required=True)
     parser.add_argument("--expected-readiness-sha256", required=True)
     parser.add_argument("--omp", default="omp")
-    parser.add_argument("--agent-timeout", type=int, default=600)
     parser.add_argument("--task-seed", type=int, help="fixed seed used to generate task parameters")
     parser.add_argument(
         "--python-exec-call-advisory",
@@ -743,6 +817,7 @@ def build_parser() -> argparse.ArgumentParser:
         default=PYTHON_EXEC_CALL_ADVISORY,
     )
     parser.add_argument("--expected-params-sha256", help="manifest parameter digest")
+    parser.add_argument("--expected-max-steps", type=int, required=True)
     parser.add_argument("--appium-url", default="http://127.0.0.1:4723")
     parser.add_argument("--device-serial", default="emulator-5554")
     parser.add_argument("--console-port", type=int, default=5554)

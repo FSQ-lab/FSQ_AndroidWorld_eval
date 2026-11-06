@@ -16,13 +16,27 @@ from typing import Any
 
 from android_world import registry, suite_utils
 
+from fsq_androidworld_eval.action_budget import STEP_BUDGET_PROTOCOL
 from fsq_androidworld_eval.preparation import attest_device, prepare_device
-from fsq_androidworld_eval.scorer import recalculate as recalculate_score
+from fsq_androidworld_eval.lifecycle import TIME_BUDGET_PROTOCOL, episode_time_budget
+from fsq_androidworld_eval.scorer import (
+    SCORING_POLICY,
+    TERMINATION_POLICY,
+    _calibration_gate_satisfied,
+    _cleanup_failed,
+    official_reward,
+    recalculate as recalculate_score,
+    record_classification,
+    step_budget_valid,
+    time_budget_valid,
+)
 from fsq_androidworld_eval.runner import (
     ALLOWED_AGENT_TARGETS,
     ANDROID_WORLD_REVISION,
     DEFAULT_ADB,
     HARNESS_REVISION,
+    MCP_REQUEST_TIMEOUT_MS,
+    SESSION_CREATION_TIMEOUT_SECONDS,
     PYTHON_EXEC_CALL_ADVISORY,
     PROMPT_TEMPLATE_SHA256,
     _json_safe,
@@ -200,10 +214,16 @@ def _calibration_result_has_provenance(
         == manifest["protocol"]["harnessRevision"]
         and record.get("protocol", {}).get("promptTemplateSha256")
         == manifest["protocol"]["promptTemplateSha256"]
+        and record.get("protocol", {}).get("mcpRequestTimeoutMs")
+        == manifest["protocol"]["mcpRequestTimeoutMs"]
+        and record.get("protocol", {}).get("sessionCreationTimeoutSeconds")
+        == manifest["protocol"]["sessionCreationTimeoutSeconds"]
         and normalized.get("provider") == expected_provider
         and normalized.get("model") == expected_model
         and normalized.get("parseErrors") == 0
         and _agent_protocol_violations(normalized) == []
+        and step_budget_valid(record, task)
+        and time_budget_valid(record, task, manifest["protocol"])
         and isinstance(budget, dict)
         and budget.get("pythonExecCalls") == len(python_exec_calls)
         and len(python_exec_calls) > 0
@@ -326,6 +346,7 @@ def build_manifest(
             else:
                 if _sha256(reconstructed.params) == _sha256(params):
                     params_transport = "json"
+        maximum = suite_utils._allocate_step_budget(instance.complexity)
         tasks.append(
             {
                 "index": index,
@@ -333,6 +354,8 @@ def build_manifest(
                 "family": family,
                 "apps": list(instance.app_names),
                 "complexity": instance.complexity,
+                "maxSteps": maximum,
+                "timeBudget": episode_time_budget(maximum),
                 "difficulty": row.get("difficulty", "unknown"),
                 "tags": row.get("tags", []),
                 "instanceSeed": params["seed"],
@@ -357,10 +380,14 @@ def build_manifest(
             "nTaskCombinations": 1,
             "useIdenticalParams": True,
             "promptTemplateSha256": PROMPT_TEMPLATE_SHA256,
-            "agentTimeoutSeconds": 600,
-            "episodeTimeoutSeconds": 900,
+            "timeBudget": TIME_BUDGET_PROTOCOL,
+            "terminationPolicy": TERMINATION_POLICY,
+            "scoringPolicy": SCORING_POLICY,
+            "mcpRequestTimeoutMs": MCP_REQUEST_TIMEOUT_MS,
+            "sessionCreationTimeoutSeconds": SESSION_CREATION_TIMEOUT_SECONDS,
             "pythonExecCallAdvisory": PYTHON_EXEC_CALL_ADVISORY,
             "maxAppiumSessionsPerEpisode": 1,
+            "stepBudget": STEP_BUDGET_PROTOCOL,
             "fullTaskRetryLimit": 0,
             "invalidRetryLimit": 1,
             "scoreContract": "official_reward_only",
@@ -384,7 +411,8 @@ def build_manifest(
             "invalid_setup": "Task initialization failed; do not retry inside a formal campaign.",
             "invalid_evaluator": "The official AndroidWorld evaluator did not return a reward; do not retry the Agent.",
             "invalid_protocol": "Frozen parameters, identity, tool policy, or evidence protocol did not match; abort the campaign.",
-            "invalid_agent": "The Agent process could not establish a valid attempt; a returned reward zero is not invalid.",
+            "invalid_agent": "Unknown or forced Agent termination, or no valid Agent attempt; preserve any evaluator reward and do not retry.",
+            "budget_limited": "Business or OMP deadline is an evaluated budget-limited attempt, not an invalid Agent or a replacement reward.",
             "cleanupFailure": "Preserve official reward, halt before the next episode, and requalify the target.",
         },
         "tasks": tasks,
@@ -440,14 +468,35 @@ def _load_manifest(path: Path, project: Path | None = None) -> dict[str, Any]:
         "taskMetadataSha256": _file_sha256(metadata_path),
         "promptTemplateSha256": PROMPT_TEMPLATE_SHA256,
         "harnessRevision": HARNESS_REVISION,
+        "stepBudget": STEP_BUDGET_PROTOCOL,
+        "timeBudget": TIME_BUDGET_PROTOCOL,
+        "terminationPolicy": TERMINATION_POLICY,
+        "scoringPolicy": SCORING_POLICY,
+        "mcpRequestTimeoutMs": MCP_REQUEST_TIMEOUT_MS,
+        "sessionCreationTimeoutSeconds": SESSION_CREATION_TIMEOUT_SECONDS,
         "runtimeIdentity": _runtime_identity(project),
         "scoreContract": "official_reward_only",
+        "model": "github-copilot/gpt-5.6-sol",
+        "taskRandomSeed": 30,
+        "nTaskCombinations": 1,
+        "useIdenticalParams": True,
+        "pythonExecCallAdvisory": PYTHON_EXEC_CALL_ADVISORY,
+        "maxAppiumSessionsPerEpisode": 1,
+        "fullTaskRetryLimit": 0,
+        "invalidRetryLimit": 1,
+        "agentToolPolicy": {
+            "tools": ["read", "write"],
+            "allowedTargets": list(ALLOWED_AGENT_TARGETS),
+        },
     }
     mismatches = {
         key: {"manifest": protocol.get(key), "runtime": value}
         for key, value in expected.items()
         if protocol.get(key) != value
     }
+    unexpected_keys = sorted(set(protocol) - set(expected))
+    if unexpected_keys:
+        mismatches["unexpectedKeys"] = {"manifest": unexpected_keys, "runtime": []}
     if kind == "calibration":
         expected_manifest = build_manifest(manifest["campaignId"], "calibration", project)
         if manifest != expected_manifest:
@@ -466,42 +515,20 @@ def _load_manifest(path: Path, project: Path | None = None) -> dict[str, Any]:
             raise ValueError(f"campaign parameter digest mismatch for {name}")
         if task.get("paramsTransport") not in {"json", "seed"}:
             raise ValueError(f"campaign parameter transport is invalid for {name}")
+        maximum = task.get("maxSteps")
+        if type(maximum) is not int or maximum <= 0 or task.get("timeBudget") != episode_time_budget(maximum):
+            raise ValueError(f"campaign time budget mismatch for {name}")
     if not seen:
         raise ValueError("campaign has no tasks")
     return manifest
 
 
-def _classification(record: dict[str, Any]) -> str:
-    if record.get("error") is not None:
-        return record.get("invalidReason") or "invalid_infrastructure"
-    reward = record.get("officialReward")
-    if not isinstance(reward, (int, float)):
-        return "invalid_evaluator"
-    return "passed" if reward > 0.5 else "failed"
-
-
-def _cleanup_failed(record: dict[str, Any]) -> bool:
-    cleanup = record.get("cleanup")
-    if not isinstance(cleanup, dict):
-        return True
-    session = cleanup.get("agentSession")
-    if not isinstance(session, dict):
-        return True
-    task_teardown = cleanup.get("taskTearDown")
-    environment = cleanup.get("environment")
-    if record.get("error") is None:
-        return (
-            session.get("status") != "closed"
-            or task_teardown != "completed"
-            or environment != "closed"
-        )
-    return session.get("status") not in {"closed", "not_created"} or task_teardown not in {
-        "completed",
-        "not_applicable",
-    } or environment not in {
-        "closed",
-        "not_created",
-    }
+def _classification(
+    record: dict[str, Any],
+    task: dict[str, Any] | None = None,
+    protocol: dict[str, Any] | None = None,
+) -> str:
+    return record_classification(record, task, protocol)
 
 
 def _append_checkpoint(path: Path, event: dict[str, Any]) -> None:
@@ -546,16 +573,24 @@ def _prepare_agent_workspace(source_project: Path, destination: Path) -> dict[st
                 "command": str(Path(amkernel_command).resolve()),
                 "cwd": ".",
                 "type": "stdio",
+                "timeout": MCP_REQUEST_TIMEOUT_MS,
             }
         },
     }
     (mcp_dir / "mcp.json").write_text(json.dumps(mcp_config, indent=2) + "\n")
     sandbox_profile = destination / ".sandbox.sb"
+    # The agent may reach only the audited Appium proxy for Android control.
+    # Keep model/MCP IPC available; block known direct device transports.
+    direct_android_ports = (4723, 5037, 5554, 8554, *range(8200, 8300))
+    transport_rules = "".join(
+        f'(deny network-outbound (remote tcp "*:{port}"))\n'
+        for port in direct_android_ports
+    )
     sandbox_profile.write_text(
         "(version 1)\n"
         "(allow default)\n"
-        "(deny network-outbound (remote tcp \"*:4723\"))\n"
-        f"(deny file-read* file-write* (subpath {json.dumps(str(source_project))}))\n"
+        + transport_rules
+        + f"(deny file-read* file-write* (subpath {json.dumps(str(source_project))}))\n"
     )
     return {
         "digest": _workspace_digest(destination),
@@ -629,6 +664,8 @@ def _run_attempt(
         [
             "--expected-params-sha256",
             task["paramsSha256"],
+            "--expected-max-steps",
+            str(task["maxSteps"]),
             "--model",
             protocol["model"],
             "--expected-amkernel-version",
@@ -639,8 +676,6 @@ def _run_attempt(
             str(readiness_path),
             "--expected-readiness-sha256",
             readiness_identity,
-            "--agent-timeout",
-            str(protocol["agentTimeoutSeconds"]),
             "--python-exec-call-advisory",
             str(protocol["pythonExecCallAdvisory"]),
             "--appium-url",
@@ -655,13 +690,20 @@ def _run_attempt(
             str(Path(args.adb_path).resolve()),
         ]
     )
-    exit_code = _run_process(command, protocol["episodeTimeoutSeconds"])
+    exit_code = _run_process(command, task["timeBudget"]["episodeSeconds"])
     result_path = attempt_dir / "result.json"
     if not result_path.exists():
         return {
             "schemaVersion": 3,
             "task": {"name": task["name"], "seed": task["instanceSeed"]},
-            "agent": {"state": "unknown", "runnerExitCode": exit_code},
+            "protocol": {"timeBudget": TIME_BUDGET_PROTOCOL},
+            "timeBudget": task["timeBudget"],
+            "agent": {
+                "state": "unknown",
+                "runnerExitCode": exit_code,
+                "agentCompleted": False,
+                "termination": {"reason": "unknown_termination"},
+            },
             "officialReward": None,
             "invalidReason": "invalid_agent",
             "error": {
@@ -747,7 +789,7 @@ def _write_summary(output_dir: Path, manifest: dict[str, Any]) -> dict[str, Any]
             continue
         result_path = attempts[-1]
         record = json.loads(result_path.read_text())
-        classification = _classification(record)
+        classification = _classification(record, task, manifest.get("protocol"))
         classifications[classification] += 1
         if classification.startswith("invalid_"):
             invalid_breakdown[classification] += 1
@@ -763,7 +805,7 @@ def _write_summary(output_dir: Path, manifest: dict[str, Any]) -> dict[str, Any]
                 "task": task["name"],
                 "attempts": len(attempts),
                 "classification": classification,
-                "officialReward": record.get("officialReward"),
+                "officialReward": official_reward(record, manifest.get("protocol")),
                 "durationSeconds": agent.get("durationSeconds"),
                 "pythonExecCalls": budget.get("pythonExecCalls"),
                 "exceededCallAdvisory": budget.get("exceededAdvisory"),
@@ -774,18 +816,7 @@ def _write_summary(output_dir: Path, manifest: dict[str, Any]) -> dict[str, Any]
     planned_count = len(manifest["tasks"])
     completed_count = len(episodes)
     valid_count = len(valid_rewards)
-    calibration_gate_satisfied = manifest["kind"] == "calibration"
-    if manifest["kind"] == "full":
-        evidence_dir = output_dir / "calibration-evidence"
-        try:
-            evidence_manifest = json.loads((evidence_dir / "manifest.json").read_text())
-            evidence_paths = _calibration_evidence_paths(evidence_dir, evidence_manifest)
-            calibration_gate_satisfied = (
-                _paths_digest(evidence_paths, evidence_dir)
-                == manifest["calibrationGate"]["evidenceSha256"]
-            )
-        except (OSError, ValueError, json.JSONDecodeError):
-            calibration_gate_satisfied = False
+    calibration_gate_satisfied = _calibration_gate_satisfied(manifest, output_dir)
     reward_sum = sum(valid_rewards)
     qualified = (
         completed_count == planned_count
@@ -910,7 +941,7 @@ def run_campaign(args: argparse.Namespace) -> int:
             existing_results = sorted(episode_dir.glob("attempt-*/result.json"))
             if existing_results:
                 current = json.loads(existing_results[-1].read_text())
-                classification = _classification(current)
+                classification = _classification(current, task, manifest["protocol"])
                 if _cleanup_failed(current):
                     return 2
                 if not classification.startswith("invalid_"):
@@ -953,7 +984,7 @@ def run_campaign(args: argparse.Namespace) -> int:
                 if not result_path.exists():
                     attempt_dir.mkdir(parents=True, exist_ok=True)
                     result_path.write_text(json.dumps(record, indent=2, sort_keys=True) + "\n")
-                classification = _classification(record)
+                classification = _classification(record, task, manifest["protocol"])
                 _append_checkpoint(
                     checkpoint,
                     {
@@ -961,7 +992,7 @@ def run_campaign(args: argparse.Namespace) -> int:
                         "task": task["name"],
                         "attempt": attempt_number,
                         "classification": classification,
-                        "officialReward": record.get("officialReward"),
+                        "officialReward": official_reward(record, manifest["protocol"]),
                         "result": str(result_path.relative_to(output_dir)),
                         "completedAtUnix": time.time(),
                     },

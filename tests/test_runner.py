@@ -134,6 +134,7 @@ def test_agent_prompt_separates_goal_from_runtime_facts() -> None:
         "Create a note with text: exact content",
         "http://127.0.0.1:4723",
         "emulator-5554",
+        max_steps=10,
     )
 
     goal = prompt.split("BEGIN EXACT TASK GOAL\n", 1)[1].split(
@@ -170,3 +171,40 @@ def test_agent_protocol_rejects_filesystem_and_unrelated_tools() -> None:
         "forbidden target: android_world/task_evals/secret.py",
         "forbidden tool: bash",
     ]
+
+
+@pytest.mark.parametrize(
+    "target",
+    [
+        "skill://appium-troubleshooting",
+        "skill://appium-troubleshooting/SKILL.md",
+        "skill://setup-uiautomator2",
+        "skill://setup-uiautomator2/SKILL.md",
+        "skill://amkernel/references/android-execution.md",
+    ],
+)
+def test_agent_protocol_allows_installed_skill_documentation(target: str) -> None:
+    normalized = {"toolCalls": [{"tool": "read", "target": target}]}
+
+    assert _agent_protocol_violations(normalized) == []
+
+
+@pytest.mark.parametrize(
+    "target",
+    [
+        "skill://appium-troubleshooting-extra",
+        "skill://setup-uiautomator2-extra/SKILL.md",
+        "skill://setup-xcuitest",
+    ],
+)
+def test_agent_protocol_rejects_unselected_skill_targets(target: str) -> None:
+    normalized = {"toolCalls": [{"tool": "read", "target": target}]}
+
+    assert _agent_protocol_violations(normalized) == [f"forbidden target: {target}"]
+
+
+def test_agent_protocol_cannot_write_installed_skill_documentation() -> None:
+    target = "skill://appium-troubleshooting/SKILL.md"
+    normalized = {"toolCalls": [{"tool": "write", "target": target}]}
+
+    assert _agent_protocol_violations(normalized) == [f"forbidden write target: {target}"]

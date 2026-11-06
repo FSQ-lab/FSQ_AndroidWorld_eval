@@ -1,6 +1,9 @@
 import json
 from pathlib import Path
 
+from types import SimpleNamespace
+
+import pytest
 from fsq_androidworld_eval import preparation
 from fsq_androidworld_eval.runner import ANDROID_WORLD_REVISION, HARNESS_REVISION, _sha256
 
@@ -144,3 +147,94 @@ def test_preparation_failure_still_writes_verifiable_report(tmp_path: Path, monk
     assert report["qualified"] is False
     assert report["error"]["type"] == "OSError"
     assert saved["identitySha256"] == _sha256(payload)
+
+
+@pytest.fixture
+def recorder_device(tmp_path: Path, monkeypatch):
+    state = {"directory": True, "closed": False}
+    target = {
+        "serial": "emulator-5554", "consolePort": 5554, "grpcPort": 8554,
+        "appiumUrl": "http://127.0.0.1:4723", "apiLevel": 33, "abi": "arm64-v8a",
+    }
+    manifest = {
+        "schemaVersion": 2, "campaignId": "recorder-readiness",
+        "protocol": {"harnessRevision": HARNESS_REVISION, "androidWorldRevision": ANDROID_WORLD_REVISION},
+        "target": target, "tasks": [{"apps": ["audio recorder"]}],
+    }
+    manifest_path = tmp_path / "manifest.json"
+    manifest_path.write_text(json.dumps(manifest))
+    properties = {
+        "ro.build.version.sdk": "33", "ro.product.cpu.abi": "arm64-v8a",
+        "ro.build.fingerprint": "fingerprint", "persist.sys.timezone": "UTC",
+    }
+
+    def adb(adb_path, serial, *args, **kwargs):
+        if args == ("get-state",):
+            return "device"
+        if args[:2] == ("shell", "getprop"):
+            return properties[args[2]]
+        if args[:2] == ("shell", "date"):
+            return "2026-11-06T00:00:00+0000"
+        if args == ("shell", "wm", "size"):
+            return "Physical size: 1080x2400"
+        if args[:3] == ("shell", "dumpsys", "package"):
+            return "versionCode=926 minSdk=17\nversionName=0.9.26\n"
+        if args[0] == "shell" and args[1].startswith("test -d "):
+            return "present" if state["directory"] else "missing"
+        if args[:2] == ("shell", "am"):
+            return "Status: ok"
+        raise AssertionError(args)
+
+    monkeypatch.setattr(preparation, "_adb", adb)
+    monkeypatch.setattr(preparation, "_request_json", lambda url: {"value": {"build": {"version": "3.7.0"}}})
+    monkeypatch.setattr(preparation, "_appium_session_hashes", lambda *args: [])
+    monkeypatch.setattr(preparation.env_launcher, "load_and_setup_env", lambda **kwargs: SimpleNamespace(close=lambda: state.update(closed=True)))
+    monkeypatch.setattr(preparation.env_launcher, "setup_env", lambda *args, **kwargs: None)
+    monkeypatch.setattr(preparation.device_setup, "setup_apps", lambda *args: None)
+    monkeypatch.setattr(preparation, "_complete_audio_recorder_setup", lambda *args: None)
+    return manifest_path, tmp_path / "readiness.json", state
+
+
+@pytest.mark.parametrize("present", [False, True])
+def test_recorder_directory_is_required_before_qualification(recorder_device, present: bool) -> None:
+    manifest_path, report_path, state = recorder_device
+    state["directory"] = present
+
+    report = preparation.prepare_device(manifest_path, report_path, "adb")
+
+    assert report["qualified"] is present
+    assert report["directories"][0]["present"] is present
+    assert state["closed"] is True
+    assert json.loads(report_path.read_text())["qualified"] is present
+    if not present:
+        assert report["error"]["type"] == "RuntimeError"
+
+
+@pytest.mark.parametrize("change", ["none", "directory_removed", "proof_missing"])
+def test_recorder_directory_is_rechecked_before_campaign_execution(recorder_device, change: str) -> None:
+    manifest_path, report_path, state = recorder_device
+    report = preparation.prepare_device(manifest_path, report_path, "adb")
+    assert report["qualified"] is True
+    if change == "directory_removed":
+        state["directory"] = False
+    elif change == "proof_missing":
+        report["directories"] = []
+
+    attestation = preparation.attest_device(report, "adb")
+
+    assert attestation["qualified"] is (change == "none")
+    assert ("directory:audio recorder" in attestation["mismatches"]) is (change != "none")
+
+
+def test_recorder_onboarding_failure_blocks_qualification(recorder_device, monkeypatch) -> None:
+    manifest_path, report_path, state = recorder_device
+
+    def failed_onboarding(*args):
+        raise ValueError("Setup control unavailable")
+
+    monkeypatch.setattr(preparation, "_complete_audio_recorder_setup", failed_onboarding)
+    report = preparation.prepare_device(manifest_path, report_path, "adb")
+
+    assert report["qualified"] is False
+    assert report["error"]["type"] == "ValueError"
+    assert state["closed"] is True

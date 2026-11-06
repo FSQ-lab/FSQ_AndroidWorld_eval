@@ -3,9 +3,140 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import math
 from pathlib import Path
 from typing import Any
 
+from fsq_androidworld_eval.action_budget import STEP_BUDGET_PROTOCOL
+from fsq_androidworld_eval.lifecycle import TIME_BUDGET_PROTOCOL, episode_time_budget
+
+
+TERMINATION_POLICY = {
+    "completed": "evaluated_attempt",
+    "business_deadline": "evaluated_budget_limited_attempt",
+    "omp_deadline": "evaluated_budget_limited_attempt",
+    "forced_termination": "invalid_agent",
+    "unknown_termination": "invalid_agent",
+}
+SCORING_POLICY = {
+    "officialReward": "preserve_evaluator_reward_independently_of_termination_and_cleanup",
+    "missingEvaluator": "null",
+    "validEpisodes": "evaluated_attempts_with_valid_protocol_and_agent_termination",
+    "cleanupGate": "agent_proven_closed_or_pre_agent_not_created;_otherwise_halt",
+}
+
+
+def _uses_time_budget(record: dict[str, Any], protocol: dict[str, Any] | None = None) -> bool:
+    return "timeBudget" in (protocol or record.get("protocol", {}))
+
+
+def official_reward(record: dict[str, Any], protocol: dict[str, Any] | None = None) -> float | int | None:
+    reward = record.get("officialReward")
+    if type(reward) not in {int, float} or not math.isfinite(reward):
+        return None
+    evaluator = record.get("evaluator")
+    if _uses_time_budget(record, protocol) and (
+        not isinstance(evaluator, dict)
+        or evaluator.get("implementation") != "android_world.task_eval.is_successful"
+    ):
+        return None
+    return reward
+
+
+def time_budget_valid(
+    record: dict[str, Any], task: dict[str, Any], protocol: dict[str, Any]
+) -> bool:
+    maximum = task.get("maxSteps")
+    if type(maximum) is not int or maximum <= 0:
+        return False
+    expected = episode_time_budget(maximum)
+    observed = record.get("timeBudget")
+    return (
+        protocol.get("timeBudget") == TIME_BUDGET_PROTOCOL
+        and protocol.get("terminationPolicy") == TERMINATION_POLICY
+        and protocol.get("scoringPolicy") == SCORING_POLICY
+        and record.get("protocol", {}).get("timeBudget") == TIME_BUDGET_PROTOCOL
+        and task.get("timeBudget") == expected
+        and isinstance(observed, dict)
+        and all(observed.get(key) == value for key, value in expected.items())
+    )
+
+
+def record_classification(
+    record: dict[str, Any],
+    task: dict[str, Any] | None = None,
+    protocol: dict[str, Any] | None = None,
+) -> str:
+    reward = official_reward(record, protocol)
+    if record.get("invalidReason"):
+        return record["invalidReason"]
+    if record.get("error") is not None:
+        return "invalid_infrastructure"
+    if reward is None:
+        return "invalid_evaluator"
+    if _uses_time_budget(record, protocol):
+        if task is not None and protocol is not None and not time_budget_valid(record, task, protocol):
+            return "invalid_protocol"
+        agent = record.get("agent")
+        termination = agent.get("termination") if isinstance(agent, dict) else None
+        reason = termination.get("reason") if isinstance(termination, dict) else None
+        if (
+            reason not in {"completed", "business_deadline", "omp_deadline"}
+            or agent.get("agentCompleted") is not (reason == "completed")
+        ):
+            return "invalid_agent"
+    if protocol is not None and "stepBudget" in protocol and (
+        protocol["stepBudget"] != STEP_BUDGET_PROTOCOL
+        or task is None
+        or not step_budget_valid(record, task)
+    ):
+        return "invalid_protocol"
+    return "passed" if reward > 0.5 else "failed"
+
+
+def step_budget_valid(record: dict[str, Any], task: dict[str, Any]) -> bool:
+    """Check declared reference-step provenance without changing official reward."""
+    budget = record.get("stepBudget")
+    maximum = task.get("maxSteps")
+    complexity = task.get("complexity")
+    if (
+        not isinstance(budget, dict)
+        or type(maximum) is not int
+        or maximum <= 0
+        or type(complexity) not in {int, float}
+        or not math.isfinite(complexity)
+        or maximum != int(10 * complexity)
+        or budget.get("protocol") != STEP_BUDGET_PROTOCOL
+        or budget.get("maxSteps") != maximum
+        or record.get("task", {}).get("complexity") != complexity
+    ):
+        return False
+    steps = budget.get("referenceStepsExecuted")
+    actions = budget.get("executedActionCount")
+    rejected = budget.get("rejectedActionCount")
+    entries = budget.get("actions")
+    done = budget.get("agentIndicatedDone")
+    exhausted = budget.get("exhausted")
+    agent = record.get("agent")
+    termination = agent.get("termination", {}) if isinstance(agent, dict) else {}
+    deadline_limited = (
+        record.get("protocol", {}).get("timeBudget") == TIME_BUDGET_PROTOCOL
+        and termination.get("reason") in {"business_deadline", "omp_deadline"}
+    )
+    return (
+        type(steps) is int
+        and type(actions) is int
+        and type(rejected) is int
+        and 0 <= actions <= steps <= maximum
+        and (steps > 0 or deadline_limited)
+        and rejected >= 0
+        and isinstance(entries, list)
+        and len(entries) == actions
+        and type(done) is bool
+        and type(exhausted) is bool
+        and ((exhausted is not done) or (deadline_limited and not done and not exhausted))
+        and exhausted is (steps == maximum and not done)
+    )
 
 def _cleanup_failed(record: dict[str, Any]) -> bool:
     cleanup = record.get("cleanup")
@@ -16,12 +147,34 @@ def _cleanup_failed(record: dict[str, Any]) -> bool:
         return True
     task_teardown = cleanup.get("taskTearDown")
     environment = cleanup.get("environment")
+    if _uses_time_budget(record) and session.get("status") == "closed":
+        agent = record.get("agent")
+        normalized = agent.get("normalized", {}) if isinstance(agent, dict) else {}
+        calls = normalized.get("toolCalls", [])
+        proofs = [call.get("sessionCleanup") for call in calls if isinstance(call, dict) and "sessionCleanup" in call] if isinstance(calls, list) else []
+        audit = record.get("appiumSessionAudit", {})
+        session_hash = session.get("sessionIdSha256")
+        if not (
+            isinstance(session_hash, str)
+            and len(proofs) == 1
+            and isinstance(proofs[0], dict)
+            and proofs[0].get("quitReturned") is True
+            and proofs[0].get("sessionIdSha256") == session_hash
+            and audit.get("createdSessionCount") == 1
+            and audit.get("deletedSessionCount") == 1
+            and audit.get("createdSessionHashes") == [session_hash]
+            and audit.get("deletedSessionHashes") == [session_hash]
+            and audit.get("errors") == []
+        ):
+            return True
     if record.get("error") is None:
         return (
             session.get("status") != "closed"
             or task_teardown != "completed"
             or environment != "closed"
         )
+    if _uses_time_budget(record) and session.get("status") == "not_created" and record.get("agent") is not None:
+        return True
     return session.get("status") not in {"closed", "not_created"} or task_teardown not in {
         "completed",
         "not_applicable",
@@ -41,6 +194,7 @@ def _calibration_gate_satisfied(manifest: dict[str, Any], campaign_dir: Path) ->
         if (
             calibration_manifest.get("kind") != "calibration"
             or len(calibration_manifest.get("tasks", [])) != 12
+            or calibration_manifest.get("protocol", {}) != manifest.get("protocol", {})
         ):
             return False
         recalculation = recalculate(manifest_path, evidence_dir)
@@ -102,19 +256,19 @@ def recalculate(manifest_path: Path, campaign_dir: Path) -> dict[str, Any]:
                     "family": task["family"],
                     "officialReward": None,
                     "classification": "incomplete",
-                    "cleanupFailure": True,
+                    # No attempt exists to clean up. Missing results still block
+                    # qualification through the valid/planned episode counts.
+                    "cleanupFailure": False,
                 }
             )
             continue
         record = json.loads(result_path.read_text())
-        reward = record.get("officialReward")
+        reward = official_reward(record, manifest.get("protocol"))
         cleanup_failure = _cleanup_failed(record)
-        if record.get("error") is not None or not isinstance(reward, (int, float)):
-            classification = record.get("invalidReason") or "invalid_evaluator"
+        classification = record_classification(record, task, manifest.get("protocol"))
+        if classification.startswith("invalid_"):
             invalid_breakdown[classification] = invalid_breakdown.get(classification, 0) + 1
-            reward = None
         else:
-            classification = "passed" if reward > 0.5 else "failed"
             family_rewards.setdefault(task["family"], []).append(float(reward))
         rows.append(
             {
@@ -131,7 +285,7 @@ def recalculate(manifest_path: Path, campaign_dir: Path) -> dict[str, Any]:
     valid_rewards = [
         float(row["officialReward"])
         for row in rows
-        if row["officialReward"] is not None
+        if row["classification"] in {"passed", "failed"}
     ]
     valid = len(valid_rewards)
     reward_sum = sum(valid_rewards)
