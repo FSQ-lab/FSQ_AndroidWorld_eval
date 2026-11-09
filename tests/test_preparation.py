@@ -1,3 +1,4 @@
+from contextlib import nullcontext
 import json
 from pathlib import Path
 
@@ -6,6 +7,16 @@ from types import SimpleNamespace
 import pytest
 from fsq_androidworld_eval import preparation
 from fsq_androidworld_eval.runner import ANDROID_WORLD_REVISION, HARNESS_REVISION, _sha256
+
+_ARTIFACT_IDENTITY = {"schemaVersion": 1, "artifacts": [{"name": "fixture.apk", "sha256": "a" * 64}]}
+_MEDIA_IDENTITY = {"package": "fixture-encoder", "sha256": "b" * 64}
+
+
+@pytest.fixture(autouse=True)
+def isolated_host_prerequisites(monkeypatch):
+    monkeypatch.setattr(preparation, "artifact_identity", lambda project: _ARTIFACT_IDENTITY)
+    monkeypatch.setattr(preparation, "probe_host_media", lambda: {"encoder": _MEDIA_IDENTITY, "mp3": "encoded_and_decoded", "mp4": "encoded_and_decoded"})
+    monkeypatch.setattr(preparation, "local_app_data", lambda project: nullcontext())
 
 
 def test_required_app_names_are_unique_and_sorted() -> None:
@@ -30,50 +41,6 @@ def test_package_version_extracts_bounded_identity(monkeypatch) -> None:
         "versionName": "1.2.3",
         "versionCode": "42",
     }
-
-
-def test_launcher_compatibility_replaces_monkey_with_main_intent(monkeypatch) -> None:
-    observed = []
-
-    def original(args, env, timeout_sec=10):
-        observed.append(list(args))
-        return "response"
-
-    monkeypatch.setattr(preparation.adb_utils, "issue_generic_request", original)
-
-    with preparation._launcher_compatible_setup(
-        {"example.app": "example.app/.MainActivity"}
-    ) as replacements:
-        response = preparation.adb_utils.issue_generic_request(
-            [
-                "shell",
-                "monkey",
-                "-p",
-                "example.app",
-                "-candroid.intent.category.LAUNCHER",
-                "1",
-            ],
-            object(),
-        )
-
-    assert response == "response"
-    assert replacements == ["example.app"]
-    assert observed == [
-        [
-            "shell",
-            "am",
-            "start",
-            "-W",
-            "-a",
-            "android.intent.action.MAIN",
-            "-c",
-            "android.intent.category.LAUNCHER",
-            "-n",
-            "example.app/.MainActivity",
-        ]
-    ]
-
-
 
 
 def test_live_attestation_does_not_require_task_initialized_date_or_database(monkeypatch) -> None:
@@ -120,6 +87,8 @@ def test_preparation_failure_still_writes_verifiable_report(tmp_path: Path, monk
         "protocol": {
             "harnessRevision": HARNESS_REVISION,
             "androidWorldRevision": ANDROID_WORLD_REVISION,
+            "environmentArtifacts": _ARTIFACT_IDENTITY,
+            "runtimeIdentity": {"mediaEncoder": _MEDIA_IDENTITY},
         },
         "target": {
             "serial": "emulator-5554",
@@ -151,14 +120,21 @@ def test_preparation_failure_still_writes_verifiable_report(tmp_path: Path, monk
 
 @pytest.fixture
 def recorder_device(tmp_path: Path, monkeypatch):
-    state = {"directory": True, "closed": False}
+    state = {
+        "directory": True, "closed": False, "setupStarted": False,
+        "adbOutput": b"FSQ_ADB_STDOUT_SENTINEL", "restoreError": None,
+    }
     target = {
         "serial": "emulator-5554", "consolePort": 5554, "grpcPort": 8554,
         "appiumUrl": "http://127.0.0.1:4723", "apiLevel": 33, "abi": "arm64-v8a",
     }
     manifest = {
         "schemaVersion": 2, "campaignId": "recorder-readiness",
-        "protocol": {"harnessRevision": HARNESS_REVISION, "androidWorldRevision": ANDROID_WORLD_REVISION},
+        "protocol": {
+            "harnessRevision": HARNESS_REVISION, "androidWorldRevision": ANDROID_WORLD_REVISION,
+            "environmentArtifacts": _ARTIFACT_IDENTITY,
+            "runtimeIdentity": {"mediaEncoder": _MEDIA_IDENTITY},
+        },
         "target": target, "tasks": [{"apps": ["audio recorder"]}],
     }
     manifest_path = tmp_path / "manifest.json"
@@ -188,9 +164,19 @@ def recorder_device(tmp_path: Path, monkeypatch):
     monkeypatch.setattr(preparation, "_adb", adb)
     monkeypatch.setattr(preparation, "_request_json", lambda url: {"value": {"build": {"version": "3.7.0"}}})
     monkeypatch.setattr(preparation, "_appium_session_hashes", lambda *args: [])
-    monkeypatch.setattr(preparation.env_launcher, "load_and_setup_env", lambda **kwargs: SimpleNamespace(close=lambda: state.update(closed=True)))
+    monkeypatch.setattr(preparation, "load_environment", lambda **kwargs: SimpleNamespace(controller=SimpleNamespace(close=lambda: state.update(closed=True))))
+    monkeypatch.setattr(preparation.adb_utils, "issue_generic_request", lambda *args: SimpleNamespace(generic=SimpleNamespace(output=state["adbOutput"])))
+    monkeypatch.setattr(preparation.adb_utils, "press_home_button", lambda env: None)
+    monkeypatch.setattr(preparation.adb_utils, "set_root_if_needed", lambda env: None)
     monkeypatch.setattr(preparation.env_launcher, "setup_env", lambda *args, **kwargs: None)
-    monkeypatch.setattr(preparation.device_setup, "setup_apps", lambda *args: None)
+    monkeypatch.setattr(preparation.device_setup, "get_installed_packages", lambda env: {"com.dimowner.audiorecorder"})
+    monkeypatch.setattr(preparation.device_setup, "setup_app", lambda *args: state.update(setupStarted=True))
+
+    def restore_snapshot(*args):
+        if state["restoreError"] is not None:
+            raise state["restoreError"]
+
+    monkeypatch.setattr(preparation.app_snapshot, "restore_snapshot", restore_snapshot)
     monkeypatch.setattr(preparation, "_complete_audio_recorder_setup", lambda *args: None)
     return manifest_path, tmp_path / "readiness.json", state
 
@@ -238,3 +224,44 @@ def test_recorder_onboarding_failure_blocks_qualification(recorder_device, monke
     assert report["qualified"] is False
     assert report["error"]["type"] == "ValueError"
     assert state["closed"] is True
+
+
+@pytest.mark.parametrize("failure", ["contaminated_adb", "snapshot_restore"])
+def test_initialization_failure_blocks_qualification_and_closes_environment(recorder_device, failure: str) -> None:
+    manifest_path, report_path, state = recorder_device
+    if failure == "contaminated_adb":
+        state["adbOutput"] = b"gRPC child diagnostic\nFSQ_ADB_STDOUT_SENTINEL"
+    else:
+        state["restoreError"] = RuntimeError("Official snapshot restore failed")
+
+    report = preparation.prepare_device(manifest_path, report_path, "adb")
+
+    assert report["qualified"] is False
+    assert json.loads(report_path.read_text())["qualified"] is False
+    assert state["closed"] is True
+    if failure == "contaminated_adb":
+        assert state["setupStarted"] is False
+    else:
+        assert report["snapshotRestores"] == []
+
+
+def test_missing_frozen_application_blocks_setup_without_installation(recorder_device, monkeypatch) -> None:
+    manifest_path, report_path, state = recorder_device
+    monkeypatch.setattr(preparation.device_setup, "get_installed_packages", lambda env: set())
+    report = preparation.prepare_device(manifest_path, report_path, "adb")
+    assert report["qualified"] is False
+    assert "installation is not authorized" in report["error"]["message"]
+    assert state["setupStarted"] is False
+    assert state["closed"] is True
+
+
+@pytest.mark.parametrize("onboarding,permission", [(True, True), (False, True), (True, False)])
+def test_vlc_startup_requires_real_saved_onboarding_and_effective_permission(monkeypatch, onboarding, permission):
+    def adb(adb_path, serial, *args):
+        if "cat" in args:
+            return '<map><boolean name="app_onboarding_done" value="' + str(onboarding).lower() + '" /></map>'
+        return "Uid mode: MANAGE_EXTERNAL_STORAGE: " + ("allow" if permission else "deny")
+    monkeypatch.setattr(preparation, "_adb", adb)
+    state = preparation._vlc_startup_state("adb", "emulator")
+    assert state == {"onboardingCompleted": onboarding, "allFilesAuthorized": permission}
+    assert all(state.values()) is (onboarding and permission)

@@ -7,7 +7,11 @@ name = "fsq-androidworld-eval"
 version = "0.1.0"
 description = "AndroidWorld evaluation harness for the AMKernel agent stack"
 requires-python = ">=3.11,<3.12"
-dependencies = ["android-world", "matplotlib==3.6.1"]
+dependencies = [
+    "android-world",
+    "imageio-ffmpeg==0.6.0",
+    "matplotlib==3.6.1",
+]
 
 [project.scripts]
 fsq-androidworld-eval = "fsq_androidworld_eval.runner:main"

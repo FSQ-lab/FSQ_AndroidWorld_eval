@@ -369,8 +369,11 @@ class AppiumAuditProxy:
             def do_PATCH(self) -> None:
                 self._forward()
 
-            def _error(self, status: int, error: str, message: str) -> None:
-                payload = json.dumps({"value": {"error": error, "message": message, "stacktrace": ""}}).encode()
+            def _error(self, status: int, error: str, message: str, data: dict[str, Any] | None = None) -> None:
+                value: dict[str, Any] = {"error": error, "message": message, "stacktrace": ""}
+                if data is not None:
+                    value["data"] = data
+                payload = json.dumps({"value": value}).encode()
                 try:
                     self.send_response(status)
                     self.send_header("Content-Type", "application/json; charset=utf-8")
@@ -434,8 +437,9 @@ class AppiumAuditProxy:
                         # Observe upstream before touching the possibly dead client.
                         pass
                 except StepBudgetExceeded:
-                    owner._deny("step budget exhausted")
-                    self._error(500, "unsupported operation", "Official reference step budget exhausted; observations and session quit remain available")
+                    data, message = owner._budget_denial()
+                    owner._deny(data["closureReason"] or "action phase closed", data)
+                    self._error(500, "unknown error", message, data)
                 except _Denied as exc:
                     owner._deny(exc.error)
                     self._error(exc.status, exc.error, exc.message)
@@ -694,15 +698,40 @@ class AppiumAuditProxy:
             "sessions": results,
         }
 
-    def _deny(self, reason: str) -> None:
+    def _budget_denial(self) -> tuple[dict[str, Any], str]:
+        # Select only non-identifying gate metadata, never action descriptors.
+        snapshot = self._gate.snapshot()
+        reason = snapshot["closureReason"]
+        if reason == "step_budget":
+            code = "step_budget_exhausted"
+            message = "Operation refused: the reference step budget is exhausted. Observations and quit remain available."
+        elif reason == "business_deadline":
+            code = "business_deadline_exceeded"
+            message = "Operation refused: the business deadline has expired. Observations and quit remain available within the cleanup deadline."
+        else:
+            code = "action_phase_closed"
+            message = "Operation refused: the action phase is closed. Observations and quit remain available within the cleanup deadline."
+        return {
+            "code": code,
+            "closureReason": reason,
+            "executedActionCount": snapshot["executedActionCount"],
+            "rejectedActionCount": snapshot["rejectedActionCount"],
+            "inflightActionCount": snapshot["inflightActionCount"],
+        }, message
+
+    def _deny(self, reason: str, data: dict[str, Any] | None = None) -> None:
         # Never retain raw paths, session/element IDs, scripts or request bodies.
         with self._lock:
-            self._denials.append({"reason": reason})
+            self._denials.append({"reason": reason, **(data or {})})
 
     def _authorize(self, method: str, path: str, body: bytes | None) -> dict[str, Any] | None:
         parts = _parts(path)
         if parts == ["session"] and method == "POST":
             _validate_session(_object(body), self._expected_udid)
+            if self._gate is not None and self._gate.snapshot()["closed"]:
+                # Creation is not a classified UI action: refuse without changing
+                # action counters or consuming the one creation attempt.
+                raise StepBudgetExceeded("The action phase is closed")
             if self._deadlines is not None and self._deadlines.expired("business"):
                 raise _Denied("session not created", "Episode business deadline expired", 500)
             with self._lock:

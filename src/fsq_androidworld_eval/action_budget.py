@@ -71,6 +71,7 @@ class ActionGate:
         self._closed = False
         self._finished = False
         self._closure_reason: str | None = None
+        self._closed_at: float | None = None
         self._inflight = 0
         self._deadlines: EpisodeDeadlines | None = None
 
@@ -161,6 +162,8 @@ class ActionGate:
     def _stop(self, *, finished: bool, reason: str) -> None:
         # Expiry checks may already hold this reentrant condition lock.
         with self._condition:
+            if self._closed_at is None:
+                self._closed_at = time.monotonic()
             if finished:
                 self._finished = True
             else:
@@ -193,6 +196,7 @@ class ActionGate:
                 "inflightActionCount": self._inflight,
                 "closed": self._closed or self._finished,
                 "closureReason": self._closure_reason,
+                "closedAtMonotonic": self._closed_at,
                 "agentFinished": self._finished,
                 "actions": [dict(action) for action in self._actions],
             }

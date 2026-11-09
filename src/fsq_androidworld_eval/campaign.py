@@ -1,3 +1,28 @@
+"""Freeze dependencies and qualify the Harness before any formal Agent run.
+
+Revision 12 workflow (all commands use the same project and Runtime PATH):
+  prepare-assets --project .
+  prepare --kind rehearsal --inherit-manifest <frozen-r11-full> --environment-mode-report <mode-evidence> --campaign-id <id> --output <manifest>
+  qualify --manifest <manifest> --output <readiness>
+  rehearse --manifest <manifest> --readiness-report <readiness> --output-dir <new-dir>
+Only a fully successful 116-task rehearsal can unlock a newly prepared calibration
+or full campaign via run --rehearsal-report <new-dir>/report.json. Each new run
+rejects prior execution evidence. Inherited preparation copies the exact frozen
+task specs, never generates new suite parameters, and binds their source hashes.
+Only the Harness source identity may change from the frozen Runtime; headless and
+graphics-backend evidence is independently bound to the new target identity.
+Abnormal terminals retain their classification and original cleanup, with fresh
+global identity, readiness, session-absence and core-service evidence before the
+next launch. Boot IDs and framework/SurfaceFlinger PIDs preserve recovery boundaries.
+Unknown cleanup or unavailable services pauses with explicit unstarted tasks;
+there is no automatic cold restart, old-protocol score claim, or resume.
+Continuation v2 additionally restores an exact sole expected-UTC timezone drift
+through official public datetime setup in a fresh owned environment, only after
+proven original cleanup, identity, session absence and core health. Durable before
+evidence precedes mutation; strict controller close and fresh probes gate the next
+different task. No task initialization, reward rewrite, Agent retry or reset occurs.
+"""
+
 from __future__ import annotations
 
 import argparse
@@ -17,13 +42,22 @@ from typing import Any
 from android_world import registry, suite_utils
 
 from fsq_androidworld_eval.action_budget import STEP_BUDGET_PROTOCOL
+from fsq_androidworld_eval.continuation import (
+    CAMPAIGN_CONTINUATION, cleanup_known, inherited_source, inherited_tasks,
+    validate_inherited_runtime,
+)
 from fsq_androidworld_eval.preparation import attest_device, prepare_device
 from fsq_androidworld_eval.lifecycle import TIME_BUDGET_PROTOCOL, episode_time_budget
+from fsq_androidworld_eval.submission import ANSWER_SUBMISSION_PROTOCOL
+from fsq_androidworld_eval.environment import artifact_identity, prepare_artifacts
+from fsq_androidworld_eval.rehearsal import REHEARSAL_POLICY, run_rehearsal, validate_report
+from fsq_androidworld_eval.host_prerequisites import media_encoder_identity, probe_host_media
 from fsq_androidworld_eval.scorer import (
     SCORING_POLICY,
     TERMINATION_POLICY,
     _calibration_gate_satisfied,
     _cleanup_failed,
+    continuation_audit,
     official_reward,
     recalculate as recalculate_score,
     record_classification,
@@ -43,6 +77,8 @@ from fsq_androidworld_eval.runner import (
     _is_json_native,
     _sha256,
     _agent_protocol_violations,
+    _appium_session_hashes,
+    _request_json,
 )
 
 CALIBRATION_TASKS = [
@@ -151,6 +187,12 @@ def _runtime_identity(project: Path) -> dict[str, Any]:
         "ompVersion": _command_version(omp_command).removeprefix("omp "),
         "ompExecutableSha256": _file_sha256(Path(omp_command).resolve()),
         "pythonVersion": sys.version,
+        "grpcForkSupport": os.environ["GRPC_ENABLE_FORK_SUPPORT"],
+        "mediaEncoder": media_encoder_identity(),
+        "harnessDependencies": sorted(
+            [{"name": dist.metadata["Name"], "version": dist.version} for dist in importlib.metadata.distributions()],
+            key=lambda row: row["name"].lower(),
+        ),
         "harnessSourceSha256": _paths_digest(harness_paths, project),
         "installedAgentAssetsSha256": _paths_digest(agent_asset_paths, project),
         "androidWorldCheckoutRevision": android_world_revision,
@@ -175,6 +217,16 @@ def _calibration_evidence_paths(
         if not results:
             raise ValueError(f"calibration result is missing for {task['name']}")
         paths.append(results[-1])
+    if manifest.get("protocol", {}).get("campaignContinuation") == CAMPAIGN_CONTINUATION:
+        extras = [campaign_dir / name for name in (
+            "checkpoint.jsonl", "run-metadata.json", "device-readiness.json"
+        )]
+        extras.extend((campaign_dir / "recoveries").glob("*.json"))
+        extras.extend((campaign_dir / "episodes").glob("*/attempt-*/result.json"))
+        if manifest["protocol"].get("harnessRevision") == 13:
+            for name in ("business-submission.json", "agent-events.jsonl"):
+                extras.extend((campaign_dir / "episodes").glob(f"*/attempt-*/raw-private/{name}"))
+        paths.extend(path for path in sorted(set(extras)) if path not in paths)
     return paths
 
 
@@ -212,6 +264,8 @@ def _calibration_result_has_provenance(
         and record.get("task", {}).get("paramsSha256") == task["paramsSha256"]
         and record.get("protocol", {}).get("harnessRevision")
         == manifest["protocol"]["harnessRevision"]
+        and record.get("protocol", {}).get("environmentArtifacts")
+        == manifest["protocol"]["environmentArtifacts"]
         and record.get("protocol", {}).get("promptTemplateSha256")
         == manifest["protocol"]["promptTemplateSha256"]
         and record.get("protocol", {}).get("mcpRequestTimeoutMs")
@@ -265,7 +319,7 @@ def _calibration_gate(campaign_dir: Path, project: Path) -> dict[str, str]:
     ):
         raise ValueError("calibration summary identity is invalid")
     evidence_paths = _calibration_evidence_paths(campaign_dir, manifest)
-    for task, result_path in zip(manifest["tasks"], evidence_paths[2:], strict=True):
+    for task, result_path in zip(manifest["tasks"], evidence_paths[2:2 + len(manifest["tasks"])], strict=True):
         record = json.loads(result_path.read_text())
         if not _calibration_result_has_provenance(record, task, manifest):
             raise ValueError(f"calibration result lacks runner provenance for {task['name']}")
@@ -288,13 +342,66 @@ def _copy_calibration_evidence(source: Path, destination: Path) -> None:
             target.write_bytes(source_path.read_bytes())
 
 
+def _environment_mode_report(path: Path, target: dict[str, Any]) -> dict[str, Any]:
+    import hashlib
+
+    path = path.resolve()
+    payload = path.read_bytes()
+    evidence = json.loads(payload)
+    if not isinstance(evidence, dict) or any(evidence.get(key) != target.get(key) for key in ("avd", "serial")):
+        raise ValueError("environment mode report belongs to a different target")
+    return {"path": str(path), "sha256": hashlib.sha256(payload).hexdigest(), "evidence": evidence}
+
+
 def build_manifest(
     campaign_id: str,
     kind: str = "calibration",
     project: Path | None = None,
     calibration_campaign_dir: Path | None = None,
+    inherit_manifest: Path | None = None,
+    environment_mode_report: Path | None = None,
 ) -> dict[str, Any]:
     project = (project or Path.cwd()).resolve()
+    if inherit_manifest is not None:
+        source, provenance = inherited_source(inherit_manifest)
+        mode = _environment_mode_report(environment_mode_report, source["target"]) if environment_mode_report is not None else None
+        if campaign_id == source["campaignId"]:
+            raise ValueError("inherited campaign requires a new campaign identity")
+        if kind not in {"calibration", "full", "rehearsal"}:
+            raise ValueError(f"unsupported campaign kind: {kind}")
+        if kind == "full" and calibration_campaign_dir is None:
+            raise ValueError("full campaign requires qualified calibration evidence")
+        runtime_identity = _runtime_identity(project)
+        validate_inherited_runtime(source, runtime_identity)
+        manifest = json.loads(json.dumps(source))
+        manifest.update({
+            "campaignId": campaign_id,
+            "kind": kind,
+            "calibrationGate": (
+                _calibration_gate(calibration_campaign_dir.resolve(), project)
+                if kind == "full" else None
+            ),
+            "inheritedManifest": provenance,
+            "tasks": inherited_tasks(source, CALIBRATION_TASKS if kind == "calibration" else None),
+        })
+        if mode is not None:
+            manifest["target"]["environmentMode"] = mode
+        manifest["protocol"].update({
+            "harnessRevision": HARNESS_REVISION,
+            "runtimeIdentity": runtime_identity,
+            "campaignContinuation": dict(CAMPAIGN_CONTINUATION),
+            "answerSubmission": dict(ANSWER_SUBMISSION_PROTOCOL),
+            "promptTemplateSha256": PROMPT_TEMPLATE_SHA256,
+        })
+        manifest["invalidRules"]["cleanupFailure"] = (
+            "Preserve original cleanup and reward; continue only after verified recovery, "
+            "otherwise pause for coordinated recovery without resuming this campaign."
+        )
+        manifest["invalidRules"]["invalid_protocol"] = (
+            "Preserve episode protocol violations as invalid; continue only after verified recovery. "
+            "Any global frozen identity mismatch pauses the campaign."
+        )
+        return manifest
     task_registry = registry.TaskRegistry()
     all_tasks = task_registry.get_registry(task_registry.ANDROID_WORLD_FAMILY)
     android_names = set(task_registry.get_registry(task_registry.ANDROID_FAMILY))
@@ -304,11 +411,14 @@ def build_manifest(
     if kind == "calibration":
         task_names = CALIBRATION_TASKS
         calibration_gate = None
-    elif kind == "full":
-        if calibration_campaign_dir is None:
+    elif kind in {"full", "rehearsal"}:
+        if kind == "full" and calibration_campaign_dir is None:
             raise ValueError("full campaign requires qualified calibration evidence")
         task_names = sorted(all_tasks)
-        calibration_gate = _calibration_gate(calibration_campaign_dir.resolve(), project)
+        calibration_gate = (
+            _calibration_gate(calibration_campaign_dir.resolve(), project)
+            if kind == "full" else None
+        )
     else:
         raise ValueError(f"unsupported campaign kind: {kind}")
     metadata_path = Path(registry.__file__).with_name("task_metadata.json")
@@ -375,12 +485,16 @@ def build_manifest(
             "taskMetadataSha256": _file_sha256(metadata_path),
             "harnessRevision": HARNESS_REVISION,
             "runtimeIdentity": _runtime_identity(project),
+            "environmentArtifacts": artifact_identity(project),
+            "harnessRehearsal": REHEARSAL_POLICY,
+            "campaignContinuation": dict(CAMPAIGN_CONTINUATION),
             "model": "github-copilot/gpt-5.6-sol",
             "taskRandomSeed": 30,
             "nTaskCombinations": 1,
             "useIdenticalParams": True,
             "promptTemplateSha256": PROMPT_TEMPLATE_SHA256,
             "timeBudget": TIME_BUDGET_PROTOCOL,
+            "answerSubmission": ANSWER_SUBMISSION_PROTOCOL,
             "terminationPolicy": TERMINATION_POLICY,
             "scoringPolicy": SCORING_POLICY,
             "mcpRequestTimeoutMs": MCP_REQUEST_TIMEOUT_MS,
@@ -405,15 +519,18 @@ def build_manifest(
             "consolePort": 5554,
             "grpcPort": 8554,
             "appiumUrl": "http://127.0.0.1:4723",
+            **({"environmentMode": _environment_mode_report(environment_mode_report, {
+                "avd": "AndroidWorldAvd", "serial": "emulator-5554"
+            })} if environment_mode_report is not None else {}),
         },
         "invalidRules": {
             "invalid_infrastructure": "Base environment failed before an Agent attempt; only this class may receive one frozen retry.",
             "invalid_setup": "Task initialization failed; do not retry inside a formal campaign.",
             "invalid_evaluator": "The official AndroidWorld evaluator did not return a reward; do not retry the Agent.",
-            "invalid_protocol": "Frozen parameters, identity, tool policy, or evidence protocol did not match; abort the campaign.",
+            "invalid_protocol": "Preserve episode protocol violations as invalid; continue only after verified recovery. Any global frozen identity mismatch pauses the campaign.",
             "invalid_agent": "Unknown or forced Agent termination, or no valid Agent attempt; preserve any evaluator reward and do not retry.",
-            "budget_limited": "Business or OMP deadline is an evaluated budget-limited attempt, not an invalid Agent or a replacement reward.",
-            "cleanupFailure": "Preserve official reward, halt before the next episode, and requalify the target.",
+            "budget_limited": "Step exhaustion or business/OMP deadline is an evaluated budget-limited attempt, not Agent completion or a replacement reward.",
+            "cleanupFailure": "Preserve original cleanup and reward; continue only after verified recovery, otherwise pause for coordinated recovery without resuming this campaign.",
         },
         "tasks": tasks,
     }
@@ -425,16 +542,13 @@ def write_manifest(
     kind: str = "calibration",
     project: Path | None = None,
     calibration_campaign_dir: Path | None = None,
+    inherit_manifest: Path | None = None,
+    environment_mode_report: Path | None = None,
 ) -> None:
+    manifest = build_manifest(campaign_id, kind, project, calibration_campaign_dir, inherit_manifest, environment_mode_report)
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(
-        json.dumps(
-            build_manifest(campaign_id, kind, project, calibration_campaign_dir),
-            indent=2,
-            sort_keys=True,
-        )
-        + "\n"
-    )
+    with path.open("x", encoding="utf-8") as stream:
+        stream.write(json.dumps(manifest, indent=2, sort_keys=True) + "\n")
 
 
 def _load_manifest(path: Path, project: Path | None = None) -> dict[str, Any]:
@@ -444,6 +558,12 @@ def _load_manifest(path: Path, project: Path | None = None) -> dict[str, Any]:
         raise ValueError("unsupported campaign manifest schema")
     kind = manifest.get("kind")
     tasks = manifest.get("tasks", [])
+    mode = manifest.get("target", {}).get("environmentMode")
+    if mode is not None:
+        if not isinstance(mode, dict) or not isinstance(mode.get("path"), str):
+            raise ValueError("environment mode identity is malformed")
+        if mode != _environment_mode_report(Path(mode["path"]), manifest["target"]):
+            raise ValueError("environment mode evidence digest mismatch")
     if kind == "calibration":
         if manifest.get("calibrationGate") is not None or len(tasks) != len(CALIBRATION_TASKS):
             raise ValueError("calibration manifest must contain the frozen 12-task set")
@@ -458,6 +578,9 @@ def _load_manifest(path: Path, project: Path | None = None) -> dict[str, Any]:
             raise ValueError("full campaign calibration gate is missing or malformed")
         if len(tasks) != 116:
             raise ValueError("full campaign must contain all 116 official tasks")
+    elif kind == "rehearsal":
+        if manifest.get("calibrationGate") is not None or len(tasks) != REHEARSAL_POLICY["requiredTaskCount"]:
+            raise ValueError("rehearsal manifest must contain all 116 official tasks without a calibration gate")
     else:
         raise ValueError("campaign kind is invalid")
     protocol = manifest.get("protocol", {})
@@ -470,11 +593,15 @@ def _load_manifest(path: Path, project: Path | None = None) -> dict[str, Any]:
         "harnessRevision": HARNESS_REVISION,
         "stepBudget": STEP_BUDGET_PROTOCOL,
         "timeBudget": TIME_BUDGET_PROTOCOL,
+        "answerSubmission": ANSWER_SUBMISSION_PROTOCOL,
         "terminationPolicy": TERMINATION_POLICY,
         "scoringPolicy": SCORING_POLICY,
         "mcpRequestTimeoutMs": MCP_REQUEST_TIMEOUT_MS,
         "sessionCreationTimeoutSeconds": SESSION_CREATION_TIMEOUT_SECONDS,
         "runtimeIdentity": _runtime_identity(project),
+        "environmentArtifacts": artifact_identity(project),
+        "harnessRehearsal": REHEARSAL_POLICY,
+        "campaignContinuation": CAMPAIGN_CONTINUATION,
         "scoreContract": "official_reward_only",
         "model": "github-copilot/gpt-5.6-sol",
         "taskRandomSeed": 30,
@@ -497,8 +624,26 @@ def _load_manifest(path: Path, project: Path | None = None) -> dict[str, Any]:
     unexpected_keys = sorted(set(protocol) - set(expected))
     if unexpected_keys:
         mismatches["unexpectedKeys"] = {"manifest": unexpected_keys, "runtime": []}
-    if kind == "calibration":
-        expected_manifest = build_manifest(manifest["campaignId"], "calibration", project)
+    provenance = manifest.get("inheritedManifest")
+    if provenance is not None:
+        if not isinstance(provenance, dict) or not isinstance(provenance.get("path"), str):
+            raise ValueError("inherited source provenance is malformed")
+        source, expected_provenance = inherited_source(Path(provenance["path"]))
+        expected_tasks = inherited_tasks(source, CALIBRATION_TASKS if kind == "calibration" else None)
+        if provenance != expected_provenance or tasks != expected_tasks:
+            raise ValueError("inherited source provenance or exact task specs mismatch")
+        validate_inherited_runtime(source, protocol.get("runtimeIdentity", {}))
+        frozen_protocol = {key: value for key, value in source["protocol"].items()
+                           if key not in {"harnessRevision", "runtimeIdentity", "promptTemplateSha256"}}
+        if any(protocol.get(key) != value for key, value in frozen_protocol.items()):
+            raise ValueError("inherited source frozen episode protocol mismatch")
+        if {key: value for key, value in manifest.get("target", {}).items() if key != "environmentMode"} != source["target"]:
+            raise ValueError("inherited source target mismatch")
+    elif kind == "calibration":
+        expected_manifest = build_manifest(
+            manifest["campaignId"], "calibration", project,
+            environment_mode_report=Path(mode["path"]) if mode is not None else None,
+        )
         if manifest != expected_manifest:
             raise ValueError("calibration manifest differs from the frozen campaign")
     if mismatches:
@@ -520,6 +665,30 @@ def _load_manifest(path: Path, project: Path | None = None) -> dict[str, Any]:
             raise ValueError(f"campaign time budget mismatch for {name}")
     if not seen:
         raise ValueError("campaign has no tasks")
+    if kind in {"full", "rehearsal"}:
+        task_registry = registry.TaskRegistry()
+        expected_names = sorted(task_registry.get_registry(task_registry.ANDROID_WORLD_FAMILY))
+        if [task["name"] for task in tasks] != expected_names:
+            raise ValueError("all-task manifest must contain the complete ordered official registry")
+        if provenance is None:
+            from fsq_androidworld_eval.runner import _task
+
+            android_tasks = set(task_registry.get_registry(task_registry.ANDROID_FAMILY))
+            for task in tasks:
+                instance = _task(
+                    task["name"],
+                    json.dumps(task["params"]) if task["paramsTransport"] == "json" else None,
+                    task["instanceSeed"] if task["paramsTransport"] == "seed" else None,
+                )
+                family = "android" if task["name"] in android_tasks else "information_retrieval"
+                if (
+                    _sha256(instance.params) != task["paramsSha256"]
+                    or list(instance.app_names) != task["apps"]
+                    or instance.complexity != task["complexity"]
+                    or suite_utils._allocate_step_budget(instance.complexity) != task["maxSteps"]
+                    or task["family"] != family
+                ):
+                    raise ValueError(f"frozen task cannot be reconstructed before device use: {task['name']}")
     return manifest
 
 
@@ -611,6 +780,22 @@ def _readiness_identity(path: Path, manifest: dict[str, Any]) -> str:
         raise ValueError("readiness report is not qualified")
     if readiness.get("manifestSha256") != _sha256(manifest):
         raise ValueError("readiness report belongs to a different manifest")
+    if readiness.get("target") != manifest["target"]:
+        raise ValueError("readiness target/environment mode identity differs from manifest")
+    if readiness.get("environmentArtifacts") != manifest["protocol"]["environmentArtifacts"]:
+        raise ValueError("readiness environment artifact identity differs from manifest")
+    expected_apps = sorted({app for task in manifest["tasks"] for app in task["apps"]})
+    if (
+        readiness.get("schemaVersion") != 2
+        or readiness.get("adbOutputIsolated") is not True
+        or readiness.get("snapshotRestores")
+        != [{"app": app, "status": "restored"} for app in expected_apps]
+    ):
+        raise ValueError("readiness report lacks clean ADB capture or complete snapshot restore proof")
+    if "vlc" in expected_apps and any(readiness.get("vlcStartup", {}).get(key) is not True for key in (
+        "mainActivityObserved", "quitReturned", "onboardingCompleted", "allFilesAuthorized", "snapshotSavedAfterUi",
+    )):
+        raise ValueError("readiness report lacks completed VLC first-launch UI and snapshot evidence")
     return identity
 
 
@@ -651,6 +836,8 @@ def _run_attempt(
         "fsq_androidworld_eval.runner",
         "--project",
         str(agent_workspace),
+        "--artifact-root",
+        str(Path(args.project).resolve()),
         "--output-dir",
         str(attempt_dir),
         "--task",
@@ -690,11 +877,36 @@ def _run_attempt(
             str(Path(args.adb_path).resolve()),
         ]
     )
-    exit_code = _run_process(command, task["timeBudget"]["episodeSeconds"])
+    started_at = time.time()
+    launch_error = None
+    try:
+        exit_code = _run_process(command, task["timeBudget"]["episodeSeconds"])
+    except Exception as exc:
+        exit_code = None
+        launch_error = f"{type(exc).__name__}: {exc}"
     result_path = attempt_dir / "result.json"
+    preserved_result = None
+    if result_path.exists():
+        try:
+            result = json.loads(result_path.read_text())
+            if not isinstance(result, dict):
+                raise ValueError("runner result is not an object")
+        except (OSError, ValueError) as exc:
+            launch_error = f"{type(exc).__name__}: {exc}"
+            preserved_path = attempt_dir / "unreadable-result.json"
+            if preserved_path.exists():
+                raise ValueError("unreadable terminal evidence path already exists")
+            result_path.rename(preserved_path)
+            preserved_result = str(preserved_path)
+        else:
+            return result
     if not result_path.exists():
         return {
             "schemaVersion": 3,
+            "recordSource": "campaign_missing_runner_result",
+            "startedAtUnix": started_at,
+            "completedAtUnix": time.time(),
+            "preservedRunnerResult": preserved_result,
             "task": {"name": task["name"], "seed": task["instanceSeed"]},
             "protocol": {"timeBudget": TIME_BUDGET_PROTOCOL},
             "timeBudget": task["timeBudget"],
@@ -710,7 +922,7 @@ def _run_attempt(
                 "type": "MissingResult",
                 "message": (
                     f"episode process exited {exit_code} without result.json; "
-                    "device mutation and cleanup state are unknown"
+                    f"device mutation and cleanup state are unknown; {launch_error or ''}"
                 ),
             },
             "cleanup": {
@@ -719,7 +931,6 @@ def _run_attempt(
                 "environment": "unknown",
             },
         }
-    return json.loads(result_path.read_text())
 
 
 def _group_metrics(
@@ -818,11 +1029,15 @@ def _write_summary(output_dir: Path, manifest: dict[str, Any]) -> dict[str, Any]
     valid_count = len(valid_rewards)
     calibration_gate_satisfied = _calibration_gate_satisfied(manifest, output_dir)
     reward_sum = sum(valid_rewards)
+    continuation = continuation_audit(manifest, output_dir)
+    if continuation:
+        cleanup_failures = max(cleanup_failures, continuation["coverageAudit"]["cleanupFailureCount"])
     qualified = (
         completed_count == planned_count
         and valid_count == planned_count
         and cleanup_failures == 0
         and calibration_gate_satisfied
+        and (not continuation or continuation["coverageAudit"]["valid"])
     )
     summary = {
         "schemaVersion": 2,
@@ -850,6 +1065,9 @@ def _write_summary(output_dir: Path, manifest: dict[str, Any]) -> dict[str, Any]
         "episodes": episodes,
         "updatedAtUnix": time.time(),
     }
+    summary.update(continuation)
+    if continuation and manifest["kind"] == "full":
+        summary["officialScore"] = None
     summary["identitySha256"] = _sha256(summary)
     temporary_path = output_dir / "summary.json.tmp"
     temporary_path.write_text(json.dumps(summary, indent=2, sort_keys=True) + "\n")
@@ -864,10 +1082,266 @@ def _retryable(record: dict[str, Any]) -> bool:
     )
 
 
+def _core_service_health(readiness: dict[str, Any], adb_path: str) -> dict[str, Any]:
+    """Bounded read-only readiness, never a session or an emulator restart."""
+    import grpc
+    from android_env.proto import emulator_controller_pb2_grpc
+    from google.protobuf import empty_pb2
+    import uuid
+
+    target = readiness["target"]
+    serial = target["serial"]
+
+    def adb(*arguments: str) -> str:
+        completed = subprocess.run(
+            [adb_path, "-s", serial, *arguments], check=True,
+            capture_output=True, text=True, timeout=10,
+        )
+        return completed.stdout.strip()
+
+    result = {
+        "adbState": adb("get-state"),
+        "bootCompleted": adb("shell", "getprop", "sys.boot_completed"),
+        "activityService": adb("shell", "service", "check", "activity").endswith(": found"),
+        "packageService": adb("shell", "service", "check", "package").endswith(": found"),
+        "settingsService": adb("shell", "service", "check", "settings").endswith(": found"),
+        "windowService": adb("shell", "service", "check", "window").endswith(": found"),
+        "systemServerPids": adb("shell", "pidof", "system_server").split(),
+        "surfaceFlingerPids": adb("shell", "pidof", "surfaceflinger").split(),
+        "bootId": adb("shell", "cat", "/proc/sys/kernel/random/boot_id"),
+        "appiumReady": _request_json(target["appiumUrl"].rstrip("/") + "/status").get("value", {}).get("ready") is True,
+        "grpcReady": False,
+    }
+    with grpc.secure_channel(f"localhost:{target['grpcPort']}", grpc.local_channel_credentials()) as channel:
+        grpc.channel_ready_future(channel).result(timeout=10)
+        status = emulator_controller_pb2_grpc.EmulatorControllerStub(channel).getStatus(empty_pb2.Empty(), timeout=10)
+        result["grpcReady"] = status.booted is True
+    try:
+        uuid.UUID(result["bootId"])
+        boot_id_valid = True
+    except ValueError:
+        boot_id_valid = False
+    result["qualified"] = (
+        result["adbState"] == "device" and result["bootCompleted"] == "1"
+        and all(result[field] is True for field in (
+            "activityService", "packageService", "settingsService", "windowService", "appiumReady", "grpcReady"
+        ))
+        and boot_id_valid
+        and all(result[field] and all(pid.isdigit() and int(pid) > 0 for pid in result[field])
+                for field in ("systemServerPids", "surfaceFlingerPids"))
+    )
+    return result
+
+
+def restore_official_datetime(project: Path, target: dict[str, Any], adb_path: str) -> dict[str, Any]:
+    """Official nonscoring setup; caller owns safety gates and durable evidence.
+
+    Scheduling uses recover_campaign_environment to prove prerequisites and record
+    immutable before-state before invoking this manifest-independent helper.
+    """
+    remediation = {
+        "name": "android_world.utils.datetime_utils.setup_datetime",
+        "allowedScope": ["auto_time", "auto_time_zone", "time_12_24", "timezone"],
+        "freezeDatetime": False, "startedAtUnix": time.time(),
+        "outcome": "failed", "environmentClose": "not_created", "errors": [],
+    }
+    env = None
+    try:
+        from android_world.utils import datetime_utils
+        from fsq_androidworld_eval.environment import load_environment, close_environment
+
+        env = load_environment(
+            artifact_root=project, console_port=target["consolePort"],
+            adb_path=adb_path, grpc_port=target["grpcPort"], freeze_datetime=False,
+        )
+        datetime_utils.setup_datetime(env.controller)
+        remediation["outcome"] = "completed"
+    except Exception as exc:
+        remediation["errors"].append({"type": type(exc).__name__, "message": str(exc)})
+    finally:
+        if env is not None:
+            try:
+                close_environment(env)
+                remediation["environmentClose"] = "closed"
+            except Exception as exc:
+                remediation["environmentClose"] = "failed"
+                remediation["outcome"] = "failed"
+                remediation["errors"].append({"type": type(exc).__name__, "message": str(exc)})
+        remediation["completedAtUnix"] = time.time()
+    return remediation
+
+
+def recover_campaign_environment(
+    output_dir: Path, manifest: dict[str, Any], task: dict[str, Any], attempt: int,
+    record: dict[str, Any], result_path: Path, readiness: dict[str, Any],
+    readiness_identity: str, adb_path: str, project: Path,
+) -> dict[str, Any]:
+    """Persist safety evidence, restore only UTC drift, and freshly requalify.
+
+    The caller supplies a fresh evidence directory with frozen manifest/readiness
+    files and an immutable terminal result; existing evidence is never overwritten.
+    This is Harness environment setup after cleanup, never an episode retry.
+    """
+    recovery_prefix = output_dir / "recoveries" / f"{_episode_slug(task)}-attempt-{attempt}"
+    if any(Path(str(recovery_prefix) + suffix).exists() for suffix in (".json", "-before.json")):
+        raise ValueError("campaign recovery cannot overwrite or resume prior recovery evidence")
+    evidence = {
+        "schemaVersion": 2,
+        "manifestSha256": _sha256(manifest),
+        "readinessIdentitySha256": readiness_identity,
+        "taskSpecSha256": _sha256(task),
+        "taskIndex": task["index"], "task": task["name"], "attempt": attempt,
+        "result": str(result_path.relative_to(output_dir)),
+        "resultSha256": _file_sha256(result_path),
+        "originalClassification": _classification(record, task, manifest["protocol"]),
+        "originalCleanup": record.get("cleanup"),
+        "recordedAtUnix": time.time(),
+    }
+    def identity_probe() -> dict[str, Any]:
+        return {
+            "verified": (
+                _load_manifest(output_dir / "manifest.json", project) == manifest
+                and _readiness_identity(output_dir / "device-readiness.json", manifest) == readiness_identity
+                and json.loads((output_dir / "device-readiness.json").read_text()) == readiness
+            ),
+            "manifestSha256": _sha256(manifest),
+            "readinessIdentitySha256": readiness_identity,
+        }
+
+    probes = (
+        ("campaignIdentity", identity_probe),
+        ("attestation", lambda: attest_device(readiness, adb_path)),
+        ("sessionAbsence", lambda: {
+            "sessionHashes": _appium_session_hashes(
+                manifest["target"]["appiumUrl"], adb_path, manifest["target"]["serial"]
+            ), "verified": True,
+        }),
+        ("coreServices", lambda: _core_service_health(readiness, adb_path)),
+    )
+    for field, probe in probes:
+        try:
+            evidence[field] = probe()
+        except Exception as exc:
+            evidence[field] = {"qualified": False, "verified": False,
+                               "error": {"type": type(exc).__name__, "message": str(exc)}}
+    mismatch = evidence["attestation"].get("mismatches", {})
+    timezone_only = (
+        evidence["attestation"].get("qualified") is False
+        and isinstance(mismatch, dict) and set(mismatch) == {"timezone"}
+        and isinstance(mismatch["timezone"], dict)
+        and mismatch["timezone"].get("expected") == "UTC"
+        and isinstance(mismatch["timezone"].get("observed"), str)
+        and bool(mismatch["timezone"]["observed"])
+        and mismatch["timezone"]["observed"] != "UTC"
+    )
+    safe_to_restore = (
+        manifest["protocol"].get("campaignContinuation") == CAMPAIGN_CONTINUATION
+        and evidence["campaignIdentity"].get("verified") is True
+        and cleanup_known(record)
+        and evidence["sessionAbsence"].get("verified") is True
+        and evidence["sessionAbsence"].get("sessionHashes") == []
+        and evidence["coreServices"].get("qualified") is True
+    )
+    recovery_dir = output_dir / "recoveries"
+    recovery_dir.mkdir(exist_ok=True)
+    before = dict(evidence)
+    before["recordedAtUnix"] = time.time()
+    before["identitySha256"] = _sha256(before)
+    before_path = recovery_dir / f"{_episode_slug(task)}-attempt-{attempt}-before.json"
+    with before_path.open("x", encoding="utf-8") as stream:
+        stream.write(json.dumps(before, indent=2, sort_keys=True) + "\n")
+        stream.flush()
+        os.fsync(stream.fileno())
+    # Directory durability and checkpoint binding precede the first mutation.
+    directory_fd = os.open(recovery_dir, os.O_RDONLY)
+    try:
+        os.fsync(directory_fd)
+    finally:
+        os.close(directory_fd)
+    evidence["beforeEvidence"] = {
+        "path": str(before_path.relative_to(output_dir)), "sha256": _file_sha256(before_path),
+    }
+    _append_checkpoint(output_dir / "checkpoint.jsonl", {
+        "event": "recovery_before", "taskIndex": task["index"], "task": task["name"],
+        "attempt": attempt, "evidence": evidence["beforeEvidence"]["path"],
+        "evidenceSha256": evidence["beforeEvidence"]["sha256"], "completedAtUnix": time.time(),
+    })
+    for field, _probe in probes:
+        evidence[field + "Before"] = before[field]
+    if timezone_only and safe_to_restore:
+        evidence["remediation"] = restore_official_datetime(project, manifest["target"], adb_path)
+        for field, probe in probes:
+            try:
+                evidence[field] = probe()
+            except Exception as exc:
+                evidence[field] = {"qualified": False, "verified": False,
+                                   "error": {"type": type(exc).__name__, "message": str(exc)}}
+    reason = None
+    if evidence["campaignIdentity"].get("verified") is not True:
+        reason = "campaign_identity_changed_requires_new_campaign"
+    elif not cleanup_known(record):
+        reason = "cleanup_unknown_requires_coordinated_recovery"
+    elif evidence.get("remediation", {}).get("outcome") == "failed":
+        reason = "timezone_remediation_failed_requires_coordinated_recovery"
+    elif "remediation" in evidence and any(
+        evidence["coreServices"].get(field) != before["coreServices"].get(field)
+        for field in ("bootId", "systemServerPids", "surfaceFlingerPids")
+    ):
+        reason = "core_process_changed_during_remediation_requires_coordinated_recovery"
+    elif evidence["sessionAbsence"].get("verified") is not True or evidence["sessionAbsence"].get("sessionHashes") != []:
+        reason = "session_absence_unproven_requires_coordinated_recovery"
+    elif evidence["coreServices"].get("qualified") is not True:
+        reason = "core_services_unavailable_requires_coordinated_recovery"
+    elif evidence["attestation"].get("qualified") is not True:
+        reason = "readiness_unavailable_requires_coordinated_recovery"
+    evidence["continuationAllowed"] = reason is None
+    evidence["pauseReason"] = reason
+    evidence["recordedAtUnix"] = time.time()
+    evidence["identitySha256"] = _sha256(evidence)
+    path = recovery_dir / f"{_episode_slug(task)}-attempt-{attempt}.json"
+    with path.open("x", encoding="utf-8") as stream:
+        stream.write(json.dumps(evidence, indent=2, sort_keys=True) + "\n")
+        stream.flush()
+        os.fsync(stream.fileno())
+    _append_checkpoint(output_dir / "checkpoint.jsonl", {
+        "event": "recovery", "taskIndex": task["index"], "task": task["name"],
+        "attempt": attempt, "evidence": str(path.relative_to(output_dir)),
+        "evidenceSha256": _file_sha256(path),
+        "continuationAllowed": evidence["continuationAllowed"], "pauseReason": reason,
+        "completedAtUnix": time.time(),
+    })
+    return evidence
+
+
+def _pause_campaign(output_dir: Path, manifest: dict[str, Any], reason: str) -> int:
+    starts = [json.loads(line) for line in (output_dir / "checkpoint.jsonl").read_text().splitlines()]
+    started = {event["taskIndex"] for event in starts if event.get("event") == "attempt_started"}
+    _append_checkpoint(output_dir / "checkpoint.jsonl", {
+        "event": "pause", "reason": reason,
+        "unstartedTaskIndexes": [task["index"] for task in manifest["tasks"] if task["index"] not in started],
+        "completedAtUnix": time.time(),
+    })
+    _write_summary(output_dir, manifest)
+    return 2
+
+
+def _reject_prior_execution(output_dir: Path) -> None:
+    forbidden = ("checkpoint.jsonl", "run-metadata.json", "summary.json", "episodes", "recoveries")
+    existing = [name for name in forbidden if (output_dir / name).exists()]
+    if existing:
+        raise ValueError(f"r12 campaign cannot resume or accept prior execution evidence: {existing}")
+
+
 def run_campaign(args: argparse.Namespace) -> int:
     source_project = Path(args.project).resolve()
     manifest_path = Path(args.manifest).resolve()
     manifest = _load_manifest(manifest_path, source_project)
+    if manifest["kind"] == "rehearsal":
+        raise ValueError("non-scoring rehearsal manifests require the rehearse command, not run")
+    output_dir = Path(args.output_dir).resolve()
+    _reject_prior_execution(output_dir)
+    rehearsal_source = Path(args.rehearsal_report).resolve()
+    rehearsal_identity = validate_report(rehearsal_source, manifest, source_project)
     calibration_campaign_dir = None
     if manifest["kind"] == "full":
         calibration_arg = getattr(args, "calibration_campaign_dir", None)
@@ -879,14 +1353,18 @@ def run_campaign(args: argparse.Namespace) -> int:
     readiness_source = Path(args.readiness_report).resolve()
     readiness_identity = _readiness_identity(readiness_source, manifest)
     readiness_document = json.loads(readiness_source.read_text())
-    live_attestation = attest_device(
-        readiness_document, str(Path(args.adb_path).resolve())
-    )
-    if not live_attestation["qualified"]:
-        raise ValueError(
-            f"live target no longer matches readiness: {live_attestation['mismatches']}"
-        )
-    output_dir = Path(args.output_dir).resolve()
+    try:
+        live_attestation = attest_device(readiness_document, str(Path(args.adb_path).resolve()))
+    except Exception as exc:
+        live_attestation = {"qualified": False, "mismatches": {
+            "unavailable": {"type": type(exc).__name__, "message": str(exc)}
+        }}
+    try:
+        initial_core_services = _core_service_health(readiness_document, str(Path(args.adb_path).resolve()))
+    except Exception as exc:
+        initial_core_services = {"qualified": False, "error": {
+            "type": type(exc).__name__, "message": str(exc)
+        }}
     output_dir.mkdir(parents=True, exist_ok=True)
     frozen_manifest = output_dir / "manifest.json"
     source_bytes = manifest_path.read_bytes()
@@ -898,6 +1376,11 @@ def run_campaign(args: argparse.Namespace) -> int:
         )
     if not frozen_manifest.exists():
         frozen_manifest.write_bytes(source_bytes)
+    rehearsal_destination = output_dir / "harness-rehearsal"
+    if not rehearsal_destination.exists():
+        shutil.copytree(rehearsal_source.parent, rehearsal_destination)
+    if validate_report(rehearsal_destination / rehearsal_source.name, manifest, source_project) != rehearsal_identity:
+        raise ValueError("copied rehearsal evidence differs from the frozen run gate")
     readiness_path = output_dir / "device-readiness.json"
     readiness_bytes = readiness_source.read_bytes()
     if readiness_path.exists() and readiness_path.read_bytes() != readiness_bytes:
@@ -905,6 +1388,7 @@ def run_campaign(args: argparse.Namespace) -> int:
     if not readiness_path.exists():
         readiness_path.write_bytes(readiness_bytes)
     checkpoint = output_dir / "checkpoint.jsonl"
+    checkpoint.touch(exist_ok=False)
 
     with tempfile.TemporaryDirectory(prefix=f"fsq-aw-{manifest['campaignId']}-") as temporary:
         agent_workspace = Path(temporary) / "agent-workspace"
@@ -914,98 +1398,74 @@ def run_campaign(args: argparse.Namespace) -> int:
             "schemaVersion": 2,
             "campaignId": manifest["campaignId"],
             "manifestSha256": _sha256(manifest),
+            "protocolIdentity": {
+                "harnessRevision": HARNESS_REVISION,
+                "campaignContinuation": manifest["protocol"]["campaignContinuation"],
+                "protocolSha256": _sha256(manifest["protocol"]),
+            },
             "readinessIdentitySha256": readiness_identity,
             "liveTargetAttestation": live_attestation,
+            "initialCoreServices": initial_core_services,
+            "harnessRehearsalIdentitySha256": rehearsal_identity,
             "agentWorkspace": workspace_identity,
             "startedAtUnix": time.time(),
             "python": sys.version,
         }
-        if metadata_path.exists():
-            existing = json.loads(metadata_path.read_text())
-            comparable = {
-                key: value for key, value in metadata.items() if key != "startedAtUnix"
-            }
-            existing_comparable = {
-                key: value for key, value in existing.items() if key != "startedAtUnix"
-            }
-            if existing_comparable != comparable:
-                raise ValueError("campaign runtime identity changed since the previous run")
-        else:
-            metadata_path.write_text(json.dumps(metadata, indent=2, sort_keys=True) + "\n")
+        metadata_path.write_text(json.dumps(metadata, indent=2, sort_keys=True) + "\n")
+        if live_attestation.get("qualified") is not True:
+            return _pause_campaign(output_dir, manifest, "initial_readiness_unavailable_requires_coordinated_recovery")
+        if initial_core_services.get("qualified") is not True:
+            return _pause_campaign(output_dir, manifest, "initial_core_services_unavailable_requires_coordinated_recovery")
 
         retry_limit = manifest["protocol"]["invalidRetryLimit"]
         for task in manifest["tasks"]:
             episode_dir = output_dir / "episodes" / _episode_slug(task)
-            episode_dir.mkdir(parents=True, exist_ok=True)
-            attempt_dirs = sorted(episode_dir.glob("attempt-*"))
-            existing_results = sorted(episode_dir.glob("attempt-*/result.json"))
-            if existing_results:
-                current = json.loads(existing_results[-1].read_text())
-                classification = _classification(current, task, manifest["protocol"])
-                if _cleanup_failed(current):
-                    return 2
-                if not classification.startswith("invalid_"):
-                    continue
-                if not _retryable(current):
-                    return 2
-            attempts_remaining = retry_limit + 1 - len(attempt_dirs)
-            if attempts_remaining <= 0:
-                return 2
-            attempt_number = len(attempt_dirs) + 1
-            while attempts_remaining > 0:
+            episode_dir.mkdir(parents=True, exist_ok=False)
+            for attempt_number in range(1, retry_limit + 2):
                 attempt_dir = episode_dir / f"attempt-{attempt_number}"
-                if attempt_dir.exists():
-                    interrupted = attempt_dir / "interrupted.json"
-                    if not interrupted.exists():
-                        interrupted.write_text(
-                            json.dumps(
-                                {
-                                    "classification": "invalid_infrastructure",
-                                    "reason": "attempt directory existed without result.json",
-                                    "recordedAtUnix": time.time(),
-                                },
-                                indent=2,
-                            )
-                            + "\n"
-                        )
-                    attempt_number += 1
-                    attempts_remaining -= 1
-                    continue
-                record = _run_attempt(
-                    manifest,
-                    task,
-                    attempt_dir,
-                    args,
-                    agent_workspace,
-                    readiness_path,
-                    readiness_identity,
-                )
                 result_path = attempt_dir / "result.json"
+                binding = {
+                    "taskIndex": task["index"], "task": task["name"], "attempt": attempt_number,
+                    "manifestSha256": _sha256(manifest),
+                    "readinessIdentitySha256": readiness_identity,
+                    "taskSpecSha256": _sha256(task),
+                    "result": str(result_path.relative_to(output_dir)),
+                }
+                _append_checkpoint(checkpoint, {
+                    **binding, "event": "attempt_started", "startedAtUnix": time.time(),
+                })
+                record = _run_attempt(
+                    manifest, task, attempt_dir, args, agent_workspace,
+                    readiness_path, readiness_identity,
+                )
                 if not result_path.exists():
                     attempt_dir.mkdir(parents=True, exist_ok=True)
-                    result_path.write_text(json.dumps(record, indent=2, sort_keys=True) + "\n")
+                    with result_path.open("x", encoding="utf-8") as stream:
+                        stream.write(json.dumps(record, indent=2, sort_keys=True) + "\n")
                 classification = _classification(record, task, manifest["protocol"])
-                _append_checkpoint(
-                    checkpoint,
-                    {
-                        "taskIndex": task["index"],
-                        "task": task["name"],
-                        "attempt": attempt_number,
-                        "classification": classification,
-                        "officialReward": official_reward(record, manifest["protocol"]),
-                        "result": str(result_path.relative_to(output_dir)),
-                        "completedAtUnix": time.time(),
-                    },
+                _append_checkpoint(checkpoint, {
+                    **binding, "event": "attempt_terminal", "classification": classification,
+                    "officialReward": official_reward(record, manifest["protocol"]),
+                    "resultSha256": _file_sha256(result_path), "completedAtUnix": time.time(),
+                })
+                agent = record.get("agent") if isinstance(record.get("agent"), dict) else {}
+                abnormal = (
+                    classification != "passed" or _cleanup_failed(record)
+                    or record.get("error") is not None
+                    or agent.get("termination", {}).get("reason") != "completed"
                 )
+                if abnormal:
+                    recovery = recover_campaign_environment(
+                        output_dir, manifest, task, attempt_number, record, result_path,
+                        readiness_document, readiness_identity, str(Path(args.adb_path).resolve()),
+                        source_project,
+                    )
+                    if not recovery["continuationAllowed"]:
+                        return _pause_campaign(output_dir, manifest, recovery["pauseReason"])
                 _write_summary(output_dir, manifest)
-                if _cleanup_failed(record):
-                    return 2
-                if not classification.startswith("invalid_"):
+                if not (_retryable(record) and attempt_number <= retry_limit):
                     break
-                attempts_remaining -= 1
-                if not _retryable(record) or attempts_remaining <= 0:
-                    return 2
-                attempt_number += 1
+        _append_checkpoint(checkpoint, {"event": "finished", "completedAtUnix": time.time()})
         summary = _write_summary(output_dir, manifest)
     return 0 if summary["qualified"] else 1
 
@@ -1013,20 +1473,31 @@ def run_campaign(args: argparse.Namespace) -> int:
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Prepare or run a frozen AndroidWorld campaign")
     subparsers = parser.add_subparsers(dest="command", required=True)
+    assets = subparsers.add_parser("prepare-assets", help="explicitly acquire and verify pinned host assets")
+    assets.add_argument("--project", default=".")
     prepare = subparsers.add_parser("prepare")
     prepare.add_argument("--output", required=True)
     prepare.add_argument("--campaign-id", required=True)
-    prepare.add_argument("--kind", choices=("calibration", "full"), default="calibration")
+    prepare.add_argument("--kind", choices=("calibration", "full", "rehearsal"), default="calibration")
     prepare.add_argument("--project", default=".")
     prepare.add_argument("--calibration-campaign-dir")
+    prepare.add_argument("--inherit-manifest", help="copy exact specs from the authorized frozen r11 full manifest")
+    prepare.add_argument("--environment-mode-report", help="bind fresh headless/backend evidence to the target identity")
     qualify = subparsers.add_parser("qualify")
     qualify.add_argument("--manifest", required=True)
     qualify.add_argument("--output", required=True)
     qualify.add_argument("--project", default=".")
     qualify.add_argument("--adb-path", default=str(DEFAULT_ADB))
+    rehearse = subparsers.add_parser("rehearse", help="run all 116 real task lifecycles without an Agent or formal score")
+    rehearse.add_argument("--manifest", required=True)
+    rehearse.add_argument("--readiness-report", required=True)
+    rehearse.add_argument("--output-dir", required=True)
+    rehearse.add_argument("--project", default=".")
+    rehearse.add_argument("--adb-path", default=str(DEFAULT_ADB))
     run = subparsers.add_parser("run")
     run.add_argument("--manifest", required=True)
     run.add_argument("--readiness-report", required=True)
+    run.add_argument("--rehearsal-report", required=True)
     run.add_argument("--output-dir", required=True)
     run.add_argument("--project", default=".")
     run.add_argument("--adb-path", default=str(DEFAULT_ADB))
@@ -1036,6 +1507,12 @@ def build_parser() -> argparse.ArgumentParser:
 
 def main() -> None:
     args = build_parser().parse_args()
+    if args.command == "prepare-assets":
+        artifacts = prepare_artifacts(Path(args.project).resolve())
+        print(json.dumps({"environmentArtifacts": artifacts, "hostMedia": probe_host_media()}, indent=2, sort_keys=True))
+        return
+    if args.command == "rehearse":
+        raise SystemExit(run_rehearsal(args))
     if args.command == "prepare":
         write_manifest(
             Path(args.output),
@@ -1045,12 +1522,14 @@ def main() -> None:
             Path(args.calibration_campaign_dir).resolve()
             if args.calibration_campaign_dir
             else None,
+            Path(args.inherit_manifest).resolve() if args.inherit_manifest else None,
+            Path(args.environment_mode_report).resolve() if args.environment_mode_report else None,
         )
         return
     if args.command == "qualify":
         manifest_path = Path(args.manifest).resolve()
         _load_manifest(manifest_path, Path(args.project))
-        report = prepare_device(manifest_path, Path(args.output), args.adb_path)
+        report = prepare_device(manifest_path, Path(args.output), args.adb_path, Path(args.project))
         raise SystemExit(0 if report["qualified"] else 1)
     raise SystemExit(run_campaign(args))
 

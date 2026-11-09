@@ -316,6 +316,108 @@ def test_reference_steps_limit_actual_upstream_state_and_allow_read_and_quit() -
     assert "element-secret" not in serialized
 
 
+@pytest.mark.parametrize(("reason", "code"), [
+    ("step_budget", "step_budget_exhausted"),
+    ("business_deadline", "business_deadline_exceeded"),
+    ("agent_finished", "action_phase_closed"),
+    ("transport_draining", "action_phase_closed"),
+])
+def test_closed_action_phases_report_truthful_safe_denials(reason: str, code: str) -> None:
+    gate = ActionGate()
+    with _upstream() as (url, state), AppiumAuditProxy(url, action_gate=gate, expected_udid="emulator-5554") as proxy:
+        session = _connect(proxy)
+        if reason == "agent_finished":
+            gate.mark_agent_finished()
+        else:
+            gate.close_budget(reason)
+        before = state.snapshot()
+        status, response = _request(proxy.url, "POST", session + "/element/element-secret/click", {})
+        assert status == 500
+        value = response["value"]
+        assert value["error"] == "unknown error"
+        assert value["message"]
+        assert "session" not in value["message"].lower()
+        assert value["stacktrace"] == ""
+        data = value["data"]
+        assert data == {
+            "code": code, "closureReason": reason,
+            "executedActionCount": 0, "rejectedActionCount": 1,
+            "inflightActionCount": 0,
+        }
+        assert state.snapshot() == before
+        assert proxy.audit()["deniedCommands"] == [{"reason": reason, **data}]
+        assert gate.snapshot()["executedActionCount"] == 0
+        assert gate.snapshot()["rejectedActionCount"] == 1
+        serialized = json.dumps(response)
+        assert "owned-session-secret" not in serialized
+        assert "element-secret" not in serialized
+        assert _request(proxy.url, "GET", session + "/source")[0] == 200
+        assert _request(proxy.url, "DELETE", session)[0] == 200
+        assert state.snapshot()[3:] == (1, 1)
+
+
+@pytest.mark.parametrize("create_first", [False, True])
+@pytest.mark.parametrize(("reason", "code"), [
+    ("step_budget", "step_budget_exhausted"),
+    ("business_deadline", "business_deadline_exceeded"),
+    ("agent_finished", "action_phase_closed"),
+])
+def test_closed_gate_refuses_creation_without_consuming_attempt_or_action_counts(
+    create_first: bool, reason: str, code: str,
+) -> None:
+    gate = ActionGate()
+    with _upstream() as (url, state), AppiumAuditProxy(url, action_gate=gate, expected_udid="emulator-5554") as proxy:
+        session = _connect(proxy) if create_first else None
+        if reason == "agent_finished":
+            gate.mark_agent_finished()
+        else:
+            gate.close_budget(reason)
+        before = state.snapshot()
+        budget_before = gate.snapshot()
+        for _ in range(2):
+            status, response = _request(proxy.url, "POST", "/session", _capabilities())
+            assert status == 500
+            assert response["value"]["error"] == "unknown error"
+            assert response["value"]["data"]["code"] == code
+            assert response["value"]["data"]["closureReason"] == reason
+            assert "session" not in response["value"]["message"].lower()
+        assert state.snapshot() == before
+        assert gate.snapshot() == budget_before
+        assert proxy._session_attempted is create_first
+        assert proxy.audit()["deniedCommandCount"] == 2
+        assert all(denial["code"] == code for denial in proxy.audit()["deniedCommands"])
+        assert _request(proxy.url, "GET", "/status")[0] == 200
+        if session is not None:
+            assert _request(proxy.url, "DELETE", session)[0] == 200
+
+
+def test_official_client_receives_webdriver_error_for_budget_refusal() -> None:
+    from appium import webdriver
+    from appium.options.android import UiAutomator2Options
+    from selenium.common.exceptions import WebDriverException
+
+    gate = ActionGate()
+    with _upstream() as (url, state), AppiumAuditProxy(url, action_gate=gate, expected_udid="emulator-5554") as proxy:
+        options = UiAutomator2Options().load_capabilities(_capabilities()["capabilities"]["alwaysMatch"])
+        driver = webdriver.Remote(proxy.url, options=options)
+        try:
+            gate.close_budget()
+            before = state.snapshot()
+            with pytest.raises(WebDriverException) as error:
+                driver.back()
+            assert type(error.value) is WebDriverException
+            assert error.value.msg
+            assert "session" not in error.value.msg.lower()
+            assert "owned-session-secret" not in str(error.value)
+            assert state.snapshot() == before
+            assert gate.snapshot()["executedActionCount"] == 0
+            assert gate.snapshot()["rejectedActionCount"] == 1
+            assert driver.page_source
+        finally:
+            driver.quit()
+        assert state.snapshot()[3:] == (1, 1)
+
+
 def test_concurrent_http_burst_cannot_cross_the_reference_grant_cap() -> None:
     gate = ActionGate()
     with _upstream() as (url, state), AppiumAuditProxy(url, action_gate=gate, expected_udid="emulator-5554") as proxy:
@@ -782,9 +884,20 @@ def test_business_expiry_denies_creations_but_preserves_cleanup_reads_and_quit(m
     monkeypatch.setattr("fsq_androidworld_eval.lifecycle.monotonic", lambda: clock[0])
     deadlines = EpisodeDeadlines(1, cleanup_seconds=10, termination_grace_seconds=1)
     deadlines.start()
-    with _upstream() as (url, state), AppiumAuditProxy(url, action_gate=ActionGate(), expected_udid="emulator-5554", deadlines=deadlines) as proxy:
+    gate = ActionGate()
+    gate.bind_deadlines(deadlines)
+    with _upstream() as (url, state), AppiumAuditProxy(url, action_gate=gate, expected_udid="emulator-5554", deadlines=deadlines) as proxy:
         session = _connect(proxy)
         clock[0] = 2
+        before = state.snapshot()
+        status, response = _request(proxy.url, "POST", session + "/back", {})
+        assert status == 500
+        assert response["value"]["error"] == "unknown error"
+        assert response["value"]["data"]["code"] == "business_deadline_exceeded"
+        assert response["value"]["data"]["closureReason"] == "business_deadline"
+        assert state.snapshot() == before
+        assert gate.snapshot()["executedActionCount"] == 0
+        assert gate.snapshot()["rejectedActionCount"] == 1
         assert _request(proxy.url, "POST", "/session", _capabilities())[0] == 500
         assert _request(proxy.url, "GET", session + "/source")[0] == 200
         assert _request(proxy.url, "DELETE", session)[0] == 200

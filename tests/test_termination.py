@@ -27,7 +27,7 @@ def test_zero_exit_no_final_is_unknown_not_agent_completion(tmp_path):
     result = normalized(tmp_path, [{"type": "agent_end", "isTerminal": True}])
     assert result["agentCompleted"] is False
     assert result["finalText"] is None
-    assert termination_reason(result, business_expired=False, forced=False) == "unknown_termination"
+    assert termination_reason(result, business_expired=False, forced=False, budget_closure_reason=None) == "unknown_termination"
 
 
 def test_explicit_internal_deadline_survives_zero_exit_and_no_final(tmp_path):
@@ -36,7 +36,7 @@ def test_explicit_internal_deadline_survives_zero_exit_and_no_final(tmp_path):
         {"type": "agent_end", "isTerminal": True},
     ])
     assert result["agentCompleted"] is False
-    assert termination_reason(result, business_expired=False, forced=False) == "omp_deadline"
+    assert termination_reason(result, business_expired=False, forced=False, budget_closure_reason=None) == "omp_deadline"
 
 
 def test_intermediate_text_is_not_final_and_nonterminal_end_is_not_completion(tmp_path):
@@ -56,9 +56,9 @@ def test_abort_cannot_reuse_previous_final_text(tmp_path):
 def test_explicit_final_completion_and_forced_termination_remain_distinct(tmp_path):
     result = normalized(tmp_path, [assistant(), {"type": "agent_end", "isTerminal": True}])
     assert result["agentCompleted"] is True
-    assert termination_reason(result, business_expired=False, forced=False) == "completed"
-    assert termination_reason(result, business_expired=True, forced=False) == "business_deadline"
-    assert termination_reason(result, business_expired=True, forced=True) == "forced_termination"
+    assert termination_reason(result, business_expired=False, forced=False, budget_closure_reason=None) == "completed"
+    assert termination_reason(result, business_expired=True, forced=False, budget_closure_reason=None) == "business_deadline"
+    assert termination_reason(result, business_expired=True, forced=True, budget_closure_reason=None) == "forced_termination"
 
 
 @pytest.mark.parametrize("steps", [1, 10, 30, 100])
@@ -88,3 +88,26 @@ def test_early_cleanup_cannot_consume_unused_business_time(monkeypatch):
     now[0] = 290.0
     assert deadlines.expired("cleanup")
     assert not deadlines.expired("force")
+
+
+@pytest.mark.parametrize("change,expected", [
+    ("none", "step_budget"), ("no_controlled_stop", "unknown_termination"),
+    ("nonterminal", "unknown_termination"), ("aborted", "unknown_termination"),
+    ("later_error", "unknown_termination"), ("forced", "forced_termination"),
+    ("business_expired", "business_deadline"), ("completed", "completed"),
+])
+def test_controlled_step_stop_requires_terminal_settlement(tmp_path, change, expected):
+    result = normalized(tmp_path, [assistant(text="incomplete"), {"type": "agent_end", "isTerminal": True}])
+    result["agentCompleted"] = change == "completed"
+    closure = None if change == "no_controlled_stop" else "step_budget"
+    if change == "nonterminal":
+        result["terminalEvents"][-1]["isTerminal"] = False
+    elif change == "aborted":
+        result["assistantStopReason"] = "aborted"
+    elif change == "later_error":
+        result["terminalEvents"].append({"type": "error"})
+
+    assert termination_reason(
+        result, business_expired=change == "business_expired", forced=change == "forced",
+        budget_closure_reason=closure,
+    ) == expected

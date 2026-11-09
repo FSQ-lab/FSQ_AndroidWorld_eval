@@ -13,7 +13,6 @@ from fsq_androidworld_eval.runner import (
     _normalize_agent_events,
     _required_apps,
     _task,
-    _task_outcome,
 )
 
 
@@ -145,13 +144,6 @@ def test_agent_prompt_separates_goal_from_runtime_facts() -> None:
     assert "emulator-5554" not in goal
 
 
-def test_information_retrieval_answer_requires_exact_json_contract() -> None:
-    assert _task_outcome(json.dumps({"taskOutcome": "One, Two"})) == "One, Two"
-    assert _task_outcome("One, Two") is None
-    assert _task_outcome(json.dumps(["One", "Two"])) is None
-    assert _task_outcome(json.dumps({"taskOutcome": 2})) is None
-
-
 def test_agent_protocol_rejects_filesystem_and_unrelated_tools() -> None:
     normalized = {
         "toolCalls": [
@@ -208,3 +200,59 @@ def test_agent_protocol_cannot_write_installed_skill_documentation() -> None:
     normalized = {"toolCalls": [{"tool": "write", "target": target}]}
 
     assert _agent_protocol_violations(normalized) == [f"forbidden write target: {target}"]
+
+
+def test_runner_preserves_frozen_parameters_when_official_initialization_mutates_them(tmp_path, monkeypatch):
+    from contextlib import nullcontext
+    from types import SimpleNamespace
+
+    class RewordingTask:
+        name = "RewordingTask"
+        complexity = 1
+        app_names = ()
+        params = {"date": "October 24 2023", "nested": {"dates": ["October 17 2023"]}}
+        goal = "Read events on October 24"
+
+        def initialize_task(self, env):
+            self.params["date"] = "October 24"
+            self.params["nested"]["dates"][0] = "Tuesday"
+
+        def tear_down(self, env):
+            pass
+
+    task = RewordingTask()
+    expected = runner._json_safe(task.params)
+    expected_hash = runner._sha256(expected)
+    readiness = {"qualified": True, "environmentArtifacts": {}}
+    readiness["identitySha256"] = runner._sha256(readiness)
+    path = tmp_path / "readiness.json"
+    path.write_text(json.dumps(readiness))
+    args = runner.build_parser().parse_args([
+        "--project", str(tmp_path), "--artifact-root", str(tmp_path), "--output-dir", str(tmp_path / "output"),
+        "--task", task.name, "--model", "github-copilot/gpt-5.6-sol", "--expected-amkernel-version", "0.1.3",
+        "--sandbox-profile", str(tmp_path / "sandbox"), "--readiness-report", str(path),
+        "--expected-readiness-sha256", readiness["identitySha256"], "--expected-max-steps", "1",
+        "--expected-params-sha256", expected_hash,
+    ])
+    monkeypatch.setattr(runner, "artifact_identity", lambda root: {})
+    monkeypatch.setattr(runner, "_request_json", lambda url: {})
+    monkeypatch.setattr(runner, "_appium_session_hashes", lambda *args: [])
+    monkeypatch.setattr(runner, "_task", lambda *args: task)
+    monkeypatch.setattr(runner, "_required_apps", lambda task: [])
+    monkeypatch.setattr(runner.suite_utils, "_allocate_step_budget", lambda complexity: 1)
+    monkeypatch.setattr(runner, "load_environment", lambda **kwargs: SimpleNamespace(reset=lambda **kwargs: None))
+    monkeypatch.setattr(runner, "restore_shared_assets", lambda *args: [])
+    monkeypatch.setattr(runner, "strict_snapshot_restores", nullcontext)
+    monkeypatch.setattr(runner, "close_environment", lambda env: None)
+
+    def stop_before_agent(*args, **kwargs):
+        raise RuntimeError("Non-scoring metadata probe stops before Agent creation")
+
+    monkeypatch.setattr(runner, "AppiumAuditProxy", stop_before_agent)
+    runner.run(args)
+    record = json.loads((tmp_path / "output/result.json").read_text())
+    assert task.params["date"] == "October 24"
+    assert record["task"]["params"] == expected
+    assert runner._sha256(record["task"]["params"]) == record["task"]["paramsSha256"] == expected_hash
+    assert record["officialReward"] is None
+    assert record["agent"] is None

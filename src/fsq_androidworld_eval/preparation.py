@@ -6,6 +6,15 @@ app-created recordings directory, then save the official app snapshot. Qualifica
 records that prerequisite and live attestation checks it again; neither path
 creates the directory or records audio on the app's behalf.
 Task-initialized database diagnostics remain separate from this startup gate.
+Qualification also requires clean ADB capture and every official app snapshot
+to restore successfully, before any benchmark task or Agent is started.
+Revision 11 verifies frozen local environment artifacts before device mutation,
+serves the helper APK locally, requires strict snapshot restoration, and propagates
+controller close errors. Qualification is not a substitute for the separate
+all-task non-scoring rehearsal required before a formal Agent campaign.
+Revision 12 preserves installed applications and completes VLC onboarding through
+the frozen AMKernel PythonExec/Appium seam before saving its official snapshot.
+Live attestation rechecks onboarding and effective all-files permission.
 """
 
 from __future__ import annotations
@@ -18,11 +27,18 @@ from pathlib import Path
 import re
 import subprocess
 import time
+import xml.etree.ElementTree as ET
 from typing import Any
 
 from android_world.env import adb_utils, device_constants, env_launcher, tools
 from android_world.env.setup_device import setup as device_setup
 from android_world.utils import app_snapshot
+
+from fsq_androidworld_eval.environment import (
+    artifact_identity, close_environment, load_environment, local_app_data, strict_snapshot_restores,
+)
+from fsq_androidworld_eval.host_prerequisites import probe_host_media
+from fsq_androidworld_eval.mcp_runtime import RecoveryRuntime
 
 from fsq_androidworld_eval.runner import (
     ANDROID_WORLD_REVISION,
@@ -130,6 +146,74 @@ def _complete_audio_recorder_setup(env: Any, adb_path: str, serial: str) -> None
     app_snapshot.save_snapshot("audio recorder", env.controller)
 
 
+def _vlc_startup_state(adb_path: str, serial: str) -> dict[str, bool]:
+    preferences = _adb(adb_path, serial, "shell", "su", "0", "cat",
+                       "/data/data/org.videolan.vlc/shared_prefs/org.videolan.vlc_preferences.xml")
+    onboarding = any(node.get("name") == "app_onboarding_done" and node.get("value") == "true"
+                     for node in ET.fromstring(preferences))
+    permission = _adb(adb_path, serial, "shell", "appops", "get", "org.videolan.vlc", "MANAGE_EXTERNAL_STORAGE")
+    return {"onboardingCompleted": onboarding, "allFilesAuthorized": "MANAGE_EXTERNAL_STORAGE: allow" in permission}
+
+
+def _complete_vlc_setup(env: Any, project: Path, target: dict[str, Any], adb_path: str) -> dict[str, Any]:
+    # The official setup may miss the uppercase SKIP control. Complete the real
+    # UI through frozen AMKernel before saving the official application snapshot.
+    with RecoveryRuntime(project, timeout_seconds=120) as runtime:
+        creation = runtime.execute(
+            "from appium import webdriver\n"
+            "from appium.options.android import UiAutomator2Options\n"
+            "from appium.webdriver.common.appiumby import AppiumBy\n"
+            "from selenium.webdriver.support.ui import WebDriverWait\n"
+            f"driver = webdriver.Remote({target['appiumUrl']!r}, options=UiAutomator2Options().load_capabilities("
+            f"{{'platformName':'Android','appium:automationName':'UiAutomator2','appium:udid':{target['serial']!r},"
+            "'appium:noReset':True,'appium:autoLaunch':False,'appium:skipUnlock':True,'appium:newCommandTimeout':300}))\n"
+            "{'sessionId':driver.session_id,'newCommandTimeout':driver.capabilities.get('newCommandTimeout')}",
+            timeout_seconds=90,
+        )
+        proof = runtime.execute('''
+proof = {'sessionId': driver.session_id, 'mainActivityObserved': False, 'quitReturned': False}
+try:
+    driver.activate_app('org.videolan.vlc')
+    wait = WebDriverWait(driver, 10)
+    wait.until(lambda d: d.current_activity in {'.gui.MainActivity', '.gui.onboarding.OnboardingActivity'})
+    if driver.current_activity == '.gui.onboarding.OnboardingActivity':
+        wait.until(lambda d: d.find_element(AppiumBy.ID, 'org.videolan.vlc:id/skip_button')).click()
+        wait.until(lambda d: d.current_activity == '.gui.MainActivity')
+    buttons = driver.find_elements(AppiumBy.ID, 'org.videolan.vlc:id/grantPermissionButton')
+    if buttons:
+        buttons[0].click()
+        wait.until(lambda d: d.find_element(AppiumBy.ID, 'android:id/button1')).click()
+        wait.until(lambda d: d.current_package == 'com.android.settings')
+        switch = wait.until(lambda d: d.find_element(AppiumBy.ID, 'android:id/switch_widget'))
+        if switch.get_attribute('checked') == 'false':
+            switch.click()
+        wait.until(lambda d: d.find_element(AppiumBy.ID, 'android:id/switch_widget').get_attribute('checked') == 'true')
+        driver.back()
+    wait.until(lambda d: d.current_package == 'org.videolan.vlc' and d.current_activity == '.gui.MainActivity')
+    proof['mainActivityObserved'] = True
+except Exception as exc:
+    proof['error'] = {'type': type(exc).__name__, 'message': str(exc)[:1000]}
+finally:
+    try:
+        driver.terminate_app('org.videolan.vlc')
+    finally:
+        driver.quit()
+        proof['quitReturned'] = True
+proof
+''', timeout_seconds=60)
+    if creation.get("newCommandTimeout") != 300 or proof.get("sessionId") != creation.get("sessionId"):
+        raise RuntimeError("VLC qualification session identity or negotiated timeout mismatch")
+    if proof.get("mainActivityObserved") is not True or proof.get("quitReturned") is not True:
+        raise RuntimeError(f"VLC first-launch UI qualification failed: {proof}")
+    if _appium_session_hashes(target["appiumUrl"], adb_path, target["serial"]):
+        raise RuntimeError("VLC qualification session absence is unproven")
+    state = _vlc_startup_state(adb_path, target["serial"])
+    if not all(state.values()):
+        raise RuntimeError(f"VLC first-launch or file access is not ready: {state}")
+    app_snapshot.save_snapshot("vlc", env.controller)
+    return {**proof, **state, "snapshotSavedAfterUi": True}
+
+
 def _required_app_names(manifest: dict[str, Any]) -> list[str]:
     return sorted(
         {str(app) for task in manifest["tasks"] for app in task.get("apps", [])}
@@ -231,6 +315,11 @@ def attest_device(readiness: dict[str, Any], adb_path: str) -> dict[str, Any]:
             mismatches[f"directory:{observed['app']}"] = {
                 "expected": expected, "observed": observed,
             }
+    if any(app["name"] == "vlc" for app in readiness.get("apps", [])):
+        observed_vlc = _vlc_startup_state(adb_path, serial)
+        expected_vlc = readiness.get("vlcStartup", {})
+        if not all(observed_vlc.values()) or any(expected_vlc.get(key) is not True for key in observed_vlc):
+            mismatches["startup:vlc"] = {"expected": expected_vlc, "observed": observed_vlc}
     result = {
         "device": device,
         "appiumBuild": observed_build,
@@ -243,7 +332,9 @@ def attest_device(readiness: dict[str, Any], adb_path: str) -> dict[str, Any]:
     result["identitySha256"] = _sha256(result)
     return result
 
-def prepare_device(manifest_path: Path, output_path: Path, adb_path: str) -> dict[str, Any]:
+def prepare_device(
+    manifest_path: Path, output_path: Path, adb_path: str, project: Path | None = None,
+) -> dict[str, Any]:
     manifest = json.loads(manifest_path.read_text())
     protocol = manifest.get("protocol", {})
     if manifest.get("schemaVersion") != 2:
@@ -258,7 +349,7 @@ def prepare_device(manifest_path: Path, output_path: Path, adb_path: str) -> dic
     serial = target["serial"]
     started = time.time()
     report: dict[str, Any] = {
-        "schemaVersion": 1,
+        "schemaVersion": 2,
         "campaignId": manifest["campaignId"],
         "manifestSha256": _sha256(manifest),
         "startedAtUnix": started,
@@ -268,11 +359,21 @@ def prepare_device(manifest_path: Path, output_path: Path, adb_path: str) -> dic
         "apps": [],
         "databases": [],
         "directories": [],
+        "adbOutputIsolated": False,
+        "snapshotRestores": [],
         "qualified": False,
         "error": None,
     }
     env = None
+    environment_creation_started = False
     try:
+        artifacts = artifact_identity((project or Path.cwd()).resolve())
+        if artifacts != protocol.get("environmentArtifacts"):
+            raise ValueError("local environment artifacts do not match manifest")
+        report["environmentArtifacts"] = artifacts
+        report["hostMedia"] = probe_host_media()
+        if report["hostMedia"]["encoder"] != protocol["runtimeIdentity"]["mediaEncoder"]:
+            raise ValueError("media encoder identity differs from frozen runtime")
         report["appium"] = _request_json(target["appiumUrl"].rstrip("/") + "/status")
         appium_sessions = _appium_session_hashes(
             target["appiumUrl"], adb_path, serial
@@ -306,17 +407,40 @@ def prepare_device(manifest_path: Path, output_path: Path, adb_path: str) -> dic
             if (activity := adb_utils.get_adb_activity(app_name))
         }
 
-        env = env_launcher.load_and_setup_env(
+        environment_creation_started = True
+        env = load_environment(
+            artifact_root=(project or Path.cwd()).resolve(),
             console_port=target["consolePort"],
-            emulator_setup=False,
             freeze_datetime=False,
             adb_path=adb_path,
             grpc_port=target["grpcPort"],
         )
+        marker = b"FSQ_ADB_STDOUT_SENTINEL"
+        captured = adb_utils.issue_generic_request(
+            ["shell", "printf", marker.decode("ascii")], env.controller
+        ).generic.output
+        if captured != marker:
+            raise RuntimeError(f"ADB capture contains non-command output: {captured[:1024]!r}")
+        report["adbOutputIsolated"] = True
         with _launcher_compatible_setup(launcher_activities) as launcher_replacements:
-            device_setup.setup_apps(env, tuple(app_classes))
+            with local_app_data((project or Path.cwd()).resolve()):
+                # Qualification resets official app state in the disposable
+                # layer, but never reinstalls the frozen application artifacts.
+                installed = device_setup.get_installed_packages(env)
+                missing = [app.package_name() for app in app_classes if app.package_name() not in installed]
+                if missing:
+                    raise RuntimeError(f"Frozen installed apps are missing; installation is not authorized: {missing}")
+                adb_utils.press_home_button(env.controller)
+                adb_utils.set_root_if_needed(env.controller)
+                for app in app_classes:
+                    device_setup.setup_app(app, env)
+                report["applicationInstallation"] = "preserved_existing_no_reinstall"
             if "audio recorder" in app_names:
                 _complete_audio_recorder_setup(env, adb_path, serial)
+            if "vlc" in app_names:
+                report["vlcStartup"] = _complete_vlc_setup(
+                    env, (project or Path.cwd()).resolve(), target, adb_path,
+                )
         report["launcherCompatibility"] = {
             "mode": "main_launcher_intent_replaces_monkey",
             "packages": sorted(set(launcher_replacements)),
@@ -350,6 +474,13 @@ def prepare_device(manifest_path: Path, output_path: Path, adb_path: str) -> dic
             )
             _adb(adb_path, serial, "shell", "am", "force-stop", package)
 
+        with strict_snapshot_restores():
+            for app_name in app_names:
+                app_snapshot.restore_snapshot(app_name, env.controller)
+                report["snapshotRestores"].append({"app": app_name, "status": "restored"})
+        if "vlc" in app_names and not all(_vlc_startup_state(adb_path, serial).values()):
+            raise RuntimeError("Restored VLC snapshot lost first-launch readiness or authorized file access")
+
         report["directories"] = _directory_readiness(adb_path, serial, set(app_names))
         missing_directories = [row["app"] for row in report["directories"] if not row["present"]]
         if missing_directories:
@@ -372,7 +503,7 @@ def prepare_device(manifest_path: Path, output_path: Path, adb_path: str) -> dic
     finally:
         if env is not None:
             try:
-                env.close()
+                close_environment(env)
             except Exception as exc:
                 report["environmentClose"] = f"failed:{type(exc).__name__}"
                 report["qualified"] = False
@@ -384,7 +515,7 @@ def prepare_device(manifest_path: Path, output_path: Path, adb_path: str) -> dic
             else:
                 report["environmentClose"] = "closed"
         else:
-            report["environmentClose"] = "not_created"
+            report["environmentClose"] = "unknown" if environment_creation_started else "not_created"
         report["completedAtUnix"] = time.time()
         report["durationSeconds"] = round(report["completedAtUnix"] - started, 3)
         report["identitySha256"] = _sha256(report)
@@ -396,13 +527,14 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Prepare and qualify one AndroidWorld campaign target")
     parser.add_argument("--manifest", required=True)
     parser.add_argument("--output", required=True)
+    parser.add_argument("--project", default=".")
     parser.add_argument("--adb-path", required=True)
     return parser
 
 
 def main() -> None:
     args = build_parser().parse_args()
-    report = prepare_device(Path(args.manifest), Path(args.output), args.adb_path)
+    report = prepare_device(Path(args.manifest), Path(args.output), args.adb_path, Path(args.project))
     raise SystemExit(0 if report["qualified"] else 1)
 
 

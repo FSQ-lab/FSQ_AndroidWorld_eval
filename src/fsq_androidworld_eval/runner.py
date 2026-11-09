@@ -29,10 +29,43 @@ alone never establishes Appium idle timeout. No recovery rewrites old episodes.
 
 Business/explicit OMP deadline attempts retain evaluator reward. Unknown/forced
 termination is invalid_agent, with any returned reward still retained separately.
-An evaluator that never returns leaves reward null. Any unproven Agent cleanup,
-including successful Harness recovery, halts before the next task. Revision 8
-requires fresh qualification, all 12 calibration tasks, then a new 116-task run;
-the aborted revision 7 campaign cannot be resumed or spliced into this protocol.
+An evaluator that never returns leaves reward null. Revision 10 required a halt
+for any unproven Agent cleanup, including successful Harness recovery. Revision
+12 preserves those outcome/cleanup classifications but lets the new campaign
+scheduler continue only after fresh readiness, proven session absence and healthy
+core services. Unknown cleanup still halts; prior aborted runs remain immutable.
+
+Revision 9 disables gRPC fork callbacks before AndroidWorld is imported: ADB
+children immediately exec and must not emit parent-runtime diagnostics into
+AndroidEnv's merged command output. Qualification proves clean ADB capture and
+successfully restores every required official app snapshot without running tasks.
+Readiness schema 2 binds those proofs to the complete frozen app set. No warning
+filtering, fabricated app data, or edits to AndroidWorld/AMKernel are involved.
+
+Revision 10 records controlled step exhaustion as step_budget only after the
+Harness closes the action gate and OMP emits a terminal assistant stop. It is
+neither Agent completion nor a wall-clock timeout. Scoring additionally requires
+the entire reference step budget to be consumed; Agent quit remains mandatory.
+
+Revision 11 removes environment-time helper downloads: preparation provisions a
+pinned APK, manifests/readiness bind its identity, and every environment uses
+verified local bytes without a network fallback. Environment creation belongs
+to infrastructure, not task initialization. Snapshot restore errors are fatal;
+partial task initialization still receives a teardown attempt. Controller close
+errors propagate instead of being swallowed by the upstream AsyncEnv wrapper.
+Formal campaigns require a same-runtime, all-116-task non-scoring rehearsal.
+
+Revision 12 inherits the exact frozen 116 task specs under a distinct campaign
+continuation identity. It records every actual launch and terminal boundary,
+requires verified recovery after abnormal terminals, and pauses without replay
+when cleanup or the environment is unknown. The episode protocol, Agent prompt,
+model, actions, step/time budgets and official evaluator remain unchanged.
+
+Revision 13 separates exhausted UI permits from bounded answer delivery. The
+first business final is receipted before cleanup and archived with its original
+JSON types. Finalization lasts at most 120 seconds within the existing business
+deadline; cleanup cannot submit or replace answers. Invalid answer formats remain
+official failed attempts, with explicit diagnostics rather than type coercion.
 
 The Appium action representation and continuous OMP reasoning are custom. Matching
 the reference allocator/runner does not establish action-space equivalence or
@@ -57,7 +90,9 @@ from PIL import Image
 from urllib import error as url_error, request as url_request
 
 from android_world import episode_runner, registry, suite_utils
-from android_world.env import env_launcher
+from fsq_androidworld_eval.environment import (
+    artifact_identity, close_environment, load_environment, restore_shared_assets, strict_snapshot_restores,
+)
 
 from fsq_androidworld_eval.appium_proxy import AppiumAuditProxy
 from fsq_androidworld_eval.action_budget import ActionGate, STEP_BUDGET_PROTOCOL
@@ -66,11 +101,12 @@ from fsq_androidworld_eval.lifecycle import (
     EpisodeDeadlines, TIME_BUDGET_PROTOCOL, episode_time_budget,
 )
 from fsq_androidworld_eval.mcp_runtime import RecoveryRuntime
+from fsq_androidworld_eval.submission import ANSWER_SUBMISSION_PROTOCOL, parse_submission
 from android_world.task_evals.information_retrieval import information_retrieval
 from android_world.env.setup_device import setup as device_setup
 ANDROID_WORLD_REVISION = "55ddaf5edc6f6c25673aed343907d5b9dca66f84"
 DEFAULT_ADB = Path.home() / "Library/Android/sdk/platform-tools/adb"
-HARNESS_REVISION = 8
+HARNESS_REVISION = 13
 PYTHON_EXEC_CALL_ADVISORY = 30
 MCP_REQUEST_TIMEOUT_MS = 120_000
 SESSION_CREATION_TIMEOUT_SECONDS = 90
@@ -98,11 +134,12 @@ The exact task goal is only the text between those markers. The runtime facts be
 
 The evaluator already initialized the task. Do not install or update software, start or stop Appium, reset ADB, create another emulator, alter project files, or use host automation outside python_exec. Use the official Appium Python Client with UiAutomator2. Create at most one Appium session, retain its driver across python_exec calls, use explicit waits and bounded observations, and stop once the requested state is visibly established. Aim to stay within {python_exec_call_advisory} python_exec calls; this advisory is efficiency telemetry and never changes AndroidWorld reward. Do not undo the requested final state.
 
-The official reference budget is {max_steps} steps. Each supported Appium UI interaction consumes one step, including failed attempts; multiple interactions in one Python cell still consume separate steps. Observations and session cleanup remain available after exhaustion. Connect with noReset=True, autoLaunch=False, skipUnlock=True and no app installation/reset capabilities. Use native Appium interactions, not shell, arbitrary scripts, batched gestures, or app-data APIs. Once the proxy reports budget exhaustion, perform no more UI interactions; reconcile with read-only observations, quit, and return your actual outcome. This Appium action representation is custom; it does not imply official leaderboard acceptance.
+The official reference budget is {max_steps} steps. Each supported Appium UI interaction consumes one step, including failed attempts; multiple interactions in one Python cell still consume separate steps. Observations and session cleanup remain available after exhaustion. Connect with noReset=True, autoLaunch=False, skipUnlock=True and no app installation/reset capabilities. Use native Appium interactions, not shell, arbitrary scripts, batched gestures, or app-data APIs. Once the proxy reports budget exhaustion, perform no more UI interactions or session creation. Deliver the current admitted call's result and submit your business answer within the Harness finalization window: at most 120 seconds after action closure, never beyond the original business deadline. Read-only observations remain available; do not guess missing information or retry mutations. This Appium action representation is custom; it does not imply official leaderboard acceptance.
+Set appium:newCommandTimeout=300 (seconds) explicitly in the session creation capabilities, and return the negotiated newCommandTimeout value from driver.capabilities in the session-creation cell result. This is the Appium idle-command timeout, not the python_exec timeout or the task business/cleanup deadline; all existing task budgets and cleanup requirements remain unchanged.
 
 Session startup can exceed the default 30-second execution deadline. In the python_exec request that creates the session, explicitly set timeout={session_creation_timeout_seconds}; create the driver and capture its session ID in that cell before UI actions. The isolated MCP transport deadline is {mcp_request_timeout_ms} milliseconds, distinct from the active-cell timeout. Neither setting increases the task step limit or total Agent timeout. Do not retry session creation after an uncertain result: reconcile the owned session instead.
 
-Finish with a dedicated python_exec cleanup cell: retain the owned session ID, call driver.quit(), and make the cell's final expression exactly {{"ownedSessionId": session_id, "quitReturned": True}} only after quit returns. If quit fails, let the cell fail; never claim cleanup from a local variable or prose. Return one compact JSON object with taskOutcome, sessionCleanup, and evidence, but do not repeat the session ID in that final response. A textual success claim is not the verdict; AndroidWorld evaluates device state independently, and only the observed cleanup cell proves session cleanup."""
+Submit one compact final JSON object with taskOutcome as a nonempty STRING, for example {{"taskOutcome":"answer text"}}. Numeric answers must also be encoded as strings, never JSON numbers or nested objects. Submit the business answer before the Harness requests cleanup; the first business final is the only submission and cannot be overwritten by cleanup. The Harness then requests a separate cleanup turn using the same Runtime. In that turn, use a dedicated python_exec cell: retain the owned session ID, call driver.quit(), and make the cell's final expression exactly {{"ownedSessionId": session_id, "quitReturned": True}} only after quit returns. If quit fails, let the cell fail; never claim cleanup from a local variable or prose. Do not repeat an already successful quit. Finish with a cleanup report only, without taskOutcome or the session ID. A textual success claim is not the verdict; AndroidWorld evaluates device state or the submitted IR answer independently, and only the observed cleanup cell proves session cleanup."""
 PROMPT_TEMPLATE_SHA256 = hashlib.sha256(PROMPT_TEMPLATE.encode()).hexdigest()
 
 
@@ -138,16 +175,6 @@ def _is_json_native(value: Any) -> bool:
     return False
 
 
-def _task_outcome(final_text: Any) -> str | None:
-    if not isinstance(final_text, str):
-        return None
-    try:
-        value = json.loads(final_text)
-    except json.JSONDecodeError:
-        return None
-    if not isinstance(value, dict) or not isinstance(value.get("taskOutcome"), str):
-        return None
-    return value["taskOutcome"].strip() or None
 
 
 def _json_bytes(value: object) -> bytes:
@@ -525,6 +552,7 @@ def run(args: argparse.Namespace) -> int:
             "maxAppiumSessions": 1,
             "readinessIdentitySha256": args.expected_readiness_sha256,
             "stepBudget": STEP_BUDGET_PROTOCOL,
+            "answerSubmission": ANSWER_SUBMISSION_PROTOCOL,
         },
         "stages": [],
         "timeBudget": time_budget,
@@ -538,7 +566,8 @@ def run(args: argparse.Namespace) -> int:
     }
     env = None
     task = None
-    task_initialized = False
+    task_initialization_started = False
+    environment_creation_started = False
     appium_baseline: list[str] | None = None
     stage = "infrastructure"
     stage_entry: dict[str, Any] | None = None
@@ -567,6 +596,10 @@ def run(args: argparse.Namespace) -> int:
             raise ValueError("device readiness report identity is invalid")
         if readiness.get("identitySha256") != args.expected_readiness_sha256:
             raise ValueError("device readiness identity does not match campaign")
+        artifacts = artifact_identity(Path(args.artifact_root))
+        if artifacts != readiness.get("environmentArtifacts"):
+            raise ValueError("local environment artifacts do not match readiness")
+        record["protocol"]["environmentArtifacts"] = artifacts
         _request_json(args.appium_url.rstrip("/") + "/status")
         appium_baseline = _appium_session_hashes(
             args.appium_url, args.adb_path, args.device_serial
@@ -582,12 +615,16 @@ def run(args: argparse.Namespace) -> int:
         max_steps = suite_utils._allocate_step_budget(task.complexity)
         if max_steps <= 0 or max_steps != args.expected_max_steps:
             raise ValueError("task step budget does not match frozen manifest")
+        # Official initialization can reword dates in task.params. Provenance
+        # records the frozen input, while the live task keeps official semantics.
+        frozen_params = _json_safe(task.params)
         required_apps = _required_apps(task)
 
-        enter_stage("task_initialization")
-        env = env_launcher.load_and_setup_env(
+        enter_stage("infrastructure")
+        environment_creation_started = True
+        env = load_environment(
+            artifact_root=Path(args.artifact_root),
             console_port=args.console_port,
-            emulator_setup=False,
             freeze_datetime=True,
             adb_path=args.adb_path,
             grpc_port=args.grpc_port,
@@ -598,11 +635,14 @@ def run(args: argparse.Namespace) -> int:
             "apps": [app.app_name for app in required_apps],
         }
         env.reset(go_home=True)
-        task.initialize_task(env)
-        task_initialized = True
+        record["preparation"]["sharedAssets"] = restore_shared_assets(env, Path(args.artifact_root), task.app_names)
+        enter_stage("task_initialization")
+        task_initialization_started = True
+        with strict_snapshot_restores():
+            task.initialize_task(env)
         record["task"] = {
             "name": task.name,
-            "params": _json_safe(task.params),
+            "params": frozen_params,
             "paramsSha256": params_sha256,
             "goal": task.goal,
             "complexity": task.complexity,
@@ -706,14 +746,24 @@ def run(args: argparse.Namespace) -> int:
             "exceededAdvisory": python_exec_calls > args.python_exec_call_advisory,
             "affectsOfficialReward": False,
         }
-        if isinstance(task, information_retrieval.InformationRetrieval):
-            answer = _task_outcome(normalized["finalText"])
-            if answer is not None:
-                env.interaction_cache = answer
-            record["agentAnswer"] = {
-                "validContract": answer is not None,
-                "sha256": hashlib.sha256(answer.encode()).hexdigest() if answer else None,
-            }
+        submission_path = output_dir / "raw-private" / "business-submission.json"
+        submission_evidence = record["agent"]["answerSubmission"]
+        submission_bytes = submission_path.read_bytes()
+        if hashlib.sha256(submission_bytes).hexdigest() != submission_evidence["sha256"]:
+            raise ValueError("business submission evidence changed")
+        archived_submission = json.loads(submission_bytes)
+        submission = parse_submission(archived_submission["rawText"])
+        if submission != archived_submission:
+            raise ValueError("business submission diagnostics do not match raw input")
+        record["agentAnswer"] = {
+            "validContract": submission["validContract"],
+            "reason": submission["reason"],
+            "taskOutcomeType": submission["taskOutcomeType"],
+            "sha256": submission["sha256"],
+            "rawSubmission": {"path": submission_evidence["path"], "sha256": submission_evidence["sha256"]},
+        }
+        if isinstance(task, information_retrieval.InformationRetrieval) and submission["validContract"]:
+            env.interaction_cache = submission["answer"]
 
         enter_stage("evaluator")
         evaluator_started = time.time()
@@ -748,9 +798,10 @@ def run(args: argparse.Namespace) -> int:
         }.get(stage, "invalid_agent")
     finally:
         enter_stage("task_teardown")
-        if task_initialized and task is not None and env is not None:
+        if task_initialization_started and task is not None and env is not None:
             try:
-                task.tear_down(env)
+                with strict_snapshot_restores():
+                    task.tear_down(env)
                 record["cleanup"]["taskTearDown"] = "completed"
             except Exception as exc:
                 record["cleanup"]["taskTearDown"] = f"failed:{type(exc).__name__}"
@@ -759,12 +810,12 @@ def run(args: argparse.Namespace) -> int:
         enter_stage("environment_close")
         if env is not None:
             try:
-                env.close()
+                close_environment(env)
                 record["cleanup"]["environment"] = "closed"
             except Exception as exc:
                 record["cleanup"]["environment"] = f"failed:{type(exc).__name__}"
         else:
-            record["cleanup"]["environment"] = "not_created"
+            record["cleanup"]["environment"] = "unknown" if environment_creation_started else "not_created"
         if appium_baseline is not None:
             try:
                 remaining_sessions = _appium_session_hashes(
@@ -801,6 +852,7 @@ def run(args: argparse.Namespace) -> int:
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Run one AndroidWorld task through OMP and AMKernel")
     parser.add_argument("--project", required=True)
+    parser.add_argument("--artifact-root", required=True, help="project containing verified frozen environment artifacts")
     parser.add_argument("--output-dir", required=True)
     parser.add_argument("--task", required=True)
     parser.add_argument("--params", help="fixed task parameter JSON")
