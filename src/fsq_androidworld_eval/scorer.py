@@ -1,8 +1,10 @@
-"""Read frozen r12/r13 scores unchanged; r14 binds explicit coexistence evidence.
+"""Read frozen r12/r13/r14 scores unchanged; r15 binds task-clock context.
 
-Revision 14 alone permits replacing the named accessibility-forwarder artifact;
+Revisions 14 and 15 retain the explicitly named accessibility-forwarder cutover;
 all task specs, other environment assets and non-Harness runtime bytes stay frozen.
 Request defaults never substitute for confirmed returned capability evidence.
+Revision 15 also requires the initialized public reference-clock protocol/context,
+while retaining bounded business receipts and all coexistence evidence gates.
 """
 
 from __future__ import annotations
@@ -20,6 +22,7 @@ from fsq_androidworld_eval.appium_proxy import SESSION_ACCESSIBILITY_CONFIG, ses
 from fsq_androidworld_eval.lifecycle import TIME_BUDGET_PROTOCOL, episode_time_budget
 from fsq_androidworld_eval.omp_supervisor import termination_reason
 from fsq_androidworld_eval.submission import ANSWER_SUBMISSION_PROTOCOL, parse_submission
+from fsq_androidworld_eval.task_time import TASK_TIME_CONTEXT_PROTOCOL, task_time_provenance_valid
 
 
 TERMINATION_POLICY = {
@@ -76,7 +79,7 @@ def time_budget_valid(
 
 def _answer_submission_valid(record: dict[str, Any], protocol: dict[str, Any]) -> bool:
     """Revision 13 onward requires a bounded business receipt, never cleanup text."""
-    if protocol.get("harnessRevision") not in {13, 14}:
+    if protocol.get("harnessRevision") not in {13, 14, 15}:
         return "answerSubmission" not in protocol and "answerSubmission" not in record.get("protocol", {})
     agent = record.get("agent") or {}
     evidence = agent.get("answerSubmission")
@@ -158,7 +161,7 @@ def _submission_artifacts_valid(record: dict[str, Any], result_path: Path) -> bo
 
 
 def _session_accessibility_valid(record: dict[str, Any], protocol: dict[str, Any]) -> bool:
-    if protocol.get("harnessRevision") != 14:
+    if protocol.get("harnessRevision") not in {14, 15}:
         return True
     return (
         protocol.get("sessionAccessibilityConfig") == SESSION_ACCESSIBILITY_CONFIG
@@ -215,6 +218,8 @@ def record_classification(
     if reward is None:
         return "invalid_evaluator"
     if protocol is not None and not _session_accessibility_valid(record, protocol):
+        return "invalid_protocol"
+    if protocol is not None and not task_time_provenance_valid(record, protocol):
         return "invalid_protocol"
     if _uses_time_budget(record, protocol):
         if task is not None and protocol is not None and not time_budget_valid(record, task, protocol):
@@ -373,7 +378,7 @@ def _calibration_gate_satisfied(manifest: dict[str, Any], campaign_dir: Path) ->
             paths.extend(evidence_dir / name for name in ("checkpoint.jsonl", "run-metadata.json", "device-readiness.json"))
             paths.extend((evidence_dir / "recoveries").glob("*.json"))
             paths.extend((evidence_dir / "episodes").glob("*/attempt-*/result.json"))
-            if calibration_manifest.get("protocol", {}).get("harnessRevision") in {13, 14}:
+            if calibration_manifest.get("protocol", {}).get("harnessRevision") in {13, 14, 15}:
                 for name in ("business-submission.json", "agent-events.jsonl"):
                     paths.extend((evidence_dir / "episodes").glob(f"*/attempt-*/raw-private/{name}"))
             paths = list(set(paths))
@@ -538,8 +543,9 @@ def _result_provenance_valid(record: dict[str, Any], task: dict[str, Any], manif
             "harnessRevision", "promptTemplateSha256", "mcpRequestTimeoutMs",
             "sessionCreationTimeoutSeconds", "pythonExecCallAdvisory", "stepBudget", "timeBudget",
         ))
-        and (protocol.get("harnessRevision") != 14
+        and (protocol.get("harnessRevision") not in {14, 15}
              or observed.get("sessionAccessibilityConfig") == protocol.get("sessionAccessibilityConfig") == SESSION_ACCESSIBILITY_CONFIG)
+        and task_time_provenance_valid(record, protocol)
     ):
         return False
     # A pre-agent initialization failure may have only the original name/seed.
@@ -588,7 +594,7 @@ def continuation_audit(manifest: dict[str, Any], campaign_dir: Path) -> dict[str
     Legacy version 1 keeps its original identity and evidence semantics.
     """
     protocol = manifest.get("protocol", {})
-    if "campaignContinuation" not in protocol and protocol.get("harnessRevision") not in {12, 13, 14}:
+    if "campaignContinuation" not in protocol and protocol.get("harnessRevision") not in {12, 13, 14, 15}:
         return {}
     errors: list[str] = []
     tasks = manifest.get("tasks", [])
@@ -621,15 +627,17 @@ def continuation_audit(manifest: dict[str, Any], campaign_dir: Path) -> dict[str
     continuation_version = (protocol.get("campaignContinuation") or {}).get("version")
     expected_continuation = {"version": continuation_version, "policy": CONTINUATION_PROTOCOL["policy"]}
     if (type(continuation_version) is not int or continuation_version not in {1, 2}
-            or protocol.get("campaignContinuation") != expected_continuation or protocol.get("harnessRevision") not in {12, 13, 14}):
+            or protocol.get("campaignContinuation") != expected_continuation or protocol.get("harnessRevision") not in {12, 13, 14, 15}):
         problem("continuation_protocol_mismatch")
-    if protocol.get("harnessRevision") in {13, 14}:
+    if protocol.get("harnessRevision") in {13, 14, 15}:
         if continuation_version != 2 or protocol.get("answerSubmission") != ANSWER_SUBMISSION_PROTOCOL:
             problem("answer_submission_protocol_mismatch")
     elif "answerSubmission" in protocol:
         problem("answer_submission_protocol_mismatch")
-    if protocol.get("harnessRevision") == 14 and protocol.get("sessionAccessibilityConfig") != SESSION_ACCESSIBILITY_CONFIG:
+    if protocol.get("harnessRevision") in {14, 15} and protocol.get("sessionAccessibilityConfig") != SESSION_ACCESSIBILITY_CONFIG:
         problem("session_accessibility_config_mismatch")
+    if protocol.get("harnessRevision") == 15 and protocol.get("taskTimeContext") != TASK_TIME_CONTEXT_PROTOCOL:
+        problem("task_time_context_protocol_mismatch")
     inherited = manifest.get("inheritedManifest") or {}
     source_path = Path(inherited.get("path", ""))
     source = load(source_path)
@@ -665,9 +673,9 @@ def continuation_audit(manifest: dict[str, Any], campaign_dir: Path) -> dict[str
     if manifest.get("kind") == "calibration" and len(tasks) != 12:
         problem("calibration_task_count_mismatch")
     permitted_changes = {"harnessRevision", "runtimeIdentity"}
-    if protocol.get("harnessRevision") in {13, 14}:
+    if protocol.get("harnessRevision") in {13, 14, 15}:
         permitted_changes.add("promptTemplateSha256")
-    if protocol.get("harnessRevision") == 14:
+    if protocol.get("harnessRevision") in {14, 15}:
         permitted_changes.add("environmentArtifacts")
         if not _inherited_environment_valid(source.get("protocol", {}).get("environmentArtifacts"), protocol.get("environmentArtifacts")):
             problem("frozen_environment_artifacts_mismatch")
@@ -709,7 +717,7 @@ def continuation_audit(manifest: dict[str, Any], campaign_dir: Path) -> dict[str
         and readiness.get("qualified") is True
         and readiness.get("environmentClose") == "closed"
         and readiness.get("environmentArtifacts") == protocol.get("environmentArtifacts")
-        and (protocol.get("harnessRevision") != 14
+        and (protocol.get("harnessRevision") not in {14, 15}
              or readiness.get("sessionAccessibilityConfig") == protocol.get("sessionAccessibilityConfig") == SESSION_ACCESSIBILITY_CONFIG)
         and _attestation_valid(metadata.get("liveTargetAttestation"))
     ):
@@ -806,7 +814,7 @@ def continuation_audit(manifest: dict[str, Any], campaign_dir: Path) -> dict[str
                 problem(f"terminal_result_semantics_mismatch:{sequence}")
             if not _result_provenance_valid(record, task, manifest, readiness_identity):
                 problem(f"result_provenance_mismatch:{sequence}")
-            if (protocol.get("harnessRevision") in {13, 14} and record.get("agent") is not None
+            if (protocol.get("harnessRevision") in {13, 14, 15} and record.get("agent") is not None
                     and (result_path is None or not _submission_artifacts_valid(record, result_path))):
                 problem(f"answer_submission_artifact_mismatch:{sequence}")
             if record.get("agent") is not None:

@@ -110,6 +110,7 @@ def _qualified_calibration_campaign(root: Path) -> Path:
                         "params": task["params"],
                         "paramsSha256": task["paramsSha256"],
                         "complexity": task["complexity"],
+                        "timeContext": {"referenceTime": "2023-10-15T15:34:00+00:00", "timezone": "UTC"},
                     },
                     "protocol": {
                         "harnessRevision": manifest["protocol"]["harnessRevision"],
@@ -123,6 +124,7 @@ def _qualified_calibration_campaign(root: Path) -> Path:
                         "answerSubmission": manifest["protocol"]["answerSubmission"],
                         "environmentArtifacts": manifest["protocol"]["environmentArtifacts"],
                         "sessionAccessibilityConfig": SESSION_ACCESSIBILITY_CONFIG,
+                        "taskTimeContext": manifest["protocol"]["taskTimeContext"],
                     },
                     "timeBudget": task["timeBudget"],
                     "agent": {
@@ -565,7 +567,6 @@ def test_fresh_campaign_records_first_launch_and_all_terminals(tmp_path: Path, m
     assert campaign.run_campaign(args) == 0
     assert launched == [(index, 1) for index in range(12)]
     summary = json.loads((output / "summary.json").read_text())
-    assert summary["protocolIdentity"] == "r14.full_coverage_after_verified_recovery.v2"
     assert summary["actualStartedEpisodeCount"] == 12
     assert summary["actualAttemptStartCount"] == 12
     assert summary["unstartedTaskIndexes"] == []

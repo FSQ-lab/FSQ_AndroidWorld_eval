@@ -1,3 +1,4 @@
+from datetime import datetime, timezone
 import hashlib
 import subprocess
 from urllib import error as url_error
@@ -134,6 +135,7 @@ def test_agent_prompt_separates_goal_from_runtime_facts() -> None:
         "http://127.0.0.1:4723",
         "emulator-5554",
         max_steps=10,
+        task_time_context=runner.task_time_context(datetime(2023, 10, 15, 15, 34, tzinfo=timezone.utc)),
     )
 
     goal = prompt.split("BEGIN EXACT TASK GOAL\n", 1)[1].split(
@@ -212,8 +214,10 @@ def test_runner_preserves_frozen_parameters_when_official_initialization_mutates
         app_names = ()
         params = {"date": "October 24 2023", "nested": {"dates": ["October 17 2023"]}}
         goal = "Read events on October 24"
+        device_time = datetime(2023, 10, 15, 15, 34, tzinfo=timezone.utc)
 
         def initialize_task(self, env):
+            self.device_time = datetime(2024, 1, 1, 23, 55, tzinfo=timezone.utc)
             self.params["date"] = "October 24"
             self.params["nested"]["dates"][0] = "Tuesday"
 
@@ -255,5 +259,8 @@ def test_runner_preserves_frozen_parameters_when_official_initialization_mutates
     assert task.params["date"] == "October 24"
     assert record["task"]["params"] == expected
     assert runner._sha256(record["task"]["params"]) == record["task"]["paramsSha256"] == expected_hash
+    assert record["task"]["timeContext"] == {
+        "referenceTime": "2024-01-01T23:55:00+00:00", "timezone": "UTC",
+    }
     assert record["officialReward"] is None
     assert record["agent"] is None

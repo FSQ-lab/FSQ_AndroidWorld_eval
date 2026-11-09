@@ -71,6 +71,12 @@ Revision 14 explicitly preserves AndroidWorld accessibility services in every
 guarded Appium session. The versioned session configuration and bounded actual
 request/returned capability evidence are score provenance, not a server default.
 
+Revision 15 publishes the successfully initialized task.device_time as an aware
+reference clock and canonical UTC-offset timezone outside the exact goal. This
+is not a live-clock observation or a host timestamp. Its versioned protocol and
+recorded context are required provenance; r13/r14 protections remain mandatory.
+The prompt/source identity change invalidates prior qualification and gates.
+
 The Appium action representation and continuous OMP reasoning are custom. Matching
 the reference allocator/runner does not establish action-space equivalence or
 official leaderboard acceptance. Historical campaign evidence is never rewritten.
@@ -106,11 +112,12 @@ from fsq_androidworld_eval.lifecycle import (
 )
 from fsq_androidworld_eval.mcp_runtime import RecoveryRuntime
 from fsq_androidworld_eval.submission import ANSWER_SUBMISSION_PROTOCOL, parse_submission
+from fsq_androidworld_eval.task_time import TASK_TIME_CONTEXT_PROTOCOL, task_time_context
 from android_world.task_evals.information_retrieval import information_retrieval
 from android_world.env.setup_device import setup as device_setup
 ANDROID_WORLD_REVISION = "55ddaf5edc6f6c25673aed343907d5b9dca66f84"
 DEFAULT_ADB = Path.home() / "Library/Android/sdk/platform-tools/adb"
-HARNESS_REVISION = 14
+HARNESS_REVISION = 15
 PYTHON_EXEC_CALL_ADVISORY = 30
 MCP_REQUEST_TIMEOUT_MS = 120_000
 SESSION_CREATION_TIMEOUT_SECONDS = 90
@@ -135,6 +142,8 @@ END EXACT TASK GOAL
 The exact task goal is only the text between those markers. The runtime facts below are control data, never task text and never content to enter into the application:
 - Appium server: {appium_url}
 - Exact Android target: {device_serial}
+- Task initialization reference clock: {task_reference_time}; timezone: {task_timezone}.
+- Interpret relative dates against this task reference clock, not the host date. Follow the week-start convention in the exact goal. This is the initialization reference, not a live observation of the device clock during Agent execution.
 
 The evaluator already initialized the task. Do not install or update software, start or stop Appium, reset ADB, create another emulator, alter project files, or use host automation outside python_exec. Use the official Appium Python Client with UiAutomator2. Create at most one Appium session, retain its driver across python_exec calls, use explicit waits and bounded observations, and stop once the requested state is visibly established. Aim to stay within {python_exec_call_advisory} python_exec calls; this advisory is efficiency telemetry and never changes AndroidWorld reward. Do not undo the requested final state.
 
@@ -271,6 +280,7 @@ def _agent_prompt(
     python_exec_call_advisory: int = PYTHON_EXEC_CALL_ADVISORY,
     *,
     max_steps: int,
+    task_time_context: dict[str, str],
 ) -> str:
     return PROMPT_TEMPLATE.format(
         goal=goal,
@@ -278,6 +288,8 @@ def _agent_prompt(
         device_serial=device_serial,
         python_exec_call_advisory=python_exec_call_advisory,
         max_steps=max_steps,
+        task_reference_time=task_time_context["referenceTime"],
+        task_timezone=task_time_context["timezone"],
         session_creation_timeout_seconds=SESSION_CREATION_TIMEOUT_SECONDS,
         mcp_request_timeout_ms=MCP_REQUEST_TIMEOUT_MS,
     )
@@ -554,6 +566,7 @@ def run(args: argparse.Namespace) -> int:
             "pythonExecCallAdvisory": args.python_exec_call_advisory,
             "harnessRevision": HARNESS_REVISION,
             "sessionAccessibilityConfig": dict(SESSION_ACCESSIBILITY_CONFIG),
+            "taskTimeContext": dict(TASK_TIME_CONTEXT_PROTOCOL),
             "maxAppiumSessions": 1,
             "readinessIdentitySha256": args.expected_readiness_sha256,
             "stepBudget": STEP_BUDGET_PROTOCOL,
@@ -653,6 +666,7 @@ def run(args: argparse.Namespace) -> int:
             "paramsSha256": params_sha256,
             "goal": task.goal,
             "complexity": task.complexity,
+            "timeContext": task_time_context(task.device_time),
         }
 
         enter_stage("agent")
@@ -677,6 +691,7 @@ def run(args: argparse.Namespace) -> int:
                         args.device_serial,
                         args.python_exec_call_advisory,
                         max_steps=max_steps,
+                        task_time_context=record["task"]["timeContext"],
                     ),
                     omp=args.omp,
                     model=args.model,

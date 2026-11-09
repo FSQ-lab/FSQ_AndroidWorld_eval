@@ -562,7 +562,7 @@ def _r12_fixture(tmp_path: Path, monkeypatch: pytest.MonkeyPatch, kind: str = "c
             "skill://amkernel", "xd://mcp__amkernel_python_exec", "xd://report_issue",
         ]},
     })
-    if revision == 14:
+    if revision in {14, 15}:
         source_protocol["environmentArtifacts"] = {"schemaVersion": 1, "cacheDirectory": ".cache/androidworld-assets", "artifacts": [
             {"name": SESSION_ACCESSIBILITY_CONFIG["inheritedForwarderArtifactName"],
              "url": "https://frozen/forwarder.apk", "sha256": "a" * 64, "sizeBytes": 100},
@@ -584,15 +584,19 @@ def _r12_fixture(tmp_path: Path, monkeypatch: pytest.MonkeyPatch, kind: str = "c
         root.mkdir(parents=True)
         protocol = {**source_protocol, "harnessRevision": revision,
                     "campaignContinuation": {**scorer.CONTINUATION_PROTOCOL, "version": version}}
-        if revision in {13, 14}:
+        if revision in {13, 14, 15}:
             from fsq_androidworld_eval.submission import ANSWER_SUBMISSION_PROTOCOL
             protocol.update(answerSubmission=ANSWER_SUBMISSION_PROTOCOL, promptTemplateSha256="bounded-submission-prompt")
-        if revision == 14:
+        if revision in {14, 15}:
             protocol["sessionAccessibilityConfig"] = SESSION_ACCESSIBILITY_CONFIG
             protocol["environmentArtifacts"] = json.loads(json.dumps(source_protocol["environmentArtifacts"]))
             protocol["environmentArtifacts"]["artifacts"][0].update(
                 name=SESSION_ACCESSIBILITY_CONFIG["forwarderArtifactName"],
                 url="repo:assets/fsq-accessibility-forwarder-lifecycle-v1.apk", sha256="c" * 64, sizeBytes=123)
+        if revision == 15:
+            from fsq_androidworld_eval.task_time import TASK_TIME_CONTEXT_PROTOCOL
+
+            protocol["taskTimeContext"] = TASK_TIME_CONTEXT_PROTOCOL
         manifest = {
             "campaignId": f"r12-{campaign_kind}", "kind": campaign_kind, "protocol": protocol,
             "target": {"serial": "fixture-device"},
@@ -615,7 +619,7 @@ def _r12_fixture(tmp_path: Path, monkeypatch: pytest.MonkeyPatch, kind: str = "c
         identity = _digest(manifest)
         readiness = {"manifestSha256": identity, "qualified": True, "environmentClose": "closed",
                      "environmentArtifacts": protocol["environmentArtifacts"], "target": manifest["target"]}
-        if revision == 14:
+        if revision in {14, 15}:
             readiness["sessionAccessibilityConfig"] = SESSION_ACCESSIBILITY_CONFIG
         readiness["identitySha256"] = _digest(readiness)
         (root / "device-readiness.json").write_text(json.dumps(readiness))
@@ -641,10 +645,12 @@ def _r12_fixture(tmp_path: Path, monkeypatch: pytest.MonkeyPatch, kind: str = "c
             record["cleanup"]["agentSession"]["verificationStatus"] = "absent"
             record["agent"]["normalized"].update(provider="provider", model="model", parseErrors=0)
             record["agent"]["normalized"]["toolCalls"][0].update(tool="write", target="xd://mcp__amkernel_python_exec")
-            if revision == 14:
+            if revision in {14, 15}:
                 _attach_accessibility(record)
+            if revision == 15:
+                record["task"]["timeContext"] = {"referenceTime": "2023-10-15T15:34:00+00:00", "timezone": "UTC"}
             _write_result(root, index, name, record)
-            if revision in {13, 14}:
+            if revision in {13, 14, 15}:
                 result_file = root / "episodes" / f"{index:03d}-{name}" / "attempt-1" / "result.json"
                 _attach_submission(result_file, record, task["timeBudget"]["businessSeconds"])
             result = f"episodes/{index:03d}-{name}/attempt-1/result.json"
@@ -1324,9 +1330,10 @@ def _attach_submission(result_file: Path, record: dict, business_seconds: int) -
     result_file.write_text(json.dumps(record))
 
 
+@pytest.mark.parametrize("revision", [13, 14, 15])
 @pytest.mark.parametrize("mutation", [None, "late", "cleanup", "extended_window", "missing_policy", "wrong_type", "raw_changed", "event_changed"])
-def test_new_submission_protocol_binds_business_receipt_and_original_bytes(tmp_path, monkeypatch, mutation):
-    root, manifest, events = _r12_fixture(tmp_path, monkeypatch, revision=13)
+def test_new_submission_protocol_binds_business_receipt_and_original_bytes(tmp_path, monkeypatch, mutation, revision):
+    root, manifest, events = _r12_fixture(tmp_path, monkeypatch, revision=revision)
 
     def mutate(record):
         evidence = record["agent"]["answerSubmission"]
@@ -1349,12 +1356,12 @@ def test_new_submission_protocol_binds_business_receipt_and_original_bytes(tmp_p
         (raw / "agent-events.jsonl").write_text(json.dumps({"type": "agent_end"}))
     _checkpoint(root, events)
     result = recalculate(root / "manifest.json", root)
-    assert result["protocolIdentity"] == "r13.full_coverage_after_verified_recovery.v2"
+    assert result["protocolIdentity"] == f"r{revision}.full_coverage_after_verified_recovery.v2"
     assert result["qualified"] is (mutation is None)
     assert result["coverageAudit"]["valid"] is (mutation is None)
 
 
-@pytest.mark.parametrize("revision", [12, 13, 14])
+@pytest.mark.parametrize("revision", [12, 13, 14, 15])
 def test_score_reader_preserves_frozen_revisions_and_accepts_explicit_new_contract(tmp_path, monkeypatch, revision):
     root, _, _ = _r12_fixture(tmp_path, monkeypatch, revision=revision)
     result = recalculate(root / "manifest.json", root)
@@ -1363,9 +1370,10 @@ def test_score_reader_preserves_frozen_revisions_and_accepts_explicit_new_contra
     assert result["protocolIdentity"] == f"r{revision}.full_coverage_after_verified_recovery.v2"
 
 
+@pytest.mark.parametrize("revision", [14, 15])
 @pytest.mark.parametrize("mutation", ["missing_config", "missing_audit", "request_false", "request_missing", "response_false", "response_missing", "false_confirmation", "wrong_hash"])
-def test_r14_score_requires_actual_coexistence_evidence_without_rewriting_reward(tmp_path, monkeypatch, mutation):
-    root, manifest, events = _r12_fixture(tmp_path, monkeypatch, revision=14)
+def test_coexistence_score_requires_actual_evidence_without_rewriting_reward(tmp_path, monkeypatch, mutation, revision):
+    root, manifest, events = _r12_fixture(tmp_path, monkeypatch, revision=revision)
 
     def mutate(record):
         audit = record["appiumSessionAudit"]
@@ -1420,3 +1428,43 @@ def test_r14_inheritance_replaces_only_the_named_forwarder(change, valid):
     elif change == "extra_asset":
         observed["artifacts"].append({"name": "extra.apk"})
     assert _inherited_environment_valid(source, observed) is valid
+
+
+@pytest.mark.parametrize("mutation", ["missing_policy", "missing_context", "naive_reference", "wrong_timezone"])
+def test_r15_score_rejects_unproven_reference_clock_without_rewriting_reward(tmp_path, monkeypatch, mutation):
+    root, manifest, events = _r12_fixture(tmp_path, monkeypatch, revision=15)
+
+    def mutate(record):
+        if mutation == "missing_policy":
+            record["protocol"].pop("taskTimeContext")
+        elif mutation == "missing_context":
+            record["task"].pop("timeContext")
+        elif mutation == "naive_reference":
+            record["task"]["timeContext"]["referenceTime"] = "2023-10-15T15:34:00"
+        else:
+            record["task"]["timeContext"]["timezone"] = "UTC+01:00"
+
+    _change_terminal(root, manifest, events, 0, mutate)
+    _checkpoint(root, events)
+    result = recalculate(root / "manifest.json", root)
+
+    assert result["qualified"] is False
+    assert result["invalidBreakdown"] == {"invalid_protocol": 1}
+    assert result["episodes"][0]["officialReward"] == 1.0
+    assert any("result_provenance_mismatch" in error for error in result["coverageAudit"]["errors"])
+
+
+def test_r15_full_score_keeps_private_calibration_receipts_in_its_gate(tmp_path, monkeypatch):
+    root, _, _ = _r12_fixture(tmp_path, monkeypatch, kind="full", revision=15)
+    result = recalculate(root / "manifest.json", root)
+
+    assert result["qualified"] is True
+    assert result["fullValidScore"] == 1.0
+    assert result["officialScore"] is None
+    receipt = root / "calibration-evidence/episodes/000-Task000/attempt-1/raw-private/business-submission.json"
+    receipt.write_text(json.dumps({"rawText": "changed"}))
+
+    changed = recalculate(root / "manifest.json", root)
+    assert changed["qualified"] is False
+    assert changed["calibrationGateSatisfied"] is False
+    assert changed["officialScore"] is None

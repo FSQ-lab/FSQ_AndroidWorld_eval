@@ -1,6 +1,6 @@
 # Accessibility forwarder lifecycle repair
 
-This standalone Android application is the Harness 14 replacement for the frozen accessibility-forwarder APK. It preserves the official protobuf schemas and task/evaluator behavior. The original APK/cache entry and historical campaign results remain unchanged.
+This standalone Android application is the accessibility-forwarder replacement introduced in Harness 14 and retained unchanged in Harness 15. It preserves the official protobuf schemas and task/evaluator behavior. The original APK/cache entry and historical campaign results remain unchanged.
 
 ## Lifecycle contract
 
@@ -11,6 +11,14 @@ This standalone Android application is the Harness 14 replacement for the frozen
 - Logs and SendForest metadata identify service instance, connection generation, and per-connection forest sequence. A coroutine dispatcher can reuse a native thread ID; thread identity is not worker ownership.
 
 Harness 14 canonicalizes W3C capability candidates and forwards explicit `appium:disableSuppressAccessibilityService: true`. Contradictory requests fail before forwarding. Missing/false returned confirmation fails closed while retaining a created session's ownership for reconciliation. Configuration identity and actual request/response evidence are bound into preparation, manifests, episode records, qualification and scoring. Historical r12/r13 scoring paths are not migrated.
+
+## Harness 15 reference-clock boundary
+
+Harness 15 adds only the public `task.device_time` reference captured after successful official task initialization. `taskTimeContext` protocol version 1 identifies `initialized_task.device_time` and `initialization_reference_not_live`; the episode's `task.timeContext` records the timezone-aware ISO reference and its canonical UTC-offset timezone. The same context is delivered outside the exact goal. Relative dates use this task reference, not the host date; the goal's week-start convention remains authoritative. This is not a live device-clock measurement and includes no hidden parameters or expected answers.
+
+Naive timestamps are rejected. Scoring and calibration provenance require the new context while preserving bounded business receipts from r13 and actual accessibility coexistence evidence from r14. A pre-Agent initialization error may lack a reference instead of inventing one. Saved r12/r13/r14 records gain no clock requirement. Goals, frozen parameters, budgets, models and official evaluator semantics do not change; the new source/prompt/protocol identity requires fresh qualification, full rehearsal and calibration before any new formal run. No APK rebuild or installed dependency change is part of this cutover.
+
+Offline verification and the 18-case contract audit are in `../evidence/remaining-failures-batch-20261109T110443Z/harness/`. These are development checks, not a task replay, live readiness proof, new evaluator reward or formal score. The Appium Settings clipboard getter's observed helper-startup timeout does not establish a Harness preparation defect; no helper force-start or capability change was applied.
 
 ## Build and artifact identity
 

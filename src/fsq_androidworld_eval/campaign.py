@@ -24,6 +24,10 @@ different task. No task initialization, reward rewrite, Agent retry or reset occ
 Revision 14 binds explicit Appium accessibility coexistence and its capability
 audit to manifests and qualification. Inheritance may replace only the named
 forwarder APK pin; task specs and every other frozen asset remain unchanged.
+Revision 15 additionally binds the public initialized task reference-clock context
+to manifests/results without changing goals, parameters, budgets or evaluators.
+All bounded-submission and accessibility protections continue to apply. Fresh
+source/prompt identities require new qualification, rehearsal and calibration.
 """
 
 from __future__ import annotations
@@ -53,6 +57,7 @@ from fsq_androidworld_eval.continuation import (
 from fsq_androidworld_eval.preparation import attest_device, prepare_device
 from fsq_androidworld_eval.lifecycle import TIME_BUDGET_PROTOCOL, episode_time_budget
 from fsq_androidworld_eval.submission import ANSWER_SUBMISSION_PROTOCOL
+from fsq_androidworld_eval.task_time import TASK_TIME_CONTEXT_PROTOCOL, task_time_provenance_valid
 from fsq_androidworld_eval.environment import artifact_identity, prepare_artifacts
 from fsq_androidworld_eval.rehearsal import REHEARSAL_POLICY, run_rehearsal, validate_report
 from fsq_androidworld_eval.host_prerequisites import media_encoder_identity, probe_host_media
@@ -228,7 +233,7 @@ def _calibration_evidence_paths(
         )]
         extras.extend((campaign_dir / "recoveries").glob("*.json"))
         extras.extend((campaign_dir / "episodes").glob("*/attempt-*/result.json"))
-        if manifest["protocol"].get("harnessRevision") in {13, 14}:
+        if manifest["protocol"].get("harnessRevision") in {13, 14, 15}:
             for name in ("business-submission.json", "agent-events.jsonl"):
                 extras.extend((campaign_dir / "episodes").glob(f"*/attempt-*/raw-private/{name}"))
         paths.extend(path for path in sorted(set(extras)) if path not in paths)
@@ -283,8 +288,9 @@ def _calibration_result_has_provenance(
         and _agent_protocol_violations(normalized) == []
         and step_budget_valid(record, task)
         and time_budget_valid(record, task, manifest["protocol"])
-        and (manifest["protocol"].get("harnessRevision") != 14
+        and (manifest["protocol"].get("harnessRevision") not in {14, 15}
              or record.get("protocol", {}).get("sessionAccessibilityConfig") == manifest["protocol"].get("sessionAccessibilityConfig") == SESSION_ACCESSIBILITY_CONFIG)
+        and task_time_provenance_valid(record, manifest["protocol"])
         and isinstance(budget, dict)
         and budget.get("pythonExecCalls") == len(python_exec_calls)
         and len(python_exec_calls) > 0
@@ -403,6 +409,7 @@ def build_manifest(
             "answerSubmission": dict(ANSWER_SUBMISSION_PROTOCOL),
             "promptTemplateSha256": PROMPT_TEMPLATE_SHA256,
             "sessionAccessibilityConfig": dict(SESSION_ACCESSIBILITY_CONFIG),
+            "taskTimeContext": dict(TASK_TIME_CONTEXT_PROTOCOL),
             "environmentArtifacts": current_artifacts,
         })
         manifest["invalidRules"]["cleanupFailure"] = (
@@ -499,6 +506,7 @@ def build_manifest(
             "runtimeIdentity": _runtime_identity(project),
             "environmentArtifacts": artifact_identity(project),
             "sessionAccessibilityConfig": dict(SESSION_ACCESSIBILITY_CONFIG),
+            "taskTimeContext": dict(TASK_TIME_CONTEXT_PROTOCOL),
             "harnessRehearsal": REHEARSAL_POLICY,
             "campaignContinuation": dict(CAMPAIGN_CONTINUATION),
             "model": "github-copilot/gpt-5.6-sol",
@@ -605,6 +613,7 @@ def _load_manifest(path: Path, project: Path | None = None) -> dict[str, Any]:
         "promptTemplateSha256": PROMPT_TEMPLATE_SHA256,
         "harnessRevision": HARNESS_REVISION,
         "sessionAccessibilityConfig": SESSION_ACCESSIBILITY_CONFIG,
+        "taskTimeContext": TASK_TIME_CONTEXT_PROTOCOL,
         "stepBudget": STEP_BUDGET_PROTOCOL,
         "timeBudget": TIME_BUDGET_PROTOCOL,
         "answerSubmission": ANSWER_SUBMISSION_PROTOCOL,
@@ -1419,6 +1428,7 @@ def run_campaign(args: argparse.Namespace) -> int:
             "protocolIdentity": {
                 "harnessRevision": HARNESS_REVISION,
                 "sessionAccessibilityConfig": dict(SESSION_ACCESSIBILITY_CONFIG),
+                "taskTimeContext": dict(TASK_TIME_CONTEXT_PROTOCOL),
                 "campaignContinuation": manifest["protocol"]["campaignContinuation"],
                 "protocolSha256": _sha256(manifest["protocol"]),
             },
