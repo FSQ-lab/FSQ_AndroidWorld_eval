@@ -9,9 +9,12 @@ Connect to an already initialized target with noReset=true, skipUnlock=true,
 autoLaunch=false, no app/APK installation, permission grants or reset. Only when
 no appPackage/appActivity is supplied may autoLaunch be omitted: the real driver
 has no AUT to launch. Driver helper initialization remains session lifecycle;
-capabilities that change task/device state are not supported. No capabilities or
-requests are silently rewritten. Audit-only construction retains transparent
-transport for existing consumers; real runs supply both gate and exact UDID.
+capabilities that change task/device state are not supported. Revision 14
+canonicalizes W3C candidates and explicitly injects the versioned accessibility
+coexistence capability into the actual upstream request. Contradictions fail
+closed; a successful response must confirm true. Bounded actual capability
+evidence is archived, not inferred from defaults. Audit-only construction retains
+transparent transport; real runs supply both gate and exact UDID.
 """
 
 from __future__ import annotations
@@ -30,6 +33,22 @@ from urllib.parse import urlsplit
 
 from fsq_androidworld_eval.action_budget import ActionGate, ActionPermit, StepBudgetExceeded
 from fsq_androidworld_eval.lifecycle import EpisodeDeadlines
+
+# Shared by manifests, episode records, preparation and read-only scoring.
+SESSION_ACCESSIBILITY_CONFIG = {
+    "version": 1,
+    "capability": "appium:disableSuppressAccessibilityService",
+    "value": True,
+    "requestPolicy": "inject_true_all_w3c_candidates_reject_contradictions",
+    "responsePolicy": "require_explicit_true",
+    "maximumCapabilityBytes": 65_536,
+    "maximumCandidates": 16,
+    "inheritedEnvironmentPolicy": "replace_named_forwarder_only",
+    "inheritedForwarderArtifactName": "2024.05.13-accessibility_forwarder.apk",
+    "forwarderArtifactName": "fsq-accessibility-forwarder-lifecycle-v1.apk",
+}
+_ACCESSIBILITY_CAPABILITY = SESSION_ACCESSIBILITY_CONFIG["capability"]
+_CAPABILITY_BYTES = SESSION_ACCESSIBILITY_CONFIG["maximumCapabilityBytes"]
 
 
 class _Denied(Exception):
@@ -120,7 +139,7 @@ _SAFE_CAPS = {
     "uiautomator2ServerLaunchTimeout", "uiautomator2ServerInstallTimeout",
     "uiautomator2ServerReadTimeout", "skipDeviceInitialization", "skipServerInstallation",
     "skipLogcatCapture", "ignoreHiddenApiPolicyError", "printPageSourceOnFindFailure",
-    "eventTimings", "browserName",
+    "eventTimings", "browserName", "disableSuppressAccessibilityService",
 }
 _SELECTOR_METHODS = (
     "text|textContains|textMatches|textStartsWith|description|descriptionContains|"
@@ -135,7 +154,33 @@ _PURE_SELECTOR = re.compile(
 )
 
 
-def _validate_session(payload: dict[str, Any], expected_udid: str | None) -> None:
+def _connection_caps(raw: dict[str, Any]) -> dict[str, Any]:
+    options = raw.get("appium:options", {})
+    if not isinstance(options, dict):
+        raise _Denied("invalid argument", "Invalid appium:options")
+    caps: dict[str, Any] = {}
+    for key, value in [(key, value) for key, value in raw.items() if key != "appium:options"] + list(options.items()):
+        name = key.removeprefix("appium:")
+        if name not in _SAFE_CAPS or name in caps:
+            raise _Denied("invalid argument", "Unsupported or ambiguous connection capability")
+        if name == "disableSuppressAccessibilityService" and value is not True:
+            raise _Denied("invalid argument", "Accessibility coexistence requires explicit true")
+        caps[name] = value
+    return caps
+
+
+def _accessibility_confirmed(capabilities: Any) -> bool:
+    if not isinstance(capabilities, dict):
+        return False
+    options = capabilities.get("appium:options", {})
+    if not isinstance(options, dict):
+        return False
+    values = [mapping[key] for mapping in (capabilities, options)
+              for key in (_ACCESSIBILITY_CAPABILITY, "disableSuppressAccessibilityService") if key in mapping]
+    return bool(values) and all(value is True for value in values)
+
+
+def _validate_session(payload: dict[str, Any], expected_udid: str | None) -> dict[str, Any]:
     if set(payload) != {"capabilities"} or not isinstance(payload["capabilities"], dict):
         raise _Denied("invalid argument", "Only W3C capabilities are supported")
     capabilities = payload["capabilities"]
@@ -143,21 +188,19 @@ def _validate_session(payload: dict[str, Any], expected_udid: str | None) -> Non
         raise _Denied("invalid argument", "Unsupported capability envelope")
     always = capabilities.get("alwaysMatch", {})
     first = capabilities.get("firstMatch", [{}])
-    if not isinstance(always, dict) or not isinstance(first, list) or not first:
+    if (not isinstance(always, dict) or not isinstance(first, list) or not first
+            or len(first) > SESSION_ACCESSIBILITY_CONFIG["maximumCandidates"]):
         raise _Denied("invalid argument", "Invalid W3C capability alternatives")
+    always_caps = _connection_caps(always)
+    alternatives = []
     for alternative in first:
-        if not isinstance(alternative, dict) or set(always) & set(alternative):
+        if not isinstance(alternative, dict):
+            raise _Denied("invalid argument", "Invalid W3C capability alternative")
+        candidate = _connection_caps(alternative)
+        if set(always_caps) & set(candidate):
             raise _Denied("invalid argument", "Conflicting W3C capability alternatives")
-        raw = {**always, **alternative}
-        options = raw.pop("appium:options", {})
-        if not isinstance(options, dict):
-            raise _Denied("invalid argument", "Invalid appium:options")
-        caps: dict[str, Any] = {}
-        for key, value in list(raw.items()) + list(options.items()):
-            name = key.removeprefix("appium:")
-            if name not in _SAFE_CAPS or name in caps:
-                raise _Denied("invalid argument", "Unsupported or ambiguous connection capability")
-            caps[name] = value
+        caps = {**always_caps, **candidate}
+        alternatives.append(candidate)
         if (
             not expected_udid or caps.get("udid") != expected_udid
             or str(caps.get("platformName", "")).lower() != "android"
@@ -176,6 +219,53 @@ def _validate_session(payload: dict[str, Any], expected_udid: str | None) -> Non
                 raise _Denied("invalid argument", "Connection cannot reset, launch, terminate or grant permissions")
         if caps.get("browserName"):
             raise _Denied("invalid argument", "Only native Android sessions are supported")
+    def canonical(caps: dict[str, Any]) -> dict[str, Any]:
+        return {
+            name if name in {"platformName", "browserName"} else "appium:" + name: value
+            for name, value in caps.items() if name != "disableSuppressAccessibilityService"
+        }
+    normalized = {"capabilities": {
+        "alwaysMatch": {**canonical(always_caps), _ACCESSIBILITY_CAPABILITY: True},
+        "firstMatch": [canonical(candidate) for candidate in alternatives],
+    }}
+    if len(json.dumps(normalized).encode()) > _CAPABILITY_BYTES:
+        raise _Denied("invalid argument", "Session capability evidence exceeds the bounded contract")
+    return normalized
+
+
+def session_accessibility_audit_valid(audit: Any, expected_udid: str | None) -> bool:
+    """Validate revision-14 actual request/response evidence without device access."""
+    if not isinstance(audit, dict) or audit.get("errors") != []:
+        return False
+    evidence = audit.get("sessionAccessibility")
+    if not isinstance(evidence, dict) or evidence.get("config") != SESSION_ACCESSIBILITY_CONFIG:
+        return False
+    creations = evidence.get("creations")
+    count = audit.get("createdSessionCount")
+    if type(count) is not int or count not in {0, 1} or not isinstance(creations, list) or len(creations) != count:
+        return False
+    try:
+        for creation in creations:
+            request, response = creation["request"], creation["response"]
+            payload = {"capabilities": request["capabilities"]}
+            if _validate_session(payload, expected_udid) != payload:
+                return False
+            encoded = json.dumps(payload, sort_keys=True).encode()
+            returned = json.dumps(response["capabilities"], sort_keys=True).encode()
+            if not (
+                request["byteCount"] == len(encoded) <= _CAPABILITY_BYTES
+                and request["sha256"] == hashlib.sha256(encoded).hexdigest()
+                and type(response["status"]) is int and 200 <= response["status"] < 300
+                and response["capabilityByteCount"] == len(returned) <= _CAPABILITY_BYTES
+                and isinstance(response["bodySha256"], str)
+                and re.fullmatch(r"[0-9a-f]{64}", response["bodySha256"])
+                and response["confirmed"] is True
+                and _accessibility_confirmed(response["capabilities"])
+            ):
+                return False
+    except (_Denied, KeyError, TypeError, ValueError):
+        return False
+    return True
 
 
 def _validate_actions(payload: dict[str, Any]) -> None:
@@ -344,6 +434,7 @@ class AppiumAuditProxy:
         self._errors: list[str] = []
         self._denials: list[dict[str, Any]] = []
         self._session_attempted = False
+        self._accessibility_creations: list[dict[str, Any]] = []
         self._owned: set[str] = set()
         # Ownership history survives DELETE and kernel/process death. Only the
         # active set controls ordinary commands; recovery never discovers IDs.
@@ -401,6 +492,9 @@ class AppiumAuditProxy:
                         raise _Denied("invalid argument", "Invalid Content-Length")
                     body = self.rfile.read(length) if length else None
                     descriptor = owner._authorize(self.command, self.path, body) if owner._guarded else None
+                    creating = owner._guarded and self.command == "POST" and _parts(self.path) == ["session"]
+                    if creating:
+                        body = json.dumps(_validate_session(_object(body), owner._expected_udid), sort_keys=True).encode()
                     token = owner._begin_request(self.command, self.path)
                     if descriptor is not None:
                         if owner._gate is None:
@@ -415,6 +509,13 @@ class AppiumAuditProxy:
                     )
                     with owner._lock:
                         owner._pending[token]["upstreamStarted"] = True
+                        if creating:
+                            owner._accessibility_creations.append({
+                                "request": {"sha256": hashlib.sha256(body).hexdigest(),
+                                            "byteCount": len(body),
+                                            "capabilities": json.loads(body)["capabilities"]},
+                                "response": None,
+                            })
                     connection.request(self.command, owner._base_path + self.path, body=body, headers=headers)
                     with owner._lock:
                         owner._pending[token]["socket"] = connection.sock
@@ -422,9 +523,11 @@ class AppiumAuditProxy:
                     status = response.status
                     response_body = response.read()
                     response_headers = response.getheaders()
-                    owner._observe(self.command, self.path, status, response_body)
+                    trusted = owner._observe(self.command, self.path, status, response_body)
                     with owner._lock:
                         owner._pending[token]["observed"] = True
+                    if trusted is False:
+                        raise _Denied("session not created", "Upstream did not confirm accessibility coexistence", 502)
                     try:
                         self.send_response(status)
                         for key, value in response_headers:
@@ -804,11 +907,18 @@ class AppiumAuditProxy:
             raise _Denied("unsupported operation", "Unsupported or opaque Appium mutation")
         return {"kind": kind, "path": template}
 
-    def _observe(self, method: str, path: str, status: int, body: bytes) -> None:
+    def _observe(self, method: str, path: str, status: int, body: bytes) -> bool | None:
         try:
             parts = _parts(path)
         except _Denied:
             return
+        if self._guarded and method == "POST" and parts == ["session"]:
+            with self._lock:
+                if self._accessibility_creations:
+                    self._accessibility_creations[-1]["response"] = {
+                        "status": status, "bodySha256": hashlib.sha256(body).hexdigest(),
+                        "capabilities": None, "confirmed": False,
+                    }
         if status >= 400:
             with self._lock:
                 if method == "POST" and parts == ["session"] and status >= 500:
@@ -823,8 +933,24 @@ class AppiumAuditProxy:
                 with self._lock:
                     self._errors.append("InvalidSessionResponse")
                     self._unknown_creations.append("InvalidSessionResponse")
-                return
+                return False if self._guarded else None
             value = payload.get("value") if isinstance(payload, dict) else None
+            trusted = True
+            if self._guarded:
+                returned = value.get("capabilities") if isinstance(value, dict) else None
+                encoded = json.dumps(returned, sort_keys=True).encode()
+                bounded = len(encoded) <= _CAPABILITY_BYTES
+                trusted = bounded and _accessibility_confirmed(returned)
+                with self._lock:
+                    if self._accessibility_creations:
+                        self._accessibility_creations[-1]["response"] = {
+                            "status": status, "bodySha256": hashlib.sha256(body).hexdigest(),
+                            "capabilityByteCount": len(encoded),
+                            "capabilities": returned if bounded else None,
+                            "confirmed": trusted,
+                        }
+                    if not trusted:
+                        self._errors.append("AccessibilityCapabilityUnconfirmed")
             session_id = value.get("sessionId") if isinstance(value, dict) else None
             if session_id is None and isinstance(payload, dict):
                 session_id = payload.get("sessionId")
@@ -833,10 +959,13 @@ class AppiumAuditProxy:
                     if session_id not in self._owned:
                         self._created.append(session_id)
                         self._owned.add(session_id)
-                        self._active_owned.add(session_id)
+                        if trusted:
+                            self._active_owned.add(session_id)
                 else:
                     self._errors.append("MissingCreatedSessionId")
                     self._unknown_creations.append("MissingCreatedSessionId")
+                    trusted = False
+            return trusted
         elif method == "DELETE" and len(parts) == 2 and parts[0] == "session":
             with self._lock:
                 self._deleted.append(parts[1])
@@ -853,6 +982,7 @@ class AppiumAuditProxy:
             pending_requests = len(self._pending)
             pending_creates = sum(request["creating"] for request in self._pending.values())
             unknown_creations = list(self._unknown_creations)
+            accessibility = json.loads(json.dumps(self._accessibility_creations))
 
         def digest(value: str) -> str:
             return hashlib.sha256(value.encode()).hexdigest()
@@ -874,4 +1004,6 @@ class AppiumAuditProxy:
             "errors": errors,
             "deniedCommandCount": len(denials),
             "deniedCommands": denials,
+            **({"sessionAccessibility": {"config": dict(SESSION_ACCESSIBILITY_CONFIG),
+                                         "creations": accessibility}} if self._guarded else {}),
         }

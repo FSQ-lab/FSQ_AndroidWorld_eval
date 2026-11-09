@@ -7,6 +7,7 @@ import pytest
 from fsq_androidworld_eval.action_budget import STEP_BUDGET_PROTOCOL
 from fsq_androidworld_eval.lifecycle import TIME_BUDGET_PROTOCOL, episode_time_budget
 from fsq_androidworld_eval.scorer import SCORING_POLICY, TERMINATION_POLICY, recalculate
+from fsq_androidworld_eval.appium_proxy import SESSION_ACCESSIBILITY_CONFIG
 
 
 def _write_result(root: Path, index: int, name: str, record: dict) -> None:
@@ -527,6 +528,24 @@ def _core_services() -> dict:
     }
 
 
+def _attach_accessibility(record: dict) -> None:
+    capabilities = {"alwaysMatch": {
+        "platformName": "Android", "appium:automationName": "UiAutomator2",
+        "appium:udid": record["target"]["serial"], "appium:noReset": True,
+        "appium:skipUnlock": True, "appium:autoLaunch": False,
+        SESSION_ACCESSIBILITY_CONFIG["capability"]: True,
+    }, "firstMatch": [{}]}
+    body = json.dumps({"capabilities": capabilities}, sort_keys=True).encode()
+    returned = {"disableSuppressAccessibilityService": True}
+    record["appiumSessionAudit"]["sessionAccessibility"] = {
+        "config": SESSION_ACCESSIBILITY_CONFIG, "creations": [{
+            "request": {"capabilities": capabilities, "sha256": hashlib.sha256(body).hexdigest(), "byteCount": len(body)},
+            "response": {"status": 200, "bodySha256": "a" * 64, "capabilities": returned,
+                         "capabilityByteCount": len(json.dumps(returned, sort_keys=True).encode()), "confirmed": True},
+        }],
+    }
+
+
 def _r12_fixture(tmp_path: Path, monkeypatch: pytest.MonkeyPatch, kind: str = "calibration", *, version: int = 2, revision: int = 12) -> tuple[Path, dict, list[dict]]:
     """Synthetic frozen artifacts, not suite-generated benchmark parameters."""
     from fsq_androidworld_eval import scorer
@@ -543,6 +562,12 @@ def _r12_fixture(tmp_path: Path, monkeypatch: pytest.MonkeyPatch, kind: str = "c
             "skill://amkernel", "xd://mcp__amkernel_python_exec", "xd://report_issue",
         ]},
     })
+    if revision == 14:
+        source_protocol["environmentArtifacts"] = {"schemaVersion": 1, "cacheDirectory": ".cache/androidworld-assets", "artifacts": [
+            {"name": SESSION_ACCESSIBILITY_CONFIG["inheritedForwarderArtifactName"],
+             "url": "https://frozen/forwarder.apk", "sha256": "a" * 64, "sizeBytes": 100},
+            {"name": "frozen-app.apk", "url": "https://frozen/app.apk", "sha256": "b" * 64, "sizeBytes": 200},
+        ]}
     tasks = [{
         **_timed_attempt()[0]["tasks"][0], "index": index, "name": f"Task{index:03d}",
         "instanceSeed": index, "params": {"fixture": index}, "paramsSha256": _digest({"fixture": index}),
@@ -559,9 +584,15 @@ def _r12_fixture(tmp_path: Path, monkeypatch: pytest.MonkeyPatch, kind: str = "c
         root.mkdir(parents=True)
         protocol = {**source_protocol, "harnessRevision": revision,
                     "campaignContinuation": {**scorer.CONTINUATION_PROTOCOL, "version": version}}
-        if revision == 13:
+        if revision in {13, 14}:
             from fsq_androidworld_eval.submission import ANSWER_SUBMISSION_PROTOCOL
             protocol.update(answerSubmission=ANSWER_SUBMISSION_PROTOCOL, promptTemplateSha256="bounded-submission-prompt")
+        if revision == 14:
+            protocol["sessionAccessibilityConfig"] = SESSION_ACCESSIBILITY_CONFIG
+            protocol["environmentArtifacts"] = json.loads(json.dumps(source_protocol["environmentArtifacts"]))
+            protocol["environmentArtifacts"]["artifacts"][0].update(
+                name=SESSION_ACCESSIBILITY_CONFIG["forwarderArtifactName"],
+                url="repo:assets/fsq-accessibility-forwarder-lifecycle-v1.apk", sha256="c" * 64, sizeBytes=123)
         manifest = {
             "campaignId": f"r12-{campaign_kind}", "kind": campaign_kind, "protocol": protocol,
             "target": {"serial": "fixture-device"},
@@ -584,6 +615,8 @@ def _r12_fixture(tmp_path: Path, monkeypatch: pytest.MonkeyPatch, kind: str = "c
         identity = _digest(manifest)
         readiness = {"manifestSha256": identity, "qualified": True, "environmentClose": "closed",
                      "environmentArtifacts": protocol["environmentArtifacts"], "target": manifest["target"]}
+        if revision == 14:
+            readiness["sessionAccessibilityConfig"] = SESSION_ACCESSIBILITY_CONFIG
         readiness["identitySha256"] = _digest(readiness)
         (root / "device-readiness.json").write_text(json.dumps(readiness))
         (root / "run-metadata.json").write_text(json.dumps({
@@ -608,8 +641,10 @@ def _r12_fixture(tmp_path: Path, monkeypatch: pytest.MonkeyPatch, kind: str = "c
             record["cleanup"]["agentSession"]["verificationStatus"] = "absent"
             record["agent"]["normalized"].update(provider="provider", model="model", parseErrors=0)
             record["agent"]["normalized"]["toolCalls"][0].update(tool="write", target="xd://mcp__amkernel_python_exec")
+            if revision == 14:
+                _attach_accessibility(record)
             _write_result(root, index, name, record)
-            if revision == 13:
+            if revision in {13, 14}:
                 result_file = root / "episodes" / f"{index:03d}-{name}" / "attempt-1" / "result.json"
                 _attach_submission(result_file, record, task["timeBudget"]["businessSeconds"])
             result = f"episodes/{index:03d}-{name}/attempt-1/result.json"
@@ -1318,3 +1353,70 @@ def test_new_submission_protocol_binds_business_receipt_and_original_bytes(tmp_p
     assert result["qualified"] is (mutation is None)
     assert result["coverageAudit"]["valid"] is (mutation is None)
 
+
+@pytest.mark.parametrize("revision", [12, 13, 14])
+def test_score_reader_preserves_frozen_revisions_and_accepts_explicit_new_contract(tmp_path, monkeypatch, revision):
+    root, _, _ = _r12_fixture(tmp_path, monkeypatch, revision=revision)
+    result = recalculate(root / "manifest.json", root)
+    assert result["qualified"] is True
+    assert result["officialScore"] == 1.0
+    assert result["protocolIdentity"] == f"r{revision}.full_coverage_after_verified_recovery.v2"
+
+
+@pytest.mark.parametrize("mutation", ["missing_config", "missing_audit", "request_false", "request_missing", "response_false", "response_missing", "false_confirmation", "wrong_hash"])
+def test_r14_score_requires_actual_coexistence_evidence_without_rewriting_reward(tmp_path, monkeypatch, mutation):
+    root, manifest, events = _r12_fixture(tmp_path, monkeypatch, revision=14)
+
+    def mutate(record):
+        audit = record["appiumSessionAudit"]
+        creation = audit["sessionAccessibility"]["creations"][0]
+        key = SESSION_ACCESSIBILITY_CONFIG["capability"]
+        if mutation == "missing_config":
+            record["protocol"].pop("sessionAccessibilityConfig")
+        elif mutation == "missing_audit":
+            audit.pop("sessionAccessibility")
+        elif mutation == "request_false":
+            creation["request"]["capabilities"]["alwaysMatch"][key] = False
+        elif mutation == "request_missing":
+            creation["request"]["capabilities"]["alwaysMatch"].pop(key)
+        elif mutation == "response_false":
+            creation["response"]["capabilities"]["disableSuppressAccessibilityService"] = False
+        elif mutation == "response_missing":
+            creation["response"]["capabilities"] = {}
+        elif mutation == "false_confirmation":
+            creation["response"]["confirmed"] = False
+        else:
+            creation["request"]["sha256"] = "0" * 64
+
+    _change_terminal(root, manifest, events, 0, mutate)
+    _checkpoint(root, events)
+    result = recalculate(root / "manifest.json", root)
+    assert result["qualified"] is False
+    assert result["invalidBreakdown"] == {"invalid_protocol": 1}
+    assert result["episodes"][0]["officialReward"] == 1.0
+
+
+@pytest.mark.parametrize("change,valid", [("helper", True), ("same_new_helper", True), ("old_helper", False), ("other_app", False), ("cache", False), ("renamed_helper", False), ("extra_asset", False)])
+def test_r14_inheritance_replaces_only_the_named_forwarder(change, valid):
+    from fsq_androidworld_eval.scorer import _inherited_environment_valid
+
+    source = {"schemaVersion": 1, "cacheDirectory": ".cache/androidworld-assets", "artifacts": [
+        {"name": SESSION_ACCESSIBILITY_CONFIG["inheritedForwarderArtifactName"], "url": "https://old/helper", "sha256": "a" * 64, "sizeBytes": 100},
+        {"name": "frozen-app.apk", "url": "https://old/app", "sha256": "b" * 64, "sizeBytes": 200},
+    ]}
+    observed = json.loads(json.dumps(source))
+    observed["artifacts"][0].update(name=SESSION_ACCESSIBILITY_CONFIG["forwarderArtifactName"],
+                                    url="repo:assets/fsq-accessibility-forwarder-lifecycle-v1.apk", sha256="c" * 64, sizeBytes=123)
+    if change == "same_new_helper":
+        source = json.loads(json.dumps(observed))
+    elif change == "old_helper":
+        observed = json.loads(json.dumps(source))
+    elif change == "other_app":
+        observed["artifacts"][1]["sha256"] = "d" * 64
+    elif change == "cache":
+        observed["cacheDirectory"] = "different-cache"
+    elif change == "renamed_helper":
+        observed["artifacts"][0]["name"] = "arbitrary-helper.apk"
+    elif change == "extra_asset":
+        observed["artifacts"].append({"name": "extra.apk"})
+    assert _inherited_environment_valid(source, observed) is valid

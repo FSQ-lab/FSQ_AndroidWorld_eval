@@ -15,6 +15,8 @@ all-task non-scoring rehearsal required before a formal Agent campaign.
 Revision 12 preserves installed applications and completes VLC onboarding through
 the frozen AMKernel PythonExec/Appium seam before saving its official snapshot.
 Live attestation rechecks onboarding and effective all-files permission.
+Revision 14 binds the versioned session accessibility configuration to qualification
+and explicitly requests/validates coexistence for preparation-created sessions.
 """
 
 from __future__ import annotations
@@ -34,6 +36,7 @@ from android_world.env import adb_utils, device_constants, env_launcher, tools
 from android_world.env.setup_device import setup as device_setup
 from android_world.utils import app_snapshot
 
+from fsq_androidworld_eval.appium_proxy import SESSION_ACCESSIBILITY_CONFIG, _accessibility_confirmed
 from fsq_androidworld_eval.environment import (
     artifact_identity, close_environment, load_environment, local_app_data, strict_snapshot_restores,
 )
@@ -164,12 +167,21 @@ def _complete_vlc_setup(env: Any, project: Path, target: dict[str, Any], adb_pat
             "from appium.options.android import UiAutomator2Options\n"
             "from appium.webdriver.common.appiumby import AppiumBy\n"
             "from selenium.webdriver.support.ui import WebDriverWait\n"
-            f"driver = webdriver.Remote({target['appiumUrl']!r}, options=UiAutomator2Options().load_capabilities("
+            "session_capabilities = "
             f"{{'platformName':'Android','appium:automationName':'UiAutomator2','appium:udid':{target['serial']!r},"
-            "'appium:noReset':True,'appium:autoLaunch':False,'appium:skipUnlock':True,'appium:newCommandTimeout':300}))\n"
-            "{'sessionId':driver.session_id,'newCommandTimeout':driver.capabilities.get('newCommandTimeout')}",
+            "'appium:noReset':True,'appium:autoLaunch':False,'appium:skipUnlock':True,'appium:newCommandTimeout':300,"
+            f"{SESSION_ACCESSIBILITY_CONFIG['capability']!r}:True}}\n"
+            f"driver = webdriver.Remote({target['appiumUrl']!r}, options=UiAutomator2Options().load_capabilities(session_capabilities))\n"
+            "{'sessionId':driver.session_id,'newCommandTimeout':driver.capabilities.get('newCommandTimeout'),"
+            "'accessibilityCapabilities':{key:driver.capabilities[key] for key in "
+            "('disableSuppressAccessibilityService','appium:disableSuppressAccessibilityService','appium:options') "
+            "if key in driver.capabilities}}",
             timeout_seconds=90,
         )
+        if (len(json.dumps(creation.get("accessibilityCapabilities")).encode()) > SESSION_ACCESSIBILITY_CONFIG["maximumCapabilityBytes"]
+                or not _accessibility_confirmed(creation.get("accessibilityCapabilities"))):
+            runtime.execute("driver.quit()\n{'quitReturned':True}", timeout_seconds=30)
+            raise RuntimeError("VLC preparation session did not confirm accessibility coexistence")
         proof = runtime.execute('''
 proof = {'sessionId': driver.session_id, 'mainActivityObserved': False, 'quitReturned': False}
 try:
@@ -211,7 +223,9 @@ proof
     if not all(state.values()):
         raise RuntimeError(f"VLC first-launch or file access is not ready: {state}")
     app_snapshot.save_snapshot("vlc", env.controller)
-    return {**proof, **state, "snapshotSavedAfterUi": True}
+    return {**proof, **state, "snapshotSavedAfterUi": True,
+            "sessionAccessibilityConfig": dict(SESSION_ACCESSIBILITY_CONFIG),
+            "returnedAccessibilityCapabilities": creation["accessibilityCapabilities"]}
 
 
 def _required_app_names(manifest: dict[str, Any]) -> list[str]:
@@ -341,6 +355,8 @@ def prepare_device(
         raise ValueError("device preparation requires campaign manifest schema 2")
     if protocol.get("harnessRevision") != HARNESS_REVISION:
         raise ValueError("device preparation harness revision mismatch")
+    if protocol.get("sessionAccessibilityConfig") != SESSION_ACCESSIBILITY_CONFIG:
+        raise ValueError("device preparation session accessibility configuration mismatch")
     if protocol.get("androidWorldRevision") != ANDROID_WORLD_REVISION:
         raise ValueError("device preparation AndroidWorld revision mismatch")
 
@@ -352,6 +368,7 @@ def prepare_device(
         "schemaVersion": 2,
         "campaignId": manifest["campaignId"],
         "manifestSha256": _sha256(manifest),
+        "sessionAccessibilityConfig": dict(SESSION_ACCESSIBILITY_CONFIG),
         "startedAtUnix": started,
         "target": target,
         "appium": None,

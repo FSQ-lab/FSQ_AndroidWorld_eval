@@ -1,9 +1,9 @@
 """Provision pinned host assets explicitly; create official environments offline.
 
-Only ``prepare_artifacts`` may access the network. The helper APK adapter remains
-active until controller cleanup, including official controller refreshes. APK
-preparation checks every ZIP member's CRC; runtime checks stream pinned SHA256.
-No AndroidWorld or AndroidEnv source files are changed.
+Only ``prepare_artifacts`` may access the network. Repository-local release APKs
+are copied and verified under a distinct pin, never over the frozen upstream APK.
+The helper adapter remains active until controller cleanup, including refreshes.
+Runtime construction does not patch AndroidWorld or AndroidEnv Python sources.
 Database writes replace only the requested file and its WAL/SHM sidecars; the
 upstream directory-wide deletion would destroy other databases in the same app.
 """
@@ -42,12 +42,13 @@ class _ArtifactSpec:
     size_bytes: int
 
 
-# Full official response acquired; all 17 APK members passed ZIP CRC validation.
+# Locally built lifecycle repair; source/build hashes accompany the release APK.
+# The original upstream cache entry remains immutable for historical campaigns.
 _HELPER_APK = _ArtifactSpec(
-    name="2024.05.13-accessibility_forwarder.apk",
-    url="https://storage.googleapis.com/android_env-tasks/2024.05.13-accessibility_forwarder.apk",
-    sha256="97a56a544e44d79f9b3181fc7dbdd72cffa908efd3d53c82afad1773061a350a",
-    size_bytes=4_490_495,
+    name="fsq-accessibility-forwarder-lifecycle-v1.apk",
+    url="repo:assets/fsq-accessibility-forwarder-lifecycle-v1.apk",
+    sha256="0987ded41c12807d4f75d0789002912de143eec866fa7b389ad8efdb8b0d07bb",
+    size_bytes=14_247_105,
 )
 # Existing cache bytes were matched against official HTTPS Content-Length and
 # x-goog-hash MD5 metadata before pinning SHA256. Every APK passed ZIP CRC checks.
@@ -193,7 +194,12 @@ def _prepare_one(project: Path, spec: _ArtifactSpec) -> None:
                         use_legacy = legacy.stat().st_size == spec.size_bytes
                     except OSError:
                         pass
-                if use_legacy:
+                if spec.url.startswith("repo:"):
+                    source_path = project / spec.url.removeprefix("repo:")
+                    _verify_file(source_path, spec, apk_integrity=True)
+                    with source_path.open("rb") as source:
+                        shutil.copyfileobj(source, destination, length=_CHUNK_SIZE)
+                elif use_legacy:
                     with legacy.open("rb") as source:
                         shutil.copyfileobj(source, destination, length=_CHUNK_SIZE)
                 else:

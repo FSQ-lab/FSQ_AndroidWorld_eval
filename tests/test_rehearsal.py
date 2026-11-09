@@ -12,6 +12,8 @@ from android_world.task_evals.information_retrieval.proto import task_pb2
 
 from fsq_androidworld_eval import campaign, rehearsal
 from fsq_androidworld_eval.runner import _sha256
+from fsq_androidworld_eval.appium_proxy import SESSION_ACCESSIBILITY_CONFIG
+from fsq_androidworld_eval.runner import HARNESS_REVISION
 
 
 def _spec(index: int) -> dict:
@@ -29,7 +31,8 @@ def _manifest(count: int = 116) -> dict:
     return {
         "schemaVersion": 2, "kind": "rehearsal",
         "protocol": {
-            "harnessRevision": 11,
+            "harnessRevision": HARNESS_REVISION,
+            "sessionAccessibilityConfig": SESSION_ACCESSIBILITY_CONFIG,
             "runtimeIdentity": {
                 "runtimeSha256": "a" * 64,
                 "mediaEncoder": {"sha256": "b" * 64, "version": "fixture-encoder"},
@@ -395,6 +398,7 @@ def test_unproven_cleanup_halts_all116_rehearsal_before_later_tasks(device, monk
         "manifestSha256": _sha256(manifest),
         "target": manifest["target"],
         "environmentArtifacts": manifest["protocol"]["environmentArtifacts"],
+        "sessionAccessibilityConfig": SESSION_ACCESSIBILITY_CONFIG,
         "adbOutputIsolated": True, "snapshotRestores": [],
     }
     readiness["identitySha256"] = _sha256(readiness)

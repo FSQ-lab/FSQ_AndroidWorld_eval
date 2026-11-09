@@ -223,7 +223,8 @@ def test_runner_preserves_frozen_parameters_when_official_initialization_mutates
     task = RewordingTask()
     expected = runner._json_safe(task.params)
     expected_hash = runner._sha256(expected)
-    readiness = {"qualified": True, "environmentArtifacts": {}}
+    readiness = {"qualified": True, "environmentArtifacts": {},
+                 "sessionAccessibilityConfig": runner.SESSION_ACCESSIBILITY_CONFIG}
     readiness["identitySha256"] = runner._sha256(readiness)
     path = tmp_path / "readiness.json"
     path.write_text(json.dumps(readiness))

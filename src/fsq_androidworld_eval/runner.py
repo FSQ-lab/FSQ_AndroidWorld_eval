@@ -67,6 +67,10 @@ JSON types. Finalization lasts at most 120 seconds within the existing business
 deadline; cleanup cannot submit or replace answers. Invalid answer formats remain
 official failed attempts, with explicit diagnostics rather than type coercion.
 
+Revision 14 explicitly preserves AndroidWorld accessibility services in every
+guarded Appium session. The versioned session configuration and bounded actual
+request/returned capability evidence are score provenance, not a server default.
+
 The Appium action representation and continuous OMP reasoning are custom. Matching
 the reference allocator/runner does not establish action-space equivalence or
 official leaderboard acceptance. Historical campaign evidence is never rewritten.
@@ -94,7 +98,7 @@ from fsq_androidworld_eval.environment import (
     artifact_identity, close_environment, load_environment, restore_shared_assets, strict_snapshot_restores,
 )
 
-from fsq_androidworld_eval.appium_proxy import AppiumAuditProxy
+from fsq_androidworld_eval.appium_proxy import AppiumAuditProxy, SESSION_ACCESSIBILITY_CONFIG
 from fsq_androidworld_eval.action_budget import ActionGate, STEP_BUDGET_PROTOCOL
 from fsq_androidworld_eval.stepped_agent import AppiumSteppedAgent, AgentTerminated
 from fsq_androidworld_eval.lifecycle import (
@@ -106,7 +110,7 @@ from android_world.task_evals.information_retrieval import information_retrieval
 from android_world.env.setup_device import setup as device_setup
 ANDROID_WORLD_REVISION = "55ddaf5edc6f6c25673aed343907d5b9dca66f84"
 DEFAULT_ADB = Path.home() / "Library/Android/sdk/platform-tools/adb"
-HARNESS_REVISION = 13
+HARNESS_REVISION = 14
 PYTHON_EXEC_CALL_ADVISORY = 30
 MCP_REQUEST_TIMEOUT_MS = 120_000
 SESSION_CREATION_TIMEOUT_SECONDS = 90
@@ -549,6 +553,7 @@ def run(args: argparse.Namespace) -> int:
             "sessionCreationTimeoutSeconds": SESSION_CREATION_TIMEOUT_SECONDS,
             "pythonExecCallAdvisory": args.python_exec_call_advisory,
             "harnessRevision": HARNESS_REVISION,
+            "sessionAccessibilityConfig": dict(SESSION_ACCESSIBILITY_CONFIG),
             "maxAppiumSessions": 1,
             "readinessIdentitySha256": args.expected_readiness_sha256,
             "stepBudget": STEP_BUDGET_PROTOCOL,
@@ -596,6 +601,8 @@ def run(args: argparse.Namespace) -> int:
             raise ValueError("device readiness report identity is invalid")
         if readiness.get("identitySha256") != args.expected_readiness_sha256:
             raise ValueError("device readiness identity does not match campaign")
+        if readiness.get("sessionAccessibilityConfig") != SESSION_ACCESSIBILITY_CONFIG:
+            raise ValueError("device readiness session accessibility configuration mismatch")
         artifacts = artifact_identity(Path(args.artifact_root))
         if artifacts != readiness.get("environmentArtifacts"):
             raise ValueError("local environment artifacts do not match readiness")

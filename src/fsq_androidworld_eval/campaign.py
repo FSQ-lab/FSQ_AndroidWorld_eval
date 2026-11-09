@@ -21,6 +21,9 @@ through official public datetime setup in a fresh owned environment, only after
 proven original cleanup, identity, session absence and core health. Durable before
 evidence precedes mutation; strict controller close and fresh probes gate the next
 different task. No task initialization, reward rewrite, Agent retry or reset occurs.
+Revision 14 binds explicit Appium accessibility coexistence and its capability
+audit to manifests and qualification. Inheritance may replace only the named
+forwarder APK pin; task specs and every other frozen asset remain unchanged.
 """
 
 from __future__ import annotations
@@ -42,6 +45,7 @@ from typing import Any
 from android_world import registry, suite_utils
 
 from fsq_androidworld_eval.action_budget import STEP_BUDGET_PROTOCOL
+from fsq_androidworld_eval.appium_proxy import SESSION_ACCESSIBILITY_CONFIG
 from fsq_androidworld_eval.continuation import (
     CAMPAIGN_CONTINUATION, cleanup_known, inherited_source, inherited_tasks,
     validate_inherited_runtime,
@@ -58,6 +62,7 @@ from fsq_androidworld_eval.scorer import (
     _calibration_gate_satisfied,
     _cleanup_failed,
     continuation_audit,
+    _inherited_environment_valid,
     official_reward,
     recalculate as recalculate_score,
     record_classification,
@@ -223,7 +228,7 @@ def _calibration_evidence_paths(
         )]
         extras.extend((campaign_dir / "recoveries").glob("*.json"))
         extras.extend((campaign_dir / "episodes").glob("*/attempt-*/result.json"))
-        if manifest["protocol"].get("harnessRevision") == 13:
+        if manifest["protocol"].get("harnessRevision") in {13, 14}:
             for name in ("business-submission.json", "agent-events.jsonl"):
                 extras.extend((campaign_dir / "episodes").glob(f"*/attempt-*/raw-private/{name}"))
         paths.extend(path for path in sorted(set(extras)) if path not in paths)
@@ -278,6 +283,8 @@ def _calibration_result_has_provenance(
         and _agent_protocol_violations(normalized) == []
         and step_budget_valid(record, task)
         and time_budget_valid(record, task, manifest["protocol"])
+        and (manifest["protocol"].get("harnessRevision") != 14
+             or record.get("protocol", {}).get("sessionAccessibilityConfig") == manifest["protocol"].get("sessionAccessibilityConfig") == SESSION_ACCESSIBILITY_CONFIG)
         and isinstance(budget, dict)
         and budget.get("pythonExecCalls") == len(python_exec_calls)
         and len(python_exec_calls) > 0
@@ -373,6 +380,9 @@ def build_manifest(
             raise ValueError("full campaign requires qualified calibration evidence")
         runtime_identity = _runtime_identity(project)
         validate_inherited_runtime(source, runtime_identity)
+        current_artifacts = artifact_identity(project)
+        if not _inherited_environment_valid(source["protocol"]["environmentArtifacts"], current_artifacts):
+            raise ValueError("inherited environment may replace only the named accessibility forwarder")
         manifest = json.loads(json.dumps(source))
         manifest.update({
             "campaignId": campaign_id,
@@ -392,6 +402,8 @@ def build_manifest(
             "campaignContinuation": dict(CAMPAIGN_CONTINUATION),
             "answerSubmission": dict(ANSWER_SUBMISSION_PROTOCOL),
             "promptTemplateSha256": PROMPT_TEMPLATE_SHA256,
+            "sessionAccessibilityConfig": dict(SESSION_ACCESSIBILITY_CONFIG),
+            "environmentArtifacts": current_artifacts,
         })
         manifest["invalidRules"]["cleanupFailure"] = (
             "Preserve original cleanup and reward; continue only after verified recovery, "
@@ -486,6 +498,7 @@ def build_manifest(
             "harnessRevision": HARNESS_REVISION,
             "runtimeIdentity": _runtime_identity(project),
             "environmentArtifacts": artifact_identity(project),
+            "sessionAccessibilityConfig": dict(SESSION_ACCESSIBILITY_CONFIG),
             "harnessRehearsal": REHEARSAL_POLICY,
             "campaignContinuation": dict(CAMPAIGN_CONTINUATION),
             "model": "github-copilot/gpt-5.6-sol",
@@ -591,6 +604,7 @@ def _load_manifest(path: Path, project: Path | None = None) -> dict[str, Any]:
         "taskMetadataSha256": _file_sha256(metadata_path),
         "promptTemplateSha256": PROMPT_TEMPLATE_SHA256,
         "harnessRevision": HARNESS_REVISION,
+        "sessionAccessibilityConfig": SESSION_ACCESSIBILITY_CONFIG,
         "stepBudget": STEP_BUDGET_PROTOCOL,
         "timeBudget": TIME_BUDGET_PROTOCOL,
         "answerSubmission": ANSWER_SUBMISSION_PROTOCOL,
@@ -634,9 +648,11 @@ def _load_manifest(path: Path, project: Path | None = None) -> dict[str, Any]:
             raise ValueError("inherited source provenance or exact task specs mismatch")
         validate_inherited_runtime(source, protocol.get("runtimeIdentity", {}))
         frozen_protocol = {key: value for key, value in source["protocol"].items()
-                           if key not in {"harnessRevision", "runtimeIdentity", "promptTemplateSha256"}}
+                           if key not in {"harnessRevision", "runtimeIdentity", "promptTemplateSha256", "environmentArtifacts"}}
         if any(protocol.get(key) != value for key, value in frozen_protocol.items()):
             raise ValueError("inherited source frozen episode protocol mismatch")
+        if not _inherited_environment_valid(source["protocol"]["environmentArtifacts"], protocol.get("environmentArtifacts")):
+            raise ValueError("inherited environment may replace only the named accessibility forwarder")
         if {key: value for key, value in manifest.get("target", {}).items() if key != "environmentMode"} != source["target"]:
             raise ValueError("inherited source target mismatch")
     elif kind == "calibration":
@@ -784,6 +800,8 @@ def _readiness_identity(path: Path, manifest: dict[str, Any]) -> str:
         raise ValueError("readiness target/environment mode identity differs from manifest")
     if readiness.get("environmentArtifacts") != manifest["protocol"]["environmentArtifacts"]:
         raise ValueError("readiness environment artifact identity differs from manifest")
+    if readiness.get("sessionAccessibilityConfig") != manifest["protocol"].get("sessionAccessibilityConfig") or readiness.get("sessionAccessibilityConfig") != SESSION_ACCESSIBILITY_CONFIG:
+        raise ValueError("readiness session accessibility configuration differs from manifest")
     expected_apps = sorted({app for task in manifest["tasks"] for app in task["apps"]})
     if (
         readiness.get("schemaVersion") != 2
@@ -1400,6 +1418,7 @@ def run_campaign(args: argparse.Namespace) -> int:
             "manifestSha256": _sha256(manifest),
             "protocolIdentity": {
                 "harnessRevision": HARNESS_REVISION,
+                "sessionAccessibilityConfig": dict(SESSION_ACCESSIBILITY_CONFIG),
                 "campaignContinuation": manifest["protocol"]["campaignContinuation"],
                 "protocolSha256": _sha256(manifest["protocol"]),
             },

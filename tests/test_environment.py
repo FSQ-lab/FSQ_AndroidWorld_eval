@@ -92,6 +92,30 @@ def test_missing_identity_is_read_only_and_does_not_create_cache(tmp_path, monke
     assert list(tmp_path.iterdir()) == []
 
 
+@pytest.mark.parametrize("source_state", ["missing", "tampered"])
+def test_local_release_integrity_failure_never_falls_back_to_download_or_legacy(
+    artifacts, monkeypatch, source_state,
+):
+    release = replace(artifacts.helper, url="repo:assets/release.apk")
+    monkeypatch.setattr(environment, "_HELPER_APK", release)
+    monkeypatch.setattr(environment.url_request, "urlopen", _forbid_network)
+    target = artifacts.directory / release.name
+    target.write_bytes(b"preserve-existing-cache")
+    legacy = Path(environment.tempfile.gettempdir()) / "android_world/app_data" / release.name
+    legacy.parent.mkdir(parents=True)
+    legacy.write_bytes(artifacts.payload)
+    if source_state == "tampered":
+        source = artifacts.project / "assets/release.apk"
+        source.parent.mkdir()
+        source.write_bytes(b"untrusted-release")
+
+    with pytest.raises(environment.ArtifactError):
+        environment.prepare_artifacts(artifacts.project)
+
+    assert target.read_bytes() == b"preserve-existing-cache"
+    assert not list(artifacts.directory.glob("*.part"))
+
+
 def test_complete_download_is_checked_before_atomic_replacement(artifacts, monkeypatch):
     target = artifacts.directory / artifacts.helper.name
     target.write_bytes(b"old-damaged-cache")

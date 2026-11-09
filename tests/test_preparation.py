@@ -7,6 +7,7 @@ from types import SimpleNamespace
 import pytest
 from fsq_androidworld_eval import preparation
 from fsq_androidworld_eval.runner import ANDROID_WORLD_REVISION, HARNESS_REVISION, _sha256
+from fsq_androidworld_eval.appium_proxy import SESSION_ACCESSIBILITY_CONFIG
 
 _ARTIFACT_IDENTITY = {"schemaVersion": 1, "artifacts": [{"name": "fixture.apk", "sha256": "a" * 64}]}
 _MEDIA_IDENTITY = {"package": "fixture-encoder", "sha256": "b" * 64}
@@ -86,6 +87,7 @@ def test_preparation_failure_still_writes_verifiable_report(tmp_path: Path, monk
         "campaignId": "qualification",
         "protocol": {
             "harnessRevision": HARNESS_REVISION,
+            "sessionAccessibilityConfig": SESSION_ACCESSIBILITY_CONFIG,
             "androidWorldRevision": ANDROID_WORLD_REVISION,
             "environmentArtifacts": _ARTIFACT_IDENTITY,
             "runtimeIdentity": {"mediaEncoder": _MEDIA_IDENTITY},
@@ -132,6 +134,7 @@ def recorder_device(tmp_path: Path, monkeypatch):
         "schemaVersion": 2, "campaignId": "recorder-readiness",
         "protocol": {
             "harnessRevision": HARNESS_REVISION, "androidWorldRevision": ANDROID_WORLD_REVISION,
+            "sessionAccessibilityConfig": SESSION_ACCESSIBILITY_CONFIG,
             "environmentArtifacts": _ARTIFACT_IDENTITY,
             "runtimeIdentity": {"mediaEncoder": _MEDIA_IDENTITY},
         },
@@ -265,3 +268,69 @@ def test_vlc_startup_requires_real_saved_onboarding_and_effective_permission(mon
     state = preparation._vlc_startup_state("adb", "emulator")
     assert state == {"onboardingCompleted": onboarding, "allFilesAuthorized": permission}
     assert all(state.values()) is (onboarding and permission)
+
+
+@pytest.mark.parametrize("returned,confirmed", [
+    ({"disableSuppressAccessibilityService": True}, True),
+    ({"appium:disableSuppressAccessibilityService": True}, True),
+    ({}, False), ({"disableSuppressAccessibilityService": False}, False),
+])
+def test_vlc_preparation_requests_coexistence_and_refuses_unconfirmed_sessions(tmp_path, monkeypatch, returned, confirmed):
+    import ast
+    from appium import webdriver
+
+    state = {"requests": [], "quit": 0, "activated": 0, "snapshots": 0}
+
+    class Driver:
+        session_id = "preparation-session"
+        capabilities = {"newCommandTimeout": 300, **returned}
+        current_package = "org.videolan.vlc"
+        current_activity = ".gui.MainActivity"
+
+        def activate_app(self, package):
+            state["activated"] += 1
+
+        def find_elements(self, *args):
+            return []
+
+        def terminate_app(self, package):
+            pass
+
+        def quit(self):
+            state["quit"] += 1
+
+    def remote(url, *, options):
+        state["requests"].append(options.to_capabilities())
+        return Driver()
+
+    class Runtime:
+        def __init__(self, *args, **kwargs):
+            self.namespace = {}
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *args):
+            pass
+
+        def execute(self, code, **kwargs):
+            tree = ast.parse(code)
+            exec(compile(ast.Module(body=tree.body[:-1], type_ignores=[]), "<preparation>", "exec"), self.namespace)
+            return eval(compile(ast.Expression(tree.body[-1].value), "<preparation>", "eval"), self.namespace)
+
+    monkeypatch.setattr(webdriver, "Remote", remote)
+    monkeypatch.setattr(preparation, "RecoveryRuntime", Runtime)
+    monkeypatch.setattr(preparation, "_appium_session_hashes", lambda *args: [])
+    monkeypatch.setattr(preparation, "_vlc_startup_state", lambda *args: {"onboardingCompleted": True, "allFilesAuthorized": True})
+    monkeypatch.setattr(preparation.app_snapshot, "save_snapshot", lambda *args: state.update(snapshots=state["snapshots"] + 1))
+    target = {"serial": "emulator-5554", "appiumUrl": "http://preparation"}
+    if confirmed:
+        proof = preparation._complete_vlc_setup(SimpleNamespace(controller=object()), tmp_path, target, "adb")
+        assert proof["returnedAccessibilityCapabilities"] == returned
+        assert state["snapshots"] == 1
+    else:
+        with pytest.raises(RuntimeError, match="did not confirm accessibility"):
+            preparation._complete_vlc_setup(SimpleNamespace(controller=object()), tmp_path, target, "adb")
+        assert state["activated"] == state["snapshots"] == 0
+    assert state["quit"] == 1
+    assert state["requests"][0][SESSION_ACCESSIBILITY_CONFIG["capability"]] is True

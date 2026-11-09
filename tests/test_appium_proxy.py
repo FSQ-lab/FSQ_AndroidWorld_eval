@@ -13,7 +13,9 @@ from urllib.parse import urlsplit
 import pytest
 
 
-from fsq_androidworld_eval.appium_proxy import AppiumAuditProxy
+from fsq_androidworld_eval.appium_proxy import (
+    AppiumAuditProxy, SESSION_ACCESSIBILITY_CONFIG, session_accessibility_audit_valid,
+)
 from fsq_androidworld_eval.action_budget import ActionGate
 from fsq_androidworld_eval.lifecycle import EpisodeDeadlines
 
@@ -119,6 +121,12 @@ class _DeviceState:
         self.creation_release = Event()
         self.creation_release.set()
         self.malformed_creation = False
+        self.creation_payload: dict | None = None
+        self.creation_body: bytes | None = None
+        self.returned_capabilities = {
+            "platformName": "Android", "disableSuppressAccessibilityService": True,
+            "deviceUDID": "emulator-5554",
+        }
 
     def snapshot(self) -> tuple[int, list[str], list[str], int, int]:
         with self.condition:
@@ -141,13 +149,15 @@ def _upstream():
                 state.requests.append((self.command, path))
                 if self.command == "POST" and path == "/session":
                     state.created += 1
+                    state.creation_payload = payload
+                    state.creation_body = body
                     state.sessions.add("owned-session-secret")
                     caps = payload.get("capabilities", {}).get("alwaysMatch", {})
                     if caps.get("appium:appPackage") and caps.get("appium:autoLaunch", True):
                         state.mutations.append("session auto-launch")
                     if caps.get("appium:app"):
                         state.mutations.append("session install")
-                    value = {"sessionId": "owned-session-secret", "capabilities": {"platformName": "Android"}}
+                    value = {"sessionId": "owned-session-secret", "capabilities": state.returned_capabilities}
                 elif self.command == "DELETE" and path.startswith("/session/") and not route:
                     session_id = path.split("/")[2]
                     if session_id not in state.sessions:
@@ -255,6 +265,101 @@ def _capabilities(**changes: object) -> dict:
     }
     caps.update(changes)
     return {"capabilities": {"alwaysMatch": caps, "firstMatch": [{}]}}
+
+
+@pytest.mark.parametrize("placement", ["missing", "always", "first", "options", "split_options", "multiple"])
+def test_guard_forwards_explicit_coexistence_and_archives_actual_capabilities(placement: str) -> None:
+    import hashlib
+
+    payload = _capabilities()
+    envelope = payload["capabilities"]
+    key = SESSION_ACCESSIBILITY_CONFIG["capability"]
+    if placement == "always":
+        envelope["alwaysMatch"][key] = True
+    elif placement == "first":
+        envelope["firstMatch"] = [{key: True}]
+    elif placement == "options":
+        envelope["alwaysMatch"]["appium:options"] = {"disableSuppressAccessibilityService": True}
+    elif placement == "split_options":
+        envelope["alwaysMatch"]["appium:options"] = {"newCommandTimeout": 300}
+        envelope["firstMatch"] = [{"appium:options": {"disableSuppressAccessibilityService": True}}]
+    elif placement == "multiple":
+        envelope["firstMatch"] = [{"appium:deviceName": "first"}, {"appium:options": {"deviceName": "second", key: True}}]
+    with _upstream() as (url, state), AppiumAuditProxy(url, action_gate=ActionGate(), expected_udid="emulator-5554") as proxy:
+        status, _ = _request(proxy.url, "POST", "/session", payload)
+        assert status == 200
+        actual = state.creation_payload["capabilities"]
+        assert actual["alwaysMatch"][key] is True
+        for candidate in actual["firstMatch"]:
+            assert {**actual["alwaysMatch"], **candidate}[key] is True
+            assert "appium:options" not in candidate
+        assert "appium:options" not in actual["alwaysMatch"]
+        audit = proxy.audit()
+        creation = audit["sessionAccessibility"]["creations"][0]
+        assert creation["request"]["capabilities"] == actual
+        assert creation["request"]["sha256"] == hashlib.sha256(state.creation_body).hexdigest()
+        assert creation["response"]["capabilities"] == state.returned_capabilities
+        assert creation["response"]["confirmed"] is True
+        assert session_accessibility_audit_valid(audit, "emulator-5554")
+        assert session_accessibility_audit_valid(json.loads(json.dumps(audit, sort_keys=True)), "emulator-5554")
+
+
+@pytest.mark.parametrize("placement", ["always", "first", "options", "first_options", "second_candidate", "shadowed"])
+@pytest.mark.parametrize("value", [False, None, 0, "true"])
+def test_guard_rejects_every_explicit_coexistence_contradiction(placement: str, value: object) -> None:
+    payload = _capabilities()
+    envelope = payload["capabilities"]
+    key = SESSION_ACCESSIBILITY_CONFIG["capability"]
+    if placement == "always":
+        envelope["alwaysMatch"][key] = value
+    elif placement == "first":
+        envelope["firstMatch"] = [{key: value}]
+    elif placement == "options":
+        envelope["alwaysMatch"]["appium:options"] = {"disableSuppressAccessibilityService": value}
+    elif placement == "first_options":
+        envelope["firstMatch"] = [{"appium:options": {key: value}}]
+    elif placement == "second_candidate":
+        envelope["firstMatch"] = [{}, {key: value}]
+    else:
+        envelope["alwaysMatch"][key] = True
+        envelope["alwaysMatch"]["appium:options"] = {"disableSuppressAccessibilityService": value}
+    with _upstream() as (url, state), AppiumAuditProxy(url, action_gate=ActionGate(), expected_udid="emulator-5554") as proxy:
+        assert _request(proxy.url, "POST", "/session", payload)[0] == 400
+        assert state.created == 0
+        assert state.requests == []
+
+
+@pytest.mark.parametrize("returned,confirmed", [
+    ({}, False), ({"disableSuppressAccessibilityService": False}, False),
+    ({"appium:options": {"disableSuppressAccessibilityService": False}}, False),
+    ({"disableSuppressAccessibilityService": True, "appium:options": {"disableSuppressAccessibilityService": False}}, False),
+    ({"appium:disableSuppressAccessibilityService": True}, True),
+    ({"appium:options": {"disableSuppressAccessibilityService": True}}, True),
+])
+def test_guard_requires_actual_returned_confirmation_without_losing_ownership(returned: dict, confirmed: bool) -> None:
+    with _upstream() as (url, state), AppiumAuditProxy(url, action_gate=ActionGate(), expected_udid="emulator-5554") as proxy:
+        state.returned_capabilities = returned
+        status, _ = _request(proxy.url, "POST", "/session", _capabilities())
+        assert status == (200 if confirmed else 502)
+        audit = proxy.audit()
+        assert audit["createdSessionCount"] == audit["ownedSessionCount"] == 1
+        evidence = audit["sessionAccessibility"]["creations"][0]["response"]
+        assert evidence["capabilities"] == returned
+        assert evidence["confirmed"] is confirmed
+        assert session_accessibility_audit_valid(audit, "emulator-5554") is confirmed
+        if not confirmed:
+            assert proxy.reclaim_owned(_execute_recovery)["status"] == "harness_reclaimed"
+            assert state.sessions == {"baseline-session-secret"}
+
+
+def test_capability_evidence_is_bounded_and_never_treated_as_confirmation_when_omitted() -> None:
+    with _upstream() as (url, state), AppiumAuditProxy(url, action_gate=ActionGate(), expected_udid="emulator-5554") as proxy:
+        state.returned_capabilities["padding"] = "x" * SESSION_ACCESSIBILITY_CONFIG["maximumCapabilityBytes"]
+        assert _request(proxy.url, "POST", "/session", _capabilities())[0] == 502
+        response = proxy.audit()["sessionAccessibility"]["creations"][0]["response"]
+        assert response["capabilities"] is None
+        assert response["confirmed"] is False
+        assert response["capabilityByteCount"] > SESSION_ACCESSIBILITY_CONFIG["maximumCapabilityBytes"]
 
 
 def _connect(proxy: AppiumAuditProxy) -> str:
@@ -852,8 +957,7 @@ def test_already_absent_session_is_not_attributed_to_agent_or_harness_quit() -> 
 def test_unknown_creation_outcome_never_deletes_unattributed_sessions() -> None:
     with _upstream() as (url, state), AppiumAuditProxy(url, action_gate=ActionGate(), expected_udid="emulator-5554") as proxy:
         state.malformed_creation = True
-        with pytest.raises(json.JSONDecodeError):
-            _request(proxy.url, "POST", "/session", _capabilities())
+        assert _request(proxy.url, "POST", "/session", _capabilities())[0] == 502
         calls: list[str] = []
         report = proxy.reclaim_owned(lambda code, timeout: calls.append(code))
         assert report["status"] == "unknown"

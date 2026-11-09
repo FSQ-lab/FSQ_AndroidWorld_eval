@@ -1,3 +1,4 @@
+import hashlib
 import json
 from pathlib import Path
 import subprocess
@@ -22,6 +23,7 @@ from fsq_androidworld_eval.campaign import (
 from fsq_androidworld_eval.continuation import CAMPAIGN_CONTINUATION, INHERITED_TASKS_SHA256
 from fsq_androidworld_eval.runner import _sha256, _task
 from fsq_androidworld_eval.lifecycle import TIME_BUDGET_PROTOCOL, episode_time_budget
+from fsq_androidworld_eval.appium_proxy import SESSION_ACCESSIBILITY_CONFIG
 
 FROZEN_SOURCE = Path(__file__).resolve().parents[1] / "campaigns/amkernel-3388314-r11-timeout300-full-20261106T142607Z/manifest.json"
 
@@ -34,7 +36,11 @@ def isolated_artifact_identity(monkeypatch):
     runtime = json.loads(json.dumps(source["protocol"]["runtimeIdentity"]))
     runtime["harnessSourceSha256"] = "c" * 64
     monkeypatch.setattr(campaign, "_runtime_identity", lambda project: json.loads(json.dumps(runtime)))
-    monkeypatch.setattr(campaign, "artifact_identity", lambda project: source["protocol"]["environmentArtifacts"])
+    artifacts = json.loads(json.dumps(source["protocol"]["environmentArtifacts"]))
+    helper = next(row for row in artifacts["artifacts"] if row["name"] == SESSION_ACCESSIBILITY_CONFIG["inheritedForwarderArtifactName"])
+    helper.update(name=SESSION_ACCESSIBILITY_CONFIG["forwarderArtifactName"], sha256="d" * 64,
+                  sizeBytes=1234, url="repo:assets/fsq-accessibility-forwarder-lifecycle-v1.apk")
+    monkeypatch.setattr(campaign, "artifact_identity", lambda project: json.loads(json.dumps(artifacts)))
 
 def _submission_artifacts(directory: Path, business_seconds: int) -> tuple[dict, dict, str]:
     import hashlib
@@ -116,6 +122,7 @@ def _qualified_calibration_campaign(root: Path) -> Path:
                         "timeBudget": manifest["protocol"]["timeBudget"],
                         "answerSubmission": manifest["protocol"]["answerSubmission"],
                         "environmentArtifacts": manifest["protocol"]["environmentArtifacts"],
+                        "sessionAccessibilityConfig": SESSION_ACCESSIBILITY_CONFIG,
                     },
                     "timeBudget": task["timeBudget"],
                     "agent": {
@@ -146,6 +153,7 @@ def _qualified_calibration_campaign(root: Path) -> Path:
                         "deletedSessionCount": 1,
                         "deletedSessionHashes": ["b" * 64],
                         "errors": [],
+                        "sessionAccessibility": _fixture_accessibility(manifest["target"]["serial"]),
                     },
                     "budget": {"pythonExecCalls": 1, "exceededAdvisory": False,
                                "advisory": manifest["protocol"]["pythonExecCallAdvisory"],
@@ -196,11 +204,27 @@ def _qualified_calibration_campaign(root: Path) -> Path:
     return root
 
 
+def _fixture_accessibility(serial: str) -> dict:
+    capabilities = {"alwaysMatch": {
+        "platformName": "Android", "appium:automationName": "UiAutomator2", "appium:udid": serial,
+        "appium:noReset": True, "appium:skipUnlock": True, "appium:autoLaunch": False,
+        SESSION_ACCESSIBILITY_CONFIG["capability"]: True,
+    }, "firstMatch": [{}]}
+    body = json.dumps({"capabilities": capabilities}, sort_keys=True).encode()
+    returned = {"disableSuppressAccessibilityService": True}
+    return {"config": SESSION_ACCESSIBILITY_CONFIG, "creations": [{
+        "request": {"capabilities": capabilities, "sha256": hashlib.sha256(body).hexdigest(), "byteCount": len(body)},
+        "response": {"status": 200, "bodySha256": "a" * 64, "capabilities": returned,
+                     "capabilityByteCount": len(json.dumps(returned, sort_keys=True).encode()), "confirmed": True},
+    }]}
+
+
 def _fixture_readiness(manifest: dict) -> dict:
     readiness = {
         "schemaVersion": 2, "manifestSha256": _sha256(manifest), "qualified": True,
         "environmentClose": "closed", "adbOutputIsolated": True,
         "environmentArtifacts": manifest["protocol"]["environmentArtifacts"],
+        "sessionAccessibilityConfig": SESSION_ACCESSIBILITY_CONFIG,
         "snapshotRestores": [{"app": app, "status": "restored"} for app in sorted({
             app for task in manifest["tasks"] for app in task["apps"]
         })],
@@ -403,6 +427,7 @@ def test_readiness_gate_requires_clean_capture_and_every_snapshot(tmp_path: Path
         "adbOutputIsolated": True,
         "snapshotRestores": [{"app": app, "status": "restored"} for app in apps],
         "environmentArtifacts": manifest["protocol"]["environmentArtifacts"],
+        "sessionAccessibilityConfig": SESSION_ACCESSIBILITY_CONFIG,
         "target": manifest["target"],
     }
     if change == "old_schema":
@@ -424,6 +449,18 @@ def test_readiness_gate_requires_clean_capture_and_every_snapshot(tmp_path: Path
     else:
         with pytest.raises(ValueError, match="ADB capture|snapshot restore"):
             _readiness_identity(path, manifest)
+
+
+@pytest.mark.parametrize("value", [None, {}, {"version": 0}])
+def test_readiness_rejects_missing_or_different_accessibility_config(tmp_path, value):
+    manifest = build_manifest("accessibility-readiness")
+    report = _fixture_readiness(manifest)
+    report["sessionAccessibilityConfig"] = value
+    report["identitySha256"] = _sha256({key: item for key, item in report.items() if key != "identitySha256"})
+    path = tmp_path / "readiness.json"
+    path.write_text(json.dumps(report))
+    with pytest.raises(ValueError, match="session accessibility configuration"):
+        _readiness_identity(path, manifest)
 
 
 def test_readiness_identity_rejects_environment_close_failure(tmp_path: Path) -> None:
@@ -528,7 +565,7 @@ def test_fresh_campaign_records_first_launch_and_all_terminals(tmp_path: Path, m
     assert campaign.run_campaign(args) == 0
     assert launched == [(index, 1) for index in range(12)]
     summary = json.loads((output / "summary.json").read_text())
-    assert summary["protocolIdentity"] == "r13.full_coverage_after_verified_recovery.v2"
+    assert summary["protocolIdentity"] == "r14.full_coverage_after_verified_recovery.v2"
     assert summary["actualStartedEpisodeCount"] == 12
     assert summary["actualAttemptStartCount"] == 12
     assert summary["unstartedTaskIndexes"] == []
@@ -985,8 +1022,9 @@ def test_recovery_retains_observed_boot_and_framework_pid_boundaries(tmp_path: P
 
 @pytest.mark.parametrize("missing", [None, "onboardingCompleted", "quitReturned", "snapshotSavedAfterUi", "allFilesAuthorized"])
 def test_readiness_rejects_incomplete_vlc_startup_snapshot_proof(tmp_path: Path, missing) -> None:
-    manifest = {"target": {"serial": "emulator"}, "protocol": {"environmentArtifacts": {}},
-                "tasks": [{"apps": ["vlc"]}]}
+    manifest = {"target": {"serial": "emulator"}, "protocol": {
+        "environmentArtifacts": {}, "sessionAccessibilityConfig": SESSION_ACCESSIBILITY_CONFIG},
+        "tasks": [{"apps": ["vlc"]}]}
     proof = {key: True for key in ("mainActivityObserved", "quitReturned", "onboardingCompleted",
                                    "allFilesAuthorized", "snapshotSavedAfterUi")}
     if missing is not None:
@@ -994,6 +1032,7 @@ def test_readiness_rejects_incomplete_vlc_startup_snapshot_proof(tmp_path: Path,
     report = {"schemaVersion": 2, "qualified": True, "environmentClose": "closed",
               "manifestSha256": _sha256(manifest), "target": manifest["target"],
               "environmentArtifacts": {}, "adbOutputIsolated": True,
+              "sessionAccessibilityConfig": SESSION_ACCESSIBILITY_CONFIG,
               "snapshotRestores": [{"app": "vlc", "status": "restored"}], "vlcStartup": proof}
     report["identitySha256"] = _sha256(report)
     path = tmp_path / "readiness.json"
