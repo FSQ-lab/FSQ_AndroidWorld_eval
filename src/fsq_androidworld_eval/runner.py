@@ -113,6 +113,7 @@ from fsq_androidworld_eval.lifecycle import (
 from fsq_androidworld_eval.mcp_runtime import RecoveryRuntime
 from fsq_androidworld_eval.submission import ANSWER_SUBMISSION_PROTOCOL, parse_submission
 from fsq_androidworld_eval.task_time import TASK_TIME_CONTEXT_PROTOCOL, task_time_context
+from fsq_androidworld_eval.evaluator_diagnostics import EvaluatorDiagnostics, bounded_type_name
 from android_world.task_evals.information_retrieval import information_retrieval
 from android_world.env.setup_device import setup as device_setup
 ANDROID_WORLD_REVISION = "55ddaf5edc6f6c25673aed343907d5b9dca66f84"
@@ -788,12 +789,23 @@ def run(args: argparse.Namespace) -> int:
             env.interaction_cache = submission["answer"]
 
         enter_stage("evaluator")
-        evaluator_started = time.time()
-        record["officialReward"] = task.is_successful(env)
-        record["evaluator"] = {
-            "implementation": "android_world.task_eval.is_successful",
-            "durationSeconds": round(time.time() - evaluator_started, 3),
-        }
+        diagnostics = EvaluatorDiagnostics(
+            output_dir, task_name=record["task"]["name"],
+            params_sha256=record["task"]["paramsSha256"],
+        )
+        try:
+            with diagnostics:
+                evaluator_started = time.time()
+                try:
+                    record["officialReward"] = task.is_successful(env)
+                    diagnostics.reward = record["officialReward"]
+                finally:
+                    record["evaluator"] = {
+                        "implementation": "android_world.task_eval.is_successful",
+                        "durationSeconds": round(time.time() - evaluator_started, 3),
+                    }
+        finally:
+            record["evaluator"]["diagnostics"] = diagnostics.reference
 
         termination = record["agent"]["termination"]["reason"]
         if termination in {"unknown_termination", "forced_termination"}:
@@ -805,11 +817,15 @@ def run(args: argparse.Namespace) -> int:
     except Exception as exc:
         if stage_entry is not None:
             stage_entry["status"] = "failed"
-        record["error"] = {
-            "type": type(exc).__name__,
-            "message": str(exc)[:4096],
-            "traceback": "".join(traceback.format_exception(exc))[-8192:],
-        }
+        if stage == "evaluator":
+            # Native exceptions may contain hidden expected values or DB rows.
+            record["error"] = {"type": bounded_type_name(exc)[0]}
+        else:
+            record["error"] = {
+                "type": type(exc).__name__,
+                "message": str(exc)[:4096],
+                "traceback": "".join(traceback.format_exception(exc))[-8192:],
+            }
         record["invalidReason"] = {
             "protocol": "invalid_protocol",
             "infrastructure": "invalid_infrastructure",
