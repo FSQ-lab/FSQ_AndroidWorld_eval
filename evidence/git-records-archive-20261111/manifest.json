@@ -6,12 +6,12 @@
   "headBeforeArchive": "9b9736abf98ea2e0a047b546109b8a3c77075d09",
   "initialIndexEmpty": true,
   "evidenceInventory": {
-    "files": 33772,
-    "logicalBytes": 9142819410,
+    "files": 33773,
+    "logicalBytes": 9142819452,
     "gitStatesAtInventory": {
       "ignored": {
-        "files": 33772,
-        "bytes": 9142819410
+        "files": 33773,
+        "bytes": 9142819452
       }
     },
     "groups": {
@@ -24,14 +24,14 @@
         "bytes": 22201451
       },
       "historical-harness-and-other": {
-        "files": 17855,
-        "bytes": 6642633963
+        "files": 17856,
+        "bytes": 6642634005
       }
     },
     "topDirectories": {
       "accessibility-coexistence-repair-20261109T064155Z": {
-        "files": 11353,
-        "bytes": 2009033736
+        "files": 11354,
+        "bytes": 2009033778
       },
       "amkernel-0.1.4-r15-current-stack-20261109T154403Z": {
         "files": 65,
@@ -186,8 +186,8 @@
     ]
   },
   "notSavedByThisArchive": {
-    "files": 32476,
-    "logicalBytes": 9064106141,
+    "files": 32477,
+    "logicalBytes": 9064106183,
     "reasons": {
       "historical_nested_details_outside_document_archive": {
         "files": 10167,
@@ -210,8 +210,8 @@
         "bytes": 3917868
       },
       "symlink_not_followed": {
-        "files": 52,
-        "bytes": 5678
+        "files": 53,
+        "bytes": 5720
       }
     },
     "rawPrivateFiles": 14793,
@@ -288,5 +288,11 @@
     "knownOfficialSiteReference": "/Users/qunmi/.local/share/fsq-androidworld-eval/fsq-native-gpt61-corrected-20261110T043031Z/evaluator-site"
   },
   "verificationPlan": "Commit tree must exactly equal enumerated original record paths plus generated archive files, and blobs must match current selected files; original selected record SHA256s must match scan. Do not rescan the prior 649 artifact set.",
-  "backupClaim": "Only paths with selected_for_local_git_commit in coverage.tsv and generatedArchiveFiles belong to this archive scope. Excluded materials are NOT Git-backed-up by this operation. Final delivery supplies actual commit SHA and tree verification."
+  "backupClaim": "Only paths with selected_for_local_git_commit in coverage.tsv and generatedArchiveFiles belong to this archive scope. Excluded materials are NOT Git-backed-up by this operation. Final delivery supplies actual commit SHA and tree verification.",
+  "inventoryCorrection": {
+    "path": "evidence/accessibility-coexistence-repair-20261109T064155Z/build-tools/android-sdk/platforms",
+    "kind": "directory_symlink_lstat_only",
+    "targetFollowedOrCopied": false,
+    "note": "The initial Git ignored listing included this directory symlink; file-only traversal omitted it. Corrected coverage includes the symlink, never its external SDK target."
+  }
 }

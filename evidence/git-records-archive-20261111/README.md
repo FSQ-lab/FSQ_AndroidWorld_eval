@@ -11,13 +11,13 @@
 | 范围 | 文件数 | 逻辑字节数 |
 |---|---:|---:|
 | 本次FSQ目录 | 15548 | 2,477,983,996 |
-| 既往amkernel/共享harness及其他目录 | 18224 | 6,664,835,414 |
+| 既往amkernel/共享harness及其他目录 | 18225 | 6,664,835,456 |
 
-清单初始总计33,772文件、9,142,819,410逻辑字节，全部ignored（tracked=0、untracked-nonignored=0）。逻辑大小不是磁盘已分配块数或Git压缩体积。历史中只有名称明确含amkernel的目录单独标为historical-amkernel-named，不能据此把其余harness目录说成没有amkernel任务；精确顶层统计见manifest。
+清单初始总计33,773文件、9,142,819,452逻辑字节，全部ignored（tracked=0、untracked-nonignored=0）。逻辑大小不是磁盘已分配块数或Git压缩体积。历史中只有名称明确含amkernel的目录单独标为historical-amkernel-named，不能据此把其余harness目录说成没有amkernel任务；精确顶层统计见manifest。
 
 ## 明确未保存的材料
 
-本次 **32,476份既存文件、9,064,106,141字节未由此提交保存**。包括raw-private、模拟器COW、安装包/构建缓存、日志/二进制、历史深层过程记录、超过5MiB的文档、52个未跟随symlink，以及24份保守排除的敏感/私有候选文档。
+本次 **32,477份既存文件、9,064,106,183字节未由此提交保存**。包括raw-private、模拟器COW、安装包/构建缓存、日志/二进制、历史深层过程记录、超过5MiB的文档、53个未跟随symlink，以及24份保守排除的敏感/私有候选文档。
 
 完整可读逐文件状态见 [coverage.tsv](coverage.tsv)；其中git_state_at_inventory是扫描时状态，不是提交后的状态；selected_for_local_git_commit表示此次精确选入集合，实际是否提交以交付SHA的tree核验为准。字节统计是该次扫描快照；仍在写入的未选日志不宣称被冻结。
 
@@ -38,3 +38,5 @@
 ## 核验
 
 [manifest.json](manifest.json)记录选入/未覆盖边界。提交后只核验精确提交树、blob与当前目标文件、选中文档SHA及未夹带原工作树/index改动；不重扫此前649原artifact，不运行测试/设备/模型/重评。实际commit SHA、分支和tree核验结果由本次交付提供。
+
+目录symlink核验补充：原Git ignored列表中的SDK `platforms`目录symlink也已按lstat加入未覆盖清单；未遍历、复制或移动其外部目标。
