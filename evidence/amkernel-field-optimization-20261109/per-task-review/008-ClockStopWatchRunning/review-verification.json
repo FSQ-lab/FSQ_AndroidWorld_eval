@@ -1,0 +1,83 @@
+{
+  "scope": "Offline review of original 008 only; no extra experiment/device operation/rescore",
+  "sourceEpisode": "008-ClockStopWatchRunning/attempt-1",
+  "originalReward": 0.0,
+  "formalScore": null,
+  "frozenTaskIdentity": {
+    "apps": [
+      "clock"
+    ],
+    "complexity": 1,
+    "difficulty": "easy",
+    "family": "android",
+    "index": 8,
+    "instanceSeed": 3429360255,
+    "maxSteps": 10,
+    "name": "ClockStopWatchRunning",
+    "params": {
+      "seed": 3429360255
+    },
+    "paramsSha256": "fe15fe1739bca1ce130f387e2e84d273c4a55e5403a5c174c7a2ec65119afaf9",
+    "paramsTransport": "json",
+    "tags": [
+      ""
+    ],
+    "timeBudget": {
+      "businessSeconds": 720,
+      "cleanupWindowSeconds": 180,
+      "episodeSeconds": 1330,
+      "forceSeconds": 910,
+      "recoveryWindowSeconds": 120,
+      "terminationGraceSeconds": 10
+    }
+  },
+  "pythonCalls": 9,
+  "completedCalls": 7,
+  "timedOutCalls": 2,
+  "allKernelsReportedAlive": true,
+  "actions": 4,
+  "maxSteps": 10,
+  "budgetExhausted": false,
+  "actualOfficialPredicateSmokeExitCode": 0,
+  "historicalOfficialInputAvailable": false,
+  "originalFinalSourceFilterIncludesLap": false,
+  "noOriginalImages": true,
+  "historicalUniqueFailureCause": "unknown",
+  "newProductionEdits": [],
+  "liveExperimentPerformed": false,
+  "sourceIntegrity": [
+    {
+      "path": "campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/episodes/008-ClockStopWatchRunning/attempt-1/result.json",
+      "sha256Before": "090e04a2121e3faf250b8a29c781237bcd8e5af324ba90901be100ac2a3c8f3a",
+      "sha256After": "090e04a2121e3faf250b8a29c781237bcd8e5af324ba90901be100ac2a3c8f3a",
+      "unchanged": true,
+      "bytes": 19916
+    },
+    {
+      "path": "campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/episodes/008-ClockStopWatchRunning/attempt-1/normalized-agent-events.json",
+      "sha256Before": "7435b7a357a113c1335c35779e10dc1abe77b59020d1c35d9607935b514c40cd",
+      "sha256After": "7435b7a357a113c1335c35779e10dc1abe77b59020d1c35d9607935b514c40cd",
+      "unchanged": true,
+      "bytes": 5452
+    },
+    {
+      "path": "campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/episodes/008-ClockStopWatchRunning/attempt-1/raw-private/agent-events.jsonl",
+      "sha256Before": "ee2e6cd772509775697d0d69fa1ee530945a2b9066c5710e229509012bb3e9e4",
+      "sha256After": "ee2e6cd772509775697d0d69fa1ee530945a2b9066c5710e229509012bb3e9e4",
+      "unchanged": true,
+      "bytes": 29423591
+    }
+  ],
+  "integrityScopeLimit": "Only the three listed source files; not whole campaign/installation integrity",
+  "historicalCleanup": {
+    "created": 1,
+    "deleted": 1,
+    "active": 0,
+    "pendingCreate": 0,
+    "pendingRequest": 0,
+    "agentQuitReturned": true,
+    "verificationStatus": "absent",
+    "nestedOriginalStatusUnchanged": "unknown"
+  },
+  "reviewer": "parent assistant offline analysis; not a new independent-review job"
+}

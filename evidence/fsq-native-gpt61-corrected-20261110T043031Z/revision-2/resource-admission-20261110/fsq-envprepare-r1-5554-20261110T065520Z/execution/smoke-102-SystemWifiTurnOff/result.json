@@ -1,0 +1,132 @@
+{
+  "agentStartedAtUnix": 1794314224.2574332,
+  "artifacts": [
+    {
+      "bytes": 50,
+      "path": "raw-private/failure.json",
+      "sha256": "fd76ef2f4e22c49b80083b0c5107f0cd35218c5287a0285ea3230fb6d501ecfa"
+    },
+    {
+      "bytes": 869,
+      "path": "raw-private/task-initialization.json",
+      "sha256": "62cc9f11b13234c3e6e1965a511eae495f060e1476f1b070a39605cf67451308"
+    },
+    {
+      "bytes": 1161,
+      "path": "raw-private/worker-process.json",
+      "sha256": "0cdc73dd286b63b734ba191abb83bf2198cb2abfeac7ba0e5c263a41c4378ed1"
+    }
+  ],
+  "attempt": 1,
+  "attemptStarted": true,
+  "authorizationSha256": "d90d242579782e1f3e7677ca5539698b3d69f6a4b71e2be3b71fa24e35b69d64",
+  "campaignId": "fsq-native-gpt61-r2-final-5554-20261110",
+  "classification": "invalid_agent",
+  "cleanup": {
+    "environment": "closed",
+    "nativeDeviceRestoration": "not_provided_by_close",
+    "taskTearDown": "completed",
+    "workerProcessGroup": "settled"
+  },
+  "cleanupFailure": false,
+  "complete": true,
+  "completedAtUnix": 1794314311.9852428,
+  "episodeId": "fsq-native-gpt61-r2-final-5554-20261110-smoke-102",
+  "error": {
+    "type": "EvidenceError"
+  },
+  "evaluatorCalls": 0,
+  "evidenceFailure": "native_evidence_invalid",
+  "fsq": {
+    "killEvidence": {
+      "observation": "not_yet_validated",
+      "status": "unknown"
+    },
+    "unarchivedNativeRoot": "/Users/qunmi/.local/share/fsq-androidworld-eval/fsq-native-gpt61-corrected-20261110T043031Z/episodes/fsq-native-gpt61-r2-final-5554-20261110-smoke-102"
+  },
+  "invalidReason": "invalid_agent",
+  "kind": "fsq_androidworld_episode",
+  "manifestSha256": "94a33fc3719cb2b289b274a415e78d91aeef5d9c34f8a63fedeac0e638e615f2",
+  "officialReward": null,
+  "readinessSha256": "54bde965af9ffa68d88d6b20056ba21bfacf22f8488f71ecc6f6f6bfcd77f8fc",
+  "schemaVersion": 1,
+  "stage": "smoke",
+  "startedAtUnix": 1794314206.2925591,
+  "target": {
+    "adbPath": "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+    "authenticationStatus": "pending",
+    "consolePort": 5554,
+    "grpcPort": 8554,
+    "model": "gpt-6.1-sol",
+    "provider": "github_copilot",
+    "readinessStatus": "pending",
+    "resourceStatus": "pending",
+    "serial": "emulator-5554"
+  },
+  "task": {
+    "index": 102,
+    "name": "SystemWifiTurnOff",
+    "paramsSha256": "ea520e5e870054de010df5f90dd92458decf8153b4798c9974a00186628a4d15"
+  },
+  "workerProcess": {
+    "businessDeadlineReached": false,
+    "elapsedSeconds": 87.510626,
+    "exitCode": 0,
+    "groupCleanup": "settled",
+    "groupDisappearanceObserved": true,
+    "groupObservation": {
+      "members": [],
+      "observed": true,
+      "runningPids": [],
+      "sameOwner": true
+    },
+    "groupObservations": [
+      {
+        "elapsedSeconds": 0.02368,
+        "observation": {
+          "members": [
+            {
+              "pgid": 21369,
+              "pid": 21369,
+              "ppid": 21224,
+              "started": "Tue Nov 10 20:37:04 2026    ",
+              "state": "Rs",
+              "uid": 501
+            }
+          ],
+          "observed": true,
+          "runningPids": [
+            21369
+          ],
+          "sameOwner": true
+        }
+      },
+      {
+        "elapsedSeconds": 87.510611,
+        "observation": {
+          "members": [],
+          "observed": true,
+          "runningPids": [],
+          "sameOwner": true
+        }
+      }
+    ],
+    "groupOwnership": "new_session_same_uid_observed",
+    "killed": false,
+    "leaderCleanup": "reaped",
+    "pgid": 21369,
+    "phase": "terminal",
+    "pid": 21369,
+    "signals": [],
+    "spawnCount": 1,
+    "terminated": false,
+    "uid": 501,
+    "workerExitObserved": true
+  },
+  "workerProcessReference": {
+    "bytes": 1161,
+    "path": "raw-private/worker-process.json",
+    "sha256": "0cdc73dd286b63b734ba191abb83bf2198cb2abfeac7ba0e5c263a41c4378ed1"
+  },
+  "workerSpawnAttempted": true
+}

@@ -1,0 +1,133 @@
+{
+  "scope": "Parent read-only original full-ID/arguments/code join; no device/evaluator replay",
+  "initialFive": [
+    {
+      "index": 73,
+      "task": "SimpleCalendarEventsInNextWeek",
+      "pythonCallsVerified": 13,
+      "rawFullIdCodeAndResponseJoinsVerified": true,
+      "findings": []
+    },
+    {
+      "index": 74,
+      "task": "SimpleCalendarEventsInTimeRange",
+      "pythonCallsVerified": 14,
+      "rawFullIdCodeAndResponseJoinsVerified": true,
+      "findings": []
+    },
+    {
+      "index": 76,
+      "task": "SimpleCalendarFirstEventAfterStartTime",
+      "pythonCallsVerified": 19,
+      "rawFullIdCodeAndResponseJoinsVerified": true,
+      "findings": []
+    },
+    {
+      "index": 80,
+      "task": "SimpleDrawProCreateDrawing",
+      "pythonCallsVerified": 23,
+      "rawFullIdCodeAndResponseJoinsVerified": true,
+      "findings": []
+    },
+    {
+      "index": 101,
+      "task": "SystemCopyToClipboard",
+      "pythonCallsVerified": 16,
+      "rawFullIdCodeAndResponseJoinsVerified": true,
+      "findings": []
+    }
+  ],
+  "remainingThirteen": [
+    {
+      "index": 82,
+      "rawNormalizedCallsJoined": 22,
+      "deliveredFullIdsAndCodeHashesJoined": 18,
+      "findings": []
+    },
+    {
+      "index": 84,
+      "rawNormalizedCallsJoined": 25,
+      "deliveredFullIdsAndCodeHashesJoined": 21,
+      "findings": []
+    },
+    {
+      "index": 85,
+      "rawNormalizedCallsJoined": 18,
+      "deliveredFullIdsAndCodeHashesJoined": 14,
+      "findings": []
+    },
+    {
+      "index": 86,
+      "rawNormalizedCallsJoined": 29,
+      "deliveredFullIdsAndCodeHashesJoined": 25,
+      "findings": []
+    },
+    {
+      "index": 87,
+      "rawNormalizedCallsJoined": 18,
+      "deliveredFullIdsAndCodeHashesJoined": 18,
+      "findings": []
+    },
+    {
+      "index": 89,
+      "rawNormalizedCallsJoined": 18,
+      "deliveredFullIdsAndCodeHashesJoined": 18,
+      "findings": []
+    },
+    {
+      "index": 90,
+      "rawNormalizedCallsJoined": 21,
+      "deliveredFullIdsAndCodeHashesJoined": 21,
+      "findings": []
+    },
+    {
+      "index": 91,
+      "rawNormalizedCallsJoined": 25,
+      "deliveredFullIdsAndCodeHashesJoined": 25,
+      "findings": []
+    },
+    {
+      "index": 92,
+      "rawNormalizedCallsJoined": 21,
+      "deliveredFullIdsAndCodeHashesJoined": 21,
+      "findings": []
+    },
+    {
+      "index": 106,
+      "rawNormalizedCallsJoined": 18,
+      "deliveredFullIdsAndCodeHashesJoined": 18,
+      "findings": []
+    },
+    {
+      "index": 107,
+      "rawNormalizedCallsJoined": 21,
+      "deliveredFullIdsAndCodeHashesJoined": 21,
+      "findings": []
+    },
+    {
+      "index": 110,
+      "rawNormalizedCallsJoined": 25,
+      "deliveredFullIdsAndCodeHashesJoined": 25,
+      "findings": []
+    },
+    {
+      "index": 111,
+      "rawNormalizedCallsJoined": 15,
+      "deliveredFullIdsAndCodeHashesJoined": 15,
+      "findings": []
+    }
+  ],
+  "auditInputCorrections": {
+    "legacyFunction": "First call passed repo-relative directory to batch-relative helper; corrected basename exposed incompatible family proof schemas. Used cross-schema raw+normalized+delivered-full-ID audit instead.",
+    "unicodeCanonicalJson": {
+      "case": 91,
+      "lines": [
+        5174,
+        5589
+      ],
+      "cause": "Parent cross-schema auditor initially used ensure_ascii=False; actual normalized canonical-JSON SHA uses ensure_ascii=True. Both mismatches contain non-ASCII and match exactly under that convention. No original evidence or product changes.",
+      "correctedMatches": 2
+    }
+  },
+  "allFindingsResolved": true
+}

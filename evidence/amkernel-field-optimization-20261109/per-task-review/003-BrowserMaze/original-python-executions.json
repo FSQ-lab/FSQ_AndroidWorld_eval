@@ -1,0 +1,1909 @@
+[
+  {
+    "startLine": 365,
+    "endLine": 366,
+    "request": {
+      "code": "from appium import webdriver\nfrom appium.options.android import UiAutomator2Options\nfrom appium.webdriver.common.appiumby import AppiumBy\nfrom selenium.webdriver.support.ui import WebDriverWait\nfrom selenium.common.exceptions import TimeoutException\noptions = UiAutomator2Options().load_capabilities({\n    'platformName': 'Android',\n    'appium:automationName': 'UiAutomator2',\n    'appium:udid': 'emulator-5554',\n    'appium:noReset': True,\n    'appium:autoLaunch': False,\n    'appium:skipUnlock': True,\n    'appium:newCommandTimeout': 300,\n})\ndriver = webdriver.Remote('http://127.0.0.1:61995', options=options)\nsession_id = driver.session_id\n{'sessionId': session_id, 'newCommandTimeout': driver.capabilities.get('newCommandTimeout'), 'platformName': driver.capabilities.get('platformName'), 'automationName': driver.capabilities.get('automationName')}\n",
+      "timeout": 90
+    },
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "sessionId": "7eb437a1-2c13-425e-84f2-cf80319b8152",
+        "newCommandTimeout": 300,
+        "platformName": "Android",
+        "automationName": "UiAutomator2"
+      },
+      "executionCount": 1,
+      "durationMs": 31571,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 532,
+    "endLine": 533,
+    "request": {
+      "code": "pkg = driver.current_package\nact = driver.current_activity\nels = driver.find_elements(AppiumBy.XPATH, '//*')\nfacts=[]\nfor e in els:\n    try:\n        d={k:e.get_attribute(k) for k in ('class','resource-id','text','content-desc','clickable','enabled')}\n        if d['text'] or d['content-desc'] or d['clickable']=='true': facts.append(d)\n    except Exception: pass\n{'package':pkg,'activity':act,'elements':facts[:40]}\n",
+      "timeout": 30
+    },
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "com.google.android.apps.nexuslauncher",
+        "activity": ".NexusLauncherActivity",
+        "elements": [
+          {
+            "class": "android.widget.FrameLayout",
+            "resource-id": "null",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "enabled": "true"
+          },
+          {
+            "class": "android.widget.LinearLayout",
+            "resource-id": "null",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "enabled": "true"
+          },
+          {
+            "class": "android.widget.FrameLayout",
+            "resource-id": "android:id/content",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "enabled": "true"
+          },
+          {
+            "class": "android.widget.FrameLayout",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/launcher",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "enabled": "true"
+          },
+          {
+            "class": "android.widget.FrameLayout",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/drag_layer",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "enabled": "true"
+          },
+          {
+            "class": "android.view.View",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/scrim_view",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "enabled": "true"
+          },
+          {
+            "class": "android.widget.ScrollView",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/workspace",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "enabled": "true"
+          },
+          {
+            "class": "android.view.ViewGroup",
+            "resource-id": "null",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "enabled": "true"
+          },
+          {
+            "class": "android.view.ViewGroup",
+            "resource-id": "null",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "enabled": "true"
+          },
+          {
+            "class": "android.widget.FrameLayout",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/search_container_workspace",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "enabled": "true"
+          },
+          {
+            "class": "android.widget.FrameLayout",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/bc_smartspace_view",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "enabled": "true"
+          },
+          {
+            "class": "androidx.viewpager.widget.ViewPager",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/smartspace_card_pager",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "enabled": "true"
+          },
+          {
+            "class": "android.view.ViewGroup",
+            "resource-id": "null",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "true",
+            "enabled": "true"
+          },
+          {
+            "class": "android.view.ViewGroup",
+            "resource-id": "null",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "enabled": "true"
+          },
+          {
+            "class": "android.view.ViewGroup",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/text_group",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "enabled": "true"
+          },
+          {
+            "class": "android.widget.TextView",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/title_text",
+            "text": "26846:48:44",
+            "content-desc": "26846:48:44",
+            "clickable": "true",
+            "enabled": "true"
+          },
+          {
+            "class": "android.view.ViewGroup",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/smartspace_subtitle_group",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "enabled": "true"
+          },
+          {
+            "class": "android.widget.TextView",
+            "resource-id": "null",
+            "text": "Gmail",
+            "content-desc": "Gmail",
+            "clickable": "true",
+            "enabled": "true"
+          },
+          {
+            "class": "android.widget.TextView",
+            "resource-id": "null",
+            "text": "Photos",
+            "content-desc": "Photos",
+            "clickable": "true",
+            "enabled": "true"
+          },
+          {
+            "class": "android.widget.TextView",
+            "resource-id": "null",
+            "text": "YouTube",
+            "content-desc": "YouTube",
+            "clickable": "true",
+            "enabled": "true"
+          },
+          {
+            "class": "android.view.View",
+            "resource-id": "null",
+            "text": "",
+            "content-desc": "Home",
+            "clickable": "false",
+            "enabled": "true"
+          },
+          {
+            "class": "android.view.View",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/page_indicator",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "enabled": "true"
+          },
+          {
+            "class": "android.view.ViewGroup",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/hotseat",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "enabled": "true"
+          },
+          {
+            "class": "android.view.ViewGroup",
+            "resource-id": "null",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "enabled": "true"
+          },
+          {
+            "class": "android.widget.TextView",
+            "resource-id": "null",
+            "text": "Phone",
+            "content-desc": "Phone",
+            "clickable": "true",
+            "enabled": "true"
+          },
+          {
+            "class": "android.widget.TextView",
+            "resource-id": "null",
+            "text": "Messages",
+            "content-desc": "Messages",
+            "clickable": "true",
+            "enabled": "true"
+          },
+          {
+            "class": "android.widget.TextView",
+            "resource-id": "null",
+            "text": "Chrome",
+            "content-desc": "Chrome",
+            "clickable": "true",
+            "enabled": "true"
+          },
+          {
+            "class": "android.widget.TextView",
+            "resource-id": "null",
+            "text": "Gmail",
+            "content-desc": "Predicted app: Gmail",
+            "clickable": "true",
+            "enabled": "true"
+          },
+          {
+            "class": "android.widget.FrameLayout",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/search_container_hotseat",
+            "text": "",
+            "content-desc": "Search",
+            "clickable": "true",
+            "enabled": "true"
+          },
+          {
+            "class": "android.widget.ImageView",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/g_icon",
+            "text": "",
+            "content-desc": "Google app",
+            "clickable": "true",
+            "enabled": "true"
+          },
+          {
+            "class": "android.widget.LinearLayout",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/end_part",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "enabled": "true"
+          },
+          {
+            "class": "android.widget.ImageView",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/mic_icon",
+            "text": "",
+            "content-desc": "Voice search",
+            "clickable": "true",
+            "enabled": "true"
+          },
+          {
+            "class": "android.widget.ImageButton",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/lens_icon",
+            "text": "",
+            "content-desc": "Google Lens",
+            "clickable": "true",
+            "enabled": "true"
+          },
+          {
+            "class": "android.widget.FrameLayout",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/overview_actions_view",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "enabled": "true"
+          }
+        ]
+      },
+      "executionCount": 2,
+      "durationMs": 3530,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 773,
+    "endLine": 774,
+    "request": {
+      "code": "size=driver.get_window_size()\ndriver.swipe(size['width']//2, int(size['height']*0.82), size['width']//2, int(size['height']*0.22), 450)\nWebDriverWait(driver, 5).until(lambda d: d.find_elements(AppiumBy.XPATH, '//*[@text=\"Files\" or @content-desc=\"Files\"]'))\n{'package':driver.current_package,'activity':driver.current_activity,'filesVisible':True}\n",
+      "timeout": 15
+    },
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "com.google.android.apps.nexuslauncher",
+        "activity": ".NexusLauncherActivity",
+        "filesVisible": true
+      },
+      "executionCount": 3,
+      "durationMs": 1899,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 973,
+    "endLine": 974,
+    "request": {
+      "code": "driver.find_element(AppiumBy.XPATH, '//*[@text=\"Files\" or @content-desc=\"Files\"]').click()\nWebDriverWait(driver, 8).until(lambda d: d.current_package != 'com.google.android.apps.nexuslauncher')\npkg=driver.current_package\nact=driver.current_activity\ntexts=[]\nfor e in driver.find_elements(AppiumBy.XPATH,'//*[@text or @content-desc]'):\n    try:\n        t=e.get_attribute('text') or e.get_attribute('content-desc')\n        if t and t not in texts: texts.append(t)\n    except: pass\n{'package':pkg,'activity':act,'visible':texts[:30]}\n",
+      "timeout": 15
+    },
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "com.google.android.documentsui",
+        "activity": "com.android.documentsui.files.FilesActivity",
+        "visible": [
+          "null",
+          "Downloads",
+          "Images",
+          "Audio",
+          "Videos",
+          "Documents",
+          "Files in Downloads",
+          "List view",
+          "Show roots",
+          "Search",
+          "More options",
+          "task.html",
+          "4.77 kB",
+          "14:22"
+        ]
+      },
+      "executionCount": 4,
+      "durationMs": 1811,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 1194,
+    "endLine": 1195,
+    "request": {
+      "code": "driver.find_element(AppiumBy.XPATH, '//*[@text=\"task.html\"]').click()\nWebDriverWait(driver,8).until(lambda d: d.current_package != 'com.google.android.documentsui' or d.find_elements(AppiumBy.XPATH,'//*[contains(@text,\"Open with\") or contains(@text,\"Chrome\")]'))\npkg=driver.current_package\nact=driver.current_activity\nitems=[]\nfor e in driver.find_elements(AppiumBy.XPATH,'//*[@text or @content-desc]'):\n    try:\n        t=e.get_attribute('text') or e.get_attribute('content-desc')\n        if t and t not in items: items.append(t)\n    except: pass\n{'package':pkg,'activity':act,'visible':items[:40]}\n",
+      "timeout": 15
+    },
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "android",
+        "activity": "com.android.internal.app.ResolverActivity",
+        "visible": [
+          "null",
+          "Open with Chrome",
+          "Just once",
+          "Always",
+          "Use a different app",
+          "Markor",
+          "HTML Viewer"
+        ]
+      },
+      "executionCount": 5,
+      "durationMs": 2228,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 1468,
+    "endLine": 1469,
+    "request": {
+      "code": "driver.find_element(AppiumBy.XPATH, '//*[@text=\"Just once\"]').click()\nWebDriverWait(driver,10).until(lambda d: d.current_package == 'com.android.chrome')\nitems=[]\nfor e in driver.find_elements(AppiumBy.XPATH,'//*[@text or @content-desc]'):\n    try:\n        t=e.get_attribute('text') or e.get_attribute('content-desc')\n        if t and t not in items: items.append(t)\n    except: pass\n{'package':driver.current_package,'activity':driver.current_activity,'context':driver.current_context,'contexts':driver.contexts,'visible':items[:50]}\n",
+      "timeout": 20
+    },
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "com.android.chrome",
+        "activity": "org.chromium.chrome.browser.firstrun.FirstRunActivity",
+        "context": "NATIVE_APP",
+        "contexts": [
+          "NATIVE_APP"
+        ],
+        "visible": [
+          "null",
+          "Welcome to Chrome",
+          "By using Chrome, you agree to the Google Terms of Service, and the Google Chrome and ChromeOS Additional Terms of Service.",
+          "Help make Chrome better by sending usage statistics and crash reports to Google.",
+          "Accept & continue"
+        ]
+      },
+      "executionCount": 6,
+      "durationMs": 2193,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 1655,
+    "endLine": 1656,
+    "request": {
+      "code": "driver.find_element(AppiumBy.XPATH, '//*[@text=\"Accept & continue\"]').click()\nWebDriverWait(driver,10).until(lambda d: d.current_activity != 'org.chromium.chrome.browser.firstrun.FirstRunActivity')\nitems=[]\nfor e in driver.find_elements(AppiumBy.XPATH,'//*[@text or @content-desc]'):\n    try:\n        t=e.get_attribute('text') or e.get_attribute('content-desc')\n        if t and t not in items: items.append(t)\n    except: pass\n{'activity':driver.current_activity,'contexts':driver.contexts,'visible':items[:50]}\n",
+      "timeout": 20
+    },
+    "response": {
+      "status": "failed",
+      "stdout": "",
+      "stderr": "",
+      "error": {
+        "type": "selenium.common.exceptions.TimeoutException",
+        "message": "",
+        "traceback": [
+          "Traceback (most recent call last):",
+          "  File \"<external-frame>\", line 590, in <frame>",
+          "  File \"<external-frame>\", line 575, in <frame>",
+          "  File \"<amkernel-cell-7>\", line 2, in <frame>",
+          "  File \"<external-frame>\", line 121, in <frame>",
+          "selenium.common.exceptions.TimeoutException"
+        ]
+      },
+      "executionCount": 7,
+      "durationMs": 10874,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 1804,
+    "endLine": 1805,
+    "request": {
+      "code": "pkg=driver.current_package\nact=driver.current_activity\nitems=[]\nfor e in driver.find_elements(AppiumBy.XPATH,'//*[@text or @content-desc]'):\n    try:\n        t=e.get_attribute('text') or e.get_attribute('content-desc')\n        if t and t not in items: items.append(t)\n    except: pass\n{'package':pkg,'activity':act,'contexts':driver.contexts,'visible':items[:60]}\n",
+      "timeout": 15
+    },
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "com.android.chrome",
+        "activity": "org.chromium.chrome.browser.firstrun.FirstRunActivity",
+        "contexts": [
+          "NATIVE_APP"
+        ],
+        "visible": [
+          "null",
+          "Turn on sync?",
+          "Sync your passwords, history & more on all devices",
+          "Google may use your history to personalize Search and other Google services",
+          "You can always choose what to sync in settings.",
+          "No thanks",
+          "Add account"
+        ]
+      },
+      "executionCount": 8,
+      "durationMs": 621,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 1921,
+    "endLine": 1922,
+    "request": {
+      "code": "driver.find_element(AppiumBy.XPATH, '//*[@text=\"No thanks\"]').click()\nWebDriverWait(driver,10).until(lambda d: not d.find_elements(AppiumBy.XPATH,'//*[@text=\"No thanks\"]'))\n{'package':driver.current_package,'activity':driver.current_activity,'contexts':driver.contexts}\n",
+      "timeout": 20
+    },
+    "response": {
+      "status": "failed",
+      "stdout": "",
+      "stderr": "",
+      "error": {
+        "type": "selenium.common.exceptions.TimeoutException",
+        "message": "",
+        "traceback": [
+          "Traceback (most recent call last):",
+          "  File \"<external-frame>\", line 590, in <frame>",
+          "  File \"<external-frame>\", line 575, in <frame>",
+          "  File \"<amkernel-cell-9>\", line 2, in <frame>",
+          "  File \"<external-frame>\", line 121, in <frame>",
+          "selenium.common.exceptions.TimeoutException"
+        ]
+      },
+      "executionCount": 9,
+      "durationMs": 10200,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 2077,
+    "endLine": 2078,
+    "request": {
+      "code": "pkg=driver.current_package\nact=driver.current_activity\nctxs=driver.contexts\nitems=[]\nfor e in driver.find_elements(AppiumBy.XPATH,'//*[@text or @content-desc]'):\n    try:\n        t=e.get_attribute('text') or e.get_attribute('content-desc')\n        if t and t not in items: items.append(t)\n    except: pass\n{'package':pkg,'activity':act,'contexts':ctxs,'visible':items[:80]}\n",
+      "timeout": 15
+    },
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "com.android.chrome",
+        "activity": "org.chromium.chrome.browser.firstrun.FirstRunActivity",
+        "contexts": [
+          "NATIVE_APP"
+        ],
+        "visible": [
+          "null",
+          "Turn on sync?",
+          "Sync your passwords, history & more on all devices",
+          "Google may use your history to personalize Search and other Google services",
+          "You can always choose what to sync in settings.",
+          "No thanks",
+          "Add account"
+        ]
+      },
+      "executionCount": 10,
+      "durationMs": 689,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 2194,
+    "endLine": 2195,
+    "request": {
+      "code": "arr=[]\nfor e in driver.find_elements(AppiumBy.XPATH,'//*[@text=\"No thanks\" or @text=\"Add account\"]'):\n    arr.append({k:e.get_attribute(k) for k in ('class','text','resource-id','clickable','enabled','displayed','bounds')})\narr\n",
+      "timeout": 10
+    },
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": [
+        {
+          "class": "android.widget.Button",
+          "text": "No thanks",
+          "resource-id": "com.android.chrome:id/negative_button",
+          "clickable": "true",
+          "enabled": "true",
+          "displayed": "true",
+          "bounds": "[42,2169][273,2295]"
+        },
+        {
+          "class": "android.widget.Button",
+          "text": "Add account",
+          "resource-id": "com.android.chrome:id/positive_button",
+          "clickable": "true",
+          "enabled": "true",
+          "displayed": "true",
+          "bounds": "[692,2169][1038,2295]"
+        }
+      ],
+      "executionCount": 11,
+      "durationMs": 130,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 2383,
+    "endLine": 2384,
+    "request": {
+      "code": "driver.find_element(AppiumBy.ID,'com.android.chrome:id/negative_button').click()\nimport time; time.sleep(2)\n{'package':driver.current_package,'activity':driver.current_activity,'syncPrompt':bool(driver.find_elements(AppiumBy.ID,'com.android.chrome:id/negative_button')),'contexts':driver.contexts}\n",
+      "timeout": 10
+    },
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "com.google.android.documentsui",
+        "activity": "com.android.documentsui.files.FilesActivity",
+        "syncPrompt": false,
+        "contexts": [
+          "NATIVE_APP"
+        ]
+      },
+      "executionCount": 12,
+      "durationMs": 2386,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 2651,
+    "endLine": 2652,
+    "request": {
+      "code": "driver.find_element(AppiumBy.XPATH,'//*[@text=\"task.html\"]').click()\nWebDriverWait(driver,8).until(lambda d: d.current_package != 'com.google.android.documentsui')\nitems=[]\nfor e in driver.find_elements(AppiumBy.XPATH,'//*[@text or @content-desc]'):\n    try:\n        t=e.get_attribute('text') or e.get_attribute('content-desc')\n        if t and t not in items: items.append(t)\n    except: pass\n{'package':driver.current_package,'activity':driver.current_activity,'visible':items[:40]}\n",
+      "timeout": 15
+    },
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "android",
+        "activity": "com.android.internal.app.ResolverActivity",
+        "visible": [
+          "null",
+          "Open with Chrome",
+          "Just once",
+          "Always",
+          "Use a different app",
+          "Markor",
+          "HTML Viewer"
+        ]
+      },
+      "executionCount": 13,
+      "durationMs": 1867,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 2862,
+    "endLine": 2863,
+    "request": {
+      "code": "driver.find_element(AppiumBy.XPATH,'//*[@text=\"Just once\"]').click()\nWebDriverWait(driver,10).until(lambda d: d.current_package == 'com.android.chrome' and d.current_activity != 'org.chromium.chrome.browser.firstrun.FirstRunActivity')\nimport time; time.sleep(1)\nitems=[]\nfor e in driver.find_elements(AppiumBy.XPATH,'//*[@text or @content-desc]'):\n    try:\n        t=e.get_attribute('text') or e.get_attribute('content-desc')\n        if t and t not in items: items.append(t)\n    except: pass\n{'package':driver.current_package,'activity':driver.current_activity,'contexts':driver.contexts,'visible':items[:80]}\n",
+      "timeout": 20
+    },
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "com.android.chrome",
+        "activity": "org.chromium.chrome.browser.ChromeTabbedActivity",
+        "contexts": [
+          "NATIVE_APP",
+          "WEBVIEW_chrome"
+        ],
+        "visible": [
+          "null",
+          "Search with Sogou",
+          "Chrome can use Sogou for search in China. You can change this in Settings.",
+          "Keep Google",
+          "OK"
+        ]
+      },
+      "executionCount": 14,
+      "durationMs": 1636,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 2973,
+    "endLine": 2974,
+    "request": {
+      "code": "driver.find_element(AppiumBy.XPATH,'//*[@text=\"Keep Google\"]').click()\nWebDriverWait(driver,8).until(lambda d: not d.find_elements(AppiumBy.XPATH,'//*[@text=\"Keep Google\"]'))\n{'activity':driver.current_activity,'contexts':driver.contexts}\n",
+      "timeout": 15
+    },
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "activity": "org.chromium.chrome.browser.ChromeTabbedActivity",
+        "contexts": [
+          "NATIVE_APP",
+          "WEBVIEW_chrome"
+        ]
+      },
+      "executionCount": 15,
+      "durationMs": 430,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 3231,
+    "endLine": 3232,
+    "request": {
+      "code": "driver.switch_to.context('WEBVIEW_chrome')\nfrom selenium.webdriver.common.by import By\ntitle=driver.title\nurl=driver.current_url\nbuttons=[]\nfor e in driver.find_elements(By.CSS_SELECTOR,'button'):\n    try: buttons.append({'text':e.text,'id':e.get_attribute('id'),'aria':e.get_attribute('aria-label'),'class':e.get_attribute('class')})\n    except: pass\ntexts=driver.find_element(By.TAG_NAME,'body').text[:1200]\n{'title':title,'url':url,'buttons':buttons[:20],'body':texts}\n",
+      "timeout": 15
+    },
+    "response": {
+      "status": "failed",
+      "stdout": "",
+      "stderr": "",
+      "error": {
+        "type": "selenium.common.exceptions.UnknownMethodException",
+        "message": "Only native Android context is supported",
+        "traceback": [
+          "Traceback (most recent call last):",
+          "  File \"<external-frame>\", line 590, in <frame>",
+          "  File \"<external-frame>\", line 575, in <frame>",
+          "  File \"<amkernel-cell-16>\", line 1, in <frame>",
+          "  File \"<external-frame>\", line 34, in <frame>",
+          "  File \"<external-frame>\", line 566, in <frame>",
+          "  File \"<external-frame>\", line 125, in <frame>",
+          "selenium.common.exceptions.UnknownMethodException: Only native Android context is supported"
+        ]
+      },
+      "executionCount": 16,
+      "durationMs": 3,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 3464,
+    "endLine": 3465,
+    "request": {
+      "code": "pkg=driver.current_package\nctx=driver.current_context\narr=[]\nfor e in driver.find_elements(AppiumBy.XPATH,'//*'):\n    try:\n        d={k:e.get_attribute(k) for k in ('class','resource-id','text','content-desc','clickable','bounds','displayed')}\n        if d['text'] or d['content-desc'] or d['clickable']=='true': arr.append(d)\n    except: pass\n{'package':pkg,'context':ctx,'elements':arr[:80]}\n",
+      "timeout": 15
+    },
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "com.android.chrome",
+        "context": "NATIVE_APP",
+        "elements": [
+          {
+            "class": "android.widget.FrameLayout",
+            "resource-id": "null",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[0,0][1080,2400]",
+            "displayed": "true"
+          },
+          {
+            "class": "android.widget.LinearLayout",
+            "resource-id": "null",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[0,0][1080,2337]",
+            "displayed": "true"
+          },
+          {
+            "class": "android.widget.FrameLayout",
+            "resource-id": "null",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[0,128][1080,2337]",
+            "displayed": "true"
+          },
+          {
+            "class": "android.widget.FrameLayout",
+            "resource-id": "null",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[0,128][1080,2337]",
+            "displayed": "true"
+          },
+          {
+            "class": "android.widget.FrameLayout",
+            "resource-id": "android:id/content",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[0,128][1080,2337]",
+            "displayed": "true"
+          },
+          {
+            "class": "android.view.ViewGroup",
+            "resource-id": "com.android.chrome:id/coordinator",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[0,128][1080,2337]",
+            "displayed": "true"
+          },
+          {
+            "class": "android.widget.FrameLayout",
+            "resource-id": "com.android.chrome:id/compositor_view_holder",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[0,128][1080,2337]",
+            "displayed": "true"
+          },
+          {
+            "class": "android.widget.FrameLayout",
+            "resource-id": "null",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[0,128][1080,2337]",
+            "displayed": "true"
+          },
+          {
+            "class": "android.view.View",
+            "resource-id": "null",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[0,128][1080,2337]",
+            "displayed": "true"
+          },
+          {
+            "class": "android.widget.FrameLayout",
+            "resource-id": "null",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[0,128][1080,2337]",
+            "displayed": "true"
+          },
+          {
+            "class": "android.webkit.WebView",
+            "resource-id": "null",
+            "text": "Maze Puzzle",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[0,330][1080,2339]",
+            "displayed": "true"
+          },
+          {
+            "class": "android.widget.TextView",
+            "resource-id": "maze",
+            "text": "X",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[8,338][1073,832]",
+            "displayed": "true"
+          },
+          {
+            "class": "android.view.View",
+            "resource-id": "null",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[8,842][1073,918]",
+            "displayed": "true"
+          },
+          {
+            "class": "android.widget.Button",
+            "resource-id": "null",
+            "text": "Up",
+            "content-desc": "null",
+            "clickable": "true",
+            "bounds": "[8,842][115,918]",
+            "displayed": "true"
+          },
+          {
+            "class": "android.widget.Button",
+            "resource-id": "null",
+            "text": "Down",
+            "content-desc": "null",
+            "clickable": "true",
+            "bounds": "[124,842][276,918]",
+            "displayed": "true"
+          },
+          {
+            "class": "android.widget.Button",
+            "resource-id": "null",
+            "text": "Left",
+            "content-desc": "null",
+            "clickable": "true",
+            "bounds": "[283,842][409,918]",
+            "displayed": "true"
+          },
+          {
+            "class": "android.widget.Button",
+            "resource-id": "null",
+            "text": "Right",
+            "content-desc": "null",
+            "clickable": "true",
+            "bounds": "[418,842][562,918]",
+            "displayed": "true"
+          },
+          {
+            "class": "android.widget.FrameLayout",
+            "resource-id": "com.android.chrome:id/status_indicator",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[0,128][1080,183]",
+            "displayed": "true"
+          },
+          {
+            "class": "android.widget.TextView",
+            "resource-id": "com.android.chrome:id/status_text",
+            "text": "No internet connection",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[351,128][729,183]",
+            "displayed": "true"
+          },
+          {
+            "class": "android.widget.FrameLayout",
+            "resource-id": "com.android.chrome:id/control_container",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[0,183][1080,333]",
+            "displayed": "true"
+          },
+          {
+            "class": "android.widget.FrameLayout",
+            "resource-id": "com.android.chrome:id/toolbar_container",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[0,183][1080,333]",
+            "displayed": "true"
+          },
+          {
+            "class": "android.widget.FrameLayout",
+            "resource-id": "com.android.chrome:id/toolbar",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[0,183][1080,330]",
+            "displayed": "true"
+          },
+          {
+            "class": "android.widget.ImageButton",
+            "resource-id": "com.android.chrome:id/home_button",
+            "text": "",
+            "content-desc": "Home",
+            "clickable": "true",
+            "bounds": "[0,183][126,330]",
+            "displayed": "true"
+          },
+          {
+            "class": "android.widget.FrameLayout",
+            "resource-id": "com.android.chrome:id/location_bar",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[126,183][828,330]",
+            "displayed": "true"
+          },
+          {
+            "class": "android.widget.LinearLayout",
+            "resource-id": "com.android.chrome:id/location_bar_status",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "true",
+            "bounds": "[137,183][221,330]",
+            "displayed": "true"
+          },
+          {
+            "class": "android.widget.FrameLayout",
+            "resource-id": "com.android.chrome:id/location_bar_status_icon_frame",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[137,183][221,330]",
+            "displayed": "true"
+          },
+          {
+            "class": "android.widget.ImageView",
+            "resource-id": "com.android.chrome:id/location_bar_status_icon",
+            "text": "",
+            "content-desc": "Your connection to this site is not secure",
+            "clickable": "false",
+            "bounds": "[147,183][210,330]",
+            "displayed": "true"
+          },
+          {
+            "class": "android.widget.EditText",
+            "resource-id": "com.android.chrome:id/url_bar",
+            "text": "content://com.android.providers.downloads.documents/document/raw%3A%2Fstorage%2Femulated%2F0%2FDownload%2Ftask.html",
+            "content-desc": "null",
+            "clickable": "true",
+            "bounds": "[221,191][807,322]",
+            "displayed": "true"
+          },
+          {
+            "class": "android.widget.LinearLayout",
+            "resource-id": "com.android.chrome:id/toolbar_buttons",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[828,183][1080,330]",
+            "displayed": "true"
+          },
+          {
+            "class": "android.widget.ImageButton",
+            "resource-id": "com.android.chrome:id/tab_switcher_button",
+            "text": "",
+            "content-desc": "Switch or close tabs",
+            "clickable": "true",
+            "bounds": "[828,183][954,330]",
+            "displayed": "true"
+          },
+          {
+            "class": "android.widget.FrameLayout",
+            "resource-id": "com.android.chrome:id/menu_button_wrapper",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[954,183][1080,330]",
+            "displayed": "true"
+          },
+          {
+            "class": "android.widget.ImageButton",
+            "resource-id": "com.android.chrome:id/menu_button",
+            "text": "",
+            "content-desc": "More options",
+            "clickable": "true",
+            "bounds": "[954,183][1080,330]",
+            "displayed": "true"
+          },
+          {
+            "class": "android.widget.ImageView",
+            "resource-id": "com.android.chrome:id/toolbar_hairline",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[0,330][1080,333]",
+            "displayed": "true"
+          },
+          {
+            "class": "android.view.View",
+            "resource-id": "android:id/navigationBarBackground",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[0,2337][1080,2400]",
+            "displayed": "true"
+          }
+        ]
+      },
+      "executionCount": 17,
+      "durationMs": 863,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 3636,
+    "endLine": 3638,
+    "request": {
+      "code": "png=driver.get_screenshot_as_png()\ndisplay(png,mime_type='image/png')\n{'size':driver.get_window_size(),'mazeBounds':driver.find_element(AppiumBy.ID,'maze').get_attribute('bounds')}\n",
+      "timeout": 15
+    },
+    "response": {
+      "status": "failed",
+      "stdout": "",
+      "stderr": "",
+      "error": {
+        "type": "selenium.common.exceptions.NoSuchElementException",
+        "message": "An element could not be located on the page using the given search parameters.",
+        "traceback": [
+          "Traceback (most recent call last):",
+          "  File \"<external-frame>\", line 590, in <frame>",
+          "  File \"<external-frame>\", line 578, in <frame>",
+          "  File \"<amkernel-cell-18>\", line 3, in <frame>",
+          "  File \"<external-frame>\", line 974, in <frame>",
+          "  File \"<external-frame>\", line 566, in <frame>",
+          "  File \"<external-frame>\", line 125, in <frame>",
+          "selenium.common.exceptions.NoSuchElementException: An element could not be located on the page using the given search parameters."
+        ]
+      },
+      "executionCount": 18,
+      "durationMs": 147,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [
+        {
+          "sequence": 1,
+          "kind": "image",
+          "mimeType": "image/png",
+          "size": 63322,
+          "sha256": "c44f745748b5b4ae3aca967e2a3a80ff44e75bbb3d24ff2f997b818056c22b13",
+          "width": 1080,
+          "height": 2400,
+          "inline": true,
+          "artifact": {
+            "uri": "amkernel://artifact/5a1d47c36f1a432b9197ec8f4195783e/d735a21eb69e468da0589ce9c6d0570c",
+            "name": "image",
+            "declaredMimeType": "image/png",
+            "mimeType": "image/png",
+            "representation": "raw",
+            "size": 63322,
+            "sha256": "c44f745748b5b4ae3aca967e2a3a80ff44e75bbb3d24ff2f997b818056c22b13"
+          }
+        }
+      ],
+      "artifacts": [
+        {
+          "uri": "amkernel://artifact/5a1d47c36f1a432b9197ec8f4195783e/d735a21eb69e468da0589ce9c6d0570c",
+          "name": "image",
+          "declaredMimeType": "image/png",
+          "mimeType": "image/png",
+          "representation": "raw",
+          "size": 63322,
+          "sha256": "c44f745748b5b4ae3aca967e2a3a80ff44e75bbb3d24ff2f997b818056c22b13"
+        }
+      ]
+    }
+  },
+  {
+    "startLine": 3836,
+    "endLine": 3837,
+    "request": {
+      "code": "for direction in ['Right','Down','Right','Down','Down','Right']:\n    driver.find_element(AppiumBy.XPATH, f'//android.widget.Button[@text=\"{direction}\"]').click()\nimport time; time.sleep(1)\n# Read the exposed maze text and button state after navigation.\nmaze_nodes=driver.find_elements(AppiumBy.XPATH,'//android.webkit.WebView//android.widget.TextView')\n{'package':driver.current_package,'activity':driver.current_activity,'mazeText':[e.get_attribute('text') for e in maze_nodes],'buttons':[e.get_attribute('text') for e in driver.find_elements(AppiumBy.XPATH,'//android.webkit.WebView//android.widget.Button')]}\n",
+      "timeout": 15
+    },
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "com.android.chrome",
+        "activity": "org.chromium.chrome.browser.ChromeTabbedActivity",
+        "mazeText": [
+          "X"
+        ],
+        "buttons": [
+          "Up",
+          "Down",
+          "Left",
+          "Right"
+        ]
+      },
+      "executionCount": 19,
+      "durationMs": 2371,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 3942,
+    "endLine": 3944,
+    "request": {
+      "code": "png=driver.get_screenshot_as_png()\ndisplay(png,mime_type='image/png')\n{'package':driver.current_package,'activity':driver.current_activity,'webviewTitle':driver.find_element(AppiumBy.CLASS_NAME,'android.webkit.WebView').get_attribute('text')}\n",
+      "timeout": 15
+    },
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "com.android.chrome",
+        "activity": "org.chromium.chrome.browser.ChromeTabbedActivity",
+        "webviewTitle": "Maze Puzzle"
+      },
+      "executionCount": 20,
+      "durationMs": 167,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [
+        {
+          "sequence": 1,
+          "kind": "image",
+          "mimeType": "image/png",
+          "size": 64904,
+          "sha256": "aa05a9888215338965418d9d492ba7bf5f731517acaae698a207eccc9a4f36cc",
+          "width": 1080,
+          "height": 2400,
+          "inline": true,
+          "artifact": {
+            "uri": "amkernel://artifact/5a1d47c36f1a432b9197ec8f4195783e/f9f905d57ef9413f8e2e294576e06141",
+            "name": "image",
+            "declaredMimeType": "image/png",
+            "mimeType": "image/png",
+            "representation": "raw",
+            "size": 64904,
+            "sha256": "aa05a9888215338965418d9d492ba7bf5f731517acaae698a207eccc9a4f36cc"
+          }
+        }
+      ],
+      "artifacts": [
+        {
+          "uri": "amkernel://artifact/5a1d47c36f1a432b9197ec8f4195783e/f9f905d57ef9413f8e2e294576e06141",
+          "name": "image",
+          "declaredMimeType": "image/png",
+          "mimeType": "image/png",
+          "representation": "raw",
+          "size": 64904,
+          "sha256": "aa05a9888215338965418d9d492ba7bf5f731517acaae698a207eccc9a4f36cc"
+        }
+      ]
+    }
+  },
+  {
+    "startLine": 4305,
+    "endLine": 4307,
+    "request": {
+      "code": "right=driver.find_element(AppiumBy.XPATH,'//android.widget.Button[@text=\"Right\"]')\nr=right.rect\ndriver.tap([(int(r['x']+r['width']/2),int(r['y']+r['height']/2))],100)\nimport time; time.sleep(.5)\npng=driver.get_screenshot_as_png(); display(png,mime_type='image/png')\n{'rightRect':r,'package':driver.current_package}\n",
+      "timeout": 10
+    },
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "rightRect": {
+          "height": 92,
+          "width": 172,
+          "x": 498,
+          "y": 944
+        },
+        "package": "com.android.chrome"
+      },
+      "executionCount": 21,
+      "durationMs": 1059,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [
+        {
+          "sequence": 1,
+          "kind": "image",
+          "mimeType": "image/png",
+          "size": 64525,
+          "sha256": "ddf9ff9158d675c87d2f1dafd60b3314cdd0864a8783e2bc67ac01ce37ff59a5",
+          "width": 1080,
+          "height": 2400,
+          "inline": true,
+          "artifact": {
+            "uri": "amkernel://artifact/5a1d47c36f1a432b9197ec8f4195783e/362a91ce25f5478dbb90507e116b786e",
+            "name": "image",
+            "declaredMimeType": "image/png",
+            "mimeType": "image/png",
+            "representation": "raw",
+            "size": 64525,
+            "sha256": "ddf9ff9158d675c87d2f1dafd60b3314cdd0864a8783e2bc67ac01ce37ff59a5"
+          }
+        }
+      ],
+      "artifacts": [
+        {
+          "uri": "amkernel://artifact/5a1d47c36f1a432b9197ec8f4195783e/362a91ce25f5478dbb90507e116b786e",
+          "name": "image",
+          "declaredMimeType": "image/png",
+          "mimeType": "image/png",
+          "representation": "raw",
+          "size": 64525,
+          "sha256": "ddf9ff9158d675c87d2f1dafd60b3314cdd0864a8783e2bc67ac01ce37ff59a5"
+        }
+      ]
+    }
+  },
+  {
+    "startLine": 4515,
+    "endLine": 4516,
+    "request": {
+      "code": "e=driver.find_element(AppiumBy.XPATH,'//android.widget.Button[@text=\"Down\"]'); r=e.rect\ndriver.tap([(int(r['x']+r['width']/2),int(r['y']+r['height']/2))],100)\n{'direction':'Down','package':driver.current_package}\n",
+      "timeout": 10
+    },
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "direction": "Down",
+        "package": "com.android.chrome"
+      },
+      "executionCount": 22,
+      "durationMs": 459,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 4630,
+    "endLine": 4631,
+    "request": {
+      "code": "e=driver.find_element(AppiumBy.XPATH,'//android.widget.Button[@text=\"Right\"]'); r=e.rect\ndriver.tap([(int(r['x']+r['width']/2),int(r['y']+r['height']/2))],100)\n{'direction':'Right','package':driver.current_package}\n",
+      "timeout": 10
+    },
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "direction": "Right",
+        "package": "com.android.chrome"
+      },
+      "executionCount": 23,
+      "durationMs": 439,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 4745,
+    "endLine": 4746,
+    "request": {
+      "code": "e=driver.find_element(AppiumBy.XPATH,'//android.widget.Button[@text=\"Down\"]'); r=e.rect\ndriver.tap([(int(r['x']+r['width']/2),int(r['y']+r['height']/2))],100)\n{'direction':'Down','package':driver.current_package}\n",
+      "timeout": 10
+    },
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "direction": "Down",
+        "package": "com.android.chrome"
+      },
+      "executionCount": 24,
+      "durationMs": 453,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 4862,
+    "endLine": 4863,
+    "request": {
+      "code": "e=driver.find_element(AppiumBy.XPATH,'//android.widget.Button[@text=\"Down\"]'); r=e.rect\ndriver.tap([(int(r['x']+r['width']/2),int(r['y']+r['height']/2))],100)\n{'direction':'Down','package':driver.current_package}\n",
+      "timeout": 10
+    },
+    "response": {
+      "status": "failed",
+      "stdout": "",
+      "stderr": "",
+      "error": {
+        "type": "selenium.common.exceptions.UnknownMethodException",
+        "message": "<WebDriver message omitted: sensitive or oversized details>",
+        "traceback": [
+          "Traceback (most recent call last):",
+          "  File \"<external-frame>\", line 590, in <frame>",
+          "  File \"<external-frame>\", line 575, in <frame>",
+          "  File \"<amkernel-cell-25>\", line 2, in <frame>",
+          "  File \"<external-frame>\", line 114, in <frame>",
+          "  File \"<external-frame>\", line 99, in <frame>",
+          "  File \"<external-frame>\", line 148, in <frame>",
+          "  File \"<external-frame>\", line 566, in <frame>",
+          "  File \"<external-frame>\", line 125, in <frame>",
+          "selenium.common.exceptions.UnknownMethodException: <WebDriver message omitted: sensitive or oversized details>"
+        ]
+      },
+      "executionCount": 25,
+      "durationMs": 33,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 4937,
+    "endLine": 4938,
+    "request": {
+      "code": "session_id=driver.session_id\ndriver.quit()\n{'ownedSessionId':session_id,'quitReturned':True}\n",
+      "timeout": 30
+    },
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "ownedSessionId": "7eb437a1-2c13-425e-84f2-cf80319b8152",
+        "quitReturned": true
+      },
+      "executionCount": 26,
+      "durationMs": 177,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  }
+]

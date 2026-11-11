@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 1,
+  "kind": "native_fsq_independent_review_consumer_counterexamples",
+  "createdAtUtc": "2026-11-10T05:18:58.011060+00:00",
+  "sourceBinding": {
+    "deliverySha256": "70c9cd3659b532314c84e36a6a4fcce8262936e3298f2796c96632f639d9d7a8",
+    "candidateSha256": "0c135fad4250aed48afed72bd5e2b48f6708d5718245a475b55c885ed4578d4c",
+    "evaluatorSourceTreeSha256": "eb007df8f2d05326486b888021e1b050bbfc5cd04cf58a751d1beb42b92108de",
+    "all15OwnedFilesMatchedAtReviewStart": true,
+    "treeObservations": {
+      "evaluator": {
+        "path": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/src/fsq_androidworld_eval",
+        "frozenSha256": "eb007df8f2d05326486b888021e1b050bbfc5cd04cf58a751d1beb42b92108de",
+        "matchesFrozen": true,
+        "changedPaths": []
+      },
+      "correctedAndroidWorldSource": {
+        "path": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/android_world/android_world",
+        "frozenSha256": "0ac9428da2e9d78d0303c44c682184268e708a3116134646401d5c8425671b94",
+        "matchesFrozen": true,
+        "changedPaths": []
+      },
+      "isolatedAndroidWorldInstalled": {
+        "path": "/Users/qunmi/.local/share/fsq-androidworld-eval/fsq-native-gpt61-corrected-20261110T043031Z/evaluator-site/android_world",
+        "frozenSha256": "0ac9428da2e9d78d0303c44c682184268e708a3116134646401d5c8425671b94",
+        "matchesFrozen": true,
+        "changedPaths": []
+      },
+      "nativeFSQSource": {
+        "path": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/../FSQ/fsq_agent",
+        "frozenSha256": "269c82d12cf3414c0a56b02fc169aa44cf76bec8fe44c0456c370f1e7aa7eb1a",
+        "matchesFrozen": true,
+        "changedPaths": []
+      }
+    }
+  },
+  "probes": [
+    {
+      "case": "summary_mismatch",
+      "consumer": "operational_errors",
+      "errors": [],
+      "contradictionAccepted": true,
+      "details": {
+        "selectedSummary": "different answer not emitted by runner",
+        "actualRunnerSummary": "exact parsed summary"
+      }
+    },
+    {
+      "case": "audit_over_budget_hidden_by_counters",
+      "consumer": "operational_errors",
+      "errors": [],
+      "contradictionAccepted": true,
+      "details": {
+        "requestedMaximum": 10,
+        "auditAdmittedWrites": 11,
+        "reportedAdmitted": 0
+      }
+    },
+    {
+      "case": "wrong_native_task_and_serial",
+      "consumer": "operational_errors",
+      "errors": [],
+      "contradictionAccepted": true,
+      "details": {
+        "nativeTaskId": "other-campaign-smoke-099",
+        "nativeSerial": "emulator-9998",
+        "expectedSerial": "emulator-5560"
+      }
+    },
+    {
+      "case": "smoke_episode_reused_in_calibration",
+      "consumer": "validate_stage_report",
+      "contradictionAccepted": true,
+      "details": {
+        "reportKind": "fsq_androidworld_calibrate",
+        "firstEpisodeStage": "smoke",
+        "completeCalibrationCoverage": 12
+      }
+    },
+    {
+      "case": "native_full_return_without_kill_admitted_to_oracle",
+      "consumer": "run_episode",
+      "execution": "real runner orchestration with controlled offline environment and worker, not a real native/model/device run",
+      "events": [
+        "reset",
+        "initialize",
+        "native_main_final_without_kill",
+        "native_verification",
+        "native_return",
+        [
+          "official",
+          "exact no-kill answer"
+        ],
+        "teardown",
+        "environment_close"
+      ],
+      "evaluatorCalls": 1,
+      "officialReward": 0.5,
+      "claimedOrdering": "after_complete_native_FSQ_and_kill_and_internal_verification",
+      "auditEvents": [],
+      "classification": "failed"
+    },
+    {
+      "case": "native_fileops_reaches_omitted_oracle_roots",
+      "exitCode": 0,
+      "reads": [
+        {
+          "path": "/Users/qunmi/.local/share/fsq-androidworld-eval/fsq-native-gpt61-corrected-20261110T043031Z/corrected-androidworld-source/android_world/task_evals/information_retrieval/proto/tasks.textproto",
+          "status": "success",
+          "contentSha256": "9442158ac415199aa6b6511e65626491c6dd325e601f572f9aa5012aa6ec15e4"
+        },
+        {
+          "path": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-oracle-boundary-canonical-review-0k_dcx9_/external-results/raw-private/sentinel.txt",
+          "status": "success",
+          "contentSha256": "4fc91b1d353431096ceec6c4dd2d7f7dedf5af4cd1acaff2ffc04c56077bc3f0"
+        },
+        {
+          "path": "/Users/qunmi/.local/share/fsq-androidworld-eval/fsq-native-gpt61-corrected-20261110T043031Z/evaluator-site/android_world/task_evals/information_retrieval/proto/tasks.textproto",
+          "status": "failed",
+          "contentSha256": null
+        }
+      ],
+      "stderr": "",
+      "nativePython": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/../FSQ/.venv/bin/python",
+      "realSandbox": true,
+      "modelCalled": false,
+      "devicesAccessed": false,
+      "initialProbeCorrection": "Canonicalize temporary read root before constructing relative traversal; initial /var versus /private/var alias yielded ENOENT for copied oracle, not sandbox denial."
+    },
+    {
+      "case": "forced_worker_evidence_lost_on_parse_or_archive",
+      "truncatedResult": {
+        "exceptionType": "JSONDecodeError",
+        "forcedProcessReceiptReturned": false,
+        "inputReceipt": {
+          "pid": 999999,
+          "exitCode": -15,
+          "businessDeadlineReached": true,
+          "terminated": true,
+          "killed": false,
+          "workerExitObserved": true,
+          "spawnCount": 1
+        }
+      },
+      "archiveFailure": {
+        "attemptStarted": true,
+        "fsq": null,
+        "classification": "invalid_agent",
+        "cleanupFailure": false,
+        "haltReason": null,
+        "cleanup": {
+          "taskTearDown": "completed",
+          "environment": "closed",
+          "nativeDeviceRestoration": "not_provided_by_close"
+        }
+      },
+      "execution": "controlled local failure injection; no native worker process or device"
+    },
+    {
+      "case": "same_group_child_survives_leader_SIGTERM",
+      "receipt": {
+        "pid": 8179,
+        "exitCode": -15,
+        "businessDeadlineReached": true,
+        "terminated": true,
+        "killed": false,
+        "elapsedSeconds": 1.012864,
+        "workerExitObserved": true,
+        "spawnCount": 1
+      },
+      "childPid": 8180,
+      "childPgid": 8179,
+      "sameOwnedGroup": true,
+      "childStateAfterSupervisorReturned": "S",
+      "survives": true,
+      "probeCleanup": {
+        "ownedGroupSIGKILLSent": true,
+        "childStateAfterCleanup": "",
+        "childStillRunning": false
+      }
+    },
+    {
+      "case": "standalone_main_bypasses_outer_watchdog",
+      "publicEntry": "fsq_runner.main(argv)",
+      "controlledOfflineInitializationEntered": true,
+      "injectedEpisodeSeconds": 0.2,
+      "externalTimeoutSeconds": 4,
+      "requiredExternalTermination": true,
+      "elapsedSeconds": 4.006,
+      "exitCode": -9,
+      "probeCleanup": "owned process group killed and leader reaped; all fixture files removed",
+      "devicesAccessed": false,
+      "modelCalled": false,
+      "scope": "actual public main/run_episode with fixture admission and environment; not a native business run"
+    }
+  ],
+  "cliSmoke": [
+    {
+      "command": [
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/bin/python",
+        "-B",
+        "-m",
+        "fsq_androidworld_eval.runner",
+        "--help"
+      ],
+      "exitCode": 0,
+      "stdout": "usage: runner.py [-h] --project PROJECT --artifact-root ARTIFACT_ROOT\n                 --output-dir OUTPUT_DIR --task TASK [--params PARAMS] --model\n                 MODEL --expected-amkernel-version EXPECTED_AMKERNEL_VERSION\n                 --sandbox-profile SANDBOX_PROFILE --readiness-report\n                 READINESS_REPORT --expected-readiness-sha256\n                 EXPECTED_READINESS_SHA256 [--omp OMP] [--task-seed TASK_SEED]\n                 [--python-exec-call-advisory PYTHON_EXEC_CALL_ADVISORY]\n                 [--expected-params-sha256 EXPECTED_PARAMS_SHA256]\n                 --expected-max-steps EXPECTED_MAX_STEPS\n                 [--appium-url APPIUM_URL] [--device-serial DEVICE_SERIAL]\n                 [--console-port CONSOLE_PORT] [--grpc-port GRPC_PORT]\n                 [--adb-path ADB_PATH]\n\nRun one AndroidWorld task through OMP and AMKernel\n\noptions:\n  -h, --help            show this help message and exit\n  --project PROJECT\n  --artifact-root ARTIFACT_ROOT\n                        project containing verified frozen environment\n                        artifacts\n  --output-dir OUTPUT_DIR\n  --task TASK\n  --params PARAMS       fixed task parameter JSON\n  --model MODEL\n  --expected-amkernel-version EXPECTED_AMKERNEL_VERSION\n  --sandbox-profile SANDBOX_PROFILE\n  --readiness-report READINESS_REPORT\n  --expected-readiness-sha256 EXPECTED_READINESS_SHA256\n  --omp OMP\n  --task-seed TASK_SEED\n                        fixed seed used to generate task parameters\n  --python-exec-call-advisory PYTHON_EXEC_CALL_ADVISORY\n  --expected-params-sha256 EXPECTED_PARAMS_SHA256\n                        manifest parameter digest\n  --expected-max-steps EXPECTED_MAX_STEPS\n  --appium-url APPIUM_URL\n  --device-serial DEVICE_SERIAL\n  --console-port CONSOLE_PORT\n  --grpc-port GRPC_PORT\n  --adb-path ADB_PATH\n",
+      "stderr": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/pydub/utils.py:170: RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work\n  warn(\"Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work\", RuntimeWarning)\n"
+    },
+    {
+      "command": [
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/bin/python",
+        "-B",
+        "-m",
+        "fsq_androidworld_eval.fsq_manifest",
+        "--help"
+      ],
+      "exitCode": 0,
+      "stdout": "usage: fsq_manifest.py [-h] {prepare,inspect} ...\n\nOffline FSQ candidate prepare/inspect; never runs devices or models\n\npositional arguments:\n  {prepare,inspect}\n\noptions:\n  -h, --help         show this help message and exit\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/bin/python",
+        "-B",
+        "-m",
+        "fsq_androidworld_eval.fsq_runner",
+        "--help"
+      ],
+      "exitCode": 0,
+      "stdout": "usage: fsq_runner.py [-h] --project PROJECT --manifest MANIFEST --task-index\n                     TASK_INDEX --output-dir OUTPUT_DIR --authorization\n                     AUTHORIZATION --readiness READINESS\n                     [--stage {smoke,calibrate,run}]\n                     [--rehearsal-report REHEARSAL_REPORT]\n                     [--calibration-report CALIBRATION_REPORT]\n\nOne complete native FSQ attempt; requires explicit live authorization\n\noptions:\n  -h, --help            show this help message and exit\n  --project PROJECT\n  --manifest MANIFEST\n  --task-index TASK_INDEX\n  --output-dir OUTPUT_DIR\n  --authorization AUTHORIZATION\n  --readiness READINESS\n  --stage {smoke,calibrate,run}\n  --rehearsal-report REHEARSAL_REPORT\n  --calibration-report CALIBRATION_REPORT\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/bin/python",
+        "-B",
+        "-m",
+        "fsq_androidworld_eval.fsq_campaign",
+        "--help"
+      ],
+      "exitCode": 0,
+      "stdout": "usage: fsq_campaign.py [-h] {qualify,rehearse,calibrate,run,_episode} ...\n\nFSQ-only future qualification and single-attempt campaign gates. No Android,\nFSQ, AMKernel or Appium module is imported by the offline consumers. Live\nsubcommands require independently reviewed, target-exclusive authorization.\nQualification consumes existing apps/snapshots: it never installs, repairs,\nsaves a replacement snapshot, or invents a first-launch UI recipe. Rehearsal\nis a separate non-scoring official lifecycle check, not evidence that the FSQ\npolicy succeeds.\n\npositional arguments:\n  {qualify,rehearse,calibrate,run,_episode}\n    qualify\n    rehearse\n    calibrate\n    run\n    _episode            ==SUPPRESS==\n\noptions:\n  -h, --help            show this help message and exit\n",
+      "stderr": ""
+    }
+  ],
+  "method": {
+    "campaign": "Use only existing offline fixture factories from tests/test_fsq_campaign.py via runpy, call candidate.__wrapped__ with a temporary root/MonkeyPatch context, mutate indicated consumer data, recompute affected references/artifact rows/seal, invoke actual operational_errors or validate_stage_report. No pytest test functions were run.",
+    "killAndForcedArchive": "Use only offline_episode.__wrapped__ from tests/test_fsq_runner.py, replace native-worker output or archival boundary, invoke actual run_episode, inspect actual terminal record and halt_reason. This does not claim a real full-native execution.",
+    "sandbox": "Invoke /usr/bin/sandbox-exec using actual generated policy and native FSQ interpreter/FileOps.read_text; construct canonical relative traversal to retained source and temporary external private sentinel; compare denied evaluator-site file. Never publish oracle text.",
+    "processGroup": "Actual _supervise starts only throwaway Python leader/child; child ignores SIGTERM, leader does not; observe child state then kill only that owned group and confirm removal.",
+    "standalone": "Separate throwaway Python process uses offline fixture admission/environment, actual fsq_runner.main argv and run_episode, a shortened injected episode allocator and blocking initialize_task; externally terminate only its owned group after the bound is exceeded."
+  },
+  "limits": {
+    "modelsCalled": false,
+    "devicesAccessed": false,
+    "projectImplementationModified": false,
+    "nativeSourceModified": false,
+    "gitWrites": false,
+    "existing199or894SuitesRerun": false,
+    "realNativeBusinessExecutionProven": false,
+    "temporaryProbeFilesRemoved": true,
+    "probeOwnedProcessesStopped": true,
+    "originalDeliveryOrCandidateModified": false
+  }
+}

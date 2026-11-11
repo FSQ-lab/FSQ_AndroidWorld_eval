@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "kind": "completed_clock_lifecycle_repair_pending_independent_delta_review_and_new_grant",
+  "candidateSha256": "a8550aee3e1b9438377d34b5cf48ff4adde732785afe40aae2249f6266773030",
+  "sourceTreeSha256": "92b8bc71f0b26b19aacb1b23cd0944c3a3f614dbd46c72ab93076629590e2625",
+  "runtimeDelta": [
+    "fsq_campaign.py"
+  ],
+  "reviewedFileRequest": [
+    {
+      "path": "src/fsq_androidworld_eval/fsq_campaign.py",
+      "sha256": "fe0b3280562b2801b3faca509e34b4a98db79c247ebfe41bbaaba5bab57e3210",
+      "bytes": 53842
+    },
+    {
+      "path": "tests/test_fsq_campaign.py",
+      "sha256": "177e430895d7a8395be5ec60db583612c648dcae1cc6263752a4c23eb7bdc022",
+      "bytes": 45572
+    },
+    {
+      "path": "README.md",
+      "sha256": "e99d430cf941010e1ae00ace32844841ea031be3998fa007c2fe4dfdeefd9b58",
+      "bytes": 42868
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "report.md",
+      "sha256": "55db2b1c1d002e0d13fdfce9c288d725b3948755a370292bd8b41363642e5de4",
+      "bytes": 9146
+    },
+    {
+      "path": "review-handoff.json",
+      "sha256": "03f5d11ac9afac7dd71d36b76884a0b775958a7fcbaf63a3ef1ae8b7a2d9b118",
+      "bytes": 3456
+    },
+    {
+      "path": "source-closure.json",
+      "sha256": "dfede91a806d9516982ddfa4786b252a12c96fd0a6a8f3fdbdd3611ea46dc993",
+      "bytes": 1332
+    },
+    {
+      "path": "candidate-final-manifest.json",
+      "sha256": "a8550aee3e1b9438377d34b5cf48ff4adde732785afe40aae2249f6266773030",
+      "bytes": 428226
+    },
+    {
+      "path": "candidate-final-manifest.json.sha256",
+      "sha256": "d4f41fe153633ac858cfd97add496f30e9686b4a9bc75c818f5c2e21676b8543",
+      "bytes": 65
+    },
+    {
+      "path": "current-target-property-observation.json",
+      "sha256": "e19a88124ffd1c327fd49d894fcea820321ea98865edece76cdab56387732fb7",
+      "bytes": 1089
+    },
+    {
+      "path": "previous-phase-preservation.json",
+      "sha256": "9ded024750cb81cae22af0273d9ea3e429ef7ba370c5df86cb91997ee098171d",
+      "bytes": 4184
+    },
+    {
+      "path": "regression-final.json",
+      "sha256": "705551cd2123232588414f4c297bfdab82705b92097f63a9122808deb25b3346",
+      "bytes": 499
+    },
+    {
+      "path": "regression-final.stdout.log",
+      "sha256": "d4544037439b002a5887e972b5637ab99e2b1e74f45c112c50dde1341393ff96",
+      "bytes": 179
+    },
+    {
+      "path": "regression-final.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "offline-clock-entry-smoke.json",
+      "sha256": "49d591ffd20c0e3b8a097a56358128bc4c31d7ad5d17250e5cff044307d03e14",
+      "bytes": 672
+    },
+    {
+      "path": "cli-help.json",
+      "sha256": "85bf53de63a2ea28814f14047333901dbdb377d1973ffcbce03c5f67f61da293",
+      "bytes": 967
+    }
+  ],
+  "verification": "82 targeted campaign consumers passed, actual offline new entry prepare→qualify exits0, help token observed; no full313/old live check/model/task replay",
+  "liveObservation": "Only the extra-authorized two getprop calls at13:29; no actual prepare-clock/qualification/task/device mutation after them",
+  "reviewDelivery": {
+    "recipients": [
+      "w6:p2",
+      "w4:p2"
+    ],
+    "result": "agent_prompted",
+    "status": "pending, not self-approved"
+  },
+  "oldGrant": "operationally terminated by coordinator, original bytes retained",
+  "oldFourthCleanup": "unknown remains; stack precedes environment construction, not a global guest-clean proof",
+  "newQualificationOrClockRestoreAuthorized": false,
+  "nextActionNeeds": "actual limited closure and new coordinator candidate/grant release",
+  "FSQFirstRetained": true,
+  "AMKReleased": false
+}

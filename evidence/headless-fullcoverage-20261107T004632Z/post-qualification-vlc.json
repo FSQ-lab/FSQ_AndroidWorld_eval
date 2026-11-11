@@ -1,0 +1,13 @@
+{
+  "command": [
+    "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+    "-s",
+    "emulator-5554",
+    "shell",
+    "appops get org.videolan.vlc MANAGE_EXTERNAL_STORAGE; su 0 cat /data/data/org.videolan.vlc/shared_prefs/org.videolan.vlc_preferences.xml; su 0 cat /data/data/android_world/snapshots/org.videolan.vlc/shared_prefs/org.videolan.vlc_preferences.xml"
+  ],
+  "returnCode": 0,
+  "stdout": "Uid mode: MANAGE_EXTERNAL_STORAGE: allow\nMANAGE_EXTERNAL_STORAGE: default; time=+15m42s478ms ago; rejectTime=+17m2s798ms ago\n<?xml version='1.0' encoding='utf-8' standalone='yes' ?>\n<map>\n    <string name=\"app_theme\">1</string>\n    <int name=\"video_hud_timeout_in_s\" value=\"4\" />\n    <boolean name=\"widget_migration_key\" value=\"true\" />\n    <int name=\"current_settings_version\" value=\"10\" />\n</map>\n<?xml version='1.0' encoding='utf-8' standalone='yes' ?>\n<map>\n    <string name=\"app_theme\">1</string>\n    <int name=\"video_hud_timeout_in_s\" value=\"4\" />\n    <boolean name=\"widget_migration_key\" value=\"true\" />\n    <int name=\"current_settings_version\" value=\"10\" />\n</map>\n",
+  "stderr": "",
+  "observedAtUnix": 1794013518.7031748
+}

@@ -1,0 +1,43 @@
+{
+  "originalSources": [
+    {
+      "path": "campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/episodes/090-SportsTrackerLongestDistanceActivity/attempt-1/raw-private/agent-events.jsonl",
+      "sha256": "c45324b246e808d11285d54d361bcd820a9f15fa4b55ae0f07667c66531afea4",
+      "unchanged": true
+    },
+    {
+      "path": "campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/episodes/090-SportsTrackerLongestDistanceActivity/attempt-1/result.json",
+      "sha256": "125e775f139b37605dd00a3c50c37a91bbf8f6ad98c37a24a63fb70e21ee14fa",
+      "unchanged": true
+    },
+    {
+      "path": "campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/manifest.json",
+      "sha256": "dbb6fe354f9a1cf7b87e52feeafd08903596d87b8531c37c9d12a50b6dc6362c",
+      "unchanged": true
+    }
+  ],
+  "evidenceLinksValid": true,
+  "pythonExecCalls": 17,
+  "executedUiActions": 10,
+  "maxSteps": 10,
+  "rejectedActionCount": 0,
+  "predicateReplayExecuted": true,
+  "originalOfficialReward": 0.0,
+  "newAndroidRuns": 0,
+  "newAppiumSessions": 0,
+  "proposalChanged": false,
+  "rawFinalVsNormalized": {
+    "rawFinalLine": 4790,
+    "rawTaskOutcome": {"answerMeters": 1207},
+    "rawTaskOutcomeType": "object",
+    "normalizedFinalText": null,
+    "agentCompleted": false,
+    "agentAnswerValidContract": false,
+    "note": "Raw answer has two contract defects: it was emitted after cleanup (finalText null), and taskOutcome is an object although runner.py:171-180 requires a string. The observed 0.75 mi converts exactly to 1207 m, but Skill work's mountain-biking category was not observed."
+  },
+  "immutableCheckMethod": "sha256 of the original agent-events.jsonl, result.json, and manifest.json; hashes were read before and after the review writes and match.",
+  "missingEvidence": [
+    "Skill work activity category was not observed; only Scenic Cycling's edit screen category 'biking' was captured.",
+    "The track list was only partially visible; no complete week enumeration was captured."
+  ]
+}

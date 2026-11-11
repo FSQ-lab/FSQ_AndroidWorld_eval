@@ -1,0 +1,11 @@
+{
+  "observedResult": "AssertionError at the remediation-success assertion",
+  "returnCode": 1,
+  "durationSeconds": 19.08,
+  "timezoneAfterCall": "Asia/Shanghai",
+  "exactRemediationError": "not captured by first smoke; no inferred exception substituted",
+  "implementationIssueObserved": "setup_datetime received AsyncEnv instead of env.controller",
+  "correction": "pass env.controller, matching official env_launcher.setup_env",
+  "beforeEvidence": "timezone-recovery-smoke-before.json",
+  "originalCampaignUnchanged": true
+}

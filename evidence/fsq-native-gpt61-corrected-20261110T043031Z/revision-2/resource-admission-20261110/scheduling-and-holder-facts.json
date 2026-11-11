@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "kind": "fsq_resource_admission_facts_not_authorization",
+  "recordedAtUtc": "2026-11-10T06:24:34.718288+00:00",
+  "target": {
+    "serial": "emulator-5554",
+    "avd": "AndroidWorldAvd",
+    "consolePort": 5554,
+    "adbCompanionPort": 5555,
+    "grpcPort": 8554,
+    "appiumUrl": "http://127.0.0.1:4723"
+  },
+  "holderStatements": {
+    "source": "../environment-readonly-plan.json holderStatements and coordinator/user confirmation",
+    "statements": [
+      {
+        "holder": "w6:p1",
+        "statement": "no retained exclusive window or in-flight real task",
+        "scope": "own session only"
+      },
+      {
+        "holder": "w1:p1",
+        "statement": "no reservation",
+        "scope": "own session only"
+      },
+      {
+        "holder": "w2:p1",
+        "statement": "no reservation",
+        "scope": "own session only"
+      }
+    ],
+    "statementTimes": "not recorded in source; not invented",
+    "globalAvailability": "unknown",
+    "notALease": true
+  },
+  "humanSchedulingDecision": {
+    "authority": "coordinator relayed current real user explicit selection",
+    "selection": "FSQ first; after adapter closure run genuine FSQ loop and formal evaluation; explicitly release afterwards, then other session may run AMKernel",
+    "notGlobalFreeProof": true,
+    "notCurrentLiveGrant": true
+  },
+  "originalReadonlyCheck": {
+    "source": "../shared-resource-readonly.json",
+    "timeUtc": "2026-11-10T06:00:13Z",
+    "getSessions": "HTTPError; specific HTTP code unretained",
+    "sessionState": "unknown",
+    "sameRequestRetried": false
+  },
+  "standardAppium3Behavior": {
+    "sources": [
+      "https://appium.io/docs/en/3.0/guides/migrating-2-to-3/#session-discovery-requires-feature-flag",
+      "https://appium.io/docs/en/3.0/guides/security/"
+    ],
+    "removedRoute": "GET /sessions",
+    "replacementRoute": "GET /appium/sessions",
+    "requiredFeature": "*:session_discovery",
+    "configEvidence": {
+      "path": ".venv/appium-androidworld.json",
+      "lines": "3-7",
+      "configuredFlagPresent": true,
+      "loadedByCurrentService": "pending host-only evidence"
+    },
+    "actualOriginalFailureCodeRecovered": false,
+    "replacementEndpointCalled": false,
+    "notEvidenceOfZeroSessions": true
+  },
+  "controllerHandoff": {
+    "status": "pending existing controller statements and host evidence",
+    "newDeviceOrServerProbe": false
+  },
+  "exclusiveCampaignAuthorized": false,
+  "liveBusinessStarted": false
+}

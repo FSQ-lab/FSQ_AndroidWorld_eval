@@ -1,0 +1,673 @@
+{
+  "cases": [
+    {
+      "index": 87,
+      "name": "SportsTrackerActivitiesCountForWeek",
+      "classification": "failed",
+      "reward": 0.0,
+      "goalConstraints": "How many running activities did I do this week in the OpenTracks app? Assume the week starts from Monday. Express your answer as a single integer.",
+      "officialRubric": "冻结IR proto2053-2107：本周为fixture参考2023-10-15所在Oct9..15，running相关活动COUNT，单整数；InformationRetrieval109-119/proto_utils147-179只判main原summary与期望，不把解释句当数值。",
+      "initialization": {
+        "initializationReferenceTime": {
+          "referenceTime": "2023-10-15T15:34:00+00:00",
+          "timezone": "UTC"
+        },
+        "initializedGoal": "How many running activities did I do this week in the OpenTracks app? Assume the week starts from Monday. Express your answer as a single integer."
+      },
+      "actualTrace": [
+        "launch1/3仅dispatch而snapshot2仍launcher；swipe4+tap6进入app，tap8/10首启两页说明，业务前耗6写。",
+        "snapshot11已见活动表；swipe13由y1向下拉通知，assert15只确认Sun Oct15；Back16后tap18开更多菜单，press20/kill21被额度拒绝。"
+      ],
+      "expectedVsActual": "没有完整running类别计数，main输出Unable...而非整数。",
+      "directFailure": "官方0来自无可匹配的整数答案，不是证实某个数字算错。",
+      "rootCause": "已证实启动返回未验前台+首启导航成本；随后为确认日期拉系统通知、进非筛选菜单，未形成类别/本周覆盖证据表。缺少视图状态与目标查询进展的约束，预算耗尽是上述路径的结果，不是终极根因。",
+      "responsibilityLayer": "FSQ adapter/Skill/检索规划",
+      "confidence": "强推断",
+      "fixes": [
+        {
+          "id": "F-LAUNCH",
+          "module": "drivers/android/_uiautomator2.py:launch_app",
+          "behavior": "调用返回后验证前台或明确pending/failed，不能以app_id回显当启动成功",
+          "owner": "FSQ",
+          "priority": "P0"
+        },
+        {
+          "id": "F-QUERY",
+          "module": "Android Skill + agent retrieval planning",
+          "behavior": "一次读取可见日期锚后在app内按类别/日期搜集候选并记录覆盖，避免重复通知栏/无关菜单",
+          "owner": "FSQ",
+          "priority": "P1"
+        }
+      ],
+      "futureValidation": [
+        "离线回放既存view链验证无进展状态可识别；将来设备用公开UI设置混合类别和跨周活动，必须只计目标类别且完整覆盖。原M10不变，另加预算只能独立实验。"
+      ],
+      "fsqQuestions": [
+        "请核对launch前台契约及87视图变更后未恢复原查询计划的机制"
+      ],
+      "sourceRefs": [
+        "frozen tasks.textproto:2053-2107",
+        "frozen information_retrieval.py:82-119",
+        "frozen proto_utils.py:147-179"
+      ],
+      "evidence": [
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/087-SportsTrackerActivitiesCountForWeek/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-087-20261110T213955Z-895101/sources/000-goal.txt",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/087-SportsTrackerActivitiesCountForWeek/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-087-20261110T213955Z-895101/execution-result.json",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/087-SportsTrackerActivitiesCountForWeek/raw-private/fsq-native/worker/fsq-task-result.private.json",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/087-SportsTrackerActivitiesCountForWeek/raw-private/evaluator-diagnostics.json",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/failure-analysis/harness-evidence/087.json"
+      ],
+      "crosscheck": {
+        "status": "harness_checked; FSQ逐例正式回执待记录",
+        "harnessOwner": "w4:p1",
+        "fsqOwner": "w7:p1"
+      }
+    },
+    {
+      "index": 90,
+      "name": "SportsTrackerLongestDistanceActivity",
+      "classification": "failed",
+      "reward": 0.0,
+      "goalConstraints": "What was the longest distance covered in a mountain biking activity in the OpenTracks app this week? Assume the week starts from Monday. Express your answer as a single number in meters rounded to the nearest integer.",
+      "officialRubric": "冻结proto2487-2538：Oct9..15 mountain biking最大距离，单位米；NUMBER_MATCH绝对差<10m（不是<=10）。",
+      "initialization": {
+        "initializationReferenceTime": {
+          "referenceTime": "2023-10-15T15:34:00+00:00",
+          "timezone": "UTC"
+        },
+        "initializedGoal": "What was the longest distance covered in a mountain biking activity in the OpenTracks app this week? Assume the week starts from Monday. Express your answer as a single number in meters rounded to the nearest integer."
+      },
+      "actualTrace": [
+        "launch1/3未带来前台；drawer/说明tap6/8/10后进入列表。",
+        "swipe12 y1拉通知，Back14回表；tap16进入Wave Exploration Oct15详情8.09mi，未证明该项是mountain biking；Back18后tap20/kill21额度拒绝。"
+      ],
+      "expectedVsActual": "未完成类别筛选和最大值比较，未给米数；Miles显示需注意换算/显示精度但不是本次已计算错误的证据。",
+      "directFailure": "main是Unable maximum说明句，官方0。",
+      "rootCause": "初始启动/首启成本之外，选择首项详情代替类别过滤与候选最大值比较，消费剩余额度；无query进度/候选类别证明与日期锚复用。",
+      "responsibilityLayer": "FSQ adapter/Skill/检索规划",
+      "confidence": "强推断",
+      "fixes": [
+        {
+          "id": "F-QUERY",
+          "module": "Android Skill retrieval plan",
+          "behavior": "先类别+周边界筛选再比较，保存单位/候选来源，不以列表首项代替类别证据",
+          "owner": "FSQ",
+          "priority": "P1"
+        },
+        {
+          "id": "F-LAUNCH",
+          "module": "UiAutomator2AndroidDriver.launch_app",
+          "behavior": "启动结果带前台观测，避免重复无效launch",
+          "owner": "FSQ",
+          "priority": "P0"
+        }
+      ],
+      "futureValidation": [
+        "将来构造不同类别首项距离更大且跨周的公开UI数据，断言不选错类；公里/英里值换米须满足原<10m容差，不改rubric。"
+      ],
+      "fsqQuestions": [],
+      "sourceRefs": [
+        "frozen tasks.textproto:2487-2538",
+        "frozen proto_utils.py:168-179"
+      ],
+      "evidence": [
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/090-SportsTrackerLongestDistanceActivity/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-090-20261110T215043Z-1f10e6/sources/000-goal.txt",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/090-SportsTrackerLongestDistanceActivity/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-090-20261110T215043Z-1f10e6/execution-result.json",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/090-SportsTrackerLongestDistanceActivity/raw-private/fsq-native/worker/fsq-task-result.private.json",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/090-SportsTrackerLongestDistanceActivity/raw-private/evaluator-diagnostics.json",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/failure-analysis/harness-evidence/090.json"
+      ],
+      "crosscheck": {
+        "status": "harness_checked; FSQ逐例正式回执待记录",
+        "harnessOwner": "w4:p1",
+        "fsqOwner": "w7:p1"
+      }
+    },
+    {
+      "index": 91,
+      "name": "SportsTrackerTotalDistanceForCategoryOverInterval",
+      "classification": "failed",
+      "reward": 0.0,
+      "goalConstraints": "What was the total distance covered for kayaking activities in the OpenTracks app from October 09 2023 to October 10 2023? Express your answer as a single number in meters rounded to the nearest integer.",
+      "officialRubric": "冻结proto2931-2987：kayaking且Oct9至Oct10闭区间距离SUM，米，绝对差<10m。",
+      "initialization": {
+        "initializationReferenceTime": {
+          "referenceTime": "2023-10-15T15:34:00+00:00",
+          "timezone": "UTC"
+        },
+        "initializedGoal": "What was the total distance covered for kayaking activities in the OpenTracks app from October 09 2023 to October 10 2023? Express your answer as a single number in meters rounded to the nearest integer."
+      },
+      "actualTrace": [
+        "search12/input14 kayaking/Enter15后已有按类别结果。",
+        "tap17和21重复打开Oct14 Waterway Paddle，均超目标区间；tap25/29才读Oct9两条详情（1.24mi/2.80mi）。",
+        "Back33误退launcher，tap35 target-not-found，tap37重入；tap39/kill40被原M20拒绝。"
+      ],
+      "expectedVsActual": "没有完成日期内集合及精度一致求和，main是Unable exact total。",
+      "directFailure": "官方0来自非数值主答案，不代表已给错误的sum。",
+      "rootCause": "已执行类别搜索但缺失筛选后按日期排除与已访问身份记忆；重复选超区间首项、过度Back导致离开业务页，丢失可用预算。",
+      "responsibilityLayer": "FSQ检索状态/Skill/adapter",
+      "confidence": "强推断",
+      "fixes": [
+        {
+          "id": "F-QUERY",
+          "module": "agent检索状态 + Android Skill",
+          "behavior": "记录(category,date,identity,value,unit,visited)，排除Oct14并避免重复首项；Back必须验证目标列表且不退出app",
+          "owner": "FSQ",
+          "priority": "P1"
+        }
+      ],
+      "futureValidation": [
+        "离线利用原steps17/21识别同identity重复；将来设备数据包含区间外同类首项、两条同日不同值，保证每目标唯一计一次并保留原M20。"
+      ],
+      "fsqQuestions": [],
+      "sourceRefs": [
+        "frozen tasks.textproto:2931-2987",
+        "frozen proto_utils.py:168-179"
+      ],
+      "evidence": [
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/091-SportsTrackerTotalDistanceForCategoryOverInterval/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-091-20261110T215344Z-372744/sources/000-goal.txt",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/091-SportsTrackerTotalDistanceForCategoryOverInterval/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-091-20261110T215344Z-372744/execution-result.json",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/091-SportsTrackerTotalDistanceForCategoryOverInterval/raw-private/fsq-native/worker/fsq-task-result.private.json",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/091-SportsTrackerTotalDistanceForCategoryOverInterval/raw-private/evaluator-diagnostics.json",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/failure-analysis/harness-evidence/091.json"
+      ],
+      "crosscheck": {
+        "status": "harness_checked; FSQ逐例正式回执待记录",
+        "harnessOwner": "w4:p1",
+        "fsqOwner": "w7:p1"
+      }
+    },
+    {
+      "index": 92,
+      "name": "SportsTrackerTotalDurationForCategoryThisWeek",
+      "classification": "failed",
+      "reward": 0.0,
+      "goalConstraints": "What was the total duration of running activities in the OpenTracks app this week? Assume the week starts from Monday. Express your answer in minutes as a single integer.",
+      "officialRubric": "冻结proto2708-2762：Oct9..15 running活动duration求和，分钟整数。",
+      "initialization": {
+        "initializationReferenceTime": {
+          "referenceTime": "2023-10-15T15:34:00+00:00",
+          "timezone": "UTC"
+        },
+        "initializedGoal": "What was the total duration of running activities in the OpenTracks app this week? Assume the week starts from Monday. Express your answer in minutes as a single integer."
+      },
+      "actualTrace": [
+        "两次launch仍launcher，drawer/首启tap6/8/10后见列表。",
+        "swipe12 y0拉通知，Back14；tap16只读Oct14一条30:00 running详情，Back18；swipe20/kill21预算拒绝。"
+      ],
+      "expectedVsActual": "未覆盖周内所有running活动，不能用单项30分钟充当总和；主答案Unable。",
+      "directFailure": "官方0是缺整数总和。",
+      "rootCause": "重复启动与公共日期确认耗费后，未先类别筛选/累计跨记录，查询计划退化为查看单条详情；无完整性账本。",
+      "responsibilityLayer": "FSQ adapter/Skill",
+      "confidence": "强推断",
+      "fixes": [
+        {
+          "id": "F-QUERY",
+          "module": "Android Skill/检索计划",
+          "behavior": "在同一周锚内逐目标累计分钟，区分30:00与h:mm:ss，非目标类跳过；保存已访问集",
+          "owner": "FSQ",
+          "priority": "P1"
+        },
+        {
+          "id": "F-LAUNCH",
+          "module": "driver.launch_app",
+          "behavior": "验证前台并显式首启状态",
+          "owner": "FSQ",
+          "priority": "P0"
+        }
+      ],
+      "futureValidation": [
+        "将来公开UI含两条running、干扰类型与跨周记录，断言只求目标集合，时长单位转换正确。"
+      ],
+      "fsqQuestions": [],
+      "sourceRefs": [
+        "frozen tasks.textproto:2708-2762"
+      ],
+      "evidence": [
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/092-SportsTrackerTotalDurationForCategoryThisWeek/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-092-20261110T215815Z-5c3801/sources/000-goal.txt",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/092-SportsTrackerTotalDurationForCategoryThisWeek/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-092-20261110T215815Z-5c3801/execution-result.json",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/092-SportsTrackerTotalDurationForCategoryThisWeek/raw-private/fsq-native/worker/fsq-task-result.private.json",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/092-SportsTrackerTotalDurationForCategoryThisWeek/raw-private/evaluator-diagnostics.json",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/failure-analysis/harness-evidence/092.json"
+      ],
+      "crosscheck": {
+        "status": "harness_checked; FSQ逐例正式回执待记录",
+        "harnessOwner": "w4:p1",
+        "fsqOwner": "w7:p1"
+      }
+    },
+    {
+      "index": 97,
+      "name": "SystemBrightnessMax",
+      "classification": "failed",
+      "reward": 0.0,
+      "goalConstraints": "Turn brightness to the max value.",
+      "officialRubric": "SystemBrightnessMax init为min，最终官方is_successful必须settings system screen_brightness整型255（system.py29-52/104-112）。",
+      "initialization": {
+        "initializationReferenceTime": {
+          "referenceTime": "2023-10-15T15:34:00+00:00",
+          "timezone": "UTC"
+        },
+        "initializedGoal": "Turn brightness to the max value."
+      },
+      "actualTrace": [
+        "snapshot6 UI range文本0.0；swipe7 x90,y420→1037,y420；snapshot8=65469.0，未到UI上限65535。",
+        "assert_with_ai9置信0.99视觉宣称最右端，原图显示近满；kill10之后官方0。"
+      ],
+      "expectedVsActual": "视觉近满≠精确max；未记录评分瞬间原始亮度整数，不猜是253/254。",
+      "directFailure": "原official0只能证明非255，AI断言未建立数值端点。",
+      "rootCause": "坐标拖动停在端点以内，且用像素AI判断替代可见SeekBar数值range比较；观察已有65469并未触发语义纠正。",
+      "responsibilityLayer": "FSQ Skill/数值控件操作与验证",
+      "confidence": "已证实UI未达数值上限；其与official非255的具体映射为强推断",
+      "fixes": [
+        {
+          "id": "F-RANGE",
+          "module": "Android Skill + UiAutomator2AndroidDriver slider动作/断言",
+          "behavior": "基于bounds及可观察range min/max判端点，保留已经达标状态；验证数值最大而非笼统图像接近满，不用私有settings oracle给agent",
+          "owner": "FSQ",
+          "priority": "P1"
+        }
+      ],
+      "futureValidation": [
+        "离线用range0/65469/65535与近满图边界防假阳性；将来设备比较公开UI端点操作与独立官方settings值，保留exact255 rubric和原M10。"
+      ],
+      "fsqQuestions": [],
+      "sourceRefs": [
+        "frozen single/system.py:29-52,104-112"
+      ],
+      "evidence": [
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/097-SystemBrightnessMax/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-097-20261110T220905Z-8c0e3f/sources/000-goal.txt",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/097-SystemBrightnessMax/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-097-20261110T220905Z-8c0e3f/execution-result.json",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/097-SystemBrightnessMax/raw-private/fsq-native/worker/fsq-task-result.private.json",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/097-SystemBrightnessMax/raw-private/evaluator-diagnostics.json",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/failure-analysis/harness-evidence/097.json"
+      ],
+      "crosscheck": {
+        "status": "harness_checked; FSQ逐例正式回执待记录",
+        "harnessOwner": "w4:p1",
+        "fsqOwner": "w7:p1"
+      }
+    },
+    {
+      "index": 98,
+      "name": "SystemBrightnessMaxVerify",
+      "classification": "failed",
+      "reward": 0.0,
+      "goalConstraints": "Turn brightness to the max value.",
+      "officialRubric": "Verify变体init已set max；相同goal无须改变满足的状态（system.py74-86），最终exact255。",
+      "initialization": {
+        "initializationReferenceTime": {
+          "referenceTime": "2023-10-15T15:34:00+00:00",
+          "timezone": "UTC"
+        },
+        "initializedGoal": "Turn brightness to the max value."
+      },
+      "actualTrace": [
+        "snapshot6=65535.0已到数值上限；仍swipe7 x540→1035,y420；snapshot8降为65338.0。",
+        "assert_with_ai9又以0.99判视觉最大；官方0。"
+      ],
+      "expectedVsActual": "已满足预置被不必要的近似拖动破坏；不是预算不够（admitted5/10、无拒绝）。",
+      "directFailure": "被动保持预置应满足，当前拖动后的精度与oracle不符。",
+      "rootCause": "缺少幂等前置检查：模型套用“拖到右侧”而没有以可见range已max作停止条件，AI视觉验证掩盖数值倒退。",
+      "responsibilityLayer": "FSQ Skill/控件幂等性",
+      "confidence": "已证实预置值及数值下降；未存系统整数映射为强推断",
+      "fixes": [
+        {
+          "id": "F-RANGE",
+          "module": "Android Skill + slider verification",
+          "behavior": "行动前比较range.current=max则不写；行动后禁止由满值降低仍声称成功",
+          "owner": "FSQ",
+          "priority": "P1"
+        }
+      ],
+      "futureValidation": [
+        "未来有已max和未max两夹具，对已max断言零亮度变更，对近max不能通过精确max声明；不得把官方255改为宽容。"
+      ],
+      "fsqQuestions": [],
+      "sourceRefs": [
+        "frozen single/system.py:74-86,41-52"
+      ],
+      "evidence": [
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/098-SystemBrightnessMaxVerify/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-098-20261110T221109Z-190872/sources/000-goal.txt",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/098-SystemBrightnessMaxVerify/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-098-20261110T221109Z-190872/execution-result.json",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/098-SystemBrightnessMaxVerify/raw-private/fsq-native/worker/fsq-task-result.private.json",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/098-SystemBrightnessMaxVerify/raw-private/evaluator-diagnostics.json",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/failure-analysis/harness-evidence/098.json"
+      ],
+      "crosscheck": {
+        "status": "harness_checked; FSQ逐例正式回执待记录",
+        "harnessOwner": "w4:p1",
+        "fsqOwner": "w7:p1"
+      }
+    },
+    {
+      "index": 101,
+      "name": "SystemCopyToClipboard",
+      "classification": "invalid_evaluator",
+      "reward": null,
+      "goalConstraints": "Copy the following text to the clipboard: Tracking #: 5K672F4C",
+      "officialRubric": "官方先reset剪贴板，再get_clipboard_contents读取并fuzzy比较；本次single official call在_extract_clipper_output因parsed data None抛RuntimeError，reward null invalid_evaluator。",
+      "initialization": {
+        "initializationReferenceTime": {
+          "referenceTime": "2023-10-15T15:34:00+00:00",
+          "timezone": "UTC"
+        },
+        "initializedGoal": "Copy the following text to the clipboard: Tracking #: 5K672F4C"
+      },
+      "actualTrace": [
+        "launch1目标Clipper但snapshot2仍launcher；转用launcher搜索框输入精确目标；longpress7后菜单Copy可见，tap9/11操作后clear13清空框。",
+        "paste验证前longpress17仅出现Autofill；tap19 Paste targetnotfound，后续longpress21及24无成功paste，24/kill25预算拒绝。",
+        "主runner诚实inconclusive；原diag RuntimeError缺broadcast payload，未存raw output/foreground/permission快照。"
+      ],
+      "expectedVsActual": "业务侧没证明剪贴板目标确复制且能paste；评分侧是采集异常，不能给0、更不能从错误文案断定权限缺失。",
+      "directFailure": "缺payload使官方无分；paste失败是另一个已证业务未验证点。",
+      "rootCause": "双层：FSQ在脆弱launcher输入域选择/复制后未通过paste闭环；fixture/evaluator依赖Clipper前台/权限/广播data，但具体前提哪项失败无法确认，可能空/不可解析payload或前台时序，不能硬归模型。",
+      "responsibilityLayer": "FSQ Skill + fixture/evaluator（具体环境子因未知）",
+      "confidence": "业务未验证/官方异常已证实；具体Clipper前提无法确认",
+      "fixes": [
+        {
+          "id": "F-CLIPBOARD",
+          "module": "Android Skill text-selection flow",
+          "behavior": "选择稳定公开可编辑场景，按整串选择/Copy后在独立空字段paste核对，失败不宣称成功；不读取oracle expected state",
+          "owner": "FSQ",
+          "priority": "P1"
+        },
+        {
+          "id": "F-EVAL-DIAG",
+          "module": "harness qualification/evaluator diagnostics",
+          "behavior": "将来资格前验证Clipper采集前提，单次official调用时私有记录raw broadcast/status/前台/role，不重试补分",
+          "owner": "Harness/fixture",
+          "priority": "P0"
+        }
+      ],
+      "futureValidation": [
+        "只提出将来授权设备区分：启动前台/权限各已知状态及空clipboard时保留同次广播原文，定位None来源；单次失败仍null/invalid，绝不重复评分。"
+      ],
+      "fsqQuestions": [],
+      "sourceRefs": [
+        "frozen single/system.py:297-333",
+        "frozen env/adb_utils.py:1119-1173"
+      ],
+      "evidence": [
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/101-SystemCopyToClipboard/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-101-20261110T222021Z-1d7fe0/sources/000-goal.txt",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/101-SystemCopyToClipboard/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-101-20261110T222021Z-1d7fe0/execution-result.json",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/101-SystemCopyToClipboard/raw-private/fsq-native/worker/fsq-task-result.private.json",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/101-SystemCopyToClipboard/raw-private/evaluator-diagnostics.json",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/failure-analysis/harness-evidence/101.json"
+      ],
+      "crosscheck": {
+        "status": "harness_checked; FSQ逐例正式回执待记录",
+        "harnessOwner": "w4:p1",
+        "fsqOwner": "w7:p1"
+      }
+    },
+    {
+      "index": 106,
+      "name": "TasksCompletedTasksForDate",
+      "classification": "failed",
+      "reward": 0.0,
+      "goalConstraints": "Which tasks have I completed for October 16 2023 in Tasks app? Answer with the titles only. If there are multiples titles, format your answer in a comma separated list.",
+      "officialRubric": "proto1526-1574三relevant任务due Oct16，completed_date Oct10；oracle取其title，不是完成timestamp在Oct16。goal completed for有自然语义歧义。",
+      "initialization": {
+        "initializationReferenceTime": {
+          "referenceTime": "2023-10-15T15:34:00+00:00",
+          "timezone": "UTC"
+        },
+        "initializedGoal": "Which tasks have I completed for October 16 2023 in Tasks app? Answer with the titles only. If there are multiples titles, format your answer in a comma separated list."
+      },
+      "actualTrace": [
+        "launch1/3后launcher，drawer4/tap6入Tasks。",
+        "菜单tap8/Back10；drawer12/Back14；再次menu15/Back17；快照显示Show completed已勾（主runner引000023），没有完成目标日期全列表检索。",
+        "tap19/kill20预算拒绝；主答案Unable titles而非逗号标题。"
+      ],
+      "expectedVsActual": "没有给标题集；不能把for-date改解为completion timestamp来辩称评分错误。",
+      "directFailure": "0来自未返回标题答案；具体匹配标题全集原库未保留，不编造。",
+      "rootCause": "导航在已启用Show completed及drawer间反复，没有消费已有状态或有效滚动候选；另fixture due/completed_date不一致使goal词义有歧义，作为测量限制而非唯一失败因。",
+      "responsibilityLayer": "FSQ检索状态/Skill；task fixture表述歧义",
+      "confidence": "强推断",
+      "fixes": [
+        {
+          "id": "F-QUERY",
+          "module": "Android Skill task queries",
+          "behavior": "记住checked过滤状态，按公开日期证据维护候选，不重复开同菜单",
+          "owner": "FSQ",
+          "priority": "P1"
+        },
+        {
+          "id": "F-FIXTURE-SEMANTICS",
+          "module": "Tasks IR fixture文档/上游任务规范",
+          "behavior": "把dueDate与completionDate语义差异透明记录；若上游澄清prompt属于单独新fixture版本，不改本次rubric或教agent硬编码oracle解释",
+          "owner": "Benchmark maintainer",
+          "priority": "P2"
+        }
+      ],
+      "futureValidation": [
+        "未来以dueDate≠completedDate的公开夹具检验自然语言契约；离线同菜单checked状态重复不应再分配导航动作；本次不重放。"
+      ],
+      "fsqQuestions": [],
+      "sourceRefs": [
+        "frozen tasks.textproto:1526-1574"
+      ],
+      "evidence": [
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/106-TasksCompletedTasksForDate/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-106-20261110T223129Z-6dcd59/sources/000-goal.txt",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/106-TasksCompletedTasksForDate/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-106-20261110T223129Z-6dcd59/execution-result.json",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/106-TasksCompletedTasksForDate/raw-private/fsq-native/worker/fsq-task-result.private.json",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/106-TasksCompletedTasksForDate/raw-private/evaluator-diagnostics.json",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/failure-analysis/harness-evidence/106.json"
+      ],
+      "crosscheck": {
+        "status": "harness_checked; FSQ逐例正式回执待记录",
+        "harnessOwner": "w4:p1",
+        "fsqOwner": "w7:p1"
+      }
+    },
+    {
+      "index": 107,
+      "name": "TasksDueNextWeek",
+      "classification": "failed",
+      "reward": 0.0,
+      "goalConstraints": "How many tasks do I have due next week in Tasks app? Assume the week starts from Monday. Express your answer as a single integer.",
+      "officialRubric": "proto1397-1465 COUNT六relevant任务due Oct16..22；无显式completed过滤，背景同区间都排除。",
+      "initialization": {
+        "initializationReferenceTime": {
+          "referenceTime": "2023-10-15T15:34:00+00:00",
+          "timezone": "UTC"
+        },
+        "initializedGoal": "How many tasks do I have due next week in Tasks app? Assume the week starts from Monday. Express your answer as a single integer."
+      },
+      "actualTrace": "launch1/3→launcher/drawer4/tap6后；swipe8 y30、12 y0、16 y0三次同类下拉均进通知栏，分别Back10/14/18回列表；swipe20/kill21额度拒绝。",
+      "expectedVsActual": "从未建立下周列表完整覆盖，主答案Unable count；不是0个任务。",
+      "directFailure": "无数值答案导致0。",
+      "rootCause": "为获取日期有意打开通知栏，第一次已读Sun Oct15后仍重复两次同一渠道，未保存已知月日weekday/仍缺year的有限状态，故无新信息又未转向任务覆盖。不能误写为本意滚列表却坐标错误。",
+      "responsibilityLayer": "FSQ检索状态/规划反馈",
+      "confidence": "重复同日通知栏及未返回整数已证实；为何未复用日期证据仅强推断",
+      "fixes": [
+        {
+          "id": "F-QUERY",
+          "module": "Android Skill/agent progress feedback",
+          "behavior": "一次读取日期后保留来源与缺失字段；需要year时转向能补year的新公开UI，不重复同一通知栏；范围明确后再做列表覆盖",
+          "owner": "FSQ",
+          "priority": "P1"
+        }
+      ],
+      "futureValidation": [
+        "离线原8/12/16 notification链应识别重复无新日期；未来月日weekday已知而year未知的公开数据要求选新证据路径，原预算不变。"
+      ],
+      "fsqQuestions": [],
+      "sourceRefs": [
+        "frozen tasks.textproto:1397-1465"
+      ],
+      "evidence": [
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/107-TasksDueNextWeek/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-107-20261110T223419Z-83207a/sources/000-goal.txt",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/107-TasksDueNextWeek/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-107-20261110T223419Z-83207a/execution-result.json",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/107-TasksDueNextWeek/raw-private/fsq-native/worker/fsq-task-result.private.json",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/107-TasksDueNextWeek/raw-private/evaluator-diagnostics.json",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/failure-analysis/harness-evidence/107.json"
+      ],
+      "crosscheck": {
+        "status": "harness_checked; FSQ逐例正式回执待记录",
+        "harnessOwner": "w4:p1",
+        "fsqOwner": "w7:p1"
+      }
+    },
+    {
+      "index": 108,
+      "name": "TasksDueOnDate",
+      "classification": "failed",
+      "reward": 0.0,
+      "goalConstraints": "What tasks do I have due October 24 2023 in Tasks app? Answer with the titles only. If there are multiples titles, format your answer in a comma separated list.",
+      "officialRubric": "proto1078-1123三个due Oct24相关title；逗号分隔，数量须一致且逐项fuzzy；不能返回Unable。",
+      "initialization": {
+        "initializationReferenceTime": {
+          "referenceTime": "2023-10-15T15:34:00+00:00",
+          "timezone": "UTC"
+        },
+        "initializedGoal": "What tasks do I have due October 24 2023 in Tasks app? Answer with the titles only. If there are multiples titles, format your answer in a comma separated list."
+      },
+      "actualTrace": [
+        "snapshot7 XML已列Follow up on support tickets/Draft marketing email/Research market trends配Oct24。",
+        "tap8开首项编辑、tap10开日期picker、assert12确认日期、Back13/15后出现discard，tap17才回列表；耗费可用写额度。",
+        "swipe19后XML仍有Draft和Research；swipe21拒绝，assert22仅请求两个当前同屏标题且图像不支持Draft（出屏），不是明显AI误判。"
+      ],
+      "expectedVsActual": "此前分步候选未累积为完整title/date表，最后只给Unable；不能让最后一张图的不可见抹掉先前有来源的候选。",
+      "directFailure": "0来自非标题答案及未闭合全集核对。",
+      "rootCause": "只读查询转入可编辑日期对话框并产生discard路径；缺少跨页面证据记忆/稳定任务identity与查询完整性，错误把当前同屏双项断言当全集验证。",
+      "responsibilityLayer": "FSQ检索策略/证据聚合",
+      "confidence": "实际迂回及输出差距已证实；策略机制强推断",
+      "fixes": [
+        {
+          "id": "F-QUERY",
+          "module": "retrieval evidence ledger/Android Skill",
+          "behavior": "从公开列表保存每项title+date+sourceStep，必要再读详情，不为了读日期进入编辑；验证历史各项而非要求当前全部同屏",
+          "owner": "FSQ",
+          "priority": "P1"
+        }
+      ],
+      "futureValidation": [
+        "将来列表跨屏三项匹配，返回全标题且不打开可编辑datePicker；AI当前视图断言与跨step集合结论必须区分；仍用原长度+fuzzy rubric。"
+      ],
+      "fsqQuestions": [],
+      "sourceRefs": [
+        "frozen tasks.textproto:1078-1123",
+        "frozen proto_utils.py:147-179"
+      ],
+      "evidence": [
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/108-TasksDueOnDate/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-108-20261110T223732Z-c3b1bc/sources/000-goal.txt",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/108-TasksDueOnDate/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-108-20261110T223732Z-c3b1bc/execution-result.json",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/108-TasksDueOnDate/raw-private/fsq-native/worker/fsq-task-result.private.json",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/108-TasksDueOnDate/raw-private/evaluator-diagnostics.json",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/failure-analysis/harness-evidence/108.json"
+      ],
+      "crosscheck": {
+        "status": "harness_checked; FSQ逐例正式回执待记录",
+        "harnessOwner": "w4:p1",
+        "fsqOwner": "w7:p1"
+      }
+    },
+    {
+      "index": 110,
+      "name": "TasksHighPriorityTasksDueOnDate",
+      "classification": "failed",
+      "reward": 0.0,
+      "goalConstraints": "Which tasks with high priority are due October 18 2023 in the Tasks app? Answer with the title only. If there are multiples titles, format your answer in a comma separated list.",
+      "officialRubric": "proto1316-1348：due Oct18且importance0的一relevant标题；未设completed谓词。",
+      "initialization": {
+        "initializationReferenceTime": {
+          "referenceTime": "2023-10-15T15:34:00+00:00",
+          "timezone": "UTC"
+        },
+        "initializedGoal": "Which tasks with high priority are due October 18 2023 in the Tasks app? Answer with the title only. If there are multiples titles, format your answer in a comma separated list."
+      },
+      "actualTrace": [
+        "原列表snapshot7有Marketing Campaign Launch/Wed；drawer8/选MyTasks10，Sort12→grouping14→By priority16，Back18到snapshot19 High priority三候选。",
+        "目标详情tap20与kill21被额度拒绝；主答案Unable titles。"
+      ],
+      "expectedVsActual": "High priority分组确已建立，但相对Wed的绝对year/日期及全局覆盖尚未闭合；候选详情在剩余写额度为0时被拒。",
+      "directFailure": "未返回任何匹配标题，官方0。",
+      "rootCause": "drawer8再选同一My Tasks10先浪费2写；之后By priority四写确提供新的优先级证据，不应贬为无效。入口4+往返2+分组4用完10，未给绝对日期核验/覆盖留动作；是两谓词计划与预算反馈不足，而非high/medium识别或必须禁止分组。",
+      "responsibilityLayer": "FSQ规划/Skill",
+      "confidence": "强推断",
+      "fixes": [
+        {
+          "id": "F-QUERY",
+          "module": "preplan/Android Skill Tasks retrieval",
+          "behavior": "当前已在目标列表时不绕drawer；保留有效priority分组及row关联，提前规划公开时间锚仍缺year的核验与全局覆盖，分配同一原预算",
+          "owner": "FSQ",
+          "priority": "P1"
+        }
+      ],
+      "futureValidation": [
+        "未来公开UI高优先级三项不同dueDate，保留分组对优先级的有效证据，验证不做同列表drawer往返且为第二谓词留动作；原M10不变。"
+      ],
+      "fsqQuestions": [],
+      "sourceRefs": [
+        "frozen tasks.textproto:1316-1348"
+      ],
+      "evidence": [
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/110-TasksHighPriorityTasksDueOnDate/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-110-20261110T224320Z-b7af07/sources/000-goal.txt",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/110-TasksHighPriorityTasksDueOnDate/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-110-20261110T224320Z-b7af07/execution-result.json",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/110-TasksHighPriorityTasksDueOnDate/raw-private/fsq-native/worker/fsq-task-result.private.json",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/110-TasksHighPriorityTasksDueOnDate/raw-private/evaluator-diagnostics.json",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/failure-analysis/harness-evidence/110.json"
+      ],
+      "crosscheck": {
+        "status": "harness_checked; FSQ逐例正式回执待记录",
+        "harnessOwner": "w4:p1",
+        "fsqOwner": "w7:p1"
+      }
+    },
+    {
+      "index": 113,
+      "name": "TurnOnWifiAndOpenApp",
+      "classification": "failed",
+      "reward": 0.5,
+      "goalConstraints": "Turn on Wifi, then open the settings app",
+      "officialRubric": "复合system.py25-49平均wifi与openApp两分；wifi_on∈{1,2}；OpenAppTaskEval484-499要求评分时前台Settings。",
+      "initialization": {
+        "initializationReferenceTime": {
+          "referenceTime": "2023-10-15T15:34:00+00:00",
+          "timezone": "UTC"
+        },
+        "initializedGoal": "Turn on Wifi, then open the settings app"
+      },
+      "actualTrace": [
+        "snapshot6 Wi-Fi off，tap7开WiFi/断言8checked；tap14进Settings，snapshot15/断言16证实Settings首页。",
+        "kill17 invoke resolved app_id=com.android.settings并成功；FSQ源kill_app103-107调用app_stop。官方0.5，原diag无分项/评分瞬间前台。"
+      ],
+      "expectedVsActual": "业务验证时两目标看似完成，但native末尾关目标app与评分前台目标冲突；wifi1/app0是强推断非直接分项记录。",
+      "directFailure": "partial0.5需保留，不能称整个Wifi动作失败。",
+      "rootCause": "一般Skill无条件末尾kill破坏“打开并留下app”的用户末态，官方又在完整native含teardown后取前台；不是改变oracle/提前评分能修的单点。",
+      "responsibilityLayer": "FSQ Skill生命周期与harness测量契约",
+      "confidence": "kill目标/前台业务证据已证实；哪半分保留为强推断",
+      "fixes": [
+        {
+          "id": "F-ENDSTATE",
+          "module": "Android Skill teardown + AndroidHarness生命周期契约",
+          "behavior": "默认保留用户业务末态，仅释放连接/临时资源；不得按任务名拦截kill或harness重开目标后评分。若仍要求一律kill，应先版本化约定测量契约",
+          "owner": "FSQ + Harness joint",
+          "priority": "P0"
+        }
+      ],
+      "futureValidation": [
+        "未来公开“打开设置”目标完成后完整native返回仍保持业务前台；仍执行一次after-full评分，分项私有记录供区分，正常资源close不等于force-stop业务app。"
+      ],
+      "fsqQuestions": [],
+      "sourceRefs": [
+        "frozen composite/system.py:25-49",
+        "frozen single/system.py:131-144,484-499"
+      ],
+      "evidence": [
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/113-TurnOnWifiAndOpenApp/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-113-20261110T225201Z-521d36/sources/000-goal.txt",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/113-TurnOnWifiAndOpenApp/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-113-20261110T225201Z-521d36/execution-result.json",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/113-TurnOnWifiAndOpenApp/raw-private/fsq-native/worker/fsq-task-result.private.json",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/113-TurnOnWifiAndOpenApp/raw-private/evaluator-diagnostics.json",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/failure-analysis/harness-evidence/113.json"
+      ],
+      "crosscheck": {
+        "status": "harness_checked; FSQ逐例正式回执待记录",
+        "harnessOwner": "w4:p1",
+        "fsqOwner": "w7:p1"
+      }
+    }
+  ]
+}

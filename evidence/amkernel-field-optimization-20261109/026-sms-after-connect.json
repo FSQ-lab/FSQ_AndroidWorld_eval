@@ -1,0 +1,178 @@
+{
+  "sequence": 26,
+  "label": "sms-after-connect",
+  "command": {
+    "op": "exec",
+    "label": "sms-after-connect",
+    "timeout": 90,
+    "code": "from appium import webdriver\nfrom appium.options.android import UiAutomator2Options\nfrom appium.webdriver.common.appiumby import AppiumBy\nimport xml.etree.ElementTree as ET\nimport time\noptions = UiAutomator2Options().load_capabilities({'platformName':'Android','appium:automationName':'UiAutomator2','appium:udid':'emulator-5554','appium:noReset':True,'appium:autoLaunch':False,'appium:skipUnlock':True,'appium:newCommandTimeout':300,'appium:skipDeviceInitialization':True,'appium:skipServerInstallation':True})\ndriver = webdriver.Remote('http://127.0.0.1:4723', options=options)\nowned_session_id = driver.session_id\ndef observe():\n    tree = ET.fromstring(driver.page_source)\n    rows = [{k: n.attrib.get(k,'') for k in ('text','content-desc','resource-id','class','bounds','clickable','focused')} for n in tree.iter() if n.attrib.get('text') or n.attrib.get('content-desc') or n.attrib.get('class') == 'android.widget.EditText']\n    return {'package':driver.current_package, 'activity':driver.current_activity, 'controls':rows[:55]}\n{'ownedSessionId':owned_session_id, 'newCommandTimeout':driver.capabilities.get('newCommandTimeout'), 'state':observe()}\n"
+  },
+  "startedAtUnix": 1794191928.3279638,
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"status\":\"completed\",\"stdout\":\"\",\"stderr\":\"\",\"result\":{\"ownedSessionId\":\"a3883739-212d-43e3-adb4-3f5300489e9a\",\"newCommandTimeout\":300,\"state\":{\"package\":\"com.google.android.apps.nexuslauncher\",\"activity\":\".NexusLauncherActivity\",\"controls\":[{\"text\":\"Sun, Oct 15\",\"content-desc\":\"Sun, Oct 15\",\"resource-id\":\"com.google.android.apps.nexuslauncher:id/date\",\"class\":\"android.widget.TextView\",\"bounds\":\"[99,292][1023,354]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"Gmail\",\"content-desc\":\"Gmail\",\"resource-id\":\"\",\"class\":\"android.widget.TextView\",\"bounds\":\"[309,1479][519,1751]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"Photos\",\"content-desc\":\"Photos\",\"resource-id\":\"\",\"class\":\"android.widget.TextView\",\"bounds\":\"[561,1479][771,1751]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"YouTube\",\"content-desc\":\"YouTube\",\"resource-id\":\"\",\"class\":\"android.widget.TextView\",\"bounds\":\"[813,1479][1023,1751]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"\",\"content-desc\":\"Home\",\"resource-id\":\"\",\"class\":\"android.view.View\",\"bounds\":\"[0,128][1080,2337]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"Phone\",\"content-desc\":\"Phone\",\"resource-id\":\"\",\"class\":\"android.widget.TextView\",\"bounds\":\"[76,1873][249,2068]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"Messages\",\"content-desc\":\"Messages\",\"resource-id\":\"\",\"class\":\"android.widget.TextView\",\"bounds\":\"[328,1873][501,2068]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"Chrome\",\"content-desc\":\"Chrome\",\"resource-id\":\"\",\"class\":\"android.widget.TextView\",\"bounds\":\"[580,1873][753,2068]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"Calendar\",\"content-desc\":\"Predicted app: Calendar\",\"resource-id\":\"\",\"class\":\"android.widget.TextView\",\"bounds\":\"[832,1873][1004,2068]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"\",\"content-desc\":\"Search\",\"resource-id\":\"com.google.android.apps.nexuslauncher:id/search_container_hotseat\",\"class\":\"android.widget.FrameLayout\",\"bounds\":\"[75,2125][1004,2290]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"\",\"content-desc\":\"Google app\",\"resource-id\":\"com.google.android.apps.nexuslauncher:id/g_icon\",\"class\":\"android.widget.ImageView\",\"bounds\":\"[86,2144][212,2270]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"\",\"content-desc\":\"Voice search\",\"resource-id\":\"com.google.android.apps.nexuslauncher:id/mic_icon\",\"class\":\"android.widget.ImageView\",\"bounds\":\"[741,2125][867,2290]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"\",\"content-desc\":\"Google Lens\",\"resource-id\":\"com.google.android.apps.nexuslauncher:id/lens_icon\",\"class\":\"android.widget.ImageButton\",\"bounds\":\"[867,2125][993,2290]\",\"clickable\":\"true\",\"focused\":\"false\"}]}},\"executionCount\":2,\"durationMs\":1362,\"kernelState\":\"alive\",\"runtime\":{\"executable\":\"/Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python\",\"pythonVersion\":\"3.11.16\",\"workingDirectory\":\"/Users/qunmi/Documents/FSQ_LAB/amkernel\",\"environmentKind\":\"project_venv\",\"implementation\":\"CPython\",\"platform\":\"macOS-26.6.2-arm64-arm-64bit\",\"packages\":[]},\"output\":{\"totalBytes\":0,\"totalLines\":0,\"discardedBytes\":0,\"discardedLines\":0,\"truncated\":false,\"limitBytes\":268435456,\"limitExceeded\":false,\"live\":\"unavailable\"},\"displays\":[],\"artifacts\":[]}"
+      }
+    ],
+    "structured_content": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "ownedSessionId": "a3883739-212d-43e3-adb4-3f5300489e9a",
+        "newCommandTimeout": 300,
+        "state": {
+          "package": "com.google.android.apps.nexuslauncher",
+          "activity": ".NexusLauncherActivity",
+          "controls": [
+            {
+              "text": "Sun, Oct 15",
+              "content-desc": "Sun, Oct 15",
+              "resource-id": "com.google.android.apps.nexuslauncher:id/date",
+              "class": "android.widget.TextView",
+              "bounds": "[99,292][1023,354]",
+              "clickable": "true",
+              "focused": "false"
+            },
+            {
+              "text": "Gmail",
+              "content-desc": "Gmail",
+              "resource-id": "",
+              "class": "android.widget.TextView",
+              "bounds": "[309,1479][519,1751]",
+              "clickable": "true",
+              "focused": "false"
+            },
+            {
+              "text": "Photos",
+              "content-desc": "Photos",
+              "resource-id": "",
+              "class": "android.widget.TextView",
+              "bounds": "[561,1479][771,1751]",
+              "clickable": "true",
+              "focused": "false"
+            },
+            {
+              "text": "YouTube",
+              "content-desc": "YouTube",
+              "resource-id": "",
+              "class": "android.widget.TextView",
+              "bounds": "[813,1479][1023,1751]",
+              "clickable": "true",
+              "focused": "false"
+            },
+            {
+              "text": "",
+              "content-desc": "Home",
+              "resource-id": "",
+              "class": "android.view.View",
+              "bounds": "[0,128][1080,2337]",
+              "clickable": "false",
+              "focused": "false"
+            },
+            {
+              "text": "Phone",
+              "content-desc": "Phone",
+              "resource-id": "",
+              "class": "android.widget.TextView",
+              "bounds": "[76,1873][249,2068]",
+              "clickable": "true",
+              "focused": "false"
+            },
+            {
+              "text": "Messages",
+              "content-desc": "Messages",
+              "resource-id": "",
+              "class": "android.widget.TextView",
+              "bounds": "[328,1873][501,2068]",
+              "clickable": "true",
+              "focused": "false"
+            },
+            {
+              "text": "Chrome",
+              "content-desc": "Chrome",
+              "resource-id": "",
+              "class": "android.widget.TextView",
+              "bounds": "[580,1873][753,2068]",
+              "clickable": "true",
+              "focused": "false"
+            },
+            {
+              "text": "Calendar",
+              "content-desc": "Predicted app: Calendar",
+              "resource-id": "",
+              "class": "android.widget.TextView",
+              "bounds": "[832,1873][1004,2068]",
+              "clickable": "true",
+              "focused": "false"
+            },
+            {
+              "text": "",
+              "content-desc": "Search",
+              "resource-id": "com.google.android.apps.nexuslauncher:id/search_container_hotseat",
+              "class": "android.widget.FrameLayout",
+              "bounds": "[75,2125][1004,2290]",
+              "clickable": "true",
+              "focused": "false"
+            },
+            {
+              "text": "",
+              "content-desc": "Google app",
+              "resource-id": "com.google.android.apps.nexuslauncher:id/g_icon",
+              "class": "android.widget.ImageView",
+              "bounds": "[86,2144][212,2270]",
+              "clickable": "true",
+              "focused": "false"
+            },
+            {
+              "text": "",
+              "content-desc": "Voice search",
+              "resource-id": "com.google.android.apps.nexuslauncher:id/mic_icon",
+              "class": "android.widget.ImageView",
+              "bounds": "[741,2125][867,2290]",
+              "clickable": "true",
+              "focused": "false"
+            },
+            {
+              "text": "",
+              "content-desc": "Google Lens",
+              "resource-id": "com.google.android.apps.nexuslauncher:id/lens_icon",
+              "class": "android.widget.ImageButton",
+              "bounds": "[867,2125][993,2290]",
+              "clickable": "true",
+              "focused": "false"
+            }
+          ]
+        }
+      },
+      "executionCount": 2,
+      "durationMs": 1362,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/Users/qunmi/Documents/FSQ_LAB/amkernel",
+        "environmentKind": "project_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "unavailable"
+      },
+      "displays": [],
+      "artifacts": []
+    },
+    "is_error": false,
+    "result_type": "complete"
+  },
+  "completedAtUnix": 1794191929.6947148
+}

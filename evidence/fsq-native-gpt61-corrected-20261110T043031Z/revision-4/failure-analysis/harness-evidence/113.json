@@ -1,0 +1,718 @@
+{
+  "index": 113,
+  "name": "TurnOnWifiAndOpenApp",
+  "goal": "Turn on Wifi, then open the settings app",
+  "reward": 0.5,
+  "classification": "failed",
+  "initialization": {
+    "initializationReferenceTime": {
+      "referenceTime": "2023-10-15T15:34:00+00:00",
+      "timezone": "UTC"
+    },
+    "initializedGoal": "Turn on Wifi, then open the settings app"
+  },
+  "frozenTaskSpec": {
+    "apps": [
+      "settings"
+    ],
+    "complexity": 2,
+    "difficulty": "easy",
+    "family": "android",
+    "index": 113,
+    "instanceSeed": 1310213687,
+    "maxActions": 20,
+    "maxSteps": 20,
+    "name": "TurnOnWifiAndOpenApp",
+    "params": {
+      "app_name": "settings",
+      "seed": 1310213687
+    },
+    "paramsSha256": "304ea43706750346e2eb6e93848237d11630f5da2ceb7519e0fbd78d82e4f087",
+    "paramsTransport": "json",
+    "tags": [
+      "parameterized"
+    ],
+    "timeBudget": {
+      "businessSeconds": 1320,
+      "cleanupWindowSeconds": 180,
+      "episodeSeconds": 1930,
+      "forceSeconds": 1510,
+      "recoveryWindowSeconds": 120,
+      "terminationGraceSeconds": 10
+    }
+  },
+  "mainSteps": [
+    {
+      "stepId": 4,
+      "tool": "agent_runtime.runner",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [],
+        "evidence": [
+          "Fresh UI snapshot showed the Settings homepage title, search bar, and main categories including Network & internet, Connected devices, and Apps.",
+          "assert_visible passed for com.android.settings:id/settings_homepage_container.",
+          "Final screenshot: artifacts/screenshots/screenshot-agent-assert-visible-16-prepare-before-action-1-07af7c787c50.png",
+          "Configured app was stopped after final verification."
+        ],
+        "plan_updates": [],
+        "pre_plan": [
+          {
+            "action": "Swipe down to open and expand Quick Settings.",
+            "status": "success",
+            "step_id": 1,
+            "success_criteria": [
+              "Quick Settings is open."
+            ]
+          },
+          {
+            "action": "Enable Wi-Fi through the Internet panel.",
+            "status": "success",
+            "step_id": 2,
+            "success_criteria": [
+              "Wi-Fi switch is checked."
+            ]
+          },
+          {
+            "action": "Open Settings using the Quick Settings Settings button and verify the main screen.",
+            "status": "success",
+            "step_id": 3,
+            "success_criteria": [
+              "Settings homepage is visible."
+            ]
+          }
+        ],
+        "satisfied_criteria": [
+          "The Settings app's main screen is visible."
+        ],
+        "schema_version": "task_run_v1",
+        "status": "success",
+        "summary": "Completed the Quick Settings flow and verified that the Settings app’s main screen was visible before teardown.",
+        "unmet_criteria": []
+      }
+    },
+    {
+      "stepId": 5,
+      "tool": "agent_runtime.verifier",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "The successful visibility assertion preceded an app-stopping teardown action and therefore does not establish the required final visible state."
+        ],
+        "evidence": [
+          "At sequences 53–54, ui_snapshot reported com.android.settings:id/settings_homepage_container.",
+          "At sequences 55–56, assert_visible passed for the Settings homepage container, with screenshot reference artifacts/screenshots/screenshot-agent-assert-visible-16-prepare-before-action-1-07af7c787c50.png.",
+          "After that verification, kill_app at sequences 57–58 passed and identified the stopped app as com.android.settings.",
+          "No subsequent action reopened Settings. The agent's structured output explicitly limited its visibility claim to before teardown."
+        ],
+        "plan_updates": [],
+        "pre_plan": [
+          {
+            "action": "Verify the Settings main screen is visible at the end of the run.",
+            "status": "failed",
+            "step_id": 1,
+            "success_criteria": [
+              "The Settings app's main screen is visible."
+            ]
+          }
+        ],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "failed",
+        "summary": "The Settings main screen was verified as visible, but the run subsequently stopped Settings during teardown, so the required visible final state was not preserved.",
+        "unmet_criteria": [
+          "The Settings app's main screen is visible."
+        ]
+      }
+    }
+  ],
+  "budgetSummary": {
+    "admitted": 9,
+    "attempted": 9,
+    "deadlineExceeded": false,
+    "deadlineMonotonic": 727350.15674125,
+    "denied": 0,
+    "deviceRestoredByClose": false,
+    "exclusions": [
+      "driver_construction",
+      "uiautomator2_service_startup",
+      "observation_and_assertion_side_effects",
+      "external_processes_and_direct_driver_access"
+    ],
+    "exhausted": false,
+    "failed": 0,
+    "inFlight": 0,
+    "inputTextUnit": "composite_click_optional_clear_set_text",
+    "maximum": 20,
+    "securityBoundary": false,
+    "succeeded": 9,
+    "unit": "admitted_android_harness_write_capability_dispatch",
+    "writeCapabilities": [
+      "launch_app",
+      "kill_app",
+      "tap_on",
+      "tap_at",
+      "long_press_on",
+      "input_text",
+      "press_key",
+      "swipe"
+    ]
+  },
+  "actions": [
+    {
+      "ordinal": 0,
+      "stepId": "agent-launch_app-1",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [],
+      "output": {
+        "app_id": "com.android.settings"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[0]"
+    },
+    {
+      "ordinal": 1,
+      "stepId": "agent-ui_snapshot-2",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Sun, Oct 15",
+        "Sun, Oct 15",
+        "Gmail",
+        "Gmail",
+        "Photos",
+        "Photos",
+        "YouTube",
+        "YouTube",
+        "Home",
+        "Phone",
+        "Phone",
+        "Messages",
+        "Messages",
+        "Chrome",
+        "Chrome",
+        "Calendar",
+        "Predicted app: Calendar",
+        "Search",
+        "Google app",
+        "Voice search",
+        "Google Lens",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 27981,
+          "retained_characters": 7650
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[1]"
+    },
+    {
+      "ordinal": 2,
+      "stepId": "agent-swipe-3",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "start": {
+          "x": 540,
+          "y": 1
+        },
+        "end": {
+          "x": 540,
+          "y": 1600
+        },
+        "reference_screen_size": {
+          "width": 1080,
+          "height": 2400
+        },
+        "duration": 500
+      },
+      "uiLabels": [],
+      "output": {
+        "start": {
+          "x": 540,
+          "y": 1
+        },
+        "end": {
+          "x": 540,
+          "y": 1600
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[2]"
+    },
+    {
+      "ordinal": 3,
+      "stepId": "agent-ui_snapshot-4",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "On",
+        "Internet",
+        "Internet",
+        "On",
+        "Bluetooth.",
+        "Bluetooth",
+        "Off",
+        "Flashlight",
+        "Flashlight",
+        "Off",
+        "Do Not Disturb.",
+        "Do Not Disturb",
+        "Android System",
+        "Alerted",
+        "Collapse",
+        "Data warning",
+        "You've used 4.68 GB of data",
+        "Silent",
+        "Clear all silent notifications",
+        "Need time to focus?",
+        "Use Focus mode to pause distracting apps. Tap to s",
+        "Expand",
+        "Check access settings",
+        "com.google.androidenv.accessibilityforwarder.Acce…",
+        "Expand",
+        "Manage",
+        "Manage",
+        "Clear all",
+        "Clear all notifications.",
+        "15:34",
+        "23:34",
+        "Sun, Oct 15",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "100%"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 54296,
+          "retained_characters": 13721
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 20,
+          "clipped_attributes": 2
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[3]"
+    },
+    {
+      "ordinal": 4,
+      "stepId": "agent-tap_on-5",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "accessibilityId": "Internet"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[4]"
+    },
+    {
+      "ordinal": 5,
+      "stepId": "agent-ui_snapshot-6",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Internet",
+        "Wi-Fi is off",
+        "T-Mobile",
+        "Connected / 3G",
+        "Mobile data",
+        "Wi‑Fi",
+        "Wi‑Fi",
+        "To improve device experience, apps and services ca",
+        "Done"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 16450,
+          "retained_characters": 3184
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 14,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[5]"
+    },
+    {
+      "ordinal": 6,
+      "stepId": "agent-tap_on-7",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.android.systemui:id/wifi_toggle"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[6]"
+    },
+    {
+      "ordinal": 7,
+      "stepId": "agent-assert_state-8",
+      "action": "assert_state",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "element": {
+          "resourceId": "com.android.systemui:id/wifi_toggle",
+          "checked": true
+        },
+        "optional": false
+      },
+      "uiLabels": [],
+      "output": {
+        "checked": true
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[7]"
+    },
+    {
+      "ordinal": 8,
+      "stepId": "agent-tap_on-9",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.android.systemui:id/done_button"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[8]"
+    },
+    {
+      "ordinal": 9,
+      "stepId": "agent-swipe-10",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "down",
+        "duration": 500
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "down"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[9]"
+    },
+    {
+      "ordinal": 10,
+      "stepId": "agent-ui_snapshot-11",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "On",
+        "Internet",
+        "Internet",
+        "On",
+        "Bluetooth.",
+        "Bluetooth",
+        "Off",
+        "Flashlight",
+        "Flashlight",
+        "Off",
+        "Do Not Disturb.",
+        "Do Not Disturb",
+        "Android System",
+        "Alerted",
+        "Collapse",
+        "Data warning",
+        "You've used 4.68 GB of data",
+        "Silent",
+        "Clear all silent notifications",
+        "Need time to focus?",
+        "Use Focus mode to pause distracting apps. Tap to s",
+        "Expand",
+        "Check access settings",
+        "com.google.androidenv.accessibilityforwarder.Acce…",
+        "Expand",
+        "Manage",
+        "Manage",
+        "Clear all",
+        "Clear all notifications.",
+        "15:35",
+        "23:35",
+        "Sun, Oct 15",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "100%"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 54295,
+          "retained_characters": 13720
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 20,
+          "clipped_attributes": 2
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[10]"
+    },
+    {
+      "ordinal": 11,
+      "stepId": "agent-swipe-12",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "start": {
+          "x": 540,
+          "y": 100
+        },
+        "end": {
+          "x": 540,
+          "y": 1800
+        },
+        "reference_screen_size": {
+          "width": 1080,
+          "height": 2400
+        },
+        "duration": 500
+      },
+      "uiLabels": [],
+      "output": {
+        "start": {
+          "x": 540,
+          "y": 100
+        },
+        "end": {
+          "x": 540,
+          "y": 1800
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[11]"
+    },
+    {
+      "ordinal": 12,
+      "stepId": "agent-ui_snapshot-13",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Display brightness",
+        "1184.0",
+        "On",
+        "Internet",
+        "Internet",
+        "T-Mobile, 3G",
+        "On",
+        "Bluetooth.",
+        "Bluetooth",
+        "On",
+        "Off",
+        "Flashlight",
+        "Flashlight",
+        "Off",
+        "Off",
+        "Do Not Disturb.",
+        "Do Not Disturb",
+        "Off",
+        "Alarm, No alarm set",
+        "Alarm",
+        "No alarm set",
+        "Off",
+        "Airplane mode",
+        "Airplane mode",
+        "Off",
+        "Device controls",
+        "Device controls",
+        "Unavailable",
+        "On",
+        "Auto-rotate screen",
+        "Auto-rotate",
+        "On",
+        "Page 1 of 3",
+        "Edit order of settings.",
+        "Open settings.",
+        "Power menu",
+        "T-Mobile",
+        "15:35",
+        "23:35",
+        "Sun, Oct 15",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "100%"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 47099,
+          "retained_characters": 12756
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 9,
+          "clipped_attributes": 0
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[12]"
+    },
+    {
+      "ordinal": 13,
+      "stepId": "agent-tap_on-14",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.android.systemui:id/settings_button_container"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[13]"
+    },
+    {
+      "ordinal": 14,
+      "stepId": "agent-ui_snapshot-15",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Profile picture, double tap to open Google Account",
+        "Settings",
+        "Search settings",
+        "Network & internet",
+        "Mobile, Wi‑Fi, hotspot",
+        "Connected devices",
+        "Bluetooth, pairing",
+        "Apps",
+        "Assistant, recent apps, default apps",
+        "Notifications",
+        "Notification history, conversations",
+        "Battery",
+        "100%",
+        "Storage",
+        "46% used - 8.61 GB free",
+        "Sound & vibration",
+        "Volume, haptics, Do Not Disturb",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 40961,
+          "retained_characters": 10767
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 6,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[14]"
+    },
+    {
+      "ordinal": 15,
+      "stepId": "agent-assert_visible-16",
+      "action": "assert_visible",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.android.settings:id/settings_homepage_container"
+        },
+        "optional": false
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[15]"
+    },
+    {
+      "ordinal": 16,
+      "stepId": "agent-kill_app-17",
+      "action": "kill_app",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [],
+      "output": {
+        "app_id": "com.android.settings"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[16]"
+    }
+  ],
+  "originalNativeExecutionPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/113-TurnOnWifiAndOpenApp/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-113-20261110T225201Z-521d36/execution-result.json",
+  "originalNativeResultPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/113-TurnOnWifiAndOpenApp/raw-private/fsq-native/worker/fsq-task-result.private.json",
+  "originalGoalPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/113-TurnOnWifiAndOpenApp/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-113-20261110T225201Z-521d36/sources/000-goal.txt"
+}

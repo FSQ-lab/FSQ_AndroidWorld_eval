@@ -1,0 +1,18 @@
+{
+  "driver": "uiautomator2",
+  "appiumMode": "global",
+  "serverUrl": "http://127.0.0.1:4723/",
+  "checks": {
+    "serverReady": true,
+    "driverListed": true,
+    "cleanupOk": true
+  },
+  "summary": {
+    "requiredOk": true,
+    "error": "",
+    "serverReady": true,
+    "driverListed": true,
+    "cleanupOk": true
+  },
+  "logs": "\u001b[38;5;112m[Appium]\u001b[0m Welcome to Appium v3.7.0 (REV bf464f57275cae0be106b43d190c98564ac59b0e)\n\u001b[38;5;112m[Appium]\u001b[0m Non-default server args:\n\u001b[38;5;112m[Appium]\u001b[0m { address: \u001b[32m'127.0.0.1'\u001b[39m }\n\u001b[38;5;112m[Appium]\u001b[0m The autodetected Appium home path: /Users/qunmi/.appium\n\u001b[38;5;112m[Appium]\u001b[0m Attempting to load driver mac2...\n\u001b[38;5;112m[Appium]\u001b[0m Attempting to load driver uiautomator2...\n\u001b[38;5;112m[Appium]\u001b[0m Attempting to load driver xcuitest...\n\u001b[38;5;112m[Appium]\u001b[0m Requiring driver at /Users/qunmi/.appium/node_modules/appium-uiautomator2-driver/build/lib/index.js\n\u001b[38;5;112m[Appium]\u001b[0m AndroidUiautomator2Driver has been successfully loaded in 0.136s\n\u001b[38;5;112m[Appium]\u001b[0m Requiring driver at /Users/qunmi/.appium/node_modules/appium-xcuitest-driver/build/lib/index.js\n\u001b[38;5;112m[Appium]\u001b[0m XCUITestDriver has been successfully loaded in 0.517s\n\u001b[38;5;112m[Appium]\u001b[0m Requiring driver at /Users/qunmi/.appium/node_modules/appium-mac2-driver/build/lib/index.js\n\u001b[38;5;112m[Appium]\u001b[0m Mac2Driver has been successfully loaded in 0.579s\n\u001b[38;5;112m[Appium]\u001b[0m Appium REST http interface listener started on http://127.0.0.1:4723\n\u001b[38;5;112m[Appium]\u001b[0m Available drivers:\n\u001b[38;5;112m[Appium]\u001b[0m   - mac2@4.3.0 (automationName 'Mac2')\n\u001b[38;5;112m[Appium]\u001b[0m   - uiautomator2@8.7.0 (automationName 'UiAutomator2')\n\u001b[38;5;112m[Appium]\u001b[0m   - xcuitest@12.22.8 (automationName 'XCUITest')\n\u001b[38;5;112m[Appium]\u001b[0m No plugins have been installed. Use the \"appium plugin\" command to install the one(s) you want to use.\n\u001b[38;5;86m[HTTP]\u001b[0m --> GET /status \n\u001b[38;5;173m[AppiumDriver@c2ec]\u001b[0m Calling AppiumDriver.getStatus() with args: []\n\u001b[38;5;173m[AppiumDriver@c2ec]\u001b[0m Responding to client with driver.getStatus() result: {\"ready\":true,\"message\":\"The server is ready to accept new connections\",\"build\":{\"version\":\"3.7.0\",\"git-sha\":\"bf464f57275cae0be106b43d190c98564ac59b0e\",\"built\":\"2026-11-02 01:56:41 +0000\"}}\n\u001b[38;5;86m[HTTP]\u001b[0m <-- GET /status 200 2 ms - 199\n\u001b[38;5;112m[Appium]\u001b[0m Received SIGTERM - shutting down\n\u001b[38;5;173m[AppiumDriver@c2ec]\u001b[0m There are no active sessions for cleanup\n\u001b[38;5;86m[HTTP]\u001b[0m Closing Appium HTTP server\n\u001b[38;5;86m[HTTP]\u001b[0m Appium HTTP server has been successfully closed after 0ms\n"
+}

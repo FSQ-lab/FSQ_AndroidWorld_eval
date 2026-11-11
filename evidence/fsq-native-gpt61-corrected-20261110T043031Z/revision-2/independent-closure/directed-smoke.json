@@ -1,0 +1,35 @@
+{
+  "command": [
+    "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/bin/python",
+    "-B",
+    "-m",
+    "pytest",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp",
+    "/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-r2-closure-pytest-85ev_82v",
+    "tests/test_fsq_supervisor.py::test_real_sandbox_native_fileops_allowlist",
+    "tests/test_fsq_supervisor.py::test_same_owned_group_child_is_settled_after_leader_exit_or_term",
+    "tests/test_fsq_supervisor.py::test_process_table_uncertainty_never_claims_group_cleanup",
+    "tests/test_fsq_outer_entry.py::test_public_standalone_bounds_initialization_and_reports_forced_unknown",
+    "tests/test_fsq_runner.py::test_complete_native_return_scores_once_without_kill_eligibility_gate",
+    "tests/test_fsq_runner.py::test_failed_runner_answer_never_reuses_cache_or_verifier",
+    "tests/test_fsq_evidence.py::test_rehashed_consumer_answer_contradictions_are_rejected",
+    "tests/test_fsq_evidence.py::test_complete_consumer_rejects_rehashed_eleven_writes_hidden_behind_ten_limit",
+    "tests/test_fsq_campaign.py::test_coherent_smoke_episode_cannot_be_resealed_as_calibration",
+    "--junitxml=evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-2/independent-closure/directed-smoke.xml"
+  ],
+  "environmentOverrides": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONPATH": "/Users/qunmi/.local/share/fsq-androidworld-eval/fsq-native-gpt61-corrected-20261110T043031Z/evaluator-dependencies",
+    "FSQ_NATIVE_SANDBOX_SMOKE": "1",
+    "FSQ_NATIVE_PYTHON": "/Users/qunmi/Documents/FSQ_LAB/FSQ/.venv/bin/python",
+    "FSQ_NATIVE_PACKAGE_ROOT": "/Users/qunmi/Documents/FSQ_LAB/FSQ/fsq_agent",
+    "FSQ_NATIVE_RUNTIME_READ_ROOTS": "[\"/Users/qunmi/Documents/FSQ_LAB/FSQ/.venv\", \"/Users/qunmi/.local/share/uv/python/cpython-3.11.16-macos-aarch64-none\"]"
+  },
+  "exitCode": 0,
+  "stdout": "................                                                         [100%]\n- generated xml file: /Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-2/independent-closure/directed-smoke.xml -\n16 passed in 3.96s\n",
+  "stderr": "",
+  "scope": "selected offline consumer regressions plus real sandbox/native imports, only owned throwaway processes; no model/device/shared-service calls"
+}

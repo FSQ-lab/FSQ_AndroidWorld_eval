@@ -1,0 +1,13 @@
+{
+  "command": [
+    "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+    "-s",
+    "emulator-5554",
+    "shell",
+    "su 0 find /data/data/android_world/snapshots/org.videolan.vlc -maxdepth 3 -type f"
+  ],
+  "returnCode": 1,
+  "stdout": "",
+  "stderr": "find: '/data/data/android_world/snapshots/org.videolan.vlc': No such file or directory\n",
+  "observedAtUnix": 1794012484.400521
+}

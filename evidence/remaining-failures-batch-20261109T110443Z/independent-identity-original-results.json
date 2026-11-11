@@ -1,0 +1,482 @@
+{
+  "author": "w4:p2 independentbatch reviewer",
+  "scope": "18 originalmanifest/result parameter objects and metadata, not regenerated taskstate or scores.",
+  "inventorySha256": "748ef0d66746d2ad577c2e17e458131466470b1744c961692517b1f3228b7114",
+  "originalManifestSha256": "dbb6fe354f9a1cf7b87e52feeafd08903596d87b8531c37c9d12a50b6dc6362c",
+  "indices": [
+    73,
+    74,
+    76,
+    80,
+    82,
+    84,
+    85,
+    86,
+    87,
+    89,
+    90,
+    91,
+    92,
+    101,
+    106,
+    107,
+    110,
+    111
+  ],
+  "rows": [
+    {
+      "index": 73,
+      "task": "SimpleCalendarEventsInNextWeek",
+      "seed": 1504700490,
+      "paramsSha256": "5d96be56f002174d481ece8277c394bca383de5e4407822629fbe374dbc73bb0",
+      "resultSha256": "4ec4572e869c4a7640577466e6671cfbb9c5450641c32e7447cf8fe36f87fd84",
+      "manifestAndResultParamsMatch": true,
+      "reward": 0.0,
+      "error": null,
+      "invalidReason": null,
+      "termination": "step_budget",
+      "actions": 10,
+      "maxSteps": 10,
+      "normalizedFinalText": null,
+      "agentCompleted": false,
+      "goal": "What events do I have in the next week in Simple Calendar Pro? Assume the week starts from Monday. Answer with the titles only. If there are multiples titles, format your answer in a comma separated list.",
+      "preparation": {
+        "apps": [
+          "simple calendar pro"
+        ],
+        "mode": "prequalified",
+        "readinessIdentitySha256": "aa5aafff0b3d8c4ba16775920db703a357047a65875ea2966db8e4ebc4d4aefc",
+        "sharedAssets": []
+      }
+    },
+    {
+      "index": 74,
+      "task": "SimpleCalendarEventsInTimeRange",
+      "seed": 481426288,
+      "paramsSha256": "69eb0351e6141421a9f804b5af6d175343852693ee02f9747da8604095cd4208",
+      "resultSha256": "33ff05e7bdef04d1a8bd7f66a3a0751e87ec138dfd24b60fb8f9f97328ebfd4d",
+      "manifestAndResultParamsMatch": true,
+      "reward": 0.0,
+      "error": null,
+      "invalidReason": null,
+      "termination": "step_budget",
+      "actions": 10,
+      "maxSteps": 10,
+      "normalizedFinalText": null,
+      "agentCompleted": false,
+      "goal": "Do I have any events between 4:15pm and 8pm Friday in Simple Calendar Pro? Answer with the titles only. If there are multiples titles, format your answer in a comma separated list.",
+      "preparation": {
+        "apps": [
+          "simple calendar pro"
+        ],
+        "mode": "prequalified",
+        "readinessIdentitySha256": "aa5aafff0b3d8c4ba16775920db703a357047a65875ea2966db8e4ebc4d4aefc",
+        "sharedAssets": []
+      }
+    },
+    {
+      "index": 76,
+      "task": "SimpleCalendarFirstEventAfterStartTime",
+      "seed": 970532311,
+      "paramsSha256": "0435d9c0083528f6641a5cdcef5b04d56b3b40819787d6289c9b2ca40eb5d810",
+      "resultSha256": "e45717ea8937f3f233416984c77a87e2bd81054948bbf45a467010290de82e0d",
+      "manifestAndResultParamsMatch": true,
+      "reward": 0.0,
+      "error": null,
+      "invalidReason": null,
+      "termination": "completed",
+      "actions": 9,
+      "maxSteps": 10,
+      "normalizedFinalText": "{\"evidence\":\"Simple Calendar Pro showed Grocery Shopping at exactly 17:20 on October 29; the first event strictly after that time was Appointment for Budget Planning at 08:35 on October 30.\",\"sessionCleanup\":\"quitReturned\",\"taskOutcome\":\"Appointment for Budget Planning\"}",
+      "agentCompleted": true,
+      "goal": "What is my first event after 5:20pm October 29 2023 in Simple Calendar Pro? Answer with the titles only. If there are multiples titles, format your answer in a comma separated list.",
+      "preparation": {
+        "apps": [
+          "simple calendar pro"
+        ],
+        "mode": "prequalified",
+        "readinessIdentitySha256": "aa5aafff0b3d8c4ba16775920db703a357047a65875ea2966db8e4ebc4d4aefc",
+        "sharedAssets": []
+      }
+    },
+    {
+      "index": 80,
+      "task": "SimpleDrawProCreateDrawing",
+      "seed": 3242452795,
+      "paramsSha256": "f528255cd6addda2e491852b6675ff3746daedc5362335fedca6f51c1bc0b16c",
+      "resultSha256": "cc8c218fc9b12f80d611a330ddecb26eb41fcf7f5b55f1d5cb17f4abf8adc71c",
+      "manifestAndResultParamsMatch": true,
+      "reward": 0.0,
+      "error": null,
+      "invalidReason": null,
+      "termination": "step_budget",
+      "actions": 18,
+      "maxSteps": 18,
+      "normalizedFinalText": null,
+      "agentCompleted": false,
+      "goal": "Create a new drawing in Simple Draw Pro. Name it adipiscing_fair_jelly_final.png. Save it in the Pictures folder within the sdk_gphone_x86_64 storage area.",
+      "preparation": {
+        "apps": [
+          "simple draw pro"
+        ],
+        "mode": "prequalified",
+        "readinessIdentitySha256": "aa5aafff0b3d8c4ba16775920db703a357047a65875ea2966db8e4ebc4d4aefc",
+        "sharedAssets": []
+      }
+    },
+    {
+      "index": 82,
+      "task": "SimpleSmsReplyMostRecent",
+      "seed": 3689003352,
+      "paramsSha256": "90097a75e1ccd0175cd4140a98846242c7774e9ef02a82c6073d347a69f79317",
+      "resultSha256": "b01d06a40f3090a9ae12558da16281b8a95a8fd280cb1fdafbb3c57cb07b2be1",
+      "manifestAndResultParamsMatch": true,
+      "reward": 0.0,
+      "error": null,
+      "invalidReason": null,
+      "termination": "step_budget",
+      "actions": 12,
+      "maxSteps": 12,
+      "normalizedFinalText": null,
+      "agentCompleted": false,
+      "goal": "Reply to the most recent text message using Simple SMS Messenger with message: A quick brown fox.",
+      "preparation": {
+        "apps": [
+          "simple sms messenger"
+        ],
+        "mode": "prequalified",
+        "readinessIdentitySha256": "aa5aafff0b3d8c4ba16775920db703a357047a65875ea2966db8e4ebc4d4aefc",
+        "sharedAssets": []
+      }
+    },
+    {
+      "index": 84,
+      "task": "SimpleSmsSend",
+      "seed": 4209246460,
+      "paramsSha256": "011d90413c3878ecd450127d18a3b3823fc227e17dbde89d1b88c44b0dcdd7c1",
+      "resultSha256": "5e69c4ed579d1639ade473339c688781fc742361ca60b6a59f229b3e952b74c3",
+      "manifestAndResultParamsMatch": true,
+      "reward": 0.0,
+      "error": null,
+      "invalidReason": null,
+      "termination": "step_budget",
+      "actions": 12,
+      "maxSteps": 12,
+      "normalizedFinalText": null,
+      "agentCompleted": false,
+      "goal": "Send a text message using Simple SMS Messenger to +16597910719 with message: Beauty is in the eye of the beholder.",
+      "preparation": {
+        "apps": [
+          "simple sms messenger"
+        ],
+        "mode": "prequalified",
+        "readinessIdentitySha256": "aa5aafff0b3d8c4ba16775920db703a357047a65875ea2966db8e4ebc4d4aefc",
+        "sharedAssets": []
+      }
+    },
+    {
+      "index": 85,
+      "task": "SimpleSmsSendClipboardContent",
+      "seed": 3566412234,
+      "paramsSha256": "9b974d92a2d93867b6bf4bf084b00859ac868649a4a578a7fecad19701ba1bc1",
+      "resultSha256": "3f4d96b3615fd64b5609fc2c3b909bd8339247b8f7dc54bc5e6e9622ba40dcd1",
+      "manifestAndResultParamsMatch": true,
+      "reward": 0.0,
+      "error": null,
+      "invalidReason": null,
+      "termination": "completed",
+      "actions": 8,
+      "maxSteps": 12,
+      "normalizedFinalText": "{\"evidence\":\"Simple SMS Messenger could not be opened: launcher search triggered an \\u201cAndroid System Intelligence keeps stopping\\u201d dialog. No message was sent.\",\"sessionCleanup\":\"completed\",\"taskOutcome\":\"blocked\"}",
+      "agentCompleted": true,
+      "goal": "Send a message to +15459061746 with the clipboard content in Simple SMS Messenger",
+      "preparation": {
+        "apps": [
+          "simple sms messenger",
+          "clipper"
+        ],
+        "mode": "prequalified",
+        "readinessIdentitySha256": "aa5aafff0b3d8c4ba16775920db703a357047a65875ea2966db8e4ebc4d4aefc",
+        "sharedAssets": []
+      }
+    },
+    {
+      "index": 86,
+      "task": "SimpleSmsSendReceivedAddress",
+      "seed": 25708979,
+      "paramsSha256": "7de6505a54d36b249e642ab96b03c4ced5b19fff273c961d7b6128513ff9b975",
+      "resultSha256": "b18c87fe760ec06b6ec1c9d98d3eca56dd114e255ad58a90482cefefc9a2f18a",
+      "manifestAndResultParamsMatch": true,
+      "reward": 0.0,
+      "error": null,
+      "invalidReason": null,
+      "termination": "step_budget",
+      "actions": 18,
+      "maxSteps": 18,
+      "normalizedFinalText": null,
+      "agentCompleted": false,
+      "goal": "Text the address of the event to Gabriel Ibrahim that Oscar Mohamed just sent me in Simple SMS Messenger",
+      "preparation": {
+        "apps": [
+          "simple sms messenger"
+        ],
+        "mode": "prequalified",
+        "readinessIdentitySha256": "aa5aafff0b3d8c4ba16775920db703a357047a65875ea2966db8e4ebc4d4aefc",
+        "sharedAssets": []
+      }
+    },
+    {
+      "index": 87,
+      "task": "SportsTrackerActivitiesCountForWeek",
+      "seed": 3624822263,
+      "paramsSha256": "9c39bb611239761f51aec37a424626c8417f31e421aaeeb937e99df45259d8ea",
+      "resultSha256": "7dcf2ce3176c8ed45fa10318e913df010d7fa6924f72b8793197324866663091",
+      "manifestAndResultParamsMatch": true,
+      "reward": 0.0,
+      "error": null,
+      "invalidReason": null,
+      "termination": "completed",
+      "actions": 9,
+      "maxSteps": 10,
+      "normalizedFinalText": "{\"evidence\":\"Reviewed all OpenTracks activities from Monday through Sunday; one was a running activity.\",\"sessionCleanup\":\"quitReturned\",\"taskOutcome\":1}",
+      "agentCompleted": true,
+      "goal": "How many running activities did I do this week in the OpenTracks app? Assume the week starts from Monday. Express your answer as a single integer.",
+      "preparation": {
+        "apps": [
+          "open tracks sports tracker"
+        ],
+        "mode": "prequalified",
+        "readinessIdentitySha256": "aa5aafff0b3d8c4ba16775920db703a357047a65875ea2966db8e4ebc4d4aefc",
+        "sharedAssets": []
+      }
+    },
+    {
+      "index": 89,
+      "task": "SportsTrackerActivityDuration",
+      "seed": 3548294116,
+      "paramsSha256": "a63d617bd4f0027b82451262e8e2c92f402f7504c09e2fd0ed5ebf09967da725",
+      "resultSha256": "bf9769c8e3aee20e2abe1d060312e1c074286690dbcef043f44fe25c2bbad972",
+      "manifestAndResultParamsMatch": true,
+      "reward": 0.0,
+      "error": null,
+      "invalidReason": null,
+      "termination": "completed",
+      "actions": 5,
+      "maxSteps": 10,
+      "normalizedFinalText": "{\"evidence\":\"OpenTracks showed the Oct 12, 2023 activity with moving and total time 2:15:00, equal to 135 minutes.\",\"sessionCleanup\":\"completed\",\"taskOutcome\":135}",
+      "agentCompleted": true,
+      "goal": "How long was my skiing activity October 12 2023 in the OpenTracks app? Express your answer in minutes as a single integer.",
+      "preparation": {
+        "apps": [
+          "open tracks sports tracker"
+        ],
+        "mode": "prequalified",
+        "readinessIdentitySha256": "aa5aafff0b3d8c4ba16775920db703a357047a65875ea2966db8e4ebc4d4aefc",
+        "sharedAssets": []
+      }
+    },
+    {
+      "index": 90,
+      "task": "SportsTrackerLongestDistanceActivity",
+      "seed": 1671790926,
+      "paramsSha256": "04790b42735a4396ac1bcaad1dac4648312380fea9f3cb43f16ec405c2be2c1a",
+      "resultSha256": "125e775f139b37605dd00a3c50c37a91bbf8f6ad98c37a24a63fb70e21ee14fa",
+      "manifestAndResultParamsMatch": true,
+      "reward": 0.0,
+      "error": null,
+      "invalidReason": null,
+      "termination": "step_budget",
+      "actions": 10,
+      "maxSteps": 10,
+      "normalizedFinalText": null,
+      "agentCompleted": false,
+      "goal": "What was the longest distance covered in a mountain biking activity in the OpenTracks app this week? Assume the week starts from Monday. Express your answer as a single number in meters rounded to the nearest integer.",
+      "preparation": {
+        "apps": [
+          "open tracks sports tracker"
+        ],
+        "mode": "prequalified",
+        "readinessIdentitySha256": "aa5aafff0b3d8c4ba16775920db703a357047a65875ea2966db8e4ebc4d4aefc",
+        "sharedAssets": []
+      }
+    },
+    {
+      "index": 91,
+      "task": "SportsTrackerTotalDistanceForCategoryOverInterval",
+      "seed": 547216539,
+      "paramsSha256": "1fd425f5d1d32687f08975c00e53171667046cbe023eace31d4b7940bc51076f",
+      "resultSha256": "6e6dfb75741863a386a594bd5e8044605ef28c48ae4a63b43c17ee9a4c8d19b5",
+      "manifestAndResultParamsMatch": true,
+      "reward": 0.0,
+      "error": null,
+      "invalidReason": null,
+      "termination": "completed",
+      "actions": 14,
+      "maxSteps": 20,
+      "normalizedFinalText": "{\"evidence\":{\"activity\":\"KAYAKING\",\"conversion\":\"4.04 \\u00d7 1609.344 = 6501.74976 m\",\"dateRange\":\"2023-10-09 to 2023-10-10\",\"visibleTotal\":\"4.04 mi\"},\"sessionCleanup\":{\"quitReturned\":true},\"taskOutcome\":{\"answerMeters\":6502}}",
+      "agentCompleted": true,
+      "goal": "What was the total distance covered for kayaking activities in the OpenTracks app from October 09 2023 to October 10 2023? Express your answer as a single number in meters rounded to the nearest integer.",
+      "preparation": {
+        "apps": [
+          "open tracks sports tracker"
+        ],
+        "mode": "prequalified",
+        "readinessIdentitySha256": "aa5aafff0b3d8c4ba16775920db703a357047a65875ea2966db8e4ebc4d4aefc",
+        "sharedAssets": []
+      }
+    },
+    {
+      "index": 92,
+      "task": "SportsTrackerTotalDurationForCategoryThisWeek",
+      "seed": 1164347337,
+      "paramsSha256": "3c56f12ab3c1755c31a83aa9f5ab2924a2a08e65580efe1b6bb32ecd1d422798",
+      "resultSha256": "2bd51c52b097616035d22db73328abc801fc60565e29314a1f8c4db822f172cd",
+      "manifestAndResultParamsMatch": true,
+      "reward": 0.0,
+      "error": null,
+      "invalidReason": null,
+      "termination": "completed",
+      "actions": 9,
+      "maxSteps": 10,
+      "normalizedFinalText": "{\"evidence\":\"OpenTracks showed RUNNING (2) totaling 1:45:00; both activities were dated within the Monday\\u2013Sunday week.\",\"sessionCleanup\":{\"quitReturned\":true},\"taskOutcome\":{\"answer\":105,\"status\":\"completed\"}}",
+      "agentCompleted": true,
+      "goal": "What was the total duration of running activities in the OpenTracks app this week? Assume the week starts from Monday. Express your answer in minutes as a single integer.",
+      "preparation": {
+        "apps": [
+          "open tracks sports tracker"
+        ],
+        "mode": "prequalified",
+        "readinessIdentitySha256": "aa5aafff0b3d8c4ba16775920db703a357047a65875ea2966db8e4ebc4d4aefc",
+        "sharedAssets": []
+      }
+    },
+    {
+      "index": 101,
+      "task": "SystemCopyToClipboard",
+      "seed": 148786894,
+      "paramsSha256": "483182e9666317c279cbfe9f2814cac742ebb6f8602b043feb879d479bf4a8c1",
+      "resultSha256": "f2bd28ef421a538555e853e6982bcea4fe33a59d45242e97469665f755e3bcc9",
+      "manifestAndResultParamsMatch": true,
+      "reward": 0.0,
+      "error": null,
+      "invalidReason": null,
+      "termination": "completed",
+      "actions": 9,
+      "maxSteps": 10,
+      "normalizedFinalText": "{\"evidence\":\"Final observation showed the field contained an incorrect key sequence; clipboard state could not be verified before the interaction budget was exhausted.\",\"sessionCleanup\":\"completed\",\"taskOutcome\":\"failed\"}",
+      "agentCompleted": true,
+      "goal": "Copy the following text to the clipboard: Tracking #: 5K672F4C",
+      "preparation": {
+        "apps": [
+          "clipper"
+        ],
+        "mode": "prequalified",
+        "readinessIdentitySha256": "aa5aafff0b3d8c4ba16775920db703a357047a65875ea2966db8e4ebc4d4aefc",
+        "sharedAssets": []
+      }
+    },
+    {
+      "index": 106,
+      "task": "TasksCompletedTasksForDate",
+      "seed": 3870170669,
+      "paramsSha256": "df891a4e3f8425995e816536a5d18bc350f691b916e548ac2627575065bec157",
+      "resultSha256": "5efc77d8d0ea3d00579308ae8e4d91dd6677e7ec8a7d9980a9671e26e34736cd",
+      "manifestAndResultParamsMatch": true,
+      "reward": 0.0,
+      "error": null,
+      "invalidReason": null,
+      "termination": "step_budget",
+      "actions": 10,
+      "maxSteps": 10,
+      "normalizedFinalText": null,
+      "agentCompleted": false,
+      "goal": "Which tasks have I completed for October 16 2023 in Tasks app? Answer with the titles only. If there are multiples titles, format your answer in a comma separated list.",
+      "preparation": {
+        "apps": [
+          "tasks"
+        ],
+        "mode": "prequalified",
+        "readinessIdentitySha256": "aa5aafff0b3d8c4ba16775920db703a357047a65875ea2966db8e4ebc4d4aefc",
+        "sharedAssets": []
+      }
+    },
+    {
+      "index": 107,
+      "task": "TasksDueNextWeek",
+      "seed": 1812551077,
+      "paramsSha256": "abb839ac97922ec08c8c77342efc7d4bfb957dd63bcf9769bd0b68a12d257a29",
+      "resultSha256": "d930afb5d0c8fa8cf6c0c8b668baca048cdff7ad33e34d6df3e5313ead415d1e",
+      "manifestAndResultParamsMatch": true,
+      "reward": 0.0,
+      "error": null,
+      "invalidReason": null,
+      "termination": "completed",
+      "actions": 6,
+      "maxSteps": 10,
+      "normalizedFinalText": "{\"evidence\":\"Counted 20 tasks due Monday through Sunday in the Tasks app.\",\"sessionCleanup\":\"quitReturned\",\"taskOutcome\":20}",
+      "agentCompleted": true,
+      "goal": "How many tasks do I have due next week in Tasks app? Assume the week starts from Monday. Express your answer as a single integer.",
+      "preparation": {
+        "apps": [
+          "tasks"
+        ],
+        "mode": "prequalified",
+        "readinessIdentitySha256": "aa5aafff0b3d8c4ba16775920db703a357047a65875ea2966db8e4ebc4d4aefc",
+        "sharedAssets": []
+      }
+    },
+    {
+      "index": 110,
+      "task": "TasksHighPriorityTasksDueOnDate",
+      "seed": 2278904713,
+      "paramsSha256": "687117f6d7a1e265200c70acfcb679feb0b76cbc89fbefc65078747864d716a8",
+      "resultSha256": "ea220c79bddc296e22a48924ee98e2212b6fdb719fdf47c1c581535b8bb24fe3",
+      "manifestAndResultParamsMatch": true,
+      "reward": 0.0,
+      "error": null,
+      "invalidReason": null,
+      "termination": "step_budget",
+      "actions": 10,
+      "maxSteps": 10,
+      "normalizedFinalText": null,
+      "agentCompleted": false,
+      "goal": "Which tasks with high priority are due October 18 2023 in the Tasks app? Answer with the title only. If there are multiples titles, format your answer in a comma separated list.",
+      "preparation": {
+        "apps": [
+          "tasks"
+        ],
+        "mode": "prequalified",
+        "readinessIdentitySha256": "aa5aafff0b3d8c4ba16775920db703a357047a65875ea2966db8e4ebc4d4aefc",
+        "sharedAssets": []
+      }
+    },
+    {
+      "index": 111,
+      "task": "TasksIncompleteTasksOnDate",
+      "seed": 1760879267,
+      "paramsSha256": "5cf63c5f6ab1118941de0183008cf34c40b8917b843fcb4f4e45a7b1cac4b141",
+      "resultSha256": "db787600246cc9443ce8fc9821befb658388d3deeb999d27da308e1fcaeac396",
+      "manifestAndResultParamsMatch": true,
+      "reward": 0.0,
+      "error": null,
+      "invalidReason": null,
+      "termination": "completed",
+      "actions": 6,
+      "maxSteps": 10,
+      "normalizedFinalText": "{\"evidence\":\"Observed the full My Tasks list to its stable end; included unchecked tasks due through Thursday and excluded later tasks.\",\"sessionCleanup\":\"quitReturned\",\"taskOutcome\":\"Attend training session, Call client for follow-up, Research market trends, Change Air Filter, Renew Driver's License, Clean Out Fridge, Renew Driver's License, Grocery Shopping, Learn to Play Guitar, Water Plants, Research Vacation Destinations, Read 'The Martian', Read 'The Martian', Reply to Emails, Grocery Shopping, Submit Expense Report, Organize Closet\"}",
+      "agentCompleted": true,
+      "goal": "What incomplete tasks do I have still have to do by Thursday in Tasks app? Answer with the titles only. If there are multiples titles, format your answer in a comma separated list.",
+      "preparation": {
+        "apps": [
+          "tasks"
+        ],
+        "mode": "prequalified",
+        "readinessIdentitySha256": "aa5aafff0b3d8c4ba16775920db703a357047a65875ea2966db8e4ebc4d4aefc",
+        "sharedAssets": []
+      }
+    }
+  ],
+  "all18IdentityResultHashesAndFrozenRewardZeroMatch": true,
+  "newReward": null,
+  "liveOperations": 0
+}

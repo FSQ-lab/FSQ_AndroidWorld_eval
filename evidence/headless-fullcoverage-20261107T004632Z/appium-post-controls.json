@@ -1,0 +1,15 @@
+{
+  "command": [
+    "curl",
+    "-sS",
+    "-o",
+    "/dev/null",
+    "-w",
+    "%{http_code}",
+    "http://127.0.0.1:4723/session/a4ea77f8-906d-4b9b-bc7d-bd25efc53b27"
+  ],
+  "returnCode": 0,
+  "stdout": "404",
+  "stderr": "",
+  "observedAtUnix": 1794012731.6390789
+}

@@ -1,0 +1,85 @@
+{
+  "purpose": "User requested a fresh conversation/session after qualification to own the new 116-task formal campaign. This session stops after qualification and handoff; no formal Agent campaign started.",
+  "project": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval",
+  "status": {
+    "harnessRevision": 11,
+    "qualification": "passed",
+    "qualifiedAppCount": 22,
+    "strictOfficialSnapshotRestores": 22,
+    "environmentArtifactsPinned": 18,
+    "mp3AndMp4RoundTripProbes": "passed",
+    "regressionsPassed": 338,
+    "qualificationEnvironmentClose": "closed",
+    "frozenRuntimeAndLiveTargetAttestation": "passed",
+    "correctedRuntimeAll116Rehearsal": "not_started",
+    "correctedRuntimeRetroPlayingQueueSmoke": "passed",
+    "formalCampaignAllowed": false,
+    "formalAgentStarted": false
+  },
+  "frozenIdentity": {
+    "harnessSourceSha256": "2aef2268517314596c4b695a12da99cb9ea725d292188167cad38c7c65eeb21b",
+    "readinessIdentitySha256": "bc48a49c242b9bcd802f7f5da7e6d62b648d1b52131429fbaec5ecae63121069",
+    "manifestSha256": "12b8ed584c9dd7d3187c9113bef70ea6db4535b1784e7eaf19c87636581974a4",
+    "amkernelCommit": "33883148b4c6c6aff53a3323c9fc14d0d07bd814",
+    "amkernelVersion": "0.1.3",
+    "amkernelPathPrefix": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/bin",
+    "model": "github-copilot/gpt-5.6-sol",
+    "androidWorldRevision": "55ddaf5edc6f6c25673aed343907d5b9dca66f84",
+    "mediaEncoderPackage": "imageio-ffmpeg==0.6.0",
+    "mediaEncoderSha256": "6d175a4743ca50256e89a8cdd731100f9cee33bd79aeea46894d209410dc6617"
+  },
+  "evidenceRoot": "evidence/harness-r11-rehearsal-20261106-r2",
+  "evidence": {
+    "manifest": "evidence/harness-r11-rehearsal-20261106-r2/manifest.json",
+    "readiness": "evidence/harness-r11-rehearsal-20261106-r2/device-readiness.json",
+    "liveAcceptance": "evidence/harness-r11-rehearsal-20261106-r2/qualification-acceptance.json",
+    "regressions": "evidence/harness-r11-rehearsal-20261106-r2/regression-acceptance.json",
+    "queueFixSmoke": "evidence/harness-r11-rehearsal-20261106-r2/retro-queue-smoke/result.json",
+    "originalNonScoringAbort": "evidence/harness-r11-rehearsal-20261106/run/report.json",
+    "databaseDeletionFinding": "evidence/harness-r11-rehearsal-20261106/database-transport-finding.json",
+    "realOfflineCreateRefreshCloseSmoke": "evidence/harness-r11-rehearsal-20261106/offline-environment-smoke.json",
+    "realFormalGateRefusalSmoke": "evidence/harness-r11-rehearsal-20261106/formal-gate-smoke.json",
+    "originalPrivateRuntimeFreeze": "evidence/frozen-amkernel-3388314-20261106/runtime-freeze.json"
+  },
+  "implementedFixes": [
+    "environment.py explicitly provisions 18 pinned official APK/map files into .cache/androidworld-assets; runtime verification is read-only and has no remote fallback",
+    "local_app_data redirects qualification acquisition to verified local files",
+    "helper getter lease remains active for the complete environment lifetime and refresh path",
+    "old/refreshed raw owners are explicitly closed; constructor/refresh cleanup failure remains unknown or failed and blocks continuation",
+    "controller close errors propagate instead of upstream AsyncEnv swallowing them",
+    "strict snapshot errors escape upstream warning-only catches; partial initialization still receives teardown",
+    "shared OsmAnd map restored from pinned official bytes before dependent tasks, with actual device checksum verification",
+    "approved project-local pinned encoder supports real official MP3/MP4 generation and decode before device mutation",
+    "database push replaces only target database plus its own WAL/SHM, preserves sibling databases, rejects missing sources and propagates copy failure",
+    "campaign rehearse runs all116 real task lifecycles in loopback-only OS network sandbox; IR evaluator reference-answer branch is separately exercised",
+    "formal run requires hash-verified complete same-runtime same-parameter all116 rehearsal evidence; missing evaluator reward remains null"
+  ],
+  "nextSteps": [
+    "Read skill://amkernel and this handoff; do not upgrade/reinstall AMKernel or project dependencies just to silence warnings",
+    "Confirm manifest/runtime and live target still match qualification. Keep the existing emulator and Appium server; no pre-existing sessions are allowed",
+    "Run the complete corrected-runtime all116 non-Agent non-scoring rehearsal into a brand-new output directory. Do not resume or splice the prior 59-pass/60th-failed rehearsal",
+    "Only after all116 evidence independently validates, prepare a fresh revision11 calibration manifest, qualify that manifest, and run every one of its 12 tasks with --rehearsal-report",
+    "Only after fresh 12-task calibration gate qualifies, freeze a brand-new full manifest using the exact preflight-verified task specifications; qualify its target and run a new116 formal campaign with --rehearsal-report and --calibration-campaign-dir",
+    "Preserve all aborted historical campaigns, stop on invalid setup/evaluator/unknown cleanup, do not invent reward0 for unevaluated work, and independently audit the final result"
+  ],
+  "firstRehearsalCommand": "env PATH=/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/bin:$PATH uv run --no-sync python -m fsq_androidworld_eval.campaign rehearse --manifest evidence/harness-r11-rehearsal-20261106-r2/manifest.json --readiness-report evidence/harness-r11-rehearsal-20261106-r2/device-readiness.json --output-dir evidence/harness-r11-rehearsal-20261106-r2/run --project .",
+  "criticalFormalManifestFreezeConstraint": {
+    "symbol": "android_world.task_evals.single.markor.MarkorCreateFolder.generate_random_params",
+    "source": "android_world/android_world/task_evals/single/markor.py:161-166",
+    "behavior": "Folder name uses datetime.now().strftime('%Y%m%d_%H%M%S'); seed alone does not reproduce it",
+    "currentPrepareBehavior": "build_manifest(kind='full') generates parameters anew; do not assume those hashes will match the earlier rehearsal",
+    "requiredProcedure": "Before writing/freezing the new formal manifest, retain the exact tasks specifications from the verified rehearsal manifest, rather than regenerating them. The existing build_manifest API constructs full protocol/calibration metadata; replace the in-memory candidate tasks with the verified frozen rehearsal tasks before the first write, then use _load_manifest and validate_report to validate the resulting new manifest. Never alter an already-frozen manifest or evidence hash to fake gate acceptance",
+    "gate": "Formal run rejects any parameter mismatch; no full116 gate pass has yet been claimed"
+  },
+  "historicalRounds": {
+    "r7_45AttemptCampaign": "aborted; immutable; do not resume",
+    "r10Full": "22 records:21 valid14 passed7 failed, one pre-Agent helper APK download invalid_setup,94 unstarted; officialScore null; do not resume",
+    "firstR11Rehearsal": "59 passed,60th RetroPlayingQueue failed because upstream database directory replacement deleted playback DB. Cleaned and stopped; never used as qualification proof for corrected code"
+  },
+  "limits": [
+    "Qualification alone does not prove all task initializers or evaluator paths work",
+    "No-Agent rehearsal covers initialized-state and reference-answer probes, not every possible post-Agent state or model/hardware/network failure",
+    "Operating-system sandbox blocks host remote acquisition, not all network behavior inside emulator APKs",
+    "Current stopped-session handoff is not a116 formal score or a successful completed all116 rehearsal"
+  ]
+}

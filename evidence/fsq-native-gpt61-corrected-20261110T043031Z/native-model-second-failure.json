@@ -1,0 +1,83 @@
+{
+  "receipt_type": "fsq_second_native_provider_authentication_terminal_failure",
+  "checkout": "/Users/qunmi/Documents/FSQ_LAB/FSQ",
+  "commit": "7e3f0793f3962ef2d8cc92f06310326c9077ce0d",
+  "requested_configuration_provider": "github_copilot",
+  "requested_configuration_model": "gpt-6.1-sol",
+  "native_command": ".venv/bin/fsq providers configure github_copilot --model gpt-6.1-sol",
+  "process": {
+    "service_name": "fsq-copilot-auth-second-20261110",
+    "terminal_status": "failed",
+    "exit_code": 4,
+    "reported_uptime": "15m",
+    "completion_received_by": "completion-event wait followed by terminal output read",
+    "error": "GitHub Copilot configuration failed.",
+    "action": "Retry sign-in and select an available model.",
+    "underlying_exception_type": "unknown",
+    "underlying_http_status": "unknown",
+    "underlying_oauth_error_code": "unknown",
+    "expiry_as_cause": "not_proven"
+  },
+  "safe_wait_observation": {
+    "timestamp_utc": "2026-11-10T04:45:51.239+00:00",
+    "method": "one-second operating-system symbol-stack sample of the owned authentication process; no memory variable values, Python reflection, monkeypatch or process modification",
+    "observed_stack": "time_sleep -> nanosleep -> __semwait_signal",
+    "main_thread_samples": "876/876",
+    "nearby_process_snapshot": "sleeping, no open TCP connection and no user configuration lock FD observed at that snapshot",
+    "inference": "consistent with device-flow polling interval sleep; raw pending versus slow_down response is not observable",
+    "symbol_report": "/tmp/fsq-native-auth-second-wait-20261110-a41d.txt"
+  },
+  "native_code_diagnostic": {
+    "poll_endpoint": "POST https://github.com/login/oauth/access_token",
+    "pending_handling": "continue polling",
+    "slow_down_handling": "replace wait with server interval if supplied, otherwise add five seconds; no maximum wait cap",
+    "denied_or_expired_handling": "raise ConfigurationError and exit",
+    "request_timeout_seconds": 20,
+    "request_timeout_scope": "httpx per-phase timeout, not a whole-flow absolute wall-clock deadline",
+    "expiry_source": "response expires_in, fallback 900 seconds, converted to time.time-based expires_at",
+    "actual_second_flow_expires_in": "unknown: not printed or retained in public diagnostics",
+    "hard_total_wall_clock_deadline": "not enforced: loop checks expires_at only at iteration start; sleep is not clipped; later plan/token/models requests and configuration lock are outside the loop expiry",
+    "model_selection_prompt": "not entered because exact model argument supplied",
+    "failure_observability_limit": "application/providers.py:258-265 replaces all underlying flow/discovery/selection/activation exceptions with the same provider-unavailable message; CLI does not print that cause",
+    "public_unauthenticated_connectivity_diagnostic": "none identified; providers.status checks saved configuration, not OAuth grant or endpoint connectivity"
+  },
+  "native_status_after_terminal_failure": {
+    "timestamp_utc": "2026-11-10T04:56:19.162223+00:00",
+    "command": ".venv/bin/fsq --output json --non-interactive providers status",
+    "reported_status": "ready",
+    "provider": "deepseek",
+    "model": "deepseek-flash",
+    "interpretation": "existing provider remains configured; this is not Copilot readiness and not an explanation for the authentication failure",
+    "fsq_github_oauth_file": "absent",
+    "fsq_copilot_provider_token_file": "absent",
+    "previous_deepseek_credential_file": "exists",
+    "previous_configuration_backup": "recoverable; private path and contents omitted"
+  },
+  "target_model_evidence": {
+    "local_id_filter_accepts_exact_model": true,
+    "authenticated_model_offering": "unknown",
+    "intended_protocol": "Responses",
+    "intended_endpoint_family": "plan-dependent api.githubcopilot.com / api.business.githubcopilot.com / api.enterprise.githubcopilot.com",
+    "target_inference_started": false,
+    "actual_returned_model": "unknown",
+    "usage": "unknown",
+    "protocol_compatibility_proven": false,
+    "visible_model_boundary": "FSQ public ModelResult does not expose server response.model even if a future request succeeds"
+  },
+  "scope": {
+    "third_device_code_created": false,
+    "user_asked_to_reconfirm_authorization": false,
+    "borrowed_credentials": false,
+    "fallback_model_invoked": false,
+    "fsq_development_files_modified": false,
+    "business_agent_started": false,
+    "android_access": false,
+    "live_authentication_process_remaining": false
+  },
+  "remaining_prerequisites": [
+    "A successful FSQ-owned official OAuth plus Copilot provider-token activation; no such credentials were saved by either observed process.",
+    "Evidence identifying the native failure stage and safe HTTP/OAuth error code. The ended CLI process did not retain these and they cannot be recovered through its public output.",
+    "Only if separately authorized later: use existing native public provider functions in a diagnostic sign-in that retains stage, exception type, safe ConfigurationError context and HTTP status while never printing token/device_code values; no third sign-in is started here. Alternatively source diagnostic changes require explicit /spec-driven authorization.",
+    "After successful authentication, confirm exact model offering and execute a real FSQ native ModelProviderSession.complete request without Harness construction; no current success claim is made."
+  ]
+}

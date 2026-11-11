@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "kind": "clock_lifecycle_delta_review_request",
+  "candidateSha256": "a8550aee3e1b9438377d34b5cf48ff4adde732785afe40aae2249f6266773030",
+  "sourceTreeSha256": "92b8bc71f0b26b19aacb1b23cd0944c3a3f614dbd46c72ab93076629590e2625",
+  "baseCandidateSha256": "d9f3237c0d6d26f512bfdd3870fd4563519fc24f6cae160beb93a015a597a057",
+  "runtimeSourceDelta": [
+    "fsq_campaign.py"
+  ],
+  "files": [
+    {
+      "path": "src/fsq_androidworld_eval/fsq_campaign.py",
+      "sha256": "fe0b3280562b2801b3faca509e34b4a98db79c247ebfe41bbaaba5bab57e3210",
+      "bytes": 53842
+    },
+    {
+      "path": "tests/test_fsq_campaign.py",
+      "sha256": "177e430895d7a8395be5ec60db583612c648dcae1cc6263752a4c23eb7bdc022",
+      "bytes": 45572
+    },
+    {
+      "path": "README.md",
+      "sha256": "e99d430cf941010e1ae00ace32844841ea031be3998fa007c2fe4dfdeefd9b58",
+      "bytes": 42868
+    }
+  ],
+  "scope": "Only stable identity versus task clock split, explicit prepare-clock lifecycle/receipt, strict initial baseline consumer and diagnostic preservation. Not a new whole R01-R08/full313 review.",
+  "observations": {
+    "originalFailure": "_episode admission→attest_readiness→_device_probe API33/UTC combined predicate; original API/timezone raw values unretained",
+    "newCurrentObservation": "current-target-property-observation.json; 2026-11-10T13:29:24Z API33/AsiaShanghai, two explicitly authorized getprop only",
+    "officialSemanticSource": "BrowserTask enables automatic time/timezone and only disables on teardown; no timezone restoration",
+    "historicalValueClaim": false
+  },
+  "implementedInvariants": [
+    "serial/console, API33, ABI/build/boot/screen, installed app version/hash and frozen source/model bindings unchanged",
+    "timezone/auto-time stored separately from stable identity; per-task source semantics unchanged",
+    "prepare-clock needs own exact stage permission and stable/pinned admission before official env setup with freeze_datetime=True; then verifies unchanged stable identity, observed UTC/auto00 and owned close",
+    "qualify still fails before environment mutation if clock not UTC/auto00; never silently prepares on error",
+    "actual clock state and API included in diagnostics/receipt; no fabricated historical reading",
+    "new preflight uses original1210 timeout supervision and failed/forced/unknown cleanup never prepares successfully"
+  ],
+  "offlineEvidence": {
+    "targetedCampaignModule": "82 passed in1.16s; regression-final.json",
+    "actualNewEntrySmoke": "offline-clock-entry-smoke.json, mocked platform only, prepare→qualify exits0; no real target/model/task",
+    "cliSurface": "cli-help.json",
+    "recommendedIndependentCommand": "python -B -m pytest -q tests/test_fsq_campaign.py -k clock",
+    "noFull313OrR01R08Replay": true
+  },
+  "oldState": {
+    "reportAndCheckpointUnmodified": true,
+    "first3SuccessUnmodified": true,
+    "fourthFallbackCleanupUnknownUnmodified": true,
+    "oldGrantOperationallyTerminatedByCoordinatorWithoutByteEdit": true,
+    "noMigrationOrResume": true
+  },
+  "newCandidateAllGatesPending": true,
+  "newGrantOrDeviceClockRestoreExecuted": false,
+  "reviewStatus": "pending independent delta closure, not self-approved",
+  "safeNext": "After review and new explicit grant only: prepare-clock → fresh qualify → full116 new no-Agent rehearsal, not resume index3; original12/formal only per new grant release.",
+  "FSQFirstRetained": true
+}

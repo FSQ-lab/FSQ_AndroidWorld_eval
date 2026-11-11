@@ -1,0 +1,692 @@
+{
+  "index": 7,
+  "name": "ClockStopWatchPausedVerify",
+  "goal": "Pause the stopwatch.",
+  "reward": 0.0,
+  "classification": "failed",
+  "initialization": {
+    "initializationReferenceTime": {
+      "referenceTime": "2023-10-15T15:34:00+00:00",
+      "timezone": "UTC"
+    },
+    "initializedGoal": "Pause the stopwatch."
+  },
+  "frozenTaskSpec": {
+    "apps": [
+      "clock"
+    ],
+    "complexity": 1,
+    "difficulty": "easy",
+    "family": "android",
+    "index": 7,
+    "instanceSeed": 3959502054,
+    "maxActions": 10,
+    "maxSteps": 10,
+    "name": "ClockStopWatchPausedVerify",
+    "params": {
+      "seed": 3959502054
+    },
+    "paramsSha256": "6c253b66e8113a2c4691e2dfc14880eeac9dc41455ec7b25c0440a005336104c",
+    "paramsTransport": "json",
+    "tags": [
+      "verification"
+    ],
+    "timeBudget": {
+      "businessSeconds": 720,
+      "cleanupWindowSeconds": 180,
+      "episodeSeconds": 1330,
+      "forceSeconds": 910,
+      "recoveryWindowSeconds": 120,
+      "terminationGraceSeconds": 10
+    }
+  },
+  "mainSteps": [
+    {
+      "stepId": 3,
+      "tool": "agent_runtime.runner",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [],
+        "evidence": [
+          "Tapped the stopwatch Pause control and collected a fresh UI snapshot.",
+          "After a two-second wait, assert_visible passed for the Start control, confirming the paused state.",
+          "assert_visible passed for stopwatch_time_text displaying '08', confirming retained nonzero elapsed time.",
+          "Collected final verification before stopping the Clock app."
+        ],
+        "plan_updates": [
+          "The stopwatch was initially stopped, so it was started before tapping Pause."
+        ],
+        "pre_plan": [
+          {
+            "action": "Open the stopwatch screen.",
+            "status": "success",
+            "step_id": 1,
+            "success_criteria": [
+              "Stopwatch screen is displayed."
+            ]
+          },
+          {
+            "action": "Tap the running stopwatch's pause control and verify retained elapsed time.",
+            "status": "success",
+            "step_id": 2,
+            "success_criteria": [
+              "Stopwatch is paused with elapsed time retained."
+            ]
+          }
+        ],
+        "satisfied_criteria": [
+          "The stopwatch is paused with its elapsed time retained."
+        ],
+        "schema_version": "task_run_v1",
+        "status": "success",
+        "summary": "Paused the stopwatch and verified that its elapsed time was retained.",
+        "unmet_criteria": []
+      }
+    },
+    {
+      "stepId": 4,
+      "tool": "agent_runtime.verifier",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [],
+        "evidence": [
+          "The Pause control tap completed with status=passed (call_uXPDLpWw94x4HJ08zEWdyy0y).",
+          "The post-pause snapshot excerpt in 000014-ui_snapshot.json shows stopwatch_time_text='08', stopwatch_hundredths_text='46', and the stopwatch button labeled Start.",
+          "After a 2000 ms wait, assert_visible passed for the stopwatch Start control (call_yS5LqzWhwb5rVQoQzWGldQhA).",
+          "A subsequent assert_visible passed for stopwatch_time_text='08' (call_svaPQ7DqP7bg8FHfjKlHH6KJ), supporting retained nonzero elapsed time.",
+          "The later kill_app call is recorded as teardown; no supplied evidence shows a reset or resumed stopwatch."
+        ],
+        "plan_updates": [],
+        "pre_plan": [
+          {
+            "action": "Verify the stopwatch's paused state and retained elapsed time from execution evidence.",
+            "status": "success",
+            "step_id": 1,
+            "success_criteria": [
+              "The stopwatch shows a Start control after Pause is tapped.",
+              "Nonzero elapsed time remains displayed after a wait."
+            ]
+          }
+        ],
+        "satisfied_criteria": [
+          "The stopwatch is paused with its elapsed time retained."
+        ],
+        "schema_version": "task_run_v1",
+        "status": "success",
+        "summary": "The evidence supports that the stopwatch was paused with its elapsed time retained at 8.46 seconds.",
+        "unmet_criteria": []
+      }
+    }
+  ],
+  "budgetSummary": {
+    "admitted": 8,
+    "attempted": 8,
+    "deadlineExceeded": false,
+    "deadlineMonotonic": 702599.708427541,
+    "denied": 0,
+    "deviceRestoredByClose": false,
+    "exclusions": [
+      "driver_construction",
+      "uiautomator2_service_startup",
+      "observation_and_assertion_side_effects",
+      "external_processes_and_direct_driver_access"
+    ],
+    "exhausted": false,
+    "failed": 0,
+    "inFlight": 0,
+    "inputTextUnit": "composite_click_optional_clear_set_text",
+    "maximum": 10,
+    "securityBoundary": false,
+    "succeeded": 8,
+    "unit": "admitted_android_harness_write_capability_dispatch",
+    "writeCapabilities": [
+      "launch_app",
+      "kill_app",
+      "tap_on",
+      "tap_at",
+      "long_press_on",
+      "input_text",
+      "press_key",
+      "swipe"
+    ]
+  },
+  "actions": [
+    {
+      "ordinal": 0,
+      "stepId": "agent-launch_app-1",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [],
+      "output": {
+        "app_id": "com.google.android.deskclock"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[0]"
+    },
+    {
+      "ordinal": 1,
+      "stepId": "agent-ui_snapshot-2",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Sun, Oct 15",
+        "Sun, Oct 15",
+        "Gmail",
+        "Gmail",
+        "Photos",
+        "Photos",
+        "YouTube",
+        "YouTube",
+        "Home",
+        "Phone",
+        "Phone",
+        "Messages",
+        "Messages",
+        "Chrome",
+        "Chrome",
+        "Calendar",
+        "Predicted app: Calendar",
+        "Search",
+        "Google app",
+        "Voice search",
+        "Google Lens",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 27980,
+          "retained_characters": 7649
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[1]"
+    },
+    {
+      "ordinal": 2,
+      "stepId": "agent-launch_app-3",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "app_id": "com.google.android.deskclock"
+      },
+      "uiLabels": [],
+      "output": {
+        "app_id": "com.google.android.deskclock"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[2]"
+    },
+    {
+      "ordinal": 3,
+      "stepId": "agent-swipe-4",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[3]"
+    },
+    {
+      "ordinal": 4,
+      "stepId": "agent-ui_snapshot-5",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Audio Recorder",
+        "Audio Recorder",
+        "Broccoli",
+        "Broccoli",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Chrome",
+        "Chrome",
+        "Clipper",
+        "Clipper",
+        "Clock",
+        "Clock",
+        "Contacts",
+        "Contacts",
+        "Draw",
+        "Draw",
+        "Drive",
+        "Drive",
+        "Files",
+        "Files",
+        "Gallery",
+        "Gallery",
+        "Gmail",
+        "Gmail",
+        "Google",
+        "Google",
+        "Joplin",
+        "Joplin",
+        "Maps",
+        "Maps",
+        "Markor",
+        "Markor",
+        "Messages",
+        "Messages",
+        "OpenTracks",
+        "OpenTracks",
+        "OsmAnd",
+        "OsmAnd",
+        "Phone",
+        "Phone",
+        "Photos",
+        "Photos",
+        "Pro Expense",
+        "Pro Expense",
+        "Gallery",
+        "Gallery",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Tasks",
+        "Tasks",
+        "Search",
+        "Google app",
+        "Search apps, web and more",
+        "Voice search",
+        "Google Lens",
+        "Home",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 37016,
+          "retained_characters": 12574
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 6,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[4]"
+    },
+    {
+      "ordinal": 5,
+      "stepId": "agent-tap_on-6",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "accessibilityId": "Clock"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[5]"
+    },
+    {
+      "ordinal": 6,
+      "stepId": "agent-ui_snapshot-7",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "You can find the privacy policy here",
+        "Clock",
+        "More options",
+        "15:34",
+        "15:34",
+        "Sun, Oct 15",
+        "Sunday, October 15",
+        "Add city",
+        "Alarm",
+        "Alarm",
+        "Clock",
+        "Clock",
+        "Timer",
+        "Timer",
+        "Stopwatch",
+        "Stopwatch",
+        "Bedtime",
+        "Bedtime",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 38887,
+          "retained_characters": 10113
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 15,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[6]"
+    },
+    {
+      "ordinal": 7,
+      "stepId": "agent-tap_on-8",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.google.android.deskclock:id/tab_menu_stopwatch"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[7]"
+    },
+    {
+      "ordinal": 8,
+      "stepId": "agent-ui_snapshot-9",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Stopwatch",
+        "More options",
+        "00",
+        "00",
+        "Start",
+        "Alarm",
+        "Alarm",
+        "Clock",
+        "Clock",
+        "Timer",
+        "Timer",
+        "Stopwatch",
+        "Stopwatch",
+        "Bedtime",
+        "Bedtime",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 37184,
+          "retained_characters": 9939
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[8]"
+    },
+    {
+      "ordinal": 9,
+      "stepId": "agent-tap_on-10",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.google.android.deskclock:id/fab",
+          "accessibilityId": "Start"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[9]"
+    },
+    {
+      "ordinal": 10,
+      "stepId": "agent-ui_snapshot-11",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Stopwatch",
+        "More options",
+        "04",
+        "43",
+        "Reset",
+        "Pause",
+        "Lap",
+        "Alarm",
+        "Alarm",
+        "Clock",
+        "Clock",
+        "Timer",
+        "Timer",
+        "Stopwatch",
+        "Stopwatch",
+        "Bedtime",
+        "Bedtime",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 38123,
+          "retained_characters": 10310
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[10]"
+    },
+    {
+      "ordinal": 11,
+      "stepId": "agent-tap_on-12",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.google.android.deskclock:id/fab",
+          "accessibilityId": "Pause"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[11]"
+    },
+    {
+      "ordinal": 12,
+      "stepId": "agent-ui_snapshot-13",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Stopwatch",
+        "More options",
+        "08",
+        "46",
+        "Reset",
+        "Start",
+        "Alarm",
+        "Alarm",
+        "Clock",
+        "Clock",
+        "Timer",
+        "Timer",
+        "Stopwatch",
+        "Stopwatch",
+        "Bedtime",
+        "Bedtime",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 37654,
+          "retained_characters": 10125
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[12]"
+    },
+    {
+      "ordinal": 13,
+      "stepId": "agent-wait_ms-14",
+      "action": "wait_ms",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "duration_ms": 2000,
+        "reason": "Verify paused elapsed time stays unchanged."
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[13]"
+    },
+    {
+      "ordinal": 14,
+      "stepId": "agent-assert_visible-15",
+      "action": "assert_visible",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.google.android.deskclock:id/fab",
+          "accessibilityId": "Start"
+        },
+        "optional": false
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[14]"
+    },
+    {
+      "ordinal": 15,
+      "stepId": "agent-assert_visible-16",
+      "action": "assert_visible",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.google.android.deskclock:id/stopwatch_time_text",
+          "text": "08"
+        },
+        "optional": false
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[15]"
+    },
+    {
+      "ordinal": 16,
+      "stepId": "agent-kill_app-17",
+      "action": "kill_app",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "app_id": "com.google.android.deskclock"
+      },
+      "uiLabels": [],
+      "output": {
+        "app_id": "com.google.android.deskclock"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[16]"
+    }
+  ],
+  "originalNativeExecutionPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/007-ClockStopWatchPausedVerify/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-007-20261110T160930Z-b1db96/execution-result.json",
+  "originalNativeResultPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/007-ClockStopWatchPausedVerify/raw-private/fsq-native/worker/fsq-task-result.private.json",
+  "originalGoalPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/007-ClockStopWatchPausedVerify/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-007-20261110T160930Z-b1db96/sources/000-goal.txt"
+}

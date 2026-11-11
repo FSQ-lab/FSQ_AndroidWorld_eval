@@ -1,0 +1,191 @@
+{
+  "label": "ClockRunningOriginalP0",
+  "scope": "This live original008 A only; historical missing inputs not reconstructed",
+  "lastNonemptyReceive": {
+    "recvSeq": 447,
+    "unix": 1794211397.713908,
+    "windowCount": 2,
+    "nodeCount": 1
+  },
+  "firstEmptyReceive": {
+    "recvSeq": 448,
+    "unix": 1794211397.81724,
+    "windowCount": 0,
+    "nodeCount": 0
+  },
+  "emptyCount": 1671,
+  "totalReceives": 2118,
+  "allAfterFirstEmptyRemainEmpty": true,
+  "appiumHostMarkers": {
+    "appium-session-request-caps": 1794211366.7610052,
+    "appium-session-created": 1794211398.253935,
+    "appium-quit-request": 1794211563.6332831,
+    "appium-quit-response": 1794211574.978945
+  },
+  "firstEmptyBeforeCreationResponseSeconds": 0.4366950988769531,
+  "actualChosenOfficialForest": {
+    "present": true,
+    "recvSeq": 2118,
+    "storedIdentityIsActual": true,
+    "receiveObjectIdMatchesRecord": true,
+    "identityMismatch": false,
+    "windowCount": 0,
+    "serializedBytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "nodeCount": 0,
+    "successTextFound": false,
+    "windows": [],
+    "receivedAtUnix": 1794211574.6673741,
+    "receivedHostUtc": "2026-11-09T08:06:14Z",
+    "receiveAgeSeconds": 5.297187805175781,
+    "recvTransport": "unary",
+    "recvAdmitted": true,
+    "recvAdmittedByDrain": true,
+    "recvAdmittedByDrainIndex": 7,
+    "recvAdmittedByPull": null,
+    "recvPaused": false
+  },
+  "actualDrainEvidence": [
+    {
+      "drainIndex": 7,
+      "kind": "gather_forests",
+      "unix": 1794211579.9333398,
+      "hostUtc": "2026-11-09T08:06:19Z",
+      "thread": "MainThread",
+      "paused": false,
+      "queueDepthSnapshotBefore": 1,
+      "queueSeqsSnapshotBefore": [
+        2118
+      ],
+      "returnedDepth": 1,
+      "returnedSeqs": [
+        2118
+      ],
+      "returnedWindowCounts": [
+        0
+      ],
+      "returnedAllEmpty": true,
+      "queueDepthSnapshotAfter": 0,
+      "queueSeqsSnapshotAfter": [],
+      "admissionEvidence": "authoritative-returned-objects"
+    }
+  ],
+  "deviceFacts": {
+    "currentForwarderPid": 11137,
+    "currentSenderTid": 11162,
+    "uiautomationPid": 12706,
+    "uiautomationId": 917,
+    "initLoggedFlags": 0,
+    "initDeviceEpoch": 1697384087.619,
+    "initLogLines": "device-logcat.txt:5134-5138",
+    "quitRebindConstructorNpe": {
+      "deviceEpoch": 1697384264.617,
+      "pid": 11137,
+      "tid": 13053,
+      "stack": "null Context -> AccessibilityInteractionClient -> AccessibilityService.getWindows -> constructor lambda",
+      "lines": "device-logcat.txt:12164-12176"
+    },
+    "restartedPid": 13131,
+    "restartDeviceEpoch": 1697384265.663
+  },
+  "clockAlignment": {
+    "sampleDeviceDateCommand": {
+      "args": [
+        "-s",
+        "emulator-5554",
+        "shell",
+        "date",
+        "+%s.%N"
+      ],
+      "returncode": 0,
+      "startedAtUnix": 1794211398.254055,
+      "completedAtUnix": 1794211398.2747788,
+      "durationSeconds": 0.020723819732666016,
+      "stdout": "1697384088.179746981\n",
+      "stderr": ""
+    },
+    "hostMinusDeviceOffsetIntervalSeconds": [
+      96827310.07430816,
+      96827310.09503198
+    ],
+    "initHostUnixInterval": [
+      1794211397.693308,
+      1794211397.714032
+    ],
+    "limit": "Only sampled host/device clock bracket, not device capture generation timestamps; Init field log is not final numerical effective flags"
+  },
+  "bindingSnapshots": [
+    {
+      "label": "appium-session-request",
+      "startedAtUnix": 1794211366.761163,
+      "completedAtUnix": 1794211367.000772,
+      "boundEnabledBindingCrashed": [
+        "     Bound services:{Service[label=com.google.androidenv.accessibilityforwarder.Acce\u2026, feedbackType[FEEDBACK_GENERIC], capabilities=1, eventTypes=TYPES_ALL_MASK, notificationTimeout=0, requestA11yBtn=false]}",
+        "     Enabled services:{{com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.AccessibilityForwarder}}",
+        "     Binding services:{}",
+        "     Crashed services:{}"
+      ],
+      "forwarderPid": "11137",
+      "uia2Pid": ""
+    },
+    {
+      "label": "appium-session-created",
+      "startedAtUnix": 1794211398.2540538,
+      "completedAtUnix": 1794211398.4874291,
+      "boundEnabledBindingCrashed": [
+        "     Bound services:{}",
+        "     Enabled services:{{com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.AccessibilityForwarder}}",
+        "     Binding services:{}",
+        "     Crashed services:{}"
+      ],
+      "forwarderPid": "11137",
+      "uia2Pid": "12706"
+    },
+    {
+      "label": "appium-quit-request",
+      "startedAtUnix": 1794211563.633355,
+      "completedAtUnix": 1794211563.95623,
+      "boundEnabledBindingCrashed": [
+        "     Bound services:{}",
+        "     Enabled services:{{com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.AccessibilityForwarder}}",
+        "     Binding services:{}",
+        "     Crashed services:{}"
+      ],
+      "forwarderPid": "11137",
+      "uia2Pid": "12706"
+    },
+    {
+      "label": "appium-quit-response",
+      "startedAtUnix": 1794211574.97906,
+      "completedAtUnix": 1794211575.30623,
+      "boundEnabledBindingCrashed": [
+        "     Bound services:{}",
+        "     Enabled services:{{com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.AccessibilityForwarder}}",
+        "     Binding services:{}",
+        "     Crashed services:{{com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.AccessibilityForwarder}}"
+      ],
+      "forwarderPid": "",
+      "uia2Pid": ""
+    },
+    {
+      "label": "postrun",
+      "startedAtUnix": 1794211580.97579,
+      "completedAtUnix": 1794211581.369783,
+      "boundEnabledBindingCrashed": [
+        "     Bound services:{Service[label=com.google.androidenv.accessibilityforwarder.Acce\u2026, feedbackType[FEEDBACK_GENERIC], capabilities=1, eventTypes=TYPES_ALL_MASK, notificationTimeout=0, requestA11yBtn=false]}",
+        "     Enabled services:{{com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.AccessibilityForwarder}}",
+        "     Binding services:{}",
+        "     Crashed services:{}"
+      ],
+      "forwarderPid": "13131",
+      "uia2Pid": ""
+    }
+  ],
+  "causalConclusion": "The first observed empty forest transition precedes the session-create response and is accompanied by loss of the enabled forwarder binding while UiAutomation is active. Original worker continues sending; the wrapper later drains the exact empty seq2118. A separate quit/rebinding constructor Context NPE kills the process, followed by restart but no further receives in this receiver. This explains the current official empty-input predicate failure, not a failure to start the visible stopwatch.",
+  "limits": [
+    "Old sender metadata empty; no fabricated per-message instance/generation identity",
+    "Initial native flags0 line alone does not measure final effective flags",
+    "Device and host epochs cannot be directly subtracted",
+    "A vs B changes both capability and APK/build stack; not isolated component causality"
+  ]
+}

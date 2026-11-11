@@ -1,0 +1,356 @@
+{
+  "status": "passed",
+  "auditedAtUnix": 1794210171.899868,
+  "scope": "Execution-owner post-run audit; independent w4:p2 acceptance remains separately authored",
+  "formalScore": null,
+  "matrixStatus": "completed",
+  "episodeCount": 6,
+  "runs": [
+    {
+      "label": "ClockOriginalP0",
+      "task": "ClockStopWatchPausedVerify",
+      "officialReward": 0.0,
+      "error": null,
+      "invalidReason": null,
+      "actions": 3,
+      "maxSteps": 10,
+      "helperInstalledSha256": "97a56a544e44d79f9b3181fc7dbdd72cffa908efd3d53c82afad1773061a350a",
+      "hostChildPid": 67001,
+      "checks": {
+        "frozenTaskFieldsIdentical": true,
+        "frozenStepBudgetIdentical": true,
+        "manifestModelPromptRetrySessionLimitsIdentical": true,
+        "actualModelPromptSessionLimitAndTimePolicyIdentical": true,
+        "childProcessExitedZero": true,
+        "ownedSessionCleanlyAbsent": true,
+        "preEpisodeOwnedProcessAbsent": true,
+        "freshReceiverSequenceStartsOne": true,
+        "traceHasNoErrors": true,
+        "workspaceAndTemporaryParentAbsentAfterExit": true
+      },
+      "guardCounts": {
+        "createdSessionCount": 1,
+        "deletedSessionCount": 1,
+        "activeSessionCount": 0,
+        "pendingCreateCount": 0,
+        "pendingRequestCount": 0,
+        "unknownCreationOutcomeCount": 0
+      },
+      "legacyNestedVerificationStatusPreserved": "unknown",
+      "comparedFrozenTaskFields": [
+        "name",
+        "complexity",
+        "params",
+        "paramsSha256"
+      ],
+      "goalComparisonLimit": "Frozen task row has no goal; goal comes from official task initialization and is not claimed to be a frozen manifest field",
+      "boundaryEvidence": "clock-matrix/ClockOriginalP0/balanced-postqualification-precondition.json",
+      "postExitWorkspaceEvidence": "clock-matrix/ClockOriginalP0/workspace-post-exit-absence.json",
+      "officialForestSelectedByScorerCount": 1,
+      "rawResult": "clock-matrix/ClockOriginalP0/episode/result.json"
+    },
+    {
+      "label": "ClockOriginalP1",
+      "task": "ClockStopWatchPausedVerify",
+      "officialReward": 1.0,
+      "error": null,
+      "invalidReason": null,
+      "actions": 3,
+      "maxSteps": 10,
+      "helperInstalledSha256": "97a56a544e44d79f9b3181fc7dbdd72cffa908efd3d53c82afad1773061a350a",
+      "hostChildPid": 67561,
+      "checks": {
+        "frozenTaskFieldsIdentical": true,
+        "frozenStepBudgetIdentical": true,
+        "manifestModelPromptRetrySessionLimitsIdentical": true,
+        "actualModelPromptSessionLimitAndTimePolicyIdentical": true,
+        "childProcessExitedZero": true,
+        "ownedSessionCleanlyAbsent": true,
+        "preEpisodeOwnedProcessAbsent": true,
+        "freshReceiverSequenceStartsOne": true,
+        "traceHasNoErrors": true,
+        "workspaceAndTemporaryParentAbsentAfterExit": true
+      },
+      "guardCounts": {
+        "createdSessionCount": 1,
+        "deletedSessionCount": 1,
+        "activeSessionCount": 0,
+        "pendingCreateCount": 0,
+        "pendingRequestCount": 0,
+        "unknownCreationOutcomeCount": 0
+      },
+      "legacyNestedVerificationStatusPreserved": "unknown",
+      "comparedFrozenTaskFields": [
+        "name",
+        "complexity",
+        "params",
+        "paramsSha256"
+      ],
+      "goalComparisonLimit": "Frozen task row has no goal; goal comes from official task initialization and is not claimed to be a frozen manifest field",
+      "boundaryEvidence": "clock-matrix/ClockOriginalP1/balanced-precondition.json",
+      "postExitWorkspaceEvidence": "clock-matrix/ClockOriginalP1/workspace-post-exit-absence.json",
+      "officialForestSelectedByScorerCount": 1,
+      "rawResult": "clock-matrix/ClockOriginalP1/episode/result.json"
+    },
+    {
+      "label": "ClockPatchedP0",
+      "task": "ClockStopWatchPausedVerify",
+      "officialReward": 1.0,
+      "error": null,
+      "invalidReason": null,
+      "actions": 3,
+      "maxSteps": 10,
+      "helperInstalledSha256": "0987ded41c12807d4f75d0789002912de143eec866fa7b389ad8efdb8b0d07bb",
+      "hostChildPid": 68451,
+      "checks": {
+        "frozenTaskFieldsIdentical": true,
+        "frozenStepBudgetIdentical": true,
+        "manifestModelPromptRetrySessionLimitsIdentical": true,
+        "actualModelPromptSessionLimitAndTimePolicyIdentical": true,
+        "childProcessExitedZero": true,
+        "ownedSessionCleanlyAbsent": true,
+        "preEpisodeOwnedProcessAbsent": true,
+        "freshReceiverSequenceStartsOne": true,
+        "traceHasNoErrors": true,
+        "workspaceAndTemporaryParentAbsentAfterExit": true
+      },
+      "guardCounts": {
+        "createdSessionCount": 1,
+        "deletedSessionCount": 1,
+        "activeSessionCount": 0,
+        "pendingCreateCount": 0,
+        "pendingRequestCount": 0,
+        "unknownCreationOutcomeCount": 0
+      },
+      "legacyNestedVerificationStatusPreserved": "unknown",
+      "comparedFrozenTaskFields": [
+        "name",
+        "complexity",
+        "params",
+        "paramsSha256"
+      ],
+      "goalComparisonLimit": "Frozen task row has no goal; goal comes from official task initialization and is not claimed to be a frozen manifest field",
+      "boundaryEvidence": "clock-matrix/ClockPatchedP0/balanced-postqualification-precondition.json",
+      "postExitWorkspaceEvidence": "clock-matrix/ClockPatchedP0/workspace-post-exit-absence.json",
+      "officialForestSelectedByScorerCount": 1,
+      "rawResult": "clock-matrix/ClockPatchedP0/episode/result.json"
+    },
+    {
+      "label": "ClockPatchedP1",
+      "task": "ClockStopWatchPausedVerify",
+      "officialReward": 1.0,
+      "error": null,
+      "invalidReason": null,
+      "actions": 4,
+      "maxSteps": 10,
+      "helperInstalledSha256": "0987ded41c12807d4f75d0789002912de143eec866fa7b389ad8efdb8b0d07bb",
+      "hostChildPid": 69069,
+      "checks": {
+        "frozenTaskFieldsIdentical": true,
+        "frozenStepBudgetIdentical": true,
+        "manifestModelPromptRetrySessionLimitsIdentical": true,
+        "actualModelPromptSessionLimitAndTimePolicyIdentical": true,
+        "childProcessExitedZero": true,
+        "ownedSessionCleanlyAbsent": true,
+        "preEpisodeOwnedProcessAbsent": true,
+        "freshReceiverSequenceStartsOne": true,
+        "traceHasNoErrors": true,
+        "workspaceAndTemporaryParentAbsentAfterExit": true
+      },
+      "guardCounts": {
+        "createdSessionCount": 1,
+        "deletedSessionCount": 1,
+        "activeSessionCount": 0,
+        "pendingCreateCount": 0,
+        "pendingRequestCount": 0,
+        "unknownCreationOutcomeCount": 0
+      },
+      "legacyNestedVerificationStatusPreserved": "unknown",
+      "comparedFrozenTaskFields": [
+        "name",
+        "complexity",
+        "params",
+        "paramsSha256"
+      ],
+      "goalComparisonLimit": "Frozen task row has no goal; goal comes from official task initialization and is not claimed to be a frozen manifest field",
+      "boundaryEvidence": "clock-matrix/ClockPatchedP1/balanced-precondition.json",
+      "postExitWorkspaceEvidence": "clock-matrix/ClockPatchedP1/workspace-post-exit-absence.json",
+      "officialForestSelectedByScorerCount": 1,
+      "rawResult": "clock-matrix/ClockPatchedP1/episode/result.json"
+    },
+    {
+      "label": "BrowserDrawPatchedP1",
+      "task": "BrowserDraw",
+      "officialReward": 1.0,
+      "error": null,
+      "invalidReason": null,
+      "actions": 17,
+      "maxSteps": 20,
+      "helperInstalledSha256": "0987ded41c12807d4f75d0789002912de143eec866fa7b389ad8efdb8b0d07bb",
+      "hostChildPid": 69722,
+      "checks": {
+        "frozenTaskFieldsIdentical": true,
+        "frozenStepBudgetIdentical": true,
+        "manifestModelPromptRetrySessionLimitsIdentical": true,
+        "actualModelPromptSessionLimitAndTimePolicyIdentical": true,
+        "childProcessExitedZero": true,
+        "ownedSessionCleanlyAbsent": true,
+        "preEpisodeOwnedProcessAbsent": true,
+        "freshReceiverSequenceStartsOne": true,
+        "traceHasNoErrors": true,
+        "workspaceAndTemporaryParentAbsentAfterExit": true
+      },
+      "guardCounts": {
+        "createdSessionCount": 1,
+        "deletedSessionCount": 1,
+        "activeSessionCount": 0,
+        "pendingCreateCount": 0,
+        "pendingRequestCount": 0,
+        "unknownCreationOutcomeCount": 0
+      },
+      "legacyNestedVerificationStatusPreserved": "unknown",
+      "comparedFrozenTaskFields": [
+        "name",
+        "complexity",
+        "params",
+        "paramsSha256"
+      ],
+      "goalComparisonLimit": "Frozen task row has no goal; goal comes from official task initialization and is not claimed to be a frozen manifest field",
+      "boundaryEvidence": "clock-matrix/BrowserDrawPatchedP1/balanced-precondition.json",
+      "postExitWorkspaceEvidence": "clock-matrix/BrowserDrawPatchedP1/workspace-post-exit-absence.json",
+      "officialForestSelectedByScorerCount": 1,
+      "rawResult": "clock-matrix/BrowserDrawPatchedP1/episode/result.json"
+    },
+    {
+      "label": "SimpleCalendarEventsOnDatePatchedP1",
+      "task": "SimpleCalendarEventsOnDate",
+      "officialReward": 1.0,
+      "error": null,
+      "invalidReason": null,
+      "actions": 3,
+      "maxSteps": 10,
+      "helperInstalledSha256": "0987ded41c12807d4f75d0789002912de143eec866fa7b389ad8efdb8b0d07bb",
+      "hostChildPid": 70566,
+      "checks": {
+        "frozenTaskFieldsIdentical": true,
+        "frozenStepBudgetIdentical": true,
+        "manifestModelPromptRetrySessionLimitsIdentical": true,
+        "actualModelPromptSessionLimitAndTimePolicyIdentical": true,
+        "childProcessExitedZero": true,
+        "ownedSessionCleanlyAbsent": true,
+        "preEpisodeOwnedProcessAbsent": true,
+        "freshReceiverSequenceStartsOne": true,
+        "traceHasNoErrors": true,
+        "workspaceAndTemporaryParentAbsentAfterExit": true
+      },
+      "guardCounts": {
+        "createdSessionCount": 1,
+        "deletedSessionCount": 1,
+        "activeSessionCount": 0,
+        "pendingCreateCount": 0,
+        "pendingRequestCount": 0,
+        "unknownCreationOutcomeCount": 0
+      },
+      "legacyNestedVerificationStatusPreserved": "unknown",
+      "comparedFrozenTaskFields": [
+        "name",
+        "complexity",
+        "params",
+        "paramsSha256"
+      ],
+      "goalComparisonLimit": "Frozen task row has no goal; goal comes from official task initialization and is not claimed to be a frozen manifest field",
+      "boundaryEvidence": "clock-matrix/SimpleCalendarEventsOnDatePatchedP1/balanced-precondition.json",
+      "postExitWorkspaceEvidence": "clock-matrix/SimpleCalendarEventsOnDatePatchedP1/workspace-post-exit-absence.json",
+      "officialForestSelectedByScorerCount": 0,
+      "rawResult": "clock-matrix/SimpleCalendarEventsOnDatePatchedP1/episode/result.json"
+    }
+  ],
+  "errors": [],
+  "aggregateValidity": "Fixed development diagnostic, not a formal r14 score or reconstructed historical campaign",
+  "frozenManifest": {
+    "path": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/manifest.json",
+    "sha256": "dbb6fe354f9a1cf7b87e52feeafd08903596d87b8531c37c9d12a50b6dc6362c",
+    "sizeBytes": 455884
+  },
+  "historicalIntegrity": {
+    "observedAtUnix": 1794209700.201698,
+    "baseline": "historical-integrity-before.json",
+    "trackedFiles": 2186,
+    "checkedFiles": 2186,
+    "changedFiles": [],
+    "missingFiles": [],
+    "unchanged": true,
+    "scope": "All paths recorded in the pre-change baseline, not a claim about untracked historical paths",
+    "campaignScoreRecomputedOrOverwritten": false,
+    "historicalEpisode007Reclassified": false,
+    "explicitCoverage": "2185 campaign files plus the original cached helper APK; not complete installed runtime integrity"
+  },
+  "restorationEvidence": "final-restoration-verification.json",
+  "restorationVerified": true,
+  "verification": {
+    "harness": {
+      "passed": 619,
+      "warnings": 2,
+      "outputArtifact": "artifact://160"
+    },
+    "native": [
+      {
+        "name": "com.google.androidenv.accessibilityforwarder.AccessibilityForwarderTest",
+        "tests": "22",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0",
+        "time": "2.105"
+      },
+      {
+        "name": "com.google.androidenv.accessibilityforwarder.FlagsBroadcastReceiverTest",
+        "tests": "9",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0",
+        "time": "0.036"
+      },
+      {
+        "name": "com.google.androidenv.accessibilityforwarder.AccessibilityTreeCreatorTest",
+        "tests": "2",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0",
+        "time": "0.061"
+      }
+    ],
+    "correctedNativeBuildOutput": "artifact://175",
+    "realPrerequisiteQualification": "qualification-r2/device-readiness.json",
+    "originalHelperSha256Unchanged": true
+  },
+  "reviewEvidence": {
+    "completedProxyAdmissionReadOnlyReview": {
+      "identifier": "User-forwarded read-only conclusion bound to controlled_proxy.py SHA256 5a24fd70061ffc156a8204a11c1c7c6c49b0c7cb51a72c07468f52ebb4502f9d",
+      "scope": "A admission/super return propagation; identity/noReset/autoLaunch/single-session/budget/owned-only/delete guards retained",
+      "separateReviewerJobIdRecorded": null
+    },
+    "independentCausalRegressionAcceptance": {
+      "reviewer": "w4:p2",
+      "status": "completed",
+      "report": "independent-final-report.md",
+      "machineReadable": "independent-final-review.json",
+      "clockDetails": "independent-clock-review.json",
+      "integrity": "independent-integrity-review.json"
+    },
+    "fullProductionCodeIndependentReviewerJobCompleted": false,
+    "implementationAgentsNotIndependentReviewers": [
+      "CoexistenceConfig",
+      "ForwarderLifecycle"
+    ]
+  },
+  "remainingLimits": [
+    "One trial per factorial cell; patched P1 navigation has four actions versus three in the other cells",
+    "APK contrast also changes build stack and target SDK; no isolated pure-lifecycle cross-build effect size is established",
+    "Saved native dumps do not expose final numeric UiAutomation flags; Init logging race interpretation is source-level inference",
+    "Host receive ages are not device generation ages; original helper RPC metadata has no service/generation identity",
+    "Prequit/postquit captures add diagnostic delay; not a historical timing reconstruction",
+    "Historical episode007 missing input is not reconstructed or reclassified",
+    "Full r14 116-task rehearsal and 12-task calibration were not rebuilt; no formal full campaign started",
+    "Final Bound/installed-hash restoration does not prove a new post-restoration SendForest/evaluator run"
+  ]
+}

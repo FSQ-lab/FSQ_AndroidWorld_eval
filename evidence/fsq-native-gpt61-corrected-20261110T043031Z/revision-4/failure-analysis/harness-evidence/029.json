@@ -1,0 +1,1116 @@
+{
+  "index": 29,
+  "name": "MarkorDeleteAllNotes",
+  "goal": "Delete all my notes in Markor.",
+  "reward": 0.0,
+  "classification": "failed",
+  "initialization": {
+    "initializationReferenceTime": {
+      "referenceTime": "2023-10-15T15:34:00+00:00",
+      "timezone": "UTC"
+    },
+    "initializedGoal": "Delete all my notes in Markor."
+  },
+  "frozenTaskSpec": {
+    "apps": [
+      "markor"
+    ],
+    "complexity": 1.4,
+    "difficulty": "easy",
+    "family": "android",
+    "index": 29,
+    "instanceSeed": 13104511,
+    "maxActions": 14,
+    "maxSteps": 14,
+    "name": "MarkorDeleteAllNotes",
+    "params": {
+      "seed": 13104511
+    },
+    "paramsSha256": "c61bcf549af74c7b7e5807887d052ee81f24cace3275ebda03456968cc7676de",
+    "paramsTransport": "json",
+    "tags": [
+      "data_edit",
+      "repetition",
+      "parameterized"
+    ],
+    "timeBudget": {
+      "businessSeconds": 960,
+      "cleanupWindowSeconds": 180,
+      "episodeSeconds": 1570,
+      "forceSeconds": 1150,
+      "recoveryWindowSeconds": 120,
+      "terminationGraceSeconds": 10
+    }
+  },
+  "mainSteps": [
+    {
+      "stepId": 4,
+      "tool": "agent_runtime.runner",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "Harness action budget exhausted before deletion could be completed.",
+          "Required kill_app teardown was attempted but blocked by the same action-budget error."
+        ],
+        "evidence": [
+          "Final assert_visible passed for art_project_sketches_st16.md, confirming a remaining note.",
+          "Delete retry failed with NativeActionBudgetExceeded: action_budget."
+        ],
+        "plan_updates": [
+          "Inspected the notes browser and navigated into .app/snippets before returning to the main location.",
+          "Further actions were blocked by NativeActionBudgetExceeded."
+        ],
+        "pre_plan": [
+          {
+            "action": "Open Markor and inspect note locations, including folders.",
+            "status": "adjusted",
+            "step_id": 1,
+            "success_criteria": [
+              "Identify note locations through the notes browser."
+            ]
+          },
+          {
+            "action": "Select all notes in the current location.",
+            "status": "failed",
+            "step_id": 2,
+            "success_criteria": [
+              "All notes in the current location are selected."
+            ]
+          },
+          {
+            "action": "Delete selected notes, confirm, and repeat in remaining locations.",
+            "status": "failed",
+            "step_id": 3,
+            "success_criteria": [
+              "Complete deletion across all note locations."
+            ]
+          }
+        ],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "failed",
+        "summary": "Deletion was not completed. A final assertion confirmed that a note remains, and the harness action budget prevented further deletion attempts.",
+        "unmet_criteria": [
+          "Markor contains no remaining notes in any of its note locations."
+        ]
+      }
+    },
+    {
+      "stepId": 5,
+      "tool": "agent_runtime.verifier",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "NativeActionBudgetExceeded: action_budget prevented both recorded Delete attempts."
+        ],
+        "evidence": [
+          "At sequences 87–88, assert_visible for art_project_sketches_st16.md returned status=passed after both Delete attempts failed.",
+          "The final assertion references screenshot artifact artifacts/screenshots/screenshot-agent-assert-visible-28-prepare-before-action-1-785c7862170a.png.",
+          "Artifact 000030-ui_snapshot.json lists art_project_sketches_st16.md, backup_favorite_book_quotes.md, and final_budget_home_renovation.md as selected files in Markor's browser.",
+          "Delete calls at sequences 83–86 returned status=failed with NativeActionBudgetExceeded: action_budget. No subsequent successful deletion is recorded."
+        ],
+        "plan_updates": [],
+        "pre_plan": [
+          {
+            "action": "Verify whether Markor contains no remaining notes in any note location.",
+            "status": "failed",
+            "step_id": 1,
+            "success_criteria": [
+              "Supplied execution evidence supports the absence of all notes."
+            ]
+          }
+        ],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "failed",
+        "summary": "The verification goal is unmet: a final visibility assertion confirmed that art_project_sketches_st16.md remained in Markor after deletion attempts were blocked.",
+        "unmet_criteria": [
+          "Markor contains no remaining notes in any of its note locations."
+        ]
+      }
+    }
+  ],
+  "budgetSummary": {
+    "admitted": 14,
+    "attempted": 17,
+    "deadlineExceeded": false,
+    "deadlineMonotonic": 708034.432617041,
+    "denied": 3,
+    "deviceRestoredByClose": false,
+    "exclusions": [
+      "driver_construction",
+      "uiautomator2_service_startup",
+      "observation_and_assertion_side_effects",
+      "external_processes_and_direct_driver_access"
+    ],
+    "exhausted": true,
+    "failed": 1,
+    "inFlight": 0,
+    "inputTextUnit": "composite_click_optional_clear_set_text",
+    "maximum": 14,
+    "securityBoundary": false,
+    "succeeded": 13,
+    "unit": "admitted_android_harness_write_capability_dispatch",
+    "writeCapabilities": [
+      "launch_app",
+      "kill_app",
+      "tap_on",
+      "tap_at",
+      "long_press_on",
+      "input_text",
+      "press_key",
+      "swipe"
+    ]
+  },
+  "actions": [
+    {
+      "ordinal": 0,
+      "stepId": "agent-launch_app-1",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [],
+      "output": {
+        "app_id": "net.gsantner.markor"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[0]"
+    },
+    {
+      "ordinal": 1,
+      "stepId": "agent-ui_snapshot-2",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Sun, Oct 15",
+        "Sun, Oct 15",
+        "Gmail",
+        "Gmail",
+        "Photos",
+        "Photos",
+        "YouTube",
+        "YouTube",
+        "Home",
+        "Phone",
+        "Phone",
+        "Messages",
+        "Messages",
+        "Chrome",
+        "Chrome",
+        "Calendar",
+        "Predicted app: Calendar",
+        "Search",
+        "Google app",
+        "Voice search",
+        "Google Lens",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 27980,
+          "retained_characters": 7649
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[1]"
+    },
+    {
+      "ordinal": 2,
+      "stepId": "agent-launch_app-3",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "app_id": "net.gsantner.markor"
+      },
+      "uiLabels": [],
+      "output": {
+        "app_id": "net.gsantner.markor"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[2]"
+    },
+    {
+      "ordinal": 3,
+      "stepId": "agent-swipe-4",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[3]"
+    },
+    {
+      "ordinal": 4,
+      "stepId": "agent-ui_snapshot-5",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Audio Recorder",
+        "Audio Recorder",
+        "Broccoli",
+        "Broccoli",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Chrome",
+        "Chrome",
+        "Clipper",
+        "Clipper",
+        "Clock",
+        "Clock",
+        "Contacts",
+        "Contacts",
+        "Draw",
+        "Draw",
+        "Drive",
+        "Drive",
+        "Files",
+        "Files",
+        "Gallery",
+        "Gallery",
+        "Gmail",
+        "Gmail",
+        "Google",
+        "Google",
+        "Joplin",
+        "Joplin",
+        "Maps",
+        "Maps",
+        "Markor",
+        "Markor",
+        "Messages",
+        "Messages",
+        "OpenTracks",
+        "OpenTracks",
+        "OsmAnd",
+        "OsmAnd",
+        "Phone",
+        "Phone",
+        "Photos",
+        "Photos",
+        "Pro Expense",
+        "Pro Expense",
+        "Gallery",
+        "Gallery",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Tasks",
+        "Tasks",
+        "Search",
+        "Google app",
+        "Search apps, web and more",
+        "Voice search",
+        "Google Lens",
+        "Home",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 37016,
+          "retained_characters": 12574
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 6,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[4]"
+    },
+    {
+      "ordinal": 5,
+      "stepId": "agent-tap_on-6",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "accessibilityId": "Markor"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[5]"
+    },
+    {
+      "ordinal": 6,
+      "stepId": "agent-ui_snapshot-7",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Markor",
+        "Go to",
+        "Sort by",
+        "Search",
+        "More options",
+        "Folder .. ",
+        "..",
+        "/storage/emulated/0/Documents",
+        "Folder .app ",
+        ".app",
+        "10/15/2023, 15:35",
+        "File art_project_sketches_st16.md ",
+        "art_project_sketches_st16.md",
+        "10/15/2023, 15:34",
+        "File backup_favorite_book_quotes.md ",
+        "backup_favorite_book_quotes.md",
+        "10/15/2023, 15:34",
+        "File final_budget_home_renovation.md ",
+        "final_budget_home_renovation.md",
+        "10/15/2023, 15:34",
+        "Create a new file or folder",
+        "Files",
+        "Files",
+        "To-Do",
+        "To-Do",
+        "QuickNote",
+        "QuickNote",
+        "More",
+        "More",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 45040,
+          "retained_characters": 12668
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 14,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[6]"
+    },
+    {
+      "ordinal": 7,
+      "stepId": "agent-tap_on-8",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "text": ".app"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[7]"
+    },
+    {
+      "ordinal": 8,
+      "stepId": "agent-ui_snapshot-9",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "> .app",
+        "Go to",
+        "Sort by",
+        "Search",
+        "More options",
+        "Folder .. /storage/emulated/0/Documents",
+        "..",
+        "/storage/emulated/0/Documents/markor",
+        "Folder snippets 10/15/2023, 15:35",
+        "snippets",
+        "10/15/2023, 15:35",
+        "Create a new file or folder",
+        "Files",
+        "Files",
+        "To-Do",
+        "To-Do",
+        "QuickNote",
+        "QuickNote",
+        "More",
+        "More",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 37751,
+          "retained_characters": 10521
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 11,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[8]"
+    },
+    {
+      "ordinal": 9,
+      "stepId": "agent-tap_on-10",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "snippets"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[9]"
+    },
+    {
+      "ordinal": 10,
+      "stepId": "agent-ui_snapshot-11",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "> snippets",
+        "Go to",
+        "Sort by",
+        "Search",
+        "More options",
+        "Folder .. /storage/emulated/0/Documents/markor",
+        "..",
+        "/storage/emulated/0/Documents/markor/.app",
+        "¯\\_(ツ)_/¯",
+        "Create a new file or folder",
+        "Files",
+        "Files",
+        "To-Do",
+        "To-Do",
+        "QuickNote",
+        "QuickNote",
+        "More",
+        "More",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 35795,
+          "retained_characters": 9958
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 10,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[10]"
+    },
+    {
+      "ordinal": 11,
+      "stepId": "agent-press_key-12",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[11]"
+    },
+    {
+      "ordinal": 12,
+      "stepId": "agent-press_key-13",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[12]"
+    },
+    {
+      "ordinal": 13,
+      "stepId": "agent-ui_snapshot-14",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Markor",
+        "Go to",
+        "Sort by",
+        "Search",
+        "More options",
+        "Folder .. /storage/emulated/0/Documents/markor",
+        "..",
+        "/storage/emulated/0/Documents",
+        "Folder .app 10/15/2023, 15:35",
+        ".app",
+        "10/15/2023, 15:35",
+        "File art_project_sketches_st16.md 10/15/2023, 15:3",
+        "art_project_sketches_st16.md",
+        "10/15/2023, 15:34",
+        "File backup_favorite_book_quotes.md 10/15/2023, 15",
+        "backup_favorite_book_quotes.md",
+        "10/15/2023, 15:34",
+        "File final_budget_home_renovation.md 10/15/2023, 1",
+        "final_budget_home_renovation.md",
+        "10/15/2023, 15:34",
+        "Create a new file or folder",
+        "Files",
+        "Files",
+        "To-Do",
+        "To-Do",
+        "QuickNote",
+        "QuickNote",
+        "More",
+        "More",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 45145,
+          "retained_characters": 12765
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 14,
+          "clipped_attributes": 4
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[13]"
+    },
+    {
+      "ordinal": 14,
+      "stepId": "agent-long_press_on-15",
+      "action": "long_press_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "text": "art_project_sketches_st16.md"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[14]"
+    },
+    {
+      "ordinal": 15,
+      "stepId": "agent-ui_snapshot-16",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Favourite",
+        "Rename",
+        "Details",
+        "Delete",
+        "More options",
+        "Folder .. /storage/emulated/0/Documents/markor",
+        "..",
+        "/storage/emulated/0/Documents",
+        "Folder .app 10/15/2023, 15:35",
+        ".app",
+        "10/15/2023, 15:35",
+        "Selected art_project_sketches_st16.md ",
+        "art_project_sketches_st16.md",
+        "10/15/2023, 15:34",
+        "File backup_favorite_book_quotes.md 10/15/2023, 15",
+        "backup_favorite_book_quotes.md",
+        "10/15/2023, 15:34",
+        "File final_budget_home_renovation.md 10/15/2023, 1",
+        "final_budget_home_renovation.md",
+        "10/15/2023, 15:34",
+        "Create a new file or folder",
+        "Files",
+        "Files",
+        "To-Do",
+        "To-Do",
+        "QuickNote",
+        "QuickNote",
+        "More",
+        "More",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 45219,
+          "retained_characters": 12920
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 14,
+          "clipped_attributes": 3
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[15]"
+    },
+    {
+      "ordinal": 16,
+      "stepId": "agent-tap_on-17",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "accessibilityId": "More options"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[16]"
+    },
+    {
+      "ordinal": 17,
+      "stepId": "agent-ui_snapshot-18",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Clipboard",
+        "Move",
+        "Copy",
+        "Create shortcut",
+        "Share",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 24531,
+          "retained_characters": 5635
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 10,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[17]"
+    },
+    {
+      "ordinal": 18,
+      "stepId": "agent-press_key-19",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[18]"
+    },
+    {
+      "ordinal": 19,
+      "stepId": "agent-ui_snapshot-20",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Favourite",
+        "Rename",
+        "Details",
+        "Delete",
+        "More options",
+        "Folder .. /storage/emulated/0/Documents/markor",
+        "..",
+        "/storage/emulated/0/Documents",
+        "Folder .app 10/15/2023, 15:35",
+        ".app",
+        "10/15/2023, 15:35",
+        "Selected art_project_sketches_st16.md ",
+        "art_project_sketches_st16.md",
+        "10/15/2023, 15:34",
+        "File backup_favorite_book_quotes.md 10/15/2023, 15",
+        "backup_favorite_book_quotes.md",
+        "10/15/2023, 15:34",
+        "File final_budget_home_renovation.md 10/15/2023, 1",
+        "final_budget_home_renovation.md",
+        "10/15/2023, 15:34",
+        "Create a new file or folder",
+        "Files",
+        "Files",
+        "To-Do",
+        "To-Do",
+        "QuickNote",
+        "QuickNote",
+        "More",
+        "More",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 45219,
+          "retained_characters": 12920
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 14,
+          "clipped_attributes": 3
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[19]"
+    },
+    {
+      "ordinal": 20,
+      "stepId": "agent-tap_on-21",
+      "action": "tap_on",
+      "status": "failed",
+      "error": "Target was not found.",
+      "params": {
+        "locator": {
+          "text": "grocery_list_st16.txt"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[20]"
+    },
+    {
+      "ordinal": 21,
+      "stepId": "agent-ui_snapshot-22",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Favourite",
+        "Rename",
+        "Details",
+        "Delete",
+        "More options",
+        "Folder .. /storage/emulated/0/Documents/markor",
+        "..",
+        "/storage/emulated/0/Documents",
+        "Folder .app 10/15/2023, 15:35",
+        ".app",
+        "10/15/2023, 15:35",
+        "Selected art_project_sketches_st16.md ",
+        "art_project_sketches_st16.md",
+        "10/15/2023, 15:34",
+        "File backup_favorite_book_quotes.md 10/15/2023, 15",
+        "backup_favorite_book_quotes.md",
+        "10/15/2023, 15:34",
+        "File final_budget_home_renovation.md 10/15/2023, 1",
+        "final_budget_home_renovation.md",
+        "10/15/2023, 15:34",
+        "Create a new file or folder",
+        "Files",
+        "Files",
+        "To-Do",
+        "To-Do",
+        "QuickNote",
+        "QuickNote",
+        "More",
+        "More",
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 45219,
+          "retained_characters": 12920
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 14,
+          "clipped_attributes": 3
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[21]"
+    },
+    {
+      "ordinal": 22,
+      "stepId": "agent-tap_on-23",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "text": "backup_favorite_book_quotes.md"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[22]"
+    },
+    {
+      "ordinal": 23,
+      "stepId": "agent-tap_on-24",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "text": "final_budget_home_renovation.md"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[23]"
+    },
+    {
+      "ordinal": 24,
+      "stepId": "agent-ui_snapshot-25",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Delete",
+        "More options",
+        "Folder .. /storage/emulated/0/Documents/markor",
+        "..",
+        "/storage/emulated/0/Documents",
+        "Folder .app 10/15/2023, 15:35",
+        ".app",
+        "10/15/2023, 15:35",
+        "Selected art_project_sketches_st16.md ",
+        "art_project_sketches_st16.md",
+        "10/15/2023, 15:34",
+        "Selected backup_favorite_book_quotes.md 10/15/2023",
+        "backup_favorite_book_quotes.md",
+        "10/15/2023, 15:34",
+        "Selected final_budget_home_renovation.md 10/15/202",
+        "final_budget_home_renovation.md",
+        "10/15/2023, 15:34",
+        "Create a new file or folder",
+        "Files",
+        "Files",
+        "To-Do",
+        "To-Do",
+        "QuickNote",
+        "QuickNote",
+        "More",
+        "More",
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 43845,
+          "retained_characters": 12317
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 14,
+          "clipped_attributes": 3
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[24]"
+    },
+    {
+      "ordinal": 25,
+      "stepId": "agent-tap_on-26",
+      "action": "tap_on",
+      "status": "failed",
+      "error": "NativeActionBudgetExceeded: action_budget",
+      "params": null,
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[25]"
+    },
+    {
+      "ordinal": 26,
+      "stepId": "agent-tap_on-27",
+      "action": "tap_on",
+      "status": "failed",
+      "error": "NativeActionBudgetExceeded: action_budget",
+      "params": null,
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[26]"
+    },
+    {
+      "ordinal": 27,
+      "stepId": "agent-assert_visible-28",
+      "action": "assert_visible",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "text": "art_project_sketches_st16.md"
+        },
+        "optional": false
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[27]"
+    },
+    {
+      "ordinal": 28,
+      "stepId": "agent-kill_app-29",
+      "action": "kill_app",
+      "status": "failed",
+      "error": "NativeActionBudgetExceeded: action_budget",
+      "params": null,
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[28]"
+    }
+  ],
+  "originalNativeExecutionPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/029-MarkorDeleteAllNotes/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-029-20261110T173605Z-b204a9/execution-result.json",
+  "originalNativeResultPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/029-MarkorDeleteAllNotes/raw-private/fsq-native/worker/fsq-task-result.private.json",
+  "originalGoalPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/029-MarkorDeleteAllNotes/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-029-20261110T173605Z-b204a9/sources/000-goal.txt"
+}

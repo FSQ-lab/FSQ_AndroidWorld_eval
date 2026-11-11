@@ -1,0 +1,2134 @@
+{
+  "index": 52,
+  "name": "RecipeDeleteDuplicateRecipes3",
+  "goal": "Delete all but one of any recipes in the Broccoli app that are exact duplicates, ensuring at least one instance of each unique recipe remains",
+  "reward": 0.0,
+  "classification": "failed",
+  "initialization": {
+    "initializationReferenceTime": {
+      "referenceTime": "2023-10-15T15:34:00+00:00",
+      "timezone": "UTC"
+    },
+    "initializedGoal": "Delete all but one of any recipes in the Broccoli app that are exact duplicates, ensuring at least one instance of each unique recipe remains"
+  },
+  "frozenTaskSpec": {
+    "apps": [
+      "broccoli app"
+    ],
+    "complexity": 3.4,
+    "difficulty": "medium",
+    "family": "android",
+    "index": 52,
+    "instanceSeed": 2676632063,
+    "maxActions": 34,
+    "maxSteps": 34,
+    "name": "RecipeDeleteDuplicateRecipes3",
+    "params": {
+      "noise_row_objects": [
+        {
+          "description": "A quick and easy meal, perfect for busy weekdays.",
+          "directions": "Sauté onions and garlic, add cubed butternut squash and broth. Puree until smooth and season with nutmeg, salt, and pepper. Try adding a pinch of your favorite spices for extra flavor.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "as desired",
+          "preparationTime": "4 hrs",
+          "recipeId": -1,
+          "servings": "6 servings",
+          "source": "",
+          "title": "Butternut Squash Soup"
+        },
+        {
+          "description": "A quick and easy meal, perfect for busy weekdays.",
+          "directions": "Blend together raspberries, almond milk, banana, and a scoop of almond butter until smooth. Garnish with fresh herbs for a more vibrant taste.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "flexible ingredients",
+          "preparationTime": "45 mins",
+          "recipeId": -1,
+          "servings": "6 servings",
+          "source": "",
+          "title": "Raspberry Almond Smoothie"
+        },
+        {
+          "description": "An ideal recipe for experimenting with different flavors and ingredients.",
+          "directions": "Stir-fry beef slices with broccoli, bell peppers, and onions in soy sauce and garlic. Serve over rice or noodles. Garnish with fresh herbs for a more vibrant taste.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "as desired",
+          "preparationTime": "4 hrs",
+          "recipeId": -1,
+          "servings": "1 serving",
+          "source": "",
+          "title": "Beef Stir Fry"
+        },
+        {
+          "description": "A quick and easy meal, perfect for busy weekdays.",
+          "directions": "Mix shredded cooked chicken with BBQ sauce. Place on tortillas with cheese, fold and cook until crispy. Feel free to substitute with ingredients you have on hand.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "varies",
+          "preparationTime": "20 mins",
+          "recipeId": -1,
+          "servings": "1 serving",
+          "source": "",
+          "title": "BBQ Chicken Quesadillas"
+        },
+        {
+          "description": "A quick and easy meal, perfect for busy weekdays.",
+          "directions": "Butter bread slices, layer with cheese, tomato slices, and basil. Grill until bread is toasted and cheese is melted. Garnish with fresh herbs for a more vibrant taste.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "subject to change",
+          "preparationTime": "30 mins",
+          "recipeId": -1,
+          "servings": "1 serving",
+          "source": "",
+          "title": "Grilled Cheese with Tomato and Basil"
+        },
+        {
+          "description": "A delicious and healthy choice for any time of the day.",
+          "directions": "Bake salmon fillets and serve with a sauce made from Greek yogurt, dill, lemon juice, and garlic. Feel free to substitute with ingredients you have on hand.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "as desired",
+          "preparationTime": "1 hrs",
+          "recipeId": -1,
+          "servings": "8 servings",
+          "source": "",
+          "title": "Salmon with Dill Sauce"
+        },
+        {
+          "description": "A quick and easy meal, perfect for busy weekdays.",
+          "directions": "Mix cooked quinoa, black beans, corn, tomato sauce, and spices. Stuff into bell peppers and bake until tender. Feel free to substitute with ingredients you have on hand.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "see directions",
+          "preparationTime": "30 mins",
+          "recipeId": -1,
+          "servings": "8 servings",
+          "source": "",
+          "title": "Stuffed Bell Peppers"
+        },
+        {
+          "description": "A quick and easy meal, perfect for busy weekdays.",
+          "directions": "Pan-sear salmon fillets until crispy. Serve over cooked quinoa with a side of steamed asparagus. Try adding a pinch of your favorite spices for extra flavor.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "n/a",
+          "preparationTime": "1 hrs",
+          "recipeId": -1,
+          "servings": "6 servings",
+          "source": "",
+          "title": "Pan-Seared Salmon with Quinoa"
+        },
+        {
+          "description": "A quick and easy meal, perfect for busy weekdays.",
+          "directions": "Cook onions, carrots, celery, garlic, and lentils in vegetable broth until lentils are tender. Season with thyme and bay leaves. Try adding a pinch of your favorite spices for extra flavor.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "n/a",
+          "preparationTime": "20 mins",
+          "recipeId": -1,
+          "servings": "1 serving",
+          "source": "",
+          "title": "Lentil Soup"
+        },
+        {
+          "description": "A delicious and healthy choice for any time of the day.",
+          "directions": "Cook fettuccine pasta, toss with Alfredo sauce and grilled chicken strips. Serve with a sprinkle of Parmesan cheese. Try adding a pinch of your favorite spices for extra flavor.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "quantities to taste",
+          "preparationTime": "2 hrs",
+          "recipeId": -1,
+          "servings": "6 servings",
+          "source": "",
+          "title": "Chicken Alfredo Pasta"
+        },
+        {
+          "description": "A quick and easy meal, perfect for busy weekdays.",
+          "directions": "Sauté cooked rice with vegetables, add soy sauce and scrambled eggs. Toss until hot. Try adding a pinch of your favorite spices for extra flavor.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "flexible ingredients",
+          "preparationTime": "2 hrs",
+          "recipeId": -1,
+          "servings": "6 servings",
+          "source": "",
+          "title": "Quick Fried Rice"
+        },
+        {
+          "description": "A delicious and healthy choice for any time of the day.",
+          "directions": "Butter bread slices, layer with cheese, tomato slices, and basil. Grill until bread is toasted and cheese is melted. Try adding a pinch of your favorite spices for extra flavor.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "see directions",
+          "preparationTime": "3 hrs",
+          "recipeId": -1,
+          "servings": "6 servings",
+          "source": "",
+          "title": "Grilled Cheese with Tomato and Basil"
+        },
+        {
+          "description": "A quick and easy meal, perfect for busy weekdays.",
+          "directions": "Sauté onions and garlic, add cubed butternut squash and broth. Puree until smooth and season with nutmeg, salt, and pepper. Garnish with fresh herbs for a more vibrant taste.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "subject to change",
+          "preparationTime": "1 hrs",
+          "recipeId": -1,
+          "servings": "3-4 servings",
+          "source": "",
+          "title": "Butternut Squash Soup"
+        },
+        {
+          "description": "A quick and easy meal, perfect for busy weekdays.",
+          "directions": "Pan-sear salmon fillets until crispy. Serve over cooked quinoa with a side of steamed asparagus. Feel free to substitute with ingredients you have on hand.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "varies",
+          "preparationTime": "1 hrs",
+          "recipeId": -1,
+          "servings": "1 serving",
+          "source": "",
+          "title": "Pan-Seared Salmon with Quinoa"
+        },
+        {
+          "description": "An ideal recipe for experimenting with different flavors and ingredients.",
+          "directions": "Sauté shrimp in butter and minced garlic until pink. Sprinkle with parsley and serve with lemon wedges. Try adding a pinch of your favorite spices for extra flavor.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "adjustable",
+          "preparationTime": "2 hrs",
+          "recipeId": -1,
+          "servings": "8 servings",
+          "source": "",
+          "title": "Garlic Butter Shrimp"
+        },
+        {
+          "description": "An ideal recipe for experimenting with different flavors and ingredients.",
+          "directions": "Cook chicken pieces in a pan, add onions, garlic, and ginger. Stir in curry powder, coconut milk, and mango pieces. Simmer until chicken is cooked. Garnish with fresh herbs for a more vibrant taste.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "flexible ingredients",
+          "preparationTime": "4 hrs",
+          "recipeId": -1,
+          "servings": "3-4 servings",
+          "source": "",
+          "title": "Mango Chicken Curry"
+        },
+        {
+          "description": "An ideal recipe for experimenting with different flavors and ingredients.",
+          "directions": "Roast sweet potato cubes, mix with black beans, and use as filling for tacos. Top with avocado and cilantro lime sauce. Feel free to substitute with ingredients you have on hand.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "see directions",
+          "preparationTime": "30 mins",
+          "recipeId": -1,
+          "servings": "3-4 servings",
+          "source": "",
+          "title": "Sweet Potato and Black Bean Tacos"
+        },
+        {
+          "description": "A quick and easy meal, perfect for busy weekdays.",
+          "directions": "Cook pasta, stir in pesto sauce and cooked peas. Add Parmesan cheese before serving. Feel free to substitute with ingredients you have on hand.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "as needed",
+          "preparationTime": "3 hrs",
+          "recipeId": -1,
+          "servings": "6 servings",
+          "source": "",
+          "title": "Pesto Pasta with Peas"
+        },
+        {
+          "description": "A delicious and healthy choice for any time of the day.",
+          "directions": "Sauté tilapia in butter, add lemon juice and garlic. Serve with steamed vegetables. Feel free to substitute with ingredients you have on hand.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "adjustable",
+          "preparationTime": "3 hrs",
+          "recipeId": -1,
+          "servings": "1 serving",
+          "source": "",
+          "title": "Lemon Garlic Tilapia"
+        },
+        {
+          "description": "An ideal recipe for experimenting with different flavors and ingredients.",
+          "directions": "Mix shredded cooked chicken with BBQ sauce. Place on tortillas with cheese, fold and cook until crispy. Feel free to substitute with ingredients you have on hand.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "optional ingredients",
+          "preparationTime": "10 mins",
+          "recipeId": -1,
+          "servings": "3-4 servings",
+          "source": "",
+          "title": "BBQ Chicken Quesadillas"
+        },
+        {
+          "description": "A delicious and healthy choice for any time of the day.",
+          "directions": "Spread hummus on bread, add cucumber, bell pepper, carrot, and lettuce. Try adding a pinch of your favorite spices for extra flavor.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "quantities to taste",
+          "preparationTime": "3 hrs",
+          "recipeId": -1,
+          "servings": "3-4 servings",
+          "source": "",
+          "title": "Veggie and Hummus Sandwich"
+        },
+        {
+          "description": "A quick and easy meal, perfect for busy weekdays.",
+          "directions": "Toast bread, top with mashed avocado, a fried egg, salt, pepper, and chili flakes. Try adding a pinch of your favorite spices for extra flavor.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "various amounts",
+          "preparationTime": "4 hrs",
+          "recipeId": -1,
+          "servings": "6 servings",
+          "source": "",
+          "title": "Avocado Toast with Egg"
+        },
+        {
+          "description": "An ideal recipe for experimenting with different flavors and ingredients.",
+          "directions": "Toast bread, top with mashed avocado, a fried egg, salt, pepper, and chili flakes. Garnish with fresh herbs for a more vibrant taste.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "as needed",
+          "preparationTime": "2 hrs",
+          "recipeId": -1,
+          "servings": "6 servings",
+          "source": "",
+          "title": "Avocado Toast with Egg"
+        },
+        {
+          "description": "A quick and easy meal, perfect for busy weekdays.",
+          "directions": "Toast bread, top with mashed avocado, a fried egg, salt, pepper, and chili flakes. Try adding a pinch of your favorite spices for extra flavor.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "n/a",
+          "preparationTime": "1 hrs",
+          "recipeId": -1,
+          "servings": "3-4 servings",
+          "source": "",
+          "title": "Avocado Toast with Egg"
+        },
+        {
+          "description": "A quick and easy meal, perfect for busy weekdays.",
+          "directions": "Sauté onions and garlic, add cubed butternut squash and broth. Puree until smooth and season with nutmeg, salt, and pepper. Feel free to substitute with ingredients you have on hand.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "varies",
+          "preparationTime": "4 hrs",
+          "recipeId": -1,
+          "servings": "8 servings",
+          "source": "",
+          "title": "Butternut Squash Soup"
+        },
+        {
+          "description": "A quick and easy meal, perfect for busy weekdays.",
+          "directions": "Sauté onions and garlic, add cubed butternut squash and broth. Puree until smooth and season with nutmeg, salt, and pepper. Feel free to substitute with ingredients you have on hand.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "subject to change",
+          "preparationTime": "45 mins",
+          "recipeId": -1,
+          "servings": "2 servings",
+          "source": "",
+          "title": "Butternut Squash Soup"
+        },
+        {
+          "description": "A quick and easy meal, perfect for busy weekdays.",
+          "directions": "Sauté onions and garlic, add cubed butternut squash and broth. Puree until smooth and season with nutmeg, salt, and pepper. Garnish with fresh herbs for a more vibrant taste.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "to your liking",
+          "preparationTime": "2 hrs",
+          "recipeId": -1,
+          "servings": "8 servings",
+          "source": "",
+          "title": "Butternut Squash Soup"
+        },
+        {
+          "description": "A quick and easy meal, perfect for busy weekdays.",
+          "directions": "Sauté onions and garlic, add cubed butternut squash and broth. Puree until smooth and season with nutmeg, salt, and pepper. Try adding a pinch of your favorite spices for extra flavor.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "flexible ingredients",
+          "preparationTime": "45 mins",
+          "recipeId": -1,
+          "servings": "8 servings",
+          "source": "",
+          "title": "Butternut Squash Soup"
+        },
+        {
+          "description": "A quick and easy meal, perfect for busy weekdays.",
+          "directions": "Sauté onions and garlic, add cubed butternut squash and broth. Puree until smooth and season with nutmeg, salt, and pepper. Feel free to substitute with ingredients you have on hand.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "varies",
+          "preparationTime": "1 hrs",
+          "recipeId": -1,
+          "servings": "3-4 servings",
+          "source": "",
+          "title": "Butternut Squash Soup"
+        },
+        {
+          "description": "A quick and easy meal, perfect for busy weekdays.",
+          "directions": "Sauté onions and garlic, add cubed butternut squash and broth. Puree until smooth and season with nutmeg, salt, and pepper. Feel free to substitute with ingredients you have on hand.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "quantities to taste",
+          "preparationTime": "1 hrs",
+          "recipeId": -1,
+          "servings": "1 serving",
+          "source": "",
+          "title": "Butternut Squash Soup"
+        }
+      ],
+      "row_objects": [
+        {
+          "description": "A quick and easy meal, perfect for busy weekdays.",
+          "directions": "Sauté onions and garlic, add cubed butternut squash and broth. Puree until smooth and season with nutmeg, salt, and pepper. Garnish with fresh herbs for a more vibrant taste.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "quantities to taste",
+          "preparationTime": "30 mins",
+          "recipeId": -1,
+          "servings": "3-4 servings",
+          "source": "",
+          "title": "Butternut Squash Soup"
+        },
+        {
+          "description": "A quick and easy meal, perfect for busy weekdays.",
+          "directions": "Sauté onions and garlic, add cubed butternut squash and broth. Puree until smooth and season with nutmeg, salt, and pepper. Garnish with fresh herbs for a more vibrant taste.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "quantities to taste",
+          "preparationTime": "30 mins",
+          "recipeId": -1,
+          "servings": "3-4 servings",
+          "source": "",
+          "title": "Butternut Squash Soup"
+        }
+      ],
+      "seed": 2676632063
+    },
+    "paramsSha256": "76a838d9d504ef8cd9ff928b7f30ddc1c11b2674e5ee08e14b797f7baf8ac90a",
+    "paramsTransport": "seed",
+    "tags": [
+      "data_edit",
+      "parameterized"
+    ],
+    "timeBudget": {
+      "businessSeconds": 2160,
+      "cleanupWindowSeconds": 180,
+      "episodeSeconds": 2770,
+      "forceSeconds": 2350,
+      "recoveryWindowSeconds": 120,
+      "terminationGraceSeconds": 10
+    }
+  },
+  "mainSteps": [
+    {
+      "stepId": 5,
+      "tool": "agent_runtime.runner",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [],
+        "evidence": [
+          "Collection observations were captured in tools/000008-ui_snapshot.json through tools/000033-ui_snapshot.json.",
+          "Recipe-detail observations in tools/000039-ui_snapshot.json and tools/000044-ui_snapshot.json showed differing same-title entries.",
+          "The final inspected Avocado Toast with Egg entry displayed 6 servings and 2 hrs; assert_state confirmed the 2 hrs preparation-time field.",
+          "No delete controls or deletion confirmations were invoked."
+        ],
+        "plan_updates": [
+          "Scrolled through the collection, but did not finish a reconciled inventory and full-content comparison within the execution window.",
+          "Inspected three Avocado Toast with Egg entries; their displayed recipe metadata differed, so matching titles were not treated as sufficient grounds for deletion.",
+          "Preserved all recipes and stopped the app after collecting evidence."
+        ],
+        "pre_plan": [
+          {
+            "action": "Open and inventory the complete recipe collection.",
+            "status": "adjusted",
+            "step_id": 1,
+            "success_criteria": [
+              "Scroll through the entire collection and record its entries."
+            ]
+          },
+          {
+            "action": "Compare the complete contents of potentially duplicate recipes.",
+            "status": "adjusted",
+            "step_id": 2,
+            "success_criteria": [
+              "Identify exact-match groups and a copy to retain."
+            ]
+          },
+          {
+            "action": "Delete confirmed extra copies.",
+            "status": "skipped",
+            "step_id": 3,
+            "success_criteria": [
+              "Delete only confirmed exact duplicates."
+            ]
+          },
+          {
+            "action": "Verify the remaining collection against the original inventory.",
+            "status": "skipped",
+            "step_id": 4,
+            "success_criteria": [
+              "Establish exactly one instance of every original unique recipe."
+            ]
+          }
+        ],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "inconclusive",
+        "summary": "Inspected the recipe collection and several same-title recipes, but did not complete collection-wide content comparison. No recipes were deleted because no exact-match group was confirmed.",
+        "unmet_criteria": [
+          "Could not establish that the complete collection contains exactly one instance of each original unique recipe, with no exact duplicates remaining."
+        ]
+      }
+    },
+    {
+      "stepId": 6,
+      "tool": "agent_runtime.verifier",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "No complete content-based inventory or equivalent evidence establishes uniqueness across the entire remaining collection.",
+          "The absence of deletions does not itself prove the final state false, because the evidence does not confirm any exact-duplicate group."
+        ],
+        "evidence": [
+          "tools/000008-ui_snapshot.json and subsequent collection snapshots show repeated recipe titles, including Avocado Toast with Egg and Butternut Squash Soup. Matching titles and descriptions alone do not prove exact duplicates.",
+          "tools/000039-ui_snapshot.json shows an Avocado Toast with Egg entry with 6 servings, 4 hrs, and ingredients 'various amounts'; tools/000044-ui_snapshot.json shows another with 3-4 servings, 1 hrs, and ingredients 'n/a'. These entries are not exact matches.",
+          "tools/000040-assert_with_ai.json records a passed backend assertion with confidence 0.99 and a screenshot artifact reference for one recipe's visible content, not collection-wide uniqueness.",
+          "The tool-call record contains no deletion actions and no final collection-wide content comparison. The agent's structured output likewise reports an inconclusive result and skipped final verification."
+        ],
+        "plan_updates": [],
+        "pre_plan": [
+          {
+            "action": "Evaluate the supplied evidence against the collection-wide uniqueness goal.",
+            "status": "adjusted",
+            "step_id": 1,
+            "success_criteria": [
+              "Establish exactly one remaining instance of each original unique recipe, with no exact duplicates."
+            ]
+          }
+        ],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "inconclusive",
+        "summary": "The evidence does not establish whether the complete collection contains exactly one instance of every original unique recipe. Repeated titles are documented, but their complete contents were not compared across the collection, so remaining exact duplicates are neither proven nor ruled out.",
+        "unmet_criteria": []
+      }
+    }
+  ],
+  "budgetSummary": {
+    "admitted": 22,
+    "attempted": 22,
+    "deadlineExceeded": false,
+    "deadlineMonotonic": 715170.038926541,
+    "denied": 0,
+    "deviceRestoredByClose": false,
+    "exclusions": [
+      "driver_construction",
+      "uiautomator2_service_startup",
+      "observation_and_assertion_side_effects",
+      "external_processes_and_direct_driver_access"
+    ],
+    "exhausted": false,
+    "failed": 0,
+    "inFlight": 0,
+    "inputTextUnit": "composite_click_optional_clear_set_text",
+    "maximum": 34,
+    "securityBoundary": false,
+    "succeeded": 22,
+    "unit": "admitted_android_harness_write_capability_dispatch",
+    "writeCapabilities": [
+      "launch_app",
+      "kill_app",
+      "tap_on",
+      "tap_at",
+      "long_press_on",
+      "input_text",
+      "press_key",
+      "swipe"
+    ]
+  },
+  "actions": [
+    {
+      "ordinal": 0,
+      "stepId": "agent-launch_app-1",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [],
+      "output": {
+        "app_id": "com.flauschcode.broccoli"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[0]"
+    },
+    {
+      "ordinal": 1,
+      "stepId": "agent-ui_snapshot-2",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Sun, Oct 15",
+        "Sun, Oct 15",
+        "Gmail",
+        "Gmail",
+        "Photos",
+        "Photos",
+        "YouTube",
+        "YouTube",
+        "Home",
+        "Phone",
+        "Phone",
+        "Messages",
+        "Messages",
+        "Chrome",
+        "Chrome",
+        "Calendar",
+        "Predicted app: Calendar",
+        "Search",
+        "Google app",
+        "Voice search",
+        "Google Lens"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 27981,
+          "retained_characters": 7650
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[1]"
+    },
+    {
+      "ordinal": 2,
+      "stepId": "agent-launch_app-3",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "app_id": "com.flauschcode.broccoli"
+      },
+      "uiLabels": [],
+      "output": {
+        "app_id": "com.flauschcode.broccoli"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[2]"
+    },
+    {
+      "ordinal": 3,
+      "stepId": "agent-swipe-4",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[3]"
+    },
+    {
+      "ordinal": 4,
+      "stepId": "agent-ui_snapshot-5",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Audio Recorder",
+        "Audio Recorder",
+        "Broccoli",
+        "Broccoli",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Chrome",
+        "Chrome",
+        "Clipper",
+        "Clipper",
+        "Clock",
+        "Clock",
+        "Contacts",
+        "Contacts",
+        "Draw",
+        "Draw",
+        "Drive",
+        "Drive",
+        "Files",
+        "Files",
+        "Gallery",
+        "Gallery",
+        "Gmail",
+        "Gmail",
+        "Google",
+        "Google",
+        "Joplin",
+        "Joplin",
+        "Maps",
+        "Maps",
+        "Markor",
+        "Markor",
+        "Messages",
+        "Messages",
+        "OpenTracks",
+        "OpenTracks",
+        "OsmAnd",
+        "OsmAnd",
+        "Phone",
+        "Phone",
+        "Photos",
+        "Photos",
+        "Pro Expense",
+        "Pro Expense",
+        "Gallery",
+        "Gallery",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Tasks",
+        "Tasks",
+        "Search",
+        "Google app",
+        "Search apps, web and more",
+        "Voice search",
+        "Google Lens",
+        "Home"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 37017,
+          "retained_characters": 12575
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 6,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[4]"
+    },
+    {
+      "ordinal": 5,
+      "stepId": "agent-tap_on-6",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "Broccoli"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[5]"
+    },
+    {
+      "ordinal": 6,
+      "stepId": "agent-ui_snapshot-7",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Open navigation drawer",
+        "Recipes",
+        "Categories",
+        "All recipes",
+        "Search",
+        "Recipes",
+        "Recipe photo",
+        "Avocado Toast with Egg",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "Recipe photo",
+        "Avocado Toast with Egg",
+        "An ideal recipe for experimenting with different f",
+        "Recipe photo",
+        "Avocado Toast with Egg",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "Recipe photo",
+        "BBQ Chicken Quesadillas",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "Recipe photo",
+        "BBQ Chicken Quesadillas",
+        "An ideal recipe for experimenting with different f",
+        "Recipe photo",
+        "Beef Stir Fry",
+        "An ideal recipe for experimenting with different f",
+        "New Recipe"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 40265,
+          "retained_characters": 9854
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 18,
+          "clipped_attributes": 4
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[6]"
+    },
+    {
+      "ordinal": 7,
+      "stepId": "agent-swipe-8",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[7]"
+    },
+    {
+      "ordinal": 8,
+      "stepId": "agent-ui_snapshot-9",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Open navigation drawer",
+        "Recipes",
+        "Categories",
+        "All recipes",
+        "Search",
+        "Recipes",
+        "Recipe photo",
+        "Recipe photo",
+        "BBQ Chicken Quesadillas",
+        "An ideal recipe for experimenting with different f",
+        "Recipe photo",
+        "Beef Stir Fry",
+        "An ideal recipe for experimenting with different f",
+        "Recipe photo",
+        "Butternut Squash Soup",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "Recipe photo",
+        "Butternut Squash Soup",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "Recipe photo",
+        "Butternut Squash Soup",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "Recipe photo",
+        "Butternut Squash Soup",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "New Recipe"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 41620,
+          "retained_characters": 10114
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 19,
+          "clipped_attributes": 3
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[8]"
+    },
+    {
+      "ordinal": 9,
+      "stepId": "agent-swipe-10",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[9]"
+    },
+    {
+      "ordinal": 10,
+      "stepId": "agent-ui_snapshot-11",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Open navigation drawer",
+        "Recipes",
+        "Categories",
+        "All recipes",
+        "Search",
+        "Recipes",
+        "Recipe photo",
+        "Butternut Squash Soup",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "Recipe photo",
+        "Butternut Squash Soup",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "Recipe photo",
+        "Butternut Squash Soup",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "Recipe photo",
+        "Butternut Squash Soup",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "Recipe photo",
+        "Butternut Squash Soup",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "Recipe photo",
+        "Butternut Squash Soup",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "New Recipe"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 40189,
+          "retained_characters": 9848
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 18,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[10]"
+    },
+    {
+      "ordinal": 11,
+      "stepId": "agent-swipe-12",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[11]"
+    },
+    {
+      "ordinal": 12,
+      "stepId": "agent-ui_snapshot-13",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Open navigation drawer",
+        "Recipes",
+        "Categories",
+        "All recipes",
+        "Search",
+        "Recipes",
+        "Recipe photo",
+        "Butternut Squash Soup",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "Recipe photo",
+        "Butternut Squash Soup",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "Recipe photo",
+        "Butternut Squash Soup",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "Recipe photo",
+        "Butternut Squash Soup",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "Recipe photo",
+        "Butternut Squash Soup",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "Recipe photo",
+        "Chicken Alfredo Pasta",
+        "A delicious and healthy choice for any time of the",
+        "New Recipe"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 40199,
+          "retained_characters": 9852
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 18,
+          "clipped_attributes": 2
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[12]"
+    },
+    {
+      "ordinal": 13,
+      "stepId": "agent-swipe-14",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[13]"
+    },
+    {
+      "ordinal": 14,
+      "stepId": "agent-ui_snapshot-15",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Open navigation drawer",
+        "Recipes",
+        "Categories",
+        "All recipes",
+        "Search",
+        "Recipes",
+        "Recipe photo",
+        "Recipe photo",
+        "Butternut Squash Soup",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "Recipe photo",
+        "Chicken Alfredo Pasta",
+        "A delicious and healthy choice for any time of the",
+        "Recipe photo",
+        "Garlic Butter Shrimp",
+        "An ideal recipe for experimenting with different f",
+        "Recipe photo",
+        "Grilled Cheese with Tomato and Basil",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "Recipe photo",
+        "Grilled Cheese with Tomato and Basil",
+        "A delicious and healthy choice for any time of the",
+        "Recipe photo",
+        "Lemon Garlic Tilapia",
+        "A delicious and healthy choice for any time of the",
+        "New Recipe"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 41647,
+          "retained_characters": 10149
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 19,
+          "clipped_attributes": 5
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[14]"
+    },
+    {
+      "ordinal": 15,
+      "stepId": "agent-swipe-16",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[15]"
+    },
+    {
+      "ordinal": 16,
+      "stepId": "agent-ui_snapshot-17",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Open navigation drawer",
+        "Recipes",
+        "Categories",
+        "All recipes",
+        "Search",
+        "Recipes",
+        "Recipe photo",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "Recipe photo",
+        "Grilled Cheese with Tomato and Basil",
+        "A delicious and healthy choice for any time of the",
+        "Recipe photo",
+        "Lemon Garlic Tilapia",
+        "A delicious and healthy choice for any time of the",
+        "Recipe photo",
+        "Lentil Soup",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "Recipe photo",
+        "Mango Chicken Curry",
+        "An ideal recipe for experimenting with different f",
+        "Recipe photo",
+        "Pan-Seared Salmon with Quinoa",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "Recipe photo",
+        "Pan-Seared Salmon with Quinoa",
+        "New Recipe"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 41632,
+          "retained_characters": 10139
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 19,
+          "clipped_attributes": 4
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[16]"
+    },
+    {
+      "ordinal": 17,
+      "stepId": "agent-swipe-18",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[17]"
+    },
+    {
+      "ordinal": 18,
+      "stepId": "agent-ui_snapshot-19",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Open navigation drawer",
+        "Recipes",
+        "Categories",
+        "All recipes",
+        "Search",
+        "Recipes",
+        "Recipe photo",
+        "Mango Chicken Curry",
+        "An ideal recipe for experimenting with different f",
+        "Recipe photo",
+        "Pan-Seared Salmon with Quinoa",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "Recipe photo",
+        "Pan-Seared Salmon with Quinoa",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "Recipe photo",
+        "Pesto Pasta with Peas",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "Recipe photo",
+        "Quick Fried Rice",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "Recipe photo",
+        "Raspberry Almond Smoothie",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "New Recipe"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 40230,
+          "retained_characters": 9865
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 18,
+          "clipped_attributes": 2
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[18]"
+    },
+    {
+      "ordinal": 19,
+      "stepId": "agent-swipe-20",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[19]"
+    },
+    {
+      "ordinal": 20,
+      "stepId": "agent-ui_snapshot-21",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Open navigation drawer",
+        "Recipes",
+        "Categories",
+        "All recipes",
+        "Search",
+        "Recipes",
+        "Recipe photo",
+        "Recipe photo",
+        "Quick Fried Rice",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "Recipe photo",
+        "Raspberry Almond Smoothie",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "Recipe photo",
+        "Salmon with Dill Sauce",
+        "A delicious and healthy choice for any time of the",
+        "Recipe photo",
+        "Stuffed Bell Peppers",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "Recipe photo",
+        "Sweet Potato and Black Bean Tacos",
+        "An ideal recipe for experimenting with different f",
+        "Recipe photo",
+        "Veggie and Hummus Sandwich",
+        "A delicious and healthy choice for any time of the",
+        "New Recipe"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 41157,
+          "retained_characters": 10004
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 19,
+          "clipped_attributes": 4
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[20]"
+    },
+    {
+      "ordinal": 21,
+      "stepId": "agent-swipe-22",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[21]"
+    },
+    {
+      "ordinal": 22,
+      "stepId": "agent-ui_snapshot-23",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Open navigation drawer",
+        "Recipes",
+        "Categories",
+        "All recipes",
+        "Search",
+        "Recipes",
+        "Recipe photo",
+        "Raspberry Almond Smoothie",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "Recipe photo",
+        "Salmon with Dill Sauce",
+        "A delicious and healthy choice for any time of the",
+        "Recipe photo",
+        "Stuffed Bell Peppers",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "Recipe photo",
+        "Sweet Potato and Black Bean Tacos",
+        "An ideal recipe for experimenting with different f",
+        "Recipe photo",
+        "Veggie and Hummus Sandwich",
+        "A delicious and healthy choice for any time of the",
+        "New Recipe"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 37362,
+          "retained_characters": 9111
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 17,
+          "clipped_attributes": 4
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[22]"
+    },
+    {
+      "ordinal": 23,
+      "stepId": "agent-swipe-24",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[23]"
+    },
+    {
+      "ordinal": 24,
+      "stepId": "agent-ui_snapshot-25",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Open navigation drawer",
+        "Recipes",
+        "Categories",
+        "All recipes",
+        "Search",
+        "Recipes",
+        "Recipe photo",
+        "Raspberry Almond Smoothie",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "Recipe photo",
+        "Salmon with Dill Sauce",
+        "A delicious and healthy choice for any time of the",
+        "Recipe photo",
+        "Stuffed Bell Peppers",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "Recipe photo",
+        "Sweet Potato and Black Bean Tacos",
+        "An ideal recipe for experimenting with different f",
+        "Recipe photo",
+        "Veggie and Hummus Sandwich",
+        "A delicious and healthy choice for any time of the",
+        "New Recipe"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 37362,
+          "retained_characters": 9111
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 17,
+          "clipped_attributes": 4
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[24]"
+    },
+    {
+      "ordinal": 25,
+      "stepId": "agent-tap_on-26",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.flauschcode.broccoli:id/action_search"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[25]"
+    },
+    {
+      "ordinal": 26,
+      "stepId": "agent-ui_snapshot-27",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "More features",
+        "Sticker Keyboard",
+        "GIF Keyboard",
+        "Clipboard",
+        "Settings",
+        "Theme settings",
+        "Voice input",
+        "q",
+        "1",
+        "w",
+        "2",
+        "e",
+        "3",
+        "r",
+        "4",
+        "t",
+        "5",
+        "y",
+        "6",
+        "u",
+        "7",
+        "i",
+        "8",
+        "o",
+        "9",
+        "p",
+        "0",
+        "a",
+        "s",
+        "d",
+        "f",
+        "g",
+        "h",
+        "j",
+        "k",
+        "l",
+        "Shift",
+        "z",
+        "x",
+        "c",
+        "v",
+        "b",
+        "n",
+        "m",
+        "Delete",
+        "Symbol keyboard",
+        ",",
+        "Emoji button",
+        "Space",
+        ".",
+        "Search",
+        "Back",
+        "Open navigation drawer",
+        "Recipes",
+        "Collapse",
+        "Search in ALL RECIPES",
+        "Recipes",
+        "Recipe photo",
+        "Raspberry Almond Smoothie",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "Recipe photo",
+        "Salmon with Dill Sauce",
+        "A delicious and healthy choice for any time of the",
+        "Recipe photo",
+        "Stuffed Bell Peppers",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "Recipe photo",
+        "Sweet Potato and Black Bean Tacos",
+        "New Recipe"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 111261,
+          "retained_characters": 29606
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 40,
+          "clipped_attributes": 2
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[26]"
+    },
+    {
+      "ordinal": 27,
+      "stepId": "agent-input_text-28",
+      "action": "input_text",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.flauschcode.broccoli:id/search_src_text"
+        },
+        "text": "Avocado",
+        "textType": "literal"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[27]"
+    },
+    {
+      "ordinal": 28,
+      "stepId": "agent-press_key-29",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[28]"
+    },
+    {
+      "ordinal": 29,
+      "stepId": "agent-ui_snapshot-30",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:37",
+        "23:37",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Open navigation drawer",
+        "Recipes",
+        "Collapse",
+        "Avocado",
+        "Clear query",
+        "Recipes",
+        "Recipe photo",
+        "Avocado Toast with Egg",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "Recipe photo",
+        "Avocado Toast with Egg",
+        "An ideal recipe for experimenting with different f",
+        "Recipe photo",
+        "Avocado Toast with Egg",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "New Recipe"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 33131,
+          "retained_characters": 8151
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 14,
+          "clipped_attributes": 2
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[29]"
+    },
+    {
+      "ordinal": 30,
+      "stepId": "agent-tap_on-31",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "xpath": "(//*[@resource-id='com.flauschcode.broccoli:id/card_text_view_title'])[1]"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[30]"
+    },
+    {
+      "ordinal": 31,
+      "stepId": "agent-ui_snapshot-32",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:37",
+        "23:37",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Avocado Toast with Egg",
+        "Recipe photo",
+        "Navigate up",
+        "Mark as favorite",
+        "More options",
+        "Avocado Toast with Egg",
+        "Servings",
+        "6 servings",
+        "Time",
+        "4 hrs",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "Ingredients",
+        "various amounts",
+        "Directions",
+        "1",
+        "Toast bread, top with mashed avocado, a fried egg,",
+        "Cook"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 30248,
+          "retained_characters": 7031
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 16,
+          "clipped_attributes": 2
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[31]"
+    },
+    {
+      "ordinal": 32,
+      "stepId": "agent-assert_with_ai-33",
+      "action": "assert_with_ai",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "prompt": "Read the complete visible recipe. Verify title Avocado Toast with Egg, 6 servings, 4 hrs, description 'A quick and easy meal, perfect for busy weekdays.', ingredients 'various amounts'. Report the full directions and whether any further recipe content extends below the visible area.",
+        "optional": false
+      },
+      "uiLabels": [],
+      "output": {
+        "status": "passed",
+        "passed": true,
+        "explanation": "The visible recipe matches: title 'Avocado Toast with Egg', 6 servings, 4 hrs, description 'A quick and easy meal, perfect for busy weekdays.', and ingredients 'various amounts'. Full directions: '1. Toast bread, top with mashed avocado, a fried egg, salt, pepper, and chili flakes. Try adding a pinch of your favorite spices for extra flavor.' No further recipe content appears to extend below the visible area; substantial blank space follows the directions.",
+        "confidence": 0.99,
+        "provider": "github_copilot",
+        "model": "gpt-6.1-sol",
+        "latency_ms": 5052,
+        "token_usage": {
+          "input_tokens": 3311,
+          "output_tokens": 120,
+          "total_tokens": 3431
+        },
+        "artifact_refs": [
+          {
+            "artifact_id": "screenshot-agent-assert-with-ai-33-invoke-assert-with-ai-1-1d97f5d1846c",
+            "kind": "screenshot",
+            "path": "artifacts/screenshots/screenshot-agent-assert-with-ai-33-invoke-assert-with-ai-1-1d97f5d1846c.png",
+            "mime_type": "image/png",
+            "size_bytes": 376643,
+            "sha256": "f5be857a57cd626a58ea618c75efdd26dc6237608c4c5ac137ac97951a4e8a9a",
+            "availability": "available",
+            "unavailable_reason": null,
+            "capture_occurrence": 1,
+            "created_at": "2026-11-10T19:18:19.897498Z",
+            "metadata": {
+              "capture_reason": "assert-with-ai",
+              "redacted": false
+            }
+          }
+        ],
+        "error": null,
+        "metadata": {
+          "provider_metadata": {
+            "endpoint_family": "github_copilot",
+            "copilot_plan": "enterprise"
+          }
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[32]"
+    },
+    {
+      "ordinal": 33,
+      "stepId": "agent-press_key-34",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[33]"
+    },
+    {
+      "ordinal": 34,
+      "stepId": "agent-ui_snapshot-35",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:37",
+        "23:37",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Open navigation drawer",
+        "Recipes",
+        "Collapse",
+        "Avocado",
+        "Clear query",
+        "Recipes",
+        "Recipe photo",
+        "Avocado Toast with Egg",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "Recipe photo",
+        "Avocado Toast with Egg",
+        "An ideal recipe for experimenting with different f",
+        "Recipe photo",
+        "Avocado Toast with Egg",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "New Recipe"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 33130,
+          "retained_characters": 8150
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 14,
+          "clipped_attributes": 2
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[34]"
+    },
+    {
+      "ordinal": 35,
+      "stepId": "agent-tap_on-36",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "xpath": "(//*[@resource-id='com.flauschcode.broccoli:id/card_text_view_title'])[3]"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[35]"
+    },
+    {
+      "ordinal": 36,
+      "stepId": "agent-ui_snapshot-37",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:37",
+        "23:37",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Avocado Toast with Egg",
+        "Recipe photo",
+        "Navigate up",
+        "Mark as favorite",
+        "More options",
+        "Avocado Toast with Egg",
+        "Servings",
+        "3-4 servings",
+        "Time",
+        "1 hrs",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "Ingredients",
+        "n/a",
+        "Directions",
+        "1",
+        "Toast bread, top with mashed avocado, a fried egg,",
+        "Cook"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 30234,
+          "retained_characters": 7018
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 16,
+          "clipped_attributes": 2
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[36]"
+    },
+    {
+      "ordinal": 37,
+      "stepId": "agent-press_key-38",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[37]"
+    },
+    {
+      "ordinal": 38,
+      "stepId": "agent-ui_snapshot-39",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:38",
+        "23:38",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Open navigation drawer",
+        "Recipes",
+        "Collapse",
+        "Avocado",
+        "Clear query",
+        "Recipes",
+        "Recipe photo",
+        "Avocado Toast with Egg",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "Recipe photo",
+        "Avocado Toast with Egg",
+        "An ideal recipe for experimenting with different f",
+        "Recipe photo",
+        "Avocado Toast with Egg",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "New Recipe"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 33131,
+          "retained_characters": 8151
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 14,
+          "clipped_attributes": 2
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[38]"
+    },
+    {
+      "ordinal": 39,
+      "stepId": "agent-tap_on-40",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "xpath": "(//*[@resource-id='com.flauschcode.broccoli:id/card_text_view_title'])[2]"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[39]"
+    },
+    {
+      "ordinal": 40,
+      "stepId": "agent-ui_snapshot-41",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:38",
+        "23:38",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Avocado Toast with Egg",
+        "Recipe photo",
+        "Navigate up",
+        "Mark as favorite",
+        "More options",
+        "Avocado Toast with Egg",
+        "Servings",
+        "6 servings",
+        "Time",
+        "2 hrs",
+        "An ideal recipe for experimenting with different f",
+        "Ingredients",
+        "as needed",
+        "Directions",
+        "1",
+        "Toast bread, top with mashed avocado, a fried egg,",
+        "Cook"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 30257,
+          "retained_characters": 7027
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 16,
+          "clipped_attributes": 3
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[40]"
+    },
+    {
+      "ordinal": 41,
+      "stepId": "agent-assert_state-42",
+      "action": "assert_state",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "element": {
+          "resourceId": "com.flauschcode.broccoli:id/details_preparation_time",
+          "text": "2 hrs"
+        },
+        "optional": false
+      },
+      "uiLabels": [],
+      "output": {
+        "exists": true
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[41]"
+    },
+    {
+      "ordinal": 42,
+      "stepId": "agent-kill_app-43",
+      "action": "kill_app",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "app_id": "com.flauschcode.broccoli"
+      },
+      "uiLabels": [],
+      "output": {
+        "app_id": "com.flauschcode.broccoli"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[42]"
+    }
+  ],
+  "originalNativeExecutionPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/052-RecipeDeleteDuplicateRecipes3/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-052-20261110T191501Z-60f662/execution-result.json",
+  "originalNativeResultPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/052-RecipeDeleteDuplicateRecipes3/raw-private/fsq-native/worker/fsq-task-result.private.json",
+  "originalGoalPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/052-RecipeDeleteDuplicateRecipes3/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-052-20261110T191501Z-60f662/sources/000-goal.txt"
+}

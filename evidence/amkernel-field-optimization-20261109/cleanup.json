@@ -1,0 +1,132 @@
+{
+  "observedAtUnix": 1794193116.4321852,
+  "ownedSessions": [
+    {
+      "label": "client-compatibility-reconciled",
+      "sessionId": "59d93548-761c-48b1-8a31-529a7a5a3338",
+      "httpStatus": 404
+    },
+    {
+      "label": "sms-before",
+      "sessionId": "5a423726-4b4b-4bf7-9230-50755b56c9ea",
+      "httpStatus": 404
+    },
+    {
+      "label": "sms-instrumented-after",
+      "sessionId": "a3883739-212d-43e3-adb4-3f5300489e9a",
+      "httpStatus": 404
+    },
+    {
+      "label": "camera-after",
+      "sessionId": "b234415e-b3b1-4970-a08b-e2454f0af1b8",
+      "httpStatus": 404
+    },
+    {
+      "label": "clock-running",
+      "sessionId": "f1b5e983-c92d-4f5b-acac-38ec8ceecf96",
+      "httpStatus": 404
+    },
+    {
+      "label": "markor-regression",
+      "sessionId": "2bc75952-a253-4fa8-9695-d52e477054ff",
+      "httpStatus": 404
+    },
+    {
+      "label": "wifi-regression",
+      "sessionId": "087bffe5-c175-47de-b35d-e3afbcccbce6",
+      "httpStatus": 404
+    },
+    {
+      "label": "sms-postquit-boundary",
+      "sessionId": "08ca4200-f514-4bd4-bdee-0400d7b21c1b",
+      "httpStatus": 404
+    },
+    {
+      "label": "clock-boundary",
+      "sessionId": "54097cd4-3f66-4650-ba0d-f094884c1532",
+      "httpStatus": 404
+    }
+  ],
+  "sharedProcesses": [
+    "15894 67664 Sat Nov  7 07:10:11 2026     /Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python -I -u -X utf8 -m amkernel.runner --request-fd 10 --response-fd 13 --diagnostic-fd 15",
+    "22534 67661 Sat Nov  7 08:46:32 2026     /Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/bin/python -u /var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/omp-python-runner-501/runner-20pmlw5lw3wjb.py",
+    "22589     1 Sat Nov  7 08:46:52 2026     /Users/qunmi/Library/Android/sdk/emulator/crashpad_handler --no-rate-limit --monitor-pid=22585 --database=/tmp/android-qunmi/emu-crash-37.2.13.db --url=https://clients2.google.com/cr/report --annotation=prod=AndroidEmulator --annotation=ver=37.2.13-16740729 --handshake-fd=4",
+    "30655 13285 Fri Nov  6 17:58:14 2026     /Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python -I -u -X utf8 -m amkernel.runner --request-fd 10 --response-fd 13 --diagnostic-fd 15",
+    "32624 13280 Fri Nov  6 18:26:02 2026     /Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/bin/python -u /var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/omp-python-runner-501/runner-2y055qoyfok9i.py",
+    "46721 18243 Thu Nov  5 20:43:04 2026     /Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python -u /var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/omp-python-runner-501/runner-2y055qoyfok9i.py",
+    "58744 18243 Thu Nov  5 10:52:45 2026     /Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python -u /var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/omp-python-runner-501/runner-2y055qoyfok9i.py",
+    "67860 67661 Fri Nov  6 21:25:59 2026     /Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/bin/python -u /var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/omp-python-runner-501/runner-20pmlw5lw3wjb.py",
+    "79548 18243 Thu Nov  5 13:02:19 2026     /Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python -u /var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/omp-python-runner-501/runner-2y055qoyfok9i.py",
+    "81210 81209 Thu Nov  5 13:20:31 2026     /Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/ruff server",
+    "67664 67661 Fri Nov  6 21:23:25 2026     /Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python /Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/bin/amkernel",
+    "22585 87039 Sat Nov  7 08:46:52 2026     /Users/qunmi/Library/Android/sdk/emulator/qemu/darwin-aarch64/qemu-system-aarch64-headless -avd AndroidWorldAvd -port 5554 -grpc 8554 -read-only -no-snapshot-load -no-snapshot-save -no-audio -crash-report-mode never -no-window",
+    "16153 87039 Sat Nov  7 07:14:12 2026     node /opt/homebrew/bin/appium --address 127.0.0.1 --port 4723 --log evidence/screenshot-video-controls-20261106T231029Z/appium.log --log-timestamp --log-no-colors --log-level info",
+    "13285 13280 Fri Nov  6 17:15:15 2026     /Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python /Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/bin/amkernel"
+  ],
+  "experimentProcessesRemaining": [],
+  "-s emulator-5554 shell cat /proc/sys/kernel/random/boot_id": {
+    "rc": 0,
+    "stdout": "0f36e370-012a-4423-a1f9-959beae8f90d\n",
+    "stderr": ""
+  },
+  "-s emulator-5554 shell pidof system_server surfaceflinger io.appium.uiautomator2.server io.appium.uiautomator2.server.test": {
+    "rc": 0,
+    "stdout": "333 500\n",
+    "stderr": ""
+  },
+  "-s emulator-5554 shell cmd appops get org.videolan.vlc MANAGE_EXTERNAL_STORAGE": {
+    "rc": 0,
+    "stdout": "Uid mode: MANAGE_EXTERNAL_STORAGE: deny\nMANAGE_EXTERNAL_STORAGE: default; time=-1118d9h12m44s129ms ago; rejectTime=-1118d9h11m23s809ms ago\n",
+    "stderr": ""
+  },
+  "-s emulator-5554 shell settings get secure accessibility_enabled": {
+    "rc": 0,
+    "stdout": "1\n",
+    "stderr": ""
+  },
+  "appiumStatus": {
+    "value": {
+      "ready": true,
+      "message": "The server is ready to accept new connections",
+      "build": {
+        "version": "3.7.0",
+        "git-sha": "bf464f57275cae0be106b43d190c98564ac59b0e",
+        "built": "2026-11-02 01:56:41 +0000"
+      }
+    }
+  },
+  "frozenCampaignAndSpecifiedEvidence": {
+    "fileCount": 696,
+    "changedFiles": []
+  },
+  "teardowns": [
+    "camera-after-teardown",
+    "clock-running-teardown",
+    "sms-before-teardown",
+    "markor-regression-teardown",
+    "sms-after-teardown",
+    "sms-postquit-boundary-teardown",
+    "wifi-regression-teardown",
+    "clock-boundary-teardown"
+  ],
+  "workerExitCodes": {
+    "successfulMcpWorkers": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "preDeviceStartupFailures": 2
+  },
+  "finalAccessibility": {
+    "enabled_accessibility_services": "com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.AccessibilityForwarder",
+    "accessibility_enabled": "1",
+    "forwarderBound": true,
+    "observationAtUnix": 1794193116.432151
+  },
+  "bootIdUnchanged": true,
+  "systemPidsUnchanged": true,
+  "sharedServerAndEmulatorProcessesUnchanged": true,
+  "disposableControllerRemoved": true
+}

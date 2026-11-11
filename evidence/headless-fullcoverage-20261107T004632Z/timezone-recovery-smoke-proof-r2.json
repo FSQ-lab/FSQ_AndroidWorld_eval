@@ -1,0 +1,404 @@
+{
+  "before": {
+    "observedAtUnix": 1794024904.240816,
+    "attestation": {
+      "device": {
+        "apiLevel": 33,
+        "abi": "arm64-v8a",
+        "buildFingerprint": "google/sdk_gphone64_arm64/emu64a:13/TE1A.240213.009/12342917:userdebug/dev-keys",
+        "screenSize": "Physical size: 1080x2400",
+        "timezone": "Asia/Shanghai",
+        "date": "2026-11-07"
+      },
+      "appiumBuild": {
+        "version": "3.7.0",
+        "git-sha": "bf464f57275cae0be106b43d190c98564ac59b0e",
+        "built": "2026-11-02 01:56:41 +0000"
+      },
+      "apps": [
+        {
+          "package": "com.dimowner.audiorecorder",
+          "versionName": "0.9.26",
+          "versionCode": "926"
+        },
+        {
+          "package": "com.flauschcode.broccoli",
+          "versionName": "1.2.6",
+          "versionCode": "1020600"
+        },
+        {
+          "package": "com.android.camera2",
+          "versionName": "2.0.002",
+          "versionCode": "20002000"
+        },
+        {
+          "package": "com.android.chrome",
+          "versionName": "109.0.5414.123",
+          "versionCode": "541412334"
+        },
+        {
+          "package": "ca.zgrs.clipper",
+          "versionName": "1.1",
+          "versionCode": "1"
+        },
+        {
+          "package": "com.google.android.deskclock",
+          "versionName": "7.4",
+          "versionCode": "74001498"
+        },
+        {
+          "package": "com.google.android.contacts",
+          "versionName": "4.1.17.505591926",
+          "versionCode": "2960682"
+        },
+        {
+          "package": "com.google.android.dialer",
+          "versionName": "100.0.512999549",
+          "versionCode": "11348628"
+        },
+        {
+          "package": "com.google.android.documentsui",
+          "versionName": "t_frc_doc_330543000",
+          "versionCode": "330543000"
+        },
+        {
+          "package": "net.cozic.joplin",
+          "versionName": "3.0.1",
+          "versionCode": "2097740"
+        },
+        {
+          "package": "net.gsantner.markor",
+          "versionName": "2.10.9",
+          "versionCode": "146"
+        },
+        {
+          "package": "de.dennisguse.opentracks",
+          "versionName": "v4.11.3",
+          "versionCode": "5705"
+        },
+        {
+          "package": "net.osmand",
+          "versionName": "4.6.13",
+          "versionCode": "4613"
+        },
+        {
+          "package": "com.arduia.expense",
+          "versionName": "1.0.0-beta05",
+          "versionCode": "11"
+        },
+        {
+          "package": "code.name.monkey.retromusic",
+          "versionName": "6.1.0",
+          "versionCode": "10603"
+        },
+        {
+          "package": "com.android.settings",
+          "versionName": "13",
+          "versionCode": "33"
+        },
+        {
+          "package": "com.simplemobiletools.calendar.pro",
+          "versionName": "6.22.2",
+          "versionCode": "238"
+        },
+        {
+          "package": "com.simplemobiletools.draw.pro",
+          "versionName": "6.9.3",
+          "versionCode": "79"
+        },
+        {
+          "package": "com.simplemobiletools.gallery.pro",
+          "versionName": "6.28.1",
+          "versionCode": "396"
+        },
+        {
+          "package": "com.simplemobiletools.smsmessenger",
+          "versionName": "5.19.3",
+          "versionCode": "85"
+        },
+        {
+          "package": "org.tasks",
+          "versionName": "13.6.3",
+          "versionCode": "130605"
+        },
+        {
+          "package": "org.videolan.vlc",
+          "versionName": "3.5.4",
+          "versionCode": "13050407"
+        }
+      ],
+      "databases": [
+        {
+          "app": "joplin",
+          "present": false
+        },
+        {
+          "app": "open tracks sports tracker",
+          "present": false
+        },
+        {
+          "app": "osmand",
+          "present": false
+        },
+        {
+          "app": "pro expense",
+          "present": false
+        },
+        {
+          "app": "simple calendar pro",
+          "present": false
+        },
+        {
+          "app": "tasks",
+          "present": false
+        },
+        {
+          "app": "vlc",
+          "present": false
+        }
+      ],
+      "directories": [
+        {
+          "app": "audio recorder",
+          "pathSha256": "92638f0aa4415c705edab5cd730314ec8b7ec259f78d4560948b8eda4aadaee5",
+          "present": true
+        }
+      ],
+      "mismatches": {
+        "timezone": {
+          "expected": "UTC",
+          "observed": "Asia/Shanghai"
+        }
+      },
+      "qualified": false,
+      "identitySha256": "ccef3655d4cbfe26f14fc802ae204cc2619a5b9ce6036eb264857acee2e02ed1"
+    },
+    "sessions": [],
+    "coreServices": {
+      "adbState": "device",
+      "bootCompleted": "1",
+      "activityService": true,
+      "packageService": true,
+      "settingsService": true,
+      "windowService": true,
+      "systemServerPids": [
+        "500"
+      ],
+      "surfaceFlingerPids": [
+        "333"
+      ],
+      "bootId": "0f36e370-012a-4423-a1f9-959beae8f90d",
+      "appiumReady": true,
+      "grpcReady": true,
+      "qualified": true
+    },
+    "kind": "nonscoring_official_environment_recovery"
+  },
+  "remediation": {
+    "name": "android_world.utils.datetime_utils.setup_datetime",
+    "allowedScope": [
+      "auto_time",
+      "auto_time_zone",
+      "time_12_24",
+      "timezone"
+    ],
+    "freezeDatetime": false,
+    "startedAtUnix": 1794024905.392082,
+    "outcome": "completed",
+    "environmentClose": "closed",
+    "errors": [],
+    "completedAtUnix": 1794024921.7177658
+  },
+  "after": {
+    "observedAtUnix": 1794024921.718113,
+    "attestation": {
+      "device": {
+        "apiLevel": 33,
+        "abi": "arm64-v8a",
+        "buildFingerprint": "google/sdk_gphone64_arm64/emu64a:13/TE1A.240213.009/12342917:userdebug/dev-keys",
+        "screenSize": "Physical size: 1080x2400",
+        "timezone": "UTC",
+        "date": "2026-11-07"
+      },
+      "appiumBuild": {
+        "version": "3.7.0",
+        "git-sha": "bf464f57275cae0be106b43d190c98564ac59b0e",
+        "built": "2026-11-02 01:56:41 +0000"
+      },
+      "apps": [
+        {
+          "package": "com.dimowner.audiorecorder",
+          "versionName": "0.9.26",
+          "versionCode": "926"
+        },
+        {
+          "package": "com.flauschcode.broccoli",
+          "versionName": "1.2.6",
+          "versionCode": "1020600"
+        },
+        {
+          "package": "com.android.camera2",
+          "versionName": "2.0.002",
+          "versionCode": "20002000"
+        },
+        {
+          "package": "com.android.chrome",
+          "versionName": "109.0.5414.123",
+          "versionCode": "541412334"
+        },
+        {
+          "package": "ca.zgrs.clipper",
+          "versionName": "1.1",
+          "versionCode": "1"
+        },
+        {
+          "package": "com.google.android.deskclock",
+          "versionName": "7.4",
+          "versionCode": "74001498"
+        },
+        {
+          "package": "com.google.android.contacts",
+          "versionName": "4.1.17.505591926",
+          "versionCode": "2960682"
+        },
+        {
+          "package": "com.google.android.dialer",
+          "versionName": "100.0.512999549",
+          "versionCode": "11348628"
+        },
+        {
+          "package": "com.google.android.documentsui",
+          "versionName": "t_frc_doc_330543000",
+          "versionCode": "330543000"
+        },
+        {
+          "package": "net.cozic.joplin",
+          "versionName": "3.0.1",
+          "versionCode": "2097740"
+        },
+        {
+          "package": "net.gsantner.markor",
+          "versionName": "2.10.9",
+          "versionCode": "146"
+        },
+        {
+          "package": "de.dennisguse.opentracks",
+          "versionName": "v4.11.3",
+          "versionCode": "5705"
+        },
+        {
+          "package": "net.osmand",
+          "versionName": "4.6.13",
+          "versionCode": "4613"
+        },
+        {
+          "package": "com.arduia.expense",
+          "versionName": "1.0.0-beta05",
+          "versionCode": "11"
+        },
+        {
+          "package": "code.name.monkey.retromusic",
+          "versionName": "6.1.0",
+          "versionCode": "10603"
+        },
+        {
+          "package": "com.android.settings",
+          "versionName": "13",
+          "versionCode": "33"
+        },
+        {
+          "package": "com.simplemobiletools.calendar.pro",
+          "versionName": "6.22.2",
+          "versionCode": "238"
+        },
+        {
+          "package": "com.simplemobiletools.draw.pro",
+          "versionName": "6.9.3",
+          "versionCode": "79"
+        },
+        {
+          "package": "com.simplemobiletools.gallery.pro",
+          "versionName": "6.28.1",
+          "versionCode": "396"
+        },
+        {
+          "package": "com.simplemobiletools.smsmessenger",
+          "versionName": "5.19.3",
+          "versionCode": "85"
+        },
+        {
+          "package": "org.tasks",
+          "versionName": "13.6.3",
+          "versionCode": "130605"
+        },
+        {
+          "package": "org.videolan.vlc",
+          "versionName": "3.5.4",
+          "versionCode": "13050407"
+        }
+      ],
+      "databases": [
+        {
+          "app": "joplin",
+          "present": false
+        },
+        {
+          "app": "open tracks sports tracker",
+          "present": false
+        },
+        {
+          "app": "osmand",
+          "present": false
+        },
+        {
+          "app": "pro expense",
+          "present": false
+        },
+        {
+          "app": "simple calendar pro",
+          "present": false
+        },
+        {
+          "app": "tasks",
+          "present": false
+        },
+        {
+          "app": "vlc",
+          "present": false
+        }
+      ],
+      "directories": [
+        {
+          "app": "audio recorder",
+          "pathSha256": "92638f0aa4415c705edab5cd730314ec8b7ec259f78d4560948b8eda4aadaee5",
+          "present": true
+        }
+      ],
+      "mismatches": {},
+      "qualified": true,
+      "identitySha256": "a40b53fb6e581cadcade8fa80f2d5f8ff0c2edfdc89bb1a793922e83ad34c917"
+    },
+    "sessions": [],
+    "coreServices": {
+      "adbState": "device",
+      "bootCompleted": "1",
+      "activityService": true,
+      "packageService": true,
+      "settingsService": true,
+      "windowService": true,
+      "systemServerPids": [
+        "500"
+      ],
+      "surfaceFlingerPids": [
+        "333"
+      ],
+      "bootId": "0f36e370-012a-4423-a1f9-959beae8f90d",
+      "appiumReady": true,
+      "grpcReady": true,
+      "qualified": true
+    }
+  },
+  "taskReplayed": false,
+  "agentInvoked": false,
+  "originalCampaignNotModified": true
+}

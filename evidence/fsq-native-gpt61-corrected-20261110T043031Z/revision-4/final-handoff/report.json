@@ -1,0 +1,422 @@
+{
+  "schemaVersion": 1,
+  "kind": "formal_fsq_r4_final_handoff",
+  "recordedAtUtc": "2026-11-10T23:13:00.804751+00:00",
+  "status": "Complete attempt coverage, NOT qualified; no all116-valid score",
+  "campaignId": "fsq-native-gpt61-r4-clock-lifecycle-20261110",
+  "stage": "run",
+  "service": {
+    "name": "FSQFormalR4_20261110T154415Z",
+    "leaderPid": 58296,
+    "exitCode": 2,
+    "naturalExitObserved": {
+      "serviceName": "FSQFormalR4_20261110T154415Z",
+      "serviceLeaderPid": 58296,
+      "observedAtUtc": "2026-11-10T23:07:22.316188+00:00",
+      "notification": "owned service leader exit; no polling or device calls",
+      "events": [
+        {
+          "pid": 58296,
+          "flags": 32821,
+          "fflags": 2147483648,
+          "data": 0
+        }
+      ]
+    }
+  },
+  "originalArtifacts": {
+    "reportPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/report.json",
+    "reportByteSha256": "9bde5eb175cee2b6a9ac9a8d2827b7740b6d885c059caad5876a9dcfb1b59730",
+    "reportInternalIdentitySha256": "ffe0e4175aa39c3975ef3bc307d7f1dd714cc21ebbd2d08144c1f75451c9b435",
+    "checkpointPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/checkpoint.jsonl",
+    "taskIndex": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/final-handoff/task-index.json",
+    "originalArtifactsUnmodified": true
+  },
+  "time": {
+    "startedAtUtc": "2026-11-10T15:44:44.771013+00:00",
+    "completedAtUtc": "2026-11-10T23:07:22.277957+00:00",
+    "wallSeconds": 26557.506944179535
+  },
+  "qualified": false,
+  "haltReason": null,
+  "summary": {
+    "attempted": 116,
+    "classifications": {
+      "failed": 56,
+      "invalid_evaluator": 1,
+      "passed": 59
+    },
+    "coverage": 1.0,
+    "expected": 116,
+    "officialLeaderboardClaim": false,
+    "policyProven": false,
+    "purpose": "single_attempt_frozen_suite",
+    "reward": {
+      "count": 115,
+      "denominator": "valid_official_rewards_only",
+      "diagnosticOnly": true,
+      "mean": 0.5217391304347826,
+      "sum": 60.0
+    }
+  },
+  "familiesFromFrozenFieldOnly": [
+    {
+      "family": "android",
+      "attempted": 91,
+      "validOfficialRewards": 90,
+      "invalid": 1,
+      "classifications": {
+        "passed": 48,
+        "failed": 42,
+        "invalid_evaluator": 1
+      },
+      "rewardSum": 49.0,
+      "validOnlyMean": 0.5444444444444444,
+      "denominator": "valid_official_rewards_only; diagnostic, not full-suite valid score"
+    },
+    {
+      "family": "information_retrieval",
+      "attempted": 25,
+      "validOfficialRewards": 25,
+      "invalid": 0,
+      "classifications": {
+        "passed": 11,
+        "failed": 14
+      },
+      "rewardSum": 11.0,
+      "validOnlyMean": 0.44,
+      "denominator": "valid_official_rewards_only; diagnostic, not full-suite valid score"
+    }
+  ],
+  "scoreScope": {
+    "validOfficialRewardArtifacts": 115,
+    "invalidEvaluator": 1,
+    "nullIsNotZero": true,
+    "validOnlyRewardSum": 60.0,
+    "validOnlyRewardMean": 0.5217391304347826,
+    "complete116ValidTotalScore": null,
+    "partialRewards": {
+      "count": 2,
+      "each": 0.5
+    },
+    "operationalErrorEpisodes": 5,
+    "protocolCleanEpisodes": 111,
+    "warning": "Valid official reward artifact is distinct from native protocol qualification; four valid-reward rows still fail exact_main_summary. No smoke/calibration rewards mixed in, no alternative repaired score."
+  },
+  "operationalErrorEpisodes": [
+    {
+      "index": 13,
+      "name": "ExpenseAddMultipleFromGallery",
+      "classification": "passed",
+      "officialReward": 1.0,
+      "operationalErrors": [
+        "exact_main_summary"
+      ],
+      "resultPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/013-ExpenseAddMultipleFromGallery/result.json"
+    },
+    {
+      "index": 14,
+      "name": "ExpenseAddMultipleFromMarkor",
+      "classification": "failed",
+      "officialReward": 0.0,
+      "operationalErrors": [
+        "exact_main_summary"
+      ],
+      "resultPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/014-ExpenseAddMultipleFromMarkor/result.json"
+    },
+    {
+      "index": 48,
+      "name": "RecipeAddMultipleRecipesFromMarkor2",
+      "classification": "failed",
+      "officialReward": 0.0,
+      "operationalErrors": [
+        "exact_main_summary"
+      ],
+      "resultPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/048-RecipeAddMultipleRecipesFromMarkor2/result.json"
+    },
+    {
+      "index": 49,
+      "name": "RecipeAddSingleRecipe",
+      "classification": "passed",
+      "officialReward": 1.0,
+      "operationalErrors": [
+        "exact_main_summary"
+      ],
+      "resultPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/049-RecipeAddSingleRecipe/result.json"
+    },
+    {
+      "index": 101,
+      "name": "SystemCopyToClipboard",
+      "classification": "invalid_evaluator",
+      "officialReward": null,
+      "operationalErrors": [
+        "invalid_official_evaluation",
+        "evaluator_artifact_reward"
+      ],
+      "resultPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/101-SystemCopyToClipboard/result.json"
+    }
+  ],
+  "exactMainSummaryContract": {
+    "source": "src/fsq_androidworld_eval/fsq_campaign.py:276-283",
+    "predicate": "validated native evidence proof.answer.status != valid -> exact_main_summary",
+    "meaning": "Requires exactly one successful native agent_runtime.runner and its parsed AgentFinalOutput/task_run_v1 summary verbatim; no replacement from pre-plan/verifier/top-level summary. These four recorded mainAnswer.status=failed/reason Main runner did not succeed, so the exact main-answer producer contract is unproven. This tag is not a claim that the official evaluator returned no value.",
+    "cases": [
+      {
+        "index": 13,
+        "name": "ExpenseAddMultipleFromGallery",
+        "classification": "passed",
+        "officialReward": 1.0,
+        "validOfficialReward": true,
+        "mainAnswer": {
+          "reason": "Main runner did not succeed",
+          "source": "agent_runtime.runner.tool_output.summary",
+          "status": "failed"
+        },
+        "nativeStatus": "error",
+        "internalVerification": {
+          "observation": "returned_in_complete_native_task_result",
+          "status": "inconclusive"
+        },
+        "evaluatorCalls": 1,
+        "operationalErrors": [
+          "exact_main_summary"
+        ],
+        "resultPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/013-ExpenseAddMultipleFromGallery/result.json"
+      },
+      {
+        "index": 14,
+        "name": "ExpenseAddMultipleFromMarkor",
+        "classification": "failed",
+        "officialReward": 0.0,
+        "validOfficialReward": true,
+        "mainAnswer": {
+          "reason": "Main runner did not succeed",
+          "source": "agent_runtime.runner.tool_output.summary",
+          "status": "failed"
+        },
+        "nativeStatus": "error",
+        "internalVerification": {
+          "observation": "returned_in_complete_native_task_result",
+          "status": "inconclusive"
+        },
+        "evaluatorCalls": 1,
+        "operationalErrors": [
+          "exact_main_summary"
+        ],
+        "resultPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/014-ExpenseAddMultipleFromMarkor/result.json"
+      },
+      {
+        "index": 48,
+        "name": "RecipeAddMultipleRecipesFromMarkor2",
+        "classification": "failed",
+        "officialReward": 0.0,
+        "validOfficialReward": true,
+        "mainAnswer": {
+          "reason": "Main runner did not succeed",
+          "source": "agent_runtime.runner.tool_output.summary",
+          "status": "failed"
+        },
+        "nativeStatus": "error",
+        "internalVerification": {
+          "observation": "returned_in_complete_native_task_result",
+          "status": "inconclusive"
+        },
+        "evaluatorCalls": 1,
+        "operationalErrors": [
+          "exact_main_summary"
+        ],
+        "resultPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/048-RecipeAddMultipleRecipesFromMarkor2/result.json"
+      },
+      {
+        "index": 49,
+        "name": "RecipeAddSingleRecipe",
+        "classification": "passed",
+        "officialReward": 1.0,
+        "validOfficialReward": true,
+        "mainAnswer": {
+          "reason": "Main runner did not succeed",
+          "source": "agent_runtime.runner.tool_output.summary",
+          "status": "failed"
+        },
+        "nativeStatus": "error",
+        "internalVerification": {
+          "observation": "returned_in_complete_native_task_result",
+          "status": "success"
+        },
+        "evaluatorCalls": 1,
+        "operationalErrors": [
+          "exact_main_summary"
+        ],
+        "resultPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/049-RecipeAddSingleRecipe/result.json"
+      }
+    ],
+    "validityDistinction": "Original numeric official rewards and passed/failed classifications are preserved. These four have valid official reward artifacts but operational contract errors, hence not protocol-clean episodes.",
+    "qualifiedFalseImpact": "Together with101 evaluator errors, any nonempty operationalErrors violates the final qualified predicate. Qualified=false is not attributable only to101."
+  },
+  "invalid101": {
+    "task": {
+      "index": 101,
+      "name": "SystemCopyToClipboard",
+      "paramsSha256": "483182e9666317c279cbfe9f2814cac742ebb6f8602b043feb879d479bf4a8c1"
+    },
+    "classification": "invalid_evaluator",
+    "officialReward": null,
+    "evaluatorCalls": 1,
+    "originalDiagnostic": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/101-SystemCopyToClipboard/raw-private/evaluator-diagnostics.json",
+    "exception": {
+      "type": "RuntimeError",
+      "arguments": {
+        "type": "tuple",
+        "items": [
+          "Clipper app must be in the foreground to access clipboard. Additionally, app privileges must be granted manually by opening the clipper app and granting them."
+        ],
+        "omittedItems": 0
+      },
+      "frames": [
+        {
+          "file": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/src/fsq_androidworld_eval/fsq_runner.py",
+          "function": "run_episode",
+          "line": 366
+        },
+        {
+          "file": "/Users/qunmi/.local/share/fsq-androidworld-eval/fsq-native-gpt61-corrected-20261110T043031Z/evaluator-site/android_world/task_evals/single/system.py",
+          "function": "is_successful",
+          "line": 327
+        },
+        {
+          "file": "/Users/qunmi/.local/share/fsq-androidworld-eval/fsq-native-gpt61-corrected-20261110T043031Z/evaluator-site/android_world/env/adb_utils.py",
+          "function": "get_clipboard_contents",
+          "line": 1171
+        },
+        {
+          "file": "/Users/qunmi/.local/share/fsq-androidworld-eval/fsq-native-gpt61-corrected-20261110T043031Z/evaluator-site/android_world/env/adb_utils.py",
+          "function": "_extract_clipper_output",
+          "line": 1136
+        }
+      ],
+      "framesTruncated": false
+    },
+    "sourceCause": "Official get_clipboard_contents launched Clipper, accepted the adb response status and then _extract_clipper_output raised because extract_broadcast_data returned None; official comparison never produced reward.",
+    "safetyAndAttribution": "Foreground/clipboard permission and returned broadcast-data preconditions are required by the official helper. Raw broadcast payload/current foreground/privilege state were not retained here, so permission absence, foreground timing, empty/unparseable payload cannot be distinguished. No evidence proves an external network transient or a particular model fault. Native worker exit0/failed internal verification does not make official reward valid. No replay or permission repair.",
+    "cleanup": {
+      "environment": "closed",
+      "nativeDeviceRestoration": "not_provided_by_close",
+      "taskTearDown": "completed",
+      "workerProcessGroup": "settled"
+    },
+    "nativeKillEvidence": {
+      "status": "denied",
+      "reason": "native kill_app denied by original action budget; not a successful app kill or whole-device restoration"
+    }
+  },
+  "protocolDeviation": {
+    "requested": "Stop immediately on invalid/forced/unknowncleanup/drift",
+    "actualFrozenPredicate": "halt_reason stops unknown/failed task/environment/worker cleanup, forced worker/outer, evidenceFailure, or global identity/authorization/readiness drift. It does not stop invalid_evaluator or exact_main_summary alone.",
+    "source": [
+      "src/fsq_androidworld_eval/fsq_campaign.py:204-220",
+      "src/fsq_androidworld_eval/fsq_campaign.py:867-888"
+    ],
+    "effect": "Four exact_main_summary episodes and101 invalid_evaluator did not break scheduling. Indices102..115 were subsequently consumed. Final qualified=false/exit2 while haltReason remains null.",
+    "accountability": "The earlier assistant statement that every invalid would immediately failclosed-stop was inaccurate. This is a real instruction/driver contract deviation, not successful immediate-stop compliance. Preserve it; no hot change, rerun, retrospective reclassification or score repair.",
+    "urgentInterjectionBoundary": "Owned service exit kernel event and original final report already showed115 completed when urgent instruction was handled. No current episode was killed and no further work was launched."
+  },
+  "frozenIdentity": {
+    "manifestSha256": "a8550aee3e1b9438377d34b5cf48ff4adde732785afe40aae2249f6266773030",
+    "identitiesSha256": "21a1a5baabc02853a7814fab3054ce49754b1d41c9308577450310b1294cf6cb",
+    "sourceTreeSha256": "92b8bc71f0b26b19aacb1b23cd0944c3a3f614dbd46c72ab93076629590e2625",
+    "fsqSourceSha256": "5ae6f139056ce10164f47fa2f91ec068fbdcdfe0235b2fcea821ad9ddc2c648d",
+    "fsqVersion": "0.1.2",
+    "model": "gpt-6.1-sol",
+    "provider": "github_copilot",
+    "visibleModelLimitation": "Configured/requested github_copilot/gpt-6.1-sol and recorded native-call receipt only. Native ModelResult does not expose server-returned model or backend weight/build identity. No leaderboard or single-variable comparison with prior5.6-sol/historical AMKernel83.1897."
+  },
+  "binding": {
+    "authorizationSha256": "b5b15d69a3e41f0687c54d3e003f190f1883e6d43d9581aeb0c59d9f4e973a61",
+    "identitiesSha256": "21a1a5baabc02853a7814fab3054ce49754b1d41c9308577450310b1294cf6cb",
+    "manifestSha256": "a8550aee3e1b9438377d34b5cf48ff4adde732785afe40aae2249f6266773030",
+    "model": "gpt-6.1-sol",
+    "provider": "github_copilot",
+    "target": {
+      "adbPath": "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+      "authenticationStatus": "pending",
+      "consolePort": 5554,
+      "grpcPort": 8554,
+      "model": "gpt-6.1-sol",
+      "provider": "github_copilot",
+      "readinessStatus": "pending",
+      "resourceStatus": "pending",
+      "serial": "emulator-5554"
+    }
+  },
+  "sourceReviewSha256": "dd74fddaeaccf5e9a86484fb7ff6603ce92ccedef3ca13683562c35b895f9990",
+  "modelCallReceiptSha256": "58d96868e5e4ccb139eb16e688178de0f2e9acbad40bc1f0035a293e0dd47323",
+  "prerequisites": {
+    "calibration": {
+      "path": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/calibrate/report.json",
+      "sha256": "c1da81de0ff3922457208593e07b0ca2162f53a46d9ee45d026e9b3681675691"
+    },
+    "readiness": {
+      "path": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/qualify-after-map-baseline/readiness.json",
+      "sha256": "fe413d66d4686e44faa0cf601d29be03057709300916bcc63c048de20d5a7bdf"
+    },
+    "rehearsal": {
+      "path": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/rehearse/report.json",
+      "sha256": "772008eb4bc3d207d3c9a2ec16e11bf5391bbb87f929b53c6afdd5fd593df8d9"
+    }
+  },
+  "usage": {
+    "scope": "Archived native execution-result.json Harness AI assertion token_usage only; select harness_metadata.ai_assertion.token_usage once per recorded phase, exclude mirrored harness_output fields",
+    "episodesWithObservedAssertionUsage": 49,
+    "observedAssertionUsageEntries": 81,
+    "input_tokens": 266624,
+    "output_tokens": 8596,
+    "total_tokens": 275220,
+    "notWholeAgentUsage": true,
+    "preplanMainRunnerVerifierOrOtherCalls": "not inferred or counted; no full-run token/cost total claimed",
+    "nativeDurationMsSum": 23431024,
+    "nativeDurationCoverage": 116
+  },
+  "cleanup": {
+    "aggregate": {
+      "completeResults": 116,
+      "taskTearDown": {
+        "completed": 116
+      },
+      "environment": {
+        "closed": 116
+      },
+      "workerProcessGroup": {
+        "settled": 116
+      },
+      "cleanupFailure": {
+        "False": 116
+      },
+      "nativeDeviceRestoration": {
+        "not_provided_by_close": 116
+      },
+      "workerExitObserved": 116,
+      "workerGroupSettled": 116,
+      "forcedOrKilledWorkers": 0,
+      "outerForced": 0
+    },
+    "rawWorkerReceiptMatches": 116,
+    "outerExitCodes": {
+      "0": 116
+    },
+    "scope": "Original result cleanup plus each referenced raw-private/worker-process.json and recorded outer process evidence only; no new OS/session/device probe. Each per-task index links original receipts.",
+    "inFlightBusiness": "none known: original terminal report complete and owned service exit observed; no new work launched",
+    "identifiedOwnedWorkersOrGroupsPending": 0,
+    "nativeDeviceRestoration": "NOT provided by close; do not claim device/app/user-state rollback",
+    "historicalR3Unknown": "preserved, not upgraded to clean",
+    "passiveOwnedFiles": "Evidence/native workspaces retained; no blanket temp-deletion or global-clean claim",
+    "sharedServices": "Appium/emulator/ADB/other sessions untouched",
+    "remainingUnknowns": "Whole-device end-state and historical/unrelated sessions are not newly probed or claimed clean. No known unresolved cleanup in this run recorded by its owned receipts."
+  },
+  "targetHandoff": {
+    "noLongerHeldByThisAssistant": true,
+    "coordinatorExplicitlyReleasedTo": "w6:p1 exact5554/8554 per actual coordinator instruction",
+    "furtherDeviceActions": false,
+    "hourlyNotifier": "Coordinator reports its new hourly notifier stopped normally; no timer touched here"
+  },
+  "completionBoundary": "Final artifact/README delivery only. No campaign, retry, scoring, source/SDK change, feature or optimization follows."
+}

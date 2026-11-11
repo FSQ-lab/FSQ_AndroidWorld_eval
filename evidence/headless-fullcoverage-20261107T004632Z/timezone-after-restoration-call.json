@@ -1,0 +1,13 @@
+{
+  "command": [
+    "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+    "-s",
+    "emulator-5554",
+    "shell",
+    "getprop persist.sys.timezone; settings get global auto_time; settings get global auto_time_zone; settings get system time_12_24; cat /proc/sys/kernel/random/boot_id; pidof system_server surfaceflinger"
+  ],
+  "returnCode": 0,
+  "stdout": "Asia/Shanghai\n0\n0\n24\n0f36e370-012a-4423-a1f9-959beae8f90d\n333 500\n",
+  "stderr": "",
+  "observedAtUnix": 1794024807.94533
+}

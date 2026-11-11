@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "kind": "investigation_document_lifecycle_wording_closure",
+  "passed": true,
+  "modifiedExistingFiles": [
+    "report.md",
+    "cases.json"
+  ],
+  "scope": "仅调查文档生命周期措辞、阅读指引及受影响项检查；不重新扫描封存证据/源码/设备",
+  "uniqueCaseCount": 59,
+  "exactOriginalCaseSet": true,
+  "reportCaseHeadings": 59,
+  "unchangedExceptTwelveFixBehaviorFields": true,
+  "changedLifecycleCases": [
+    2,
+    3,
+    4,
+    7,
+    8,
+    9,
+    41,
+    82,
+    84,
+    85,
+    86,
+    113
+  ],
+  "reportAndCasesLifecyclePolicyExactMatch": true,
+  "canonicalLifecyclePolicy": "主推荐仅用于未来版本：修改FSQ通用Android Skill/生命周期；close仅释放连接及owned临时资源，不无条件force-stop业务app，默认保持用户终态。harness仍在完整native返回后调用原官方评分一次，评分边界/rubric不变，不按case名特判kill。确需app_stop时，仅按公开任务/授权语义明确执行并保留证据。本轮frozen skill、原分数和产物不改，不移动原取样边界。",
+  "delayedKillOrScoringBarrierRecommendationsRemaining": 0,
+  "readerGuideAndRequestedTermsPresent": true,
+  "reportOtherContentUnchanged": true,
+  "reportLinksUnchanged": true,
+  "reportLocalFileLinksChecked": 482,
+  "reportInternalAnchorLinksChecked": 59,
+  "brokenLinks": 0,
+  "originalRewardClassificationAndAllOtherCaseFieldsUnchanged": true,
+  "prior649ArtifactHashChecks": "复用原validation.json已通过结果；本次未重扫、未改该记录",
+  "frozenSkillOriginalScoresAndArtifacts": "本次未读取或修改",
+  "noCodeDeviceTaskScoringOrRepairVerification": true
+}

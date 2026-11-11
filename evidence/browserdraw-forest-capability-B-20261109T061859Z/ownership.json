@@ -1,0 +1,71 @@
+{
+  "observedAtUnix": 1794205283.5389178,
+  "observedHostUtc": "2026-11-09T06:21:23Z",
+  "deviceSerial": "emulator-5554",
+  "deviceBootId": "0f36e370-012a-4423-a1f9-959beae8f90d",
+  "uiautomator2InstrumentationRunning": false,
+  "adbForwards": [
+    ""
+  ],
+  "appiumListenerPresent": true,
+  "appiumSessionOpenByLog": false,
+  "preExistingOtherSessions": [
+    {
+      "source": "appium master log",
+      "line": 338524,
+      "text": "2026-11-09 06:14:57:848 [b3908942][HTTP] --> POST /session/b3908942-c56d-489c-b2ca-9057a1430461/actions {\"actions\":[{\"type\":\"pointer\",\"parameters\":{\"pointerType\":\"touch\"},\"id\":\"touch\",\"actions\":[{\"type\":\"pointerMove\",\"duration\":250,\"x\":632,\"y\":1848,\"origin\":\"viewport\"},{\"type\":\"pointerDown\",\"duration\":0,\"button\":0},{\"type\":\"pause\",\"duration\":100},{\"type\":\"pointerUp\",\"duration\":0,\"button\":0}]}]}"
+    },
+    {
+      "source": "appium master log",
+      "line": 338525,
+      "text": "2026-11-09 06:14:58:250 [HTTP] <-- POST /session/b3908942-c56d-489c-b2ca-9057a1430461/actions 200 402 ms - 14"
+    },
+    {
+      "source": "appium master log",
+      "line": 338526,
+      "text": "2026-11-09 06:14:59:253 [b3908942][HTTP] --> POST /session/b3908942-c56d-489c-b2ca-9057a1430461/execute/sync {\"script\":\"mobile: getCurrentPackage\",\"args\":[]}"
+    },
+    {
+      "source": "appium master log",
+      "line": 338527,
+      "text": "2026-11-09 06:14:59:281 [HTTP] <-- POST /session/b3908942-c56d-489c-b2ca-9057a1430461/execute/sync 200 28 ms - 30"
+    },
+    {
+      "source": "appium master log",
+      "line": 338528,
+      "text": "2026-11-09 06:14:59:283 [b3908942][HTTP] --> POST /session/b3908942-c56d-489c-b2ca-9057a1430461/execute/sync {\"script\":\"mobile: getCurrentActivity\",\"args\":[]}"
+    },
+    {
+      "source": "appium master log",
+      "line": 338529,
+      "text": "2026-11-09 06:14:59:302 [HTTP] <-- POST /session/b3908942-c56d-489c-b2ca-9057a1430461/execute/sync 200 19 ms - 60"
+    }
+  ],
+  "preExistingOtherDeletes": [
+    {
+      "line": 336610,
+      "text": "2026-11-09 05:47:54:643 [03869ee7][HTTP] --> DELETE /session/03869ee7-120d-400d-9adf-b3e0ea25abfe "
+    },
+    {
+      "line": 336614,
+      "text": "2026-11-09 05:47:54:811 [HTTP] <-- DELETE /session/03869ee7-120d-400d-9adf-b3e0ea25abfe 200 167 ms - 14"
+    },
+    {
+      "line": 338204,
+      "text": "2026-11-09 05:49:45:964 [8e9300f1][HTTP] --> DELETE /session/8e9300f1-89a8-4d67-bef2-04b9a09b6b6e "
+    },
+    {
+      "line": 338208,
+      "text": "2026-11-09 05:49:46:129 [HTTP] <-- DELETE /session/8e9300f1-89a8-4d67-bef2-04b9a09b6b6e 200 165 ms - 14"
+    },
+    {
+      "line": 338536,
+      "text": "2026-11-09 06:15:03:279 [b3908942][HTTP] --> DELETE /session/b3908942-c56d-489c-b2ca-9057a1430461 "
+    },
+    {
+      "line": 338540,
+      "text": "2026-11-09 06:15:03:489 [HTTP] <-- DELETE /session/b3908942-c56d-489c-b2ca-9057a1430461 200 210 ms - 14"
+    }
+  ],
+  "conclusion": "No task-owned Appium session and no UiAutomator2 instrumentation are live at this preflight: the last master-log session operation is a DELETE, no instrumentation process is running and the forward list is empty. Shared Appium/emulator are reused without restart."
+}

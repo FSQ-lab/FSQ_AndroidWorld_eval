@@ -1,0 +1,13 @@
+{
+  "command": [
+    "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+    "-s",
+    "emulator-5554",
+    "shell",
+    "cat /proc/sys/kernel/random/boot_id; pidof system_server surfaceflinger; service check activity; service check settings; service check window; appops get org.videolan.vlc MANAGE_EXTERNAL_STORAGE; su 0 sh -c \"find /data/data/android_world/snapshots/org.videolan.vlc -maxdepth 2 -type f\""
+  ],
+  "returnCode": 1,
+  "stdout": "0f36e370-012a-4423-a1f9-959beae8f90d\n333 500\nService activity: found\nService settings: found\nService window: found\nMANAGE_EXTERNAL_STORAGE: default; rejectTime=+1118d9h12m1s819ms ago\n",
+  "stderr": "find: '/data/data/android_world/snapshots/org.videolan.vlc': No such file or directory\n",
+  "observedAtUnix": 1794012445.108017
+}

@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "kind": "native_fsq_independent_delta_closure",
+  "status": "approved_offline_delta_closure",
+  "approved": true,
+  "liveAuthorized": false,
+  "createdAtUtc": "2026-11-10T13:02:45.619149+00:00",
+  "reviewOwner": "w4:p2",
+  "implementationOwner": "w4:p1",
+  "coordinator": "w6:p2",
+  "scope": "Only canonical swipe self-alias predicate repair, its exact producer-derived desensitized fixture, consumer proof and associated documentation. No broad R01-R08/AMKernel re-audit or live qualification.",
+  "candidate": {
+    "path": "evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-3/candidate-final-manifest.json",
+    "sha256": "d9f3237c0d6d26f512bfdd3870fd4563519fc24f6cae160beb93a015a597a057"
+  },
+  "evaluatorSourceTreeSha256": "69158f28eadbcd1921bd58a4dd9207b7dcbc10d5fd2756507604313d163bf99c",
+  "handoff": {
+    "path": "evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-3/review-handoff.json",
+    "sha256": "ea7a1ab81ad04a2a3f2b0d996fa2c549bd4d4eb27c707b152eed6d813b299c60"
+  },
+  "delivery": {
+    "path": "evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-3/delivery.json",
+    "sha256": "9a58e56258cda2460a6f258ebcf98210cf043c0055eb4245b84a1170a240c8af"
+  },
+  "reviewedFiles": [
+    {
+      "path": "src/fsq_androidworld_eval/fsq_evidence.py",
+      "sha256": "1d448e1ee60b0a1c00814d5ed0b10728172ae29f69078be104d69acafa4f9c03",
+      "matchesFrozen": true,
+      "sizeMatches": true
+    },
+    {
+      "path": "tests/test_fsq_evidence.py",
+      "sha256": "5fbb3b26c0c65a3f9b6bf52b7dd73bfe2fd357fd6280dba485fcaeae19f892a1",
+      "matchesFrozen": true,
+      "sizeMatches": true
+    },
+    {
+      "path": "tests/fixtures/fsq_native_swipe.json",
+      "sha256": "38c84f655fa2deb24e58075fde2d4dd08287e3d3c2cb6792779d0207df8bd866",
+      "matchesFrozen": true,
+      "sizeMatches": true
+    },
+    {
+      "path": "README.md",
+      "sha256": "636dd453a262d0830a6d1b0af9881870a5963a5c33ffe39fec05fb52c198d936",
+      "matchesFrozen": true,
+      "sizeMatches": true
+    }
+  ],
+  "decision": {
+    "runtimeDelta": [
+      "fsq_evidence.py:134-138"
+    ],
+    "canonicalPredicate": "WRITE_ALIASES.get(capability, capability) == capability",
+    "onlyNewlyAcceptedAliasSpelling": "swipe",
+    "otherProducerAliasesStillRejected": true,
+    "swipeRemainsCountedWrite": true,
+    "noSafetyIdentityReplayBudgetChecksReduced": true,
+    "newBlockingFindings": []
+  },
+  "independentEvidence": {
+    "producerFixture": "Four source artifacts match retained producer SHA/size. Journal shape, numerical values, control vocabulary and ordering match; only the full-return task identity strings are consistently replaced. TaskResult/verification retain structure/numbers with free-text redaction. Live references are rebuilt only in temporary test roots.",
+    "canonicalConsumer": {
+      "accepted": true,
+      "events": 23,
+      "attempted": 5,
+      "admitted": 5,
+      "succeeded": 5,
+      "failed": 0,
+      "inFlight": 0,
+      "exactSummaryBusinessStatus": true,
+      "mainFinalOrdering": "unknown"
+    },
+    "negativeConsumers": [
+      {
+        "attack": "rehashed launchApp alias",
+        "accepted": false,
+        "error": "Noncanonical dispatch capability"
+      },
+      {
+        "attack": "rehashed swipe countedWrite=false plus synchronously reduced counters",
+        "accepted": false,
+        "error": "Mislabeled counted write"
+      }
+    ],
+    "sourceIsolation": "Inverse single-block byte reconstruction equals revision2 source hash; no old consumer executed.",
+    "full313OrOriginalCheckRerun": false
+  },
+  "frozenContract": {
+    "taskCount": 116,
+    "allFrozenTaskRowsEqualRevision2": true,
+    "nativeSDKAndroidWorldProviderModelAdbFrozenIdentitiesEqualRevision2": true,
+    "targetPathsProtocolBudgetsEqualRevision2": true,
+    "changedIdentityDomains": [
+      "evaluator"
+    ],
+    "allCandidateGatesPending": true,
+    "revision2QualificationTransferred": false,
+    "revision2AuthorizationTransferred": false,
+    "newQualificationOrAuthorizationIssuedByReviewer": false
+  },
+  "historicalPreservation": {
+    "revision2IndependentApproval": {
+      "path": "evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-2/independent-closure/report.json",
+      "sha256": "5a941efe9bbe6d66f8a487c2995ea77946d7cccca898c0d422aef5fc02e612f6",
+      "unchanged": true,
+      "notReissuedForRevision3": true
+    },
+    "original102": {
+      "path": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-2/resource-admission-20261110/fsq-envprepare-r1-5554-20261110T065520Z/execution/smoke-102-SystemWifiTurnOff/result.json",
+      "sha256": "c1b8870e419f480f3af907fa62dec004265a09c506406ea3006037e8f0a0f414",
+      "classification": "invalid_agent",
+      "invalidReason": "invalid_agent",
+      "evidenceFailure": "native_evidence_invalid",
+      "officialReward": null,
+      "evaluatorCalls": 0,
+      "readOnlyObservation": true,
+      "consumerOrEvaluatorReexecuted": false
+    },
+    "original102OfficialOutcome": "invalid_agent/native_evidence_invalid; reward=null; evaluatorCalls=0. No retry, revalidation, rescoring or terminal mutation.",
+    "nativeStatusOrConsumerAcceptanceIsNotOfficialReward": true
+  },
+  "r03ContractUnchanged": "Kill/main-final observation only; no successful-kill eligibility gate, no main-final ordering gate, no supplemental kill or forced output.",
+  "evidence": [
+    {
+      "path": "verification.json",
+      "sha256": "7f4c6135ceee58acbfd2f587fc73858b4863051d1958472db8b66721d3bc6f05"
+    },
+    {
+      "path": "consumer-proof.json",
+      "sha256": "3f2c3d9cadd2f2558eb206781322602abe1792a8ab7b215b45de017fe18793d2"
+    }
+  ],
+  "remaining": [
+    "Coordinator w6:p2 separately decides any new authorization/resource window and fresh revision3 qualification; old revision2 qualification is not transferable.",
+    "Any subsequent smoke must be a different task selected and separately authorized by coordinator; consumed102 must not be repeated.",
+    "No live/device/model/evaluator/qualification command is authorized by this offline closure; no assumption that native success has official reward."
+  ],
+  "invalidation": "Approval binds only the stated revision3 candidate/source/fixture bytes. Any further runtime/SDK/AW/model/target/receipt change needs corresponding new binding and coordinator/reviewer handling.",
+  "writes": "Only new revision3/independent-closure artifacts written. Implementation, original evidence, prior approvals, candidates and qualification/smoke results untouched; no Git writes, shared-service calls or timer changes."
+}

@@ -1,0 +1,119 @@
+{
+  "status": "只读调查与未来方案；未实现、未执行验证",
+  "frozenSource": {
+    "path": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/src/fsq_androidworld_eval/fsq_campaign.py",
+    "sha256": "fe0b3280562b2801b3faca509e34b4a98db79c247ebfe41bbaaba5bab57e3210",
+    "matchesCandidateManifest": true
+  },
+  "mainErrors": [
+    {
+      "index": 13,
+      "name": "ExpenseAddMultipleFromGallery",
+      "classification": "passed",
+      "officialReward": 1.0,
+      "mainError": "Agent exceeded the configured turn limit.",
+      "artifactOperation": "read_artifact_slice",
+      "artifactOperationCount": 23,
+      "admittedMaximum": "46/60",
+      "deadlineExceeded": false,
+      "budgetDenied": 0,
+      "facts": "已录三笔并被官方判1；业务完成后没有主summary",
+      "mechanismConfidence": "重复读取与100turn错误是事实；多层JSON字符串/历史裁剪/缺稳定候选账本诱发循环为强推断，wire prompt未保留，不能量化独立因果权重",
+      "futureFix": "FSQ工件工具提供带source refs的短结构化结果/字段查询、保留带身份的事实与读取cursor；规划保存候选覆盖；不增加turn预算的有界进展检查和合法收尾机会。不得把EngineError变成功或用verifier/外层日志补main。"
+    },
+    {
+      "index": 14,
+      "name": "ExpenseAddMultipleFromMarkor",
+      "classification": "failed",
+      "officialReward": 0.0,
+      "mainError": "Agent exceeded the configured turn limit.",
+      "artifactOperation": "search_artifact",
+      "artifactOperationCount": 55,
+      "admittedMaximum": "12/60",
+      "deadlineExceeded": false,
+      "budgetDenied": 0,
+      "facts": "无任何新增；局部no→全覆盖无证；反复search未推进",
+      "mechanismConfidence": "重复读取与100turn错误是事实；多层JSON字符串/历史裁剪/缺稳定候选账本诱发循环为强推断，wire prompt未保留，不能量化独立因果权重",
+      "futureFix": "FSQ工件工具提供带source refs的短结构化结果/字段查询、保留带身份的事实与读取cursor；规划保存候选覆盖；不增加turn预算的有界进展检查和合法收尾机会。不得把EngineError变成功或用verifier/外层日志补main。"
+    },
+    {
+      "index": 48,
+      "name": "RecipeAddMultipleRecipesFromMarkor2",
+      "classification": "failed",
+      "officialReward": 0.0,
+      "mainError": "Agent exceeded the configured turn limit.",
+      "artifactOperation": "read_artifact_slice",
+      "artifactOperationCount": 81,
+      "admittedMaximum": "9/60",
+      "deadlineExceeded": false,
+      "budgetDenied": 0,
+      "facts": "首artifact已有合格完整候选但没有打开Broccoli录入；反复slice",
+      "mechanismConfidence": "重复读取与100turn错误是事实；多层JSON字符串/历史裁剪/缺稳定候选账本诱发循环为强推断，wire prompt未保留，不能量化独立因果权重",
+      "futureFix": "FSQ工件工具提供带source refs的短结构化结果/字段查询、保留带身份的事实与读取cursor；规划保存候选覆盖；不增加turn预算的有界进展检查和合法收尾机会。不得把EngineError变成功或用verifier/外层日志补main。"
+    },
+    {
+      "index": 49,
+      "name": "RecipeAddSingleRecipe",
+      "classification": "passed",
+      "officialReward": 1.0,
+      "mainError": "Agent exceeded the configured turn limit.",
+      "artifactOperation": "read_artifact_slice",
+      "artifactOperationCount": 66,
+      "admittedMaximum": "18/24",
+      "deadlineExceeded": false,
+      "budgetDenied": 0,
+      "facts": "菜谱保存并逐字段验证、官方1；后反复读已过断言",
+      "mechanismConfidence": "重复读取与100turn错误是事实；多层JSON字符串/历史裁剪/缺稳定候选账本诱发循环为强推断，wire prompt未保留，不能量化独立因果权重",
+      "futureFix": "FSQ工件工具提供带source refs的短结构化结果/字段查询、保留带身份的事实与读取cursor；规划保存候选覆盖；不增加turn预算的有界进展检查和合法收尾机会。不得把EngineError变成功或用verifier/外层日志补main。"
+    }
+  ],
+  "scheduling": {
+    "requested": "Stop immediately on invalid/forced/unknowncleanup/drift",
+    "actualFrozenPredicate": "halt_reason stops unknown/failed task/environment/worker cleanup, forced worker/outer, evidenceFailure, or global identity/authorization/readiness drift. It does not stop invalid_evaluator or exact_main_summary alone.",
+    "source": [
+      "src/fsq_androidworld_eval/fsq_campaign.py:204-220",
+      "src/fsq_androidworld_eval/fsq_campaign.py:867-888"
+    ],
+    "effect": "Four exact_main_summary episodes and101 invalid_evaluator did not break scheduling. Indices102..115 were subsequently consumed. Final qualified=false/exit2 while haltReason remains null.",
+    "accountability": "The earlier assistant statement that every invalid would immediately failclosed-stop was inaccurate. This is a real instruction/driver contract deviation, not successful immediate-stop compliance. Preserve it; no hot change, rerun, retrospective reclassification or score repair.",
+    "urgentInterjectionBoundary": "Owned service exit kernel event and original final report already showed115 completed when urgent instruction was handled. No current episode was killed and no further work was launched."
+  },
+  "futureValidation": [
+    {
+      "case": "普通failed/0或partial/0.5且所有操作契约有效、cleanup已证",
+      "expected": "仍允许下一题；不把低分误当invalid"
+    },
+    {
+      "case": "013型main失败/无exact summary，official1",
+      "expected": "保留passed/1及main失败；完成本题cleanup后stage_halted，禁止下一attempt_started"
+    },
+    {
+      "case": "014/048型main失败且official0",
+      "expected": "保留failed/0并同样停止，不用独立verifier补summary"
+    },
+    {
+      "case": "101型official调用抛错/null，业务trace合法",
+      "expected": "invalid_evaluator/null原封保留，官方只调用一次，cleanup后停止，不把null当0"
+    },
+    {
+      "case": "任何invalid_*（即使cleanup成功）",
+      "expected": "按预先明确的阶段failclosed规则停止；缺setup/evaluator/agent证据分层保留"
+    },
+    {
+      "case": "worker或outer forced、cleanup unknown/failed",
+      "expected": "停止，不能用后续任务恢复证明前题曾clean；无新worker"
+    },
+    {
+      "case": "episode边界source/manifest/authorization/readiness drift",
+      "expected": "在下一attempt_started之前拒绝，记录漂移身份，不碰设备/不篡改授权造停止"
+    },
+    {
+      "case": "用户或总管在题间明确请求停止",
+      "expected": "走独立正常stop请求通道，当前owned cleanup收束后不启动下一题；不能靠改授权hash或kill不明进程"
+    },
+    {
+      "case": "turn循环与重复读",
+      "expected": "使用同hash/同范围/同结果重读且无候选或状态进展作为有界信号，必要重读不一刀切；原100turn内留模型合法终结机会，错误仍保留错误"
+    }
+  ]
+}

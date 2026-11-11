@@ -1,0 +1,2115 @@
+{
+  "cases": [
+    {
+      "index": 73,
+      "task": "SimpleCalendarEventsInNextWeek",
+      "originalReward": 0.0,
+      "termination": "step_budget",
+      "stepBudget": {
+        "actions": [
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "input",
+            "path": "/session/:sessionId/element/:elementId/value",
+            "status": 200
+          },
+          {
+            "kind": "clear",
+            "path": "/session/:sessionId/element/:elementId/clear",
+            "status": 200
+          },
+          {
+            "kind": "input",
+            "path": "/session/:sessionId/element/:elementId/value",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          }
+        ],
+        "agentFinished": true,
+        "agentIndicatedDone": false,
+        "closed": true,
+        "closureReason": "step_budget",
+        "executedActionCount": 10,
+        "exhausted": true,
+        "inflightActionCount": 0,
+        "maxSteps": 10,
+        "protocol": {
+          "allocator": "android_world.suite_utils._allocate_step_budget",
+          "runner": "android_world.episode_runner.run_episode",
+          "stepUnit": "one gated Appium UI interaction",
+          "version": 1
+        },
+        "referenceStepsExecuted": 10,
+        "rejectedActionCount": 0
+      },
+      "agentAnswer": {
+        "sha256": null,
+        "validContract": false
+      },
+      "businessFinal": null,
+      "originalCleanup": {
+        "agentSession": {
+          "agentQuitReturned": true,
+          "attribution": "agent",
+          "sessionIdSha256": "50293523abd608ba27d666887f93344714523dcea4ea941aa5aa90e5f6c8a15a",
+          "status": "closed",
+          "verification": {
+            "activeSessionCount": 0,
+            "attemptedSessionCount": 1,
+            "ownedSessionCount": 1,
+            "pendingCreateCount": 0,
+            "pendingRequestCount": 0,
+            "reclaimedSessionCount": 0,
+            "reclaimedSessionHashes": [],
+            "sessions": [
+              {
+                "absentVerified": true,
+                "alreadyAbsent": true,
+                "errors": [],
+                "presentVerified": false,
+                "quitReturned": false,
+                "sessionHash": "50293523abd608ba27d666887f93344714523dcea4ea941aa5aa90e5f6c8a15a"
+              }
+            ],
+            "status": "unknown",
+            "unknownCreationOutcomeCount": 0
+          },
+          "verificationStatus": "absent"
+        },
+        "environment": "closed",
+        "taskTearDown": "completed"
+      },
+      "resultSha256": "4ec4572e869c4a7640577466e6671cfbb9c5450641c32e7447cf8fe36f87fd84"
+    },
+    {
+      "index": 74,
+      "task": "SimpleCalendarEventsInTimeRange",
+      "originalReward": 0.0,
+      "termination": "step_budget",
+      "stepBudget": {
+        "actions": [
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "clear",
+            "path": "/session/:sessionId/element/:elementId/clear",
+            "status": 200
+          },
+          {
+            "kind": "input",
+            "path": "/session/:sessionId/element/:elementId/value",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          }
+        ],
+        "agentFinished": true,
+        "agentIndicatedDone": false,
+        "closed": true,
+        "closureReason": "step_budget",
+        "executedActionCount": 10,
+        "exhausted": true,
+        "inflightActionCount": 0,
+        "maxSteps": 10,
+        "protocol": {
+          "allocator": "android_world.suite_utils._allocate_step_budget",
+          "runner": "android_world.episode_runner.run_episode",
+          "stepUnit": "one gated Appium UI interaction",
+          "version": 1
+        },
+        "referenceStepsExecuted": 10,
+        "rejectedActionCount": 0
+      },
+      "agentAnswer": {
+        "sha256": null,
+        "validContract": false
+      },
+      "businessFinal": null,
+      "originalCleanup": {
+        "agentSession": {
+          "agentQuitReturned": true,
+          "attribution": "agent",
+          "sessionIdSha256": "31de306c0ba2119e318922527477328a7d478279a740e97260f0a38abd8c83f7",
+          "status": "closed",
+          "verification": {
+            "activeSessionCount": 0,
+            "attemptedSessionCount": 1,
+            "ownedSessionCount": 1,
+            "pendingCreateCount": 0,
+            "pendingRequestCount": 0,
+            "reclaimedSessionCount": 0,
+            "reclaimedSessionHashes": [],
+            "sessions": [
+              {
+                "absentVerified": true,
+                "alreadyAbsent": true,
+                "errors": [],
+                "presentVerified": false,
+                "quitReturned": false,
+                "sessionHash": "31de306c0ba2119e318922527477328a7d478279a740e97260f0a38abd8c83f7"
+              }
+            ],
+            "status": "unknown",
+            "unknownCreationOutcomeCount": 0
+          },
+          "verificationStatus": "absent"
+        },
+        "environment": "closed",
+        "taskTearDown": "completed"
+      },
+      "resultSha256": "33ff05e7bdef04d1a8bd7f66a3a0751e87ec138dfd24b60fb8f9f97328ebfd4d"
+    },
+    {
+      "index": 76,
+      "task": "SimpleCalendarFirstEventAfterStartTime",
+      "originalReward": 0.0,
+      "termination": "completed",
+      "stepBudget": {
+        "actions": [
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "back",
+            "path": "/session/:sessionId/back",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          },
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          },
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          }
+        ],
+        "agentFinished": true,
+        "agentIndicatedDone": true,
+        "closed": true,
+        "closureReason": "agent_finished",
+        "executedActionCount": 9,
+        "exhausted": false,
+        "inflightActionCount": 0,
+        "maxSteps": 10,
+        "protocol": {
+          "allocator": "android_world.suite_utils._allocate_step_budget",
+          "runner": "android_world.episode_runner.run_episode",
+          "stepUnit": "one gated Appium UI interaction",
+          "version": 1
+        },
+        "referenceStepsExecuted": 10,
+        "rejectedActionCount": 0
+      },
+      "agentAnswer": {
+        "sha256": "27868453d9802031674fe420f0ab659de96e06e7280e25f5178d245a2789d44e",
+        "validContract": true
+      },
+      "businessFinal": {
+        "evidence": "Simple Calendar Pro showed Grocery Shopping at exactly 17:20 on October 29; the first event strictly after that time was Appointment for Budget Planning at 08:35 on October 30.",
+        "sessionCleanup": "quitReturned",
+        "taskOutcome": "Appointment for Budget Planning"
+      },
+      "originalCleanup": {
+        "agentSession": {
+          "agentQuitReturned": true,
+          "attribution": "agent",
+          "sessionIdSha256": "91d3008664d3f6b49499bba21c1a4dff84afcaa489453c478e269317c895e22d",
+          "status": "closed",
+          "verification": {
+            "activeSessionCount": 0,
+            "attemptedSessionCount": 1,
+            "ownedSessionCount": 1,
+            "pendingCreateCount": 0,
+            "pendingRequestCount": 0,
+            "reclaimedSessionCount": 0,
+            "reclaimedSessionHashes": [],
+            "sessions": [
+              {
+                "absentVerified": true,
+                "alreadyAbsent": true,
+                "errors": [],
+                "presentVerified": false,
+                "quitReturned": false,
+                "sessionHash": "91d3008664d3f6b49499bba21c1a4dff84afcaa489453c478e269317c895e22d"
+              }
+            ],
+            "status": "unknown",
+            "unknownCreationOutcomeCount": 0
+          },
+          "verificationStatus": "absent"
+        },
+        "environment": "closed",
+        "taskTearDown": "completed"
+      },
+      "resultSha256": "e45717ea8937f3f233416984c77a87e2bd81054948bbf45a467010290de82e0d"
+    },
+    {
+      "index": 80,
+      "task": "SimpleDrawProCreateDrawing",
+      "originalReward": 0.0,
+      "termination": "step_budget",
+      "stepBudget": {
+        "actions": [
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "input",
+            "path": "/session/:sessionId/element/:elementId/value",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "input",
+            "path": "/session/:sessionId/element/:elementId/value",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          },
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "clear",
+            "path": "/session/:sessionId/element/:elementId/clear",
+            "status": 200
+          },
+          {
+            "kind": "input",
+            "path": "/session/:sessionId/element/:elementId/value",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          }
+        ],
+        "agentFinished": true,
+        "agentIndicatedDone": false,
+        "closed": true,
+        "closureReason": "step_budget",
+        "executedActionCount": 18,
+        "exhausted": true,
+        "inflightActionCount": 0,
+        "maxSteps": 18,
+        "protocol": {
+          "allocator": "android_world.suite_utils._allocate_step_budget",
+          "runner": "android_world.episode_runner.run_episode",
+          "stepUnit": "one gated Appium UI interaction",
+          "version": 1
+        },
+        "referenceStepsExecuted": 18,
+        "rejectedActionCount": 1
+      },
+      "agentAnswer": null,
+      "businessFinal": null,
+      "originalCleanup": {
+        "agentSession": {
+          "agentQuitReturned": true,
+          "attribution": "agent",
+          "sessionIdSha256": "a0f402be7310cc63a1f15a299db8af4c071e7b74d8a5367a77e423f815f04a7d",
+          "status": "closed",
+          "verification": {
+            "activeSessionCount": 0,
+            "attemptedSessionCount": 1,
+            "ownedSessionCount": 1,
+            "pendingCreateCount": 0,
+            "pendingRequestCount": 0,
+            "reclaimedSessionCount": 0,
+            "reclaimedSessionHashes": [],
+            "sessions": [
+              {
+                "absentVerified": true,
+                "alreadyAbsent": true,
+                "errors": [],
+                "presentVerified": false,
+                "quitReturned": false,
+                "sessionHash": "a0f402be7310cc63a1f15a299db8af4c071e7b74d8a5367a77e423f815f04a7d"
+              }
+            ],
+            "status": "unknown",
+            "unknownCreationOutcomeCount": 0
+          },
+          "verificationStatus": "absent"
+        },
+        "environment": "closed",
+        "taskTearDown": "completed"
+      },
+      "resultSha256": "cc8c218fc9b12f80d611a330ddecb26eb41fcf7f5b55f1d5cb17f4abf8adc71c"
+    },
+    {
+      "index": 82,
+      "task": "SimpleSmsReplyMostRecent",
+      "originalReward": 0.0,
+      "termination": "step_budget",
+      "stepBudget": {
+        "actions": [
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "mobile: pressKey",
+            "path": "/session/:sessionId/execute/sync",
+            "status": 200
+          },
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          },
+          {
+            "kind": "back",
+            "path": "/session/:sessionId/back",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "input",
+            "path": "/session/:sessionId/element/:elementId/value",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "input",
+            "path": "/session/:sessionId/element/:elementId/value",
+            "status": 200
+          },
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "back",
+            "path": "/session/:sessionId/back",
+            "status": 200
+          }
+        ],
+        "agentFinished": true,
+        "agentIndicatedDone": false,
+        "closed": true,
+        "closureReason": "step_budget",
+        "executedActionCount": 12,
+        "exhausted": true,
+        "inflightActionCount": 0,
+        "maxSteps": 12,
+        "protocol": {
+          "allocator": "android_world.suite_utils._allocate_step_budget",
+          "runner": "android_world.episode_runner.run_episode",
+          "stepUnit": "one gated Appium UI interaction",
+          "version": 1
+        },
+        "referenceStepsExecuted": 12,
+        "rejectedActionCount": 0
+      },
+      "agentAnswer": null,
+      "businessFinal": null,
+      "originalCleanup": {
+        "agentSession": {
+          "agentQuitReturned": true,
+          "attribution": "agent",
+          "sessionIdSha256": "eb627cb80485e2087aa67b0115db078174395a48d1758a13a3653d65c80d99cb",
+          "status": "closed",
+          "verification": {
+            "activeSessionCount": 0,
+            "attemptedSessionCount": 1,
+            "ownedSessionCount": 1,
+            "pendingCreateCount": 0,
+            "pendingRequestCount": 0,
+            "reclaimedSessionCount": 0,
+            "reclaimedSessionHashes": [],
+            "sessions": [
+              {
+                "absentVerified": true,
+                "alreadyAbsent": true,
+                "errors": [],
+                "presentVerified": false,
+                "quitReturned": false,
+                "sessionHash": "eb627cb80485e2087aa67b0115db078174395a48d1758a13a3653d65c80d99cb"
+              }
+            ],
+            "status": "unknown",
+            "unknownCreationOutcomeCount": 0
+          },
+          "verificationStatus": "absent"
+        },
+        "environment": "closed",
+        "taskTearDown": "completed"
+      },
+      "resultSha256": "b01d06a40f3090a9ae12558da16281b8a95a8fd280cb1fdafbb3c57cb07b2be1"
+    },
+    {
+      "index": 84,
+      "task": "SimpleSmsSend",
+      "originalReward": 0.0,
+      "termination": "step_budget",
+      "stepBudget": {
+        "actions": [
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "back",
+            "path": "/session/:sessionId/back",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "input",
+            "path": "/session/:sessionId/element/:elementId/value",
+            "status": 200
+          },
+          {
+            "kind": "back",
+            "path": "/session/:sessionId/back",
+            "status": 200
+          },
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          },
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "input",
+            "path": "/session/:sessionId/element/:elementId/value",
+            "status": 200
+          },
+          {
+            "kind": "input",
+            "path": "/session/:sessionId/element/:elementId/value",
+            "status": 200
+          },
+          {
+            "kind": "input",
+            "path": "/session/:sessionId/element/:elementId/value",
+            "status": 200
+          }
+        ],
+        "agentFinished": true,
+        "agentIndicatedDone": false,
+        "closed": true,
+        "closureReason": "step_budget",
+        "executedActionCount": 12,
+        "exhausted": true,
+        "inflightActionCount": 0,
+        "maxSteps": 12,
+        "protocol": {
+          "allocator": "android_world.suite_utils._allocate_step_budget",
+          "runner": "android_world.episode_runner.run_episode",
+          "stepUnit": "one gated Appium UI interaction",
+          "version": 1
+        },
+        "referenceStepsExecuted": 12,
+        "rejectedActionCount": 0
+      },
+      "agentAnswer": null,
+      "businessFinal": null,
+      "originalCleanup": {
+        "agentSession": {
+          "agentQuitReturned": true,
+          "attribution": "agent",
+          "sessionIdSha256": "0ff941ce85723abef6b77b1b4fc2b249fcecf8337d529f90892dae59efd503d1",
+          "status": "closed",
+          "verification": {
+            "activeSessionCount": 0,
+            "attemptedSessionCount": 1,
+            "ownedSessionCount": 1,
+            "pendingCreateCount": 0,
+            "pendingRequestCount": 0,
+            "reclaimedSessionCount": 0,
+            "reclaimedSessionHashes": [],
+            "sessions": [
+              {
+                "absentVerified": true,
+                "alreadyAbsent": true,
+                "errors": [],
+                "presentVerified": false,
+                "quitReturned": false,
+                "sessionHash": "0ff941ce85723abef6b77b1b4fc2b249fcecf8337d529f90892dae59efd503d1"
+              }
+            ],
+            "status": "unknown",
+            "unknownCreationOutcomeCount": 0
+          },
+          "verificationStatus": "absent"
+        },
+        "environment": "closed",
+        "taskTearDown": "completed"
+      },
+      "resultSha256": "5e69c4ed579d1639ade473339c688781fc742361ca60b6a59f229b3e952b74c3"
+    },
+    {
+      "index": 85,
+      "task": "SimpleSmsSendClipboardContent",
+      "originalReward": 0.0,
+      "termination": "completed",
+      "stepBudget": {
+        "actions": [
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "mobile: pressKey",
+            "path": "/session/:sessionId/execute/sync",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "input",
+            "path": "/session/:sessionId/element/:elementId/value",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "input",
+            "path": "/session/:sessionId/element/:elementId/value",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          }
+        ],
+        "agentFinished": true,
+        "agentIndicatedDone": true,
+        "closed": true,
+        "closureReason": "agent_finished",
+        "executedActionCount": 8,
+        "exhausted": false,
+        "inflightActionCount": 0,
+        "maxSteps": 12,
+        "protocol": {
+          "allocator": "android_world.suite_utils._allocate_step_budget",
+          "runner": "android_world.episode_runner.run_episode",
+          "stepUnit": "one gated Appium UI interaction",
+          "version": 1
+        },
+        "referenceStepsExecuted": 9,
+        "rejectedActionCount": 0
+      },
+      "agentAnswer": null,
+      "businessFinal": {
+        "evidence": "Simple SMS Messenger could not be opened: launcher search triggered an “Android System Intelligence keeps stopping” dialog. No message was sent.",
+        "sessionCleanup": "completed",
+        "taskOutcome": "blocked"
+      },
+      "originalCleanup": {
+        "agentSession": {
+          "agentQuitReturned": true,
+          "attribution": "agent",
+          "sessionIdSha256": "d143a3e93c1db2ee4da03477da6b452723e5b1e7d6cf12eff54de5fa6a9c41a0",
+          "status": "closed",
+          "verification": {
+            "activeSessionCount": 0,
+            "attemptedSessionCount": 1,
+            "ownedSessionCount": 1,
+            "pendingCreateCount": 0,
+            "pendingRequestCount": 0,
+            "reclaimedSessionCount": 0,
+            "reclaimedSessionHashes": [],
+            "sessions": [
+              {
+                "absentVerified": true,
+                "alreadyAbsent": true,
+                "errors": [],
+                "presentVerified": false,
+                "quitReturned": false,
+                "sessionHash": "d143a3e93c1db2ee4da03477da6b452723e5b1e7d6cf12eff54de5fa6a9c41a0"
+              }
+            ],
+            "status": "unknown",
+            "unknownCreationOutcomeCount": 0
+          },
+          "verificationStatus": "absent"
+        },
+        "environment": "closed",
+        "taskTearDown": "completed"
+      },
+      "resultSha256": "3f4d96b3615fd64b5609fc2c3b909bd8339247b8f7dc54bc5e6e9622ba40dcd1"
+    },
+    {
+      "index": 86,
+      "task": "SimpleSmsSendReceivedAddress",
+      "originalReward": 0.0,
+      "termination": "step_budget",
+      "stepBudget": {
+        "actions": [
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "mobile: pressKey",
+            "path": "/session/:sessionId/execute/sync",
+            "status": 200
+          },
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          },
+          {
+            "kind": "mobile: pressKey",
+            "path": "/session/:sessionId/execute/sync",
+            "status": 200
+          },
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "input",
+            "path": "/session/:sessionId/element/:elementId/value",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "input",
+            "path": "/session/:sessionId/element/:elementId/value",
+            "status": 200
+          },
+          {
+            "kind": "mobile: activateApp",
+            "path": "/session/:sessionId/execute/sync",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "input",
+            "path": "/session/:sessionId/element/:elementId/value",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "input",
+            "path": "/session/:sessionId/element/:elementId/value",
+            "status": 200
+          }
+        ],
+        "agentFinished": true,
+        "agentIndicatedDone": false,
+        "closed": true,
+        "closureReason": "step_budget",
+        "executedActionCount": 18,
+        "exhausted": true,
+        "inflightActionCount": 0,
+        "maxSteps": 18,
+        "protocol": {
+          "allocator": "android_world.suite_utils._allocate_step_budget",
+          "runner": "android_world.episode_runner.run_episode",
+          "stepUnit": "one gated Appium UI interaction",
+          "version": 1
+        },
+        "referenceStepsExecuted": 18,
+        "rejectedActionCount": 1
+      },
+      "agentAnswer": null,
+      "businessFinal": null,
+      "originalCleanup": {
+        "agentSession": {
+          "agentQuitReturned": true,
+          "attribution": "agent",
+          "sessionIdSha256": "6d8b0735afc199be4d79a2c9d6785509fc0b866bc07cf32188acb66a817fe2ca",
+          "status": "closed",
+          "verification": {
+            "activeSessionCount": 0,
+            "attemptedSessionCount": 1,
+            "ownedSessionCount": 1,
+            "pendingCreateCount": 0,
+            "pendingRequestCount": 0,
+            "reclaimedSessionCount": 0,
+            "reclaimedSessionHashes": [],
+            "sessions": [
+              {
+                "absentVerified": true,
+                "alreadyAbsent": true,
+                "errors": [],
+                "presentVerified": false,
+                "quitReturned": false,
+                "sessionHash": "6d8b0735afc199be4d79a2c9d6785509fc0b866bc07cf32188acb66a817fe2ca"
+              }
+            ],
+            "status": "unknown",
+            "unknownCreationOutcomeCount": 0
+          },
+          "verificationStatus": "absent"
+        },
+        "environment": "closed",
+        "taskTearDown": "completed"
+      },
+      "resultSha256": "b18c87fe760ec06b6ec1c9d98d3eca56dd114e255ad58a90482cefefc9a2f18a"
+    },
+    {
+      "index": 87,
+      "task": "SportsTrackerActivitiesCountForWeek",
+      "originalReward": 0.0,
+      "termination": "completed",
+      "stepBudget": {
+        "actions": [
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          },
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          },
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          },
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "back",
+            "path": "/session/:sessionId/back",
+            "status": 200
+          },
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          }
+        ],
+        "agentFinished": true,
+        "agentIndicatedDone": true,
+        "closed": true,
+        "closureReason": "agent_finished",
+        "executedActionCount": 9,
+        "exhausted": false,
+        "inflightActionCount": 0,
+        "maxSteps": 10,
+        "protocol": {
+          "allocator": "android_world.suite_utils._allocate_step_budget",
+          "runner": "android_world.episode_runner.run_episode",
+          "stepUnit": "one gated Appium UI interaction",
+          "version": 1
+        },
+        "referenceStepsExecuted": 10,
+        "rejectedActionCount": 0
+      },
+      "agentAnswer": {
+        "sha256": null,
+        "validContract": false
+      },
+      "businessFinal": {
+        "evidence": "Reviewed all OpenTracks activities from Monday through Sunday; one was a running activity.",
+        "sessionCleanup": "quitReturned",
+        "taskOutcome": 1
+      },
+      "originalCleanup": {
+        "agentSession": {
+          "agentQuitReturned": true,
+          "attribution": "agent",
+          "sessionIdSha256": "5f16bd1ae584950cf17cf707c1e5f855f9367f52e647d92a8d63c8227f1ab726",
+          "status": "closed",
+          "verification": {
+            "activeSessionCount": 0,
+            "attemptedSessionCount": 1,
+            "ownedSessionCount": 1,
+            "pendingCreateCount": 0,
+            "pendingRequestCount": 0,
+            "reclaimedSessionCount": 0,
+            "reclaimedSessionHashes": [],
+            "sessions": [
+              {
+                "absentVerified": true,
+                "alreadyAbsent": true,
+                "errors": [],
+                "presentVerified": false,
+                "quitReturned": false,
+                "sessionHash": "5f16bd1ae584950cf17cf707c1e5f855f9367f52e647d92a8d63c8227f1ab726"
+              }
+            ],
+            "status": "unknown",
+            "unknownCreationOutcomeCount": 0
+          },
+          "verificationStatus": "absent"
+        },
+        "environment": "closed",
+        "taskTearDown": "completed"
+      },
+      "resultSha256": "7dcf2ce3176c8ed45fa10318e913df010d7fa6924f72b8793197324866663091"
+    },
+    {
+      "index": 89,
+      "task": "SportsTrackerActivityDuration",
+      "originalReward": 0.0,
+      "termination": "completed",
+      "stepBudget": {
+        "actions": [
+          {
+            "kind": "mobile: swipeGesture",
+            "path": "/session/:sessionId/execute/sync",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          }
+        ],
+        "agentFinished": true,
+        "agentIndicatedDone": true,
+        "closed": true,
+        "closureReason": "agent_finished",
+        "executedActionCount": 5,
+        "exhausted": false,
+        "inflightActionCount": 0,
+        "maxSteps": 10,
+        "protocol": {
+          "allocator": "android_world.suite_utils._allocate_step_budget",
+          "runner": "android_world.episode_runner.run_episode",
+          "stepUnit": "one gated Appium UI interaction",
+          "version": 1
+        },
+        "referenceStepsExecuted": 6,
+        "rejectedActionCount": 0
+      },
+      "agentAnswer": {
+        "sha256": null,
+        "validContract": false
+      },
+      "businessFinal": {
+        "evidence": "OpenTracks showed the Oct 12, 2023 activity with moving and total time 2:15:00, equal to 135 minutes.",
+        "sessionCleanup": "completed",
+        "taskOutcome": 135
+      },
+      "originalCleanup": {
+        "agentSession": {
+          "agentQuitReturned": true,
+          "attribution": "agent",
+          "sessionIdSha256": "fadf9a09e988e7447f9f33688cbb3fc4d9c0e7ea6a9454a01cec91d0c6020fc6",
+          "status": "closed",
+          "verification": {
+            "activeSessionCount": 0,
+            "attemptedSessionCount": 1,
+            "ownedSessionCount": 1,
+            "pendingCreateCount": 0,
+            "pendingRequestCount": 0,
+            "reclaimedSessionCount": 0,
+            "reclaimedSessionHashes": [],
+            "sessions": [
+              {
+                "absentVerified": true,
+                "alreadyAbsent": true,
+                "errors": [],
+                "presentVerified": false,
+                "quitReturned": false,
+                "sessionHash": "fadf9a09e988e7447f9f33688cbb3fc4d9c0e7ea6a9454a01cec91d0c6020fc6"
+              }
+            ],
+            "status": "unknown",
+            "unknownCreationOutcomeCount": 0
+          },
+          "verificationStatus": "absent"
+        },
+        "environment": "closed",
+        "taskTearDown": "completed"
+      },
+      "resultSha256": "bf9769c8e3aee20e2abe1d060312e1c074286690dbcef043f44fe25c2bbad972"
+    },
+    {
+      "index": 90,
+      "task": "SportsTrackerLongestDistanceActivity",
+      "originalReward": 0.0,
+      "termination": "step_budget",
+      "stepBudget": {
+        "actions": [
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          }
+        ],
+        "agentFinished": true,
+        "agentIndicatedDone": false,
+        "closed": true,
+        "closureReason": "step_budget",
+        "executedActionCount": 10,
+        "exhausted": true,
+        "inflightActionCount": 0,
+        "maxSteps": 10,
+        "protocol": {
+          "allocator": "android_world.suite_utils._allocate_step_budget",
+          "runner": "android_world.episode_runner.run_episode",
+          "stepUnit": "one gated Appium UI interaction",
+          "version": 1
+        },
+        "referenceStepsExecuted": 10,
+        "rejectedActionCount": 0
+      },
+      "agentAnswer": {
+        "sha256": null,
+        "validContract": false
+      },
+      "businessFinal": null,
+      "originalCleanup": {
+        "agentSession": {
+          "agentQuitReturned": true,
+          "attribution": "agent",
+          "sessionIdSha256": "6a90a336375a7b53b6dc1df59d13b0a5bf852f3d1b02d49690632fadfb78db3a",
+          "status": "closed",
+          "verification": {
+            "activeSessionCount": 0,
+            "attemptedSessionCount": 1,
+            "ownedSessionCount": 1,
+            "pendingCreateCount": 0,
+            "pendingRequestCount": 0,
+            "reclaimedSessionCount": 0,
+            "reclaimedSessionHashes": [],
+            "sessions": [
+              {
+                "absentVerified": true,
+                "alreadyAbsent": true,
+                "errors": [],
+                "presentVerified": false,
+                "quitReturned": false,
+                "sessionHash": "6a90a336375a7b53b6dc1df59d13b0a5bf852f3d1b02d49690632fadfb78db3a"
+              }
+            ],
+            "status": "unknown",
+            "unknownCreationOutcomeCount": 0
+          },
+          "verificationStatus": "absent"
+        },
+        "environment": "closed",
+        "taskTearDown": "completed"
+      },
+      "resultSha256": "125e775f139b37605dd00a3c50c37a91bbf8f6ad98c37a24a63fb70e21ee14fa"
+    },
+    {
+      "index": 91,
+      "task": "SportsTrackerTotalDistanceForCategoryOverInterval",
+      "originalReward": 0.0,
+      "termination": "completed",
+      "stepBudget": {
+        "actions": [
+          {
+            "kind": "mobile: swipeGesture",
+            "path": "/session/:sessionId/execute/sync",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "mobile: swipeGesture",
+            "path": "/session/:sessionId/execute/sync",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "mobile: swipeGesture",
+            "path": "/session/:sessionId/execute/sync",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          }
+        ],
+        "agentFinished": true,
+        "agentIndicatedDone": true,
+        "closed": true,
+        "closureReason": "agent_finished",
+        "executedActionCount": 14,
+        "exhausted": false,
+        "inflightActionCount": 0,
+        "maxSteps": 20,
+        "protocol": {
+          "allocator": "android_world.suite_utils._allocate_step_budget",
+          "runner": "android_world.episode_runner.run_episode",
+          "stepUnit": "one gated Appium UI interaction",
+          "version": 1
+        },
+        "referenceStepsExecuted": 15,
+        "rejectedActionCount": 0
+      },
+      "agentAnswer": {
+        "sha256": null,
+        "validContract": false
+      },
+      "businessFinal": {
+        "evidence": {
+          "activity": "KAYAKING",
+          "conversion": "4.04 × 1609.344 = 6501.74976 m",
+          "dateRange": "2023-10-09 to 2023-10-10",
+          "visibleTotal": "4.04 mi"
+        },
+        "sessionCleanup": {
+          "quitReturned": true
+        },
+        "taskOutcome": {
+          "answerMeters": 6502
+        }
+      },
+      "originalCleanup": {
+        "agentSession": {
+          "agentQuitReturned": true,
+          "attribution": "agent",
+          "sessionIdSha256": "9576fe04326d559dd8b57417bf6bcc5ecf0a28840c25f847554a9b97a71fbf83",
+          "status": "closed",
+          "verification": {
+            "activeSessionCount": 0,
+            "attemptedSessionCount": 1,
+            "ownedSessionCount": 1,
+            "pendingCreateCount": 0,
+            "pendingRequestCount": 0,
+            "reclaimedSessionCount": 0,
+            "reclaimedSessionHashes": [],
+            "sessions": [
+              {
+                "absentVerified": true,
+                "alreadyAbsent": true,
+                "errors": [],
+                "presentVerified": false,
+                "quitReturned": false,
+                "sessionHash": "9576fe04326d559dd8b57417bf6bcc5ecf0a28840c25f847554a9b97a71fbf83"
+              }
+            ],
+            "status": "unknown",
+            "unknownCreationOutcomeCount": 0
+          },
+          "verificationStatus": "absent"
+        },
+        "environment": "closed",
+        "taskTearDown": "completed"
+      },
+      "resultSha256": "6e6dfb75741863a386a594bd5e8044605ef28c48ae4a63b43c17ee9a4c8d19b5"
+    },
+    {
+      "index": 92,
+      "task": "SportsTrackerTotalDurationForCategoryThisWeek",
+      "originalReward": 0.0,
+      "termination": "completed",
+      "stepBudget": {
+        "actions": [
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "input",
+            "path": "/session/:sessionId/element/:elementId/value",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          }
+        ],
+        "agentFinished": true,
+        "agentIndicatedDone": true,
+        "closed": true,
+        "closureReason": "agent_finished",
+        "executedActionCount": 9,
+        "exhausted": false,
+        "inflightActionCount": 0,
+        "maxSteps": 10,
+        "protocol": {
+          "allocator": "android_world.suite_utils._allocate_step_budget",
+          "runner": "android_world.episode_runner.run_episode",
+          "stepUnit": "one gated Appium UI interaction",
+          "version": 1
+        },
+        "referenceStepsExecuted": 10,
+        "rejectedActionCount": 0
+      },
+      "agentAnswer": {
+        "sha256": null,
+        "validContract": false
+      },
+      "businessFinal": {
+        "evidence": "OpenTracks showed RUNNING (2) totaling 1:45:00; both activities were dated within the Monday–Sunday week.",
+        "sessionCleanup": {
+          "quitReturned": true
+        },
+        "taskOutcome": {
+          "answer": 105,
+          "status": "completed"
+        }
+      },
+      "originalCleanup": {
+        "agentSession": {
+          "agentQuitReturned": true,
+          "attribution": "agent",
+          "sessionIdSha256": "b5e84db219209c9f0703df1e3e4b366b7a4ba5c1724f1b7422ea486fbc802a75",
+          "status": "closed",
+          "verification": {
+            "activeSessionCount": 0,
+            "attemptedSessionCount": 1,
+            "ownedSessionCount": 1,
+            "pendingCreateCount": 0,
+            "pendingRequestCount": 0,
+            "reclaimedSessionCount": 0,
+            "reclaimedSessionHashes": [],
+            "sessions": [
+              {
+                "absentVerified": true,
+                "alreadyAbsent": true,
+                "errors": [],
+                "presentVerified": false,
+                "quitReturned": false,
+                "sessionHash": "b5e84db219209c9f0703df1e3e4b366b7a4ba5c1724f1b7422ea486fbc802a75"
+              }
+            ],
+            "status": "unknown",
+            "unknownCreationOutcomeCount": 0
+          },
+          "verificationStatus": "absent"
+        },
+        "environment": "closed",
+        "taskTearDown": "completed"
+      },
+      "resultSha256": "2bd51c52b097616035d22db73328abc801fc60565e29314a1f8c4db822f172cd"
+    },
+    {
+      "index": 101,
+      "task": "SystemCopyToClipboard",
+      "originalReward": 0.0,
+      "termination": "completed",
+      "stepBudget": {
+        "actions": [
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "input",
+            "path": "/session/:sessionId/element/:elementId/value",
+            "status": 200
+          },
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          },
+          {
+            "kind": "input",
+            "path": "/session/:sessionId/element/:elementId/value",
+            "status": 200
+          },
+          {
+            "kind": "input",
+            "path": "/session/:sessionId/element/:elementId/value",
+            "status": 200
+          }
+        ],
+        "agentFinished": true,
+        "agentIndicatedDone": true,
+        "closed": true,
+        "closureReason": "agent_finished",
+        "executedActionCount": 9,
+        "exhausted": false,
+        "inflightActionCount": 0,
+        "maxSteps": 10,
+        "protocol": {
+          "allocator": "android_world.suite_utils._allocate_step_budget",
+          "runner": "android_world.episode_runner.run_episode",
+          "stepUnit": "one gated Appium UI interaction",
+          "version": 1
+        },
+        "referenceStepsExecuted": 10,
+        "rejectedActionCount": 0
+      },
+      "agentAnswer": null,
+      "businessFinal": {
+        "evidence": "Final observation showed the field contained an incorrect key sequence; clipboard state could not be verified before the interaction budget was exhausted.",
+        "sessionCleanup": "completed",
+        "taskOutcome": "failed"
+      },
+      "originalCleanup": {
+        "agentSession": {
+          "agentQuitReturned": true,
+          "attribution": "agent",
+          "sessionIdSha256": "cd2d6f71245e92ce7cbdede2141a8129c627655072f2c50c016a53b9595618c4",
+          "status": "closed",
+          "verification": {
+            "activeSessionCount": 0,
+            "attemptedSessionCount": 1,
+            "ownedSessionCount": 1,
+            "pendingCreateCount": 0,
+            "pendingRequestCount": 0,
+            "reclaimedSessionCount": 0,
+            "reclaimedSessionHashes": [],
+            "sessions": [
+              {
+                "absentVerified": true,
+                "alreadyAbsent": true,
+                "errors": [],
+                "presentVerified": false,
+                "quitReturned": false,
+                "sessionHash": "cd2d6f71245e92ce7cbdede2141a8129c627655072f2c50c016a53b9595618c4"
+              }
+            ],
+            "status": "unknown",
+            "unknownCreationOutcomeCount": 0
+          },
+          "verificationStatus": "absent"
+        },
+        "environment": "closed",
+        "taskTearDown": "completed"
+      },
+      "resultSha256": "f2bd28ef421a538555e853e6982bcea4fe33a59d45242e97469665f755e3bcc9"
+    },
+    {
+      "index": 106,
+      "task": "TasksCompletedTasksForDate",
+      "originalReward": 0.0,
+      "termination": "step_budget",
+      "stepBudget": {
+        "actions": [
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          },
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          }
+        ],
+        "agentFinished": true,
+        "agentIndicatedDone": false,
+        "closed": true,
+        "closureReason": "step_budget",
+        "executedActionCount": 10,
+        "exhausted": true,
+        "inflightActionCount": 0,
+        "maxSteps": 10,
+        "protocol": {
+          "allocator": "android_world.suite_utils._allocate_step_budget",
+          "runner": "android_world.episode_runner.run_episode",
+          "stepUnit": "one gated Appium UI interaction",
+          "version": 1
+        },
+        "referenceStepsExecuted": 10,
+        "rejectedActionCount": 0
+      },
+      "agentAnswer": {
+        "sha256": null,
+        "validContract": false
+      },
+      "businessFinal": null,
+      "originalCleanup": {
+        "agentSession": {
+          "agentQuitReturned": true,
+          "attribution": "agent",
+          "sessionIdSha256": "6706eaeb1411836ad76a68d2a13a7948d521d02461e3bf48878164d53229eb62",
+          "status": "closed",
+          "verification": {
+            "activeSessionCount": 0,
+            "attemptedSessionCount": 1,
+            "ownedSessionCount": 1,
+            "pendingCreateCount": 0,
+            "pendingRequestCount": 0,
+            "reclaimedSessionCount": 0,
+            "reclaimedSessionHashes": [],
+            "sessions": [
+              {
+                "absentVerified": true,
+                "alreadyAbsent": true,
+                "errors": [],
+                "presentVerified": false,
+                "quitReturned": false,
+                "sessionHash": "6706eaeb1411836ad76a68d2a13a7948d521d02461e3bf48878164d53229eb62"
+              }
+            ],
+            "status": "unknown",
+            "unknownCreationOutcomeCount": 0
+          },
+          "verificationStatus": "absent"
+        },
+        "environment": "closed",
+        "taskTearDown": "completed"
+      },
+      "resultSha256": "5efc77d8d0ea3d00579308ae8e4d91dd6677e7ec8a7d9980a9671e26e34736cd"
+    },
+    {
+      "index": 107,
+      "task": "TasksDueNextWeek",
+      "originalReward": 0.0,
+      "termination": "completed",
+      "stepBudget": {
+        "actions": [
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          },
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          },
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          },
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          }
+        ],
+        "agentFinished": true,
+        "agentIndicatedDone": true,
+        "closed": true,
+        "closureReason": "agent_finished",
+        "executedActionCount": 6,
+        "exhausted": false,
+        "inflightActionCount": 0,
+        "maxSteps": 10,
+        "protocol": {
+          "allocator": "android_world.suite_utils._allocate_step_budget",
+          "runner": "android_world.episode_runner.run_episode",
+          "stepUnit": "one gated Appium UI interaction",
+          "version": 1
+        },
+        "referenceStepsExecuted": 7,
+        "rejectedActionCount": 0
+      },
+      "agentAnswer": {
+        "sha256": null,
+        "validContract": false
+      },
+      "businessFinal": {
+        "evidence": "Counted 20 tasks due Monday through Sunday in the Tasks app.",
+        "sessionCleanup": "quitReturned",
+        "taskOutcome": 20
+      },
+      "originalCleanup": {
+        "agentSession": {
+          "agentQuitReturned": true,
+          "attribution": "agent",
+          "sessionIdSha256": "42fecd9e4f20a88329de037cb1f1aba2cc4ca9ab5ff49925d9bdabf3e686d9ec",
+          "status": "closed",
+          "verification": {
+            "activeSessionCount": 0,
+            "attemptedSessionCount": 1,
+            "ownedSessionCount": 1,
+            "pendingCreateCount": 0,
+            "pendingRequestCount": 0,
+            "reclaimedSessionCount": 0,
+            "reclaimedSessionHashes": [],
+            "sessions": [
+              {
+                "absentVerified": true,
+                "alreadyAbsent": true,
+                "errors": [],
+                "presentVerified": false,
+                "quitReturned": false,
+                "sessionHash": "42fecd9e4f20a88329de037cb1f1aba2cc4ca9ab5ff49925d9bdabf3e686d9ec"
+              }
+            ],
+            "status": "unknown",
+            "unknownCreationOutcomeCount": 0
+          },
+          "verificationStatus": "absent"
+        },
+        "environment": "closed",
+        "taskTearDown": "completed"
+      },
+      "resultSha256": "d930afb5d0c8fa8cf6c0c8b668baca048cdff7ad33e34d6df3e5313ead415d1e"
+    },
+    {
+      "index": 110,
+      "task": "TasksHighPriorityTasksDueOnDate",
+      "originalReward": 0.0,
+      "termination": "step_budget",
+      "stepBudget": {
+        "actions": [
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "back",
+            "path": "/session/:sessionId/back",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "back",
+            "path": "/session/:sessionId/back",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          }
+        ],
+        "agentFinished": true,
+        "agentIndicatedDone": false,
+        "closed": true,
+        "closureReason": "step_budget",
+        "executedActionCount": 10,
+        "exhausted": true,
+        "inflightActionCount": 0,
+        "maxSteps": 10,
+        "protocol": {
+          "allocator": "android_world.suite_utils._allocate_step_budget",
+          "runner": "android_world.episode_runner.run_episode",
+          "stepUnit": "one gated Appium UI interaction",
+          "version": 1
+        },
+        "referenceStepsExecuted": 10,
+        "rejectedActionCount": 0
+      },
+      "agentAnswer": {
+        "sha256": null,
+        "validContract": false
+      },
+      "businessFinal": null,
+      "originalCleanup": {
+        "agentSession": {
+          "agentQuitReturned": true,
+          "attribution": "agent",
+          "sessionIdSha256": "3c18212a7e7e0b7956993b3af0f8f5d3f5fab55200103653ac3ac2367123dbd6",
+          "status": "closed",
+          "verification": {
+            "activeSessionCount": 0,
+            "attemptedSessionCount": 1,
+            "ownedSessionCount": 1,
+            "pendingCreateCount": 0,
+            "pendingRequestCount": 0,
+            "reclaimedSessionCount": 0,
+            "reclaimedSessionHashes": [],
+            "sessions": [
+              {
+                "absentVerified": true,
+                "alreadyAbsent": true,
+                "errors": [],
+                "presentVerified": false,
+                "quitReturned": false,
+                "sessionHash": "3c18212a7e7e0b7956993b3af0f8f5d3f5fab55200103653ac3ac2367123dbd6"
+              }
+            ],
+            "status": "unknown",
+            "unknownCreationOutcomeCount": 0
+          },
+          "verificationStatus": "absent"
+        },
+        "environment": "closed",
+        "taskTearDown": "completed"
+      },
+      "resultSha256": "ea220c79bddc296e22a48924ee98e2212b6fdb719fdf47c1c581535b8bb24fe3"
+    },
+    {
+      "index": 111,
+      "task": "TasksIncompleteTasksOnDate",
+      "originalReward": 0.0,
+      "termination": "completed",
+      "stepBudget": {
+        "actions": [
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          },
+          {
+            "kind": "click",
+            "path": "/session/:sessionId/element/:elementId/click",
+            "status": 200
+          },
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          },
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          },
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          },
+          {
+            "kind": "actions",
+            "path": "/session/:sessionId/actions",
+            "status": 200
+          }
+        ],
+        "agentFinished": true,
+        "agentIndicatedDone": true,
+        "closed": true,
+        "closureReason": "agent_finished",
+        "executedActionCount": 6,
+        "exhausted": false,
+        "inflightActionCount": 0,
+        "maxSteps": 10,
+        "protocol": {
+          "allocator": "android_world.suite_utils._allocate_step_budget",
+          "runner": "android_world.episode_runner.run_episode",
+          "stepUnit": "one gated Appium UI interaction",
+          "version": 1
+        },
+        "referenceStepsExecuted": 7,
+        "rejectedActionCount": 0
+      },
+      "agentAnswer": {
+        "sha256": "128900aea8850c68e22f1ed89f4e9a00328caee6a4359fadc063e6232982b763",
+        "validContract": true
+      },
+      "businessFinal": {
+        "evidence": "Observed the full My Tasks list to its stable end; included unchecked tasks due through Thursday and excluded later tasks.",
+        "sessionCleanup": "quitReturned",
+        "taskOutcome": "Attend training session, Call client for follow-up, Research market trends, Change Air Filter, Renew Driver's License, Clean Out Fridge, Renew Driver's License, Grocery Shopping, Learn to Play Guitar, Water Plants, Research Vacation Destinations, Read 'The Martian', Read 'The Martian', Reply to Emails, Grocery Shopping, Submit Expense Report, Organize Closet"
+      },
+      "originalCleanup": {
+        "agentSession": {
+          "agentQuitReturned": true,
+          "attribution": "agent",
+          "sessionIdSha256": "875f280275b7f32280814b3610aada982cb309d4f4375c412d4e9a683aeb04e0",
+          "status": "closed",
+          "verification": {
+            "activeSessionCount": 0,
+            "attemptedSessionCount": 1,
+            "ownedSessionCount": 1,
+            "pendingCreateCount": 0,
+            "pendingRequestCount": 0,
+            "reclaimedSessionCount": 0,
+            "reclaimedSessionHashes": [],
+            "sessions": [
+              {
+                "absentVerified": true,
+                "alreadyAbsent": true,
+                "errors": [],
+                "presentVerified": false,
+                "quitReturned": false,
+                "sessionHash": "875f280275b7f32280814b3610aada982cb309d4f4375c412d4e9a683aeb04e0"
+              }
+            ],
+            "status": "unknown",
+            "unknownCreationOutcomeCount": 0
+          },
+          "verificationStatus": "absent"
+        },
+        "environment": "closed",
+        "taskTearDown": "completed"
+      },
+      "resultSha256": "db787600246cc9443ce8fc9821befb658388d3deeb999d27da308e1fcaeac396"
+    }
+  ],
+  "newOfficialEvaluations": 0,
+  "scope": "Original frozen result extraction only; no replay, model call, device action or changed official result."
+}

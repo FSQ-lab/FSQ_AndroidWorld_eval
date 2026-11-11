@@ -1,0 +1,171 @@
+{
+  "kind": "original_r12v2_040_offline_answer_contract_diagnosis",
+  "status": "completed_for_offline_scope_not_fix_acceptance",
+  "owner": "w4:p1",
+  "parent": "w3:p1",
+  "independentReviewer": "w4:p2",
+  "task": {
+    "complexity": 1,
+    "goal": "How many to-dos do I have in the 'Ideas' folder in the Joplin app? Express your answer as just a single number.",
+    "name": "NotesTodoItemCount",
+    "params": {
+      "body": "Exercise 3 times a week, read 1 book per month, and save $500.",
+      "folder": "Ideas",
+      "seed": 1631305569,
+      "title": "Meeting Agenda"
+    },
+    "paramsSha256": "3a13b8c96c83d595c5cf072ad7e423072e50d51731faded1c313a83180c9d99e"
+  },
+  "originalOutcome": {
+    "officialReward": 0.0,
+    "error": null,
+    "invalidReason": null,
+    "businessActions": 5,
+    "maxSteps": 10,
+    "referenceSteps": 6,
+    "pythonExecCalls": 12,
+    "completedCalls": 10,
+    "failedCalls": 2,
+    "timedOutCalls": 0,
+    "allKernelsAlive": true,
+    "businessFinalCaptured": true,
+    "agentAnswer": {
+      "sha256": null,
+      "validContract": false
+    },
+    "evaluator": {
+      "durationSeconds": 0.0,
+      "implementation": "android_world.task_eval.is_successful"
+    },
+    "cleanup": {
+      "agentSession": {
+        "agentQuitReturned": true,
+        "attribution": "agent",
+        "sessionIdSha256": "09190ebe8ef6e00490e2a58d3143d7d491223ddb83c851e8d702804e9f760336",
+        "status": "closed",
+        "verification": {
+          "activeSessionCount": 0,
+          "attemptedSessionCount": 1,
+          "ownedSessionCount": 1,
+          "pendingCreateCount": 0,
+          "pendingRequestCount": 0,
+          "reclaimedSessionCount": 0,
+          "reclaimedSessionHashes": [],
+          "sessions": [
+            {
+              "absentVerified": true,
+              "alreadyAbsent": true,
+              "errors": [],
+              "presentVerified": false,
+              "quitReturned": false,
+              "sessionHash": "09190ebe8ef6e00490e2a58d3143d7d491223ddb83c851e8d702804e9f760336"
+            }
+          ],
+          "status": "unknown",
+          "unknownCreationOutcomeCount": 0
+        },
+        "verificationStatus": "absent"
+      },
+      "environment": "closed",
+      "taskTearDown": "completed"
+    }
+  },
+  "directEvidence": {
+    "originalPrompt": "Single-number business answer plus JSON wrapper requirement, with no explicit taskOutcome string-type instruction",
+    "rawPromptLines": [
+      8,
+      9
+    ],
+    "rawFinalLine": 2674,
+    "rawFinalTaskOutcome": 3,
+    "rawFinalTaskOutcomeType": "int",
+    "normalizedSemanticallyEqualToRaw": true,
+    "recordedAnswerRejected": true,
+    "recordedAnswerHash": null
+  },
+  "primaryResponsibility": "Historical Harness prompt/type interface: hidden string requirement is not documented in original prompt; do not directly blame JSON wrapping or the business count.",
+  "sourceDerivedMechanism": {
+    "historicalHelper": "Preserved r12 _task_outcome returnsNone on numeric taskOutcome3; controlled string3 extracts",
+    "setter": "Only extracted valid string is assigned, not full final JSON",
+    "earlyReturn": "Task initialize clears cache; absent answer leaves empty cache; IR111\u2013112 returns0 before NUMBER_MATCH",
+    "proofLevel": "Source-derived chain consistent with direct recorded rejection, not original runtime cache/branch dump",
+    "fullFrozenHarnessTreeRecovered": false,
+    "preservedRunnerSha256": "11a1a39602904b02d66a9d316686291194bba46d7fb219366d2ad4c4bdac589d",
+    "promptTemplateSha256": "463118879bbe14a14abfd987920f115fff29f128db4566dc282e75dc0aa906aa",
+    "originalRawPromptMatchesRenderedTemplateExactly": true,
+    "recoveryLimit": "owner-harness-recovery-limit.json"
+  },
+  "actualInstalledTask": {
+    "dynamicClass": "abc.NotesTodoItemCount",
+    "scorer": "InformationRetrieval.is_successful",
+    "sourceDataFilesMatchRECORD": 7,
+    "countSource": "Three relevant-state proto is_todo fields, not currentDB",
+    "pureTemplateExpectedAnswer": [
+      3
+    ],
+    "pureCheckString3": true,
+    "pureResultNotHistoricalDbOrReward": true
+  },
+  "uiEvidence": {
+    "originalExec9": "toolbarIdeas and3checkboxes; ordinary notes and drawer nodes also present",
+    "originalExec10": "Sidebar click then waitline2 failed; later reads unexecuted",
+    "originalExec11": "Same3checkboxes, hasNotebooksTrue, hasIdeasTitle is weak global text membership",
+    "listCoverageComplete": false,
+    "businessCount3ProvenWrong": false,
+    "uiGapIsObservedZeroCause": false
+  },
+  "originalLog": {
+    "path": "evidence/headless-fullcoverage-20261107T004632Z/v2-ready-run-full.log",
+    "ordinalSegment": "699\u2013705",
+    "first41StepSequencesMatchOriginalResults": true,
+    "nearbyWarnings": "697/698 a11y retry not task-labelled or proof of answer/count cause",
+    "directAnswerRejectionWarningOrCacheDumpRetained": false,
+    "durationAloneProvesEarlyReturn": false
+  },
+  "fixStatus": {
+    "productionChangeApplied": false,
+    "currentExplicitStringTemplateCountsAsThisFix": false,
+    "newAmkernelDefectEstablished": false,
+    "newReward": null,
+    "taskUnsatisfiableClaim": false
+  },
+  "genericAdvice": {
+    "artifact": "generic-skills-candidates.json",
+    "layers": [
+      "Caller type/submission contract",
+      "Skills active-count range/coverage",
+      "Skills strong postcondition reconciliation after failed wait"
+    ],
+    "parentProposalEditedByOwner": false,
+    "noTaskSpecificAnswerRepair": true
+  },
+  "executionDecision": {
+    "offlineScopeComplete": true,
+    "liveQueryOrReplayRequired": false,
+    "liveQueryOrReplayAuthorized": false,
+    "nextTaskStarted": false
+  },
+  "immutability": {
+    "historicalPaths": 2186,
+    "skillFiles": 152,
+    "installedSourceDataFiles": 7,
+    "changed": 0,
+    "missing": 0,
+    "notWholeHostOrFrozenHarnessAudit": true
+  },
+  "files": {
+    "report": "offline-report.md",
+    "summary": "summary.json",
+    "contract": "minimal-contract.json",
+    "immutability": "immutability.json",
+    "zeroOperations": "zero-operations.json",
+    "sourceProof": "owner-scorer-source-proof.json",
+    "originalCalls": "owner-original-calls.json",
+    "originalFields": "owner-raw-field-proof.json",
+    "pureSmoke": "owner-pure-contract-smoke.json",
+    "helperRecovery": "owner-harness-recovery-limit.json",
+    "genericSkillCandidates": "generic-skills-candidates.json",
+    "parentPureSmoke": "parent-historical-extractor-smoke.json"
+  },
+  "independentFinalAcceptance": "Requested fromw4:p2; owner does not substitute for independent signature"
+}

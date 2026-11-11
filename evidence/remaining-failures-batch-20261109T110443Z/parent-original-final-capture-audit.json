@@ -1,0 +1,290 @@
+[
+  {
+    "index": 73,
+    "task": "SimpleCalendarEventsInNextWeek",
+    "termination": "step_budget",
+    "normalizedFinalText": null,
+    "agentAnswer": {
+      "sha256": null,
+      "validContract": false
+    },
+    "rawFinals": [
+      {
+        "line": 3804,
+        "text": "{\"taskOutcome\":\"Product demo, Movie night\",\"sessionCleanup\":\"completed\",\"evidence\":\"Simple event list showed events on Wednesday 18 and Sunday 22; owned Appium session quit successfully.\"}"
+      }
+    ],
+    "interpretation": "Raw original final text is evidence only. A post-cleanup original final is not automatically an admissible new-protocol business receipt."
+  },
+  {
+    "index": 74,
+    "task": "SimpleCalendarEventsInTimeRange",
+    "termination": "step_budget",
+    "normalizedFinalText": null,
+    "agentAnswer": {
+      "sha256": null,
+      "validContract": false
+    },
+    "rawFinals": [
+      {
+        "line": 3659,
+        "text": "{\"taskOutcome\":\"unresolved\",\"sessionCleanup\":\"completed\",\"evidence\":\"Simple Calendar Pro opened, but the action budget closed before Friday's events could be read and verified.\"}"
+      }
+    ],
+    "interpretation": "Raw original final text is evidence only. A post-cleanup original final is not automatically an admissible new-protocol business receipt."
+  },
+  {
+    "index": 76,
+    "task": "SimpleCalendarFirstEventAfterStartTime",
+    "termination": "completed",
+    "normalizedFinalText": "{\"evidence\":\"Simple Calendar Pro showed Grocery Shopping at exactly 17:20 on October 29; the first event strictly after that time was Appointment for Budget Planning at 08:35 on October 30.\",\"sessionCleanup\":\"quitReturned\",\"taskOutcome\":\"Appointment for Budget Planning\"}",
+    "agentAnswer": {
+      "sha256": "27868453d9802031674fe420f0ab659de96e06e7280e25f5178d245a2789d44e",
+      "validContract": true
+    },
+    "rawFinals": [
+      {
+        "line": 3384,
+        "text": "{\"taskOutcome\":\"Appointment for Budget Planning\",\"sessionCleanup\":\"quitReturned\",\"evidence\":\"Simple Calendar Pro showed Grocery Shopping at exactly 17:20 on October 29; the first event strictly after that time was Appointment for Budget Planning at 08:35 on October 30.\"}"
+      }
+    ],
+    "interpretation": "Raw original final text is evidence only. A post-cleanup original final is not automatically an admissible new-protocol business receipt."
+  },
+  {
+    "index": 80,
+    "task": "SimpleDrawProCreateDrawing",
+    "termination": "step_budget",
+    "normalizedFinalText": null,
+    "agentAnswer": null,
+    "rawFinals": [
+      {
+        "line": 5272,
+        "text": "{\"taskOutcome\":\"incomplete\",\"sessionCleanup\":\"completed\",\"evidence\":\"Drawing created and filename set to adipiscing_fair_jelly_final.png; Pictures folder selected under device storage. Final SAVE action was rejected because the action budget closed, so file persistence was not verified.\"}"
+      }
+    ],
+    "interpretation": "Raw original final text is evidence only. A post-cleanup original final is not automatically an admissible new-protocol business receipt."
+  },
+  {
+    "index": 82,
+    "task": "SimpleSmsReplyMostRecent",
+    "termination": "step_budget",
+    "normalizedFinalText": null,
+    "agentAnswer": null,
+    "rawFinals": [
+      {
+        "line": 3389,
+        "text": "{\"taskOutcome\":\"not_completed\",\"sessionCleanup\":\"completed\",\"evidence\":\"Could not reach Simple SMS Messenger and send the reply before the action budget closed. The owned Appium session quit successfully.\"}"
+      }
+    ],
+    "interpretation": "Raw original final text is evidence only. A post-cleanup original final is not automatically an admissible new-protocol business receipt."
+  },
+  {
+    "index": 84,
+    "task": "SimpleSmsSend",
+    "termination": "step_budget",
+    "normalizedFinalText": null,
+    "agentAnswer": null,
+    "rawFinals": [
+      {
+        "line": 3280,
+        "text": "{\"taskOutcome\":\"incomplete\",\"sessionCleanup\":\"completed\",\"evidence\":\"Action budget closed before message composition and sending; recipient field was populated, but no message was sent. driver.quit() returned successfully.\"}"
+      }
+    ],
+    "interpretation": "Raw original final text is evidence only. A post-cleanup original final is not automatically an admissible new-protocol business receipt."
+  },
+  {
+    "index": 85,
+    "task": "SimpleSmsSendClipboardContent",
+    "termination": "completed",
+    "normalizedFinalText": "{\"evidence\":\"Simple SMS Messenger could not be opened: launcher search triggered an \\u201cAndroid System Intelligence keeps stopping\\u201d dialog. No message was sent.\",\"sessionCleanup\":\"completed\",\"taskOutcome\":\"blocked\"}",
+    "agentAnswer": null,
+    "rawFinals": [
+      {
+        "line": 2283,
+        "text": "{\"taskOutcome\":\"blocked\",\"sessionCleanup\":\"completed\",\"evidence\":\"Simple SMS Messenger could not be opened: launcher search triggered an “Android System Intelligence keeps stopping” dialog. No message was sent.\"}"
+      }
+    ],
+    "interpretation": "Raw original final text is evidence only. A post-cleanup original final is not automatically an admissible new-protocol business receipt."
+  },
+  {
+    "index": 86,
+    "task": "SimpleSmsSendReceivedAddress",
+    "termination": "step_budget",
+    "normalizedFinalText": null,
+    "agentAnswer": null,
+    "rawFinals": [
+      {
+        "line": 5223,
+        "text": "{\"taskOutcome\":\"incomplete\",\"sessionCleanup\":\"completed\",\"evidence\":\"Address identified as 789 E Oak St, Phoenix AZ 85006; Gabriel Ibrahim’s thread opened and address entered, but the send action was rejected after the action budget closed, so delivery was not established.\"}"
+      }
+    ],
+    "interpretation": "Raw original final text is evidence only. A post-cleanup original final is not automatically an admissible new-protocol business receipt."
+  },
+  {
+    "index": 87,
+    "task": "SportsTrackerActivitiesCountForWeek",
+    "termination": "completed",
+    "normalizedFinalText": "{\"evidence\":\"Reviewed all OpenTracks activities from Monday through Sunday; one was a running activity.\",\"sessionCleanup\":\"quitReturned\",\"taskOutcome\":1}",
+    "agentAnswer": {
+      "sha256": null,
+      "validContract": false
+    },
+    "rawFinals": [
+      {
+        "line": 3547,
+        "text": "{\"taskOutcome\":1,\"sessionCleanup\":\"quitReturned\",\"evidence\":\"Reviewed all OpenTracks activities from Monday through Sunday; one was a running activity.\"}"
+      }
+    ],
+    "interpretation": "Raw original final text is evidence only. A post-cleanup original final is not automatically an admissible new-protocol business receipt."
+  },
+  {
+    "index": 89,
+    "task": "SportsTrackerActivityDuration",
+    "termination": "completed",
+    "normalizedFinalText": "{\"evidence\":\"OpenTracks showed the Oct 12, 2023 activity with moving and total time 2:15:00, equal to 135 minutes.\",\"sessionCleanup\":\"completed\",\"taskOutcome\":135}",
+    "agentAnswer": {
+      "sha256": null,
+      "validContract": false
+    },
+    "rawFinals": [
+      {
+        "line": 2461,
+        "text": "{\"taskOutcome\":135,\"sessionCleanup\":\"completed\",\"evidence\":\"OpenTracks showed the Oct 12, 2023 activity with moving and total time 2:15:00, equal to 135 minutes.\"}"
+      }
+    ],
+    "interpretation": "Raw original final text is evidence only. A post-cleanup original final is not automatically an admissible new-protocol business receipt."
+  },
+  {
+    "index": 90,
+    "task": "SportsTrackerLongestDistanceActivity",
+    "termination": "step_budget",
+    "normalizedFinalText": null,
+    "agentAnswer": {
+      "sha256": null,
+      "validContract": false
+    },
+    "rawFinals": [
+      {
+        "line": 4790,
+        "text": "{\"taskOutcome\":{\"answerMeters\":1207},\"sessionCleanup\":{\"quitReturned\":true},\"evidence\":{\"activity\":\"Skill work\",\"date\":\"Oct 10, 2023\",\"distance\":\"0.75 mi\",\"conversion\":\"0.75 × 1609.344 = 1207.008 m; rounded to 1207\"}}"
+      }
+    ],
+    "interpretation": "Raw original final text is evidence only. A post-cleanup original final is not automatically an admissible new-protocol business receipt."
+  },
+  {
+    "index": 91,
+    "task": "SportsTrackerTotalDistanceForCategoryOverInterval",
+    "termination": "completed",
+    "normalizedFinalText": "{\"evidence\":{\"activity\":\"KAYAKING\",\"conversion\":\"4.04 \\u00d7 1609.344 = 6501.74976 m\",\"dateRange\":\"2023-10-09 to 2023-10-10\",\"visibleTotal\":\"4.04 mi\"},\"sessionCleanup\":{\"quitReturned\":true},\"taskOutcome\":{\"answerMeters\":6502}}",
+    "agentAnswer": {
+      "sha256": null,
+      "validContract": false
+    },
+    "rawFinals": [
+      {
+        "line": 5827,
+        "text": "{\"taskOutcome\":{\"answerMeters\":6502},\"sessionCleanup\":{\"quitReturned\":true},\"evidence\":{\"dateRange\":\"2023-10-09 to 2023-10-10\",\"activity\":\"KAYAKING\",\"visibleTotal\":\"4.04 mi\",\"conversion\":\"4.04 × 1609.344 = 6501.74976 m\"}}"
+      }
+    ],
+    "interpretation": "Raw original final text is evidence only. A post-cleanup original final is not automatically an admissible new-protocol business receipt."
+  },
+  {
+    "index": 92,
+    "task": "SportsTrackerTotalDurationForCategoryThisWeek",
+    "termination": "completed",
+    "normalizedFinalText": "{\"evidence\":\"OpenTracks showed RUNNING (2) totaling 1:45:00; both activities were dated within the Monday\\u2013Sunday week.\",\"sessionCleanup\":{\"quitReturned\":true},\"taskOutcome\":{\"answer\":105,\"status\":\"completed\"}}",
+    "agentAnswer": {
+      "sha256": null,
+      "validContract": false
+    },
+    "rawFinals": [
+      {
+        "line": 4679,
+        "text": "{\"taskOutcome\":{\"status\":\"completed\",\"answer\":105},\"sessionCleanup\":{\"quitReturned\":true},\"evidence\":\"OpenTracks showed RUNNING (2) totaling 1:45:00; both activities were dated within the Monday–Sunday week.\"}"
+      }
+    ],
+    "interpretation": "Raw original final text is evidence only. A post-cleanup original final is not automatically an admissible new-protocol business receipt."
+  },
+  {
+    "index": 101,
+    "task": "SystemCopyToClipboard",
+    "termination": "completed",
+    "normalizedFinalText": "{\"evidence\":\"Final observation showed the field contained an incorrect key sequence; clipboard state could not be verified before the interaction budget was exhausted.\",\"sessionCleanup\":\"completed\",\"taskOutcome\":\"failed\"}",
+    "agentAnswer": null,
+    "rawFinals": [
+      {
+        "line": 3695,
+        "text": "{\"taskOutcome\":\"failed\",\"sessionCleanup\":\"completed\",\"evidence\":\"Final observation showed the field contained an incorrect key sequence; clipboard state could not be verified before the interaction budget was exhausted.\"}"
+      }
+    ],
+    "interpretation": "Raw original final text is evidence only. A post-cleanup original final is not automatically an admissible new-protocol business receipt."
+  },
+  {
+    "index": 106,
+    "task": "TasksCompletedTasksForDate",
+    "termination": "step_budget",
+    "normalizedFinalText": null,
+    "agentAnswer": {
+      "sha256": null,
+      "validContract": false
+    },
+    "rawFinals": [
+      {
+        "line": 3612,
+        "text": "{\"taskOutcome\":\"Participate in brainstorming session, Plan family reunion, Organize files and folders\",\"sessionCleanup\":\"completed\",\"evidence\":\"These three rows appeared when completed tasks were shown for October 16.\"}"
+      }
+    ],
+    "interpretation": "Raw original final text is evidence only. A post-cleanup original final is not automatically an admissible new-protocol business receipt."
+  },
+  {
+    "index": 107,
+    "task": "TasksDueNextWeek",
+    "termination": "completed",
+    "normalizedFinalText": "{\"evidence\":\"Counted 20 tasks due Monday through Sunday in the Tasks app.\",\"sessionCleanup\":\"quitReturned\",\"taskOutcome\":20}",
+    "agentAnswer": {
+      "sha256": null,
+      "validContract": false
+    },
+    "rawFinals": [
+      {
+        "line": 3416,
+        "text": "{\"taskOutcome\":20,\"sessionCleanup\":\"quitReturned\",\"evidence\":\"Counted 20 tasks due Monday through Sunday in the Tasks app.\"}"
+      }
+    ],
+    "interpretation": "Raw original final text is evidence only. A post-cleanup original final is not automatically an admissible new-protocol business receipt."
+  },
+  {
+    "index": 110,
+    "task": "TasksHighPriorityTasksDueOnDate",
+    "termination": "step_budget",
+    "normalizedFinalText": null,
+    "agentAnswer": {
+      "sha256": null,
+      "validContract": false
+    },
+    "rawFinals": [
+      {
+        "line": 6882,
+        "text": "{\"taskOutcome\":\"Marketing Campaign Launch\",\"sessionCleanup\":\"quitReturned\",\"evidence\":\"October 18 candidates were Learn to Play Guitar, Renew Driver's License, and Marketing Campaign Launch; observed priorities excluded the first two.\"}"
+      }
+    ],
+    "interpretation": "Raw original final text is evidence only. A post-cleanup original final is not automatically an admissible new-protocol business receipt."
+  },
+  {
+    "index": 111,
+    "task": "TasksIncompleteTasksOnDate",
+    "termination": "completed",
+    "normalizedFinalText": "{\"evidence\":\"Observed the full My Tasks list to its stable end; included unchecked tasks due through Thursday and excluded later tasks.\",\"sessionCleanup\":\"quitReturned\",\"taskOutcome\":\"Attend training session, Call client for follow-up, Research market trends, Change Air Filter, Renew Driver's License, Clean Out Fridge, Renew Driver's License, Grocery Shopping, Learn to Play Guitar, Water Plants, Research Vacation Destinations, Read 'The Martian', Read 'The Martian', Reply to Emails, Grocery Shopping, Submit Expense Report, Organize Closet\"}",
+    "agentAnswer": {
+      "sha256": "128900aea8850c68e22f1ed89f4e9a00328caee6a4359fadc063e6232982b763",
+      "validContract": true
+    },
+    "rawFinals": [
+      {
+        "line": 3910,
+        "text": "{\"taskOutcome\":\"Attend training session, Call client for follow-up, Research market trends, Change Air Filter, Renew Driver's License, Clean Out Fridge, Renew Driver's License, Grocery Shopping, Learn to Play Guitar, Water Plants, Research Vacation Destinations, Read 'The Martian', Read 'The Martian', Reply to Emails, Grocery Shopping, Submit Expense Report, Organize Closet\",\"sessionCleanup\":\"quitReturned\",\"evidence\":\"Observed the full My Tasks list to its stable end; included unchecked tasks due through Thursday and excluded later tasks.\"}"
+      }
+    ],
+    "interpretation": "Raw original final text is evidence only. A post-cleanup original final is not automatically an admissible new-protocol business receipt."
+  }
+]

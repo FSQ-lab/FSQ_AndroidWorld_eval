@@ -1,0 +1,204 @@
+{
+  "kind": "original_r12v2_052_offline_recipe_dedup_diagnosis",
+  "status": "completed_for_offline_scope_not_fix_acceptance",
+  "owner": "w4:p1",
+  "parent": "w3:p1",
+  "independentReviewer": "w4:p2",
+  "task": {
+    "index": 52,
+    "name": "RecipeDeleteDuplicateRecipes3",
+    "goal": "Delete all but one of any recipes in the Broccoli app that are exact duplicates, ensuring at least one instance of each unique recipe remains",
+    "seed": 2676632063,
+    "paramsSha256": "76a838d9d504ef8cd9ff928b7f30ddc1c11b2674e5ee08e14b797f7baf8ac90a",
+    "paramsTransport": "seed",
+    "complexity": 3.4,
+    "maxSteps": 34
+  },
+  "originalOutcome": {
+    "officialReward": 0.0,
+    "error": null,
+    "invalidReason": null,
+    "businessActions": 30,
+    "referenceSteps": 31,
+    "pythonCalls": 30,
+    "completed": 26,
+    "failed": 4,
+    "timedOut": 0,
+    "allKernelsAlive": true,
+    "agentNormallyTerminated": true,
+    "finalText": "{\"evidence\":\"Removed duplicate Pan-Seared Salmon with Quinoa and Avocado Toast with Egg entries, but also deleted a distinct Avocado recipe variant; preservation of every unique recipe was not achieved.\",\"sessionCleanup\":\"completed\",\"taskOutcome\":\"failed\"}",
+    "honestFailedOutcome": true,
+    "falseSuccessDeclaration": false,
+    "finalDuplicateClaimForPanAvocadoSupported": false,
+    "cleanup": {
+      "agentSession": {
+        "agentQuitReturned": true,
+        "attribution": "agent",
+        "sessionIdSha256": "6a31fcdab643181dee403219690d61b2eb9f37c80f7520273ecf35668e343080",
+        "status": "closed",
+        "verification": {
+          "activeSessionCount": 0,
+          "attemptedSessionCount": 1,
+          "ownedSessionCount": 1,
+          "pendingCreateCount": 0,
+          "pendingRequestCount": 0,
+          "reclaimedSessionCount": 0,
+          "reclaimedSessionHashes": [],
+          "sessions": [
+            {
+              "absentVerified": true,
+              "alreadyAbsent": true,
+              "errors": [],
+              "presentVerified": false,
+              "quitReturned": false,
+              "sessionHash": "6a31fcdab643181dee403219690d61b2eb9f37c80f7520273ecf35668e343080"
+            }
+          ],
+          "status": "unknown",
+          "unknownCreationOutcomeCount": 0
+        },
+        "verificationStatus": "absent"
+      },
+      "environment": "closed",
+      "taskTearDown": "completed"
+    }
+  },
+  "logicalParams": {
+    "rows": 32,
+    "distinctContentsIgnoringId": 31,
+    "targetPair": "Butternut Squash Soup",
+    "targetPairCount": 2,
+    "noiseRows": 30,
+    "allNonIdRecipeFieldsCompared": 9,
+    "pan": {
+      "rows": 2,
+      "distinctContents": 2,
+      "noiseIndices": [
+        7,
+        13
+      ],
+      "differingFields": [
+        "directions",
+        "ingredients",
+        "servings"
+      ]
+    },
+    "avocado": {
+      "rows": 3,
+      "distinctContents": 3,
+      "noiseIndices": [
+        21,
+        22,
+        23
+      ],
+      "allPairwiseDistinct": true
+    },
+    "butternut": {
+      "rows": 10,
+      "distinctContents": 9,
+      "onlyExactPair": "Two designated target objects; all8 same-title noise distinct"
+    },
+    "recipeIdMinus1": "Generation placeholder, not actual historical ID"
+  },
+  "actualInstalledContract": {
+    "scorer": "DeleteMultipleRows.is_successful",
+    "predicate": "RecipeDeleteDuplicateRecipes.validate_deletion_integrity",
+    "sourceFilesMatchRECORD": 3,
+    "logic": "Removal integrity for target1 OR target2, preserve all other fullRecipe objects including30noise+other target; no new objects",
+    "notTitleOnlyOrCountOnly": true,
+    "actualRowsToDeleteIds": "Taken from original initialized DB before list; not persisted for this slice",
+    "rowBindingAndOrder": "Source-based initialization intent, not historical DB contents/order proof"
+  },
+  "actualPureExecution": {
+    "file": "owner-installed-predicate-smoke.json",
+    "syntheticIds": {
+      "noise": "70000+zeroBasedNoiseIndex",
+      "target": [
+        71000,
+        71001
+      ]
+    },
+    "uninitializedTaskOnly": true,
+    "onlyEitherTargetDeletedPreservingOthers": true,
+    "targetPairUnchanged": false,
+    "bothTargetsDeleted": false,
+    "anyObservedPanAvocadoNoiseDeletedAlone": false,
+    "validTargetDeletionPlusAnyObservedNoiseDeletion": false,
+    "allFivePanAvocadoVariantsDeleted": false,
+    "validTargetDeletionPlusMutationOfPreservedNoise": false,
+    "scope": "Controlled originalfield candidates, actual pure helpers; not originalbefore/after or full reward"
+  },
+  "originalTrajectoryLimits": {
+    "parentExtractionAll30CodeShaMatchResult": true,
+    "ownerParsedAllRawResponsesIndependently": false,
+    "independentRawReview": "p2 separate\u7f72\u540d",
+    "exec15": "Delete confirmation precedes failing line3 observation; failed does not imply rollback",
+    "exec17": "Explicit Harness policy refusal, not AMKernel fault",
+    "exec21Counts": {
+      "titles": 2,
+      "descriptions": 3
+    },
+    "exec23": "Empty Undo lookup, no restoration success proof",
+    "exec24": "Later confirmed deletion observed; no subjective prior-awareness claim from empty thinking",
+    "lateButternutDetails": "Four observed variants differ and match returned field combinations of noise0/12/24/25; not targetpair or exhaustive DB check",
+    "finalFailed": "Keep honest failed but correct unsupported Pan/Avocado duplicate wording"
+  },
+  "historicalUnknowns": {
+    "actualBeforeAfterDbAvailable": false,
+    "actualAssignedIdsAvailable": false,
+    "persistentDeletionCountKnown": false,
+    "targetPairSurvivalProvenByDb": false,
+    "exactFirstFailingRowOrBranchKnown": false,
+    "uniqueHistoricalZeroCauseProven": false,
+    "no051DbConclusionReused": true
+  },
+  "conditionalFailureMechanisms": {
+    "bothTargetsStillPresentSufficesToFail": true,
+    "noiseLossSufficesEvenIfOneTargetRemoved": true,
+    "notClaimedAsHistoricalBranchTrace": true
+  },
+  "genericAdvice": {
+    "artifact": "owner-generic-suggestions.json",
+    "topics": [
+      "Full-field exact duplication verification",
+      "Context-bound record identity and coverage",
+      "Post-action failure reconciliation",
+      "Respect explicit action policy",
+      "Stop compounding confirmed destructive mistakes",
+      "Honest failed outcome and accurate evidence"
+    ],
+    "parentOrOfficialSkillEdited": false,
+    "noTaskSpecificFrozenHints": true
+  },
+  "executionDecision": {
+    "offlineComplete": true,
+    "liveQueryOrReplayRequired": false,
+    "liveAuthorized": false,
+    "productionFixApplied": false,
+    "newReward": null,
+    "newAmkernelDefectEstablished": false,
+    "taskUnsolvableClaim": false,
+    "nextTaskStarted": false
+  },
+  "immutability": {
+    "historicalPaths": 2186,
+    "skillFiles": 152,
+    "installedSources": 3,
+    "parentExtractionUnchanged": true,
+    "changed": 0,
+    "missing": 0,
+    "boundedNotWholeHostAudit": true
+  },
+  "files": {
+    "report": "offline-report.md",
+    "summary": "summary.json",
+    "contract": "minimal-contract.json",
+    "immutability": "immutability.json",
+    "zeroOperations": "zero-operations.json",
+    "sourceProof": "owner-scorer-source-proof.json",
+    "fieldDiffs": "owner-parameter-field-differences.json",
+    "actualPurePredicate": "owner-installed-predicate-smoke.json",
+    "genericSuggestions": "owner-generic-suggestions.json"
+  },
+  "independentFinalAcceptance": "Requested fromw4:p2 after finalfive files; owner does not substitute their signature"
+}

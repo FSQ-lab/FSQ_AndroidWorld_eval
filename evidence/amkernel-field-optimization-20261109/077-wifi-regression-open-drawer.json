@@ -1,0 +1,362 @@
+{
+  "sequence": 77,
+  "label": "wifi-regression-open-drawer",
+  "command": {
+    "op": "exec",
+    "label": "wifi-regression-open-drawer",
+    "code": "driver.swipe(540,2100,540,500,450)\nobserve()"
+  },
+  "startedAtUnix": 1794192317.05274,
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"status\":\"completed\",\"stdout\":\"\",\"stderr\":\"\",\"result\":{\"package\":\"com.google.android.apps.nexuslauncher\",\"activity\":\".NexusLauncherActivity\",\"controls\":[{\"text\":\"Audio Recorder\",\"content-desc\":\"Audio Recorder\",\"resource-id\":\"com.google.android.apps.nexuslauncher:id/icon\",\"class\":\"android.widget.TextView\",\"bounds\":\"[57,656][298,971]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"Broccoli\",\"content-desc\":\"Broccoli\",\"resource-id\":\"com.google.android.apps.nexuslauncher:id/icon\",\"class\":\"android.widget.TextView\",\"bounds\":\"[298,656][540,971]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"Calendar\",\"content-desc\":\"Calendar\",\"resource-id\":\"com.google.android.apps.nexuslauncher:id/icon\",\"class\":\"android.widget.TextView\",\"bounds\":\"[540,656][781,971]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"Calendar\",\"content-desc\":\"Calendar\",\"resource-id\":\"com.google.android.apps.nexuslauncher:id/icon\",\"class\":\"android.widget.TextView\",\"bounds\":\"[781,656][1023,971]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"Camera\",\"content-desc\":\"Camera\",\"resource-id\":\"com.google.android.apps.nexuslauncher:id/icon\",\"class\":\"android.widget.TextView\",\"bounds\":\"[57,971][298,1286]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"Chrome\",\"content-desc\":\"Chrome\",\"resource-id\":\"com.google.android.apps.nexuslauncher:id/icon\",\"class\":\"android.widget.TextView\",\"bounds\":\"[298,971][540,1286]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"Clipper\",\"content-desc\":\"Clipper\",\"resource-id\":\"com.google.android.apps.nexuslauncher:id/icon\",\"class\":\"android.widget.TextView\",\"bounds\":\"[540,971][781,1286]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"Clock\",\"content-desc\":\"Clock\",\"resource-id\":\"com.google.android.apps.nexuslauncher:id/icon\",\"class\":\"android.widget.TextView\",\"bounds\":\"[781,971][1023,1286]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"Contacts\",\"content-desc\":\"Contacts\",\"resource-id\":\"com.google.android.apps.nexuslauncher:id/icon\",\"class\":\"android.widget.TextView\",\"bounds\":\"[57,1286][298,1601]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"Draw\",\"content-desc\":\"Draw\",\"resource-id\":\"com.google.android.apps.nexuslauncher:id/icon\",\"class\":\"android.widget.TextView\",\"bounds\":\"[298,1286][540,1601]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"Drive\",\"content-desc\":\"Drive\",\"resource-id\":\"com.google.android.apps.nexuslauncher:id/icon\",\"class\":\"android.widget.TextView\",\"bounds\":\"[540,1286][781,1601]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"Files\",\"content-desc\":\"Files\",\"resource-id\":\"com.google.android.apps.nexuslauncher:id/icon\",\"class\":\"android.widget.TextView\",\"bounds\":\"[781,1286][1023,1601]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"Gallery\",\"content-desc\":\"Gallery\",\"resource-id\":\"com.google.android.apps.nexuslauncher:id/icon\",\"class\":\"android.widget.TextView\",\"bounds\":\"[57,1601][298,1916]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"Gmail\",\"content-desc\":\"Gmail\",\"resource-id\":\"com.google.android.apps.nexuslauncher:id/icon\",\"class\":\"android.widget.TextView\",\"bounds\":\"[298,1601][540,1916]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"Google\",\"content-desc\":\"Google\",\"resource-id\":\"com.google.android.apps.nexuslauncher:id/icon\",\"class\":\"android.widget.TextView\",\"bounds\":\"[540,1601][781,1916]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"Joplin\",\"content-desc\":\"Joplin\",\"resource-id\":\"com.google.android.apps.nexuslauncher:id/icon\",\"class\":\"android.widget.TextView\",\"bounds\":\"[781,1601][1023,1916]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"Maps\",\"content-desc\":\"Maps\",\"resource-id\":\"com.google.android.apps.nexuslauncher:id/icon\",\"class\":\"android.widget.TextView\",\"bounds\":\"[57,1916][298,2231]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"Markor\",\"content-desc\":\"Markor\",\"resource-id\":\"com.google.android.apps.nexuslauncher:id/icon\",\"class\":\"android.widget.TextView\",\"bounds\":\"[298,1916][540,2231]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"Messages\",\"content-desc\":\"Messages\",\"resource-id\":\"com.google.android.apps.nexuslauncher:id/icon\",\"class\":\"android.widget.TextView\",\"bounds\":\"[540,1916][781,2231]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"OpenTracks\",\"content-desc\":\"OpenTracks\",\"resource-id\":\"com.google.android.apps.nexuslauncher:id/icon\",\"class\":\"android.widget.TextView\",\"bounds\":\"[781,1916][1023,2231]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"OsmAnd\",\"content-desc\":\"OsmAnd\",\"resource-id\":\"com.google.android.apps.nexuslauncher:id/icon\",\"class\":\"android.widget.TextView\",\"bounds\":\"[57,2231][298,2400]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"Phone\",\"content-desc\":\"Phone\",\"resource-id\":\"com.google.android.apps.nexuslauncher:id/icon\",\"class\":\"android.widget.TextView\",\"bounds\":\"[298,2231][540,2400]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"Photos\",\"content-desc\":\"Photos\",\"resource-id\":\"com.google.android.apps.nexuslauncher:id/icon\",\"class\":\"android.widget.TextView\",\"bounds\":\"[540,2231][781,2400]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"Pro Expense\",\"content-desc\":\"Pro Expense\",\"resource-id\":\"com.google.android.apps.nexuslauncher:id/icon\",\"class\":\"android.widget.TextView\",\"bounds\":\"[781,2231][1023,2400]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"Gallery\",\"content-desc\":\"Gallery\",\"resource-id\":\"com.google.android.apps.nexuslauncher:id/icon\",\"class\":\"android.widget.TextView\",\"bounds\":\"[57,328][298,611]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"Calendar\",\"content-desc\":\"Calendar\",\"resource-id\":\"com.google.android.apps.nexuslauncher:id/icon\",\"class\":\"android.widget.TextView\",\"bounds\":\"[298,328][539,611]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"Camera\",\"content-desc\":\"Camera\",\"resource-id\":\"com.google.android.apps.nexuslauncher:id/icon\",\"class\":\"android.widget.TextView\",\"bounds\":\"[539,328][781,611]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"Tasks\",\"content-desc\":\"Tasks\",\"resource-id\":\"com.google.android.apps.nexuslauncher:id/icon\",\"class\":\"android.widget.TextView\",\"bounds\":\"[781,328][1023,611]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"\",\"content-desc\":\"Search\",\"resource-id\":\"com.google.android.apps.nexuslauncher:id/search_container_all_apps\",\"class\":\"android.widget.FrameLayout\",\"bounds\":\"[98,146][982,311]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"\",\"content-desc\":\"Google app\",\"resource-id\":\"com.google.android.apps.nexuslauncher:id/g_icon\",\"class\":\"android.widget.ImageView\",\"bounds\":\"[109,165][235,291]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"Search apps, web and more\",\"content-desc\":\"\",\"resource-id\":\"com.google.android.apps.nexuslauncher:id/input\",\"class\":\"android.widget.EditText\",\"bounds\":\"[246,156][834,301]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"\",\"content-desc\":\"Voice search\",\"resource-id\":\"com.google.android.apps.nexuslauncher:id/mic_icon\",\"class\":\"android.widget.ImageView\",\"bounds\":\"[719,165][845,291]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"\",\"content-desc\":\"Google Lens\",\"resource-id\":\"com.google.android.apps.nexuslauncher:id/lens_icon\",\"class\":\"android.widget.ImageButton\",\"bounds\":\"[845,165][971,291]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"\",\"content-desc\":\"Home\",\"resource-id\":\"\",\"class\":\"android.view.View\",\"bounds\":\"[0,128][1080,2337]\",\"clickable\":\"false\",\"focused\":\"false\"}]},\"executionCount\":40,\"durationMs\":1904,\"kernelState\":\"alive\",\"runtime\":{\"executable\":\"/Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python\",\"pythonVersion\":\"3.11.16\",\"workingDirectory\":\"/Users/qunmi/Documents/FSQ_LAB/amkernel\",\"environmentKind\":\"project_venv\",\"implementation\":\"CPython\",\"platform\":\"macOS-26.6.2-arm64-arm-64bit\",\"packages\":[]},\"output\":{\"totalBytes\":0,\"totalLines\":0,\"discardedBytes\":0,\"discardedLines\":0,\"truncated\":false,\"limitBytes\":268435456,\"limitExceeded\":false,\"live\":\"unavailable\"},\"displays\":[],\"artifacts\":[]}"
+      }
+    ],
+    "structured_content": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "com.google.android.apps.nexuslauncher",
+        "activity": ".NexusLauncherActivity",
+        "controls": [
+          {
+            "text": "Audio Recorder",
+            "content-desc": "Audio Recorder",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/icon",
+            "class": "android.widget.TextView",
+            "bounds": "[57,656][298,971]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "Broccoli",
+            "content-desc": "Broccoli",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/icon",
+            "class": "android.widget.TextView",
+            "bounds": "[298,656][540,971]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "Calendar",
+            "content-desc": "Calendar",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/icon",
+            "class": "android.widget.TextView",
+            "bounds": "[540,656][781,971]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "Calendar",
+            "content-desc": "Calendar",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/icon",
+            "class": "android.widget.TextView",
+            "bounds": "[781,656][1023,971]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "Camera",
+            "content-desc": "Camera",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/icon",
+            "class": "android.widget.TextView",
+            "bounds": "[57,971][298,1286]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "Chrome",
+            "content-desc": "Chrome",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/icon",
+            "class": "android.widget.TextView",
+            "bounds": "[298,971][540,1286]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "Clipper",
+            "content-desc": "Clipper",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/icon",
+            "class": "android.widget.TextView",
+            "bounds": "[540,971][781,1286]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "Clock",
+            "content-desc": "Clock",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/icon",
+            "class": "android.widget.TextView",
+            "bounds": "[781,971][1023,1286]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "Contacts",
+            "content-desc": "Contacts",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/icon",
+            "class": "android.widget.TextView",
+            "bounds": "[57,1286][298,1601]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "Draw",
+            "content-desc": "Draw",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/icon",
+            "class": "android.widget.TextView",
+            "bounds": "[298,1286][540,1601]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "Drive",
+            "content-desc": "Drive",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/icon",
+            "class": "android.widget.TextView",
+            "bounds": "[540,1286][781,1601]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "Files",
+            "content-desc": "Files",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/icon",
+            "class": "android.widget.TextView",
+            "bounds": "[781,1286][1023,1601]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "Gallery",
+            "content-desc": "Gallery",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/icon",
+            "class": "android.widget.TextView",
+            "bounds": "[57,1601][298,1916]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "Gmail",
+            "content-desc": "Gmail",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/icon",
+            "class": "android.widget.TextView",
+            "bounds": "[298,1601][540,1916]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "Google",
+            "content-desc": "Google",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/icon",
+            "class": "android.widget.TextView",
+            "bounds": "[540,1601][781,1916]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "Joplin",
+            "content-desc": "Joplin",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/icon",
+            "class": "android.widget.TextView",
+            "bounds": "[781,1601][1023,1916]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "Maps",
+            "content-desc": "Maps",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/icon",
+            "class": "android.widget.TextView",
+            "bounds": "[57,1916][298,2231]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "Markor",
+            "content-desc": "Markor",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/icon",
+            "class": "android.widget.TextView",
+            "bounds": "[298,1916][540,2231]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "Messages",
+            "content-desc": "Messages",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/icon",
+            "class": "android.widget.TextView",
+            "bounds": "[540,1916][781,2231]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "OpenTracks",
+            "content-desc": "OpenTracks",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/icon",
+            "class": "android.widget.TextView",
+            "bounds": "[781,1916][1023,2231]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "OsmAnd",
+            "content-desc": "OsmAnd",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/icon",
+            "class": "android.widget.TextView",
+            "bounds": "[57,2231][298,2400]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "Phone",
+            "content-desc": "Phone",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/icon",
+            "class": "android.widget.TextView",
+            "bounds": "[298,2231][540,2400]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "Photos",
+            "content-desc": "Photos",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/icon",
+            "class": "android.widget.TextView",
+            "bounds": "[540,2231][781,2400]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "Pro Expense",
+            "content-desc": "Pro Expense",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/icon",
+            "class": "android.widget.TextView",
+            "bounds": "[781,2231][1023,2400]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "Gallery",
+            "content-desc": "Gallery",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/icon",
+            "class": "android.widget.TextView",
+            "bounds": "[57,328][298,611]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "Calendar",
+            "content-desc": "Calendar",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/icon",
+            "class": "android.widget.TextView",
+            "bounds": "[298,328][539,611]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "Camera",
+            "content-desc": "Camera",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/icon",
+            "class": "android.widget.TextView",
+            "bounds": "[539,328][781,611]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "Tasks",
+            "content-desc": "Tasks",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/icon",
+            "class": "android.widget.TextView",
+            "bounds": "[781,328][1023,611]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "",
+            "content-desc": "Search",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/search_container_all_apps",
+            "class": "android.widget.FrameLayout",
+            "bounds": "[98,146][982,311]",
+            "clickable": "false",
+            "focused": "false"
+          },
+          {
+            "text": "",
+            "content-desc": "Google app",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/g_icon",
+            "class": "android.widget.ImageView",
+            "bounds": "[109,165][235,291]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "Search apps, web and more",
+            "content-desc": "",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/input",
+            "class": "android.widget.EditText",
+            "bounds": "[246,156][834,301]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "",
+            "content-desc": "Voice search",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/mic_icon",
+            "class": "android.widget.ImageView",
+            "bounds": "[719,165][845,291]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "",
+            "content-desc": "Google Lens",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/lens_icon",
+            "class": "android.widget.ImageButton",
+            "bounds": "[845,165][971,291]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "",
+            "content-desc": "Home",
+            "resource-id": "",
+            "class": "android.view.View",
+            "bounds": "[0,128][1080,2337]",
+            "clickable": "false",
+            "focused": "false"
+          }
+        ]
+      },
+      "executionCount": 40,
+      "durationMs": 1904,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/Users/qunmi/Documents/FSQ_LAB/amkernel",
+        "environmentKind": "project_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "unavailable"
+      },
+      "displays": [],
+      "artifacts": []
+    },
+    "is_error": false,
+    "result_type": "complete"
+  },
+  "completedAtUnix": 1794192318.96408
+}

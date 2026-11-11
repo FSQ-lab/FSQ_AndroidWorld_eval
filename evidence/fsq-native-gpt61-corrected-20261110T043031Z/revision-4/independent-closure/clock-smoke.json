@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "kind": "clock_delta_selected_regression_receipt",
+  "execution": {
+    "command": [
+      "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/bin/python",
+      "-B",
+      "-m",
+      "pytest",
+      "-q",
+      "-p",
+      "no:cacheprovider",
+      "tests/test_fsq_campaign.py",
+      "-k",
+      "clock",
+      "--basetemp",
+      "/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-r4-clock-review-vrz8e2x3",
+      "--junitxml=evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/independent-closure/clock-smoke.xml"
+    ],
+    "environmentOverrides": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONPATH": "/Users/qunmi/.local/share/fsq-androidworld-eval/fsq-native-gpt61-corrected-20261110T043031Z/evaluator-dependencies"
+    },
+    "exitCode": 0,
+    "stdout": "...............                                                          [100%]\n- generated xml file: /Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/independent-closure/clock-smoke.xml -\n15 passed, 67 deselected in 0.06s\n",
+    "stderr": "",
+    "scope": "New clock-only consumer/lifecycle cases with mocked platform; not all82/all313, no actual device/model/task/evaluator calls"
+  },
+  "selectedTestCount": 15,
+  "selectedCases": [
+    {
+      "classname": "tests.test_fsq_campaign",
+      "name": "test_task_clock_transition_does_not_hide_stable_identity_drift[api-34]"
+    },
+    {
+      "classname": "tests.test_fsq_campaign",
+      "name": "test_task_clock_transition_does_not_hide_stable_identity_drift[build-other-build]"
+    },
+    {
+      "classname": "tests.test_fsq_campaign",
+      "name": "test_task_clock_transition_does_not_hide_stable_identity_drift[boot-00000000-0000-0000-0000-000000000002]"
+    },
+    {
+      "classname": "tests.test_fsq_campaign",
+      "name": "test_task_clock_transition_does_not_hide_stable_identity_drift[hash-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb]"
+    },
+    {
+      "classname": "tests.test_fsq_campaign",
+      "name": "test_qualification_requires_explicit_clock_baseline_without_repair[changes0]"
+    },
+    {
+      "classname": "tests.test_fsq_campaign",
+      "name": "test_qualification_requires_explicit_clock_baseline_without_repair[changes1]"
+    },
+    {
+      "classname": "tests.test_fsq_campaign",
+      "name": "test_qualification_requires_explicit_clock_baseline_without_repair[changes2]"
+    },
+    {
+      "classname": "tests.test_fsq_campaign",
+      "name": "test_explicit_clock_preparation_allows_fresh_qualification_after_task_transition"
+    },
+    {
+      "classname": "tests.test_fsq_campaign",
+      "name": "test_clock_preparation_failure_retains_effects_and_never_qualifies[not_restored]"
+    },
+    {
+      "classname": "tests.test_fsq_campaign",
+      "name": "test_clock_preparation_failure_retains_effects_and_never_qualifies[close]"
+    },
+    {
+      "classname": "tests.test_fsq_campaign",
+      "name": "test_clock_preparation_needs_its_own_stage_permission_before_mutation"
+    },
+    {
+      "classname": "tests.test_fsq_campaign",
+      "name": "test_readiness_utc_flag_cannot_replace_the_actual_clock_baseline"
+    },
+    {
+      "classname": "tests.test_fsq_campaign",
+      "name": "test_clock_preparation_never_repairs_or_accepts_stable_target_drift[before-api-34]"
+    },
+    {
+      "classname": "tests.test_fsq_campaign",
+      "name": "test_clock_preparation_never_repairs_or_accepts_stable_target_drift[during-build-other-build]"
+    },
+    {
+      "classname": "tests.test_fsq_campaign",
+      "name": "test_clock_preparation_never_repairs_or_accepts_stable_target_drift[during-hash-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb]"
+    }
+  ],
+  "passed": 15,
+  "deselected": 67,
+  "failures": 0,
+  "full82Or313Rerun": false,
+  "platform": "offline property/environment collaborators only",
+  "temporaryRootRemoved": true
+}

@@ -1,0 +1,13 @@
+{
+  "command": [
+    "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+    "-s",
+    "emulator-5554",
+    "shell",
+    "cat /proc/sys/kernel/random/boot_id; pidof system_server surfaceflinger; service check activity; service check settings; service check window; getprop persist.sys.timezone; appops get org.videolan.vlc MANAGE_EXTERNAL_STORAGE"
+  ],
+  "returnCode": 0,
+  "stdout": "0f36e370-012a-4423-a1f9-959beae8f90d\n333 500\nService activity: found\nService settings: found\nService window: found\nUTC\nUid mode: MANAGE_EXTERNAL_STORAGE: deny\nMANAGE_EXTERNAL_STORAGE: default; time=-1118d8h58m6s740ms ago; rejectTime=-1118d8h56m46s420ms ago\n",
+  "stderr": "",
+  "observedAtUnix": 1794058967.95577
+}

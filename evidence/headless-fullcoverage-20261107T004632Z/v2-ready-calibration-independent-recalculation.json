@@ -1,0 +1,623 @@
+{
+  "actualAttemptStartCount": 12,
+  "actualStartedEpisodeCount": 12,
+  "calibrationGateSatisfied": true,
+  "campaignId": "amkernel-3388314-r12v2-headless-calibration-ready-20261107T004632Z",
+  "cleanupFailureCount": 0,
+  "coverageAudit": {
+    "checkpointNullRewardCount": 0,
+    "checkpointSha256": "848f1b98933d4796ef34098c12e971bce050b7d78837e125aff303a7abbc2c7e",
+    "cleanupFailureCount": 0,
+    "complete": true,
+    "errors": [],
+    "initialCoreServices": {
+      "activityService": true,
+      "adbState": "device",
+      "appiumReady": true,
+      "bootCompleted": "1",
+      "bootId": "0f36e370-012a-4423-a1f9-959beae8f90d",
+      "grpcReady": true,
+      "packageService": true,
+      "qualified": true,
+      "settingsService": true,
+      "surfaceFlingerPids": [
+        "333"
+      ],
+      "systemServerPids": [
+        "500"
+      ],
+      "windowService": true
+    },
+    "nullRewardCount": 0,
+    "originalFailures": [],
+    "sourceTaskSpecsEqual": true,
+    "startEventCount": 12,
+    "startedTaskIndexes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "startedWithoutTerminal": [],
+    "terminalAttemptCount": 12,
+    "terminalEpisodeCount": 12,
+    "terminalEventCount": 12,
+    "terminalTaskIndexes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "terminals": [
+      {
+        "attempt": 1,
+        "checkpointClassification": "passed",
+        "checkpointOfficialReward": 1.0,
+        "classification": "passed",
+        "cleanupFailure": false,
+        "officialReward": 1.0,
+        "result": "episodes/000-SystemWifiTurnOff/attempt-1/result.json",
+        "resultSha256": "d4d1b1dcd76ddcf0f433ae2148f45e1b9a1a9e1622454c7964dc7a7014366204",
+        "taskIndex": 0
+      },
+      {
+        "attempt": 1,
+        "checkpointClassification": "failed",
+        "checkpointOfficialReward": 0.0,
+        "classification": "failed",
+        "cleanupFailure": false,
+        "officialReward": 0.0,
+        "result": "episodes/001-SystemBrightnessMax/attempt-1/result.json",
+        "resultSha256": "9fd037f1a894519733ea123694dad3b07d4ef2e7be85bae42e160142c8e63e86",
+        "taskIndex": 1
+      },
+      {
+        "attempt": 1,
+        "checkpointClassification": "failed",
+        "checkpointOfficialReward": 0.0,
+        "classification": "failed",
+        "cleanupFailure": false,
+        "officialReward": 0.0,
+        "result": "episodes/002-ClockStopWatchRunning/attempt-1/result.json",
+        "resultSha256": "3cb6cad932e7783a38d136056c91275d7975e726c2ca35281675442bdc92ec2e",
+        "taskIndex": 2
+      },
+      {
+        "attempt": 1,
+        "checkpointClassification": "failed",
+        "checkpointOfficialReward": 0.0,
+        "classification": "failed",
+        "cleanupFailure": false,
+        "officialReward": 0.0,
+        "result": "episodes/003-ClockTimerEntry/attempt-1/result.json",
+        "resultSha256": "62f2c761bb069008a77525b50e82d25ae11acc9bd7ce6811d130664b0cc79861",
+        "taskIndex": 3
+      },
+      {
+        "attempt": 1,
+        "checkpointClassification": "passed",
+        "checkpointOfficialReward": 1.0,
+        "classification": "passed",
+        "cleanupFailure": false,
+        "officialReward": 1.0,
+        "result": "episodes/004-ContactsAddContact/attempt-1/result.json",
+        "resultSha256": "9906c6497d8f78008cea81806b02ec5cc66adc218f0ed594188155a2d189c390",
+        "taskIndex": 4
+      },
+      {
+        "attempt": 1,
+        "checkpointClassification": "passed",
+        "checkpointOfficialReward": 1.0,
+        "classification": "passed",
+        "cleanupFailure": false,
+        "officialReward": 1.0,
+        "result": "episodes/005-MarkorCreateNote/attempt-1/result.json",
+        "resultSha256": "81465eef86f0584c9c6f7e3f86b70d8b13d94b7fd913b05f9093098c126af5e5",
+        "taskIndex": 5
+      },
+      {
+        "attempt": 1,
+        "checkpointClassification": "passed",
+        "checkpointOfficialReward": 1.0,
+        "classification": "passed",
+        "cleanupFailure": false,
+        "officialReward": 1.0,
+        "result": "episodes/006-MarkorEditNote/attempt-1/result.json",
+        "resultSha256": "171f4556f06f435667ac5a73aba4dadc72b44bb7f8dc0eeb60ca16120ee5af6a",
+        "taskIndex": 6
+      },
+      {
+        "attempt": 1,
+        "checkpointClassification": "passed",
+        "checkpointOfficialReward": 1.0,
+        "classification": "passed",
+        "cleanupFailure": false,
+        "officialReward": 1.0,
+        "result": "episodes/007-FilesMoveFile/attempt-1/result.json",
+        "resultSha256": "a1f4a147962bde48e027af86ef073fce89d01cf7ec041089a97ef5bc78a7cea4",
+        "taskIndex": 7
+      },
+      {
+        "attempt": 1,
+        "checkpointClassification": "passed",
+        "checkpointOfficialReward": 1.0,
+        "classification": "passed",
+        "cleanupFailure": false,
+        "officialReward": 1.0,
+        "result": "episodes/008-SimpleCalendarAddOneEvent/attempt-1/result.json",
+        "resultSha256": "33528afe5aa82f65b6f74e7a13fbbe46b0f092183c385298c50a776883d5826d",
+        "taskIndex": 8
+      },
+      {
+        "attempt": 1,
+        "checkpointClassification": "passed",
+        "checkpointOfficialReward": 1.0,
+        "classification": "passed",
+        "cleanupFailure": false,
+        "officialReward": 1.0,
+        "result": "episodes/009-CameraTakePhoto/attempt-1/result.json",
+        "resultSha256": "ecf00a846f65c0c20554bdb5f86237fbbf6b4ab0c77b6ad51b9adbce37cf22c7",
+        "taskIndex": 9
+      },
+      {
+        "attempt": 1,
+        "checkpointClassification": "failed",
+        "checkpointOfficialReward": 0.0,
+        "classification": "failed",
+        "cleanupFailure": false,
+        "officialReward": 0.0,
+        "result": "episodes/010-TasksHighPriorityTasks/attempt-1/result.json",
+        "resultSha256": "5671ed1ad5cb173dc447a13a8299869cbecfb0070f2df522509923fd607f563f",
+        "taskIndex": 10
+      },
+      {
+        "attempt": 1,
+        "checkpointClassification": "passed",
+        "checkpointOfficialReward": 1.0,
+        "classification": "passed",
+        "cleanupFailure": false,
+        "officialReward": 1.0,
+        "result": "episodes/011-SimpleCalendarEventsOnDate/attempt-1/result.json",
+        "resultSha256": "a5c8b9576bbcd2c80f0ab3a8fdd9903e0d34163f77307b75d45b286bc2bf388c",
+        "taskIndex": 11
+      }
+    ],
+    "valid": true
+  },
+  "diagnosticScoreOnValidEpisodes": 0.6666666666666666,
+  "episodes": [
+    {
+      "classification": "passed",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 0,
+      "officialReward": 1.0,
+      "result": "episodes/000-SystemWifiTurnOff/attempt-1/result.json",
+      "task": "SystemWifiTurnOff"
+    },
+    {
+      "classification": "failed",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 1,
+      "officialReward": 0.0,
+      "result": "episodes/001-SystemBrightnessMax/attempt-1/result.json",
+      "task": "SystemBrightnessMax"
+    },
+    {
+      "classification": "failed",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 2,
+      "officialReward": 0.0,
+      "result": "episodes/002-ClockStopWatchRunning/attempt-1/result.json",
+      "task": "ClockStopWatchRunning"
+    },
+    {
+      "classification": "failed",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 3,
+      "officialReward": 0.0,
+      "result": "episodes/003-ClockTimerEntry/attempt-1/result.json",
+      "task": "ClockTimerEntry"
+    },
+    {
+      "classification": "passed",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 4,
+      "officialReward": 1.0,
+      "result": "episodes/004-ContactsAddContact/attempt-1/result.json",
+      "task": "ContactsAddContact"
+    },
+    {
+      "classification": "passed",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 5,
+      "officialReward": 1.0,
+      "result": "episodes/005-MarkorCreateNote/attempt-1/result.json",
+      "task": "MarkorCreateNote"
+    },
+    {
+      "classification": "passed",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 6,
+      "officialReward": 1.0,
+      "result": "episodes/006-MarkorEditNote/attempt-1/result.json",
+      "task": "MarkorEditNote"
+    },
+    {
+      "classification": "passed",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 7,
+      "officialReward": 1.0,
+      "result": "episodes/007-FilesMoveFile/attempt-1/result.json",
+      "task": "FilesMoveFile"
+    },
+    {
+      "classification": "passed",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 8,
+      "officialReward": 1.0,
+      "result": "episodes/008-SimpleCalendarAddOneEvent/attempt-1/result.json",
+      "task": "SimpleCalendarAddOneEvent"
+    },
+    {
+      "classification": "passed",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 9,
+      "officialReward": 1.0,
+      "result": "episodes/009-CameraTakePhoto/attempt-1/result.json",
+      "task": "CameraTakePhoto"
+    },
+    {
+      "classification": "failed",
+      "cleanupFailure": false,
+      "family": "information_retrieval",
+      "index": 10,
+      "officialReward": 0.0,
+      "result": "episodes/010-TasksHighPriorityTasks/attempt-1/result.json",
+      "task": "TasksHighPriorityTasks"
+    },
+    {
+      "classification": "passed",
+      "cleanupFailure": false,
+      "family": "information_retrieval",
+      "index": 11,
+      "officialReward": 1.0,
+      "result": "episodes/011-SimpleCalendarEventsOnDate/attempt-1/result.json",
+      "task": "SimpleCalendarEventsOnDate"
+    }
+  ],
+  "family": {
+    "android": {
+      "officialRewardSum": 7.0,
+      "scoreOnValidEpisodes": 0.7,
+      "validEpisodeCount": 10
+    },
+    "information_retrieval": {
+      "officialRewardSum": 1.0,
+      "scoreOnValidEpisodes": 0.5,
+      "validEpisodeCount": 2
+    }
+  },
+  "fullValidScore": null,
+  "invalidBreakdown": {},
+  "legacyOfficialScore": null,
+  "lowerBoundScoreOnPlannedEpisodes": 0.6666666666666666,
+  "matchesSummary": true,
+  "officialRewardSum": 8.0,
+  "officialScore": 0.6666666666666666,
+  "pauseReason": null,
+  "paused": false,
+  "plannedEpisodeCount": 12,
+  "protocolIdentity": "r12.full_coverage_after_verified_recovery.v2",
+  "qualified": true,
+  "recoveryReferences": [
+    {
+      "attempt": 1,
+      "beforeEvidence": {
+        "path": "recoveries/001-SystemBrightnessMax-attempt-1-before.json",
+        "sha256": "67eb6d5f4778839cb228ba9970abc49a2a8c06cdc4e462b24233bf27ca081acb"
+      },
+      "bootChanged": false,
+      "checkpointPrefixSha256": "111fd72cecbf3591d09ca881a2399d2f433bfa17f64d1ce17e73e83902e3ba58",
+      "checkpointSequence": 6,
+      "continuationAllowed": true,
+      "coreServices": {
+        "activityService": true,
+        "adbState": "device",
+        "appiumReady": true,
+        "bootCompleted": "1",
+        "bootId": "0f36e370-012a-4423-a1f9-959beae8f90d",
+        "grpcReady": true,
+        "packageService": true,
+        "qualified": true,
+        "settingsService": true,
+        "surfaceFlingerPids": [
+          "333"
+        ],
+        "systemServerPids": [
+          "500"
+        ],
+        "windowService": true
+      },
+      "evidence": "recoveries/001-SystemBrightnessMax-attempt-1.json",
+      "evidenceSha256": "3653770f609ae2f32f84df52675e913bc8032351e3bd211a6e5812f5f7dbbd94",
+      "originalClassification": "failed",
+      "originalCleanup": {
+        "agentSession": {
+          "agentQuitReturned": true,
+          "attribution": "agent",
+          "sessionIdSha256": "91d9947ce2bd480b3cb0c39dac0ea22804619f957b280654d9da64fea13c5263",
+          "status": "closed",
+          "verification": {
+            "activeSessionCount": 0,
+            "attemptedSessionCount": 1,
+            "ownedSessionCount": 1,
+            "pendingCreateCount": 0,
+            "pendingRequestCount": 0,
+            "reclaimedSessionCount": 0,
+            "reclaimedSessionHashes": [],
+            "sessions": [
+              {
+                "absentVerified": true,
+                "alreadyAbsent": true,
+                "errors": [],
+                "presentVerified": false,
+                "quitReturned": false,
+                "sessionHash": "91d9947ce2bd480b3cb0c39dac0ea22804619f957b280654d9da64fea13c5263"
+              }
+            ],
+            "status": "unknown",
+            "unknownCreationOutcomeCount": 0
+          },
+          "verificationStatus": "absent"
+        },
+        "environment": "closed",
+        "taskTearDown": "completed"
+      },
+      "originalResultSha256": "9fd037f1a894519733ea123694dad3b07d4ef2e7be85bae42e160142c8e63e86",
+      "pauseReason": null,
+      "remediation": null,
+      "surfaceFlingerChanged": false,
+      "systemServerChanged": false,
+      "taskIndex": 1
+    },
+    {
+      "attempt": 1,
+      "beforeEvidence": {
+        "path": "recoveries/002-ClockStopWatchRunning-attempt-1-before.json",
+        "sha256": "45cf537a3f5d9ada957b58282ad3a7606c4c589f3ba23fa9b373e1eec7eb4a90"
+      },
+      "bootChanged": false,
+      "checkpointPrefixSha256": "6bf1d5cbc39234f3090fa0df524eede62d92156e575cd893bd830c108d608b3a",
+      "checkpointSequence": 10,
+      "continuationAllowed": true,
+      "coreServices": {
+        "activityService": true,
+        "adbState": "device",
+        "appiumReady": true,
+        "bootCompleted": "1",
+        "bootId": "0f36e370-012a-4423-a1f9-959beae8f90d",
+        "grpcReady": true,
+        "packageService": true,
+        "qualified": true,
+        "settingsService": true,
+        "surfaceFlingerPids": [
+          "333"
+        ],
+        "systemServerPids": [
+          "500"
+        ],
+        "windowService": true
+      },
+      "evidence": "recoveries/002-ClockStopWatchRunning-attempt-1.json",
+      "evidenceSha256": "946bf945d5ad78c38efa39d5906624f46f8f2bdd6ef5375e3bc104d3f250d11a",
+      "originalClassification": "failed",
+      "originalCleanup": {
+        "agentSession": {
+          "agentQuitReturned": true,
+          "attribution": "agent",
+          "sessionIdSha256": "3e9fc618a7dcf92d094838cdeb096ca2b8e314913c85abc562a8ad41e8eccc80",
+          "status": "closed",
+          "verification": {
+            "activeSessionCount": 0,
+            "attemptedSessionCount": 1,
+            "ownedSessionCount": 1,
+            "pendingCreateCount": 0,
+            "pendingRequestCount": 0,
+            "reclaimedSessionCount": 0,
+            "reclaimedSessionHashes": [],
+            "sessions": [
+              {
+                "absentVerified": true,
+                "alreadyAbsent": true,
+                "errors": [],
+                "presentVerified": false,
+                "quitReturned": false,
+                "sessionHash": "3e9fc618a7dcf92d094838cdeb096ca2b8e314913c85abc562a8ad41e8eccc80"
+              }
+            ],
+            "status": "unknown",
+            "unknownCreationOutcomeCount": 0
+          },
+          "verificationStatus": "absent"
+        },
+        "environment": "closed",
+        "taskTearDown": "completed"
+      },
+      "originalResultSha256": "3cb6cad932e7783a38d136056c91275d7975e726c2ca35281675442bdc92ec2e",
+      "pauseReason": null,
+      "remediation": null,
+      "surfaceFlingerChanged": false,
+      "systemServerChanged": false,
+      "taskIndex": 2
+    },
+    {
+      "attempt": 1,
+      "beforeEvidence": {
+        "path": "recoveries/003-ClockTimerEntry-attempt-1-before.json",
+        "sha256": "425d24ebca9f011e8ff6163ebdeec6322962ade2e1769c8828f69a11952f1b0e"
+      },
+      "bootChanged": false,
+      "checkpointPrefixSha256": "a0d8d491c2cc0faf86245bba037733110c566315e31e24ad403f24598f2a4b9e",
+      "checkpointSequence": 14,
+      "continuationAllowed": true,
+      "coreServices": {
+        "activityService": true,
+        "adbState": "device",
+        "appiumReady": true,
+        "bootCompleted": "1",
+        "bootId": "0f36e370-012a-4423-a1f9-959beae8f90d",
+        "grpcReady": true,
+        "packageService": true,
+        "qualified": true,
+        "settingsService": true,
+        "surfaceFlingerPids": [
+          "333"
+        ],
+        "systemServerPids": [
+          "500"
+        ],
+        "windowService": true
+      },
+      "evidence": "recoveries/003-ClockTimerEntry-attempt-1.json",
+      "evidenceSha256": "e3690928d7c23040291a6ea64c4b230be9b91071745387219ee35a89f8a89b0c",
+      "originalClassification": "failed",
+      "originalCleanup": {
+        "agentSession": {
+          "agentQuitReturned": true,
+          "attribution": "agent",
+          "sessionIdSha256": "b7986053496c50b5f451c766547cf7e04cfa3ddca7450f8b8bea943d28237717",
+          "status": "closed",
+          "verification": {
+            "activeSessionCount": 0,
+            "attemptedSessionCount": 1,
+            "ownedSessionCount": 1,
+            "pendingCreateCount": 0,
+            "pendingRequestCount": 0,
+            "reclaimedSessionCount": 0,
+            "reclaimedSessionHashes": [],
+            "sessions": [
+              {
+                "absentVerified": true,
+                "alreadyAbsent": true,
+                "errors": [],
+                "presentVerified": false,
+                "quitReturned": false,
+                "sessionHash": "b7986053496c50b5f451c766547cf7e04cfa3ddca7450f8b8bea943d28237717"
+              }
+            ],
+            "status": "unknown",
+            "unknownCreationOutcomeCount": 0
+          },
+          "verificationStatus": "absent"
+        },
+        "environment": "closed",
+        "taskTearDown": "completed"
+      },
+      "originalResultSha256": "62f2c761bb069008a77525b50e82d25ae11acc9bd7ce6811d130664b0cc79861",
+      "pauseReason": null,
+      "remediation": null,
+      "surfaceFlingerChanged": false,
+      "systemServerChanged": false,
+      "taskIndex": 3
+    },
+    {
+      "attempt": 1,
+      "beforeEvidence": {
+        "path": "recoveries/010-TasksHighPriorityTasks-attempt-1-before.json",
+        "sha256": "ca6f70f2bab3bdceb12ac6be38c9ce941dd016eb4465db41a91607695499d5f0"
+      },
+      "bootChanged": false,
+      "checkpointPrefixSha256": "acf9becaa9181a59b19e82dfbdda480292fba7e8e1284f3a0792d392991c99e8",
+      "checkpointSequence": 30,
+      "continuationAllowed": true,
+      "coreServices": {
+        "activityService": true,
+        "adbState": "device",
+        "appiumReady": true,
+        "bootCompleted": "1",
+        "bootId": "0f36e370-012a-4423-a1f9-959beae8f90d",
+        "grpcReady": true,
+        "packageService": true,
+        "qualified": true,
+        "settingsService": true,
+        "surfaceFlingerPids": [
+          "333"
+        ],
+        "systemServerPids": [
+          "500"
+        ],
+        "windowService": true
+      },
+      "evidence": "recoveries/010-TasksHighPriorityTasks-attempt-1.json",
+      "evidenceSha256": "69ae72be25c8d7fa67c01a72be649c9c471312d1c7cfe6fd8ae7882d8d0cdd2a",
+      "originalClassification": "failed",
+      "originalCleanup": {
+        "agentSession": {
+          "agentQuitReturned": true,
+          "attribution": "agent",
+          "sessionIdSha256": "c75437ea669648c395e7d651b1156a871853e05e00e4f9f90a6416ebe1a09fef",
+          "status": "closed",
+          "verification": {
+            "activeSessionCount": 0,
+            "attemptedSessionCount": 1,
+            "ownedSessionCount": 1,
+            "pendingCreateCount": 0,
+            "pendingRequestCount": 0,
+            "reclaimedSessionCount": 0,
+            "reclaimedSessionHashes": [],
+            "sessions": [
+              {
+                "absentVerified": true,
+                "alreadyAbsent": true,
+                "errors": [],
+                "presentVerified": false,
+                "quitReturned": false,
+                "sessionHash": "c75437ea669648c395e7d651b1156a871853e05e00e4f9f90a6416ebe1a09fef"
+              }
+            ],
+            "status": "unknown",
+            "unknownCreationOutcomeCount": 0
+          },
+          "verificationStatus": "absent"
+        },
+        "environment": "closed",
+        "taskTearDown": "completed"
+      },
+      "originalResultSha256": "5671ed1ad5cb173dc447a13a8299869cbecfb0070f2df522509923fd607f563f",
+      "pauseReason": null,
+      "remediation": null,
+      "surfaceFlingerChanged": false,
+      "systemServerChanged": false,
+      "taskIndex": 10
+    }
+  ],
+  "schemaVersion": 1,
+  "unstartedTaskIndexes": [],
+  "validEpisodeCount": 12
+}

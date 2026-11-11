@@ -1,0 +1,28 @@
+{
+  "kind": "harness_regression_acceptance",
+  "command": "env PATH=/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/bin:$PATH uv run --no-sync pytest -q",
+  "passed": 335,
+  "failed": 0,
+  "durationSeconds": 98.98,
+  "newRehearsalGateTestsPassed": 61,
+  "exercisedFailureBoundaries": [
+    "missing_or_same_size_corrupt_frozen_assets_fail_before_environment_creation",
+    "truncated_incomplete_oversized_wrong_length_or_wrong_digest_download_not_published",
+    "offline_environment_creation_and_refresh_retains_local_getter",
+    "constructor_setup_and_close_failure_retains_cleanup_truth",
+    "actual_upstream_refresh_closes_retired_and_current_raw_owners",
+    "strict_snapshot_failure_not_suppressed_by_upstream",
+    "shared_map_restored_after_storage_wipe_and_device_digest_checked",
+    "all_116_evidence_gate_rejects_partial_tampered_or_contradictory_evidence",
+    "partial_task_initialization_still_attempts_teardown",
+    "cleanup_failure_prevents_next_rehearsal_task",
+    "official_information_retrieval_reference_answer_path_and_non_numeric_return_rejection",
+    "existing_termination_action_budget_proxy_session_and_scoring_regressions"
+  ],
+  "warnings": [
+    "Python 3.11 audioop deprecation warning from pydub",
+    "pydub emits a system-PATH ffmpeg warning at import before Harness explicitly selects the pinned bundled encoder; actual official MP3 and MP4 encode/decode probes passed"
+  ],
+  "agentInvoked": false,
+  "officialReward": null
+}

@@ -1,0 +1,11 @@
+{
+  "command": [
+    "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/bin/python",
+    "-c",
+    "import json,pathlib; from fsq_androidworld_eval.rehearsal import validate_report; p=pathlib.Path.cwd(); m=json.loads((p/'campaigns/amkernel-3388314-r11-timeout300-full-20261106T142607Z/manifest.json').read_text());\ntry: print(validate_report(p/'evidence/harness-r11-rehearsal-20261106-r3/run/report.json',m,p))\nexcept Exception as e: print(type(e).__name__,str(e)[:1000])"
+  ],
+  "returnCode": 0,
+  "stdout": "ValueError campaign protocol mismatch: {'promptTemplateSha256': {'manifest': '9a51a7ee0188abb036f209304f055a07ea0d2ee8592bb75c340eb85a0546a5bf', 'runtime': '463118879bbe14a14abfd987920f115fff29f128db4566dc282e75dc0aa906aa'}, 'runtimeIdentity': {'manifest': {'amkernelExecutableSha256': 'a566d8a09d2f8e5e32bd8ddccd7325656a205a106b6d6913e4a7e1dc6d66c7e9', 'amkernelVersion': '0.1.3', 'androidWorldCheckoutRevision': '55ddaf5edc6f6c25673aed343907d5b9dca66f84', 'androidWorldGeneratedProtoSha256': 'a731ddcc4ef82eb9a5ad6ac07463db2483e286c23285e2e2e96afffc920a985e', 'grpcForkSupport': '0', 'harnessDependencies': [{'name': 'absl-py', 'version': '2.1.0'}, {'name': 'android-env', 'version': '1.2.3'}, {'name': 'android_world', 'version': '0.1.0'}, {'name': 'annotated-doc', 'version': '0.0.5'}, {'name': 'annotated-types', 'version': '0.8.0'}, {'name': 'anyio', 'version': '4.16.0'}, {'name': 'Appium-Python-Client', 'version': '5.3.1'}, {'name': 'asttokens', 'version': '3.0.2'}, {'name': 'attrs', 'version': '26.1.\n",
+  "stderr": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/pydub/utils.py:170: RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work\n  warn(\"Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work\", RuntimeWarning)\n",
+  "observedAtUnix": 1794012485.707036
+}

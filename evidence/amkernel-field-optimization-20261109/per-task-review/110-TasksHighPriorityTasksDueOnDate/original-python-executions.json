@@ -1,0 +1,2364 @@
+[
+  {
+    "startLine": 452,
+    "endLine": 453,
+    "request": {
+      "code": "from appium import webdriver\nfrom appium.options.android import UiAutomator2Options\nfrom appium.webdriver.common.appiumby import AppiumBy\nfrom selenium.webdriver.support.ui import WebDriverWait\nfrom selenium.common.exceptions import TimeoutException\noptions = UiAutomator2Options().load_capabilities({\n    'platformName': 'Android',\n    'appium:automationName': 'UiAutomator2',\n    'appium:udid': 'emulator-5554',\n    'appium:noReset': True,\n    'appium:autoLaunch': False,\n    'appium:skipUnlock': True,\n    'appium:newCommandTimeout': 300,\n})\ndriver = webdriver.Remote('http://127.0.0.1:60720', options=options)\nsession_id = driver.session_id\n{'ownedSessionId': session_id, 'newCommandTimeout': driver.capabilities.get('newCommandTimeout'), 'package': driver.current_package, 'activity': driver.current_activity}",
+      "timeout": 90,
+      "title": "Creating Android session"
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "ownedSessionId": "6c054d7d-2b02-43bf-85db-d794e7baae1b",
+        "newCommandTimeout": 300,
+        "package": "com.google.android.apps.nexuslauncher",
+        "activity": ".NexusLauncherActivity"
+      },
+      "executionCount": 1,
+      "durationMs": 31587,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 706,
+    "endLine": 707,
+    "request": {
+      "code": "els = driver.find_elements(AppiumBy.XPATH, '//*')\nfacts=[]\nfor e in els:\n    try:\n        t=e.get_attribute('text'); d=e.get_attribute('content-desc'); rid=e.get_attribute('resource-id'); cls=e.get_attribute('class')\n        if t or d:\n            facts.append({'text':t,'desc':d,'id':rid,'class':cls})\n    except Exception:\n        pass\n{'package':driver.current_package,'activity':driver.current_activity,'controls':facts[:40]}",
+      "timeout": 30,
+      "title": "Observing launcher controls"
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "com.google.android.apps.nexuslauncher",
+        "activity": ".NexusLauncherActivity",
+        "controls": [
+          {
+            "text": "",
+            "desc": "null",
+            "id": "null",
+            "class": "android.widget.FrameLayout"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "null",
+            "class": "android.widget.LinearLayout"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "android:id/content",
+            "class": "android.widget.FrameLayout"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.google.android.apps.nexuslauncher:id/launcher",
+            "class": "android.widget.FrameLayout"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.google.android.apps.nexuslauncher:id/drag_layer",
+            "class": "android.widget.FrameLayout"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.google.android.apps.nexuslauncher:id/scrim_view",
+            "class": "android.view.View"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.google.android.apps.nexuslauncher:id/workspace",
+            "class": "android.widget.ScrollView"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "null",
+            "class": "android.view.ViewGroup"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "null",
+            "class": "android.view.ViewGroup"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.google.android.apps.nexuslauncher:id/search_container_workspace",
+            "class": "android.widget.FrameLayout"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.google.android.apps.nexuslauncher:id/bc_smartspace_view",
+            "class": "android.widget.FrameLayout"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.google.android.apps.nexuslauncher:id/smartspace_card_pager",
+            "class": "androidx.viewpager.widget.ViewPager"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "null",
+            "class": "android.view.ViewGroup"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.google.android.apps.nexuslauncher:id/text_group",
+            "class": "android.widget.RelativeLayout"
+          },
+          {
+            "text": "Sun, Oct 15",
+            "desc": "Sun, Oct 15",
+            "id": "com.google.android.apps.nexuslauncher:id/date",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.google.android.apps.nexuslauncher:id/smartspace_subtitle_group",
+            "class": "android.view.ViewGroup"
+          },
+          {
+            "text": "Gmail",
+            "desc": "Gmail",
+            "id": "null",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "Photos",
+            "desc": "Photos",
+            "id": "null",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "YouTube",
+            "desc": "YouTube",
+            "id": "null",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "",
+            "desc": "Home",
+            "id": "null",
+            "class": "android.view.View"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.google.android.apps.nexuslauncher:id/page_indicator",
+            "class": "android.view.View"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.google.android.apps.nexuslauncher:id/hotseat",
+            "class": "android.view.ViewGroup"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "null",
+            "class": "android.view.ViewGroup"
+          },
+          {
+            "text": "Phone",
+            "desc": "Phone",
+            "id": "null",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "Messages",
+            "desc": "Messages",
+            "id": "null",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "Chrome",
+            "desc": "Chrome",
+            "id": "null",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "Calendar",
+            "desc": "Predicted app: Calendar",
+            "id": "null",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "",
+            "desc": "Search",
+            "id": "com.google.android.apps.nexuslauncher:id/search_container_hotseat",
+            "class": "android.widget.FrameLayout"
+          },
+          {
+            "text": "",
+            "desc": "Google app",
+            "id": "com.google.android.apps.nexuslauncher:id/g_icon",
+            "class": "android.widget.ImageView"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.google.android.apps.nexuslauncher:id/end_part",
+            "class": "android.widget.LinearLayout"
+          },
+          {
+            "text": "",
+            "desc": "Voice search",
+            "id": "com.google.android.apps.nexuslauncher:id/mic_icon",
+            "class": "android.widget.ImageView"
+          },
+          {
+            "text": "",
+            "desc": "Google Lens",
+            "id": "com.google.android.apps.nexuslauncher:id/lens_icon",
+            "class": "android.widget.ImageButton"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.google.android.apps.nexuslauncher:id/overview_actions_view",
+            "class": "android.widget.FrameLayout"
+          }
+        ]
+      },
+      "executionCount": 2,
+      "durationMs": 637,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 1014,
+    "endLine": 1015,
+    "request": {
+      "code": "size=driver.get_window_size()\ndriver.swipe(size['width']//2, int(size['height']*0.82), size['width']//2, int(size['height']*0.25), 500)\ntry:\n    WebDriverWait(driver,5).until(lambda d: any((e.text or '') == 'Tasks' for e in d.find_elements(AppiumBy.CLASS_NAME,'android.widget.TextView')))\nexcept TimeoutException:\n    pass\ntexts=[]\nfor e in driver.find_elements(AppiumBy.CLASS_NAME,'android.widget.TextView'):\n    try:\n        if e.text: texts.append(e.text)\n    except Exception: pass\n{'package':driver.current_package,'activity':driver.current_activity,'texts':texts[:50]}",
+      "timeout": 15,
+      "title": "Opening app drawer"
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "com.google.android.apps.nexuslauncher",
+        "activity": ".NexusLauncherActivity",
+        "texts": [
+          "Audio Recorder",
+          "Broccoli",
+          "Calendar",
+          "Calendar",
+          "Camera",
+          "Chrome",
+          "Clipper",
+          "Clock",
+          "Contacts",
+          "Draw",
+          "Drive",
+          "Files",
+          "Gallery",
+          "Gmail",
+          "Google",
+          "Joplin",
+          "Maps",
+          "Markor",
+          "Messages",
+          "OpenTracks",
+          "OsmAnd",
+          "Phone",
+          "Photos",
+          "Pro Expense",
+          "Gallery",
+          "Calendar",
+          "Camera",
+          "Tasks"
+        ]
+      },
+      "executionCount": 3,
+      "durationMs": 3053,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 1278,
+    "endLine": 1279,
+    "request": {
+      "code": "task_icons=driver.find_elements(AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text(\"Tasks\")')\nif len(task_icons)!=1: raise RuntimeError(f'Expected one Tasks icon, found {len(task_icons)}')\ntask_icons[0].click()\nWebDriverWait(driver,8).until(lambda d: d.current_package != 'com.google.android.apps.nexuslauncher')\nfacts=[]\nfor e in driver.find_elements(AppiumBy.XPATH,'//*'):\n    try:\n        t=e.get_attribute('text'); d=e.get_attribute('content-desc'); rid=e.get_attribute('resource-id'); cls=e.get_attribute('class')\n        if (t and t!='null') or (d and d!='null'): facts.append({'text':t,'desc':d,'id':rid,'class':cls})\n    except Exception: pass\n{'package':driver.current_package,'activity':driver.current_activity,'controls':facts[:60]}",
+      "timeout": 20,
+      "title": "Opening Tasks app"
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "org.tasks",
+        "activity": "com.todoroo.astrid.activity.TaskListActivity",
+        "controls": [
+          {
+            "text": "My Tasks",
+            "desc": "null",
+            "id": "null",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "",
+            "desc": "Search",
+            "id": "org.tasks:id/menu_search",
+            "class": "android.widget.Button"
+          },
+          {
+            "text": "Renew Driver's License",
+            "desc": "null",
+            "id": "org.tasks:id/title",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "Expires next month. Check DMV website for requirements.",
+            "desc": "null",
+            "id": "org.tasks:id/description",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "Fri",
+            "desc": "null",
+            "id": "org.tasks:id/due_date",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "Learn to Play Guitar",
+            "desc": "null",
+            "id": "org.tasks:id/title",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "Practice chords for 30 minutes every day. Find online tutorials.",
+            "desc": "null",
+            "id": "org.tasks:id/description",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "Wed",
+            "desc": "null",
+            "id": "org.tasks:id/due_date",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "Renew Driver's License",
+            "desc": "null",
+            "id": "org.tasks:id/title",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "Expires next month. Check DMV website for requirements.",
+            "desc": "null",
+            "id": "org.tasks:id/description",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "Thu",
+            "desc": "null",
+            "id": "org.tasks:id/due_date",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "Attend Team Meeting",
+            "desc": "null",
+            "id": "org.tasks:id/title",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "Today",
+            "desc": "null",
+            "id": "org.tasks:id/due_date",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "Finish Project Proposal",
+            "desc": "null",
+            "id": "org.tasks:id/title",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "Deadline is Friday. Need to finalize budget and timeline sections.",
+            "desc": "null",
+            "id": "org.tasks:id/description",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "Yest",
+            "desc": "null",
+            "id": "org.tasks:id/due_date",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "Research Vacation Destinations",
+            "desc": "null",
+            "id": "org.tasks:id/title",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "Yest",
+            "desc": "null",
+            "id": "org.tasks:id/due_date",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "Back Up Computer Files",
+            "desc": "null",
+            "id": "org.tasks:id/title",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "Today",
+            "desc": "null",
+            "id": "org.tasks:id/due_date",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "Renew Driver's License",
+            "desc": "null",
+            "id": "org.tasks:id/title",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "Expires next month. Check DMV website for requirements.",
+            "desc": "null",
+            "id": "org.tasks:id/description",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "Wed",
+            "desc": "null",
+            "id": "org.tasks:id/due_date",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "Create Budget for Next Month",
+            "desc": "null",
+            "id": "org.tasks:id/title",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "Yest",
+            "desc": "null",
+            "id": "org.tasks:id/due_date",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "Marketing Campaign Launch",
+            "desc": "null",
+            "id": "org.tasks:id/title",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "Wed",
+            "desc": "null",
+            "id": "org.tasks:id/due_date",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "",
+            "desc": "Voice input",
+            "id": "org.tasks:id/menu_voice_add",
+            "class": "android.widget.Button"
+          },
+          {
+            "text": "",
+            "desc": "Sort",
+            "id": "org.tasks:id/menu_sort",
+            "class": "android.widget.Button"
+          },
+          {
+            "text": "",
+            "desc": "More options",
+            "id": "null",
+            "class": "android.widget.ImageView"
+          },
+          {
+            "text": "",
+            "desc": "Create new task",
+            "id": "org.tasks:id/fab",
+            "class": "android.widget.ImageButton"
+          }
+        ]
+      },
+      "executionCount": 4,
+      "durationMs": 3673,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 1824,
+    "endLine": 1825,
+    "request": {
+      "code": "import xml.etree.ElementTree as ET\nroot=ET.fromstring(driver.page_source)\nparent={c:p for p in root.iter() for c in p}\nrows=[]\nfor n in root.iter():\n    if n.attrib.get('resource-id')=='org.tasks:id/title' and n.attrib.get('text'):\n        # climb to nearest ancestor containing exactly one title and a due_date\n        a=n\n        chosen=None\n        for _ in range(6):\n            a=parent.get(a)\n            if a is None: break\n            titles=[x for x in a.iter() if x.attrib.get('resource-id')=='org.tasks:id/title']\n            dues=[x for x in a.iter() if x.attrib.get('resource-id')=='org.tasks:id/due_date']\n            if len(titles)==1 and dues:\n                chosen=a\n            elif len(titles)>1:\n                break\n        if chosen is not None:\n            due=next((x.attrib.get('text') for x in chosen.iter() if x.attrib.get('resource-id')=='org.tasks:id/due_date'),None)\n            if due=='Wed':\n                nodes=[]\n                for x in chosen.iter():\n                    attrs={k:x.attrib.get(k) for k in ('class','resource-id','text','content-desc','clickable','checkable','checked','selected','bounds') if x.attrib.get(k) not in (None,'','false','null')}\n                    if attrs: nodes.append(attrs)\n                rows.append({'title':n.attrib.get('text'),'rowClass':chosen.attrib.get('class'),'rowId':chosen.attrib.get('resource-id'),'nodes':nodes})\n{'package':driver.current_package,'wednesdayRows':rows[:10]}",
+      "timeout": 30,
+      "title": "Inspecting Wednesday task rows"
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "org.tasks",
+        "wednesdayRows": [
+          {
+            "title": "Learn to Play Guitar",
+            "rowClass": "android.widget.FrameLayout",
+            "rowId": "org.tasks:id/row",
+            "nodes": [
+              {
+                "class": "android.widget.FrameLayout",
+                "resource-id": "org.tasks:id/row",
+                "bounds": "[0,544][1080,813]"
+              },
+              {
+                "class": "android.widget.RelativeLayout",
+                "resource-id": "org.tasks:id/rowBody",
+                "clickable": "true",
+                "bounds": "[0,544][1080,813]"
+              },
+              {
+                "class": "android.widget.ImageView",
+                "resource-id": "org.tasks:id/completeBox",
+                "clickable": "true",
+                "bounds": "[0,544][147,691]"
+              },
+              {
+                "class": "android.widget.TextView",
+                "resource-id": "org.tasks:id/title",
+                "text": "Learn to Play Guitar",
+                "bounds": "[147,544][946,643]"
+              },
+              {
+                "class": "android.widget.TextView",
+                "resource-id": "org.tasks:id/description",
+                "text": "Practice chords for 30 minutes every day. Find online tutorials.",
+                "bounds": "[0,654][1059,760]"
+              },
+              {
+                "class": "android.widget.TextView",
+                "resource-id": "org.tasks:id/due_date",
+                "text": "Wed",
+                "clickable": "true",
+                "bounds": "[946,550][1059,683]"
+              },
+              {
+                "class": "androidx.compose.ui.platform.ComposeView",
+                "resource-id": "org.tasks:id/chip_group",
+                "bounds": "[147,771][1017,813]"
+              },
+              {
+                "class": "android.view.View",
+                "bounds": "[147,771][1017,813]"
+              }
+            ]
+          },
+          {
+            "title": "Renew Driver's License",
+            "rowClass": "android.widget.FrameLayout",
+            "rowId": "org.tasks:id/row",
+            "nodes": [
+              {
+                "class": "android.widget.FrameLayout",
+                "resource-id": "org.tasks:id/row",
+                "bounds": "[0,1807][1080,2076]"
+              },
+              {
+                "class": "android.widget.RelativeLayout",
+                "resource-id": "org.tasks:id/rowBody",
+                "clickable": "true",
+                "bounds": "[0,1807][1080,2076]"
+              },
+              {
+                "class": "android.widget.ImageView",
+                "resource-id": "org.tasks:id/completeBox",
+                "clickable": "true",
+                "bounds": "[0,1807][147,1954]"
+              },
+              {
+                "class": "android.widget.TextView",
+                "resource-id": "org.tasks:id/title",
+                "text": "Renew Driver's License",
+                "bounds": "[147,1807][946,1906]"
+              },
+              {
+                "class": "android.widget.TextView",
+                "resource-id": "org.tasks:id/description",
+                "text": "Expires next month. Check DMV website for requirements.",
+                "bounds": "[0,1917][1059,2023]"
+              },
+              {
+                "class": "android.widget.TextView",
+                "resource-id": "org.tasks:id/due_date",
+                "text": "Wed",
+                "clickable": "true",
+                "bounds": "[946,1813][1059,1946]"
+              },
+              {
+                "class": "androidx.compose.ui.platform.ComposeView",
+                "resource-id": "org.tasks:id/chip_group",
+                "bounds": "[147,2034][1017,2076]"
+              },
+              {
+                "class": "android.view.View",
+                "bounds": "[147,2034][1017,2076]"
+              }
+            ]
+          },
+          {
+            "title": "Marketing Campaign Launch",
+            "rowClass": "android.widget.FrameLayout",
+            "rowId": "org.tasks:id/row",
+            "nodes": [
+              {
+                "class": "android.widget.FrameLayout",
+                "resource-id": "org.tasks:id/row",
+                "bounds": "[0,2228][1080,2337]"
+              },
+              {
+                "class": "android.widget.RelativeLayout",
+                "resource-id": "org.tasks:id/rowBody",
+                "clickable": "true",
+                "bounds": "[0,2228][1080,2337]"
+              },
+              {
+                "class": "android.widget.ImageView",
+                "resource-id": "org.tasks:id/completeBox",
+                "clickable": "true",
+                "bounds": "[0,2228][147,2337]"
+              },
+              {
+                "class": "android.widget.TextView",
+                "resource-id": "org.tasks:id/title",
+                "text": "Marketing Campaign Launch",
+                "bounds": "[147,2228][946,2327]"
+              },
+              {
+                "class": "android.widget.TextView",
+                "resource-id": "org.tasks:id/due_date",
+                "text": "Wed",
+                "clickable": "true",
+                "bounds": "[946,2234][1059,2337]"
+              }
+            ]
+          }
+        ]
+      },
+      "executionCount": 5,
+      "durationMs": 68,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 2166,
+    "endLine": 2167,
+    "request": {
+      "code": "title='Learn to Play Guitar'\nnode=driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, f'new UiSelector().resourceId(\"org.tasks:id/title\").text(\"{title}\")')\nrow=node.find_element(AppiumBy.XPATH,'..')\nrow.click()\nWebDriverWait(driver,5).until(lambda d: len(d.find_elements(AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text(\"Learn to Play Guitar\")'))>0 and any((e.get_attribute('resource-id') or '').endswith('toolbar') for e in d.find_elements(AppiumBy.XPATH,'//*')))\nfacts=[]\nfor e in driver.find_elements(AppiumBy.XPATH,'//*'):\n    try:\n        t=e.get_attribute('text'); desc=e.get_attribute('content-desc'); rid=e.get_attribute('resource-id'); cls=e.get_attribute('class')\n        if (t and t!='null') or (desc and desc!='null') or ('priority' in (rid or '').lower()): facts.append({'text':t,'desc':desc,'id':rid,'class':cls,'checked':e.get_attribute('checked')})\n    except Exception: pass\n{'package':driver.current_package,'activity':driver.current_activity,'controls':facts[:80]}",
+      "timeout": 15,
+      "title": "Opening first Wednesday task"
+    },
+    "envelope": {
+      "status": "failed",
+      "stdout": "",
+      "stderr": "",
+      "error": {
+        "type": "selenium.common.exceptions.NoSuchElementException",
+        "message": "An element could not be located on the page using the given search parameters.",
+        "traceback": [
+          "Traceback (most recent call last):",
+          "  File \"<external-frame>\", line 590, in <frame>",
+          "  File \"<external-frame>\", line 575, in <frame>",
+          "  File \"<amkernel-cell-6>\", line 3, in <frame>",
+          "  File \"<external-frame>\", line 529, in <frame>",
+          "  File \"<external-frame>\", line 505, in <frame>",
+          "  File \"<external-frame>\", line 566, in <frame>",
+          "  File \"<external-frame>\", line 125, in <frame>",
+          "selenium.common.exceptions.NoSuchElementException: An element could not be located on the page using the given search parameters."
+        ]
+      },
+      "executionCount": 6,
+      "durationMs": 29,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 2304,
+    "endLine": 2305,
+    "request": {
+      "code": "matches=driver.find_elements(AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().resourceId(\"org.tasks:id/title\").text(\"Learn to Play Guitar\")')\n{'package':driver.current_package,'activity':driver.current_activity,'matchCount':len(matches),'matchBounds':[m.get_attribute('bounds') for m in matches[:3]]}",
+      "timeout": 10,
+      "title": "Reconciling task list state"
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "org.tasks",
+        "activity": "com.todoroo.astrid.activity.TaskListActivity",
+        "matchCount": 1,
+        "matchBounds": [
+          "[147,544][946,643]"
+        ]
+      },
+      "executionCount": 7,
+      "durationMs": 162,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 2537,
+    "endLine": 2538,
+    "request": {
+      "code": "matches[0].click()\nWebDriverWait(driver,5).until(lambda d: len(d.find_elements(AppiumBy.ID,'org.tasks:id/fab'))==0)\nfacts=[]\nfor e in driver.find_elements(AppiumBy.XPATH,'//*'):\n    try:\n        t=e.get_attribute('text'); desc=e.get_attribute('content-desc'); rid=e.get_attribute('resource-id'); cls=e.get_attribute('class')\n        if (t and t!='null') or (desc and desc!='null') or ('priority' in (rid or '').lower()): facts.append({'text':t,'desc':desc,'id':rid,'class':cls,'checked':e.get_attribute('checked')})\n    except Exception: pass\n{'package':driver.current_package,'activity':driver.current_activity,'controls':facts[:100]}",
+      "timeout": 15,
+      "title": "Opening first Wednesday task"
+    },
+    "envelope": {
+      "status": "failed",
+      "stdout": "",
+      "stderr": "",
+      "error": {
+        "type": "selenium.common.exceptions.TimeoutException",
+        "message": "",
+        "traceback": [
+          "Traceback (most recent call last):",
+          "  File \"<external-frame>\", line 590, in <frame>",
+          "  File \"<external-frame>\", line 575, in <frame>",
+          "  File \"<amkernel-cell-8>\", line 2, in <frame>",
+          "  File \"<external-frame>\", line 121, in <frame>",
+          "selenium.common.exceptions.TimeoutException"
+        ]
+      },
+      "executionCount": 8,
+      "durationMs": 5356,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 2816,
+    "endLine": 2817,
+    "request": {
+      "code": "facts=[]\nfor e in driver.find_elements(AppiumBy.XPATH,'//*'):\n    try:\n        t=e.get_attribute('text'); desc=e.get_attribute('content-desc'); rid=e.get_attribute('resource-id'); cls=e.get_attribute('class')\n        if (t and t!='null') or (desc and desc!='null') or ('priority' in (rid or '').lower()): facts.append({'text':t,'desc':desc,'id':rid,'class':cls,'checked':e.get_attribute('checked')})\n    except Exception: pass\n{'package':driver.current_package,'activity':driver.current_activity,'controls':facts[:120]}",
+      "timeout": 15,
+      "title": "Reconciling opened task state"
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "org.tasks",
+        "activity": "com.todoroo.astrid.activity.TaskListActivity",
+        "controls": [
+          {
+            "text": "Learn to Play Guitar",
+            "desc": "null",
+            "id": "org.tasks:id/title",
+            "class": "android.widget.EditText",
+            "checked": "false"
+          },
+          {
+            "text": "",
+            "desc": "Save",
+            "id": "null",
+            "class": "android.widget.ImageButton",
+            "checked": "false"
+          },
+          {
+            "text": "",
+            "desc": "Delete task",
+            "id": "org.tasks:id/menu_delete",
+            "class": "android.widget.Button",
+            "checked": "false"
+          },
+          {
+            "text": "Too much information?",
+            "desc": "null",
+            "id": "null",
+            "class": "android.widget.TextView",
+            "checked": "false"
+          },
+          {
+            "text": "You can customize this screen by rearranging or removing fields",
+            "desc": "null",
+            "id": "null",
+            "class": "android.widget.TextView",
+            "checked": "false"
+          },
+          {
+            "text": "Dismiss",
+            "desc": "null",
+            "id": "null",
+            "class": "android.widget.TextView",
+            "checked": "false"
+          },
+          {
+            "text": "Settings",
+            "desc": "null",
+            "id": "null",
+            "class": "android.widget.TextView",
+            "checked": "false"
+          },
+          {
+            "text": "Friday, October 6",
+            "desc": "null",
+            "id": "null",
+            "class": "android.widget.TextView",
+            "checked": "false"
+          },
+          {
+            "text": "Wednesday",
+            "desc": "null",
+            "id": "null",
+            "class": "android.widget.TextView",
+            "checked": "false"
+          },
+          {
+            "text": "Does not repeat",
+            "desc": "null",
+            "id": "null",
+            "class": "android.widget.TextView",
+            "checked": "false"
+          },
+          {
+            "text": "Priority",
+            "desc": "null",
+            "id": "null",
+            "class": "android.widget.TextView",
+            "checked": "false"
+          },
+          {
+            "text": "Add location",
+            "desc": "null",
+            "id": "null",
+            "class": "android.widget.TextView",
+            "checked": "false"
+          },
+          {
+            "text": "Add tags",
+            "desc": "null",
+            "id": "null",
+            "class": "android.widget.TextView",
+            "checked": "false"
+          },
+          {
+            "text": "Default list",
+            "desc": "null",
+            "id": "null",
+            "class": "android.widget.TextView",
+            "checked": "false"
+          },
+          {
+            "text": "Add subtask",
+            "desc": "null",
+            "id": "null",
+            "class": "android.widget.TextView",
+            "checked": "false"
+          },
+          {
+            "text": "Enable reminders",
+            "desc": "null",
+            "id": "null",
+            "class": "android.widget.TextView",
+            "checked": "false"
+          },
+          {
+            "text": "Reminders are disabled in Android Settings",
+            "desc": "null",
+            "id": "null",
+            "class": "android.widget.TextView",
+            "checked": "false"
+          }
+        ]
+      },
+      "executionCount": 9,
+      "durationMs": 1166,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 3152,
+    "endLine": 3153,
+    "request": {
+      "code": "root=ET.fromstring(driver.page_source); parent={c:p for p in root.iter() for c in p}\nps=[n for n in root.iter() if n.attrib.get('text')=='Priority']\nout=[]\nfor n in ps:\n    a=parent.get(n)\n    for level in range(3):\n        if a is None: break\n        nodes=[]\n        for x in a.iter():\n            attrs={k:x.attrib.get(k) for k in ('class','resource-id','text','content-desc','clickable','checkable','checked','selected','bounds') if x.attrib.get(k) not in (None,'','false','null')}\n            if attrs:nodes.append(attrs)\n        out.append({'level':level+1,'ancestor':a.attrib,'nodes':nodes[:30]})\n        a=parent.get(a)\n{'priorityContexts':out}",
+      "timeout": 15,
+      "title": "Inspecting task priority field"
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "priorityContexts": [
+          {
+            "level": 1,
+            "ancestor": {
+              "index": "3",
+              "package": "org.tasks",
+              "class": "android.view.View",
+              "text": "",
+              "checkable": "false",
+              "checked": "false",
+              "clickable": "true",
+              "enabled": "false",
+              "focusable": "false",
+              "focused": "false",
+              "long-clickable": "false",
+              "password": "false",
+              "scrollable": "false",
+              "selected": "false",
+              "bounds": "[0,1336][1080,1505]",
+              "displayed": "true",
+              "a11y-important": "true",
+              "screen-reader-focusable": "true",
+              "drawing-order": "0",
+              "showing-hint": "false",
+              "text-entry-key": "false",
+              "dismissable": "false",
+              "a11y-focused": "false",
+              "heading": "false",
+              "live-region": "0",
+              "context-clickable": "false",
+              "content-invalid": "false",
+              "window-id": "9068"
+            },
+            "nodes": [
+              {
+                "class": "android.view.View",
+                "clickable": "true",
+                "bounds": "[0,1336][1080,1505]"
+              },
+              {
+                "class": "android.widget.TextView",
+                "text": "Priority",
+                "bounds": "[189,1392][334,1449]"
+              },
+              {
+                "class": "android.widget.RadioButton",
+                "clickable": "true",
+                "checkable": "true",
+                "bounds": "[376,1358][541,1484]"
+              },
+              {
+                "class": "android.widget.RadioButton",
+                "clickable": "true",
+                "checkable": "true",
+                "bounds": "[541,1358][706,1484]"
+              },
+              {
+                "class": "android.widget.RadioButton",
+                "checkable": "true",
+                "checked": "true",
+                "bounds": "[706,1358][872,1484]"
+              },
+              {
+                "class": "android.widget.RadioButton",
+                "clickable": "true",
+                "checkable": "true",
+                "bounds": "[872,1358][1038,1484]"
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "ancestor": {
+              "index": "0",
+              "package": "org.tasks",
+              "class": "android.view.View",
+              "text": "",
+              "checkable": "false",
+              "checked": "false",
+              "clickable": "false",
+              "enabled": "true",
+              "focusable": "false",
+              "focused": "false",
+              "long-clickable": "false",
+              "password": "false",
+              "scrollable": "false",
+              "selected": "false",
+              "bounds": "[0,820][1080,2337]",
+              "displayed": "true",
+              "a11y-important": "true",
+              "screen-reader-focusable": "false",
+              "drawing-order": "0",
+              "showing-hint": "false",
+              "text-entry-key": "false",
+              "dismissable": "false",
+              "a11y-focused": "false",
+              "heading": "false",
+              "live-region": "0",
+              "context-clickable": "false",
+              "content-invalid": "false",
+              "window-id": "9068"
+            },
+            "nodes": [
+              {
+                "class": "android.view.View",
+                "bounds": "[0,820][1080,2337]"
+              },
+              {
+                "class": "android.view.ViewGroup",
+                "bounds": "[0,820][1080,989]"
+              },
+              {
+                "class": "android.widget.FrameLayout",
+                "resource-id": "org.tasks:id/task_edit_start_date",
+                "bounds": "[0,820][1080,989]"
+              },
+              {
+                "class": "androidx.compose.ui.platform.ComposeView",
+                "bounds": "[0,820][1080,989]"
+              },
+              {
+                "class": "android.view.View",
+                "bounds": "[0,820][1080,989]"
+              },
+              {
+                "class": "android.view.View",
+                "clickable": "true",
+                "bounds": "[0,820][1080,989]"
+              },
+              {
+                "class": "android.widget.TextView",
+                "text": "Friday, October 6",
+                "bounds": "[189,873][524,936]"
+              },
+              {
+                "class": "android.view.View",
+                "clickable": "true",
+                "bounds": "[0,992][1080,1161]"
+              },
+              {
+                "class": "android.widget.TextView",
+                "text": "Wednesday",
+                "bounds": "[189,1045][418,1102]"
+              },
+              {
+                "class": "android.view.ViewGroup",
+                "bounds": "[0,1164][1080,1333]"
+              },
+              {
+                "class": "android.widget.FrameLayout",
+                "resource-id": "org.tasks:id/task_edit_repeat",
+                "bounds": "[0,1164][1080,1333]"
+              },
+              {
+                "class": "androidx.compose.ui.platform.ComposeView",
+                "bounds": "[0,1164][1080,1333]"
+              },
+              {
+                "class": "android.view.View",
+                "bounds": "[0,1164][1080,1333]"
+              },
+              {
+                "class": "android.view.View",
+                "clickable": "true",
+                "bounds": "[0,1164][1080,1333]"
+              },
+              {
+                "class": "android.widget.TextView",
+                "text": "Does not repeat",
+                "bounds": "[189,1217][506,1280]"
+              },
+              {
+                "class": "android.view.View",
+                "clickable": "true",
+                "bounds": "[0,1336][1080,1505]"
+              },
+              {
+                "class": "android.widget.TextView",
+                "text": "Priority",
+                "bounds": "[189,1392][334,1449]"
+              },
+              {
+                "class": "android.widget.RadioButton",
+                "clickable": "true",
+                "checkable": "true",
+                "bounds": "[376,1358][541,1484]"
+              },
+              {
+                "class": "android.widget.RadioButton",
+                "clickable": "true",
+                "checkable": "true",
+                "bounds": "[541,1358][706,1484]"
+              },
+              {
+                "class": "android.widget.RadioButton",
+                "checkable": "true",
+                "checked": "true",
+                "bounds": "[706,1358][872,1484]"
+              },
+              {
+                "class": "android.widget.RadioButton",
+                "clickable": "true",
+                "checkable": "true",
+                "bounds": "[872,1358][1038,1484]"
+              },
+              {
+                "class": "android.view.ViewGroup",
+                "bounds": "[0,1508][1080,1677]"
+              },
+              {
+                "class": "android.widget.FrameLayout",
+                "resource-id": "org.tasks:id/task_edit_location",
+                "bounds": "[0,1508][1080,1677]"
+              },
+              {
+                "class": "androidx.compose.ui.platform.ComposeView",
+                "bounds": "[0,1508][1080,1677]"
+              },
+              {
+                "class": "android.view.View",
+                "bounds": "[0,1508][1080,1677]"
+              },
+              {
+                "class": "android.view.View",
+                "clickable": "true",
+                "bounds": "[0,1508][1080,1677]"
+              },
+              {
+                "class": "android.widget.TextView",
+                "text": "Add location",
+                "bounds": "[189,1561][441,1624]"
+              },
+              {
+                "class": "android.view.ViewGroup",
+                "bounds": "[0,1680][1080,1849]"
+              },
+              {
+                "class": "android.widget.FrameLayout",
+                "resource-id": "org.tasks:id/task_edit_tags",
+                "bounds": "[0,1680][1080,1849]"
+              },
+              {
+                "class": "androidx.compose.ui.platform.ComposeView",
+                "bounds": "[0,1680][1080,1849]"
+              }
+            ]
+          },
+          {
+            "level": 3,
+            "ancestor": {
+              "index": "0",
+              "package": "org.tasks",
+              "class": "androidx.compose.ui.platform.ComposeView",
+              "text": "",
+              "resource-id": "org.tasks:id/compose_view",
+              "checkable": "false",
+              "checked": "false",
+              "clickable": "false",
+              "enabled": "true",
+              "focusable": "false",
+              "focused": "false",
+              "long-clickable": "false",
+              "password": "false",
+              "scrollable": "false",
+              "selected": "false",
+              "bounds": "[0,820][1080,2337]",
+              "displayed": "true",
+              "a11y-important": "false",
+              "screen-reader-focusable": "false",
+              "drawing-order": "1",
+              "showing-hint": "false",
+              "text-entry-key": "false",
+              "dismissable": "false",
+              "a11y-focused": "false",
+              "heading": "false",
+              "live-region": "0",
+              "context-clickable": "false",
+              "content-invalid": "false",
+              "window-id": "9068"
+            },
+            "nodes": [
+              {
+                "class": "androidx.compose.ui.platform.ComposeView",
+                "resource-id": "org.tasks:id/compose_view",
+                "bounds": "[0,820][1080,2337]"
+              },
+              {
+                "class": "android.view.View",
+                "bounds": "[0,820][1080,2337]"
+              },
+              {
+                "class": "android.view.ViewGroup",
+                "bounds": "[0,820][1080,989]"
+              },
+              {
+                "class": "android.widget.FrameLayout",
+                "resource-id": "org.tasks:id/task_edit_start_date",
+                "bounds": "[0,820][1080,989]"
+              },
+              {
+                "class": "androidx.compose.ui.platform.ComposeView",
+                "bounds": "[0,820][1080,989]"
+              },
+              {
+                "class": "android.view.View",
+                "bounds": "[0,820][1080,989]"
+              },
+              {
+                "class": "android.view.View",
+                "clickable": "true",
+                "bounds": "[0,820][1080,989]"
+              },
+              {
+                "class": "android.widget.TextView",
+                "text": "Friday, October 6",
+                "bounds": "[189,873][524,936]"
+              },
+              {
+                "class": "android.view.View",
+                "clickable": "true",
+                "bounds": "[0,992][1080,1161]"
+              },
+              {
+                "class": "android.widget.TextView",
+                "text": "Wednesday",
+                "bounds": "[189,1045][418,1102]"
+              },
+              {
+                "class": "android.view.ViewGroup",
+                "bounds": "[0,1164][1080,1333]"
+              },
+              {
+                "class": "android.widget.FrameLayout",
+                "resource-id": "org.tasks:id/task_edit_repeat",
+                "bounds": "[0,1164][1080,1333]"
+              },
+              {
+                "class": "androidx.compose.ui.platform.ComposeView",
+                "bounds": "[0,1164][1080,1333]"
+              },
+              {
+                "class": "android.view.View",
+                "bounds": "[0,1164][1080,1333]"
+              },
+              {
+                "class": "android.view.View",
+                "clickable": "true",
+                "bounds": "[0,1164][1080,1333]"
+              },
+              {
+                "class": "android.widget.TextView",
+                "text": "Does not repeat",
+                "bounds": "[189,1217][506,1280]"
+              },
+              {
+                "class": "android.view.View",
+                "clickable": "true",
+                "bounds": "[0,1336][1080,1505]"
+              },
+              {
+                "class": "android.widget.TextView",
+                "text": "Priority",
+                "bounds": "[189,1392][334,1449]"
+              },
+              {
+                "class": "android.widget.RadioButton",
+                "clickable": "true",
+                "checkable": "true",
+                "bounds": "[376,1358][541,1484]"
+              },
+              {
+                "class": "android.widget.RadioButton",
+                "clickable": "true",
+                "checkable": "true",
+                "bounds": "[541,1358][706,1484]"
+              },
+              {
+                "class": "android.widget.RadioButton",
+                "checkable": "true",
+                "checked": "true",
+                "bounds": "[706,1358][872,1484]"
+              },
+              {
+                "class": "android.widget.RadioButton",
+                "clickable": "true",
+                "checkable": "true",
+                "bounds": "[872,1358][1038,1484]"
+              },
+              {
+                "class": "android.view.ViewGroup",
+                "bounds": "[0,1508][1080,1677]"
+              },
+              {
+                "class": "android.widget.FrameLayout",
+                "resource-id": "org.tasks:id/task_edit_location",
+                "bounds": "[0,1508][1080,1677]"
+              },
+              {
+                "class": "androidx.compose.ui.platform.ComposeView",
+                "bounds": "[0,1508][1080,1677]"
+              },
+              {
+                "class": "android.view.View",
+                "bounds": "[0,1508][1080,1677]"
+              },
+              {
+                "class": "android.view.View",
+                "clickable": "true",
+                "bounds": "[0,1508][1080,1677]"
+              },
+              {
+                "class": "android.widget.TextView",
+                "text": "Add location",
+                "bounds": "[189,1561][441,1624]"
+              },
+              {
+                "class": "android.view.ViewGroup",
+                "bounds": "[0,1680][1080,1849]"
+              },
+              {
+                "class": "android.widget.FrameLayout",
+                "resource-id": "org.tasks:id/task_edit_tags",
+                "bounds": "[0,1680][1080,1849]"
+              }
+            ]
+          }
+        ]
+      },
+      "executionCount": 10,
+      "durationMs": 49,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 3320,
+    "endLine": 3322,
+    "request": {
+      "code": "from PIL import Image\nimport io\npng=driver.get_screenshot_as_png()\nim=Image.open(io.BytesIO(png))\ncrop=im.crop((150,1320,1060,1520))\nb=io.BytesIO(); crop.save(b,format='PNG')\ndisplay(b.getvalue(), mime_type='image/png')\n{'title':'Learn to Play Guitar','crop':{'left':150,'top':1320,'right':1060,'bottom':1520},'fullSize':im.size}",
+      "timeout": 15,
+      "title": "Viewing task priority control"
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "kind": "repr",
+        "typeName": "dict",
+        "value": "<dict len=3; bounded non-JSON representation>",
+        "truncated": true
+      },
+      "executionCount": 11,
+      "durationMs": 143,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [
+        {
+          "sequence": 1,
+          "kind": "image",
+          "mimeType": "image/png",
+          "size": 11527,
+          "sha256": "0554b14d109e843adf0a9811ef48e1e3866db6307351a2be3b27968060939601",
+          "width": 910,
+          "height": 200,
+          "inline": true,
+          "artifact": {
+            "uri": "amkernel://artifact/0af76f6b2a1440f9802165d803ae3a12/90e0f05a11224599aa7271995c94ff1e",
+            "name": "image",
+            "declaredMimeType": "image/png",
+            "mimeType": "image/png",
+            "representation": "raw",
+            "size": 11527,
+            "sha256": "0554b14d109e843adf0a9811ef48e1e3866db6307351a2be3b27968060939601"
+          }
+        }
+      ],
+      "artifacts": [
+        {
+          "uri": "amkernel://artifact/0af76f6b2a1440f9802165d803ae3a12/90e0f05a11224599aa7271995c94ff1e",
+          "name": "image",
+          "declaredMimeType": "image/png",
+          "mimeType": "image/png",
+          "representation": "raw",
+          "size": 11527,
+          "sha256": "0554b14d109e843adf0a9811ef48e1e3866db6307351a2be3b27968060939601"
+        }
+      ]
+    }
+  },
+  {
+    "startLine": 4346,
+    "endLine": 4347,
+    "request": {
+      "code": "driver.back()\nWebDriverWait(driver,5).until(lambda d: len(d.find_elements(AppiumBy.ID,'org.tasks:id/fab'))==1)\nxp='//android.widget.FrameLayout[@resource-id=\"org.tasks:id/row\" and .//*[@resource-id=\"org.tasks:id/title\" and @text=\"Renew Driver&apos;s License\"] and .//*[@resource-id=\"org.tasks:id/due_date\" and @text=\"Wed\"]]//*[@resource-id=\"org.tasks:id/rowBody\"]'\nrow=driver.find_element(AppiumBy.XPATH,xp)\nrow.click()\nWebDriverWait(driver,5).until(lambda d: len(d.find_elements(AppiumBy.ID,'org.tasks:id/fab'))==0)\nroot=ET.fromstring(driver.page_source)\nradios=[]\nfor n in root.iter():\n    if n.attrib.get('class')=='android.widget.RadioButton':\n        radios.append({'checked':n.attrib.get('checked'),'bounds':n.attrib.get('bounds')})\ndateTexts=[n.attrib.get('text') for n in root.iter() if n.attrib.get('text') and ('Wednesday' in n.attrib.get('text') or 'October' in n.attrib.get('text'))]\n{'title':\"Renew Driver's License\",'radioButtons':radios,'dateTexts':dateTexts}",
+      "timeout": 15,
+      "title": "Inspecting Wednesday license task"
+    },
+    "envelope": {
+      "status": "failed",
+      "stdout": "",
+      "stderr": "",
+      "error": {
+        "type": "selenium.common.exceptions.TimeoutException",
+        "message": "",
+        "traceback": [
+          "Traceback (most recent call last):",
+          "  File \"<external-frame>\", line 590, in <frame>",
+          "  File \"<external-frame>\", line 575, in <frame>",
+          "  File \"<amkernel-cell-12>\", line 2, in <frame>",
+          "  File \"<external-frame>\", line 121, in <frame>",
+          "selenium.common.exceptions.TimeoutException"
+        ]
+      },
+      "executionCount": 12,
+      "durationMs": 5674,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 4510,
+    "endLine": 4511,
+    "request": {
+      "code": "texts=[]\nfor e in driver.find_elements(AppiumBy.XPATH,'//*'):\n    try:\n        t=e.get_attribute('text'); d=e.get_attribute('content-desc'); rid=e.get_attribute('resource-id')\n        if (t and t!='null') or (d and d!='null'): texts.append({'text':t,'desc':d,'id':rid})\n    except Exception: pass\n{'package':driver.current_package,'activity':driver.current_activity,'controls':texts[:40]}",
+      "timeout": 10,
+      "title": "Reconciling editor state"
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "org.tasks",
+        "activity": "com.todoroo.astrid.activity.TaskListActivity",
+        "controls": [
+          {
+            "text": "Are you sure you want to discard your changes?",
+            "desc": "null",
+            "id": "org.tasks:id/alertTitle"
+          },
+          {
+            "text": "DISCARD",
+            "desc": "null",
+            "id": "android:id/button2"
+          },
+          {
+            "text": "KEEP EDITING",
+            "desc": "null",
+            "id": "android:id/button1"
+          }
+        ]
+      },
+      "executionCount": 13,
+      "durationMs": 188,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 4901,
+    "endLine": 4902,
+    "request": {
+      "code": "driver.find_element(AppiumBy.ID,'android:id/button2').click()\nWebDriverWait(driver,5).until(lambda d: len(d.find_elements(AppiumBy.ID,'org.tasks:id/fab'))==1)\nxp='//android.widget.FrameLayout[@resource-id=\"org.tasks:id/row\" and .//*[@resource-id=\"org.tasks:id/title\" and @text=\"Renew Driver&apos;s License\"] and .//*[@resource-id=\"org.tasks:id/due_date\" and @text=\"Wed\"]]//*[@resource-id=\"org.tasks:id/rowBody\"]'\nrow=driver.find_element(AppiumBy.XPATH,xp)\nrow.click()\nWebDriverWait(driver,5).until(lambda d: any(e.get_attribute('class')=='android.widget.EditText' and e.get_attribute('text')==\"Renew Driver's License\" for e in d.find_elements(AppiumBy.ID,'org.tasks:id/title')))\nroot=ET.fromstring(driver.page_source)\nradios=[{'checked':n.attrib.get('checked'),'bounds':n.attrib.get('bounds')} for n in root.iter() if n.attrib.get('class')=='android.widget.RadioButton']\ndateTexts=[n.attrib.get('text') for n in root.iter() if n.attrib.get('text') and ('Wednesday' in n.attrib.get('text') or 'October' in n.attrib.get('text'))]\n{'title':\"Renew Driver's License\",'radioButtons':radios,'dateTexts':dateTexts}",
+      "timeout": 15,
+      "title": "Inspecting Wednesday license task"
+    },
+    "envelope": {
+      "status": "failed",
+      "stdout": "",
+      "stderr": "",
+      "error": {
+        "type": "selenium.common.exceptions.NoSuchElementException",
+        "message": "An element could not be located on the page using the given search parameters.",
+        "traceback": [
+          "Traceback (most recent call last):",
+          "  File \"<external-frame>\", line 590, in <frame>",
+          "  File \"<external-frame>\", line 575, in <frame>",
+          "  File \"<amkernel-cell-14>\", line 4, in <frame>",
+          "  File \"<external-frame>\", line 974, in <frame>",
+          "  File \"<external-frame>\", line 566, in <frame>",
+          "  File \"<external-frame>\", line 125, in <frame>",
+          "selenium.common.exceptions.NoSuchElementException: An element could not be located on the page using the given search parameters."
+        ]
+      },
+      "executionCount": 14,
+      "durationMs": 904,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 5123,
+    "endLine": 5124,
+    "request": {
+      "code": "def parse_bounds(s):\n import re\n return tuple(map(int,re.findall(r'\\d+',s)))\nrenew=[]\nfor e in driver.find_elements(AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().resourceId(\"org.tasks:id/title\").text(\"Renew Driver&apos;s License\")'):\n renew.append({'element':e,'bounds':e.get_attribute('bounds')})\ndues=[]\nfor e in driver.find_elements(AppiumBy.ID,'org.tasks:id/due_date'):\n dues.append({'text':e.text,'bounds':e.get_attribute('bounds')})\n{'package':driver.current_package,'activity':driver.current_activity,'renewBounds':[x['bounds'] for x in renew],'dues':dues}",
+      "timeout": 10,
+      "title": "Matching Wednesday license row"
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "org.tasks",
+        "activity": "com.todoroo.astrid.activity.TaskListActivity",
+        "renewBounds": [],
+        "dues": [
+          {
+            "text": "Fri",
+            "bounds": "[976,281][1059,414]"
+          },
+          {
+            "text": "Wed",
+            "bounds": "[946,550][1059,683]"
+          },
+          {
+            "text": "Thu",
+            "bounds": "[956,819][1059,952]"
+          },
+          {
+            "text": "Today",
+            "bounds": "[920,1088][1059,1221]"
+          },
+          {
+            "text": "Yest",
+            "bounds": "[946,1240][1059,1373]"
+          },
+          {
+            "text": "Yest",
+            "bounds": "[946,1509][1059,1642]"
+          },
+          {
+            "text": "Today",
+            "bounds": "[920,1661][1059,1794]"
+          },
+          {
+            "text": "Wed",
+            "bounds": "[946,1813][1059,1946]"
+          },
+          {
+            "text": "Yest",
+            "bounds": "[946,2082][1059,2215]"
+          },
+          {
+            "text": "Wed",
+            "bounds": "[946,2234][1059,2337]"
+          }
+        ]
+      },
+      "executionCount": 15,
+      "durationMs": 151,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 5549,
+    "endLine": 5550,
+    "request": {
+      "code": "renew_elems=driver.find_elements(AppiumBy.XPATH, '//*[@resource-id=\"org.tasks:id/title\" and contains(@text,\"Renew Driver\")]')\nwed_due=[e for e in driver.find_elements(AppiumBy.ID,'org.tasks:id/due_date') if e.text=='Wed' and parse_bounds(e.get_attribute('bounds'))[1]>1700]\nif len(wed_due)!=2: raise RuntimeError(f'Unexpected lower Wednesday due count {len(wed_due)}')\n# License row aligns with the first lower Wednesday due; Marketing is the second.\ny_due=parse_bounds(wed_due[0].get_attribute('bounds'))[1]\ncandidates=[e for e in renew_elems if abs(parse_bounds(e.get_attribute('bounds'))[1]-y_due)<30]\nif len(candidates)!=1: raise RuntimeError(f'Expected one aligned license row, found {len(candidates)}')\ncandidates[0].click()\nWebDriverWait(driver,5).until(lambda d: any(e.get_attribute('class')=='android.widget.EditText' for e in d.find_elements(AppiumBy.ID,'org.tasks:id/title')))\nroot=ET.fromstring(driver.page_source)\nradios=[{'checked':n.attrib.get('checked'),'bounds':n.attrib.get('bounds')} for n in root.iter() if n.attrib.get('class')=='android.widget.RadioButton']\ndateTexts=[n.attrib.get('text') for n in root.iter() if n.attrib.get('text') and ('Wednesday' in n.attrib.get('text') or 'October' in n.attrib.get('text'))]\n{'title':\"Renew Driver's License\",'radioButtons':radios,'dateTexts':dateTexts}",
+      "timeout": 15,
+      "title": "Opening Wednesday license task"
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "title": "Renew Driver's License",
+        "radioButtons": [
+          {
+            "checked": "true",
+            "bounds": "[376,1358][541,1484]"
+          },
+          {
+            "checked": "false",
+            "bounds": "[541,1358][706,1484]"
+          },
+          {
+            "checked": "false",
+            "bounds": "[706,1358][872,1484]"
+          },
+          {
+            "checked": "false",
+            "bounds": "[872,1358][1038,1484]"
+          }
+        ],
+        "dateTexts": [
+          "Tuesday, October 3",
+          "Wednesday"
+        ]
+      },
+      "executionCount": 16,
+      "durationMs": 1240,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 5936,
+    "endLine": 5937,
+    "request": {
+      "code": "driver.back()\nWebDriverWait(driver,5).until(lambda d: len(d.find_elements(AppiumBy.ID,'android:id/button2'))==1)\ndriver.find_element(AppiumBy.ID,'android:id/button2').click()\nWebDriverWait(driver,5).until(lambda d: len(d.find_elements(AppiumBy.ID,'org.tasks:id/fab'))==1)\nmarketing=driver.find_elements(AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().resourceId(\"org.tasks:id/title\").text(\"Marketing Campaign Launch\")')\nif len(marketing)!=1: raise RuntimeError(f'Expected one marketing task, found {len(marketing)}')\nmarketing[0].click()\nWebDriverWait(driver,5).until(lambda d: any(e.get_attribute('class')=='android.widget.EditText' and e.get_attribute('text')=='Marketing Campaign Launch' for e in d.find_elements(AppiumBy.ID,'org.tasks:id/title')))\nroot=ET.fromstring(driver.page_source)\nradios=[{'checked':n.attrib.get('checked'),'bounds':n.attrib.get('bounds')} for n in root.iter() if n.attrib.get('class')=='android.widget.RadioButton']\ndateTexts=[n.attrib.get('text') for n in root.iter() if n.attrib.get('text') and ('Wednesday' in n.attrib.get('text') or 'October' in n.attrib.get('text'))]\n{'title':'Marketing Campaign Launch','radioButtons':radios,'dateTexts':dateTexts}",
+      "timeout": 20,
+      "title": "Inspecting Wednesday marketing task"
+    },
+    "envelope": {
+      "status": "failed",
+      "stdout": "",
+      "stderr": "",
+      "error": {
+        "type": "selenium.common.exceptions.TimeoutException",
+        "message": "",
+        "traceback": [
+          "Traceback (most recent call last):",
+          "  File \"<external-frame>\", line 590, in <frame>",
+          "  File \"<external-frame>\", line 575, in <frame>",
+          "  File \"<amkernel-cell-17>\", line 8, in <frame>",
+          "  File \"<external-frame>\", line 121, in <frame>",
+          "selenium.common.exceptions.TimeoutException"
+        ]
+      },
+      "executionCount": 17,
+      "durationMs": 7039,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 6138,
+    "endLine": 6139,
+    "request": {
+      "code": "facts=[]\nfor e in driver.find_elements(AppiumBy.XPATH,'//*'):\n    try:\n        t=e.get_attribute('text'); d=e.get_attribute('content-desc'); rid=e.get_attribute('resource-id'); cls=e.get_attribute('class')\n        if (t and t!='null') or (d and d!='null') or cls=='android.widget.RadioButton': facts.append({'text':t,'desc':d,'id':rid,'class':cls,'checked':e.get_attribute('checked'),'bounds':e.get_attribute('bounds')})\n    except Exception: pass\n{'package':driver.current_package,'activity':driver.current_activity,'controls':facts[:80]}",
+      "timeout": 15,
+      "title": "Reconciling marketing task state"
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "org.tasks",
+        "activity": "com.todoroo.astrid.activity.TaskListActivity",
+        "controls": [
+          {
+            "text": "My Tasks",
+            "desc": "null",
+            "id": "null",
+            "class": "android.widget.TextView",
+            "checked": "false",
+            "bounds": "[42,166][272,237]"
+          },
+          {
+            "text": "",
+            "desc": "Search",
+            "id": "org.tasks:id/menu_search",
+            "class": "android.widget.Button",
+            "checked": "false",
+            "bounds": "[953,138][1080,264]"
+          },
+          {
+            "text": "Renew Driver's License",
+            "desc": "null",
+            "id": "org.tasks:id/title",
+            "class": "android.widget.TextView",
+            "checked": "false",
+            "bounds": "[147,275][976,374]"
+          },
+          {
+            "text": "Expires next month. Check DMV website for requirements.",
+            "desc": "null",
+            "id": "org.tasks:id/description",
+            "class": "android.widget.TextView",
+            "checked": "false",
+            "bounds": "[0,385][1059,491]"
+          },
+          {
+            "text": "Fri",
+            "desc": "null",
+            "id": "org.tasks:id/due_date",
+            "class": "android.widget.TextView",
+            "checked": "false",
+            "bounds": "[976,281][1059,414]"
+          },
+          {
+            "text": "Learn to Play Guitar",
+            "desc": "null",
+            "id": "org.tasks:id/title",
+            "class": "android.widget.TextView",
+            "checked": "false",
+            "bounds": "[147,544][946,643]"
+          },
+          {
+            "text": "Practice chords for 30 minutes every day. Find online tutorials.",
+            "desc": "null",
+            "id": "org.tasks:id/description",
+            "class": "android.widget.TextView",
+            "checked": "false",
+            "bounds": "[0,654][1059,760]"
+          },
+          {
+            "text": "Wed",
+            "desc": "null",
+            "id": "org.tasks:id/due_date",
+            "class": "android.widget.TextView",
+            "checked": "false",
+            "bounds": "[946,550][1059,683]"
+          },
+          {
+            "text": "Renew Driver's License",
+            "desc": "null",
+            "id": "org.tasks:id/title",
+            "class": "android.widget.TextView",
+            "checked": "false",
+            "bounds": "[147,813][956,912]"
+          },
+          {
+            "text": "Expires next month. Check DMV website for requirements.",
+            "desc": "null",
+            "id": "org.tasks:id/description",
+            "class": "android.widget.TextView",
+            "checked": "false",
+            "bounds": "[0,923][1059,1029]"
+          },
+          {
+            "text": "Thu",
+            "desc": "null",
+            "id": "org.tasks:id/due_date",
+            "class": "android.widget.TextView",
+            "checked": "false",
+            "bounds": "[956,819][1059,952]"
+          },
+          {
+            "text": "Attend Team Meeting",
+            "desc": "null",
+            "id": "org.tasks:id/title",
+            "class": "android.widget.TextView",
+            "checked": "false",
+            "bounds": "[147,1082][920,1181]"
+          },
+          {
+            "text": "Today",
+            "desc": "null",
+            "id": "org.tasks:id/due_date",
+            "class": "android.widget.TextView",
+            "checked": "false",
+            "bounds": "[920,1088][1059,1221]"
+          },
+          {
+            "text": "Finish Project Proposal",
+            "desc": "null",
+            "id": "org.tasks:id/title",
+            "class": "android.widget.TextView",
+            "checked": "false",
+            "bounds": "[147,1234][946,1333]"
+          },
+          {
+            "text": "Deadline is Friday. Need to finalize budget and timeline sections.",
+            "desc": "null",
+            "id": "org.tasks:id/description",
+            "class": "android.widget.TextView",
+            "checked": "false",
+            "bounds": "[0,1344][1059,1450]"
+          },
+          {
+            "text": "Yest",
+            "desc": "null",
+            "id": "org.tasks:id/due_date",
+            "class": "android.widget.TextView",
+            "checked": "false",
+            "bounds": "[946,1240][1059,1373]"
+          },
+          {
+            "text": "Research Vacation Destinations",
+            "desc": "null",
+            "id": "org.tasks:id/title",
+            "class": "android.widget.TextView",
+            "checked": "false",
+            "bounds": "[147,1503][946,1602]"
+          },
+          {
+            "text": "Yest",
+            "desc": "null",
+            "id": "org.tasks:id/due_date",
+            "class": "android.widget.TextView",
+            "checked": "false",
+            "bounds": "[946,1509][1059,1642]"
+          },
+          {
+            "text": "Back Up Computer Files",
+            "desc": "null",
+            "id": "org.tasks:id/title",
+            "class": "android.widget.TextView",
+            "checked": "false",
+            "bounds": "[147,1655][920,1754]"
+          },
+          {
+            "text": "Today",
+            "desc": "null",
+            "id": "org.tasks:id/due_date",
+            "class": "android.widget.TextView",
+            "checked": "false",
+            "bounds": "[920,1661][1059,1794]"
+          },
+          {
+            "text": "Renew Driver's License",
+            "desc": "null",
+            "id": "org.tasks:id/title",
+            "class": "android.widget.TextView",
+            "checked": "false",
+            "bounds": "[147,1807][946,1906]"
+          },
+          {
+            "text": "Expires next month. Check DMV website for requirements.",
+            "desc": "null",
+            "id": "org.tasks:id/description",
+            "class": "android.widget.TextView",
+            "checked": "false",
+            "bounds": "[0,1917][1059,2023]"
+          },
+          {
+            "text": "Wed",
+            "desc": "null",
+            "id": "org.tasks:id/due_date",
+            "class": "android.widget.TextView",
+            "checked": "false",
+            "bounds": "[946,1813][1059,1946]"
+          },
+          {
+            "text": "Create Budget for Next Month",
+            "desc": "null",
+            "id": "org.tasks:id/title",
+            "class": "android.widget.TextView",
+            "checked": "false",
+            "bounds": "[147,2076][946,2175]"
+          },
+          {
+            "text": "Yest",
+            "desc": "null",
+            "id": "org.tasks:id/due_date",
+            "class": "android.widget.TextView",
+            "checked": "false",
+            "bounds": "[946,2082][1059,2215]"
+          },
+          {
+            "text": "Marketing Campaign Launch",
+            "desc": "null",
+            "id": "org.tasks:id/title",
+            "class": "android.widget.TextView",
+            "checked": "false",
+            "bounds": "[147,2228][946,2327]"
+          },
+          {
+            "text": "Wed",
+            "desc": "null",
+            "id": "org.tasks:id/due_date",
+            "class": "android.widget.TextView",
+            "checked": "false",
+            "bounds": "[946,2234][1059,2337]"
+          },
+          {
+            "text": "",
+            "desc": "Voice input",
+            "id": "org.tasks:id/menu_voice_add",
+            "class": "android.widget.Button",
+            "checked": "false",
+            "bounds": "[721,2200][848,2326]"
+          },
+          {
+            "text": "",
+            "desc": "Sort",
+            "id": "org.tasks:id/menu_sort",
+            "class": "android.widget.Button",
+            "checked": "false",
+            "bounds": "[848,2200][975,2326]"
+          },
+          {
+            "text": "",
+            "desc": "More options",
+            "id": "null",
+            "class": "android.widget.ImageView",
+            "checked": "false",
+            "bounds": "[975,2200][1080,2326]"
+          },
+          {
+            "text": "",
+            "desc": "Create new task",
+            "id": "org.tasks:id/fab",
+            "class": "android.widget.ImageButton",
+            "checked": "false",
+            "bounds": "[467,2117][614,2264]"
+          }
+        ]
+      },
+      "executionCount": 18,
+      "durationMs": 1462,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 6454,
+    "endLine": 6457,
+    "request": {
+      "code": "# Marketing title bounds are [147,2228][946,2327]; tap its unobscured left side.\ndriver.tap([(300,2270)], 100)\ntry:\n    WebDriverWait(driver,5).until(lambda d: any(e.get_attribute('class')=='android.widget.EditText' for e in d.find_elements(AppiumBy.ID,'org.tasks:id/title')))\nexcept TimeoutException:\n    pass\n{'package':driver.current_package,'activity':driver.current_activity,'fabCount':len(driver.find_elements(AppiumBy.ID,'org.tasks:id/fab')),'editTitleCount':len([e for e in driver.find_elements(AppiumBy.ID,'org.tasks:id/title') if e.get_attribute('class')=='android.widget.EditText'])}",
+      "timeout": 10,
+      "title": "Opening visible marketing task"
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "org.tasks",
+        "activity": "com.todoroo.astrid.activity.TaskListActivity",
+        "fabCount": 1,
+        "editTitleCount": 0
+      },
+      "executionCount": 19,
+      "durationMs": 5792,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 6621,
+    "endLine": 6622,
+    "request": {
+      "code": "session_id=driver.session_id\ndriver.quit()\n{'ownedSessionId':session_id,'quitReturned':True}",
+      "timeout": 30,
+      "title": "Quitting owned session"
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "ownedSessionId": "6c054d7d-2b02-43bf-85db-d794e7baae1b",
+        "quitReturned": true
+      },
+      "executionCount": 20,
+      "durationMs": 159,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  }
+]

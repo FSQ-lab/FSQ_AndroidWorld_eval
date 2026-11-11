@@ -1,0 +1,1580 @@
+{
+  "calibrationGate": null,
+  "campaignId": "amkernel-3388314-r12v2-headless-calibration-ready-20261107T004632Z",
+  "inheritedManifest": {
+    "campaignId": "amkernel-3388314-r11-timeout300-full-20261106T142607Z",
+    "path": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/campaigns/amkernel-3388314-r11-timeout300-full-20261106T142607Z/manifest.json",
+    "sha256": "2345c5af27c75f7c1a7c6e263b77963f426864a6486a51e845468430a50ea856",
+    "taskCount": 116,
+    "tasksSha256": "f41b2dac8a427ddd22bbe4ea04b0104ae9feea8280c9295b2fe1dfbc6671d417"
+  },
+  "invalidRules": {
+    "budget_limited": "Step exhaustion or business/OMP deadline is an evaluated budget-limited attempt, not Agent completion or a replacement reward.",
+    "cleanupFailure": "Preserve original cleanup and reward; continue only after verified recovery, otherwise pause for coordinated recovery without resuming this campaign.",
+    "invalid_agent": "Unknown or forced Agent termination, or no valid Agent attempt; preserve any evaluator reward and do not retry.",
+    "invalid_evaluator": "The official AndroidWorld evaluator did not return a reward; do not retry the Agent.",
+    "invalid_infrastructure": "Base environment failed before an Agent attempt; only this class may receive one frozen retry.",
+    "invalid_protocol": "Preserve episode protocol violations as invalid; continue only after verified recovery. Any global frozen identity mismatch pauses the campaign.",
+    "invalid_setup": "Task initialization failed; do not retry inside a formal campaign."
+  },
+  "kind": "calibration",
+  "protocol": {
+    "agentToolPolicy": {
+      "allowedTargets": [
+        "skill://amkernel",
+        "skill://appium-troubleshooting",
+        "skill://setup-uiautomator2",
+        "xd://mcp__amkernel_python_exec",
+        "xd://report_issue"
+      ],
+      "tools": [
+        "read",
+        "write"
+      ]
+    },
+    "androidWorldPackageVersion": "0.1.0",
+    "androidWorldRevision": "55ddaf5edc6f6c25673aed343907d5b9dca66f84",
+    "campaignContinuation": {
+      "policy": "full_coverage_after_verified_recovery",
+      "version": 2
+    },
+    "environmentArtifacts": {
+      "artifacts": [
+        {
+          "name": "2024.05.13-accessibility_forwarder.apk",
+          "sha256": "97a56a544e44d79f9b3181fc7dbdd72cffa908efd3d53c82afad1773061a350a",
+          "sizeBytes": 4490495,
+          "url": "https://storage.googleapis.com/android_env-tasks/2024.05.13-accessibility_forwarder.apk"
+        },
+        {
+          "name": "com.dimowner.audiorecorder_926.apk",
+          "sha256": "ee0bd709021e4069bb1f6fee99e3398f70ba4531dea918840ad4f5156f97b953",
+          "sizeBytes": 778419,
+          "url": "https://storage.googleapis.com/gresearch/android_world/com.dimowner.audiorecorder_926.apk"
+        },
+        {
+          "name": "com.flauschcode.broccoli_1020600.apk",
+          "sha256": "da99d9465c79398c6c25459daa82017c5faf505589ea6e62b9e85ca0dc70e8da",
+          "sizeBytes": 7503922,
+          "url": "https://storage.googleapis.com/gresearch/android_world/com.flauschcode.broccoli_1020600.apk"
+        },
+        {
+          "name": "clipper.apk",
+          "sha256": "c5f7a1e4fd78d1141164759a099cdcfb0a7b84aaf4c06a63f52e1aa4f1278539",
+          "sizeBytes": 10143,
+          "url": "https://storage.googleapis.com/gresearch/android_world/clipper.apk"
+        },
+        {
+          "name": "net.cozic.joplin_2097740.apk",
+          "sha256": "6f70a460f6bacd777d08b13a06c5ef5d545491f940de0a40ecf44fd2d9eea385",
+          "sizeBytes": 43472265,
+          "url": "https://storage.googleapis.com/gresearch/android_world/net.cozic.joplin_2097740.apk"
+        },
+        {
+          "name": "net.gsantner.markor_146.apk",
+          "sha256": "1a328c5324b3b33d6cb4d55085637707252569d98c0ffe1cb7089aebbd903256",
+          "sizeBytes": 11067299,
+          "url": "https://storage.googleapis.com/gresearch/android_world/net.gsantner.markor_146.apk"
+        },
+        {
+          "name": "de.dennisguse.opentracks_5705.apk",
+          "sha256": "3cd907e57c747b49fac9120defee4c2395c67acc87271c7c591058cb37e7802c",
+          "sizeBytes": 24268012,
+          "url": "https://storage.googleapis.com/gresearch/android_world/de.dennisguse.opentracks_5705.apk"
+        },
+        {
+          "name": "net.osmand-4.6.13.apk",
+          "sha256": "0ac411942965a431a0a91b19ce990e6948e780a13a1c98bc7e5a9a057af6463c",
+          "sizeBytes": 351679694,
+          "url": "https://storage.googleapis.com/gresearch/android_world/net.osmand-4.6.13.apk"
+        },
+        {
+          "name": "Liechtenstein_europe.obf",
+          "sha256": "57a1955c6f517a114999fa50480ecc1402ed9b524db602540ac1c08f57ff140e",
+          "sizeBytes": 7241271,
+          "url": "https://storage.googleapis.com/gresearch/android_world/Liechtenstein_europe.obf"
+        },
+        {
+          "name": "com.arduia.expense_11.apk",
+          "sha256": "e54dcc8250566ab6421119b48d6c4544066c6697c53d27ab06ee5bdf9bf1ee50",
+          "sizeBytes": 3020823,
+          "url": "https://storage.googleapis.com/gresearch/android_world/com.arduia.expense_11.apk"
+        },
+        {
+          "name": "code.name.monkey.retromusic_10603.apk",
+          "sha256": "13212d049cb02b861c0358bde5fe5b9cdf99a16a490685f60c28636278e2ed60",
+          "sizeBytes": 9041986,
+          "url": "https://storage.googleapis.com/gresearch/android_world/code.name.monkey.retromusic_10603.apk"
+        },
+        {
+          "name": "com.simplemobiletools.calendar.pro_238.apk",
+          "sha256": "fb4d30ce060433fc9283e591eddc58be0ee1d75b079a13939ca7e6cce8a1f4b8",
+          "sizeBytes": 9870704,
+          "url": "https://storage.googleapis.com/gresearch/android_world/com.simplemobiletools.calendar.pro_238.apk"
+        },
+        {
+          "name": "com.simplemobiletools.draw.pro_79.apk",
+          "sha256": "3c3210590846a30468ab5acb9ef0aaa5d85b49d5930eda86eef0bd991a9f80a1",
+          "sizeBytes": 8320484,
+          "url": "https://storage.googleapis.com/gresearch/android_world/com.simplemobiletools.draw.pro_79.apk"
+        },
+        {
+          "name": "com.simplemobiletools.gallery.pro_396.apk",
+          "sha256": "175f10c9ce4c6d5294ed20d61216d850df2c2b1928a846489a4cb372153d1607",
+          "sizeBytes": 32203025,
+          "url": "https://storage.googleapis.com/gresearch/android_world/com.simplemobiletools.gallery.pro_396.apk"
+        },
+        {
+          "name": "com.simplemobiletools.smsmessenger_85.apk",
+          "sha256": "e134a0e330514de3716dbacfa08d39707ebbb2c9ebde8d08854e159b2cd7c2f4",
+          "sizeBytes": 9938539,
+          "url": "https://storage.googleapis.com/gresearch/android_world/com.simplemobiletools.smsmessenger_85.apk"
+        },
+        {
+          "name": "org.tasks_130605.apk",
+          "sha256": "3e93405882016be0e8f6c45207bdfb9d4b958bf34430256e77b043d68b8ceb00",
+          "sizeBytes": 29656271,
+          "url": "https://storage.googleapis.com/gresearch/android_world/org.tasks_130605.apk"
+        },
+        {
+          "name": "org.videolan.vlc_13050408.apk",
+          "sha256": "3fe17cbd8b7f507436eccc217f9168846a65cadff2f7d87490f5740b243170dc",
+          "sizeBytes": 38387336,
+          "url": "https://storage.googleapis.com/gresearch/android_world/org.videolan.vlc_13050408.apk"
+        },
+        {
+          "name": "org.videolan.vlc_13050407.apk",
+          "sha256": "2cde3fbd8bf240ff66de236a352c68efa40bb267acf3a5cb8d34a5b2850a2666",
+          "sizeBytes": 36167316,
+          "url": "https://storage.googleapis.com/gresearch/android_world/org.videolan.vlc_13050407.apk"
+        }
+      ],
+      "cacheDirectory": ".cache/androidworld-assets",
+      "schemaVersion": 1
+    },
+    "fullTaskRetryLimit": 0,
+    "harnessRehearsal": {
+      "agentInvoked": false,
+      "environmentPerTask": "fresh_official_environment",
+      "episodeTimeoutSeconds": 600,
+      "evaluator": "initial_state_and_information_retrieval_reference_answer",
+      "failurePolicy": "halt_without_retry_or_resume",
+      "network": "loopback_only_os_sandbox",
+      "networkSandboxSha256": "d6ffd3c072619404bb3d07f92cda5d5709960b1ace5d9f8875848db6801210b7",
+      "officialReward": null,
+      "requiredStages": [
+        "infrastructure",
+        "environment_creation",
+        "task_initialization",
+        "evaluator_probe",
+        "task_teardown",
+        "environment_close",
+        "session_verification"
+      ],
+      "requiredTaskCount": 116,
+      "version": 1
+    },
+    "harnessRevision": 12,
+    "invalidRetryLimit": 1,
+    "maxAppiumSessionsPerEpisode": 1,
+    "mcpRequestTimeoutMs": 120000,
+    "model": "github-copilot/gpt-5.6-sol",
+    "nTaskCombinations": 1,
+    "promptTemplateSha256": "463118879bbe14a14abfd987920f115fff29f128db4566dc282e75dc0aa906aa",
+    "pythonExecCallAdvisory": 30,
+    "runtimeIdentity": {
+      "amkernelExecutableSha256": "a566d8a09d2f8e5e32bd8ddccd7325656a205a106b6d6913e4a7e1dc6d66c7e9",
+      "amkernelVersion": "0.1.3",
+      "androidWorldCheckoutRevision": "55ddaf5edc6f6c25673aed343907d5b9dca66f84",
+      "androidWorldGeneratedProtoSha256": "a731ddcc4ef82eb9a5ad6ac07463db2483e286c23285e2e2e96afffc920a985e",
+      "grpcForkSupport": "0",
+      "harnessDependencies": [
+        {
+          "name": "absl-py",
+          "version": "2.1.0"
+        },
+        {
+          "name": "android-env",
+          "version": "1.2.3"
+        },
+        {
+          "name": "android_world",
+          "version": "0.1.0"
+        },
+        {
+          "name": "annotated-doc",
+          "version": "0.0.5"
+        },
+        {
+          "name": "annotated-types",
+          "version": "0.8.0"
+        },
+        {
+          "name": "anyio",
+          "version": "4.16.0"
+        },
+        {
+          "name": "Appium-Python-Client",
+          "version": "5.3.1"
+        },
+        {
+          "name": "asttokens",
+          "version": "3.0.2"
+        },
+        {
+          "name": "attrs",
+          "version": "26.1.0"
+        },
+        {
+          "name": "certifi",
+          "version": "2026.10.23"
+        },
+        {
+          "name": "cffi",
+          "version": "2.1.1"
+        },
+        {
+          "name": "charset-normalizer",
+          "version": "3.5.2"
+        },
+        {
+          "name": "click",
+          "version": "8.5.0"
+        },
+        {
+          "name": "contourpy",
+          "version": "1.3.3"
+        },
+        {
+          "name": "cryptography",
+          "version": "50.0.2"
+        },
+        {
+          "name": "cycler",
+          "version": "0.12.1"
+        },
+        {
+          "name": "dm-env",
+          "version": "1.6"
+        },
+        {
+          "name": "dm-tree",
+          "version": "0.1.10"
+        },
+        {
+          "name": "executing",
+          "version": "2.3.0"
+        },
+        {
+          "name": "fastapi",
+          "version": "0.162.0"
+        },
+        {
+          "name": "fonttools",
+          "version": "4.68.0"
+        },
+        {
+          "name": "fsq-androidworld-eval",
+          "version": "0.1.0"
+        },
+        {
+          "name": "google-ai-generativelanguage",
+          "version": "0.6.15"
+        },
+        {
+          "name": "google-api-core",
+          "version": "2.30.3"
+        },
+        {
+          "name": "google-api-python-client",
+          "version": "2.201.0"
+        },
+        {
+          "name": "google-auth",
+          "version": "2.62.1"
+        },
+        {
+          "name": "google-auth-httplib2",
+          "version": "0.4.4"
+        },
+        {
+          "name": "google-generativeai",
+          "version": "0.8.6"
+        },
+        {
+          "name": "googleapis-common-protos",
+          "version": "1.75.0"
+        },
+        {
+          "name": "grpcio",
+          "version": "1.85.1"
+        },
+        {
+          "name": "grpcio-status",
+          "version": "1.71.2"
+        },
+        {
+          "name": "grpcio-tools",
+          "version": "1.71.0"
+        },
+        {
+          "name": "h11",
+          "version": "0.16.0"
+        },
+        {
+          "name": "httplib2",
+          "version": "0.32.1"
+        },
+        {
+          "name": "idna",
+          "version": "3.20"
+        },
+        {
+          "name": "imageio-ffmpeg",
+          "version": "0.6.0"
+        },
+        {
+          "name": "immutabledict",
+          "version": "2.0.0"
+        },
+        {
+          "name": "iniconfig",
+          "version": "2.3.1"
+        },
+        {
+          "name": "ipython",
+          "version": "9.18.1"
+        },
+        {
+          "name": "ipython_pygments_lexers",
+          "version": "1.1.1"
+        },
+        {
+          "name": "jedi",
+          "version": "0.20.1"
+        },
+        {
+          "name": "jsonschema",
+          "version": "4.17.3"
+        },
+        {
+          "name": "kiwisolver",
+          "version": "1.5.1"
+        },
+        {
+          "name": "Levenshtein",
+          "version": "0.27.5"
+        },
+        {
+          "name": "matplotlib",
+          "version": "3.6.1"
+        },
+        {
+          "name": "matplotlib-inline",
+          "version": "0.2.2"
+        },
+        {
+          "name": "numpy",
+          "version": "1.26.3"
+        },
+        {
+          "name": "opencv-python",
+          "version": "4.11.0.86"
+        },
+        {
+          "name": "opentelemetry-api",
+          "version": "1.45.2"
+        },
+        {
+          "name": "outcome",
+          "version": "1.3.0.post0"
+        },
+        {
+          "name": "packaging",
+          "version": "26.3"
+        },
+        {
+          "name": "pandas",
+          "version": "2.1.4"
+        },
+        {
+          "name": "parso",
+          "version": "0.8.7"
+        },
+        {
+          "name": "pexpect",
+          "version": "4.9.0"
+        },
+        {
+          "name": "pillow",
+          "version": "13.0.0"
+        },
+        {
+          "name": "pluggy",
+          "version": "1.7.0"
+        },
+        {
+          "name": "portpicker",
+          "version": "1.6.0"
+        },
+        {
+          "name": "prompt_toolkit",
+          "version": "3.0.53"
+        },
+        {
+          "name": "proto-plus",
+          "version": "1.28.2"
+        },
+        {
+          "name": "protobuf",
+          "version": "5.29.5"
+        },
+        {
+          "name": "psutil",
+          "version": "7.2.2"
+        },
+        {
+          "name": "ptyprocess",
+          "version": "0.7.0"
+        },
+        {
+          "name": "pure_eval",
+          "version": "0.2.4"
+        },
+        {
+          "name": "pyasn1",
+          "version": "0.6.5"
+        },
+        {
+          "name": "pyasn1_modules",
+          "version": "0.4.2"
+        },
+        {
+          "name": "pycparser",
+          "version": "3.12"
+        },
+        {
+          "name": "pydantic",
+          "version": "2.14.2"
+        },
+        {
+          "name": "pydantic_core",
+          "version": "2.50.2"
+        },
+        {
+          "name": "pydub",
+          "version": "0.25.1"
+        },
+        {
+          "name": "pygame",
+          "version": "2.6.1"
+        },
+        {
+          "name": "Pygments",
+          "version": "2.21.0"
+        },
+        {
+          "name": "pyparsing",
+          "version": "3.3.3"
+        },
+        {
+          "name": "pyrsistent",
+          "version": "0.20.0"
+        },
+        {
+          "name": "PySocks",
+          "version": "1.7.1"
+        },
+        {
+          "name": "pytest",
+          "version": "8.4.2"
+        },
+        {
+          "name": "python-dateutil",
+          "version": "4.0.0"
+        },
+        {
+          "name": "python-Levenshtein",
+          "version": "0.27.5"
+        },
+        {
+          "name": "pytz",
+          "version": "2026.6"
+        },
+        {
+          "name": "RapidFuzz",
+          "version": "3.14.6"
+        },
+        {
+          "name": "requests",
+          "version": "2.34.2"
+        },
+        {
+          "name": "selenium",
+          "version": "4.52.0"
+        },
+        {
+          "name": "setuptools",
+          "version": "84.2.1"
+        },
+        {
+          "name": "sniffio",
+          "version": "1.3.1"
+        },
+        {
+          "name": "sortedcontainers",
+          "version": "2.4.0"
+        },
+        {
+          "name": "stack-data",
+          "version": "0.6.3"
+        },
+        {
+          "name": "starlette",
+          "version": "1.10.0"
+        },
+        {
+          "name": "tenacity",
+          "version": "9.2.1"
+        },
+        {
+          "name": "termcolor",
+          "version": "3.3.0"
+        },
+        {
+          "name": "thefuzz",
+          "version": "0.19.0"
+        },
+        {
+          "name": "tqdm",
+          "version": "4.70.1"
+        },
+        {
+          "name": "traitlets",
+          "version": "5.16.1"
+        },
+        {
+          "name": "trio",
+          "version": "0.35.0"
+        },
+        {
+          "name": "trio-websocket",
+          "version": "0.12.2"
+        },
+        {
+          "name": "typing-inspection",
+          "version": "0.4.5"
+        },
+        {
+          "name": "typing_extensions",
+          "version": "4.16.0"
+        },
+        {
+          "name": "tzdata",
+          "version": "2026.6"
+        },
+        {
+          "name": "uritemplate",
+          "version": "4.2.0"
+        },
+        {
+          "name": "urllib3",
+          "version": "2.8.0"
+        },
+        {
+          "name": "uvicorn",
+          "version": "0.54.0"
+        },
+        {
+          "name": "wcwidth",
+          "version": "0.9.4"
+        },
+        {
+          "name": "websocket-client",
+          "version": "1.9.2"
+        },
+        {
+          "name": "wrapt",
+          "version": "2.5.2"
+        },
+        {
+          "name": "wsproto",
+          "version": "1.3.2"
+        }
+      ],
+      "harnessSourceSha256": "4a4b045f56a9c09ec84bf22e2369c59a3489b8c24e0afe5d22001403920b3f27",
+      "installedAgentAssetsSha256": "0ff33bb8ee50c160d87842ed11324e557f6fe5fc81c8e4fe06230a4d7bf792b8",
+      "mediaEncoder": {
+        "executable": "ffmpeg-macos-aarch64-v7.1",
+        "package": "imageio-ffmpeg",
+        "sha256": "6d175a4743ca50256e89a8cdd731100f9cee33bd79aeea46894d209410dc6617",
+        "version": "0.6.0"
+      },
+      "officialSkillArchiveSha256": "9ce21bc92e94614fd65cf932e7951d07e40b0ce4749403479000b99b7d8b8bd2",
+      "officialSkillManifestSha256": "235e9bc07365f0822db0893f4334848cb09e93e2a1673021499146738238aff6",
+      "officialSkillSourceCommit": "e907024c210fe024c956ed9c74146fc27b1dd013",
+      "ompExecutableSha256": "cfbb5e38cd8f8a3be55e710700be587d287deaacdc58c9b0a661c5086bccfe58",
+      "ompVersion": "omp/18.12.6",
+      "pythonVersion": "3.11.16 (main, Aug 25 2026, 13:50:51) [Clang 22.1.3 ]",
+      "skillMetadataSha256": "cd10df3d883ca08c52f8ebbcc7c052a77fa852bd130c2326405e42269c1a29e0",
+      "skillRuntimeVersion": "0.1.3"
+    },
+    "scoreContract": "official_reward_only",
+    "scoringPolicy": {
+      "cleanupGate": "agent_proven_closed_or_pre_agent_not_created;_otherwise_halt",
+      "missingEvaluator": "null",
+      "officialReward": "preserve_evaluator_reward_independently_of_termination_and_cleanup",
+      "validEpisodes": "evaluated_attempts_with_valid_protocol_and_agent_termination"
+    },
+    "sessionCreationTimeoutSeconds": 90,
+    "stepBudget": {
+      "allocator": "android_world.suite_utils._allocate_step_budget",
+      "runner": "android_world.episode_runner.run_episode",
+      "stepUnit": "one gated Appium UI interaction",
+      "version": 1
+    },
+    "taskMetadataSha256": "fd3cf23ebb26e461a961dd60ff3f011d7e6ec78c992c10babbbdb86f9dd591e1",
+    "taskRandomSeed": 30,
+    "terminationPolicy": {
+      "business_deadline": "evaluated_budget_limited_attempt",
+      "completed": "evaluated_attempt",
+      "forced_termination": "invalid_agent",
+      "omp_deadline": "evaluated_budget_limited_attempt",
+      "step_budget": "evaluated_budget_limited_attempt",
+      "unknown_termination": "invalid_agent"
+    },
+    "timeBudget": {
+      "businessFormula": "max(600, 120 + 60 * maxSteps)",
+      "cleanupPolicy": "agent_quit_required; harness_recovery_still_halts_campaign",
+      "cleanupWindowSeconds": 180,
+      "episodeOverheadSeconds": 300,
+      "mcpRequestTimeoutMs": 120000,
+      "minimumBusinessSeconds": 600,
+      "recoveryWindowSeconds": 120,
+      "secondsPerStep": 60,
+      "startupSeconds": 120,
+      "terminationGraceSeconds": 10,
+      "version": 1
+    },
+    "useIdenticalParams": true
+  },
+  "schemaVersion": 2,
+  "target": {
+    "abi": "arm64-v8a",
+    "apiLevel": 33,
+    "appiumUrl": "http://127.0.0.1:4723",
+    "avd": "AndroidWorldAvd",
+    "consolePort": 5554,
+    "deviceProfile": "Pixel 6",
+    "environmentMode": {
+      "evidence": {
+        "avd": "AndroidWorldAvd",
+        "backendSelection": "automatic change after adding -no-window; no explicit GPU/backend change",
+        "cowPreserved": "live evidence only",
+        "emulatorPid": 22585,
+        "gles": "swangle ANGLE SwiftShader LLVM10",
+        "gpuArgument": null,
+        "headless": true,
+        "oldMode": "windowed Vulkan lavapipe GLES host/AppleMetal",
+        "serial": "emulator-5554",
+        "snapshotLoad": false,
+        "snapshotSave": false,
+        "vulkan": "lavapipe llvmpipe LLVM21.1.4"
+      },
+      "path": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/headless-fullcoverage-20261107T004632Z/environment-mode.json",
+      "sha256": "aed82c73f5440413bf1a79f66a987d8b678450afd7ae40c8d943bda87fda3f27"
+    },
+    "grpcPort": 8554,
+    "serial": "emulator-5554"
+  },
+  "tasks": [
+    {
+      "apps": [
+        "settings"
+      ],
+      "complexity": 1,
+      "difficulty": "easy",
+      "family": "android",
+      "index": 0,
+      "instanceSeed": 2760691905,
+      "maxSteps": 10,
+      "name": "SystemWifiTurnOff",
+      "params": {
+        "on_or_off": "off",
+        "seed": 2760691905
+      },
+      "paramsSha256": "ea520e5e870054de010df5f90dd92458decf8153b4798c9974a00186628a4d15",
+      "paramsTransport": "json",
+      "tags": [
+        "screen_reading"
+      ],
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      }
+    },
+    {
+      "apps": [
+        "settings"
+      ],
+      "complexity": 1,
+      "difficulty": "easy",
+      "family": "android",
+      "index": 1,
+      "instanceSeed": 3514529162,
+      "maxSteps": 10,
+      "name": "SystemBrightnessMax",
+      "params": {
+        "max_or_min": "max",
+        "seed": 3514529162
+      },
+      "paramsSha256": "456814afbb5aa8d07a0c14120c26c55e140a617fa909024b135f7d04d76fd9c1",
+      "paramsTransport": "json",
+      "tags": [
+        ""
+      ],
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      }
+    },
+    {
+      "apps": [
+        "clock"
+      ],
+      "complexity": 1,
+      "difficulty": "easy",
+      "family": "android",
+      "index": 2,
+      "instanceSeed": 3429360255,
+      "maxSteps": 10,
+      "name": "ClockStopWatchRunning",
+      "params": {
+        "seed": 3429360255
+      },
+      "paramsSha256": "fe15fe1739bca1ce130f387e2e84d273c4a55e5403a5c174c7a2ec65119afaf9",
+      "paramsTransport": "json",
+      "tags": [
+        ""
+      ],
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      }
+    },
+    {
+      "apps": [
+        "clock"
+      ],
+      "complexity": 1,
+      "difficulty": "easy",
+      "family": "android",
+      "index": 3,
+      "instanceSeed": 1172248264,
+      "maxSteps": 10,
+      "name": "ClockTimerEntry",
+      "params": {
+        "hours": 0,
+        "minutes": 16,
+        "seconds": 35,
+        "seed": 1172248264
+      },
+      "paramsSha256": "3c6dc22a2339a8e10eab5472bd837b52efb43b0125410cd5522c8ce88a29192b",
+      "paramsTransport": "json",
+      "tags": [
+        "data_entry",
+        "parameterized"
+      ],
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      }
+    },
+    {
+      "apps": [
+        "contacts"
+      ],
+      "complexity": 1.2,
+      "difficulty": "easy",
+      "family": "android",
+      "index": 4,
+      "instanceSeed": 1155463587,
+      "maxSteps": 12,
+      "name": "ContactsAddContact",
+      "params": {
+        "name": "Hugo Pereira",
+        "number": "+13920741751",
+        "seed": 1155463587
+      },
+      "paramsSha256": "e5b9351bf2f295739e1b6989a343445ca029f42a701d675bbd159e65999d6493",
+      "paramsTransport": "json",
+      "tags": [
+        "data_entry",
+        "parameterized"
+      ],
+      "timeBudget": {
+        "businessSeconds": 840,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1450,
+        "forceSeconds": 1030,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      }
+    },
+    {
+      "apps": [
+        "markor"
+      ],
+      "complexity": 1.6,
+      "difficulty": "medium",
+      "family": "android",
+      "index": 5,
+      "instanceSeed": 1448135622,
+      "maxSteps": 16,
+      "name": "MarkorCreateNote",
+      "params": {
+        "file_name": "2023_01_26_wise_yacht.md",
+        "seed": 1448135622,
+        "text": "Ignorance is bliss."
+      },
+      "paramsSha256": "709d69da7c8645fc0231d7a771af0195ebffe9039cf52eda5a9b8dbeb8ff013a",
+      "paramsTransport": "json",
+      "tags": [
+        "data_entry",
+        "parameterized"
+      ],
+      "timeBudget": {
+        "businessSeconds": 1080,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1690,
+        "forceSeconds": 1270,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      }
+    },
+    {
+      "apps": [
+        "markor"
+      ],
+      "complexity": 1.2,
+      "difficulty": "easy",
+      "family": "android",
+      "index": 6,
+      "instanceSeed": 240351352,
+      "maxSteps": 12,
+      "name": "MarkorEditNote",
+      "params": {
+        "edit_type": "header",
+        "file_name": "note_SiFbv.txt",
+        "header": "Hello, World!",
+        "seed": 240351352
+      },
+      "paramsSha256": "1532056c510b10c9e61a0482cc2743dad7d8e5ed05f3be0cfa2ccbeeff026856",
+      "paramsTransport": "json",
+      "tags": [
+        "data_edit",
+        "transcription",
+        "parameterized"
+      ],
+      "timeBudget": {
+        "businessSeconds": 840,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1450,
+        "forceSeconds": 1030,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      }
+    },
+    {
+      "apps": [
+        "files"
+      ],
+      "complexity": 2,
+      "difficulty": "medium",
+      "family": "android",
+      "index": 7,
+      "instanceSeed": 4058110435,
+      "maxSteps": 20,
+      "name": "FilesMoveFile",
+      "params": {
+        "destination_folder": "DCIM",
+        "file_name": "holiday_photos.jpg",
+        "noise_candidates": [
+          "news_podcast.mp3",
+          "tech_talk.mp3",
+          "comedy_show.mp3",
+          "health_series.mp3",
+          "educational_content.mp3",
+          "music_reviews.mp3",
+          "political_discussion.mp3",
+          "travel_tips.mp3"
+        ],
+        "seed": 4058110435,
+        "source_folder": "Podcasts"
+      },
+      "paramsSha256": "d3c3f09db00791f4ca27ac6679c91a07b3022b26cff5790fc1fba837f7c3e8b0",
+      "paramsTransport": "json",
+      "tags": [
+        "search",
+        "screen_reading",
+        "parameterized"
+      ],
+      "timeBudget": {
+        "businessSeconds": 1320,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1930,
+        "forceSeconds": 1510,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      }
+    },
+    {
+      "apps": [
+        "simple calendar pro"
+      ],
+      "complexity": 3.4,
+      "difficulty": "hard",
+      "family": "android",
+      "index": 8,
+      "instanceSeed": 3964731618,
+      "maxSteps": 34,
+      "name": "SimpleCalendarAddOneEvent",
+      "params": {
+        "day": 29,
+        "duration_mins": 60,
+        "event_description": "We will understand upcoming project milestones.",
+        "event_title": "Call with the Team",
+        "hour": 13,
+        "month": 10,
+        "noise_row_objects": [
+          {
+            "attendees": "",
+            "availability": 0,
+            "color": 0,
+            "description": "We will review business objectives. Snacks will be provided.",
+            "end_ts": 1698582600,
+            "event_type": 1,
+            "flags": 0,
+            "id": -1,
+            "import_id": "",
+            "last_updated": 0,
+            "location": "",
+            "parent_id": 0,
+            "reminder_1_minutes": -1,
+            "reminder_1_type": 0,
+            "reminder_2_minutes": -1,
+            "reminder_2_type": 0,
+            "reminder_3_minutes": -1,
+            "reminder_3_type": 0,
+            "repeat_interval": 0,
+            "repeat_limit": 0,
+            "repeat_rule": 0,
+            "repetition_exceptions": "[]",
+            "source": "imported-ics",
+            "start_ts": 1698580800,
+            "time_zone": "UTC",
+            "title": "Call with Marketing",
+            "type": 0
+          },
+          {
+            "attendees": "",
+            "availability": 0,
+            "color": 0,
+            "description": "We will strategize about software updates. Remember to confirm attendance.",
+            "end_ts": 1698605100,
+            "event_type": 1,
+            "flags": 0,
+            "id": -1,
+            "import_id": "",
+            "last_updated": 0,
+            "location": "",
+            "parent_id": 0,
+            "reminder_1_minutes": -1,
+            "reminder_1_type": 0,
+            "reminder_2_minutes": -1,
+            "reminder_2_type": 0,
+            "reminder_3_minutes": -1,
+            "reminder_3_type": 0,
+            "repeat_interval": 0,
+            "repeat_limit": 0,
+            "repeat_rule": 0,
+            "repetition_exceptions": "[]",
+            "source": "imported-ics",
+            "start_ts": 1698602400,
+            "time_zone": "UTC",
+            "title": "Workshop on Budget Planning",
+            "type": 0
+          },
+          {
+            "attendees": "",
+            "availability": 0,
+            "color": 0,
+            "description": "We will strategize about marketing strategies. Snacks will be provided.",
+            "end_ts": 1697998500,
+            "event_type": 1,
+            "flags": 0,
+            "id": -1,
+            "import_id": "",
+            "last_updated": 0,
+            "location": "",
+            "parent_id": 0,
+            "reminder_1_minutes": -1,
+            "reminder_1_type": 0,
+            "reminder_2_minutes": -1,
+            "reminder_2_type": 0,
+            "reminder_3_minutes": -1,
+            "reminder_3_type": 0,
+            "repeat_interval": 0,
+            "repeat_limit": 0,
+            "repeat_rule": 0,
+            "repetition_exceptions": "[]",
+            "source": "imported-ics",
+            "start_ts": 1697997600,
+            "time_zone": "UTC",
+            "title": "Call with HR",
+            "type": 0
+          },
+          {
+            "attendees": "",
+            "availability": 0,
+            "color": 0,
+            "description": "We will discuss business objectives. Please bring relevant documents.",
+            "end_ts": 1697059800,
+            "event_type": 1,
+            "flags": 0,
+            "id": -1,
+            "import_id": "",
+            "last_updated": 0,
+            "location": "",
+            "parent_id": 0,
+            "reminder_1_minutes": -1,
+            "reminder_1_type": 0,
+            "reminder_2_minutes": -1,
+            "reminder_2_type": 0,
+            "reminder_3_minutes": -1,
+            "reminder_3_type": 0,
+            "repeat_interval": 0,
+            "repeat_limit": 0,
+            "repeat_rule": 0,
+            "repetition_exceptions": "[]",
+            "source": "imported-ics",
+            "start_ts": 1697058000,
+            "time_zone": "UTC",
+            "title": "Review session for Budget Planning",
+            "type": 0
+          },
+          {
+            "attendees": "",
+            "availability": 0,
+            "color": 0,
+            "description": "We will discuss client feedback.",
+            "end_ts": 1697320800,
+            "event_type": 1,
+            "flags": 0,
+            "id": -1,
+            "import_id": "",
+            "last_updated": 0,
+            "location": "",
+            "parent_id": 0,
+            "reminder_1_minutes": -1,
+            "reminder_1_type": 0,
+            "reminder_2_minutes": -1,
+            "reminder_2_type": 0,
+            "reminder_3_minutes": -1,
+            "reminder_3_type": 0,
+            "repeat_interval": 0,
+            "repeat_limit": 0,
+            "repeat_rule": 0,
+            "repetition_exceptions": "[]",
+            "source": "imported-ics",
+            "start_ts": 1697317200,
+            "time_zone": "UTC",
+            "title": "Review session for Budget Planning",
+            "type": 0
+          },
+          {
+            "attendees": "",
+            "availability": 0,
+            "color": 0,
+            "description": "We will celebrate annual budget.",
+            "end_ts": 1696697100,
+            "event_type": 1,
+            "flags": 0,
+            "id": -1,
+            "import_id": "",
+            "last_updated": 0,
+            "location": "",
+            "parent_id": 0,
+            "reminder_1_minutes": -1,
+            "reminder_1_type": 0,
+            "reminder_2_minutes": -1,
+            "reminder_2_type": 0,
+            "reminder_3_minutes": -1,
+            "reminder_3_type": 0,
+            "repeat_interval": 0,
+            "repeat_limit": 0,
+            "repeat_rule": 0,
+            "repetition_exceptions": "[]",
+            "source": "imported-ics",
+            "start_ts": 1696694400,
+            "time_zone": "UTC",
+            "title": "Review session for Campaign",
+            "type": 0
+          },
+          {
+            "attendees": "",
+            "availability": 0,
+            "color": 0,
+            "description": "We will plan contract details. Let's be punctual.",
+            "end_ts": 1698306300,
+            "event_type": 1,
+            "flags": 0,
+            "id": -1,
+            "import_id": "",
+            "last_updated": 0,
+            "location": "",
+            "parent_id": 0,
+            "reminder_1_minutes": -1,
+            "reminder_1_type": 0,
+            "reminder_2_minutes": -1,
+            "reminder_2_type": 0,
+            "reminder_3_minutes": -1,
+            "reminder_3_type": 0,
+            "repeat_interval": 0,
+            "repeat_limit": 0,
+            "repeat_rule": 0,
+            "repetition_exceptions": "[]",
+            "source": "imported-ics",
+            "start_ts": 1698303600,
+            "time_zone": "UTC",
+            "title": "Workshop on Campaign",
+            "type": 0
+          },
+          {
+            "attendees": "",
+            "availability": 0,
+            "color": 0,
+            "description": "We will finalize contract details.",
+            "end_ts": 1696525200,
+            "event_type": 1,
+            "flags": 0,
+            "id": -1,
+            "import_id": "",
+            "last_updated": 0,
+            "location": "",
+            "parent_id": 0,
+            "reminder_1_minutes": -1,
+            "reminder_1_type": 0,
+            "reminder_2_minutes": -1,
+            "reminder_2_type": 0,
+            "reminder_3_minutes": -1,
+            "reminder_3_type": 0,
+            "repeat_interval": 0,
+            "repeat_limit": 0,
+            "repeat_rule": 0,
+            "repetition_exceptions": "[]",
+            "source": "imported-ics",
+            "start_ts": 1696521600,
+            "time_zone": "UTC",
+            "title": "Workshop on Campaign",
+            "type": 0
+          },
+          {
+            "attendees": "",
+            "availability": 0,
+            "color": 0,
+            "description": "We will strategize about team roles.",
+            "end_ts": 1696182300,
+            "event_type": 1,
+            "flags": 0,
+            "id": -1,
+            "import_id": "",
+            "last_updated": 0,
+            "location": "",
+            "parent_id": 0,
+            "reminder_1_minutes": -1,
+            "reminder_1_type": 0,
+            "reminder_2_minutes": -1,
+            "reminder_2_type": 0,
+            "reminder_3_minutes": -1,
+            "reminder_3_type": 0,
+            "repeat_interval": 0,
+            "repeat_limit": 0,
+            "repeat_rule": 0,
+            "repetition_exceptions": "[]",
+            "source": "imported-ics",
+            "start_ts": 1696179600,
+            "time_zone": "UTC",
+            "title": "Appointment for Campaign",
+            "type": 0
+          },
+          {
+            "attendees": "",
+            "availability": 0,
+            "color": 0,
+            "description": "We will prepare for product launch. Let's be punctual.",
+            "end_ts": 1697356800,
+            "event_type": 1,
+            "flags": 0,
+            "id": -1,
+            "import_id": "",
+            "last_updated": 0,
+            "location": "",
+            "parent_id": 0,
+            "reminder_1_minutes": -1,
+            "reminder_1_type": 0,
+            "reminder_2_minutes": -1,
+            "reminder_2_type": 0,
+            "reminder_3_minutes": -1,
+            "reminder_3_type": 0,
+            "repeat_interval": 0,
+            "repeat_limit": 0,
+            "repeat_rule": 0,
+            "repetition_exceptions": "[]",
+            "source": "imported-ics",
+            "start_ts": 1697353200,
+            "time_zone": "UTC",
+            "title": "Review session for Budget Planning",
+            "type": 0
+          },
+          {
+            "attendees": "",
+            "availability": 0,
+            "color": 0,
+            "description": "We will review annual budget.",
+            "end_ts": 1698072300,
+            "event_type": 1,
+            "flags": 0,
+            "id": -1,
+            "import_id": "",
+            "last_updated": 0,
+            "location": "",
+            "parent_id": 0,
+            "reminder_1_minutes": -1,
+            "reminder_1_type": 0,
+            "reminder_2_minutes": -1,
+            "reminder_2_type": 0,
+            "reminder_3_minutes": -1,
+            "reminder_3_type": 0,
+            "repeat_interval": 0,
+            "repeat_limit": 0,
+            "repeat_rule": 0,
+            "repetition_exceptions": "[]",
+            "source": "imported-ics",
+            "start_ts": 1698069600,
+            "time_zone": "UTC",
+            "title": "Meeting with Marketing",
+            "type": 0
+          },
+          {
+            "attendees": "",
+            "availability": 0,
+            "color": 0,
+            "description": "We will strategize about upcoming project milestones. Looking forward to productive discussions.",
+            "end_ts": 1696483800,
+            "event_type": 1,
+            "flags": 0,
+            "id": -1,
+            "import_id": "",
+            "last_updated": 0,
+            "location": "",
+            "parent_id": 0,
+            "reminder_1_minutes": -1,
+            "reminder_1_type": 0,
+            "reminder_2_minutes": -1,
+            "reminder_2_type": 0,
+            "reminder_3_minutes": -1,
+            "reminder_3_type": 0,
+            "repeat_interval": 0,
+            "repeat_limit": 0,
+            "repeat_rule": 0,
+            "repetition_exceptions": "[]",
+            "source": "imported-ics",
+            "start_ts": 1696482000,
+            "time_zone": "UTC",
+            "title": "Call with Bob",
+            "type": 0
+          },
+          {
+            "attendees": "",
+            "availability": 0,
+            "color": 0,
+            "description": "We will explore contract details. Snacks will be provided.",
+            "end_ts": 1696800600,
+            "event_type": 1,
+            "flags": 0,
+            "id": -1,
+            "import_id": "",
+            "last_updated": 0,
+            "location": "",
+            "parent_id": 0,
+            "reminder_1_minutes": -1,
+            "reminder_1_type": 0,
+            "reminder_2_minutes": -1,
+            "reminder_2_type": 0,
+            "reminder_3_minutes": -1,
+            "reminder_3_type": 0,
+            "repeat_interval": 0,
+            "repeat_limit": 0,
+            "repeat_rule": 0,
+            "repetition_exceptions": "[]",
+            "source": "imported-ics",
+            "start_ts": 1696798800,
+            "time_zone": "UTC",
+            "title": "Workshop on Budget Planning",
+            "type": 0
+          },
+          {
+            "attendees": "",
+            "availability": 0,
+            "color": 0,
+            "description": "We will review team roles. Please bring relevant documents.",
+            "end_ts": 1696459500,
+            "event_type": 1,
+            "flags": 0,
+            "id": -1,
+            "import_id": "",
+            "last_updated": 0,
+            "location": "",
+            "parent_id": 0,
+            "reminder_1_minutes": -1,
+            "reminder_1_type": 0,
+            "reminder_2_minutes": -1,
+            "reminder_2_type": 0,
+            "reminder_3_minutes": -1,
+            "reminder_3_type": 0,
+            "repeat_interval": 0,
+            "repeat_limit": 0,
+            "repeat_rule": 0,
+            "repetition_exceptions": "[]",
+            "source": "imported-ics",
+            "start_ts": 1696456800,
+            "time_zone": "UTC",
+            "title": "Meeting with Marketing",
+            "type": 0
+          },
+          {
+            "attendees": "",
+            "availability": 0,
+            "color": 0,
+            "description": "We will understand product launch. Snacks will be provided.",
+            "end_ts": 1696578300,
+            "event_type": 1,
+            "flags": 0,
+            "id": -1,
+            "import_id": "",
+            "last_updated": 0,
+            "location": "",
+            "parent_id": 0,
+            "reminder_1_minutes": -1,
+            "reminder_1_type": 0,
+            "reminder_2_minutes": -1,
+            "reminder_2_type": 0,
+            "reminder_3_minutes": -1,
+            "reminder_3_type": 0,
+            "repeat_interval": 0,
+            "repeat_limit": 0,
+            "repeat_rule": 0,
+            "repetition_exceptions": "[]",
+            "source": "imported-ics",
+            "start_ts": 1696575600,
+            "time_zone": "UTC",
+            "title": "Appointment for Annual Report",
+            "type": 0
+          },
+          {
+            "attendees": "",
+            "availability": 0,
+            "color": 0,
+            "description": "We will explore client feedback.",
+            "end_ts": 1698585300,
+            "event_type": 1,
+            "flags": 0,
+            "id": -1,
+            "import_id": "",
+            "last_updated": 0,
+            "location": "",
+            "parent_id": 0,
+            "reminder_1_minutes": -1,
+            "reminder_1_type": 0,
+            "reminder_2_minutes": -1,
+            "reminder_2_type": 0,
+            "reminder_3_minutes": -1,
+            "reminder_3_type": 0,
+            "repeat_interval": 0,
+            "repeat_limit": 0,
+            "repeat_rule": 0,
+            "repetition_exceptions": "[]",
+            "source": "imported-ics",
+            "start_ts": 1698584400,
+            "time_zone": "UTC",
+            "title": "Appointment for Annual Report",
+            "type": 0
+          }
+        ],
+        "row_objects": [
+          {
+            "attendees": "",
+            "availability": 0,
+            "color": 0,
+            "description": "We will understand upcoming project milestones.",
+            "end_ts": 1698588000,
+            "event_type": 1,
+            "flags": 0,
+            "id": -1,
+            "import_id": "",
+            "last_updated": 0,
+            "location": "",
+            "parent_id": 0,
+            "reminder_1_minutes": -1,
+            "reminder_1_type": 0,
+            "reminder_2_minutes": -1,
+            "reminder_2_type": 0,
+            "reminder_3_minutes": -1,
+            "reminder_3_type": 0,
+            "repeat_interval": 0,
+            "repeat_limit": 0,
+            "repeat_rule": 0,
+            "repetition_exceptions": "[]",
+            "source": "imported-ics",
+            "start_ts": 1698584400,
+            "time_zone": "UTC",
+            "title": "Call with the Team",
+            "type": 0
+          }
+        ],
+        "seed": 3964731618,
+        "year": 2023
+      },
+      "paramsSha256": "345e51c0b25fc4251a372028312c3445ddfe00fa3e044ad037e9d02be5e31aae",
+      "paramsTransport": "seed",
+      "tags": [
+        "data_entry",
+        "complex_ui_understanding",
+        "parameterized"
+      ],
+      "timeBudget": {
+        "businessSeconds": 2160,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 2770,
+        "forceSeconds": 2350,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      }
+    },
+    {
+      "apps": [
+        "camera"
+      ],
+      "complexity": 1,
+      "difficulty": "easy",
+      "family": "android",
+      "index": 9,
+      "instanceSeed": 3729977769,
+      "maxSteps": 10,
+      "name": "CameraTakePhoto",
+      "params": {
+        "seed": 3729977769
+      },
+      "paramsSha256": "45aaf450a9603d18f537950d3a4227d0c1525071ac76d8a7b4b1cf7e29eb7b0e",
+      "paramsTransport": "json",
+      "tags": [
+        ""
+      ],
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      }
+    },
+    {
+      "apps": [
+        "tasks"
+      ],
+      "complexity": 1,
+      "difficulty": "medium",
+      "family": "information_retrieval",
+      "index": 10,
+      "instanceSeed": 521701125,
+      "maxSteps": 10,
+      "name": "TasksHighPriorityTasks",
+      "params": {
+        "due_date": "October 17 2023",
+        "hide_until_date": "October 14 2023",
+        "notes": "Schedule follow-up meeting.",
+        "seed": 521701125,
+        "task_title": "Call client for follow-up",
+        "time": "4pm"
+      },
+      "paramsSha256": "9bdec441da8d2a1d30e6517ec5584f848ea292f41205b9b8b286c054f1f0ef95",
+      "paramsTransport": "json",
+      "tags": [
+        "complex_ui_understanding",
+        "search",
+        "information_retrieval",
+        "transcription",
+        "parameterized"
+      ],
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      }
+    },
+    {
+      "apps": [
+        "simple calendar pro"
+      ],
+      "complexity": 1,
+      "difficulty": "medium",
+      "family": "information_retrieval",
+      "index": 11,
+      "instanceSeed": 1569884782,
+      "maxSteps": 10,
+      "name": "SimpleCalendarEventsOnDate",
+      "params": {
+        "date": "October 24 2023",
+        "duration": "25 minutes",
+        "seed": 1569884782,
+        "time": "11:00am",
+        "title": "Trivia Night"
+      },
+      "paramsSha256": "35497446bdb86198a6893a5d4f8f62a987bf1f2bf6f4615b00dd405b3cf0bc91",
+      "paramsTransport": "json",
+      "tags": [
+        "information_retrieval",
+        "parameterized"
+      ],
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      }
+    }
+  ]
+}

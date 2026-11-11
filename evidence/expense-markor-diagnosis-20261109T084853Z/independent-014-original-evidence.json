@@ -1,0 +1,281 @@
+{
+  "reviewer": "w4:p2 independent read-only contract acceptance assistant",
+  "observedAtUnix": 1794214445.9340632,
+  "taskName": "ExpenseAddMultipleFromMarkor",
+  "seed": 3053860270,
+  "paramsSha256": "23de427b2cc14ba77e7fc9e4f767e4a6b1e4049661a80c3ce0b957c65120c929",
+  "historicalAndroidWorld": {
+    "packageVersion": "0.1.0",
+    "revision": "55ddaf5edc6f6c25673aed343907d5b9dca66f84"
+  },
+  "historicalAmkernel": {
+    "tool": "python_exec",
+    "version": "0.1.3"
+  },
+  "historicalSources": {
+    "result.json": {
+      "path": "campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/episodes/014-ExpenseAddMultipleFromMarkor/attempt-1/result.json",
+      "sha256": "198faa876422efc67531fc1f3b318013a660e2af295fc7dfc2fc8f82b57ef6bd",
+      "bytes": 55897
+    },
+    "normalized-agent-events.json": {
+      "path": "campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/episodes/014-ExpenseAddMultipleFromMarkor/attempt-1/normalized-agent-events.json",
+      "sha256": "5d5b1de0ef465e8165e33fe73510e601fe4fe60104f29a14efdcd31010e89456",
+      "bytes": 12600
+    },
+    "raw-private/agent-events.jsonl": {
+      "path": "campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/episodes/014-ExpenseAddMultipleFromMarkor/attempt-1/raw-private/agent-events.jsonl",
+      "sha256": "690dac2ad773a09f3b41f2ded10dd7d6df2486352eccdb9637debf3eb86b79e4",
+      "bytes": 81989851
+    }
+  },
+  "parentExtractionPath": "evidence/amkernel-field-optimization-20261109/per-task-review/014-ExpenseAddMultipleFromMarkor/original-python-executions.json",
+  "parentExtractionSha256": "444edf6ecccbb09c863a05d12c0274398d2376726cb098d69393d251861a6a7f",
+  "criticalRawCallsIndependentlyMatched": [
+    {
+      "executionCount": 13,
+      "sourceLine": 3352,
+      "responseSourceLine": 3353,
+      "status": "completed",
+      "kernelState": "alive",
+      "code": "name=driver.find_element(AppiumBy.ID,'com.arduia.expense:id/edt_name')\namount=driver.find_element(AppiumBy.ID,'com.arduia.expense:id/edt_amount')\nnote=driver.find_element(AppiumBy.ID,'com.arduia.expense:id/edt_note')\nname.send_keys('Laundry')\namount.send_keys('96.3')\nnote.send_keys('Urgent. Reimbursable.')\n{'name':name.get_attribute('text'),'amount':amount.get_attribute('text'),'note':note.get_attribute('text')}",
+      "observedResult": {
+        "name": "Laundry",
+        "amount": "96.3",
+        "note": "Urgent. Reimbursable."
+      }
+    },
+    {
+      "executionCount": 17,
+      "sourceLine": 4075,
+      "responseSourceLine": 4076,
+      "status": "completed",
+      "kernelState": "alive",
+      "code": "clothes_card=driver.find_element(AppiumBy.XPATH,\"//android.widget.TextView[@text='Clothes']/..\")\nclothes_card.click()\nroot=ET.fromstring(driver.page_source)\nselected=[]\nfor e in root.iter():\n if e.attrib.get('resource-id')=='com.arduia.expense:id/cd_category' and e.attrib.get('checked')=='true':\n  selected += [c.attrib.get('text') for c in e.iter() if c.attrib.get('resource-id')=='com.arduia.expense:id/tv_name']\n{'selectedCategories':selected}",
+      "observedResultStringCharacters": 35,
+      "selectedKnownTokensPresent": {
+        "Laundry": false,
+        "Car Insurance": false,
+        "Urgent. Reimbursable.": false,
+        "I may repeat this. Reimbursable.": false,
+        "Clothes": true,
+        "Transportation": false
+      }
+    },
+    {
+      "executionCount": 18,
+      "sourceLine": 4243,
+      "responseSourceLine": 4244,
+      "status": "completed",
+      "kernelState": "alive",
+      "code": "save=driver.find_element(AppiumBy.ID,'com.arduia.expense:id/btn_save')\n{'keyboardShown':driver.is_keyboard_shown(),'saveBounds':save.get_attribute('bounds'),'saveDisplayed':save.is_displayed(),'name':driver.find_element(AppiumBy.ID,'com.arduia.expense:id/edt_name').get_attribute('text'),'amount':driver.find_element(AppiumBy.ID,'com.arduia.expense:id/edt_amount').get_attribute('text'),'note':driver.find_element(AppiumBy.ID,'com.arduia.expense:id/edt_note').get_attribute('text')}",
+      "observedResultStringCharacters": 154,
+      "selectedKnownTokensPresent": {
+        "Laundry": true,
+        "Car Insurance": false,
+        "Urgent. Reimbursable.": true,
+        "I may repeat this. Reimbursable.": false,
+        "Clothes": false,
+        "Transportation": false
+      }
+    },
+    {
+      "executionCount": 19,
+      "sourceLine": 4543,
+      "responseSourceLine": 4544,
+      "status": "completed",
+      "kernelState": "alive",
+      "code": "driver.find_element(AppiumBy.ID,'com.arduia.expense:id/btn_save').click()\nWebDriverWait(driver,8).until(lambda d: 'btn_save' not in d.page_source)\nroot=ET.fromstring(driver.page_source)\nrecent=[]\nfor card in root.iter():\n if card.attrib.get('resource-id')=='com.arduia.expense:id/cd_expense':\n  vals={}\n  for c in card.iter():\n   rid=c.attrib.get('resource-id','')\n   if rid.endswith('/tv_name'): vals['name']=c.attrib.get('text')\n   elif rid.endswith('/tv_amount'): vals['amount']=c.attrib.get('text')\n   elif rid.endswith('/tv_date'): vals['date']=c.attrib.get('text')\n  if vals: recent.append(vals)\n{'activity':driver.current_activity,'recent':recent[:5]}",
+      "observedResultStringCharacters": 305,
+      "selectedKnownTokensPresent": {
+        "Laundry": true,
+        "Car Insurance": false,
+        "Urgent. Reimbursable.": false,
+        "I may repeat this. Reimbursable.": false,
+        "Clothes": false,
+        "Transportation": false
+      }
+    },
+    {
+      "executionCount": 21,
+      "sourceLine": 4981,
+      "responseSourceLine": 4982,
+      "status": "completed",
+      "kernelState": "alive",
+      "code": "name=driver.find_element(AppiumBy.ID,'com.arduia.expense:id/edt_name')\namount=driver.find_element(AppiumBy.ID,'com.arduia.expense:id/edt_amount')\nnote=driver.find_element(AppiumBy.ID,'com.arduia.expense:id/edt_note')\nname.send_keys('Car Insurance')\namount.send_keys('303.01')\nnote.send_keys('I may repeat this. Reimbursable.')\n{'name':name.get_attribute('text'),'amount':amount.get_attribute('text'),'note':note.get_attribute('text')}",
+      "observedResult": {
+        "name": "Car Insurance",
+        "amount": "303.01",
+        "note": "I may repeat this. Reimbursable."
+      }
+    },
+    {
+      "executionCount": 23,
+      "sourceLine": 5275,
+      "responseSourceLine": 5276,
+      "status": "completed",
+      "kernelState": "alive",
+      "code": "driver.find_element(AppiumBy.XPATH,\"//android.widget.TextView[@text='Transportation']/..\").click()\nroot=ET.fromstring(driver.page_source)\nselected=[]\nfor e in root.iter():\n if e.attrib.get('resource-id')=='com.arduia.expense:id/cd_category' and e.attrib.get('checked')=='true':\n  selected += [c.attrib.get('text') for c in e.iter() if c.attrib.get('resource-id')=='com.arduia.expense:id/tv_name']\n{'selectedCategories':selected,'keyboardShown':driver.is_keyboard_shown()}",
+      "observedResultStringCharacters": 66,
+      "selectedKnownTokensPresent": {
+        "Laundry": false,
+        "Car Insurance": false,
+        "Urgent. Reimbursable.": false,
+        "I may repeat this. Reimbursable.": false,
+        "Clothes": false,
+        "Transportation": true
+      }
+    },
+    {
+      "executionCount": 24,
+      "sourceLine": 5516,
+      "responseSourceLine": 5517,
+      "status": "completed",
+      "kernelState": "alive",
+      "code": "driver.find_element(AppiumBy.ID,'com.arduia.expense:id/btn_save').click()\nWebDriverWait(driver,8).until(lambda d: 'btn_save' not in d.page_source)\nroot=ET.fromstring(driver.page_source)\nrecent=[]\nfor card in root.iter():\n if card.attrib.get('resource-id')=='com.arduia.expense:id/cd_expense':\n  vals={}\n  for c in card.iter():\n   rid=c.attrib.get('resource-id','')\n   if rid.endswith('/tv_name'): vals['name']=c.attrib.get('text')\n   elif rid.endswith('/tv_amount'): vals['amount']=c.attrib.get('text')\n   elif rid.endswith('/tv_date'): vals['date']=c.attrib.get('text')\n  if vals: recent.append(vals)\n{'activity':driver.current_activity,'recent':recent[:6]}",
+      "observedResultStringCharacters": 300,
+      "selectedKnownTokensPresent": {
+        "Laundry": true,
+        "Car Insurance": true,
+        "Urgent. Reimbursable.": false,
+        "I may repeat this. Reimbursable.": false,
+        "Clothes": false,
+        "Transportation": false
+      }
+    },
+    {
+      "executionCount": 25,
+      "sourceLine": 5575,
+      "responseSourceLine": 5576,
+      "status": "completed",
+      "kernelState": "alive",
+      "code": "driver.quit()\n{'ownedSessionId': session_id, 'quitReturned': True}",
+      "observedResult": {
+        "ownedSessionId": "87a9cf02-5d47-4910-a9c2-578ac5c29582",
+        "quitReturned": true
+      }
+    }
+  ],
+  "historicalOfficialLog": {
+    "path": "evidence/headless-fullcoverage-20261107T004632Z/v2-ready-run-full.log",
+    "sha256": "aaf22814e141d2054eb29484de952b0fafdc74b1ad4ecbb11d6d119d1a6b12cf",
+    "excerpt": [
+      {
+        "line": 279,
+        "text": "WARNING:absl:Could not get a11y tree, retrying."
+      },
+      {
+        "line": 280,
+        "text": "Completed step 1."
+      },
+      {
+        "line": 281,
+        "text": "Completed step 2."
+      },
+      {
+        "line": 282,
+        "text": "Completed step 3."
+      },
+      {
+        "line": 283,
+        "text": "Completed step 4."
+      },
+      {
+        "line": 284,
+        "text": "Completed step 5."
+      },
+      {
+        "line": 285,
+        "text": "Completed step 6."
+      },
+      {
+        "line": 286,
+        "text": "Completed step 7."
+      },
+      {
+        "line": 287,
+        "text": "Completed step 8."
+      },
+      {
+        "line": 288,
+        "text": "Completed step 9."
+      },
+      {
+        "line": 289,
+        "text": "Completed step 10."
+      },
+      {
+        "line": 290,
+        "text": "Completed step 11."
+      },
+      {
+        "line": 291,
+        "text": "Completed step 12."
+      },
+      {
+        "line": 292,
+        "text": "Completed step 13."
+      },
+      {
+        "line": 293,
+        "text": "Completed step 14."
+      },
+      {
+        "line": 294,
+        "text": "Completed step 15."
+      },
+      {
+        "line": 295,
+        "text": "Completed step 16."
+      },
+      {
+        "line": 296,
+        "text": "Completed step 17."
+      },
+      {
+        "line": 297,
+        "text": "Completed step 18."
+      },
+      {
+        "line": 298,
+        "text": "Completed step 19."
+      },
+      {
+        "line": 299,
+        "text": "Completed step 20."
+      },
+      {
+        "line": 300,
+        "text": "Completed step 21."
+      },
+      {
+        "line": 301,
+        "text": "Agent indicates task is done."
+      },
+      {
+        "line": 302,
+        "text": "WARNING:absl:Expected row Expense(name='Laundry', amount=9630, category=8, note='Urgent', created_date=1697320800000, modified_date=1697320800000, expense_id=-1) not found in the 'after' state."
+      },
+      {
+        "line": 303,
+        "text": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/pydub/utils.py:170: RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work"
+      }
+    ],
+    "actualWarningLine": 302,
+    "actualWarning": "WARNING:absl:Expected row Expense(name='Laundry', amount=9630, category=8, note='Urgent', created_date=1697320800000, modified_date=1697320800000, expense_id=-1) not found in the 'after' state.",
+    "matchesInstalledValidatorWarningAtLine": 169,
+    "actualFailedPredicateBranch": "sqlite_validators.validate_rows_addition_integrity:166-171 reference-row presence matching; first Laundry reference has no match in after",
+    "laterLengthAndBeforePreservationChecksReached": false
+  },
+  "historicalReward": 0.0,
+  "historicalExecutedBusinessActions": 20,
+  "historicalDatabaseBeforeAfterAvailableToThisReviewer": false,
+  "scopeCorrections": [
+    "No Dave/Sue values used; withdrawn parent prose was not evidence.",
+    "Laundry exec13 is entered-field readback; exec18 is subsequent pre-save Appium source; category exec17.",
+    "Car Insurance exec21 is entered-field readback before category exec23; no combined post-category saved detail view claimed.",
+    "Exec19/24 are save/list observations, not DB snapshots.",
+    "First matching-warning branch is available historically; only actual before/after DB inputs remain missing.",
+    "Controlled offline after candidate in contract-smoke JSON is never historical DB."
+  ]
+}

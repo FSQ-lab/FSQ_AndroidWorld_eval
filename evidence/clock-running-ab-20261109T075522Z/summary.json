@@ -1,0 +1,479 @@
+{
+  "kind": "development_diagnostic_original008_fixed_two_units",
+  "status": "completed",
+  "formalScore": null,
+  "notFormalR14QualificationOrScore": true,
+  "task": {
+    "complexity": 1,
+    "goal": "Run the stopwatch.",
+    "name": "ClockStopWatchRunning",
+    "params": {
+      "seed": 3429360255
+    },
+    "paramsSha256": "fe15fe1739bca1ce130f387e2e84d273c4a55e5403a5c174c7a2ec65119afaf9"
+  },
+  "historicalOriginal008InputBackfilled": false,
+  "units": [
+    {
+      "label": "ClockRunningOriginalP0",
+      "checks": {
+        "exactOriginalTaskIncludingGoal": true,
+        "modelIdentical": true,
+        "promptMatchesOriginalExceptProxyPort": true,
+        "actualPromptHashMatchesText": true,
+        "promptTemplateIdentical": true,
+        "skillsIdentical": true,
+        "tenStepBudgetPreserved": true,
+        "timePolicyPreserved": true,
+        "originalRetryLimitsInManifest": true,
+        "childExitedZero": true,
+        "oneLogicalOfficialStateCall": true,
+        "actualPredicateListIdentity": true,
+        "actualPredicateValuesMatchSavedElements": true,
+        "actualForestIdentityAndBytes": true,
+        "originalScorePreserved": true,
+        "traceAndProbeErrorFree": true,
+        "agentQuitAndSessionAbsent": true,
+        "oneCreateDeleteNoPending": true,
+        "environmentAndTaskClosed": true,
+        "postExitWorkspaceAndParentAbsent": true,
+        "preEpisodeOwnedProcessAbsent": true,
+        "freshReceiverSequenceOne": true,
+        "observerReadOnlyNoNewSession": true,
+        "postquitNativeReadOnlyCommandsSucceeded": true
+      },
+      "errors": [],
+      "officialReward": 0.0,
+      "error": null,
+      "invalidReason": null,
+      "actions": 4,
+      "maxSteps": 10,
+      "helperSha256": "97a56a544e44d79f9b3181fc7dbdd72cffa908efd3d53c82afad1773061a350a",
+      "actualCapability": [
+        {
+          "actualForwardedRequestCaptured": true,
+          "present": false,
+          "source": "episode/result.json appiumSessionAudit.sessionAccessibility.creations.request.capabilities",
+          "values": []
+        }
+      ],
+      "predicate": {
+        "currentActivity": "com.google.android.deskclock/com.android.deskclock.DeskClock",
+        "uiElementsObjectId": 5026249856,
+        "elementCount": 0,
+        "rawBranchLocals": {
+          "current_activity": "com.google.android.deskclock/com.android.deskclock.DeskClock",
+          "pause_present": false,
+          "lap_present": false
+        },
+        "returnLine": 40,
+        "rawReturn": false
+      },
+      "actualOfficialState": {
+        "path": "evaluator-000/state-00",
+        "stateObjectId": 5026074704,
+        "forestObjectId": 5028045872,
+        "uiElementsObjectId": 5026249856,
+        "uiElementCount": 0,
+        "isActualPredicateInput": true,
+        "forestTrace": {
+          "present": true,
+          "recvSeq": 2118,
+          "storedIdentityIsActual": true,
+          "receiveObjectIdMatchesRecord": true,
+          "identityMismatch": false,
+          "windowCount": 0,
+          "serializedBytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "nodeCount": 0,
+          "successTextFound": false,
+          "windows": [],
+          "receivedAtUnix": 1794211574.6673741,
+          "receivedHostUtc": "2026-11-09T08:06:14Z",
+          "receiveAgeSeconds": 5.562184810638428,
+          "recvTransport": "unary",
+          "recvAdmitted": true,
+          "recvAdmittedByDrain": true,
+          "recvAdmittedByDrainIndex": 7,
+          "recvAdmittedByPull": null,
+          "recvPaused": false
+        },
+        "screenshotBackend": "exact-original-state.pixels",
+        "officialEvaluatorInput": true,
+        "saved": {
+          "unix": 1794211580.229562,
+          "monotonicNs": 586490009043625
+        }
+      },
+      "sender": {},
+      "hostChildPid": 74074,
+      "skillIdentity": {
+        "installedAgentAssetsSha256": "0ff33bb8ee50c160d87842ed11324e557f6fe5fc81c8e4fe06230a4d7bf792b8",
+        "expectedOriginalSha256": "0ff33bb8ee50c160d87842ed11324e557f6fe5fc81c8e4fe06230a4d7bf792b8",
+        "matchesOriginal": true,
+        "fileCount": 152
+      },
+      "promptSha256": "e313795c259f4150cccc5e657770068476bc5fca716bfaaf9233209f07f9d541",
+      "callTelemetry": [
+        {
+          "durationMs": 31588,
+          "executionCount": 1,
+          "kernelState": "alive",
+          "status": "completed"
+        },
+        {
+          "durationMs": 863,
+          "executionCount": 2,
+          "kernelState": "alive",
+          "status": "completed"
+        },
+        {
+          "durationMs": 2299,
+          "executionCount": 3,
+          "kernelState": "alive",
+          "status": "completed"
+        },
+        {
+          "durationMs": 3398,
+          "executionCount": 4,
+          "kernelState": "alive",
+          "status": "completed"
+        },
+        {
+          "durationMs": 2337,
+          "executionCount": 5,
+          "kernelState": "alive",
+          "status": "completed"
+        },
+        {
+          "durationMs": 30010,
+          "executionCount": 6,
+          "kernelState": "alive",
+          "status": "timed_out"
+        },
+        {
+          "durationMs": 20004,
+          "executionCount": 7,
+          "kernelState": "alive",
+          "status": "timed_out"
+        },
+        {
+          "durationMs": 63,
+          "executionCount": 8,
+          "kernelState": "alive",
+          "status": "completed"
+        },
+        {
+          "durationMs": 60010,
+          "executionCount": 9,
+          "kernelState": "alive",
+          "status": "timed_out"
+        },
+        {
+          "durationMs": 262,
+          "executionCount": 10,
+          "kernelState": "alive",
+          "status": "completed"
+        },
+        {
+          "durationMs": 12502,
+          "executionCount": 11,
+          "kernelState": "alive",
+          "status": "completed"
+        }
+      ],
+      "observerDelays": {
+        "preQuitSeconds": 11.036872667,
+        "postQuitSeconds": 1.155449833,
+        "screenshotSeparation": {
+          "requestedSeconds": 0.6,
+          "started": {
+            "unix": 1794211575.2112918,
+            "monotonicNs": 586484990816750
+          },
+          "purpose": "Read-only running-time visual comparison; diagnostic overhead",
+          "completed": {
+            "unix": 1794211575.820199,
+            "monotonicNs": 586485599719208
+          },
+          "actualSeconds": 0.608902458
+        }
+      },
+      "cleanupNestedStatusPreserved": "unknown",
+      "postExitWorkspace": {
+        "observedAtUnix": 1794211795.7343209,
+        "processCompletedAtUnix": 1794211581.505753,
+        "workspacePath": "/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-browserdraw-forest-xuzik736/agent-workspace",
+        "workspaceExists": false,
+        "temporaryParentPath": "/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-browserdraw-forest-xuzik736",
+        "temporaryParentExists": false,
+        "sourceReceiptPreserved": "workspace-post-exit-absence.json",
+        "scope": "Additional read-only host observation after child exit; original receipt remains unchanged"
+      },
+      "formalScore": null
+    },
+    {
+      "label": "ClockRunningPatchedP1",
+      "checks": {
+        "exactOriginalTaskIncludingGoal": true,
+        "modelIdentical": true,
+        "promptMatchesOriginalExceptProxyPort": true,
+        "actualPromptHashMatchesText": true,
+        "promptTemplateIdentical": true,
+        "skillsIdentical": true,
+        "tenStepBudgetPreserved": true,
+        "timePolicyPreserved": true,
+        "originalRetryLimitsInManifest": true,
+        "childExitedZero": true,
+        "oneLogicalOfficialStateCall": true,
+        "actualPredicateListIdentity": true,
+        "actualPredicateValuesMatchSavedElements": true,
+        "actualForestIdentityAndBytes": true,
+        "originalScorePreserved": true,
+        "traceAndProbeErrorFree": true,
+        "agentQuitAndSessionAbsent": true,
+        "oneCreateDeleteNoPending": true,
+        "environmentAndTaskClosed": true,
+        "postExitWorkspaceAndParentAbsent": true,
+        "preEpisodeOwnedProcessAbsent": true,
+        "freshReceiverSequenceOne": true,
+        "observerReadOnlyNoNewSession": true,
+        "postquitNativeReadOnlyCommandsSucceeded": true
+      },
+      "errors": [],
+      "officialReward": 1.0,
+      "error": null,
+      "invalidReason": null,
+      "actions": 4,
+      "maxSteps": 10,
+      "helperSha256": "0987ded41c12807d4f75d0789002912de143eec866fa7b389ad8efdb8b0d07bb",
+      "actualCapability": [
+        {
+          "actualForwardedRequestCaptured": true,
+          "present": true,
+          "source": "episode/result.json appiumSessionAudit.sessionAccessibility.creations.request.capabilities",
+          "values": [
+            {
+              "key": "appium:disableSuppressAccessibilityService",
+              "location": "alwaysMatch",
+              "value": true
+            }
+          ]
+        }
+      ],
+      "predicate": {
+        "currentActivity": "com.google.android.deskclock/com.android.deskclock.DeskClock",
+        "uiElementsObjectId": 5086192960,
+        "elementCount": 17,
+        "rawBranchLocals": {
+          "current_activity": "com.google.android.deskclock/com.android.deskclock.DeskClock",
+          "pause_present": true,
+          "lap_present": true
+        },
+        "returnLine": 40,
+        "rawReturn": true
+      },
+      "actualOfficialState": {
+        "path": "evaluator-000/state-00",
+        "stateObjectId": 5087254928,
+        "forestObjectId": 5089809872,
+        "uiElementsObjectId": 5086192960,
+        "uiElementCount": 17,
+        "isActualPredicateInput": true,
+        "forestTrace": {
+          "present": true,
+          "recvSeq": 1414,
+          "storedIdentityIsActual": true,
+          "receiveObjectIdMatchesRecord": true,
+          "identityMismatch": false,
+          "windowCount": 2,
+          "serializedBytes": 5492,
+          "sha256": "06442ba3b97c22192b00f8acee3a7f99a7b62b13806e60373cc6ab17a3eb1c06",
+          "nodeCount": 27,
+          "successTextFound": false,
+          "windows": [
+            {
+              "id": 9952,
+              "title": "",
+              "windowType": 1,
+              "isActive": true,
+              "isFocused": true,
+              "nodeCount": 19,
+              "packageNames": [
+                "com.google.android.deskclock"
+              ]
+            },
+            {
+              "id": 9941,
+              "title": "",
+              "windowType": 3,
+              "isActive": false,
+              "isFocused": false,
+              "nodeCount": 8,
+              "packageNames": [
+                "com.android.systemui"
+              ]
+            }
+          ],
+          "receivedAtUnix": 1794211785.3933802,
+          "receivedHostUtc": "2026-11-09T08:09:45Z",
+          "receiveAgeSeconds": 0.36130261421203613,
+          "recvTransport": "unary",
+          "recvAdmitted": true,
+          "recvAdmittedByDrain": true,
+          "recvAdmittedByDrainIndex": 7,
+          "recvAdmittedByPull": null,
+          "recvPaused": false
+        },
+        "screenshotBackend": "exact-original-state.pixels",
+        "officialEvaluatorInput": true,
+        "saved": {
+          "unix": 1794211785.754685,
+          "monotonicNs": 586695532404458
+        }
+      },
+      "sender": {
+        "fsq-forwarder-instance": "14073:1",
+        "fsq-forwarder-generation": "1",
+        "fsq-forest-sequence": "1414"
+      },
+      "hostChildPid": 75025,
+      "skillIdentity": {
+        "installedAgentAssetsSha256": "0ff33bb8ee50c160d87842ed11324e557f6fe5fc81c8e4fe06230a4d7bf792b8",
+        "expectedOriginalSha256": "0ff33bb8ee50c160d87842ed11324e557f6fe5fc81c8e4fe06230a4d7bf792b8",
+        "matchesOriginal": true,
+        "fileCount": 152
+      },
+      "promptSha256": "7ce5faa6ae738871200e9df435dc168f513cab4c95d15de195f96f6c349811ab",
+      "callTelemetry": [
+        {
+          "durationMs": 31509,
+          "executionCount": 1,
+          "kernelState": "alive",
+          "status": "completed"
+        },
+        {
+          "durationMs": 1231,
+          "executionCount": 2,
+          "kernelState": "alive",
+          "status": "completed"
+        },
+        {
+          "durationMs": 2167,
+          "executionCount": 3,
+          "kernelState": "alive",
+          "status": "completed"
+        },
+        {
+          "durationMs": 2911,
+          "executionCount": 4,
+          "kernelState": "alive",
+          "status": "completed"
+        },
+        {
+          "durationMs": 2061,
+          "executionCount": 5,
+          "kernelState": "alive",
+          "status": "completed"
+        },
+        {
+          "durationMs": 30015,
+          "executionCount": 6,
+          "kernelState": "alive",
+          "status": "timed_out"
+        },
+        {
+          "durationMs": 15011,
+          "executionCount": 7,
+          "kernelState": "alive",
+          "status": "timed_out"
+        },
+        {
+          "durationMs": 8008,
+          "executionCount": 8,
+          "kernelState": "alive",
+          "status": "failed"
+        },
+        {
+          "durationMs": 12313,
+          "executionCount": 9,
+          "kernelState": "alive",
+          "status": "completed"
+        }
+      ],
+      "observerDelays": {
+        "preQuitSeconds": 10.991820708,
+        "postQuitSeconds": 1.069069875,
+        "screenshotSeparation": {
+          "requestedSeconds": 0.6,
+          "started": {
+            "unix": 1794211779.3360388,
+            "monotonicNs": 586689113813083
+          },
+          "purpose": "Read-only running-time visual comparison; diagnostic overhead",
+          "completed": {
+            "unix": 1794211779.93647,
+            "monotonicNs": 586689714239875
+          },
+          "actualSeconds": 0.600426792
+        }
+      },
+      "cleanupNestedStatusPreserved": "unknown",
+      "postExitWorkspace": {
+        "observedAtUnix": 1794211891.930676,
+        "processCompletedAtUnix": 1794211787.079647,
+        "workspacePath": "/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-browserdraw-forest-8kkudctz/agent-workspace",
+        "workspaceExists": false,
+        "temporaryParentPath": "/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-browserdraw-forest-8kkudctz",
+        "temporaryParentExists": false,
+        "sourceReceiptPreserved": "workspace-post-exit-absence.json",
+        "scope": "Read-only host observation after child exit; original receipt remains unchanged"
+      },
+      "formalScore": null
+    }
+  ],
+  "findings": {
+    "A": "The stopwatch visibly kept running, while the actual original running predicate received an empty UI-element list from empty recv2118 and returned false at line40; raw reward0.0.",
+    "B": "The stopwatch visibly kept running, and the actual original running predicate received Pause and Lap from nonempty recv1414, returning true at line40; raw reward1.0.",
+    "firstObservedALoss": "Last nonempty recv447, first empty448 during session creation, 0.4366950988769531 seconds before creation response. Binding snapshots change Bound to unbound while enabled is retained. Quit/rebinding later raises null-Context constructor NPE.",
+    "restorationTimingBoundary": "The saved bound PID13131 snapshot is observed after original scorer return; it does not prove binding transition happened after the scorer, nor prove a healthy scoring input at that earlier instant. Actual selected official forest is empty seq2118. No claim that binding never restored or cannot restore.",
+    "historicalLimit": "The old historical008 scoring forest was never saved; these fresh diagnostic units cannot reconstruct or change it.",
+    "confound": "A changes both helper APK/build stack and accessibility-suppression capability relative to B; do not identify their individual isolated contributions from these two units.",
+    "toolDelayLimit": "A retains three timed_out/alive calls (30/20/60s); B retains two timed_out/alive (30/15s) plus one failed/alive (~8s). Tree-input repair is not proof of repairing Appium idle wait or all Runtime delays.",
+    "clockLimit": "Receive-age values are host receive-to-state-return ages, not device forest generation ages; device and host epochs differ.",
+    "observerLimit": "Read-only observers add measured pre-quit/post-quit delay and do not establish an uninstrumented timing equivalence."
+  },
+  "restoration": {
+    "record": "final-native-restoration.json",
+    "productionHelperRestored": true,
+    "normalBindingObserved": true,
+    "sameBootId": true,
+    "enabledServicesPreserved": true,
+    "accessibilityEnabledPreserved": true,
+    "sessionHashes": [],
+    "ownedWorkspaceAndParentsAbsent": true
+  },
+  "historicalImmutability": {
+    "startedAtUnix": 1794211922.881408,
+    "completedAtUnix": 1794211929.154451,
+    "scope": "Exactly the registered historical artifact paths in registered-historical-baseline.json; not a claim about all repository files or mutable shared server logs",
+    "registeredCount": 2186,
+    "rehashedCount": 2186,
+    "rehashedBytes": 14434241098,
+    "missing": [],
+    "changed": [],
+    "historicalArtifactsUnchanged": true,
+    "currentAgentAssets": {
+      "registeredCount": 152,
+      "missing": [],
+      "changed": [],
+      "unchanged": true
+    },
+    "officialClockModuleSha256": "b71344f13576f6b848a6c34dc4286962e94ec228e9643a3bdfc11b299265a65c",
+    "afterInventory": "registered-historical-after.json",
+    "beforeInventory": "registered-historical-baseline.json"
+  },
+  "auditErrors": [],
+  "report": "report.md",
+  "independentReview": "Delegated separately to w4:p2; no independent verdict asserted by this owner report."
+}

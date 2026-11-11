@@ -1,0 +1,53 @@
+{
+  "exitCode": 0,
+  "scope": "Offline smoke of installed official predicate; derived counterfactual inputs are not historical official state and not on-device scores",
+  "officialInterpreter": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/bin/python",
+  "commandCode": "import json,sys\nfrom android_world.task_evals.single import clock\nfrom android_world.env.representation_utils import UIElement\nx=json.loads(sys.argv[1]); es=[UIElement(text=e.get('text') or None,content_description=e.get('content-desc') or None) for e in x['elements']]\nvariants=[('recorded_appium_fields',es,x['activity']),('empty_official_elements',[],x['activity']),('wrong_activity',es,'other.Activity'),('missing_start',[e for e in es if e.content_description!='Start'],x['activity']),('only_one_stopwatch_match',[UIElement(content_description='Start'),UIElement(text='Stopwatch')],x['activity'])]\nrows=[]\nfor label,els,activity in variants:\n start=False; count=0\n for e in els:\n  if e.content_description=='Start': start=True\n  elif e.content_description=='Stopwatch' or e.text=='Stopwatch': count+=1\n rows.append({'input':label,'activityMatches':'DeskClock' in activity,'startPresent':start,'stopwatchCount':count,'actualOfficialPredicate':clock._is_stopwatch_paused(els,activity)})\nprint(json.dumps({'scope':'Offline predicate branch smoke, not official on-device score or historical input reconstruction','rows':rows}))\n",
+  "result": {
+    "scope": "Offline predicate branch smoke, not official on-device score or historical input reconstruction",
+    "rows": [
+      {
+        "input": "recorded_appium_fields",
+        "activityMatches": true,
+        "startPresent": true,
+        "stopwatchCount": 3,
+        "actualOfficialPredicate": true
+      },
+      {
+        "input": "empty_official_elements",
+        "activityMatches": true,
+        "startPresent": false,
+        "stopwatchCount": 0,
+        "actualOfficialPredicate": false
+      },
+      {
+        "input": "wrong_activity",
+        "activityMatches": false,
+        "startPresent": true,
+        "stopwatchCount": 3,
+        "actualOfficialPredicate": false
+      },
+      {
+        "input": "missing_start",
+        "activityMatches": true,
+        "startPresent": false,
+        "stopwatchCount": 3,
+        "actualOfficialPredicate": false
+      },
+      {
+        "input": "only_one_stopwatch_match",
+        "activityMatches": true,
+        "startPresent": true,
+        "stopwatchCount": 1,
+        "actualOfficialPredicate": false
+      }
+    ]
+  },
+  "collaboration": {
+    "deviceOwner": "herdr w4:p1",
+    "readOnlyReviewer": "herdr w4:p2",
+    "parent": "herdr w3:p1",
+    "officialInputCaptureRequired": true,
+    "historicalRootCauseNotYetEstablished": true
+  }
+}

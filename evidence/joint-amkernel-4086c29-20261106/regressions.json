@@ -1,0 +1,33 @@
+{
+  "scope": "Source validation, not AndroidWorld task evaluation",
+  "candidateCommit": "4086c29f89bd8abfb96155fb1ff296e543410093",
+  "candidateSource": "/Users/qunmi/Documents/FSQ_LAB/amkernel",
+  "candidateInterpreter": "/Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python",
+  "candidateSourceImport": "/Users/qunmi/Documents/FSQ_LAB/amkernel/src/amkernel/__init__.py",
+  "declaredSourceVersion": "0.1.3",
+  "existingDistributionMetadataVersion": "0.1.2",
+  "metadataNote": "Existing editable environment loads candidate source; installed distribution metadata was not changed and is not the identity assertion.",
+  "amkernel": {
+    "command": "/Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python -m pytest -q tests/integration tests/runtime tests/supervisor tests/server tests/e2e/test_skill_behavior_evaluator.py tests/skills/test_amkernel_skill.py",
+    "cwd": "/Users/qunmi/Documents/FSQ_LAB/amkernel",
+    "passed": 254,
+    "failed": 0,
+    "durationSeconds": 68.51
+  },
+  "harness": {
+    "commit": "ebd0855",
+    "command": "uv run --no-sync pytest -q",
+    "passed": 217,
+    "failed": 0,
+    "warnings": ["audioop deprecation", "ffmpeg/avconv unavailable"],
+    "durationSeconds": 91.06
+  },
+  "nativeReadinessObservation": {
+    "adbDevices": [],
+    "appiumStatus": "connection refused at 127.0.0.1:4723",
+    "nativeResourceClosure": "not exercised; no running target or Appium server",
+    "qualification": "not started",
+    "androidWorldTasks": "not started"
+  },
+  "persistentChanges": "No installs, source/config edits, device launches, or campaign writes"
+}

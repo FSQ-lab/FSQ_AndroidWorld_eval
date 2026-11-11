@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "kind": "actual_revision3_unique97_terminal",
+  "timestampUtc": "2026-11-10T13:12:25.479553+00:00",
+  "runId": "fsq-r3-qualify-brightness-097-20261110T130116Z",
+  "candidateSha256": "d9f3237c0d6d26f512bfdd3870fd4563519fc24f6cae160beb93a015a597a057",
+  "qualification": {
+    "qualified": true,
+    "reportSha256": "046eeae365d696c624fb9a32259f275fc010700eb9c5b06da3c49a63ea4abc5c",
+    "wallSeconds": 30.08,
+    "cleanup": {
+      "environment": "closed"
+    },
+    "mapStatus": "verified_existing"
+  },
+  "task": {
+    "index": 97,
+    "name": "SystemBrightnessMax",
+    "paramsSha256": "456814afbb5aa8d07a0c14120c26c55e140a617fa909024b135f7d04d76fd9c1"
+  },
+  "classification": "failed",
+  "officialReward": 0.0,
+  "evaluatorCalls": 1,
+  "evaluator": {
+    "afterFullFsq": true,
+    "called": true,
+    "diagnostics": {
+      "bytes": 958,
+      "path": "raw-private/evaluator-diagnostics.json",
+      "sha256": "35657dad7188096a50818da559c755a7c29d169346e259ce35157d61954ad38e",
+      "status": "written"
+    },
+    "durationSeconds": 0.03307266696356237,
+    "implementation": "android_world.task_eval.is_successful",
+    "ordering": "after_complete_native_FSQ_return_and_internal_verification"
+  },
+  "error": null,
+  "invalidReason": null,
+  "evidenceFailure": null,
+  "wallSeconds": 157.67,
+  "nativeStatus": "success",
+  "internalVerification": {
+    "observation": "returned_in_complete_native_task_result",
+    "status": "success"
+  },
+  "budget": {
+    "unit": "admitted_android_harness_write_capability_dispatch",
+    "maximum": 10,
+    "attempted": 5,
+    "admitted": 5,
+    "succeeded": 5,
+    "failed": 0,
+    "denied": 0,
+    "inFlight": 0,
+    "deadlineExceeded": false,
+    "exhausted": false
+  },
+  "killEvidence": {
+    "admitted": 1,
+    "attempted": 1,
+    "denied": 0,
+    "events": [
+      {
+        "attemptSequence": 19,
+        "errorType": null,
+        "monotonic": 691082.104257166,
+        "outcome": "succeeded",
+        "outcomeMonotonic": 691082.143044375,
+        "outcomeSequence": 20,
+        "phase": "teardown",
+        "ticket": 10
+      }
+    ],
+    "failed": 0,
+    "mainFinalBoundary": "not_observed",
+    "nativeExecutionReturnedSequence": 23,
+    "observed": true,
+    "relativeToMainFinal": "unknown",
+    "relativeToNativeExecutionReturned": "before",
+    "status": "succeeded",
+    "succeeded": 1
+  },
+  "cleanupFailure": false,
+  "cleanup": {
+    "environment": "closed",
+    "nativeDeviceRestoration": "not_provided_by_close",
+    "taskTearDown": "completed",
+    "workerProcessGroup": "settled"
+  },
+  "workerProcess": {
+    "businessDeadlineReached": false,
+    "elapsedSeconds": 133.524299,
+    "exitCode": 0,
+    "groupCleanup": "settled",
+    "groupDisappearanceObserved": true,
+    "groupObservation": {
+      "members": [],
+      "observed": true,
+      "runningPids": [],
+      "sameOwner": true
+    },
+    "groupObservations": [
+      {
+        "elapsedSeconds": 0.028292,
+        "observation": {
+          "members": [
+            {
+              "pgid": 23825,
+              "pid": 23825,
+              "ppid": 23679,
+              "started": "Tue Nov 10 21:07:48 2026    ",
+              "state": "Rs",
+              "uid": 501
+            }
+          ],
+          "observed": true,
+          "runningPids": [
+            23825
+          ],
+          "sameOwner": true
+        }
+      },
+      {
+        "elapsedSeconds": 133.524284,
+        "observation": {
+          "members": [],
+          "observed": true,
+          "runningPids": [],
+          "sameOwner": true
+        }
+      }
+    ],
+    "groupOwnership": "new_session_same_uid_observed",
+    "killed": false,
+    "leaderCleanup": "reaped",
+    "pgid": 23825,
+    "phase": "terminal",
+    "pid": 23825,
+    "signals": [],
+    "spawnCount": 1,
+    "terminated": false,
+    "uid": 501,
+    "workerExitObserved": true
+  },
+  "outerProcess": {
+    "exitCode": 0,
+    "forced": false,
+    "spawnCount": 1,
+    "termination": null,
+    "timeoutSeconds": 1330
+  },
+  "hostAdbRecovery": {
+    "restartSpecificDiagnosticObserved": false,
+    "qualificationLog": "execution/qualify/process.log",
+    "smokeLog": "execution/smoke-097-SystemBrightnessMax.outer/process.log",
+    "observationLimit": "Logs emit only existing ffmpeg warning/a11y retry; not independently instrumented, so no recovery is not proven. No additional device/shared-server probe performed."
+  },
+  "officialFailureDetail": {
+    "componentStatus": "not_provided",
+    "loggedRecords": 0,
+    "actualBrightnessValueRetained": false,
+    "limit": "Scalar official reward0 is proved; exact observed brightness/why native verification differed is not recorded here. No post-teardown adb probe, oracle rerun or guessed value."
+  },
+  "old102RetriedOrRescored": false,
+  "modelReadinessCallRepeated": false,
+  "mapReprepared": false,
+  "codeSdkPinBudgetChanged": false,
+  "retriesOrSupplementalKillOrScore": false,
+  "laterStagesStarted": false,
+  "FSQFirstRetained": true,
+  "releasedToAMK": false
+}

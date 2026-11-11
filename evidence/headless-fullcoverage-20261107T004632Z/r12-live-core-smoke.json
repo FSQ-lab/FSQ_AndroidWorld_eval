@@ -1,0 +1,11 @@
+{
+  "command": [
+    "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/bin/python",
+    "-c",
+    "import json,pathlib;from fsq_androidworld_eval.campaign import _core_service_health,_load_manifest; p=pathlib.Path('/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/headless-fullcoverage-20261107T004632Z/rehearsal-manifest.json');m=_load_manifest(p,pathlib.Path.cwd());print(json.dumps(_core_service_health({'target':m['target']},'/Users/qunmi/Library/Android/sdk/platform-tools/adb'),indent=2))"
+  ],
+  "returnCode": 0,
+  "stdout": "{\n  \"adbState\": \"device\",\n  \"bootCompleted\": \"1\",\n  \"activityService\": true,\n  \"packageService\": true,\n  \"settingsService\": true,\n  \"windowService\": true,\n  \"systemServerPids\": [\n    \"500\"\n  ],\n  \"surfaceFlingerPids\": [\n    \"333\"\n  ],\n  \"bootId\": \"0f36e370-012a-4423-a1f9-959beae8f90d\",\n  \"appiumReady\": true,\n  \"grpcReady\": true,\n  \"qualified\": true\n}\n",
+  "stderr": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/pydub/utils.py:170: RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work\n  warn(\"Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work\", RuntimeWarning)\n",
+  "observedAtUnix": 1794013297.85797
+}

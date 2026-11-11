@@ -1,0 +1,64 @@
+[
+  {
+    "validContract": false,
+    "reason": "no_submission",
+    "rawText": null,
+    "parsedValue": null,
+    "taskOutcomeType": null,
+    "answer": null,
+    "sha256": null
+  },
+  {
+    "validContract": false,
+    "reason": "invalid_json",
+    "rawText": "not json",
+    "parsedValue": null,
+    "taskOutcomeType": null,
+    "answer": null,
+    "sha256": null
+  },
+  {
+    "validContract": false,
+    "reason": "missing_task_outcome",
+    "rawText": "{}",
+    "parsedValue": {},
+    "taskOutcomeType": null,
+    "answer": null,
+    "sha256": null
+  },
+  {
+    "validContract": false,
+    "reason": "invalid_task_outcome_type",
+    "rawText": "{\"taskOutcome\":25}",
+    "parsedValue": {
+      "taskOutcome": 25
+    },
+    "taskOutcomeType": "number",
+    "answer": null,
+    "sha256": null
+  },
+  {
+    "validContract": false,
+    "reason": "invalid_task_outcome_type",
+    "rawText": "{\"taskOutcome\":{\"answerMeters\":1207}}",
+    "parsedValue": {
+      "taskOutcome": {
+        "answerMeters": 1207
+      }
+    },
+    "taskOutcomeType": "object",
+    "answer": null,
+    "sha256": null
+  },
+  {
+    "validContract": true,
+    "reason": "valid",
+    "rawText": "{\"taskOutcome\":\"  answer text  \"}",
+    "parsedValue": {
+      "taskOutcome": "  answer text  "
+    },
+    "taskOutcomeType": "string",
+    "answer": "answer text",
+    "sha256": "3e25e40bdc70a64bf35c72cac6c9a4ab7d69bb53e530c38fa0341a1356d9bf51"
+  }
+]

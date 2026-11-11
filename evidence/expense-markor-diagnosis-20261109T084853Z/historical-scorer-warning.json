@@ -1,0 +1,144 @@
+{
+  "source": "evidence/headless-fullcoverage-20261107T004632Z/v2-ready-run-full.log",
+  "sourceSha256": "aaf22814e141d2054eb29484de952b0fafdc74b1ad4ecbb11d6d119d1a6b12cf",
+  "lines": [
+    {
+      "line": 279,
+      "text": "WARNING:absl:Could not get a11y tree, retrying."
+    },
+    {
+      "line": 280,
+      "text": "Completed step 1."
+    },
+    {
+      "line": 281,
+      "text": "Completed step 2."
+    },
+    {
+      "line": 282,
+      "text": "Completed step 3."
+    },
+    {
+      "line": 283,
+      "text": "Completed step 4."
+    },
+    {
+      "line": 284,
+      "text": "Completed step 5."
+    },
+    {
+      "line": 285,
+      "text": "Completed step 6."
+    },
+    {
+      "line": 286,
+      "text": "Completed step 7."
+    },
+    {
+      "line": 287,
+      "text": "Completed step 8."
+    },
+    {
+      "line": 288,
+      "text": "Completed step 9."
+    },
+    {
+      "line": 289,
+      "text": "Completed step 10."
+    },
+    {
+      "line": 290,
+      "text": "Completed step 11."
+    },
+    {
+      "line": 291,
+      "text": "Completed step 12."
+    },
+    {
+      "line": 292,
+      "text": "Completed step 13."
+    },
+    {
+      "line": 293,
+      "text": "Completed step 14."
+    },
+    {
+      "line": 294,
+      "text": "Completed step 15."
+    },
+    {
+      "line": 295,
+      "text": "Completed step 16."
+    },
+    {
+      "line": 296,
+      "text": "Completed step 17."
+    },
+    {
+      "line": 297,
+      "text": "Completed step 18."
+    },
+    {
+      "line": 298,
+      "text": "Completed step 19."
+    },
+    {
+      "line": 299,
+      "text": "Completed step 20."
+    },
+    {
+      "line": 300,
+      "text": "Completed step 21."
+    },
+    {
+      "line": 301,
+      "text": "Agent indicates task is done."
+    },
+    {
+      "line": 302,
+      "text": "WARNING:absl:Expected row Expense(name='Laundry', amount=9630, category=8, note='Urgent', created_date=1697320800000, modified_date=1697320800000, expense_id=-1) not found in the 'after' state."
+    },
+    {
+      "line": 303,
+      "text": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/pydub/utils.py:170: RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work"
+    }
+  ],
+  "matchesFrozenTaskParamsSha256": "23de427b2cc14ba77e7fc9e4f767e4a6b1e4049661a80c3ce0b957c65120c929",
+  "originalReward": 0.0,
+  "failedReferenceRow": {
+    "amount": 9630,
+    "category": 8,
+    "created_date": 1697320800000,
+    "expense_id": -1,
+    "modified_date": 1697320800000,
+    "name": "Laundry",
+    "note": "Urgent"
+  },
+  "actualFirstFailureBranch": {
+    "file": ".venv/lib/python3.11/site-packages/android_world/task_evals/common_validators/sqlite_validators.py",
+    "lines": [
+      166,
+      167,
+      168,
+      169,
+      170,
+      171
+    ],
+    "meaning": "No after row matches first expected Laundry under actual comparison rules; false before later branches"
+  },
+  "notEstablished": [
+    "Historical after database row values and row count",
+    "Which exact DB fields failed for each actual candidate",
+    "Car Insurance matching result, because first Laundry failure short-circuits",
+    "Later cardinality/preservation checks, because not reached"
+  ],
+  "sameEpisodeEvidence": {
+    "uniqueExactReferenceRowTaskIndices": [
+      14
+    ],
+    "referenceStepsExecuted": 21,
+    "evaluatorStartedAtUnix": 1794035374.5080252,
+    "evaluatorCompletedAtUnix": 1794035374.612545
+  },
+  "newDeviceCalls": 0
+}

@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "kind": "native_fsq_independent_review_scope_clarification",
+  "status": "scope_clarified_pending_implementation_closure",
+  "authority": "Explicit coordinator clarification received in this conversation",
+  "originalReview": {
+    "path": "evidence/fsq-native-gpt61-corrected-20261110T043031Z/independent-review/review.json",
+    "sha256": "8ad7f6df1be0fcfe7b756cfa607eb09a5f5728cf9bdeb3f4caadf3cc682f960d",
+    "immutable": true
+  },
+  "originalConsumerEvidence": {
+    "path": "evidence/fsq-native-gpt61-corrected-20261110T043031Z/independent-review/consumer-counterexamples.json",
+    "sha256": "a441312fac8ded493d5335ca1f722b203c6b7a13db1d18a445c77145a00b593e",
+    "immutable": true
+  },
+  "findingId": "FSQ-R03",
+  "acceptedObservation": "A zero-kill execution was scored while the evaluator record unconditionally claimed after_complete_native_FSQ_and_kill_and_internal_verification. The unsupported kill claim is a reporting defect; scoring after complete native FSQ return is not itself a defect merely because kill is absent.",
+  "supersedes": {
+    "scope": "Only FSQ-R03 interpretation and requiredClosure concerning successful-kill admission, including downstream summaries that repeat that requirement",
+    "withdrawnRequirement": "Successful model-issued native kill is required before official scoring; omitted, failed, or budget-denied kill prevents scoring",
+    "reason": "That requirement adds an unauthorized behavioral constraint to the unchanged complete native FSQ evaluation design. Native Skill guidance is not an enforced successful-kill postcondition."
+  },
+  "clarifiedContract": {
+    "nativeBehavior": "Preserve the complete original FSQ execution, including actual tool behavior and internal verification. Model omission, failure, or budget denial of kill is measured native behavior, not a kill-specific business exclusion.",
+    "officialScoring": "After complete native FSQ execution including internal verification has returned, perform the single terminal official evaluation against the actual resulting state under the existing independent lifecycle and safety requirements. Missing, failed, or denied kill alone must not skip scoring or disqualify an otherwise admissible execution.",
+    "killObservation": "Report real kill events and their actual ordering. Represent observed, succeeded, failed, denied, or absent from evidence; do not infer a kill from Harness close, Skill instructions, a final-output claim, or literal fixture event names.",
+    "ordering": "The unconditional ordering claim may establish only that official evaluation follows complete native FSQ return, including actual tool behavior and internal verification. If kill occurred, report its real position relative to available observed lifecycle events; do not invent unobserved timing.",
+    "forbidden": [
+      "A successful-kill gate for official scoring or business eligibility",
+      "Skipping official scoring solely because kill is missing, failed, or budget-denied",
+      "Supplemental or replacement kill operations",
+      "Forced model output or altered native Skill/model-loop behavior",
+      "Unconditional or unsupported claims that kill occurred or succeeded"
+    ]
+  },
+  "requiredClosure": [
+    "Remove the unconditional unsupported kill claim from official evaluator ordering metadata and any equivalent receipt or documentation assertion.",
+    "Derive kill observation and outcomes from real native dispatch evidence, preserving observed/succeeded/failed/denied/absent distinctions and actual event order. Where a relative lifecycle boundary is not observed, label it unknown rather than fabricate an order.",
+    "Keep official terminal evaluation once after complete native FSQ including internal verification returns; do not add a successful-kill gate, skip scoring for kill omission/failure/denial alone, supplement kill, or force output.",
+    "Provide directed consumer coverage for missing, failed, denied, and valid kill behavior. Prove evidence is truthful, no extra operation is introduced, no successful-kill admission rule is added, and scoring remains once after the complete native return on otherwise admissible executions.",
+    "Return new implementation/source bindings and closure evidence for review. This clarification is not an assertion that the implementation defect has already been fixed."
+  ],
+  "unchangedFindings": ["FSQ-R01", "FSQ-R02", "FSQ-R04", "FSQ-R05", "FSQ-R06", "FSQ-R07", "FSQ-R08"],
+  "otherRequirementsReduced": false,
+  "liveAuthorized": false,
+  "reviewFileOwnership": "Independent reviewer retains exclusive ownership; append new closure artifacts without modifying original review, consumer evidence, delivery, or candidate.",
+  "verification": "Contract clarification only; no implementation changes, repeated reproductions, model/device calls, or Git writes."
+}

@@ -1,0 +1,59 @@
+{
+  "android": {
+    "ok": true,
+    "summary": {
+      "requiredOk": true,
+      "baseToolingOk": true,
+      "targetInventoryOk": true,
+      "targetReady": true,
+      "connectedDeviceCount": 1,
+      "avdCount": 1,
+      "adbVersionOk": true,
+      "emulatorVersionOk": true,
+      "deviceInventoryOk": true,
+      "avdInventoryOk": true,
+      "sdkInventoryOk": true,
+      "deviceInventoryNote": ""
+    }
+  },
+  "appium": {
+    "appiumMode": "global",
+    "appiumCommand": "appium",
+    "major": 3,
+    "version": {
+      "command": "appium -v",
+      "ok": true,
+      "status": 0,
+      "signal": null,
+      "stdout": "3.7.0",
+      "stderr": ""
+    },
+    "drivers": {
+      "command": "appium driver list --installed --json",
+      "ok": true,
+      "status": 0,
+      "signal": null,
+      "stdout": "{\n    \"mac2\": {\n        \"pkgName\": \"appium-mac2-driver\",\n        \"version\": \"4.3.0\",\n        \"installType\": \"npm\",\n        \"installSpec\": \"mac2\",\n        \"installPath\": \"/Users/qunmi/.appium/node_modules/appium-mac2-driver\",\n        \"appiumVersion\": \"^3.0.0-rc.2\",\n        \"automationName\": \"Mac2\",\n        \"platformNames\": [\n            \"Mac\"\n        ],\n        \"mainClass\": \"Mac2Driver\",\n        \"scripts\": {\n            \"open-wda\": \"./scripts/open-wda.mjs\"\n        },\n        \"doctor\": {\n            \"checks\": [\n                \"./build/lib/doctor/required-checks.js\",\n                \"./build/lib/doctor/optional-checks.js\"\n            ]\n        },\n        \"installed\": true,\n        \"repositoryUrl\": \"https://github.com/appium/appium-mac2-driver\"\n    },\n    \"uiautomator2\": {\n        \"pkgName\": \"appium-uiautomator2-driver\",\n        \"version\": \"8.7.0\",\n        \"installType\": \"npm\",\n        \"installSpec\": \"uiautomator2\",\n        \"installPath\": \"/Users/qunmi/.appium/node_modules/appium-uiautomator2-driver\",\n        \"appiumVersion\": \"^3.0.0-rc.2\",\n        \"automationName\": \"UiAutomator2\",\n        \"platformNames\": [\n            \"Android\"\n        ],\n        \"mainClass\": \"AndroidUiautomator2Driver\",\n        \"scripts\": {\n            \"reset\": \"scripts/reset.mjs\"\n        },\n        \"doctor\": {\n            \"checks\": [\n                \"./build/lib/doctor/required-checks.js\",\n                \"./build/lib/doctor/optional-checks.js\"\n            ]\n        },\n        \"installed\": true,\n        \"repositoryUrl\": \"https://github.com/appium/appium-uiautomator2-driver\"\n    },\n    \"xcuitest\": {\n        \"pkgName\": \"appium-xcuitest-driver\",\n        \"version\": \"12.22.8\",\n        \"installType\": \"npm\",\n        \"installSpec\": \"xcuitest@12.22.8\",\n        \"installPath\": \"/Users/qunmi/.appium/node_modules/appium-xcuitest-driver\",\n        \"appiumVersion\": \"^3.0.0-rc.2\",\n        \"automationName\": \"XCUITest\",\n        \"platformNames\": [\n            \"iOS\",\n            \"tvOS\",\n            \"watchOS\"\n        ],\n        \"mainClass\": \"XCUITestDriver\",\n        \"scripts\": {\n            \"build-wda\": \"./scripts/build-wda.mjs\",\n            \"open-wda\": \"./scripts/open-wda.mjs\",\n            \"tunnel-creation\": \"./scripts/tunnel-creation.mjs\",\n            \"download-wda\": \"./scripts/download-wda.mjs\",\n            \"download-wda-sim\": \"./scripts/download-wda-sim.mjs\",\n            \"sign-wda\": \"./scripts/sign-wda.mjs\",\n            \"image-mounter\": \"./scripts/image-mounter.mjs\",\n            \"list-real-devices\": \"./scripts/list-real-devices.mjs\",\n            \"cleanup-videos\": \"./scripts/cleanup-videos.mjs\",\n            \"pair-appletv\": \"./scripts/pair-appletv.mjs\"\n        },\n        \"schema\": {\n            \"$schema\": \"http://json-schema.org/draft-07/schema\",\n            \"type\": \"object\",\n            \"properties\": {\n                \"webdriveragent-port\": {\n                    \"appiumCliDest\": \"wdaLocalPort\",\n                    \"default\": 8100,\n                    \"description\": \"Local port used for communication with WebDriverAgent\",\n                    \"maximum\": 65535,\n                    \"minimum\": 1,\n                    \"type\": \"integer\"\n                }\n            },\n            \"additionalProperties\": false,\n            \"title\": \"XCUITest Driver Configuration\",\n            \"description\": \"Appium configuration schema for the XCUITest driver.\",\n            \"$id\": \"driver-xcuitest.json\"\n        },\n        \"doctor\": {\n            \"checks\": [\n                \"./build/lib/doctor/required-checks.js\",\n                \"./build/lib/doctor/optional-checks.js\"\n            ]\n        },\n        \"installed\": true,\n        \"repositoryUrl\": \"https://github.com/appium/appium-xcuitest-driver\"\n    }\n}",
+      "stderr": ""
+    },
+    "doctor": {
+      "command": "appium driver doctor uiautomator2",
+      "ok": true,
+      "status": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": "Running 7 doctor checks for the \"uiautomator2\" driver\ninfo Doctor ### Starting doctor diagnostics  ###\ninfo Doctor  ✔ ANDROID_HOME is set to: /Users/qunmi/Library/Android/sdk\ninfo Doctor    Checking adb, emulator\ninfo Doctor      'adb' exists in /Users/qunmi/Library/Android/sdk/platform-tools/adb\ninfo Doctor      'emulator' exists in /Users/qunmi/Library/Android/sdk/emulator/emulator\ninfo Doctor  ✔ adb, emulator exist in '/Users/qunmi/Library/Android/sdk'\ninfo Doctor  ✔ JAVA_HOME is set to: /opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home\ninfo Doctor  ✔ 'bin/java' exists under '/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home'\nWARN Doctor  ✖ bundletool.jar cannot be found\nWARN Doctor  ✖ ffmpeg cannot be found\nWARN Doctor  ✖ gst-launch-1.0 and/or gst-inspect-1.0 cannot be found\ninfo Doctor ### Diagnostic completed, 0 required fixes needed, 3 optional fixes possible. ###\ninfo Doctor \ninfo Doctor ### Optional Manual Fixes ###\ninfo Doctor To fix these optional issues, please do the following manually:\nWARN Doctor  ➜ bundletool.jar is used to handle Android App bundles. Please download the binary from https://github.com/google/bundletool/releases/ and store it to any folder listed in the PATH environment variable. Folders that are currently present in PATH: /opt/homebrew/opt/openjdk@21/bin:/Users/qunmi/Library/Android/sdk/platform-tools:/Users/qunmi/Library/Android/sdk/emulator:/Users/qunmi/Library/Android/sdk/cmdline-tools/latest/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/Library/Apple/usr/bin:/opt/homebrew/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/qunmi/.local/bin:/Users/qunmi/.local/bin\nWARN Doctor  ➜ ffmpeg is used to capture screen recordings from the device under test. Please read https://www.ffmpeg.org/download.html.\nWARN Doctor  ➜ gst-launch-1.0 and gst-inspect-1.0 are used to stream the screen of the device under test. Please read https://gstreamer.freedesktop.org/documentation/installing/index.html?gi-language=c.\ninfo Doctor \ninfo Doctor Bye! All issues have been fixed!\ninfo Doctor"
+    }
+  },
+  "summary": {
+    "requiredOk": true,
+    "appiumMajorAtLeast3": true,
+    "driverInstalled": true,
+    "driverVersion": "8.7.0",
+    "doctorRequiredOk": true,
+    "optionalWarningsPresent": true,
+    "appiumHomeAccessBlocked": false,
+    "needsUnsandboxedAppiumHome": false,
+    "note": ""
+  }
+}

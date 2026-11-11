@@ -1,0 +1,104 @@
+{
+  "scope": "Offline dependency/contract observation only; no environment creation, initialize_task, is_successful, device query, task rerun, or new official score",
+  "recordedOriginalAndroidWorld": {
+    "packageVersion": "0.1.0",
+    "revision": "55ddaf5edc6f6c25673aed343907d5b9dca66f84"
+  },
+  "actualImportedPaths": {
+    ".venv/lib/python3.11/site-packages/android_world/task_evals/single/expense.py": {
+      "sha256": "cc57bd82831a17b427ea93eb4db559f6886cc1df402c0eac4bcb72064d7f3f81",
+      "sizeBytes": 16523,
+      "recordEntry": "sha256=zFe9goMaF7Qn6pPrTbVZ9ohswd9ALA6sS8tyBk1_P4E",
+      "matchesInstalledDistributionRECORD": true
+    },
+    ".venv/lib/python3.11/site-packages/android_world/task_evals/common_validators/sqlite_validators.py": {
+      "sha256": "7b932acd2e19f1d4f43cea1badf26ace2ed3363258ae26850d1b09889bfa9d78",
+      "sizeBytes": 14270,
+      "recordEntry": "sha256=e5MqzS4Z8dT0POobrfJqzi7TNjJYriaFDRsJiJv6nXg",
+      "matchesInstalledDistributionRECORD": true
+    },
+    ".venv/lib/python3.11/site-packages/android_world/task_evals/utils/sqlite_schema_utils.py": {
+      "sha256": "d3b1d796b1faadbdedc78e7f9197f0ee27e3eebf0edd4597cd59f3d0f6e3095b",
+      "sizeBytes": 15031,
+      "recordEntry": "sha256=07HXlrH6rb3tx45_kZfw7ifj7r8O3UWXzVnz0PbjCVs",
+      "matchesInstalledDistributionRECORD": true
+    },
+    ".venv/lib/python3.11/site-packages/android_world/utils/fuzzy_match_lib.py": {
+      "sha256": "e7376554fd9a413ff00d71656e09609c9070d0b384028b89fd931e32fcfb2969",
+      "sizeBytes": 1545,
+      "recordEntry": "sha256=5zdlVP2aQT_wDXFlbglgnJBw0LOEAouJ_ZMeMvz7KWk",
+      "matchesInstalledDistributionRECORD": true
+    },
+    ".venv/lib/python3.11/site-packages/android_world/task_evals/utils/sqlite_utils.py": {
+      "sha256": "56280b32e6aaf7d561bf2e4681a2cc1a6ad930d911105593d17d093678bf1cd0",
+      "sizeBytes": 6942,
+      "recordEntry": "sha256=VigLMuaq99Vhvy5GgaLMGmrZMNkREFWT0X0JNni_HNA",
+      "matchesInstalledDistributionRECORD": true
+    },
+    ".venv/lib/python3.11/site-packages/android_world/env/android_world_controller.py": {
+      "sha256": "7027728b5088a9d907bb2c1b3ed65b8767e4d049c2827663c5eee5293823bd70",
+      "sizeBytes": 11048,
+      "recordEntry": "sha256=cCdyi1CIqdkHuywbPtZbh2fk0EnCgnZjxe7lKTgjvXA",
+      "matchesInstalledDistributionRECORD": true
+    },
+    ".venv/lib/python3.11/site-packages/android_world/utils/file_utils.py": {
+      "sha256": "5bd04ccdafba65f4b909c8bb9fca166e5eba92dc2e64c83f80729941dfab2d1d",
+      "sizeBytes": 17373,
+      "recordEntry": "sha256=W9BMza-6ZfS5Cci7n8oWbl66ktwuZMg_gHKZQd-rLR0",
+      "matchesInstalledDistributionRECORD": true
+    }
+  },
+  "actualInheritedScorer": {
+    "module": "android_world.task_evals.common_validators.sqlite_validators",
+    "qualname": "AddMultipleRows.is_successful",
+    "file": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/android_world/task_evals/common_validators/sqlite_validators.py",
+    "firstLine": 304
+  },
+  "markerFuzzyChecks": [
+    {
+      "name": "Laundry",
+      "referenceNote": "Urgent",
+      "actualRenderedNote": "Urgent. Reimbursable.",
+      "actualFuzzyMatch": false,
+      "ratio": 0.4444444444444444
+    },
+    {
+      "name": "Car Insurance",
+      "referenceNote": "I may repeat this",
+      "actualRenderedNote": "I may repeat this. Reimbursable.",
+      "actualFuzzyMatch": false,
+      "ratio": 0.6938775510204082
+    }
+  ],
+  "actualRenderedTargets": "name|amount_dollars|category_name|note\nLaundry|$96.3|Clothes|Urgent. Reimbursable.\nCar Insurance|$303.01|Transportation|I may repeat this. Reimbursable.",
+  "renderedCopiesLeaveReferencesUnchanged": true,
+  "warningAttribution": {
+    "logPath": "evidence/headless-fullcoverage-20261107T004632Z/v2-ready-run-full.log",
+    "logSha256": "aaf22814e141d2054eb29484de952b0fafdc74b1ad4ecbb11d6d119d1a6b12cf",
+    "line": 302,
+    "rawWarning": "WARNING:absl:Expected row Expense(name='Laundry', amount=9630, category=8, note='Urgent', created_date=1697320800000, modified_date=1697320800000, expense_id=-1) not found in the 'after' state.",
+    "matchingExactFrozenTargetRowTasks": [
+      {
+        "index": 14,
+        "name": "ExpenseAddMultipleFromMarkor"
+      }
+    ],
+    "precedingReferenceStepCount": 21,
+    "recordedReferenceStepCount": 21,
+    "actualFailureBranch": "sqlite_validators.validate_rows_addition_integrity:167-171: reference row not matched in after; returnsFalse before count and preservation branches",
+    "laterChecks": "Not executed, not proven passed",
+    "historicalAfterRowsCaptured": false
+  },
+  "historicalDBGap": {
+    "attemptPersistedFiles": [
+      "result.json",
+      "normalized-agent-events.json",
+      "raw-private/agent-events.jsonl",
+      "raw-private/agent-stderr.txt"
+    ],
+    "campaignOrEvidenceDbFileSearch": "No *.db/*.sqlite/*.sqlite3 found under the original campaign or evidence tree by glob; does not claim entire host scanned",
+    "pullContext": "android_world_controller.pull_file -> file_utils.tmp_directory_from_device, finally shutil.rmtree; raw local DB is not retained by original path",
+    "teardown": "SQLiteApp.tear_down clears expense table after original scorer; ExpenseAddMultipleFromMarkor.tear_down clears Markor directory; original record says teardown completed",
+    "consequence": "A later current-device read would not recover the historical scoring inputs; no such read performed"
+  }
+}

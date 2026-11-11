@@ -1,0 +1,176 @@
+{
+  "scope": "Replay original stepBudget action sequence and denial audit; no Android/Appium run.",
+  "rawObservation": {
+    "saveButtonClickRawLine": 5040,
+    "saveError": {
+      "rawLine": 5040,
+      "status": "failed",
+      "errorType": "selenium.common.exceptions.UnknownMethodException",
+      "errorMessage": "<WebDriver message omitted: sensitive or oversized details>"
+    },
+    "deniedCommands": [
+      {
+        "reason": "step budget exhausted"
+      }
+    ],
+    "deniedCommandCount": 1,
+    "officialEvaluatorReward": 0.0,
+    "fileExistenceIndependentlyObserved": false,
+    "crashDialogRawLine": 2467,
+    "crashDialogText": "Android System Intelligence keeps stopping",
+    "cleanupSteerRawLine": 4928,
+    "finalReportRawLine": 5272
+  },
+  "actionReplay": {
+    "executedUiActions": 18,
+    "maxSteps": 18,
+    "rejectedActions": 1,
+    "kinds": {
+      "actions": 3,
+      "clear": 1,
+      "click": 11,
+      "input": 3
+    },
+    "mapping": [
+      {
+        "n": 1,
+        "cell": 4,
+        "rawLine": 1277,
+        "action": "click launcher Search"
+      },
+      {
+        "n": 2,
+        "cell": 4,
+        "rawLine": 1277,
+        "action": "type Simple Draw Pro"
+      },
+      {
+        "n": 3,
+        "cell": 6,
+        "rawLine": 1654,
+        "action": "click Simple Draw Pro0 entry; package-change wait timed out"
+      },
+      {
+        "n": 4,
+        "cell": 8,
+        "rawLine": 1951,
+        "action": "click launcher Search (retry)"
+      },
+      {
+        "n": 5,
+        "cell": 8,
+        "rawLine": 1951,
+        "action": "type Simple Draw Pro"
+      },
+      {
+        "n": 6,
+        "cell": 8,
+        "rawLine": 1951,
+        "action": "click result row; package-change wait timed out"
+      },
+      {
+        "n": 7,
+        "cell": 11,
+        "rawLine": 2643,
+        "action": "close Android System Intelligence dialog"
+      },
+      {
+        "n": 8,
+        "cell": 11,
+        "rawLine": 2643,
+        "action": "swipe"
+      },
+      {
+        "n": 9,
+        "cell": 12,
+        "rawLine": 2821,
+        "action": "swipe"
+      },
+      {
+        "n": 10,
+        "cell": 13,
+        "rawLine": 3004,
+        "action": "click Draw"
+      },
+      {
+        "n": 11,
+        "cell": 15,
+        "rawLine": 3523,
+        "action": "swipe canvas"
+      },
+      {
+        "n": 12,
+        "cell": 15,
+        "rawLine": 3523,
+        "action": "click Save"
+      },
+      {
+        "n": 13,
+        "cell": 17,
+        "rawLine": 4028,
+        "action": "clear filename field"
+      },
+      {
+        "n": 14,
+        "cell": 17,
+        "rawLine": 4028,
+        "action": "type filename"
+      },
+      {
+        "n": 15,
+        "cell": 17,
+        "rawLine": 4028,
+        "action": "click OK"
+      },
+      {
+        "n": 16,
+        "cell": 19,
+        "rawLine": 4490,
+        "action": "click Show roots"
+      },
+      {
+        "n": 17,
+        "cell": 20,
+        "rawLine": 4753,
+        "action": "click device storage root"
+      },
+      {
+        "n": 18,
+        "cell": 21,
+        "rawLine": 4923,
+        "action": "click Pictures"
+      }
+    ],
+    "denied": [
+      {
+        "n": 19,
+        "cell": 22,
+        "rawLine": 5040,
+        "action": "click SAVE",
+        "reason": "step budget exhausted"
+      }
+    ],
+    "sumCheck": 18
+  },
+  "predicateChecks": {
+    "saveWasNextMutationAfterGateClosure": true,
+    "lastGrantedActionWasPicturesNotSave": true,
+    "deniedMutationWasSave": true,
+    "drawingWasCreatedOnCanvas": true,
+    "filenameEntered": "adipiscing_fair_jelly_final.png",
+    "picturesFolderSelected": true,
+    "filePersisted": null,
+    "filePersistenceVerified": false,
+    "firstLaunchAnomalyRawLine": 1654,
+    "firstAvoidableRetryRawLine": 1951,
+    "cleanupSteerPrecededSaveAttempt": true,
+    "filePersistenceConclusion": "unconfirmed; evaluator=0 + denied SAVE support non-persistence [INFERENCE]"
+  },
+  "limits": [
+    "No screenshot image payload was decoded; canvas/save-dialog conclusions rest on text observations and action results.",
+    "The reason Simple Draw Pro did not foreground after the first click is not established; the Android System Intelligence crash dialog is observed later and may be environment-induced.",
+    "File absence is inferred from the official evaluator and the denied SAVE request, not from an independent device filesystem read."
+  ],
+  "newAndroidRuns": 0,
+  "newAppiumSessions": 0
+}

@@ -1,0 +1,104 @@
+{
+  "scope": "Historical raw pre-save Appium/source observations only, not a database snapshot or actual historical scoring input",
+  "taskName": "ExpenseAddMultipleFromMarkor",
+  "paramsSha256": "23de427b2cc14ba77e7fc9e4f767e4a6b1e4049661a80c3ce0b957c65120c929",
+  "sourceHashes": {
+    "result.json": {
+      "sha256": "198faa876422efc67531fc1f3b318013a660e2af295fc7dfc2fc8f82b57ef6bd"
+    },
+    "normalized-agent-events.json": {
+      "sha256": "5d5b1de0ef465e8165e33fe73510e601fe4fe60104f29a14efdcd31010e89456"
+    },
+    "raw-private/agent-events.jsonl": {
+      "sha256": "690dac2ad773a09f3b41f2ded10dd7d6df2486352eccdb9637debf3eb86b79e4"
+    }
+  },
+  "calls": 25,
+  "statuses": {
+    "completed": 24,
+    "failed": 1,
+    "allAlive": true,
+    "timedOut": 0
+  },
+  "observedRows": [
+    {
+      "name": "Laundry",
+      "referenceParams": {
+        "amount": 9630,
+        "category": 8,
+        "created_date": 1697320800000,
+        "expense_id": -1,
+        "modified_date": 1697320800000,
+        "name": "Laundry",
+        "note": "Urgent"
+      },
+      "renderedMarkorRow": {
+        "name": "Laundry",
+        "amount_dollars": "$96.3",
+        "category_name": "Clothes",
+        "note": "Urgent. Reimbursable."
+      },
+      "preSaveAppiumFields": {
+        "name": "Laundry",
+        "amount": "96.3",
+        "note": "Urgent. Reimbursable."
+      },
+      "preSaveExecutionCount": 18,
+      "preSaveRawResponseLine": 4244,
+      "selectedCategories": [
+        "Clothes"
+      ],
+      "categoryExecutionCount": 17,
+      "nameMatchesReference": true,
+      "amountCentsMatchReference": true,
+      "selectedCategoryMatchesRenderedSource": true,
+      "noteMatchesRenderedSource": true,
+      "noteEqualsReference": false
+    },
+    {
+      "name": "Car Insurance",
+      "referenceParams": {
+        "amount": 30301,
+        "category": 7,
+        "created_date": 1696338000000,
+        "expense_id": -1,
+        "modified_date": 1696338000000,
+        "name": "Car Insurance",
+        "note": "I may repeat this"
+      },
+      "renderedMarkorRow": {
+        "name": "Car Insurance",
+        "amount_dollars": "$303.01",
+        "category_name": "Transportation",
+        "note": "I may repeat this. Reimbursable."
+      },
+      "preSaveAppiumFields": {
+        "name": "Car Insurance",
+        "amount": "303.01",
+        "note": "I may repeat this. Reimbursable."
+      },
+      "preSaveExecutionCount": 21,
+      "preSaveRawResponseLine": 4982,
+      "selectedCategories": [
+        "Transportation"
+      ],
+      "categoryExecutionCount": 23,
+      "nameMatchesReference": true,
+      "amountCentsMatchReference": true,
+      "selectedCategoryMatchesRenderedSource": true,
+      "noteMatchesRenderedSource": true,
+      "noteEqualsReference": false
+    }
+  ],
+  "historicalReward": 0.0,
+  "historicalWarning": {
+    "path": "evidence/headless-fullcoverage-20261107T004632Z/v2-ready-run-full.log",
+    "line": 302,
+    "text": "Expected row Expense(name='Laundry', amount=9630, category=8, note='Urgent', created_date=1697320800000, modified_date=1697320800000, expense_id=-1) not found in the 'after' state."
+  },
+  "missingEvidence": [
+    "Historical actual scorer database before/after inputs"
+  ],
+  "earliestConfirmedContractDifference": "Rendered Markor note includes marker absent from reference params before agent writes; whether marker is metadata requires interpretation, not an AMKernel runtime mutation",
+  "sourceIdentityCorrection": "Parent Dave/Sue prose interjection was incorrect and withdrawn. Actual hash-anchored raw targets are Laundry/Car Insurance; no saved raw extraction was changed by the incorrect prose."
+}

@@ -1,0 +1,84 @@
+{
+  "scope": "Replay original captured observations, not a new Android run.",
+  "task": "SimpleCalendarEventsInTimeRange",
+  "rawEventFile": "campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/episodes/074-SimpleCalendarEventsInTimeRange/attempt-1/raw-private/agent-events.jsonl",
+  "taskGoalSemantics": {
+    "nowObserved": "2023-10-15 Sunday (Daily view header October 15 (Sun))",
+    "targetText": "Friday",
+    "resolvedTargetDate": "2023-10-20",
+    "targetTimeRange": "16:15-20:00"
+  },
+  "observations": {
+    "dailyViewOpen": {
+      "rawLine": 1851,
+      "topValue": "October 15 (Sun)",
+      "visibleEvents": [
+        {"title": "Meeting with Bob", "time": "04:32 - 04:47"},
+        {"title": "Meeting with Alice", "time": "05:20 - 05:35"},
+        {"title": "Workshop on Campaign", "time": "12:32 - 12:47"},
+        {"title": "Review session for Budget Planning", "time": "12:32 - 13:02"},
+        {"title": "Workshop on Annual Report", "time": "18:40 - 19:10"}
+      ],
+      "fridayEventsVisible": false
+    },
+    "datePicker": {
+      "rawLine": 2140,
+      "fields": {
+        "month": "Oct",
+        "day": "15",
+        "year": "2023"
+      },
+      "buttons": ["Cancel", "OK"]
+    },
+    "unsupportedClientApi": {
+      "rawLine": 2373,
+      "code": "day.set_value('20')",
+      "errorType": "AttributeError",
+      "message": "'WebElement' object has no attribute 'set_value'",
+      "uiActionsExecutedInCall": 0,
+      "note": "The exception occurred before the planned OK click, so this cell did not change the picker."
+    },
+    "dateChangeAttempt": {
+      "rawLine": 2723,
+      "actionsReturned": ["clear", "send_keys('20')", "click OK"],
+      "envelopeStatus": "failed",
+      "errorType": "selenium.common.exceptions.TimeoutException",
+      "tracebackCodeLine": 7,
+      "failedPredicate": "'20' in top_value.text",
+      "postFailureObservationRawLine": 2963,
+      "postFailureTopValue": "October 15 (Sun)",
+      "postFailureView": "Daily view, still October 15 (Sun)"
+    },
+    "weeklyViewSwitch": {
+      "rawLine": 3526,
+      "code": "click Change view; wait Weekly view; click Weekly view; wait Daily view absent; read top_value",
+      "errorType": "selenium.common.exceptions.NoSuchElementException",
+      "tracebackCodeLine": 11,
+      "inference": "The Weekly view request path completed but the final top_value read failed; no post-switch element tree was captured before the agent quit."
+    }
+  },
+  "predicateReplay": {
+    "targetDaySelectedBeforeAttempt": 15,
+    "targetDayRequested": 20,
+    "targetDaySelectedAfterAttemptObserved": 15,
+    "postStateContains20": false,
+    "dateChangedToFriday": false,
+    "fridayEventsRead": false,
+    "fridayEventsKnown": null,
+    "result": "FAIL: the saved post-state still shows October 15 (Sun); no Friday event titles were observed"
+  },
+  "finalBoundary": {
+    "rawFinalLine": 3659,
+    "rawFinalText": "{\"taskOutcome\":\"unresolved\",\"sessionCleanup\":\"completed\",\"evidence\":\"Simple Calendar Pro opened, but the action budget closed before Friday's events could be read and verified.\"}",
+    "normalizedFinalText": null,
+    "agentCompleted": false,
+    "agentAnswerValidContract": false,
+    "officialReward": 0.0,
+    "note": "Even if forwarded, taskOutcome 'unresolved' would not contain the required event titles; the primary loss is that the target day was never read."
+  },
+  "missingEvidence": [
+    "No capture of the date picker immediately after clear/send_keys('20') before OK, so the exact field value after input is unknown.",
+    "No capture of the element tree immediately after the Weekly view switch, so whether Friday events were visible then is unknown."
+  ],
+  "newAndroidRuns": 0
+}

@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "kind": "clock_delta_independent_actual_entry_smoke",
+  "exitCode": 0,
+  "observations": {
+    "observations": {
+      "missingOwnPermission": {
+        "rejected": true,
+        "errorType": "PermissionError",
+        "outputCreated": false,
+        "environmentCreated": false,
+        "spawns": 0
+      },
+      "actualPublicParentChildTransition": {
+        "prepareExit": 0,
+        "qualificationExit": 0,
+        "before": {
+          "autoTime": "1",
+          "autoTimeZone": "1",
+          "timezone": "Asia/Shanghai"
+        },
+        "after": {
+          "autoTime": "0",
+          "autoTimeZone": "0",
+          "timezone": "UTC"
+        },
+        "stableIdentityUnchanged": true,
+        "prepared": true,
+        "qualified": true,
+        "close": {
+          "environment": "closed"
+        },
+        "officialSetupFreezeFlags": [
+          true,
+          false
+        ],
+        "parentCaps": [
+          1210,
+          1210
+        ]
+      },
+      "postTaskMutableClockAttestation": {
+        "accepted": true,
+        "environmentCreated": false,
+        "clockRepaired": false,
+        "stableDeviceAppsBound": true
+      },
+      "foreignRevisionReadiness": {
+        "rejected": true,
+        "errorType": "ValueError",
+        "reason": "readiness manifest/target/resource/model/review authorization drift",
+        "syntheticReceiptOnly": true
+      },
+      "forcedOuterCannotPrepare": {
+        "prepared": false,
+        "forced": true,
+        "scope": "forced outer receipt injected after actual offline child return; no real process/service/device"
+      },
+      "missingChildCannotPrepare": {
+        "prepared": false,
+        "cleanup": {
+          "environment": "unknown"
+        },
+        "errorType": "PreflightProcessFailure"
+      }
+    },
+    "spawns": [
+      {
+        "stage": "prepare-clock",
+        "timeoutSeconds": 1210,
+        "mode": "normal"
+      },
+      {
+        "stage": "qualify",
+        "timeoutSeconds": 1210,
+        "mode": "normal"
+      },
+      {
+        "stage": "prepare-clock",
+        "timeoutSeconds": 1210,
+        "mode": "forced"
+      },
+      {
+        "stage": "prepare-clock",
+        "timeoutSeconds": 1210,
+        "mode": "missing"
+      }
+    ],
+    "temporaryRootRemoved": true,
+    "actualEntryFunctions": [
+      "run_stage",
+      "_episode",
+      "_prepare_clock",
+      "_qualification",
+      "attest_readiness",
+      "validate_readiness"
+    ],
+    "platform": "fully offline property/environment collaborators; real loader/supervisor/device/model/task/evaluator not invoked",
+    "oldCheckOrTaskReplay": false
+  },
+  "stdout": "{\"atUnix\":1000.0,\"event\":\"stage_started\",\"manifestSha256\":\"7294a7e91909ff97b1b69eb168951b3827b4c8f154ce93fc335f683e6b6b9349\",\"stage\":\"prepare-clock\"}\n{\"event\":\"stage_completed\",\"prepared\":true,\"reportSha256\":\"540371e96b197eb22c18e4db0ac688f18c961e289342b26a651c5d42519b2e8a\"}\n{\"atUnix\":1000.0,\"event\":\"stage_started\",\"manifestSha256\":\"7294a7e91909ff97b1b69eb168951b3827b4c8f154ce93fc335f683e6b6b9349\",\"stage\":\"qualify\"}\n{\"event\":\"stage_completed\",\"qualified\":true,\"reportSha256\":\"fcd2e5551f02d135c0ad4abb37aa65a2c239c2e2a0738c9a667ceff513481011\"}\n{\"atUnix\":1000.0,\"event\":\"stage_started\",\"manifestSha256\":\"7294a7e91909ff97b1b69eb168951b3827b4c8f154ce93fc335f683e6b6b9349\",\"stage\":\"prepare-clock\"}\n{\"event\":\"stage_completed\",\"prepared\":false,\"reportSha256\":\"62c9702755fa16dc723748d009fd76481c6a8a0259ab413ddd4f28e46f45cf21\"}\n{\"atUnix\":1000.0,\"event\":\"stage_started\",\"manifestSha256\":\"7294a7e91909ff97b1b69eb168951b3827b4c8f154ce93fc335f683e6b6b9349\",\"stage\":\"prepare-clock\"}\n{\"event\":\"stage_completed\",\"prepared\":false,\"reportSha256\":\"be0ede2a7dd244c403e4b8d15d7a126f45d59c4f5e6206cdc47d4409ee8d6e70\"}\nCLOCK_ENTRY_REVIEW_JSON={\"observations\": {\"missingOwnPermission\": {\"rejected\": true, \"errorType\": \"PermissionError\", \"outputCreated\": false, \"environmentCreated\": false, \"spawns\": 0}, \"actualPublicParentChildTransition\": {\"prepareExit\": 0, \"qualificationExit\": 0, \"before\": {\"autoTime\": \"1\", \"autoTimeZone\": \"1\", \"timezone\": \"Asia/Shanghai\"}, \"after\": {\"autoTime\": \"0\", \"autoTimeZone\": \"0\", \"timezone\": \"UTC\"}, \"stableIdentityUnchanged\": true, \"prepared\": true, \"qualified\": true, \"close\": {\"environment\": \"closed\"}, \"officialSetupFreezeFlags\": [true, false], \"parentCaps\": [1210, 1210]}, \"postTaskMutableClockAttestation\": {\"accepted\": true, \"environmentCreated\": false, \"clockRepaired\": false, \"stableDeviceAppsBound\": true}, \"foreignRevisionReadiness\": {\"rejected\": true, \"errorType\": \"ValueError\", \"reason\": \"readiness manifest/target/resource/model/review authorization drift\", \"syntheticReceiptOnly\": true}, \"forcedOuterCannotPrepare\": {\"prepared\": false, \"forced\": true, \"scope\": \"forced outer receipt injected after actual offline child return; no real process/service/device\"}, \"missingChildCannotPrepare\": {\"prepared\": false, \"cleanup\": {\"environment\": \"unknown\"}, \"errorType\": \"PreflightProcessFailure\"}}, \"spawns\": [{\"stage\": \"prepare-clock\", \"timeoutSeconds\": 1210, \"mode\": \"normal\"}, {\"stage\": \"qualify\", \"timeoutSeconds\": 1210, \"mode\": \"normal\"}, {\"stage\": \"prepare-clock\", \"timeoutSeconds\": 1210, \"mode\": \"forced\"}, {\"stage\": \"prepare-clock\", \"timeoutSeconds\": 1210, \"mode\": \"missing\"}], \"temporaryRootRemoved\": true, \"actualEntryFunctions\": [\"run_stage\", \"_episode\", \"_prepare_clock\", \"_qualification\", \"attest_readiness\", \"validate_readiness\"], \"platform\": \"fully offline property/environment collaborators; real loader/supervisor/device/model/task/evaluator not invoked\", \"oldCheckOrTaskReplay\": false}\n",
+  "stderr": "",
+  "reproduction": {
+    "command": [
+      "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/bin/python",
+      "-B",
+      "-c",
+      "<inlineScript>"
+    ],
+    "inlineScript": "\nimport copy,json,runpy,tempfile\nfrom pathlib import Path\nimport pytest\nfrom fsq_androidworld_eval import fsq_campaign as campaign\nns=runpy.run_path('tests/test_fsq_campaign.py')\nobserved={};spawns=[]\nwith tempfile.TemporaryDirectory(prefix='fsq-r4-entry-review-') as td:\n root=Path(td).resolve()\n with pytest.MonkeyPatch.context() as mp:\n  candidate=ns['candidate'].__wrapped__(root,mp)\n  state,events=ns['clock_platform'](candidate,mp)\n  state.update(timezone='Asia/Shanghai',auto_time='1',auto_time_zone='1')\n  mp.setattr(campaign,'_load_candidate',lambda *args:copy.deepcopy(candidate.manifest))\n  mode=['normal']\n  def child(command,output,timeout):\n   assert timeout==1210,timeout\n   args=campaign.build_parser().parse_args(command[command.index('_episode'):])\n   spawns.append({'stage':args.stage,'timeoutSeconds':timeout,'mode':mode[0]})\n   if mode[0]=='missing':return {'forced':False,'exitCode':1,'spawnCount':1,'timeoutSeconds':timeout}\n   status=campaign._episode(args)\n   return {'forced':mode[0]=='forced','exitCode':status,'spawnCount':1,'timeoutSeconds':timeout}\n  mp.setattr(campaign,'_spawn',child)\n  def public(stage,directory):\n   return campaign.build_parser().parse_args([stage,'--project',str(root),'--manifest',str(candidate.manifest_path),'--authorization',str(candidate.auth_path),'--output',str(root/directory)])\n  try:\n   campaign.run_stage(public('prepare-clock','unauthorized'))\n  except PermissionError as error:\n   observed['missingOwnPermission']={'rejected':True,'errorType':type(error).__name__,'outputCreated':(root/'unauthorized').exists(),'environmentCreated':any(e[0]=='environment' for e in events),'spawns':len(spawns)}\n  else:raise AssertionError('missing prepare-clock permission was accepted')\n  assert not observed['missingOwnPermission']['outputCreated'] and not observed['missingOwnPermission']['environmentCreated'] and not spawns\n  candidate.auth['approvedStages'].append('prepare-clock');ns['put'](candidate.auth_path,candidate.auth)\n  prepare_exit=campaign.run_stage(public('prepare-clock','prepare'))\n  prepared=campaign._load(root/'prepare/clock-preparation.json')\n  qualification_exit=campaign.run_stage(public('qualify','qualification'))\n  qualified=campaign._load(root/'qualification/readiness.json')\n  assert prepare_exit==qualification_exit==0 and prepared['prepared'] and qualified['qualified']\n  assert prepared['before']['clock']=={'timezone':'Asia/Shanghai','autoTime':'1','autoTimeZone':'1'}\n  assert prepared['after']['clock']==qualified['clock']==campaign.CLOCK_BASELINE\n  assert prepared['before']['device']==prepared['after']['device'] and prepared['before']['apps']==prepared['after']['apps']\n  assert prepared['cleanup']==qualified['cleanup']=={'environment':'closed'}\n  setup_flags=[e[1]['freeze_datetime'] for e in events if e[0]=='environment']\n  assert setup_flags==[True,False],setup_flags\n  observed['actualPublicParentChildTransition']={'prepareExit':prepare_exit,'qualificationExit':qualification_exit,'before':prepared['before']['clock'],'after':prepared['after']['clock'],'stableIdentityUnchanged':True,'prepared':prepared['prepared'],'qualified':qualified['qualified'],'close':prepared['cleanup'],'officialSetupFreezeFlags':setup_flags,'parentCaps':[e['timeoutSeconds'] for e in spawns]}\n  before_environment_count=len([e for e in events if e[0]=='environment'])\n  state.update(timezone='Asia/Shanghai',auto_time='1',auto_time_zone='1')\n  campaign.attest_readiness(candidate.manifest,qualified)\n  assert len([e for e in events if e[0]=='environment'])==before_environment_count and state['timezone']=='Asia/Shanghai'\n  observed['postTaskMutableClockAttestation']={'accepted':True,'environmentCreated':False,'clockRepaired':False,'stableDeviceAppsBound':True}\n  stale=copy.deepcopy(qualified);stale.pop('identitySha256');stale['binding']['manifestSha256']='previous-revision-candidate'\n  stale_path=ns['put'](root/'stale-readiness.json',campaign._sealed(stale))\n  try:campaign.validate_readiness(stale_path,candidate.manifest_path,candidate.manifest,candidate.auth,now=ns['NOW'])\n  except ValueError as error:observed['foreignRevisionReadiness']={'rejected':True,'errorType':type(error).__name__,'reason':str(error),'syntheticReceiptOnly':True}\n  else:raise AssertionError('foreign candidate readiness was accepted')\n  mode[0]='forced'\n  assert campaign.run_stage(public('prepare-clock','forced'))==2\n  forced=campaign._load(root/'forced/clock-preparation.json')\n  assert forced['prepared'] is False and forced['outerProcess']['forced'] is True\n  observed['forcedOuterCannotPrepare']={'prepared':forced['prepared'],'forced':forced['outerProcess']['forced'],'scope':'forced outer receipt injected after actual offline child return; no real process/service/device'}\n  mode[0]='missing'\n  assert campaign.run_stage(public('prepare-clock','missing'))==2\n  missing=campaign._load(root/'missing/clock-preparation.json')\n  assert missing['prepared'] is False and missing['cleanup']['environment']=='unknown'\n  observed['missingChildCannotPrepare']={'prepared':missing['prepared'],'cleanup':missing['cleanup'],'errorType':missing['error']['type']}\nprint('CLOCK_ENTRY_REVIEW_JSON='+json.dumps({'observations':observed,'spawns':spawns,'temporaryRootRemoved':not Path(td).exists(),'actualEntryFunctions':['run_stage','_episode','_prepare_clock','_qualification','attest_readiness','validate_readiness'],'platform':'fully offline property/environment collaborators; real loader/supervisor/device/model/task/evaluator not invoked','oldCheckOrTaskReplay':False}))\n"
+  },
+  "scope": "Actual public parser/run_stage/_episode/preparation/qualification/attestation/readiness-consumer code; outer spawn delegated in-process and physical platform fully mocked. Not real device setup, real OS watchdog timing, qualification or cleanup proof.",
+  "oldCheckOrIndex3Replayed": false,
+  "deviceModelTaskEvaluatorOrServiceInvoked": false,
+  "temporaryRootRemoved": true
+}

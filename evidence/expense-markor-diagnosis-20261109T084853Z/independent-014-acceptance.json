@@ -1,0 +1,441 @@
+{
+  "reviewer": "w4:p2 independent read-only contract acceptance assistant",
+  "reviewedAtUnix": 1794214484.7891278,
+  "reviewedAtUtc": "2026-11-09T08:54:44Z",
+  "taskName": "ExpenseAddMultipleFromMarkor",
+  "seed": 3053860270,
+  "paramsSha256": "23de427b2cc14ba77e7fc9e4f767e4a6b1e4049661a80c3ce0b957c65120c929",
+  "scope": "New 014-specific offline independent acceptance; no 008/009 or r11 issue145 passed/conclusion reused.",
+  "verdict": {
+    "installedRenderReferenceDivergence": "CONFIRMED",
+    "historicalFirstRowMatchingFailureBranch": "CONFIRMED_BY_ORIGINAL_LOG_302",
+    "literalRenderedNoteFailureOnKnownData": "CONFIRMED_BY_ACTUAL_INSTALLED_VALIDATOR",
+    "historicalDatabaseNoteAsExclusiveCause": "NOT_PROVEN_WITHOUT_ORIGINAL_DB_INPUTS",
+    "taskInherentlyUnsolvable": "NOT_ESTABLISHED",
+    "newFixAccepted": false
+  },
+  "closeoutDecision": {
+    "status": "COMPLETE_FOR_014_OFFLINE_BRANCH_AND_CONTRACT_DIAGNOSIS",
+    "newRunRequiredForCurrentSlice": false,
+    "reason": "Direct historical first-row failure warning plus independently exercised installed render/reference contract suffices for this slice. A new run cannot restore historical DB inputs.",
+    "notClaimed": ["Exclusive historical persisted-note cause", "Task inherently unsolvable", "New fix accepted", "Historical reward changed"],
+    "singleReplayOnlyIfAdditionalPersistenceProofExplicitlyRequired": true,
+    "liveExperimentAuthorizedOrStarted": false
+  },
+  "finalAlignment": {
+    "ownerSourceProofIndependentlyRead": "owner-scorer-source-proof.json",
+    "parentActualValidatorSmokeIndependentlyRead": "parent-installed-validator-smoke.json",
+    "parentRawFieldEvidenceIndependentlyRead": "parent-original-field-evidence.json",
+    "independentReadOnlyReceipt": "independent-014-readonly-receipt.json",
+    "inheritedScorerIdentityIndependentlyChecked": "AddMultipleRows.is_successful",
+    "exactTargetUniquelyMatchesFrozenManifestIndex": 14,
+    "directDependencyFilesIndependentlyMatchedToDistributionRECORD": 7,
+    "historicalThreeSourceFilesAndParentExtractionUnchanged": true,
+    "originalDBGapIsNotARequestToReadCurrentDevice": true,
+    "parentDecisionAligned": "Offline closeout; no new run, replay, device query, or renderer/reference/fuzzy change"
+  },
+  "ownerFinalDeliveryAcceptance": {
+    "reviewer": "w4:p2 independent read-only contract acceptance assistant",
+    "reviewedAtUtc": "2026-11-09T08:58:58Z",
+    "verdict": "ACCEPTED_OWNER_FINAL_OFFLINE_DELIVERABLE_ONLY",
+    "filesReviewed": [
+      {
+        "path": "offline-report.md",
+        "sha256": "15d797160914acfb3121c13cd639593048d4a29cac340f15a2b53b6f027c82a1"
+      },
+      {
+        "path": "summary.json",
+        "sha256": "65615766607cd57c28d2a15654b241fd5854fb2e08da04ebfb02f00202195a47"
+      },
+      {
+        "path": "minimal-contract.json",
+        "sha256": "3c09bfe26b14d1c36418a252d5dca4ac53d9647bd0107359200016820fcdb0eb"
+      },
+      {
+        "path": "immutability.json",
+        "sha256": "ce74acf4d5e92c105520f8a3bfb62606f5f1caa0899cefc88f9658e23e28c468"
+      },
+      {
+        "path": "zero-operations.json",
+        "sha256": "79c888501b64e2468c970ef5d46a8c47db992e86e4ba81bf93bbf66dbf2d5301"
+      }
+    ],
+    "independentRawReverification": {
+      "codeMatches": 25,
+      "responseMatches": 25,
+      "anchors": [
+        {
+          "executionCount": 1,
+          "sourceLine": 521,
+          "responseSourceLine": 522,
+          "codeMatches": true,
+          "responseMatches": true,
+          "status": "completed",
+          "kernelState": "alive"
+        },
+        {
+          "executionCount": 2,
+          "sourceLine": 780,
+          "responseSourceLine": 781,
+          "codeMatches": true,
+          "responseMatches": true,
+          "status": "failed",
+          "kernelState": "alive"
+        },
+        {
+          "executionCount": 3,
+          "sourceLine": 1035,
+          "responseSourceLine": 1036,
+          "codeMatches": true,
+          "responseMatches": true,
+          "status": "completed",
+          "kernelState": "alive"
+        },
+        {
+          "executionCount": 4,
+          "sourceLine": 1199,
+          "responseSourceLine": 1200,
+          "codeMatches": true,
+          "responseMatches": true,
+          "status": "completed",
+          "kernelState": "alive"
+        },
+        {
+          "executionCount": 5,
+          "sourceLine": 1343,
+          "responseSourceLine": 1344,
+          "codeMatches": true,
+          "responseMatches": true,
+          "status": "completed",
+          "kernelState": "alive"
+        },
+        {
+          "executionCount": 6,
+          "sourceLine": 1537,
+          "responseSourceLine": 1538,
+          "codeMatches": true,
+          "responseMatches": true,
+          "status": "completed",
+          "kernelState": "alive"
+        },
+        {
+          "executionCount": 7,
+          "sourceLine": 1814,
+          "responseSourceLine": 1815,
+          "codeMatches": true,
+          "responseMatches": true,
+          "status": "completed",
+          "kernelState": "alive"
+        },
+        {
+          "executionCount": 8,
+          "sourceLine": 2088,
+          "responseSourceLine": 2089,
+          "codeMatches": true,
+          "responseMatches": true,
+          "status": "completed",
+          "kernelState": "alive"
+        },
+        {
+          "executionCount": 9,
+          "sourceLine": 2252,
+          "responseSourceLine": 2253,
+          "codeMatches": true,
+          "responseMatches": true,
+          "status": "completed",
+          "kernelState": "alive"
+        },
+        {
+          "executionCount": 10,
+          "sourceLine": 2527,
+          "responseSourceLine": 2528,
+          "codeMatches": true,
+          "responseMatches": true,
+          "status": "completed",
+          "kernelState": "alive"
+        },
+        {
+          "executionCount": 11,
+          "sourceLine": 2755,
+          "responseSourceLine": 2756,
+          "codeMatches": true,
+          "responseMatches": true,
+          "status": "completed",
+          "kernelState": "alive"
+        },
+        {
+          "executionCount": 12,
+          "sourceLine": 2956,
+          "responseSourceLine": 2957,
+          "codeMatches": true,
+          "responseMatches": true,
+          "status": "completed",
+          "kernelState": "alive"
+        },
+        {
+          "executionCount": 13,
+          "sourceLine": 3352,
+          "responseSourceLine": 3353,
+          "codeMatches": true,
+          "responseMatches": true,
+          "status": "completed",
+          "kernelState": "alive"
+        },
+        {
+          "executionCount": 14,
+          "sourceLine": 3574,
+          "responseSourceLine": 3575,
+          "codeMatches": true,
+          "responseMatches": true,
+          "status": "completed",
+          "kernelState": "alive"
+        },
+        {
+          "executionCount": 15,
+          "sourceLine": 3682,
+          "responseSourceLine": 3683,
+          "codeMatches": true,
+          "responseMatches": true,
+          "status": "completed",
+          "kernelState": "alive"
+        },
+        {
+          "executionCount": 16,
+          "sourceLine": 3799,
+          "responseSourceLine": 3800,
+          "codeMatches": true,
+          "responseMatches": true,
+          "status": "completed",
+          "kernelState": "alive"
+        },
+        {
+          "executionCount": 17,
+          "sourceLine": 4075,
+          "responseSourceLine": 4076,
+          "codeMatches": true,
+          "responseMatches": true,
+          "status": "completed",
+          "kernelState": "alive"
+        },
+        {
+          "executionCount": 18,
+          "sourceLine": 4243,
+          "responseSourceLine": 4244,
+          "codeMatches": true,
+          "responseMatches": true,
+          "status": "completed",
+          "kernelState": "alive"
+        },
+        {
+          "executionCount": 19,
+          "sourceLine": 4543,
+          "responseSourceLine": 4544,
+          "codeMatches": true,
+          "responseMatches": true,
+          "status": "completed",
+          "kernelState": "alive"
+        },
+        {
+          "executionCount": 20,
+          "sourceLine": 4812,
+          "responseSourceLine": 4813,
+          "codeMatches": true,
+          "responseMatches": true,
+          "status": "completed",
+          "kernelState": "alive"
+        },
+        {
+          "executionCount": 21,
+          "sourceLine": 4981,
+          "responseSourceLine": 4982,
+          "codeMatches": true,
+          "responseMatches": true,
+          "status": "completed",
+          "kernelState": "alive"
+        },
+        {
+          "executionCount": 22,
+          "sourceLine": 5100,
+          "responseSourceLine": 5101,
+          "codeMatches": true,
+          "responseMatches": true,
+          "status": "completed",
+          "kernelState": "alive"
+        },
+        {
+          "executionCount": 23,
+          "sourceLine": 5275,
+          "responseSourceLine": 5276,
+          "codeMatches": true,
+          "responseMatches": true,
+          "status": "completed",
+          "kernelState": "alive"
+        },
+        {
+          "executionCount": 24,
+          "sourceLine": 5516,
+          "responseSourceLine": 5517,
+          "codeMatches": true,
+          "responseMatches": true,
+          "status": "completed",
+          "kernelState": "alive"
+        },
+        {
+          "executionCount": 25,
+          "sourceLine": 5575,
+          "responseSourceLine": 5576,
+          "codeMatches": true,
+          "responseMatches": true,
+          "status": "completed",
+          "kernelState": "alive"
+        }
+      ]
+    },
+    "ownerReceiptCountsReviewed": {
+      "historicalPaths": 2186,
+      "skillFiles": 152,
+      "installedDependencySources": 7
+    },
+    "auditScope": "Reviewed owner2186/152 scoped receipts and consistency; did not rerun their full hash sweep. Own independent source/RECORD checks remain the limited scope documented in independent-014-readonly-receipt.json.",
+    "operationReceiptEvidenceBoundary": "Owner zero-operation receipt reviewed for internal consistency; no claim to independently observe every historical host command. Reviewer performed only offline reads and edits to own signed artifacts.",
+    "confirmed": [
+      "Historical first Laundry reference-row matching failure -> original0; later checks not reached",
+      "Rendered/reference note divergence and sufficient controlled failure mechanism",
+      "No owner claimed fix, upgrade, new reward, pending execution or next task"
+    ],
+    "limitsRetained": [
+      "Historical actual DB note unobserved",
+      "No exclusive historical failing-field claim",
+      "No task-unsatisfiable claim"
+    ],
+    "priorReplayProposal": "ARCHIVED_NOT_PENDING_NOT_AUTHORIZED",
+    "newDeviceSessionTaskServiceOperations": 0,
+    "ownerOrParentFilesModifiedByReviewer": false,
+    "reportCodeHashCountCorrectedToSeven": true
+  },
+  "sourceIdentity": {
+    "result.json": {
+      "path": "campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/episodes/014-ExpenseAddMultipleFromMarkor/attempt-1/result.json",
+      "sha256": "198faa876422efc67531fc1f3b318013a660e2af295fc7dfc2fc8f82b57ef6bd",
+      "bytes": 55897
+    },
+    "normalized-agent-events.json": {
+      "path": "campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/episodes/014-ExpenseAddMultipleFromMarkor/attempt-1/normalized-agent-events.json",
+      "sha256": "5d5b1de0ef465e8165e33fe73510e601fe4fe60104f29a14efdcd31010e89456",
+      "bytes": 12600
+    },
+    "raw-private/agent-events.jsonl": {
+      "path": "campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/episodes/014-ExpenseAddMultipleFromMarkor/attempt-1/raw-private/agent-events.jsonl",
+      "sha256": "690dac2ad773a09f3b41f2ded10dd7d6df2486352eccdb9637debf3eb86b79e4",
+      "bytes": 81989851
+    }
+  },
+  "installedSources": {
+    ".venv/lib/python3.11/site-packages/android_world/task_evals/single/expense.py": {
+      "sha256": "cc57bd82831a17b427ea93eb4db559f6886cc1df402c0eac4bcb72064d7f3f81",
+      "bytes": 16523
+    },
+    ".venv/lib/python3.11/site-packages/android_world/task_evals/common_validators/sqlite_validators.py": {
+      "sha256": "7b932acd2e19f1d4f43cea1badf26ace2ed3363258ae26850d1b09889bfa9d78",
+      "bytes": 14270
+    },
+    ".venv/lib/python3.11/site-packages/android_world/task_evals/utils/sqlite_schema_utils.py": {
+      "sha256": "d3b1d796b1faadbdedc78e7f9197f0ee27e3eebf0edd4597cd59f3d0f6e3095b",
+      "bytes": 15031
+    },
+    ".venv/lib/python3.11/site-packages/android_world/utils/fuzzy_match_lib.py": {
+      "sha256": "e7376554fd9a413ff00d71656e09609c9070d0b384028b89fd931e32fcfb2969",
+      "bytes": 1545
+    },
+    ".venv/lib/python3.11/site-packages/android_world/task_evals/utils/sqlite_utils.py": {
+      "sha256": "56280b32e6aaf7d561bf2e4681a2cc1a6ad930d911105593d17d093678bf1cd0",
+      "bytes": 6942
+    },
+    ".venv/lib/python3.11/site-packages/android_world/task_evals/task_eval.py": {
+      "sha256": "096d6f4e0a58343c472e58d68dc4effc4589976bc3c2a8853e745c9b7b3cbb96",
+      "bytes": 6149
+    }
+  },
+  "historicalRawBranchEvidence": "independent-014-original-evidence.json",
+  "knownDataSmokeEvidence": "independent-014-contract-smoke.json",
+  "contract": {
+    "dbPath": "/data/data/com.arduia.expense/databases/accounting.db",
+    "tableName": "expense",
+    "compareFields": [
+      "name",
+      "amount",
+      "category",
+      "note"
+    ],
+    "fuzzyFields": [
+      "name",
+      "note"
+    ],
+    "fuzzyThreshold": 0.9,
+    "exactFields": [
+      "amount",
+      "category"
+    ],
+    "referenceSource": "Original params.row_objects, not rendered target copies",
+    "branchOrder": [
+      "each reference must match some row in after",
+      "len(after) == len(before) + len(reference_rows)",
+      "each full before row must remain in after"
+    ],
+    "remoteRead": "sqlite_utils.get_rows_from_remote_device pulls existing accounting.db; execute_query SELECT * FROM expense constructs Expense(**row), no note annotation stripping.",
+    "newRowsDateAndIdCompared": false,
+    "oldRowsFullDataclassEqualityPreserved": true
+  },
+  "semanticChoices": [
+    {
+      "meaning": "Reimbursable annotation is selection metadata, not stored note",
+      "futureContract": "Make metadata explicit/separate from base note in user-visible source/goal; base-note reference remains coherent. No hidden suffix-stripping skill patch."
+    },
+    {
+      "meaning": "Reimbursable annotation is literal note content",
+      "futureContract": "Generate/render/reference from the same canonical annotated target row, with explicit task semantics. No global fuzzy relaxation."
+    }
+  ],
+  "remainingEvidenceGap": "Original scoring-call actual DB before/after inputs, especially persisted note/amount/category; original first failing branch is already available.",
+  "proposedSingleReplay": {
+    "status": "PROPOSAL_ONLY_NOT_STARTED",
+    "holdFixed": [
+      "original task/seed/params",
+      "original UI actions and note inputs",
+      "validator/threshold/reference semantics",
+      "original budget/model configuration if model runner used",
+      "no new waits/retries/backend changes"
+    ],
+    "recordExistingCalls": [
+      "initialization existing self.before",
+      "same official list_rows/execute_query after returned data, optionally preserve its already pulled local DB before cleanup",
+      "exact original predicate before/after/reference arguments and actual branch/raw return",
+      "final reward saved and scorer exceptions if any"
+    ],
+    "noExtraStateRead": true,
+    "resolvesForReplay": [
+      "whether Appium-entered marker actually persists in official DB input",
+      "whether amount/category/name are otherwise correct",
+      "whether row count/before preservation have additional differences",
+      "whether unchanged original predicate rejects stored note rather than a different row mismatch"
+    ],
+    "cannotResolve": [
+      "historical original DB values cannot be reconstructed by a new run",
+      "one reproduced mechanism does not prove historical exclusive cause",
+      "semantic choice between metadata and literal note requires task contract decision"
+    ]
+  },
+  "boundaries": {
+    "deviceQueries": 0,
+    "sessionsCreated": 0,
+    "builds": 0,
+    "productionChanges": 0,
+    "originalCampaignOrFrozenChanges": 0,
+    "skillChanges": 0,
+    "rulesAdded": 0,
+    "benchmarkSuffixPatchAdded": false,
+    "referenceOrDbSentToExecutionModel": false,
+    "fullSuiteRun": false,
+    "newOfficialScoringRun": false
+  }
+}

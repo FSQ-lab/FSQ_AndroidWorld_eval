@@ -1,0 +1,754 @@
+{
+  "index": 10,
+  "name": "ContactsAddContact",
+  "goal": "Create a new contact for Hugo Pereira. Their number is +13920741751.",
+  "reward": 0.0,
+  "classification": "failed",
+  "initialization": {
+    "initializationReferenceTime": {
+      "referenceTime": "2023-10-15T15:34:00+00:00",
+      "timezone": "UTC"
+    },
+    "initializedGoal": "Create a new contact for Hugo Pereira. Their number is +13920741751."
+  },
+  "frozenTaskSpec": {
+    "apps": [
+      "contacts"
+    ],
+    "complexity": 1.2,
+    "difficulty": "easy",
+    "family": "android",
+    "index": 10,
+    "instanceSeed": 1155463587,
+    "maxActions": 12,
+    "maxSteps": 12,
+    "name": "ContactsAddContact",
+    "params": {
+      "name": "Hugo Pereira",
+      "number": "+13920741751",
+      "seed": 1155463587
+    },
+    "paramsSha256": "e5b9351bf2f295739e1b6989a343445ca029f42a701d675bbd159e65999d6493",
+    "paramsTransport": "json",
+    "tags": [
+      "data_entry",
+      "parameterized"
+    ],
+    "timeBudget": {
+      "businessSeconds": 840,
+      "cleanupWindowSeconds": 180,
+      "episodeSeconds": 1450,
+      "forceSeconds": 1030,
+      "recoveryWindowSeconds": 120,
+      "terminationGraceSeconds": 10
+    }
+  },
+  "mainSteps": [
+    {
+      "stepId": 4,
+      "tool": "agent_runtime.runner",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "Save was blocked by NativeActionBudgetExceeded: action_budget.",
+          "Required kill_app teardown was also blocked by NativeActionBudgetExceeded: action_budget."
+        ],
+        "evidence": [
+          "Fresh UI snapshot before Save showed the Create contact form containing Hugo, Pereira, and +1 392-074-1751.",
+          "Save returned NativeActionBudgetExceeded: action_budget; its after-action snapshot still showed the unsaved Create contact form."
+        ],
+        "plan_updates": [
+          "Dismissed an introductory Contacts overlay before opening the form.",
+          "Execution stopped when the harness action budget blocked Save and teardown."
+        ],
+        "pre_plan": [
+          {
+            "action": "Open the new-contact form from Contacts.",
+            "status": "success",
+            "step_id": 1,
+            "success_criteria": [
+              "New-contact form is displayed."
+            ]
+          },
+          {
+            "action": "Enter Hugo Pereira and +13920741751.",
+            "status": "success",
+            "step_id": 2,
+            "success_criteria": [
+              "The form contains the requested name and phone number."
+            ]
+          },
+          {
+            "action": "Save the contact and verify its saved details.",
+            "status": "failed",
+            "step_id": 3,
+            "success_criteria": [
+              "Saved details show Hugo Pereira with +13920741751."
+            ]
+          }
+        ],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "inconclusive",
+        "summary": "Entered Hugo Pereira and +13920741751 in the new-contact form, but the harness action budget blocked Save. Saved contact details could not be verified.",
+        "unmet_criteria": [
+          "The saved contact details show Hugo Pereira with phone number +13920741751."
+        ]
+      }
+    },
+    {
+      "stepId": 5,
+      "tool": "agent_runtime.verifier",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "NativeActionBudgetExceeded: action_budget permanently blocked saving within the completed run."
+        ],
+        "evidence": [
+          "The Contacts UI snapshot before creation showed 'No contacts yet'.",
+          "The three input_text calls for Hugo, Pereira, and +13920741751 returned passed.",
+          "The last ui_snapshot before Save still identified contact_editor_fragment, rather than saved contact details.",
+          "The tap_on call targeting the Save toolbar button returned status=failed, failure_category=harness_error, and NativeActionBudgetExceeded: action_budget.",
+          "The subsequent kill_app call encountered the same exhausted-budget error; no successful Save or saved-details display followed."
+        ],
+        "plan_updates": [],
+        "pre_plan": [
+          {
+            "action": "Verify that saved contact details show Hugo Pereira with phone number +13920741751.",
+            "status": "failed",
+            "step_id": 1,
+            "success_criteria": [
+              "The saved contact details show Hugo Pereira with phone number +13920741751."
+            ]
+          }
+        ],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "failed",
+        "summary": "The verification goal was not met: the Save action was blocked by the exhausted action budget, preventing the run from displaying saved contact details.",
+        "unmet_criteria": [
+          "The saved contact details show Hugo Pereira with phone number +13920741751."
+        ]
+      }
+    }
+  ],
+  "budgetSummary": {
+    "admitted": 12,
+    "attempted": 14,
+    "deadlineExceeded": false,
+    "deadlineMonotonic": 703118.006595458,
+    "denied": 2,
+    "deviceRestoredByClose": false,
+    "exclusions": [
+      "driver_construction",
+      "uiautomator2_service_startup",
+      "observation_and_assertion_side_effects",
+      "external_processes_and_direct_driver_access"
+    ],
+    "exhausted": true,
+    "failed": 0,
+    "inFlight": 0,
+    "inputTextUnit": "composite_click_optional_clear_set_text",
+    "maximum": 12,
+    "securityBoundary": false,
+    "succeeded": 12,
+    "unit": "admitted_android_harness_write_capability_dispatch",
+    "writeCapabilities": [
+      "launch_app",
+      "kill_app",
+      "tap_on",
+      "tap_at",
+      "long_press_on",
+      "input_text",
+      "press_key",
+      "swipe"
+    ]
+  },
+  "actions": [
+    {
+      "ordinal": 0,
+      "stepId": "agent-launch_app-1",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [],
+      "output": {
+        "app_id": "com.google.android.contacts"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[0]"
+    },
+    {
+      "ordinal": 1,
+      "stepId": "agent-ui_snapshot-2",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Sun, Oct 15",
+        "Sun, Oct 15",
+        "Gmail",
+        "Gmail",
+        "Photos",
+        "Photos",
+        "YouTube",
+        "YouTube",
+        "Home",
+        "Phone",
+        "Phone",
+        "Messages",
+        "Messages",
+        "Chrome",
+        "Chrome",
+        "Calendar",
+        "Predicted app: Calendar",
+        "Search",
+        "Google app",
+        "Voice search",
+        "Google Lens",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 27980,
+          "retained_characters": 7649
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[1]"
+    },
+    {
+      "ordinal": 2,
+      "stepId": "agent-launch_app-3",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "app_id": "com.google.android.contacts"
+      },
+      "uiLabels": [],
+      "output": {
+        "app_id": "com.google.android.contacts"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[2]"
+    },
+    {
+      "ordinal": 3,
+      "stepId": "agent-swipe-4",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[3]"
+    },
+    {
+      "ordinal": 4,
+      "stepId": "agent-ui_snapshot-5",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Audio Recorder",
+        "Audio Recorder",
+        "Broccoli",
+        "Broccoli",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Chrome",
+        "Chrome",
+        "Clipper",
+        "Clipper",
+        "Clock",
+        "Clock",
+        "Contacts",
+        "Contacts",
+        "Draw",
+        "Draw",
+        "Drive",
+        "Drive",
+        "Files",
+        "Files",
+        "Gallery",
+        "Gallery",
+        "Gmail",
+        "Gmail",
+        "Google",
+        "Google",
+        "Joplin",
+        "Joplin",
+        "Maps",
+        "Maps",
+        "Markor",
+        "Markor",
+        "Messages",
+        "Messages",
+        "OpenTracks",
+        "OpenTracks",
+        "OsmAnd",
+        "OsmAnd",
+        "Phone",
+        "Phone",
+        "Photos",
+        "Photos",
+        "Pro Expense",
+        "Pro Expense",
+        "Gallery",
+        "Gallery",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Tasks",
+        "Tasks",
+        "Search",
+        "Google app",
+        "Search apps, web and more",
+        "Voice search",
+        "Google Lens",
+        "Home",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 37016,
+          "retained_characters": 12574
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 6,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[4]"
+    },
+    {
+      "ordinal": 5,
+      "stepId": "agent-tap_on-6",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "accessibilityId": "Contacts"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[5]"
+    },
+    {
+      "ordinal": 6,
+      "stepId": "agent-ui_snapshot-7",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Now you can find Settings and Help & feedback here",
+        "Now you can find Settings and Help & feedback here",
+        "Search contacts",
+        "Open navigation drawer",
+        "Search contacts",
+        "Signed in as Device\nAccount and settings.",
+        "Phone contacts",
+        "Email contacts",
+        "Company",
+        "No contacts yet",
+        "Create contact",
+        "Contacts",
+        "Contacts",
+        "Highlights",
+        "Highlights",
+        "Fix & manage",
+        "Fix & manage",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 42281,
+          "retained_characters": 10754
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 16,
+          "clipped_attributes": 2
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[6]"
+    },
+    {
+      "ordinal": 7,
+      "stepId": "agent-press_key-8",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[7]"
+    },
+    {
+      "ordinal": 8,
+      "stepId": "agent-tap_on-9",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "accessibilityId": "Contacts"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[8]"
+    },
+    {
+      "ordinal": 9,
+      "stepId": "agent-tap_on-10",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.google.android.contacts:id/og_tooltip_scrim_view"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[9]"
+    },
+    {
+      "ordinal": 10,
+      "stepId": "agent-ui_snapshot-11",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Search contacts",
+        "Open navigation drawer",
+        "Search contacts",
+        "Signed in as Device\nAccount and settings.",
+        "Phone contacts",
+        "Email contacts",
+        "Company",
+        "No contacts yet",
+        "Create contact",
+        "Contacts",
+        "Contacts",
+        "Highlights",
+        "Highlights",
+        "Fix & manage",
+        "Fix & manage",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 40025,
+          "retained_characters": 10248
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 14,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[10]"
+    },
+    {
+      "ordinal": 11,
+      "stepId": "agent-tap_on-12",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.google.android.contacts:id/floating_action_button"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[11]"
+    },
+    {
+      "ordinal": 12,
+      "stepId": "agent-ui_snapshot-13",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Cancel",
+        "Create contact",
+        "Save",
+        "More options",
+        "Add contact photo",
+        "Add picture",
+        "First name",
+        "Last name",
+        "Show more name fields",
+        "Company",
+        "Phone",
+        "Mobile",
+        "Mobile Phone",
+        "Show dropdown menu",
+        "Email",
+        "Home",
+        "Home Email",
+        "Show dropdown menu",
+        "Significant date",
+        "Show date picker",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 54777,
+          "retained_characters": 10411
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 44,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[12]"
+    },
+    {
+      "ordinal": 13,
+      "stepId": "agent-input_text-14",
+      "action": "input_text",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "text": "First name"
+        },
+        "text": "Hugo",
+        "textType": "literal"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[13]"
+    },
+    {
+      "ordinal": 14,
+      "stepId": "agent-input_text-15",
+      "action": "input_text",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "text": "Last name"
+        },
+        "text": "Pereira",
+        "textType": "literal"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[14]"
+    },
+    {
+      "ordinal": 15,
+      "stepId": "agent-input_text-16",
+      "action": "input_text",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "text": "Phone"
+        },
+        "text": "+13920741751",
+        "textType": "literal"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[15]"
+    },
+    {
+      "ordinal": 16,
+      "stepId": "agent-press_key-17",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[16]"
+    },
+    {
+      "ordinal": 17,
+      "stepId": "agent-ui_snapshot-18",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Cancel",
+        "Create contact",
+        "Save",
+        "More options",
+        "Add contact photo",
+        "Add picture",
+        "Hugo",
+        "Pereira",
+        "Show more name fields",
+        "Company",
+        "+1 392-074-1751",
+        "Mobile",
+        "Mobile Phone",
+        "Show dropdown menu",
+        "Delete Mobile Phone",
+        "delete",
+        "Phone",
+        "Home",
+        "Home Phone",
+        "Show dropdown menu",
+        "Email",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 53787,
+          "retained_characters": 10322
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 43,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[17]"
+    },
+    {
+      "ordinal": 18,
+      "stepId": "agent-tap_on-19",
+      "action": "tap_on",
+      "status": "failed",
+      "error": "NativeActionBudgetExceeded: action_budget",
+      "params": null,
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[18]"
+    },
+    {
+      "ordinal": 19,
+      "stepId": "agent-kill_app-20",
+      "action": "kill_app",
+      "status": "failed",
+      "error": "NativeActionBudgetExceeded: action_budget",
+      "params": null,
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[19]"
+    }
+  ],
+  "originalNativeExecutionPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/010-ContactsAddContact/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-010-20261110T161609Z-0d7240/execution-result.json",
+  "originalNativeResultPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/010-ContactsAddContact/raw-private/fsq-native/worker/fsq-task-result.private.json",
+  "originalGoalPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/010-ContactsAddContact/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-010-20261110T161609Z-0d7240/sources/000-goal.txt"
+}

@@ -1,0 +1,1192 @@
+{
+  "candidateRunnerIdentity": {
+    "namespaceSha256": "62a6a951616f3aac910cb208e2c1008eec4545288a2400aba51171490fef34c5",
+    "pgid": {
+      "sha256": "dae430f87a20554837c127076855fd1748c53d5c11f950ac5df8d4e6b80da942"
+    },
+    "pid": {
+      "sha256": "dae430f87a20554837c127076855fd1748c53d5c11f950ac5df8d4e6b80da942"
+    },
+    "runtimeExecutable": "/Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python",
+    "sourceHashes": {
+      "src/amkernel/__init__.py": "359d957cb4993975070cbce470c08010dd3e3bcdef8d2d166398726516f443a8",
+      "src/amkernel/__main__.py": "9089fa5b6964cf0a5cb6fbbbb72e74226b5e3e13359c88fa48b52737882f3c47",
+      "src/amkernel/artifact_store.py": "e9ab9a1e65f4dd42a926f3d58441044a57a339daa1afe6f29e514c737694dfcc",
+      "src/amkernel/cli.py": "636c5543022e843a32f81ddbdb142535737301a6f9d5a7ab4e30eb95401e8cb9",
+      "src/amkernel/distribution.py": "6fb3364d2a40786efeef5574eebe9c6cb3cceaab26f03c51107bdc038250596a",
+      "src/amkernel/output.py": "46fdc7f94f488573138e5c46d173c82f1f4fe432485c98303b5a412b8f45a2fc",
+      "src/amkernel/protocol.py": "a6bbc4e76b2735b569c5ec8b1d7244c5ce9abb44a44679460b45edbf93e5b29f",
+      "src/amkernel/runner.py": "c4467ff3d37f41410d27f439dbd9239076e9334d379c65530d0a6a1c58911638",
+      "src/amkernel/runtime.py": "fd6da51f485af522bba75e360a2525ca37d3d38baaafc67218012041f4f0aaeb",
+      "src/amkernel/server.py": "e7930d9afb2ad46d7932cb1a0faa2017e87118f02136c4ba15566b44becfa299",
+      "src/amkernel/structured_output.py": "7236380175a1c624561eb4c86f2c3fb34392e8729efeb3038d08c74851b0a009",
+      "src/amkernel/supervisor.py": "d518856be642324e2cda99a101ca1f9d3d27d0973b9314221dcba487c589789f",
+      "src/amkernel/workspace.py": "1c5321f8543e43a10fdfc61e7866982d2f43e5689abca2f936f6039aaf1640fd"
+    },
+    "sourceImportPath": "/Users/qunmi/Documents/FSQ_LAB/amkernel/src/amkernel/__init__.py"
+  },
+  "checks": [
+    {
+      "expected": "4086c29f89bd8abfb96155fb1ff296e543410093",
+      "name": "candidate_commit",
+      "observed": "4086c29f89bd8abfb96155fb1ff296e543410093",
+      "outcome": "passed"
+    },
+    {
+      "expected": "/Users/qunmi/Documents/FSQ_LAB/amkernel/src/amkernel/__init__.py",
+      "name": "candidate_import",
+      "observed": "/Users/qunmi/Documents/FSQ_LAB/amkernel/src/amkernel/__init__.py",
+      "outcome": "passed"
+    },
+    {
+      "expected": "completed",
+      "name": "normal_status",
+      "observed": "completed",
+      "outcome": "passed"
+    },
+    {
+      "expected": "alive",
+      "name": "normal_state",
+      "observed": "alive",
+      "outcome": "passed"
+    },
+    {
+      "expected": true,
+      "name": "normal_PID_running",
+      "observed": true,
+      "outcome": "passed"
+    },
+    {
+      "expected": "/Users/qunmi/Documents/FSQ_LAB/amkernel/src/amkernel/__init__.py",
+      "name": "runner_source_import",
+      "observed": "/Users/qunmi/Documents/FSQ_LAB/amkernel/src/amkernel/__init__.py",
+      "outcome": "passed"
+    },
+    {
+      "expected": {
+        "src/amkernel/__init__.py": "359d957cb4993975070cbce470c08010dd3e3bcdef8d2d166398726516f443a8",
+        "src/amkernel/__main__.py": "9089fa5b6964cf0a5cb6fbbbb72e74226b5e3e13359c88fa48b52737882f3c47",
+        "src/amkernel/artifact_store.py": "e9ab9a1e65f4dd42a926f3d58441044a57a339daa1afe6f29e514c737694dfcc",
+        "src/amkernel/cli.py": "636c5543022e843a32f81ddbdb142535737301a6f9d5a7ab4e30eb95401e8cb9",
+        "src/amkernel/distribution.py": "6fb3364d2a40786efeef5574eebe9c6cb3cceaab26f03c51107bdc038250596a",
+        "src/amkernel/output.py": "46fdc7f94f488573138e5c46d173c82f1f4fe432485c98303b5a412b8f45a2fc",
+        "src/amkernel/protocol.py": "a6bbc4e76b2735b569c5ec8b1d7244c5ce9abb44a44679460b45edbf93e5b29f",
+        "src/amkernel/runner.py": "c4467ff3d37f41410d27f439dbd9239076e9334d379c65530d0a6a1c58911638",
+        "src/amkernel/runtime.py": "fd6da51f485af522bba75e360a2525ca37d3d38baaafc67218012041f4f0aaeb",
+        "src/amkernel/server.py": "e7930d9afb2ad46d7932cb1a0faa2017e87118f02136c4ba15566b44becfa299",
+        "src/amkernel/structured_output.py": "7236380175a1c624561eb4c86f2c3fb34392e8729efeb3038d08c74851b0a009",
+        "src/amkernel/supervisor.py": "d518856be642324e2cda99a101ca1f9d3d27d0973b9314221dcba487c589789f",
+        "src/amkernel/workspace.py": "1c5321f8543e43a10fdfc61e7866982d2f43e5689abca2f936f6039aaf1640fd"
+      },
+      "name": "runner_source_hashes",
+      "observed": {
+        "src/amkernel/__init__.py": "359d957cb4993975070cbce470c08010dd3e3bcdef8d2d166398726516f443a8",
+        "src/amkernel/__main__.py": "9089fa5b6964cf0a5cb6fbbbb72e74226b5e3e13359c88fa48b52737882f3c47",
+        "src/amkernel/artifact_store.py": "e9ab9a1e65f4dd42a926f3d58441044a57a339daa1afe6f29e514c737694dfcc",
+        "src/amkernel/cli.py": "636c5543022e843a32f81ddbdb142535737301a6f9d5a7ab4e30eb95401e8cb9",
+        "src/amkernel/distribution.py": "6fb3364d2a40786efeef5574eebe9c6cb3cceaab26f03c51107bdc038250596a",
+        "src/amkernel/output.py": "46fdc7f94f488573138e5c46d173c82f1f4fe432485c98303b5a412b8f45a2fc",
+        "src/amkernel/protocol.py": "a6bbc4e76b2735b569c5ec8b1d7244c5ce9abb44a44679460b45edbf93e5b29f",
+        "src/amkernel/runner.py": "c4467ff3d37f41410d27f439dbd9239076e9334d379c65530d0a6a1c58911638",
+        "src/amkernel/runtime.py": "fd6da51f485af522bba75e360a2525ca37d3d38baaafc67218012041f4f0aaeb",
+        "src/amkernel/server.py": "e7930d9afb2ad46d7932cb1a0faa2017e87118f02136c4ba15566b44becfa299",
+        "src/amkernel/structured_output.py": "7236380175a1c624561eb4c86f2c3fb34392e8729efeb3038d08c74851b0a009",
+        "src/amkernel/supervisor.py": "d518856be642324e2cda99a101ca1f9d3d27d0973b9314221dcba487c589789f",
+        "src/amkernel/workspace.py": "1c5321f8543e43a10fdfc61e7866982d2f43e5689abca2f936f6039aaf1640fd"
+      },
+      "outcome": "passed"
+    },
+    {
+      "expected": "failed",
+      "name": "exception_status",
+      "observed": "failed",
+      "outcome": "passed"
+    },
+    {
+      "expected": "alive",
+      "name": "exception_state",
+      "observed": "alive",
+      "outcome": "passed"
+    },
+    {
+      "expected": "ValueError",
+      "name": "exception_type",
+      "observed": "ValueError",
+      "outcome": "passed"
+    },
+    {
+      "expected": true,
+      "name": "exception_PID_running",
+      "observed": true,
+      "outcome": "passed"
+    },
+    {
+      "expected": 47599,
+      "name": "timeout_active_same_PID",
+      "observed": 47599,
+      "outcome": "passed"
+    },
+    {
+      "expected": "timed_out",
+      "name": "timeout_status",
+      "observed": "timed_out",
+      "outcome": "passed"
+    },
+    {
+      "expected": "alive",
+      "name": "timeout_state",
+      "observed": "alive",
+      "outcome": "passed"
+    },
+    {
+      "expected": true,
+      "name": "timeout_PID_running",
+      "observed": true,
+      "outcome": "passed"
+    },
+    {
+      "expected": "completed",
+      "name": "timeout_next_status",
+      "observed": "completed",
+      "outcome": "passed"
+    },
+    {
+      "expected": "62a6a951616f3aac910cb208e2c1008eec4545288a2400aba51171490fef34c5",
+      "name": "timeout_namespace",
+      "observed": "62a6a951616f3aac910cb208e2c1008eec4545288a2400aba51171490fef34c5",
+      "outcome": "passed"
+    },
+    {
+      "expected": 41,
+      "name": "exception_mutation_preserved",
+      "observed": 41,
+      "outcome": "passed"
+    },
+    {
+      "expected": 47599,
+      "name": "timeout_next_PID",
+      "observed": 47599,
+      "outcome": "passed"
+    },
+    {
+      "expected": "CancelledError",
+      "name": "cancel_caller_observation",
+      "observed": "CancelledError",
+      "outcome": "passed"
+    },
+    {
+      "expected": 1,
+      "name": "cancel_notification_count",
+      "observed": 1,
+      "outcome": "passed"
+    },
+    {
+      "expected": 0,
+      "name": "cancel_no_terminal_response",
+      "observed": 0,
+      "outcome": "passed"
+    },
+    {
+      "expected": "completed",
+      "name": "cancel_cleanup_status",
+      "observed": "completed",
+      "outcome": "passed"
+    },
+    {
+      "expected": "alive",
+      "name": "cancel_cleanup_state",
+      "observed": "alive",
+      "outcome": "passed"
+    },
+    {
+      "expected": "62a6a951616f3aac910cb208e2c1008eec4545288a2400aba51171490fef34c5",
+      "name": "cancel_cleanup_same_namespace",
+      "observed": "62a6a951616f3aac910cb208e2c1008eec4545288a2400aba51171490fef34c5",
+      "outcome": "passed"
+    },
+    {
+      "expected": 47599,
+      "name": "cancel_cleanup_same_PID",
+      "observed": 47599,
+      "outcome": "passed"
+    },
+    {
+      "expected": true,
+      "name": "cancel_cleanup_completed",
+      "observed": true,
+      "outcome": "passed"
+    },
+    {
+      "expected": "kernel_killed",
+      "name": "force_death_status",
+      "observed": "kernel_killed",
+      "outcome": "passed"
+    },
+    {
+      "expected": "dead",
+      "name": "force_death_state",
+      "observed": "dead",
+      "outcome": "passed"
+    },
+    {
+      "expected": false,
+      "name": "force_death_PID_running",
+      "observed": false,
+      "outcome": "passed"
+    },
+    {
+      "expected": "kernel_killed",
+      "name": "dead_next_status",
+      "observed": "kernel_killed",
+      "outcome": "passed"
+    },
+    {
+      "expected": "dead",
+      "name": "dead_next_state",
+      "observed": "dead",
+      "outcome": "passed"
+    },
+    {
+      "expected": "KernelUnavailable",
+      "name": "dead_next_error",
+      "observed": "KernelUnavailable",
+      "outcome": "passed"
+    },
+    {
+      "expected": 7,
+      "name": "dead_next_count_unchanged",
+      "observed": 7,
+      "outcome": "passed"
+    },
+    {
+      "expected": false,
+      "name": "dead_next_no_execution",
+      "observed": false,
+      "outcome": "passed"
+    },
+    {
+      "expected": 0,
+      "name": "cancel_no_late_terminal_response",
+      "observed": 0,
+      "outcome": "passed"
+    },
+    {
+      "expected": 8,
+      "name": "no_replay_wire_call_count",
+      "observed": 8,
+      "outcome": "passed"
+    },
+    {
+      "expected": true,
+      "name": "stdin_eof_active_runner",
+      "observed": true,
+      "outcome": "passed"
+    },
+    {
+      "expected": true,
+      "name": "stdin_eof_active_child",
+      "observed": true,
+      "outcome": "passed"
+    },
+    {
+      "expected": false,
+      "name": "stdin_eof_caller_no_terminal_result",
+      "observed": false,
+      "outcome": "passed"
+    },
+    {
+      "expected": 0,
+      "name": "eof_server_exit",
+      "observed": 0,
+      "outcome": "passed"
+    },
+    {
+      "expected": false,
+      "name": "eof_managed_runner_stopped",
+      "observed": false,
+      "outcome": "passed"
+    },
+    {
+      "expected": false,
+      "name": "eof_managed_child_stopped",
+      "observed": false,
+      "outcome": "passed"
+    },
+    {
+      "expected": true,
+      "name": "hard_kill_active_runner",
+      "observed": true,
+      "outcome": "passed"
+    },
+    {
+      "expected": true,
+      "name": "hard_kill_active_child",
+      "observed": true,
+      "outcome": "passed"
+    },
+    {
+      "expected": false,
+      "name": "hard_kill_caller_no_terminal_result",
+      "observed": false,
+      "outcome": "passed"
+    },
+    {
+      "expected": -9,
+      "name": "hard_kill_server_exit",
+      "observed": -9,
+      "outcome": "passed"
+    },
+    {
+      "expected": {
+        "pyproject.toml": "7a96c9f421ba07db5e5cfafa650b0de95156ef0b700d147cbc72dd5b9a4a5dfa",
+        "src/amkernel/__init__.py": "359d957cb4993975070cbce470c08010dd3e3bcdef8d2d166398726516f443a8",
+        "src/amkernel/__main__.py": "9089fa5b6964cf0a5cb6fbbbb72e74226b5e3e13359c88fa48b52737882f3c47",
+        "src/amkernel/artifact_store.py": "e9ab9a1e65f4dd42a926f3d58441044a57a339daa1afe6f29e514c737694dfcc",
+        "src/amkernel/cli.py": "636c5543022e843a32f81ddbdb142535737301a6f9d5a7ab4e30eb95401e8cb9",
+        "src/amkernel/distribution.py": "6fb3364d2a40786efeef5574eebe9c6cb3cceaab26f03c51107bdc038250596a",
+        "src/amkernel/output.py": "46fdc7f94f488573138e5c46d173c82f1f4fe432485c98303b5a412b8f45a2fc",
+        "src/amkernel/protocol.py": "a6bbc4e76b2735b569c5ec8b1d7244c5ce9abb44a44679460b45edbf93e5b29f",
+        "src/amkernel/runner.py": "c4467ff3d37f41410d27f439dbd9239076e9334d379c65530d0a6a1c58911638",
+        "src/amkernel/runtime.py": "fd6da51f485af522bba75e360a2525ca37d3d38baaafc67218012041f4f0aaeb",
+        "src/amkernel/server.py": "e7930d9afb2ad46d7932cb1a0faa2017e87118f02136c4ba15566b44becfa299",
+        "src/amkernel/structured_output.py": "7236380175a1c624561eb4c86f2c3fb34392e8729efeb3038d08c74851b0a009",
+        "src/amkernel/supervisor.py": "d518856be642324e2cda99a101ca1f9d3d27d0973b9314221dcba487c589789f",
+        "src/amkernel/workspace.py": "1c5321f8543e43a10fdfc61e7866982d2f43e5689abca2f936f6039aaf1640fd"
+      },
+      "name": "source_hashes_unchanged",
+      "observed": {
+        "pyproject.toml": "7a96c9f421ba07db5e5cfafa650b0de95156ef0b700d147cbc72dd5b9a4a5dfa",
+        "src/amkernel/__init__.py": "359d957cb4993975070cbce470c08010dd3e3bcdef8d2d166398726516f443a8",
+        "src/amkernel/__main__.py": "9089fa5b6964cf0a5cb6fbbbb72e74226b5e3e13359c88fa48b52737882f3c47",
+        "src/amkernel/artifact_store.py": "e9ab9a1e65f4dd42a926f3d58441044a57a339daa1afe6f29e514c737694dfcc",
+        "src/amkernel/cli.py": "636c5543022e843a32f81ddbdb142535737301a6f9d5a7ab4e30eb95401e8cb9",
+        "src/amkernel/distribution.py": "6fb3364d2a40786efeef5574eebe9c6cb3cceaab26f03c51107bdc038250596a",
+        "src/amkernel/output.py": "46fdc7f94f488573138e5c46d173c82f1f4fe432485c98303b5a412b8f45a2fc",
+        "src/amkernel/protocol.py": "a6bbc4e76b2735b569c5ec8b1d7244c5ce9abb44a44679460b45edbf93e5b29f",
+        "src/amkernel/runner.py": "c4467ff3d37f41410d27f439dbd9239076e9334d379c65530d0a6a1c58911638",
+        "src/amkernel/runtime.py": "fd6da51f485af522bba75e360a2525ca37d3d38baaafc67218012041f4f0aaeb",
+        "src/amkernel/server.py": "e7930d9afb2ad46d7932cb1a0faa2017e87118f02136c4ba15566b44becfa299",
+        "src/amkernel/structured_output.py": "7236380175a1c624561eb4c86f2c3fb34392e8729efeb3038d08c74851b0a009",
+        "src/amkernel/supervisor.py": "d518856be642324e2cda99a101ca1f9d3d27d0973b9314221dcba487c589789f",
+        "src/amkernel/workspace.py": "1c5321f8543e43a10fdfc61e7866982d2f43e5689abca2f936f6039aaf1640fd"
+      },
+      "outcome": "passed"
+    }
+  ],
+  "cleanup": [
+    {
+      "connection": "terminal_and_cancel",
+      "groupsAfter": [
+        {
+          "groupSha256": "206e531a146052db2be61fa2623afe037659108c05d16dcf173757bda3718118",
+          "memberCount": 0,
+          "memberStates": [],
+          "runningMemberCount": 0
+        },
+        {
+          "groupSha256": "dae430f87a20554837c127076855fd1748c53d5c11f950ac5df8d4e6b80da942",
+          "memberCount": 0,
+          "memberStates": [],
+          "runningMemberCount": 0
+        }
+      ],
+      "hostActions": [],
+      "serverExitCode": 0,
+      "stderrBytes": 62,
+      "stderrSha256": "c64f46814954bc77b711141c652ba9e3846e1077c378a8d6a5873e9e0b772604",
+      "transportErrors": [],
+      "wire": [
+        {
+          "direction": "client_to_server",
+          "method": "initialize",
+          "requestIdSha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
+        },
+        {
+          "direction": "server_to_client",
+          "kind": "result",
+          "requestIdSha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
+        },
+        {
+          "direction": "client_to_server",
+          "method": "notifications/initialized"
+        },
+        {
+          "direction": "client_to_server",
+          "method": "tools/list",
+          "requestIdSha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35"
+        },
+        {
+          "direction": "server_to_client",
+          "kind": "result",
+          "requestIdSha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35"
+        },
+        {
+          "direction": "client_to_server",
+          "method": "tools/call",
+          "requestIdSha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
+          "title": "normal"
+        },
+        {
+          "direction": "server_to_client",
+          "executionCount": 1,
+          "kernelState": "alive",
+          "kind": "result",
+          "requestIdSha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
+          "status": "completed"
+        },
+        {
+          "direction": "client_to_server",
+          "method": "tools/call",
+          "requestIdSha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
+          "title": "ordinary_exception"
+        },
+        {
+          "direction": "server_to_client",
+          "executionCount": 2,
+          "kernelState": "alive",
+          "kind": "result",
+          "requestIdSha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
+          "status": "failed"
+        },
+        {
+          "direction": "client_to_server",
+          "method": "tools/call",
+          "requestIdSha256": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d",
+          "title": "cooperative_timeout"
+        },
+        {
+          "direction": "server_to_client",
+          "executionCount": 3,
+          "kernelState": "alive",
+          "kind": "result",
+          "requestIdSha256": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d",
+          "status": "timed_out"
+        },
+        {
+          "direction": "client_to_server",
+          "method": "tools/call",
+          "requestIdSha256": "e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683",
+          "title": "after_timeout"
+        },
+        {
+          "direction": "server_to_client",
+          "executionCount": 4,
+          "kernelState": "alive",
+          "kind": "result",
+          "requestIdSha256": "e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683",
+          "status": "completed"
+        },
+        {
+          "direction": "client_to_server",
+          "method": "tools/call",
+          "requestIdSha256": "7902699be42c8a8e46fbbb4501726517e86b22c56a189f7625a6da49081b2451",
+          "title": "mcp_cancel"
+        },
+        {
+          "cancelledRequestIdSha256": "7902699be42c8a8e46fbbb4501726517e86b22c56a189f7625a6da49081b2451",
+          "direction": "client_to_server",
+          "method": "notifications/cancelled",
+          "reason": "caller cancelled"
+        },
+        {
+          "direction": "client_to_server",
+          "method": "tools/call",
+          "requestIdSha256": "2c624232cdd221771294dfbb310aca000a0df6ac8b66b696d90ef06fdefb64a3",
+          "title": "ordinary_cleanup_after_cancel"
+        },
+        {
+          "direction": "server_to_client",
+          "executionCount": 6,
+          "kernelState": "alive",
+          "kind": "result",
+          "requestIdSha256": "2c624232cdd221771294dfbb310aca000a0df6ac8b66b696d90ef06fdefb64a3",
+          "status": "completed"
+        },
+        {
+          "direction": "client_to_server",
+          "method": "tools/call",
+          "requestIdSha256": "19581e27de7ced00ff1ce50b2047e7a567c76b1cbaebabe5ef03f7c3017bb5b7",
+          "title": "uncooperative_force_death"
+        },
+        {
+          "direction": "server_to_client",
+          "executionCount": 7,
+          "kernelState": "dead",
+          "kind": "result",
+          "requestIdSha256": "19581e27de7ced00ff1ce50b2047e7a567c76b1cbaebabe5ef03f7c3017bb5b7",
+          "status": "kernel_killed"
+        },
+        {
+          "direction": "client_to_server",
+          "method": "tools/call",
+          "requestIdSha256": "4a44dc15364204a80fe80e9039455cc1608281820fe2b24f1e5233ade6af1dd5",
+          "title": "after_dead_no_reset"
+        },
+        {
+          "direction": "server_to_client",
+          "executionCount": 7,
+          "kernelState": "dead",
+          "kind": "result",
+          "requestIdSha256": "4a44dc15364204a80fe80e9039455cc1608281820fe2b24f1e5233ade6af1dd5",
+          "status": "kernel_killed"
+        }
+      ]
+    },
+    {
+      "connection": "stdin_eof",
+      "groupsAfter": [
+        {
+          "groupSha256": "45481cd7596bc2b14b03bfbeb1c79f83f2fd24a3bf765efc110a385217cc3651",
+          "memberCount": 0,
+          "memberStates": [],
+          "runningMemberCount": 0
+        },
+        {
+          "groupSha256": "3d782b0806a1e80f546ac8b8107a63057ee8ea663a362d46e8842a6a9b3baae3",
+          "memberCount": 0,
+          "memberStates": [],
+          "runningMemberCount": 0
+        }
+      ],
+      "hostActions": [],
+      "serverExitCode": 0,
+      "stderrBytes": 66,
+      "stderrSha256": "05338c3397e6076c9437746ee2fbe954153cc55dbace4d4bac5f9675068c3313",
+      "transportErrors": [],
+      "wire": [
+        {
+          "direction": "client_to_server",
+          "method": "initialize",
+          "requestIdSha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
+        },
+        {
+          "direction": "server_to_client",
+          "kind": "result",
+          "requestIdSha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
+        },
+        {
+          "direction": "client_to_server",
+          "method": "notifications/initialized"
+        },
+        {
+          "direction": "client_to_server",
+          "method": "tools/list",
+          "requestIdSha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35"
+        },
+        {
+          "direction": "server_to_client",
+          "kind": "result",
+          "requestIdSha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35"
+        },
+        {
+          "direction": "client_to_server",
+          "method": "tools/call",
+          "requestIdSha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
+          "title": "stdin_eof_initial"
+        },
+        {
+          "direction": "server_to_client",
+          "executionCount": 1,
+          "kernelState": "alive",
+          "kind": "result",
+          "requestIdSha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
+          "status": "completed"
+        },
+        {
+          "direction": "client_to_server",
+          "method": "tools/call",
+          "requestIdSha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
+          "title": "stdin_eof_active"
+        },
+        {
+          "direction": "server_to_client",
+          "errorCode": -32000,
+          "kind": "error",
+          "requestIdSha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a"
+        }
+      ]
+    },
+    {
+      "connection": "hard_kill",
+      "groupsAfter": [
+        {
+          "groupSha256": "e36870cdbfe04a337180de8b4d66fb35ce4483546132762fb57ae2202331bcbd",
+          "memberCount": 0,
+          "memberStates": [],
+          "runningMemberCount": 0
+        },
+        {
+          "groupSha256": "94ac46c0a9fec88aa866dbf43d8ae736c325af4200ac68db0b36272d07cedd86",
+          "memberCount": 0,
+          "memberStates": [],
+          "runningMemberCount": 0
+        }
+      ],
+      "hostActions": [
+        "host_SIGKILL_owned_group_94ac46c0a9fec88aa866dbf43d8ae736c325af4200ac68db0b36272d07cedd86"
+      ],
+      "serverExitCode": -9,
+      "stderrBytes": 0,
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transportErrors": [],
+      "wire": [
+        {
+          "direction": "client_to_server",
+          "method": "initialize",
+          "requestIdSha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
+        },
+        {
+          "direction": "server_to_client",
+          "kind": "result",
+          "requestIdSha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
+        },
+        {
+          "direction": "client_to_server",
+          "method": "notifications/initialized"
+        },
+        {
+          "direction": "client_to_server",
+          "method": "tools/list",
+          "requestIdSha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35"
+        },
+        {
+          "direction": "server_to_client",
+          "kind": "result",
+          "requestIdSha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35"
+        },
+        {
+          "direction": "client_to_server",
+          "method": "tools/call",
+          "requestIdSha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
+          "title": "hard_kill_initial"
+        },
+        {
+          "direction": "server_to_client",
+          "executionCount": 1,
+          "kernelState": "alive",
+          "kind": "result",
+          "requestIdSha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce",
+          "status": "completed"
+        },
+        {
+          "direction": "client_to_server",
+          "method": "tools/call",
+          "requestIdSha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a",
+          "title": "hard_kill_active"
+        }
+      ]
+    }
+  ],
+  "expectedCommit": "4086c29f89bd8abfb96155fb1ff296e543410093",
+  "failures": [],
+  "launcherIdentity": {
+    "amkernelDistributionMetadataVersion": "0.1.2",
+    "amkernelImportPath": "/Users/qunmi/Documents/FSQ_LAB/amkernel/src/amkernel/__init__.py",
+    "candidatePython": "/Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python",
+    "executable": "/Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python",
+    "mcpDistributionVersion": "2.3.0",
+    "metadataMismatch": "source pyproject 0.1.3; installed distribution metadata 0.1.2; identity uses paths and SHA-256, not metadata version",
+    "pyprojectDeclaredVersion": "0.1.3"
+  },
+  "limitations": [
+    "This is not a real-device or external-session cleanup validation.",
+    "A cancelled/lost request without PythonExecResult has unknown terminal status and kernelState.",
+    "Hard server kill does not prove framework cleanup or finally execution; host-owned cleanup is separate."
+  ],
+  "mcpStartup": {
+    "protocolVersion": "2025-11-25",
+    "serverInfo": {
+      "description": "Persistent Python execution for agentic automation.",
+      "icons": null,
+      "name": "amkernel",
+      "title": "AMKernel",
+      "version": "0.1.2",
+      "websiteUrl": null
+    },
+    "toolNames": [
+      "python_exec"
+    ]
+  },
+  "observedCommit": "4086c29f89bd8abfb96155fb1ff296e543410093",
+  "probe": "actual candidate stdio MCP lifecycle; official MCP SDK ClientSession",
+  "scenarios": [
+    {
+      "independentRunner": {
+        "killZero": "exists",
+        "pidSha256": "dae430f87a20554837c127076855fd1748c53d5c11f950ac5df8d4e6b80da942",
+        "psState": "Ss",
+        "running": true
+      },
+      "name": "normal",
+      "response": {
+        "durationMs": 1,
+        "error": null,
+        "executionCount": 1,
+        "isError": false,
+        "kernelState": "alive",
+        "result": {
+          "namespaceSha256": "62a6a951616f3aac910cb208e2c1008eec4545288a2400aba51171490fef34c5",
+          "pgid": {
+            "sha256": "dae430f87a20554837c127076855fd1748c53d5c11f950ac5df8d4e6b80da942"
+          },
+          "pid": {
+            "sha256": "dae430f87a20554837c127076855fd1748c53d5c11f950ac5df8d4e6b80da942"
+          },
+          "runtimeExecutable": "/Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python",
+          "sourceHashes": {
+            "src/amkernel/__init__.py": "359d957cb4993975070cbce470c08010dd3e3bcdef8d2d166398726516f443a8",
+            "src/amkernel/__main__.py": "9089fa5b6964cf0a5cb6fbbbb72e74226b5e3e13359c88fa48b52737882f3c47",
+            "src/amkernel/artifact_store.py": "e9ab9a1e65f4dd42a926f3d58441044a57a339daa1afe6f29e514c737694dfcc",
+            "src/amkernel/cli.py": "636c5543022e843a32f81ddbdb142535737301a6f9d5a7ab4e30eb95401e8cb9",
+            "src/amkernel/distribution.py": "6fb3364d2a40786efeef5574eebe9c6cb3cceaab26f03c51107bdc038250596a",
+            "src/amkernel/output.py": "46fdc7f94f488573138e5c46d173c82f1f4fe432485c98303b5a412b8f45a2fc",
+            "src/amkernel/protocol.py": "a6bbc4e76b2735b569c5ec8b1d7244c5ce9abb44a44679460b45edbf93e5b29f",
+            "src/amkernel/runner.py": "c4467ff3d37f41410d27f439dbd9239076e9334d379c65530d0a6a1c58911638",
+            "src/amkernel/runtime.py": "fd6da51f485af522bba75e360a2525ca37d3d38baaafc67218012041f4f0aaeb",
+            "src/amkernel/server.py": "e7930d9afb2ad46d7932cb1a0faa2017e87118f02136c4ba15566b44becfa299",
+            "src/amkernel/structured_output.py": "7236380175a1c624561eb4c86f2c3fb34392e8729efeb3038d08c74851b0a009",
+            "src/amkernel/supervisor.py": "d518856be642324e2cda99a101ca1f9d3d27d0973b9314221dcba487c589789f",
+            "src/amkernel/workspace.py": "1c5321f8543e43a10fdfc61e7866982d2f43e5689abca2f936f6039aaf1640fd"
+          },
+          "sourceImportPath": "/Users/qunmi/Documents/FSQ_LAB/amkernel/src/amkernel/__init__.py"
+        },
+        "status": "completed",
+        "stderr": "",
+        "stdout": ""
+      }
+    },
+    {
+      "independentRunner": {
+        "killZero": "exists",
+        "pidSha256": "dae430f87a20554837c127076855fd1748c53d5c11f950ac5df8d4e6b80da942",
+        "psState": "Ss",
+        "running": true
+      },
+      "name": "ordinary_python_exception",
+      "response": {
+        "durationMs": 0,
+        "error": {
+          "message": "joint_probe_ordinary_exception",
+          "type": "ValueError"
+        },
+        "executionCount": 2,
+        "isError": false,
+        "kernelState": "alive",
+        "result": null,
+        "status": "failed",
+        "stderr": "",
+        "stdout": ""
+      }
+    },
+    {
+      "activeBarrier": {
+        "namespaceSha256": "62a6a951616f3aac910cb208e2c1008eec4545288a2400aba51171490fef34c5",
+        "pgid": {
+          "sha256": "dae430f87a20554837c127076855fd1748c53d5c11f950ac5df8d4e6b80da942"
+        },
+        "pid": {
+          "sha256": "dae430f87a20554837c127076855fd1748c53d5c11f950ac5df8d4e6b80da942"
+        }
+      },
+      "finallyMarkerObserved": true,
+      "independentRunner": {
+        "killZero": "exists",
+        "pidSha256": "dae430f87a20554837c127076855fd1748c53d5c11f950ac5df8d4e6b80da942",
+        "psState": "Ss",
+        "running": true
+      },
+      "name": "cooperative_cell_timeout",
+      "response": {
+        "durationMs": 704,
+        "error": {
+          "message": "cell interrupted by deadline",
+          "type": "TimeoutError"
+        },
+        "executionCount": 3,
+        "isError": false,
+        "kernelState": "alive",
+        "result": null,
+        "status": "timed_out",
+        "stderr": "",
+        "stdout": ""
+      }
+    },
+    {
+      "name": "bounded_call_after_timeout",
+      "response": {
+        "durationMs": 0,
+        "error": null,
+        "executionCount": 4,
+        "isError": false,
+        "kernelState": "alive",
+        "result": {
+          "namespaceSha256": "62a6a951616f3aac910cb208e2c1008eec4545288a2400aba51171490fef34c5",
+          "ordinaryMutation": 41,
+          "pid": {
+            "sha256": "dae430f87a20554837c127076855fd1748c53d5c11f950ac5df8d4e6b80da942"
+          }
+        },
+        "status": "completed",
+        "stderr": "",
+        "stdout": ""
+      }
+    },
+    {
+      "activeBarrier": {
+        "namespaceSha256": "62a6a951616f3aac910cb208e2c1008eec4545288a2400aba51171490fef34c5",
+        "pgid": {
+          "sha256": "dae430f87a20554837c127076855fd1748c53d5c11f950ac5df8d4e6b80da942"
+        },
+        "pid": {
+          "sha256": "dae430f87a20554837c127076855fd1748c53d5c11f950ac5df8d4e6b80da942"
+        }
+      },
+      "callerObservation": "CancelledError",
+      "cancelNotification": [
+        {
+          "cancelledRequestIdSha256": "7902699be42c8a8e46fbbb4501726517e86b22c56a189f7625a6da49081b2451",
+          "direction": "client_to_server",
+          "method": "notifications/cancelled",
+          "reason": "caller cancelled"
+        }
+      ],
+      "finallyMarkerObservedAtCleanup": true,
+      "independentRunnerAfterCleanup": {
+        "killZero": "exists",
+        "pidSha256": "dae430f87a20554837c127076855fd1748c53d5c11f950ac5df8d4e6b80da942",
+        "psState": "Ss",
+        "running": true
+      },
+      "independentRunnerWhileActive": {
+        "killZero": "exists",
+        "pidSha256": "dae430f87a20554837c127076855fd1748c53d5c11f950ac5df8d4e6b80da942",
+        "psState": "Ss",
+        "running": true
+      },
+      "kernelState": "unknown",
+      "name": "mcp_request_cancel",
+      "subsequentOrdinaryCleanupResponse": {
+        "durationMs": 0,
+        "error": null,
+        "executionCount": 6,
+        "isError": false,
+        "kernelState": "alive",
+        "result": {
+          "cleanupCompleted": true,
+          "namespaceSha256": "62a6a951616f3aac910cb208e2c1008eec4545288a2400aba51171490fef34c5",
+          "ordinaryMutation": 41,
+          "pid": {
+            "sha256": "dae430f87a20554837c127076855fd1748c53d5c11f950ac5df8d4e6b80da942"
+          }
+        },
+        "status": "completed",
+        "stderr": "",
+        "stdout": ""
+      },
+      "terminalStatus": "unknown",
+      "wireTerminalResultsObserved": []
+    },
+    {
+      "activeBarrier": {
+        "namespaceSha256": "62a6a951616f3aac910cb208e2c1008eec4545288a2400aba51171490fef34c5",
+        "pgid": {
+          "sha256": "dae430f87a20554837c127076855fd1748c53d5c11f950ac5df8d4e6b80da942"
+        },
+        "pid": {
+          "sha256": "dae430f87a20554837c127076855fd1748c53d5c11f950ac5df8d4e6b80da942"
+        }
+      },
+      "finallyMarkerObserved": false,
+      "independentRunner": {
+        "killZero": "absent",
+        "pidSha256": "dae430f87a20554837c127076855fd1748c53d5c11f950ac5df8d4e6b80da942",
+        "psState": null,
+        "running": false
+      },
+      "managedGroup": {
+        "groupSha256": "dae430f87a20554837c127076855fd1748c53d5c11f950ac5df8d4e6b80da942",
+        "memberCount": 0,
+        "memberStates": [],
+        "runningMemberCount": 0
+      },
+      "name": "uncooperative_execution_force_death",
+      "response": {
+        "durationMs": 2721,
+        "error": {
+          "message": "kernel infrastructure failed",
+          "type": "KernelKilled"
+        },
+        "executionCount": 7,
+        "isError": false,
+        "kernelState": "dead",
+        "result": null,
+        "status": "kernel_killed",
+        "stderr": "",
+        "stdout": ""
+      }
+    },
+    {
+      "independentOriginalRunner": {
+        "killZero": "absent",
+        "pidSha256": "dae430f87a20554837c127076855fd1748c53d5c11f950ac5df8d4e6b80da942",
+        "psState": null,
+        "running": false
+      },
+      "name": "next_call_no_silent_recreate",
+      "response": {
+        "durationMs": 0,
+        "error": {
+          "message": "kernel is dead; reset=true is required for recovery",
+          "type": "KernelUnavailable"
+        },
+        "executionCount": 7,
+        "isError": false,
+        "kernelState": "dead",
+        "result": null,
+        "status": "kernel_killed",
+        "stderr": "",
+        "stdout": ""
+      },
+      "unexpectedCodeSideEffectObserved": false
+    },
+    {
+      "activeBarrier": {
+        "childPid": {
+          "sha256": "3f8ed4f1c50b3c1e753fc2e59bfb1706532485f09e771ad9617e409258900544"
+        },
+        "namespaceSha256": "a0f068a6318972342bbaac305477ec59c0cf899da78ac231e0969152b04ce578",
+        "pgid": {
+          "sha256": "3d782b0806a1e80f546ac8b8107a63057ee8ea663a362d46e8842a6a9b3baae3"
+        },
+        "pid": {
+          "sha256": "3d782b0806a1e80f546ac8b8107a63057ee8ea663a362d46e8842a6a9b3baae3"
+        }
+      },
+      "callerObservation": {
+        "kind": "MCPError",
+        "message": "Connection closed"
+      },
+      "externalSessionCleanup": "not attempted; no external session created",
+      "finallyMarkerObservedBeforeHostCleanup": false,
+      "frameworkCleanupClaim": "managed process stop observed only",
+      "independentAfterServerExitBeforeHostCleanup": {
+        "managedChild": {
+          "killZero": "absent",
+          "pidSha256": "3f8ed4f1c50b3c1e753fc2e59bfb1706532485f09e771ad9617e409258900544",
+          "psState": null,
+          "running": false
+        },
+        "runner": {
+          "killZero": "absent",
+          "pidSha256": "3d782b0806a1e80f546ac8b8107a63057ee8ea663a362d46e8842a6a9b3baae3",
+          "psState": null,
+          "running": false
+        }
+      },
+      "independentBefore": {
+        "managedChild": {
+          "killZero": "exists",
+          "pidSha256": "3f8ed4f1c50b3c1e753fc2e59bfb1706532485f09e771ad9617e409258900544",
+          "psState": "S",
+          "running": true
+        },
+        "runner": {
+          "killZero": "exists",
+          "pidSha256": "3d782b0806a1e80f546ac8b8107a63057ee8ea663a362d46e8842a6a9b3baae3",
+          "psState": "Ss",
+          "running": true
+        }
+      },
+      "initialResponse": {
+        "durationMs": 1,
+        "error": null,
+        "executionCount": 1,
+        "isError": false,
+        "kernelState": "alive",
+        "result": {
+          "namespaceSha256": "a0f068a6318972342bbaac305477ec59c0cf899da78ac231e0969152b04ce578",
+          "pgid": {
+            "sha256": "3d782b0806a1e80f546ac8b8107a63057ee8ea663a362d46e8842a6a9b3baae3"
+          },
+          "pid": {
+            "sha256": "3d782b0806a1e80f546ac8b8107a63057ee8ea663a362d46e8842a6a9b3baae3"
+          },
+          "runtimeExecutable": "/Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python",
+          "sourceHashes": {
+            "src/amkernel/__init__.py": "359d957cb4993975070cbce470c08010dd3e3bcdef8d2d166398726516f443a8",
+            "src/amkernel/__main__.py": "9089fa5b6964cf0a5cb6fbbbb72e74226b5e3e13359c88fa48b52737882f3c47",
+            "src/amkernel/artifact_store.py": "e9ab9a1e65f4dd42a926f3d58441044a57a339daa1afe6f29e514c737694dfcc",
+            "src/amkernel/cli.py": "636c5543022e843a32f81ddbdb142535737301a6f9d5a7ab4e30eb95401e8cb9",
+            "src/amkernel/distribution.py": "6fb3364d2a40786efeef5574eebe9c6cb3cceaab26f03c51107bdc038250596a",
+            "src/amkernel/output.py": "46fdc7f94f488573138e5c46d173c82f1f4fe432485c98303b5a412b8f45a2fc",
+            "src/amkernel/protocol.py": "a6bbc4e76b2735b569c5ec8b1d7244c5ce9abb44a44679460b45edbf93e5b29f",
+            "src/amkernel/runner.py": "c4467ff3d37f41410d27f439dbd9239076e9334d379c65530d0a6a1c58911638",
+            "src/amkernel/runtime.py": "fd6da51f485af522bba75e360a2525ca37d3d38baaafc67218012041f4f0aaeb",
+            "src/amkernel/server.py": "e7930d9afb2ad46d7932cb1a0faa2017e87118f02136c4ba15566b44becfa299",
+            "src/amkernel/structured_output.py": "7236380175a1c624561eb4c86f2c3fb34392e8729efeb3038d08c74851b0a009",
+            "src/amkernel/supervisor.py": "d518856be642324e2cda99a101ca1f9d3d27d0973b9314221dcba487c589789f",
+            "src/amkernel/workspace.py": "1c5321f8543e43a10fdfc61e7866982d2f43e5689abca2f936f6039aaf1640fd"
+          },
+          "sourceImportPath": "/Users/qunmi/Documents/FSQ_LAB/amkernel/src/amkernel/__init__.py"
+        },
+        "status": "completed",
+        "stderr": "",
+        "stdout": ""
+      },
+      "kernelState": "unknown",
+      "managedGroupBeforeHostCleanup": {
+        "groupSha256": "3d782b0806a1e80f546ac8b8107a63057ee8ea663a362d46e8842a6a9b3baae3",
+        "memberCount": 0,
+        "memberStates": [],
+        "runningMemberCount": 0
+      },
+      "name": "stdin_eof_during_active_execution",
+      "serverExitCode": 0,
+      "terminalStatus": "unknown"
+    },
+    {
+      "activeBarrier": {
+        "childPid": {
+          "sha256": "77b8c5f03e6bb7e211f8b7d2719269adee15d75aee0f6771810d5887d172b9c0"
+        },
+        "namespaceSha256": "83d5de4ab7b4aa49307c2e62a0cccc555cf71ad82c9a338d1c9693f9494e4c67",
+        "pgid": {
+          "sha256": "94ac46c0a9fec88aa866dbf43d8ae736c325af4200ac68db0b36272d07cedd86"
+        },
+        "pid": {
+          "sha256": "94ac46c0a9fec88aa866dbf43d8ae736c325af4200ac68db0b36272d07cedd86"
+        }
+      },
+      "callerObservation": {
+        "kind": "MCPError",
+        "message": "Connection closed"
+      },
+      "externalSessionCleanup": "not attempted; no external session created",
+      "finallyMarkerObservedBeforeHostCleanup": false,
+      "frameworkCleanupClaim": "unknown; hard kill is not cleanup",
+      "hardKillCleanupInference": "No automatic cleanup is inferred, regardless of liveness observations.",
+      "independentAfterServerExitBeforeHostCleanup": {
+        "managedChild": {
+          "killZero": "exists",
+          "pidSha256": "77b8c5f03e6bb7e211f8b7d2719269adee15d75aee0f6771810d5887d172b9c0",
+          "psState": "S",
+          "running": true
+        },
+        "runner": {
+          "killZero": "exists",
+          "pidSha256": "94ac46c0a9fec88aa866dbf43d8ae736c325af4200ac68db0b36272d07cedd86",
+          "psState": "Ss",
+          "running": true
+        }
+      },
+      "independentBefore": {
+        "managedChild": {
+          "killZero": "exists",
+          "pidSha256": "77b8c5f03e6bb7e211f8b7d2719269adee15d75aee0f6771810d5887d172b9c0",
+          "psState": "S",
+          "running": true
+        },
+        "runner": {
+          "killZero": "exists",
+          "pidSha256": "94ac46c0a9fec88aa866dbf43d8ae736c325af4200ac68db0b36272d07cedd86",
+          "psState": "Ss",
+          "running": true
+        }
+      },
+      "initialResponse": {
+        "durationMs": 1,
+        "error": null,
+        "executionCount": 1,
+        "isError": false,
+        "kernelState": "alive",
+        "result": {
+          "namespaceSha256": "83d5de4ab7b4aa49307c2e62a0cccc555cf71ad82c9a338d1c9693f9494e4c67",
+          "pgid": {
+            "sha256": "94ac46c0a9fec88aa866dbf43d8ae736c325af4200ac68db0b36272d07cedd86"
+          },
+          "pid": {
+            "sha256": "94ac46c0a9fec88aa866dbf43d8ae736c325af4200ac68db0b36272d07cedd86"
+          },
+          "runtimeExecutable": "/Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python",
+          "sourceHashes": {
+            "src/amkernel/__init__.py": "359d957cb4993975070cbce470c08010dd3e3bcdef8d2d166398726516f443a8",
+            "src/amkernel/__main__.py": "9089fa5b6964cf0a5cb6fbbbb72e74226b5e3e13359c88fa48b52737882f3c47",
+            "src/amkernel/artifact_store.py": "e9ab9a1e65f4dd42a926f3d58441044a57a339daa1afe6f29e514c737694dfcc",
+            "src/amkernel/cli.py": "636c5543022e843a32f81ddbdb142535737301a6f9d5a7ab4e30eb95401e8cb9",
+            "src/amkernel/distribution.py": "6fb3364d2a40786efeef5574eebe9c6cb3cceaab26f03c51107bdc038250596a",
+            "src/amkernel/output.py": "46fdc7f94f488573138e5c46d173c82f1f4fe432485c98303b5a412b8f45a2fc",
+            "src/amkernel/protocol.py": "a6bbc4e76b2735b569c5ec8b1d7244c5ce9abb44a44679460b45edbf93e5b29f",
+            "src/amkernel/runner.py": "c4467ff3d37f41410d27f439dbd9239076e9334d379c65530d0a6a1c58911638",
+            "src/amkernel/runtime.py": "fd6da51f485af522bba75e360a2525ca37d3d38baaafc67218012041f4f0aaeb",
+            "src/amkernel/server.py": "e7930d9afb2ad46d7932cb1a0faa2017e87118f02136c4ba15566b44becfa299",
+            "src/amkernel/structured_output.py": "7236380175a1c624561eb4c86f2c3fb34392e8729efeb3038d08c74851b0a009",
+            "src/amkernel/supervisor.py": "d518856be642324e2cda99a101ca1f9d3d27d0973b9314221dcba487c589789f",
+            "src/amkernel/workspace.py": "1c5321f8543e43a10fdfc61e7866982d2f43e5689abca2f936f6039aaf1640fd"
+          },
+          "sourceImportPath": "/Users/qunmi/Documents/FSQ_LAB/amkernel/src/amkernel/__init__.py"
+        },
+        "status": "completed",
+        "stderr": "",
+        "stdout": ""
+      },
+      "kernelState": "unknown",
+      "managedGroupBeforeHostCleanup": {
+        "groupSha256": "94ac46c0a9fec88aa866dbf43d8ae736c325af4200ac68db0b36272d07cedd86",
+        "memberCount": 2,
+        "memberStates": [
+          "S",
+          "Ss"
+        ],
+        "runningMemberCount": 2
+      },
+      "name": "hard_kill_during_active_execution",
+      "serverExitCode": -9,
+      "terminalStatus": "unknown"
+    }
+  ],
+  "scope": "standalone non-task local process probe; no UI/device/session/Appium operations",
+  "sourceAfter": {
+    "pyproject.toml": "7a96c9f421ba07db5e5cfafa650b0de95156ef0b700d147cbc72dd5b9a4a5dfa",
+    "src/amkernel/__init__.py": "359d957cb4993975070cbce470c08010dd3e3bcdef8d2d166398726516f443a8",
+    "src/amkernel/__main__.py": "9089fa5b6964cf0a5cb6fbbbb72e74226b5e3e13359c88fa48b52737882f3c47",
+    "src/amkernel/artifact_store.py": "e9ab9a1e65f4dd42a926f3d58441044a57a339daa1afe6f29e514c737694dfcc",
+    "src/amkernel/cli.py": "636c5543022e843a32f81ddbdb142535737301a6f9d5a7ab4e30eb95401e8cb9",
+    "src/amkernel/distribution.py": "6fb3364d2a40786efeef5574eebe9c6cb3cceaab26f03c51107bdc038250596a",
+    "src/amkernel/output.py": "46fdc7f94f488573138e5c46d173c82f1f4fe432485c98303b5a412b8f45a2fc",
+    "src/amkernel/protocol.py": "a6bbc4e76b2735b569c5ec8b1d7244c5ce9abb44a44679460b45edbf93e5b29f",
+    "src/amkernel/runner.py": "c4467ff3d37f41410d27f439dbd9239076e9334d379c65530d0a6a1c58911638",
+    "src/amkernel/runtime.py": "fd6da51f485af522bba75e360a2525ca37d3d38baaafc67218012041f4f0aaeb",
+    "src/amkernel/server.py": "e7930d9afb2ad46d7932cb1a0faa2017e87118f02136c4ba15566b44becfa299",
+    "src/amkernel/structured_output.py": "7236380175a1c624561eb4c86f2c3fb34392e8729efeb3038d08c74851b0a009",
+    "src/amkernel/supervisor.py": "d518856be642324e2cda99a101ca1f9d3d27d0973b9314221dcba487c589789f",
+    "src/amkernel/workspace.py": "1c5321f8543e43a10fdfc61e7866982d2f43e5689abca2f936f6039aaf1640fd"
+  },
+  "sourceBefore": {
+    "pyproject.toml": "7a96c9f421ba07db5e5cfafa650b0de95156ef0b700d147cbc72dd5b9a4a5dfa",
+    "src/amkernel/__init__.py": "359d957cb4993975070cbce470c08010dd3e3bcdef8d2d166398726516f443a8",
+    "src/amkernel/__main__.py": "9089fa5b6964cf0a5cb6fbbbb72e74226b5e3e13359c88fa48b52737882f3c47",
+    "src/amkernel/artifact_store.py": "e9ab9a1e65f4dd42a926f3d58441044a57a339daa1afe6f29e514c737694dfcc",
+    "src/amkernel/cli.py": "636c5543022e843a32f81ddbdb142535737301a6f9d5a7ab4e30eb95401e8cb9",
+    "src/amkernel/distribution.py": "6fb3364d2a40786efeef5574eebe9c6cb3cceaab26f03c51107bdc038250596a",
+    "src/amkernel/output.py": "46fdc7f94f488573138e5c46d173c82f1f4fe432485c98303b5a412b8f45a2fc",
+    "src/amkernel/protocol.py": "a6bbc4e76b2735b569c5ec8b1d7244c5ce9abb44a44679460b45edbf93e5b29f",
+    "src/amkernel/runner.py": "c4467ff3d37f41410d27f439dbd9239076e9334d379c65530d0a6a1c58911638",
+    "src/amkernel/runtime.py": "fd6da51f485af522bba75e360a2525ca37d3d38baaafc67218012041f4f0aaeb",
+    "src/amkernel/server.py": "e7930d9afb2ad46d7932cb1a0faa2017e87118f02136c4ba15566b44becfa299",
+    "src/amkernel/structured_output.py": "7236380175a1c624561eb4c86f2c3fb34392e8729efeb3038d08c74851b0a009",
+    "src/amkernel/supervisor.py": "d518856be642324e2cda99a101ca1f9d3d27d0973b9314221dcba487c589789f",
+    "src/amkernel/workspace.py": "1c5321f8543e43a10fdfc61e7866982d2f43e5689abca2f936f6039aaf1640fd"
+  },
+  "summary": {
+    "checksFailed": 0,
+    "checksPassed": 48,
+    "failureCount": 0,
+    "scenarioRecords": 9,
+    "terminalClassificationUnknownByContract": [
+      "mcp_request_cancel",
+      "stdin_eof_during_active_execution",
+      "hard_kill_during_active_execution"
+    ],
+    "validSourceIdentity": true
+  }
+}

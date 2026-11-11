@@ -1,0 +1,40 @@
+{
+  "command": [
+    "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/bin/python",
+    "-B",
+    "-m",
+    "fsq_androidworld_eval.fsq_manifest",
+    "prepare",
+    "--project",
+    "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval",
+    "--evaluator-site",
+    "/Users/qunmi/.local/share/fsq-androidworld-eval/fsq-native-gpt61-corrected-20261110T043031Z/evaluator-site",
+    "--fsq-source",
+    "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/../FSQ",
+    "--fsq-python",
+    "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/../FSQ/.venv/bin/python",
+    "--settings-path",
+    "/Users/qunmi/.local/share/fsq-androidworld-eval/fsq-native-gpt61-corrected-20261110T043031Z/workspace-template/.fsq/config/config.android.yaml",
+    "--output",
+    "evidence/fsq-native-gpt61-corrected-20261110T043031Z/candidate-manifest.json",
+    "--adb-path",
+    "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+    "--campaign-id",
+    "fsq-native-gpt61-corrected-20261110T043031Z",
+    "--serial",
+    "emulator-5556",
+    "--console-port",
+    "5556",
+    "--grpc-port",
+    "8556"
+  ],
+  "environmentOverrides": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONPATH": "/Users/qunmi/.local/share/fsq-androidworld-eval/fsq-native-gpt61-corrected-20261110T043031Z/evaluator-dependencies"
+  },
+  "exitCode": 0,
+  "stdout": "{\"campaignId\": \"fsq-native-gpt61-corrected-20261110T043031Z\", \"gates\": {\"campaignAuthorization\": \"pending\", \"deviceReadiness\": \"pending\", \"independentReview\": \"pending\", \"nativeProviderModelAuthentication\": \"pending\", \"qualification\": \"pending\", \"smoke\": \"pending\", \"targetResourceOwnership\": \"pending\"}, \"kind\": \"fsq_androidworld\", \"observedNativeProvider\": {\"model\": \"deepseek-flash\", \"path\": \"/Users/qunmi/.fsq/config.yaml\", \"provider\": \"deepseek\", \"status\": \"metadata_observed_not_authenticated\"}, \"status\": \"candidate_pending_independent_review\", \"target\": {\"adbPath\": \"/Users/qunmi/Library/Android/sdk/platform-tools/adb\", \"authenticationStatus\": \"pending\", \"consolePort\": 5556, \"grpcPort\": 8556, \"model\": \"gpt-6.1-sol\", \"provider\": \"github_copilot\", \"readinessStatus\": \"pending\", \"resourceStatus\": \"pending\", \"serial\": \"emulator-5556\"}, \"taskCount\": 116}\n",
+  "stderr": "",
+  "devicesAccessed": false,
+  "modelCalled": false
+}

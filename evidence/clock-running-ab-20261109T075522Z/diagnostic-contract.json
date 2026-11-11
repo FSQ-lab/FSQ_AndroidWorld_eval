@@ -1,0 +1,112 @@
+{
+  "kind": "development_diagnostic_original008_fixed_two_units",
+  "formalScore": null,
+  "owner": "w4:p1",
+  "readOnlyReviewer": "w4:p2",
+  "task": {
+    "complexity": 1,
+    "goal": "Run the stopwatch.",
+    "name": "ClockStopWatchRunning",
+    "params": {
+      "seed": 3429360255
+    },
+    "paramsSha256": "fe15fe1739bca1ce130f387e2e84d273c4a55e5403a5c174c7a2ec65119afaf9"
+  },
+  "frozenTaskRow": {
+    "apps": [
+      "clock"
+    ],
+    "complexity": 1,
+    "difficulty": "easy",
+    "family": "android",
+    "index": 8,
+    "instanceSeed": 3429360255,
+    "maxSteps": 10,
+    "name": "ClockStopWatchRunning",
+    "params": {
+      "seed": 3429360255
+    },
+    "paramsSha256": "fe15fe1739bca1ce130f387e2e84d273c4a55e5403a5c174c7a2ec65119afaf9",
+    "paramsTransport": "json",
+    "tags": [
+      ""
+    ],
+    "timeBudget": {
+      "businessSeconds": 720,
+      "cleanupWindowSeconds": 180,
+      "episodeSeconds": 1330,
+      "forceSeconds": 910,
+      "recoveryWindowSeconds": 120,
+      "terminationGraceSeconds": 10
+    }
+  },
+  "model": "github-copilot/gpt-5.6-sol",
+  "promptTemplateSha256": "463118879bbe14a14abfd987920f115fff29f128db4566dc282e75dc0aa906aa",
+  "actualPromptAuditPerUnit": "actual-agent-prompt.json: original prompt function return, actual goal and full text/hash, dynamic proxy URL permitted",
+  "skillIdentity": {
+    "record": "current-agent-assets-identity.json",
+    "installedAgentAssetsSha256": "0ff33bb8ee50c160d87842ed11324e557f6fe5fc81c8e4fe06230a4d7bf792b8",
+    "matchesOriginal": true
+  },
+  "policy": {
+    "timeBudget": {
+      "businessFormula": "max(600, 120 + 60 * maxSteps)",
+      "cleanupPolicy": "agent_quit_required; harness_recovery_still_halts_campaign",
+      "cleanupWindowSeconds": 180,
+      "episodeOverheadSeconds": 300,
+      "mcpRequestTimeoutMs": 120000,
+      "minimumBusinessSeconds": 600,
+      "recoveryWindowSeconds": 120,
+      "secondsPerStep": 60,
+      "startupSeconds": 120,
+      "terminationGraceSeconds": 10,
+      "version": 1
+    },
+    "stepBudget": {
+      "allocator": "android_world.suite_utils._allocate_step_budget",
+      "runner": "android_world.episode_runner.run_episode",
+      "stepUnit": "one gated Appium UI interaction",
+      "version": 1
+    },
+    "mcpRequestTimeoutMs": 120000,
+    "sessionCreationTimeoutSeconds": 90,
+    "fullTaskRetryLimit": 0,
+    "invalidRetryLimit": 1,
+    "maxAppiumSessionsPerEpisode": 1,
+    "pythonExecCallAdvisory": 30
+  },
+  "units": [
+    {
+      "label": "ClockRunningOriginalP0",
+      "helper": "original frozen APK copy",
+      "capability": "actual target capability omitted; controlled diagnostic-only confirmation/admission exception"
+    },
+    {
+      "label": "ClockRunningPatchedP1",
+      "helper": "production repaired APK pin",
+      "capability": "actual explicit true and returned confirmation"
+    }
+  ],
+  "schedule": "Fixed order, each once, no reward-based re-run; historical008 input remains missing and cannot be backfilled",
+  "originalPredicate": {
+    "module": ".venv/lib/python3.11/site-packages/android_world/task_evals/single/clock.py",
+    "sha256": "b71344f13576f6b848a6c34dc4286962e94ec228e9643a3bdfc11b299265a65c",
+    "function": "_is_stopwatch_running",
+    "lines": "30-40",
+    "condition": "DeskClock activity AND exact Pause content_description AND exact Lap content_description",
+    "trace": "Actual original frame events/locals/return; no replay substituted for official result"
+  },
+  "observation": {
+    "preQuit": "Separate AMKernel official-Client read-only attachment; no new session/quit; page_source timeout up to12s within bounded deadline",
+    "postQuit": "Native read-only pixels then pixels-later at0.6s separation, plus activity/window; timestamped overhead recorded",
+    "originalEvaluator": "One actual get_state only as original scorer invokes it; strong state/forest/ui_elements and predicate argument identity retained"
+  },
+  "causalLimits": [
+    "Two interventions differ in APK/build stack and capability simultaneously; no pure component effect size from two arms",
+    "Agent navigation/query choices and elapsed time may differ",
+    "Diagnostic observations alter timing; no historical timing reproduction",
+    "Old helper per-message sender metadata missing; no retrospective instance/generation assignment",
+    "Original last regular expression never matched Lap; lack in that output is not proof of absent Lap",
+    "Registered historical hash range is2185 campaign files plus1 cached original APK, not whole installation"
+  ]
+}

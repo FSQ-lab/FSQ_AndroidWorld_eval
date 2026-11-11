@@ -1,0 +1,252 @@
+{
+  "scope": "Offline original040 raw prompt/final and recorded answer rejection, actual installed scorer source; preserved r12 source logic is verified but not an exact full frozen harness-tree reconstruction",
+  "originalSourceHashes": {
+    "result.json": {
+      "sha256": "1fb8a4f041ca8a64dd456aa136e6c4f9bb755b49afe9bb66f285994f751c93b2",
+      "bytes": 21706
+    },
+    "normalized-agent-events.json": {
+      "sha256": "f806895f8496c438e28acc05245dfb84e17e78d03e50f99e8f692d63ae266c9e",
+      "bytes": 6661
+    },
+    "raw-private/agent-events.jsonl": {
+      "sha256": "89b1520e03cb6832fe1b8d15a7ef9ecde5356b2da579fae5bdce6d5d202984b6",
+      "bytes": 37160936
+    }
+  },
+  "manifestTask": {
+    "apps": [
+      "joplin"
+    ],
+    "complexity": 1,
+    "difficulty": "medium",
+    "family": "information_retrieval",
+    "index": 40,
+    "instanceSeed": 1631305569,
+    "maxSteps": 10,
+    "name": "NotesTodoItemCount",
+    "params": {
+      "body": "Exercise 3 times a week, read 1 book per month, and save $500.",
+      "folder": "Ideas",
+      "seed": 1631305569,
+      "title": "Meeting Agenda"
+    },
+    "paramsSha256": "3a13b8c96c83d595c5cf072ad7e423072e50d51731faded1c313a83180c9d99e",
+    "paramsTransport": "json",
+    "tags": [
+      "information_retrieval",
+      "math_counting",
+      "parameterized"
+    ],
+    "timeBudget": {
+      "businessSeconds": 720,
+      "cleanupWindowSeconds": 180,
+      "episodeSeconds": 1330,
+      "forceSeconds": 910,
+      "recoveryWindowSeconds": 120,
+      "terminationGraceSeconds": 10
+    }
+  },
+  "originalRecordedIdentity": {
+    "androidWorld": {
+      "packageVersion": "0.1.0",
+      "revision": "55ddaf5edc6f6c25673aed343907d5b9dca66f84"
+    },
+    "harnessRevision": 12,
+    "promptTemplateSha256": "463118879bbe14a14abfd987920f115fff29f128db4566dc282e75dc0aa906aa",
+    "frozenHarnessSourceSha256": "4a4b045f56a9c09ec84bf22e2369c59a3489b8c24e0afe5d22001403920b3f27",
+    "model": "github-copilot/gpt-5.6-sol",
+    "amkernelVersion": "0.1.3"
+  },
+  "installedDistributionVersion": "0.1.0",
+  "installedSources": {
+    ".venv/lib/python3.11/site-packages/android_world/task_evals/information_retrieval/information_retrieval.py": {
+      "sha256": "c222532161018cc3523d9f481f1d8c1ce65c2aa7c44066ff2f51892284c4f75b",
+      "bytes": 5276,
+      "record": "sha256=wiJTIWEBjMNSPZ9IHx2MHOZcKqfEQGb_L1GJIoTE91s",
+      "matchesInstalledDistributionRECORD": true
+    },
+    ".venv/lib/python3.11/site-packages/android_world/task_evals/information_retrieval/information_retrieval_registry.py": {
+      "sha256": "8d147c7a186d698b8fc37f388d1ab9e3dd8befb182a927ecc9af65eb644f9e40",
+      "bytes": 3726,
+      "record": "sha256=jRR8ehhtaYuPw384jRq5492L77GCqSfsya9l62RPnkA",
+      "matchesInstalledDistributionRECORD": true
+    },
+    ".venv/lib/python3.11/site-packages/android_world/task_evals/information_retrieval/proto_utils.py": {
+      "sha256": "9ffabe0879ca094db1fac1b79dea98450f52778bc785b784cbe81e3d4bfc28c1",
+      "bytes": 15411,
+      "record": "sha256=n_q-CHnKCU2x-sG3neqYRQ9Sd4vHhbeEy-gePUv8KME",
+      "matchesInstalledDistributionRECORD": true
+    },
+    ".venv/lib/python3.11/site-packages/android_world/task_evals/information_retrieval/joplin_app_utils.py": {
+      "sha256": "fceb231218c9b59dbdfa35dabb8713e9700338cf3787ae7c69f565d959ba18fe",
+      "bytes": 67356,
+      "record": "sha256=_OsjEhjJtZ29-jXau4cT6XADOM83h658afVl2Vm6GP4",
+      "matchesInstalledDistributionRECORD": true
+    },
+    ".venv/lib/python3.11/site-packages/android_world/task_evals/task_eval.py": {
+      "sha256": "096d6f4e0a58343c472e58d68dc4effc4589976bc3c2a8853e745c9b7b3cbb96",
+      "bytes": 6149,
+      "record": "sha256=CW1vTgpYNDxHLljWjcTv_EWJl2vDwqiFPnRcm3s8u5Y",
+      "matchesInstalledDistributionRECORD": true
+    },
+    ".venv/lib/python3.11/site-packages/android_world/env/interface.py": {
+      "sha256": "2fcc432bcba742ac5d9d360de7b418eb9d23078cea2b856fc4ce1eff03bd79a2",
+      "bytes": 11943,
+      "record": "sha256=L8xDK8unQqxdnTYN57QY650jB4zqK4VvxM4e_wO9eaI",
+      "matchesInstalledDistributionRECORD": true
+    },
+    ".venv/lib/python3.11/site-packages/android_world/task_evals/information_retrieval/proto/tasks.textproto": {
+      "sha256": "953ccec9987c4bd3a23178f13c77b28f315ce66f3dd57cbdbdaa1497a83403d0",
+      "bytes": 117592,
+      "record": "sha256=lTzOyZh8S9OiMXjxPHeyjzFc5m891Xy9vaoUl6g0A9A",
+      "matchesInstalledDistributionRECORD": true
+    }
+  },
+  "dynamicIdentity": {
+    "className": "NotesTodoItemCount",
+    "classModule": "abc",
+    "mro": [
+      "abc.NotesTodoItemCount",
+      "android_world.task_evals.information_retrieval.information_retrieval.InformationRetrieval",
+      "android_world.task_evals.task_eval.TaskEval",
+      "abc.ABC",
+      "builtins.object"
+    ],
+    "scorerQualname": "InformationRetrieval.is_successful",
+    "scorerModule": "android_world.task_evals.information_retrieval.information_retrieval",
+    "scorerStartLine": 109,
+    "taskTemplateName": "NotesTodoItemCount",
+    "templateNotesCount": 3,
+    "constructorInitialized": false
+  },
+  "answerPath": {
+    "rawUserPromptLines": [
+      8,
+      9
+    ],
+    "rawFinalLine": 2674,
+    "originalFinal": "{\"evidence\":\"Ideas folder showed 3 to-dos.\",\"sessionCleanup\":\"completed\",\"taskOutcome\":3}",
+    "rawAndNormalizedFinalSemanticallyEqual": true,
+    "taskOutcomeType": "int",
+    "actualPureExtraction": null,
+    "originalAgentAnswer": {
+      "sha256": null,
+      "validContract": false
+    },
+    "noFullJsonPassThrough": "Preserved runner753\u2013760 calls _task_outcome then conditionally sets only extracted nonempty string, not full final JSON. Numeric value is rejected before that setter.",
+    "cacheInitialValue": "TaskEval.initialize_task145 resets to empty string; AsyncAndroidEnv227/reset236 empty; stepped adapter113\u2013157 does not emit a JSONAction.ANSWER. Original native Appium requests contain no AndroidWorld ANSWER/cache write.",
+    "earlyZero": "InformationRetrieval109\u2013119: falsy cache returns0 before NUMBER_MATCH/check_agent_answer",
+    "proofLevel": "Original invalidContract/shaNull, raw numeric type and reward0 are directly recorded. Empty live cache and exact return branch are source-derived, not a saved runtime cache/branch dump.",
+    "duration": "Original rounded0.0 seconds is consistent, not standalone proof"
+  },
+  "historicalHarnessSource": {
+    "primaryPreservedRunner": "evidence/browserdraw-forest-provenance-20261109T060244Z/source-snapshot/fsq_androidworld_eval/runner.py",
+    "sha256": "11a1a39602904b02d66a9d316686291194bba46d7fb219366d2ad4c4bdac589d",
+    "extractorSourceLines": [
+      139,
+      148
+    ],
+    "setterSourceLines": [
+      753,
+      760
+    ],
+    "templateShaMatchesOriginal": true,
+    "rawPromptMatchesRenderedTemplateExactly": true,
+    "snapshotOriginRecord": "evidence/browserdraw-field-diagnosis-20261109T052514Z/diagnostic-changes.json",
+    "originCaveat": "Private r12 reconstruction retained original prompt/pre-submission logic but explicitly does not claim archived aggregate source hash equality.",
+    "archivalGitReadOnlyLookup": {
+      "commit": "ebd085561651b8ba4b2a1a53ef6321e0305c06b3",
+      "commitDeclaredBy": "evidence/browserdraw-field-diagnosis-20261109T052514Z/source-identity.json.gitHead",
+      "retrieval": "Read-only git object reads, no checkout/status/mutation",
+      "extractorAstIdentical": true,
+      "archiveRunnerSha256": "a0e5e5d14fc8bce2b5de927a44ed3322bde5912563a801e32142090a715a48c2",
+      "fullAggregate": "192ab8f9b7c2adf8c5b22367893e0313261fad8f8dd0e8d777fea36b94d64f70",
+      "matchesFrozenFullAggregate": false
+    },
+    "notClaimed": "Do not present any preserved diagnostic tree or current post-r13 source as byte-identical frozen040 runtime tree."
+  },
+  "originalRunLog": {
+    "path": "evidence/headless-fullcoverage-20261107T004632Z/v2-ready-run-full.log",
+    "sha256": "aaf22814e141d2054eb29484de952b0fafdc74b1ad4ecbb11d6d119d1a6b12cf",
+    "ordinalTaskBlock": {
+      "startLine": 699,
+      "steps": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "endLine": 705,
+      "terminal": "Agent indicates task is done."
+    },
+    "first41StepSequencesMatchOriginalResults": true,
+    "lines": [
+      {
+        "line": 696,
+        "text": "  warn(\"Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work\", RuntimeWarning)"
+      },
+      {
+        "line": 697,
+        "text": "WARNING:absl:Could not get a11y tree, retrying."
+      },
+      {
+        "line": 698,
+        "text": "WARNING:absl:Could not get a11y tree, retrying."
+      },
+      {
+        "line": 699,
+        "text": "Completed step 1."
+      },
+      {
+        "line": 700,
+        "text": "Completed step 2."
+      },
+      {
+        "line": 701,
+        "text": "Completed step 3."
+      },
+      {
+        "line": 702,
+        "text": "Completed step 4."
+      },
+      {
+        "line": 703,
+        "text": "Completed step 5."
+      },
+      {
+        "line": 704,
+        "text": "Completed step 6."
+      },
+      {
+        "line": 705,
+        "text": "Agent indicates task is done."
+      },
+      {
+        "line": 706,
+        "text": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/pydub/utils.py:170: RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work"
+      },
+      {
+        "line": 707,
+        "text": "  warn(\"Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work\", RuntimeWarning)"
+      },
+      {
+        "line": 708,
+        "text": "WARNING:absl:Could not get a11y tree, retrying."
+      }
+    ],
+    "taskLabelOrAnswerWarningPresentInSegment": false,
+    "warningLimit": "The two preceding a11y-retry warnings are present near the segment but not task-labelled or proof of count error/answer loss. No source-specific answer-rejection warning is logged by the empty-cache branch."
+  },
+  "scorerDbUse": {
+    "scorerReadsCurrentDB": false,
+    "countSource": "Three relevant-state proto is_todo fields, not SQL rows or visible checkbox count",
+    "historicalDBSavedInAttempt": false,
+    "historicalEnvCacheSnapshotSavedInAttempt": false,
+    "dbGapBlocksThisRejectionDiagnosis": false
+  },
+  "deviceQueries": 0,
+  "envTaskInitializationOrFullScorerCalls": 0
+}

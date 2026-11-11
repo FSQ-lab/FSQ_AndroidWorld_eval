@@ -1,0 +1,14 @@
+{
+  "name": "original-video-stat",
+  "observedAtUnix": 1794006629.945554,
+  "command": [
+    "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+    "-s",
+    "emulator-5554",
+    "shell",
+    "ls -l /sdcard/Download/ZwUN_moment_70_.mp4; sha256sum /sdcard/Download/ZwUN_moment_70_.mp4"
+  ],
+  "returnCode": 1,
+  "stdout": "",
+  "stderr": "ls: /sdcard/Download/ZwUN_moment_70_.mp4: Transport endpoint is not connected\nsha256sum: /sdcard/Download/ZwUN_moment_70_.mp4: Transport endpoint is not connected\n"
+}

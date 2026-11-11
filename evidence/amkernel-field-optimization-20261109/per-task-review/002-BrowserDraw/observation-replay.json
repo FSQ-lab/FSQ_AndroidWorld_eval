@@ -1,0 +1,147 @@
+{
+  "scope": "Offline replay of original observations, not a new official evaluation or live device reproduction",
+  "actionLedger": [
+    {
+      "action": 1,
+      "cell": 3,
+      "rawLine": 717,
+      "kind": "actions"
+    },
+    {
+      "action": 2,
+      "cell": 5,
+      "rawLine": 943,
+      "kind": "click"
+    },
+    {
+      "action": 3,
+      "cell": 10,
+      "rawLine": 1795,
+      "kind": "click"
+    },
+    {
+      "action": 4,
+      "cell": 12,
+      "rawLine": 2052,
+      "kind": "click"
+    },
+    {
+      "action": 5,
+      "cell": 14,
+      "rawLine": 2422,
+      "kind": "click"
+    },
+    {
+      "action": 6,
+      "cell": 16,
+      "rawLine": 2699,
+      "kind": "click"
+    },
+    {
+      "action": 7,
+      "cell": 18,
+      "rawLine": 3161,
+      "kind": "click"
+    },
+    {
+      "action": 8,
+      "cell": 19,
+      "rawLine": 3390,
+      "kind": "click"
+    },
+    {
+      "action": 9,
+      "cell": 20,
+      "rawLine": 3522,
+      "kind": "click"
+    },
+    {
+      "action": 10,
+      "cell": 22,
+      "rawLine": 3881,
+      "kind": "click"
+    },
+    {
+      "action": 11,
+      "cell": 24,
+      "rawLine": 4356,
+      "kind": "actions"
+    },
+    {
+      "action": 12,
+      "cell": 24,
+      "rawLine": 4356,
+      "kind": "actions"
+    },
+    {
+      "action": 13,
+      "cell": 24,
+      "rawLine": 4356,
+      "kind": "actions"
+    },
+    {
+      "action": 14,
+      "cell": 24,
+      "rawLine": 4356,
+      "kind": "actions"
+    },
+    {
+      "action": 15,
+      "cell": 24,
+      "rawLine": 4356,
+      "kind": "actions"
+    },
+    {
+      "action": 16,
+      "cell": 24,
+      "rawLine": 4356,
+      "kind": "actions"
+    },
+    {
+      "action": 17,
+      "cell": 25,
+      "rawLine": 4672,
+      "kind": "click"
+    }
+  ],
+  "submitObservation": {
+    "package": "com.android.chrome",
+    "activity": "org.chromium.chrome.browser.ChromeTabbedActivity",
+    "visibleTexts": [
+      "Color Challenge",
+      "Available Colors:",
+      "Clear",
+      "Submit",
+      "Success!",
+      "No internet connection",
+      "Home",
+      "Your connection to this site is not secure",
+      "content://com.android.providers.downloads.documents/document/raw%3A%2Fstorage%2Femulated%2F0%2FDownload%2Ftask.html",
+      "Switch or close tabs",
+      "More options"
+    ]
+  },
+  "postSubmitOnlyCell": {
+    "cell": 26,
+    "code": "driver.quit()\n{'ownedSessionId': session_id, 'quitReturned': True}\n"
+  },
+  "rawFinal": {
+    "rawLine": 4786,
+    "text": "{\"taskOutcome\":\"completed\",\"sessionCleanup\":\"quitReturned\",\"evidence\":\"Chrome displayed the three-color triangle and visible “Success!” after Submit.\"}",
+    "thinking": ""
+  },
+  "normalizedFinalText": "{\"evidence\":\"Chrome displayed the three-color triangle and visible \\u201cSuccess!\\u201d after Submit.\",\"sessionCleanup\":\"quitReturned\",\"taskOutcome\":\"completed\"}",
+  "screenshotCheck": {
+    "source": "original-image-3-rawline-4672.png",
+    "method": "Direct image reading; shows three colored edges andSuccess",
+    "limit": "No evaluator-time capture; automated pixel count not run because PIL absent in analysis host; no dependencies installed"
+  },
+  "officialReward": 0.0,
+  "evaluatorEvidenceMissing": [
+    "evaluator-time screenshot",
+    "evaluator-time UI forest/ui_elements",
+    "package/activity returned inside is_successful",
+    "which predicate branch returned0"
+  ],
+  "newOfficialRun": false
+}

@@ -1,0 +1,226 @@
+{
+  "sequence": 83,
+  "label": "wifi-regression-observe-switches",
+  "command": {
+    "op": "exec",
+    "label": "wifi-regression-observe-switches",
+    "code": "{'state':observe(), 'switches':[dict(n.attrib) for n in ET.fromstring(driver.page_source).iter() if 'Switch' in n.attrib.get('class','')]}"
+  },
+  "startedAtUnix": 1794192347.616694,
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"status\":\"completed\",\"stdout\":\"\",\"stderr\":\"\",\"result\":{\"state\":{\"package\":\"com.android.settings\",\"activity\":\".SubSettings\",\"controls\":[{\"text\":\"\",\"content-desc\":\"Internet\",\"resource-id\":\"com.android.settings:id/collapsing_toolbar\",\"class\":\"android.widget.FrameLayout\",\"bounds\":\"[0,0][1080,598]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"\",\"content-desc\":\"Navigate up\",\"resource-id\":\"\",\"class\":\"android.widget.ImageButton\",\"bounds\":\"[0,128][147,275]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"\",\"content-desc\":\"Fix connectivity\",\"resource-id\":\"\",\"class\":\"android.widget.TextView\",\"bounds\":\"[954,138][1080,264]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"T-Mobile\",\"content-desc\":\"\",\"resource-id\":\"android:id/title\",\"class\":\"android.widget.TextView\",\"bounds\":\"[189,648][390,719]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"Connected / 3G\",\"content-desc\":\"\",\"resource-id\":\"android:id/summary\",\"class\":\"android.widget.TextView\",\"bounds\":\"[189,719][445,770]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"\",\"content-desc\":\"Settings\",\"resource-id\":\"com.android.settings:id/settings_button\",\"class\":\"android.widget.ImageView\",\"bounds\":\"[849,606][1038,812]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"Wi-Fi\",\"content-desc\":\"\",\"resource-id\":\"android:id/title\",\"class\":\"android.widget.TextView\",\"bounds\":\"[63,854][180,925]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"Network preferences\",\"content-desc\":\"\",\"resource-id\":\"android:id/title\",\"class\":\"android.widget.TextView\",\"bounds\":\"[63,1009][553,1080]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"Wi\u2011Fi turns back on automatically\",\"content-desc\":\"\",\"resource-id\":\"android:id/summary\",\"class\":\"android.widget.TextView\",\"bounds\":\"[63,1080][605,1131]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"Saved networks\",\"content-desc\":\"\",\"resource-id\":\"android:id/title\",\"class\":\"android.widget.TextView\",\"bounds\":\"[63,1215][436,1286]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"1 network\",\"content-desc\":\"\",\"resource-id\":\"android:id/summary\",\"class\":\"android.widget.TextView\",\"bounds\":\"[63,1286][226,1337]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"Non-carrier data usage\",\"content-desc\":\"\",\"resource-id\":\"android:id/title\",\"class\":\"android.widget.TextView\",\"bounds\":\"[63,1421][601,1492]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"0 B used Sep 17 \u2013 Oct 15\",\"content-desc\":\"\",\"resource-id\":\"android:id/summary\",\"class\":\"android.widget.TextView\",\"bounds\":\"[63,1492][477,1543]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"To improve device experience, apps and services can still scan for Wi\u2011Fi networks at any time, even when Wi\u2011Fi is off. This can be used, for example, to improve location-based features and services. You can change this in Wi\u2011Fi scanning settings.\",\"content-desc\":\"\",\"resource-id\":\"android:id/title\",\"class\":\"android.widget.TextView\",\"bounds\":\"[63,1701][1038,1987]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"Change\",\"content-desc\":\"\",\"resource-id\":\"com.android.settings:id/settingslib_learn_more\",\"class\":\"android.widget.TextView\",\"bounds\":\"[63,1987][188,2059]\",\"clickable\":\"false\",\"focused\":\"false\"}]},\"switches\":[{\"index\":\"0\",\"package\":\"com.android.settings\",\"class\":\"android.widget.Switch\",\"text\":\"\",\"resource-id\":\"android:id/switch_widget\",\"checkable\":\"true\",\"checked\":\"false\",\"clickable\":\"false\",\"enabled\":\"true\",\"focusable\":\"false\",\"focused\":\"false\",\"long-clickable\":\"false\",\"password\":\"false\",\"scrollable\":\"false\",\"selected\":\"false\",\"bounds\":\"[892,826][1038,952]\",\"displayed\":\"true\",\"a11y-important\":\"true\",\"screen-reader-focusable\":\"false\",\"drawing-order\":\"1\",\"showing-hint\":\"false\",\"text-entry-key\":\"false\",\"dismissable\":\"false\",\"a11y-focused\":\"false\",\"heading\":\"false\",\"live-region\":\"0\",\"context-clickable\":\"false\",\"content-invalid\":\"false\",\"window-id\":\"9371\"}]},\"executionCount\":46,\"durationMs\":855,\"kernelState\":\"alive\",\"runtime\":{\"executable\":\"/Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python\",\"pythonVersion\":\"3.11.16\",\"workingDirectory\":\"/Users/qunmi/Documents/FSQ_LAB/amkernel\",\"environmentKind\":\"project_venv\",\"implementation\":\"CPython\",\"platform\":\"macOS-26.6.2-arm64-arm-64bit\",\"packages\":[]},\"output\":{\"totalBytes\":0,\"totalLines\":0,\"discardedBytes\":0,\"discardedLines\":0,\"truncated\":false,\"limitBytes\":268435456,\"limitExceeded\":false,\"live\":\"unavailable\"},\"displays\":[],\"artifacts\":[]}"
+      }
+    ],
+    "structured_content": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "state": {
+          "package": "com.android.settings",
+          "activity": ".SubSettings",
+          "controls": [
+            {
+              "text": "",
+              "content-desc": "Internet",
+              "resource-id": "com.android.settings:id/collapsing_toolbar",
+              "class": "android.widget.FrameLayout",
+              "bounds": "[0,0][1080,598]",
+              "clickable": "false",
+              "focused": "false"
+            },
+            {
+              "text": "",
+              "content-desc": "Navigate up",
+              "resource-id": "",
+              "class": "android.widget.ImageButton",
+              "bounds": "[0,128][147,275]",
+              "clickable": "true",
+              "focused": "false"
+            },
+            {
+              "text": "",
+              "content-desc": "Fix connectivity",
+              "resource-id": "",
+              "class": "android.widget.TextView",
+              "bounds": "[954,138][1080,264]",
+              "clickable": "true",
+              "focused": "false"
+            },
+            {
+              "text": "T-Mobile",
+              "content-desc": "",
+              "resource-id": "android:id/title",
+              "class": "android.widget.TextView",
+              "bounds": "[189,648][390,719]",
+              "clickable": "false",
+              "focused": "false"
+            },
+            {
+              "text": "Connected / 3G",
+              "content-desc": "",
+              "resource-id": "android:id/summary",
+              "class": "android.widget.TextView",
+              "bounds": "[189,719][445,770]",
+              "clickable": "false",
+              "focused": "false"
+            },
+            {
+              "text": "",
+              "content-desc": "Settings",
+              "resource-id": "com.android.settings:id/settings_button",
+              "class": "android.widget.ImageView",
+              "bounds": "[849,606][1038,812]",
+              "clickable": "true",
+              "focused": "false"
+            },
+            {
+              "text": "Wi-Fi",
+              "content-desc": "",
+              "resource-id": "android:id/title",
+              "class": "android.widget.TextView",
+              "bounds": "[63,854][180,925]",
+              "clickable": "false",
+              "focused": "false"
+            },
+            {
+              "text": "Network preferences",
+              "content-desc": "",
+              "resource-id": "android:id/title",
+              "class": "android.widget.TextView",
+              "bounds": "[63,1009][553,1080]",
+              "clickable": "false",
+              "focused": "false"
+            },
+            {
+              "text": "Wi\u2011Fi turns back on automatically",
+              "content-desc": "",
+              "resource-id": "android:id/summary",
+              "class": "android.widget.TextView",
+              "bounds": "[63,1080][605,1131]",
+              "clickable": "false",
+              "focused": "false"
+            },
+            {
+              "text": "Saved networks",
+              "content-desc": "",
+              "resource-id": "android:id/title",
+              "class": "android.widget.TextView",
+              "bounds": "[63,1215][436,1286]",
+              "clickable": "false",
+              "focused": "false"
+            },
+            {
+              "text": "1 network",
+              "content-desc": "",
+              "resource-id": "android:id/summary",
+              "class": "android.widget.TextView",
+              "bounds": "[63,1286][226,1337]",
+              "clickable": "false",
+              "focused": "false"
+            },
+            {
+              "text": "Non-carrier data usage",
+              "content-desc": "",
+              "resource-id": "android:id/title",
+              "class": "android.widget.TextView",
+              "bounds": "[63,1421][601,1492]",
+              "clickable": "false",
+              "focused": "false"
+            },
+            {
+              "text": "0 B used Sep 17 \u2013 Oct 15",
+              "content-desc": "",
+              "resource-id": "android:id/summary",
+              "class": "android.widget.TextView",
+              "bounds": "[63,1492][477,1543]",
+              "clickable": "false",
+              "focused": "false"
+            },
+            {
+              "text": "To improve device experience, apps and services can still scan for Wi\u2011Fi networks at any time, even when Wi\u2011Fi is off. This can be used, for example, to improve location-based features and services. You can change this in Wi\u2011Fi scanning settings.",
+              "content-desc": "",
+              "resource-id": "android:id/title",
+              "class": "android.widget.TextView",
+              "bounds": "[63,1701][1038,1987]",
+              "clickable": "false",
+              "focused": "false"
+            },
+            {
+              "text": "Change",
+              "content-desc": "",
+              "resource-id": "com.android.settings:id/settingslib_learn_more",
+              "class": "android.widget.TextView",
+              "bounds": "[63,1987][188,2059]",
+              "clickable": "false",
+              "focused": "false"
+            }
+          ]
+        },
+        "switches": [
+          {
+            "index": "0",
+            "package": "com.android.settings",
+            "class": "android.widget.Switch",
+            "text": "",
+            "resource-id": "android:id/switch_widget",
+            "checkable": "true",
+            "checked": "false",
+            "clickable": "false",
+            "enabled": "true",
+            "focusable": "false",
+            "focused": "false",
+            "long-clickable": "false",
+            "password": "false",
+            "scrollable": "false",
+            "selected": "false",
+            "bounds": "[892,826][1038,952]",
+            "displayed": "true",
+            "a11y-important": "true",
+            "screen-reader-focusable": "false",
+            "drawing-order": "1",
+            "showing-hint": "false",
+            "text-entry-key": "false",
+            "dismissable": "false",
+            "a11y-focused": "false",
+            "heading": "false",
+            "live-region": "0",
+            "context-clickable": "false",
+            "content-invalid": "false",
+            "window-id": "9371"
+          }
+        ]
+      },
+      "executionCount": 46,
+      "durationMs": 855,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/Users/qunmi/Documents/FSQ_LAB/amkernel",
+        "environmentKind": "project_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "unavailable"
+      },
+      "displays": [],
+      "artifacts": []
+    },
+    "is_error": false,
+    "result_type": "complete"
+  },
+  "completedAtUnix": 1794192348.476717
+}

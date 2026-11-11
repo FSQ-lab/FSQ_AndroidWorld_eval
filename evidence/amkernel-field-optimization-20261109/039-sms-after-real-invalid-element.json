@@ -1,0 +1,65 @@
+{
+  "sequence": 39,
+  "label": "sms-after-real-invalid-element",
+  "command": {
+    "op": "exec",
+    "label": "sms-after-real-invalid-element",
+    "code": "driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text(\"+16597910719\")').send_keys('not editable')"
+  },
+  "startedAtUnix": 1794192018.540113,
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"status\":\"failed\",\"stdout\":\"\",\"stderr\":\"\",\"error\":{\"type\":\"selenium.common.exceptions.InvalidElementStateException\",\"message\":\"Cannot set the element to 'not editable'. Did you interact with the correct element?\",\"traceback\":[\"Traceback (most recent call last):\",\"  File \\\"<external-frame>\\\", line 591, in <frame>\",\"  File \\\"<external-frame>\\\", line 579, in <frame>\",\"  File \\\"<amkernel-cell-14>\\\", line 1, in <frame>\",\"  File \\\"<external-frame>\\\", line 129, in <frame>\",\"  File \\\"<external-frame>\\\", line 505, in <frame>\",\"  File \\\"<external-frame>\\\", line 566, in <frame>\",\"  File \\\"<external-frame>\\\", line 125, in <frame>\",\"selenium.common.exceptions.InvalidElementStateException: Cannot set the element to 'not editable'. Did you interact with the correct element?\"]},\"executionCount\":14,\"durationMs\":18,\"kernelState\":\"alive\",\"runtime\":{\"executable\":\"/Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python\",\"pythonVersion\":\"3.11.16\",\"workingDirectory\":\"/Users/qunmi/Documents/FSQ_LAB/amkernel\",\"environmentKind\":\"project_venv\",\"implementation\":\"CPython\",\"platform\":\"macOS-26.6.2-arm64-arm-64bit\",\"packages\":[]},\"output\":{\"totalBytes\":0,\"totalLines\":0,\"discardedBytes\":0,\"discardedLines\":0,\"truncated\":false,\"limitBytes\":268435456,\"limitExceeded\":false,\"live\":\"unavailable\"},\"displays\":[],\"artifacts\":[]}"
+      }
+    ],
+    "structured_content": {
+      "status": "failed",
+      "stdout": "",
+      "stderr": "",
+      "error": {
+        "type": "selenium.common.exceptions.InvalidElementStateException",
+        "message": "Cannot set the element to 'not editable'. Did you interact with the correct element?",
+        "traceback": [
+          "Traceback (most recent call last):",
+          "  File \"<external-frame>\", line 591, in <frame>",
+          "  File \"<external-frame>\", line 579, in <frame>",
+          "  File \"<amkernel-cell-14>\", line 1, in <frame>",
+          "  File \"<external-frame>\", line 129, in <frame>",
+          "  File \"<external-frame>\", line 505, in <frame>",
+          "  File \"<external-frame>\", line 566, in <frame>",
+          "  File \"<external-frame>\", line 125, in <frame>",
+          "selenium.common.exceptions.InvalidElementStateException: Cannot set the element to 'not editable'. Did you interact with the correct element?"
+        ]
+      },
+      "executionCount": 14,
+      "durationMs": 18,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/Users/qunmi/Documents/FSQ_LAB/amkernel",
+        "environmentKind": "project_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "unavailable"
+      },
+      "displays": [],
+      "artifacts": []
+    },
+    "is_error": false,
+    "result_type": "complete"
+  },
+  "completedAtUnix": 1794192018.561534
+}

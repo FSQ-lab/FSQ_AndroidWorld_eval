@@ -1,0 +1,705 @@
+{
+  "formalScore": null,
+  "kind": "development_diagnostic_fixed_2x2_not_formal_campaign",
+  "task": "ClockStopWatchPausedVerify",
+  "rows": [
+    {
+      "label": "ClockOriginalP0",
+      "officialReward": 0.0,
+      "invalidReason": null,
+      "error": null,
+      "actions": 3,
+      "actionKinds": [
+        "actions",
+        "click",
+        "click"
+      ],
+      "actualCapability": [
+        {
+          "actualForwardedRequestCaptured": true,
+          "present": false,
+          "source": "episode/result.json appiumSessionAudit.sessionAccessibility.creations.request.capabilities",
+          "values": []
+        }
+      ],
+      "originalStateCallCount": 1,
+      "chosenForest": {
+        "present": true,
+        "recvSeq": 773,
+        "storedIdentityIsActual": true,
+        "receiveObjectIdMatchesRecord": true,
+        "identityMismatch": false,
+        "windowCount": 0,
+        "serializedBytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "nodeCount": 0,
+        "successTextFound": false,
+        "windows": [],
+        "receivedAtUnix": 1794208945.9262998,
+        "receivedHostUtc": "2026-11-09T07:22:25Z",
+        "receiveAgeSeconds": 4.480938196182251,
+        "recvTransport": "unary",
+        "recvAdmitted": true,
+        "recvAdmittedByDrain": true,
+        "recvAdmittedByDrainIndex": 8,
+        "recvAdmittedByPull": null,
+        "recvPaused": false
+      },
+      "chosenSender": {},
+      "originalPredicate": {
+        "listObjectId": 5027411008,
+        "actualUiElementCount": 0,
+        "returnLine": 63,
+        "rawReturn": false,
+        "startPresent": false,
+        "stopwatchCount": 0,
+        "currentActivity": "com.google.android.deskclock/com.android.deskclock.DeskClock"
+      },
+      "preQuitAppiumPostHocFields": {
+        "Start": true,
+        "StopwatchCount": 3,
+        "notOfficialInput": true
+      },
+      "appiumHostMarkers": {
+        "appium-session-request-caps": 1794208883.232895,
+        "appium-session-created": 1794208914.73454,
+        "appium-quit-request": 1794208945.233119,
+        "appium-quit-response": 1794208946.081861
+      },
+      "receiveGroups": [
+        {
+          "senderIdentity": {},
+          "firstSenderForestSequence": null,
+          "lastSenderForestSequence": null,
+          "firstRecvSeq": 1,
+          "firstHostUnix": 1794208862.753352,
+          "lastRecvSeq": 773,
+          "lastHostUnix": 1794208945.9262998,
+          "receiveCount": 773,
+          "emptyForestCount": 301
+        }
+      ],
+      "betweenCreateResponseAndQuitRequestReceiveCount": 288,
+      "betweenCreateResponseAndQuitRequestEmptyCount": 288,
+      "sampledForwarderPid": "23889",
+      "nativeLifecycle": [
+        {
+          "line": 12823,
+          "text": "         1697384121.933 23889 25691 E AndroidRuntime: FATAL EXCEPTION: Thread-3"
+        }
+      ],
+      "traceErrors": [],
+      "evaluatorProbeErrors": [],
+      "cleanup": {
+        "agentSession": {
+          "agentQuitReturned": true,
+          "attribution": "agent",
+          "sessionIdSha256": "d4a274c858dee900024a3a8c0f4dbea2d01fb39bb23eae1ba294726e6cca4cb3",
+          "status": "closed",
+          "verification": {
+            "activeSessionCount": 0,
+            "attemptedSessionCount": 1,
+            "ownedSessionCount": 1,
+            "pendingCreateCount": 0,
+            "pendingRequestCount": 0,
+            "reclaimedSessionCount": 0,
+            "reclaimedSessionHashes": [],
+            "sessions": [
+              {
+                "absentVerified": true,
+                "alreadyAbsent": true,
+                "errors": [],
+                "presentVerified": false,
+                "quitReturned": false,
+                "sessionHash": "d4a274c858dee900024a3a8c0f4dbea2d01fb39bb23eae1ba294726e6cca4cb3"
+              }
+            ],
+            "status": "unknown",
+            "unknownCreationOutcomeCount": 0
+          },
+          "verificationStatus": "absent"
+        },
+        "environment": "closed",
+        "taskTearDown": "completed"
+      },
+      "postExitWorkspaceAbsence": {
+        "observedAtUnix": 1794209243.0263062,
+        "observedAfterUnitProcessCompletion": true,
+        "unitSummaryCompletedAtUnix": 1794208951.963014,
+        "workspacePath": "/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-browserdraw-forest-5e686tr2/agent-workspace",
+        "workspaceExists": false,
+        "temporaryParentPath": "/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-browserdraw-forest-5e686tr2",
+        "temporaryParentExists": false,
+        "originalCleanupRecordPreserved": true,
+        "scope": "host filesystem absence check only; no device/session changes"
+      },
+      "threePngsActuallyReviewed": true,
+      "visualConclusion": "Stopwatch selected; zero time; play/Start visible in prequit/postquit/original evaluator PNGs",
+      "diagnosticScopeLimits": [
+        "One trial per cell; fixed scheduling, no reward-based rerun",
+        "Agent navigation actions are not identical: patched P1 uses four actions, other cells three",
+        "Native Init flags log not a final effective flags measurement",
+        "Original helper has no per-message sender metadata",
+        "Prequit/postquit captures add diagnostic delay and are not historical timing reconstruction"
+      ]
+    },
+    {
+      "label": "ClockOriginalP1",
+      "officialReward": 1.0,
+      "invalidReason": null,
+      "error": null,
+      "actions": 3,
+      "actionKinds": [
+        "actions",
+        "click",
+        "click"
+      ],
+      "actualCapability": [
+        {
+          "actualForwardedRequestCaptured": true,
+          "present": true,
+          "source": "episode/result.json appiumSessionAudit.sessionAccessibility.creations.request.capabilities",
+          "values": [
+            {
+              "key": "appium:disableSuppressAccessibilityService",
+              "location": "alwaysMatch",
+              "value": true
+            }
+          ]
+        }
+      ],
+      "originalStateCallCount": 1,
+      "chosenForest": {
+        "present": true,
+        "recvSeq": 846,
+        "storedIdentityIsActual": true,
+        "receiveObjectIdMatchesRecord": true,
+        "identityMismatch": false,
+        "windowCount": 2,
+        "serializedBytes": 5044,
+        "sha256": "78ab30978814acfa910cfe6a8fdfcc27c31911297e7ea672e9b84d58208c876c",
+        "nodeCount": 25,
+        "successTextFound": false,
+        "windows": [
+          {
+            "id": 9762,
+            "title": "",
+            "windowType": 1,
+            "isActive": true,
+            "isFocused": true,
+            "nodeCount": 17,
+            "packageNames": [
+              "com.google.android.deskclock"
+            ]
+          },
+          {
+            "id": 9756,
+            "title": "",
+            "windowType": 3,
+            "isActive": false,
+            "isFocused": false,
+            "nodeCount": 8,
+            "packageNames": [
+              "com.android.systemui"
+            ]
+          }
+        ],
+        "receivedAtUnix": 1794209065.494138,
+        "receivedHostUtc": "2026-11-09T07:24:25Z",
+        "receiveAgeSeconds": 0.07881903648376465,
+        "recvTransport": "unary",
+        "recvAdmitted": true,
+        "recvAdmittedByDrain": true,
+        "recvAdmittedByDrainIndex": 8,
+        "recvAdmittedByPull": null,
+        "recvPaused": false
+      },
+      "chosenSender": {},
+      "originalPredicate": {
+        "listObjectId": 5060323136,
+        "actualUiElementCount": 15,
+        "returnLine": 63,
+        "rawReturn": true,
+        "startPresent": true,
+        "stopwatchCount": 2,
+        "currentActivity": "com.google.android.deskclock/com.android.deskclock.DeskClock"
+      },
+      "preQuitAppiumPostHocFields": {
+        "Start": true,
+        "StopwatchCount": 3,
+        "notOfficialInput": true
+      },
+      "appiumHostMarkers": {
+        "appium-session-request-caps": 1794208986.385261,
+        "appium-session-created": 1794209017.837941,
+        "appium-quit-request": 1794209061.9595242,
+        "appium-quit-response": 1794209062.763155
+      },
+      "receiveGroups": [
+        {
+          "senderIdentity": {},
+          "firstSenderForestSequence": null,
+          "lastSenderForestSequence": null,
+          "firstRecvSeq": 1,
+          "firstHostUnix": 1794208969.943274,
+          "lastRecvSeq": 850,
+          "lastHostUnix": 1794209066.1783822,
+          "receiveCount": 850,
+          "emptyForestCount": 0
+        }
+      ],
+      "betweenCreateResponseAndQuitRequestReceiveCount": 382,
+      "betweenCreateResponseAndQuitRequestEmptyCount": 0,
+      "sampledForwarderPid": "26227",
+      "nativeLifecycle": [],
+      "traceErrors": [],
+      "evaluatorProbeErrors": [],
+      "cleanup": {
+        "agentSession": {
+          "agentQuitReturned": true,
+          "attribution": "agent",
+          "sessionIdSha256": "7d192dc60e463130607ce895671bf34208121528e652621498e91fa099838e7f",
+          "status": "closed",
+          "verification": {
+            "activeSessionCount": 0,
+            "attemptedSessionCount": 1,
+            "ownedSessionCount": 1,
+            "pendingCreateCount": 0,
+            "pendingRequestCount": 0,
+            "reclaimedSessionCount": 0,
+            "reclaimedSessionHashes": [],
+            "sessions": [
+              {
+                "absentVerified": true,
+                "alreadyAbsent": true,
+                "errors": [],
+                "presentVerified": false,
+                "quitReturned": false,
+                "sessionHash": "7d192dc60e463130607ce895671bf34208121528e652621498e91fa099838e7f"
+              }
+            ],
+            "status": "unknown",
+            "unknownCreationOutcomeCount": 0
+          },
+          "verificationStatus": "absent"
+        },
+        "environment": "closed",
+        "taskTearDown": "completed"
+      },
+      "postExitWorkspaceAbsence": {
+        "observedAtUnix": 1794209243.033094,
+        "observedAfterUnitProcessCompletion": true,
+        "unitSummaryCompletedAtUnix": 1794209067.165282,
+        "workspacePath": "/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-browserdraw-forest-ew0xje2p/agent-workspace",
+        "workspaceExists": false,
+        "temporaryParentPath": "/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-browserdraw-forest-ew0xje2p",
+        "temporaryParentExists": false,
+        "originalCleanupRecordPreserved": true,
+        "scope": "host filesystem absence check only; no device/session changes"
+      },
+      "threePngsActuallyReviewed": true,
+      "visualConclusion": "Stopwatch selected; zero time; play/Start visible in prequit/postquit/original evaluator PNGs",
+      "diagnosticScopeLimits": [
+        "One trial per cell; fixed scheduling, no reward-based rerun",
+        "Agent navigation actions are not identical: patched P1 uses four actions, other cells three",
+        "Native Init flags log not a final effective flags measurement",
+        "Original helper has no per-message sender metadata",
+        "Prequit/postquit captures add diagnostic delay and are not historical timing reconstruction"
+      ]
+    },
+    {
+      "label": "ClockPatchedP0",
+      "officialReward": 1.0,
+      "invalidReason": null,
+      "error": null,
+      "actions": 3,
+      "actionKinds": [
+        "actions",
+        "click",
+        "click"
+      ],
+      "actualCapability": [
+        {
+          "actualForwardedRequestCaptured": true,
+          "present": false,
+          "source": "episode/result.json appiumSessionAudit.sessionAccessibility.creations.request.capabilities",
+          "values": []
+        }
+      ],
+      "originalStateCallCount": 1,
+      "chosenForest": {
+        "present": true,
+        "recvSeq": 457,
+        "storedIdentityIsActual": true,
+        "receiveObjectIdMatchesRecord": true,
+        "identityMismatch": false,
+        "windowCount": 2,
+        "serializedBytes": 5044,
+        "sha256": "3681ea6da5af4e27eef08908621c6b25eea8c2c442aa4b9014ef37e854f1b798",
+        "nodeCount": 25,
+        "successTextFound": false,
+        "windows": [
+          {
+            "id": 9811,
+            "title": "",
+            "windowType": 1,
+            "isActive": true,
+            "isFocused": true,
+            "nodeCount": 17,
+            "packageNames": [
+              "com.google.android.deskclock"
+            ]
+          },
+          {
+            "id": 9800,
+            "title": "",
+            "windowType": 3,
+            "isActive": false,
+            "isFocused": false,
+            "nodeCount": 8,
+            "packageNames": [
+              "com.android.systemui"
+            ]
+          }
+        ],
+        "receivedAtUnix": 1794209224.331794,
+        "receivedHostUtc": "2026-11-09T07:27:04Z",
+        "receiveAgeSeconds": 0.017750978469848633,
+        "recvTransport": "unary",
+        "recvAdmitted": true,
+        "recvAdmittedByDrain": true,
+        "recvAdmittedByDrainIndex": 8,
+        "recvAdmittedByPull": null,
+        "recvPaused": false
+      },
+      "chosenSender": {
+        "fsq-forwarder-instance": "31266:2",
+        "fsq-forwarder-generation": "1",
+        "fsq-forest-sequence": "30"
+      },
+      "originalPredicate": {
+        "listObjectId": 5091689216,
+        "actualUiElementCount": 15,
+        "returnLine": 63,
+        "rawReturn": true,
+        "startPresent": true,
+        "stopwatchCount": 2,
+        "currentActivity": "com.google.android.deskclock/com.android.deskclock.DeskClock"
+      },
+      "preQuitAppiumPostHocFields": {
+        "Start": true,
+        "StopwatchCount": 3,
+        "notOfficialInput": true
+      },
+      "appiumHostMarkers": {
+        "appium-session-request-caps": 1794209146.666862,
+        "appium-session-created": 1794209178.112617,
+        "appium-quit-request": 1794209220.4752572,
+        "appium-quit-response": 1794209221.2923222
+      },
+      "receiveGroups": [
+        {
+          "senderIdentity": {
+            "fsq-forwarder-instance": "31266:1",
+            "fsq-forwarder-generation": "1"
+          },
+          "firstSenderForestSequence": "1",
+          "lastSenderForestSequence": "427",
+          "firstRecvSeq": 1,
+          "firstHostUnix": 1794209130.8727329,
+          "lastRecvSeq": 427,
+          "lastHostUnix": 1794209177.453208,
+          "receiveCount": 427,
+          "emptyForestCount": 0
+        },
+        {
+          "senderIdentity": {
+            "fsq-forwarder-instance": "31266:2",
+            "fsq-forwarder-generation": "1"
+          },
+          "firstSenderForestSequence": "1",
+          "lastSenderForestSequence": "35",
+          "firstRecvSeq": 428,
+          "firstHostUnix": 1794209221.193281,
+          "lastRecvSeq": 462,
+          "lastHostUnix": 1794209225.071771,
+          "receiveCount": 35,
+          "emptyForestCount": 0
+        }
+      ],
+      "betweenCreateResponseAndQuitRequestReceiveCount": 0,
+      "betweenCreateResponseAndQuitRequestEmptyCount": 0,
+      "sampledForwarderPid": "31266",
+      "nativeLifecycle": [
+        {
+          "line": 6714,
+          "text": "         1697384194.462 31266 31266 I AndroidRLTask: Connected service=31266:1 generation=1 worker=a11y-31266:1-1"
+        },
+        {
+          "line": 6725,
+          "text": "         1697384194.467 31266 31302 I AndroidRLTask: Worker started service=31266:1 generation=1 source=capture worker=a11y-31266:1-1 thread=DefaultDispatcher-worker-1"
+        },
+        {
+          "line": 10144,
+          "text": "         1697384085.469 31266 31303 I AndroidRLTask: Worker stopped service=31266:1 generation=1 source=capture worker=a11y-31266:1-1"
+        },
+        {
+          "line": 10149,
+          "text": "         1697384085.472 31266 31266 I AndroidRLTask: Disconnected service=31266:1 generation=1 source=capture worker=a11y-31266:1-1 reason=unbind"
+        },
+        {
+          "line": 12827,
+          "text": "         1697384129.087 31266 31266 I AndroidRLTask: Connected service=31266:2 generation=1 worker=a11y-31266:2-1"
+        },
+        {
+          "line": 12829,
+          "text": "         1697384129.088 31266 31303 I AndroidRLTask: Worker started service=31266:2 generation=1 source=capture worker=a11y-31266:2-1 thread=DefaultDispatcher-worker-2"
+        }
+      ],
+      "traceErrors": [],
+      "evaluatorProbeErrors": [],
+      "cleanup": {
+        "agentSession": {
+          "agentQuitReturned": true,
+          "attribution": "agent",
+          "sessionIdSha256": "631360df5ba8d8d81c2a30115dc5345b7d6c608b41d36c4715c6778e5e2dbc04",
+          "status": "closed",
+          "verification": {
+            "activeSessionCount": 0,
+            "attemptedSessionCount": 1,
+            "ownedSessionCount": 1,
+            "pendingCreateCount": 0,
+            "pendingRequestCount": 0,
+            "reclaimedSessionCount": 0,
+            "reclaimedSessionHashes": [],
+            "sessions": [
+              {
+                "absentVerified": true,
+                "alreadyAbsent": true,
+                "errors": [],
+                "presentVerified": false,
+                "quitReturned": false,
+                "sessionHash": "631360df5ba8d8d81c2a30115dc5345b7d6c608b41d36c4715c6778e5e2dbc04"
+              }
+            ],
+            "status": "unknown",
+            "unknownCreationOutcomeCount": 0
+          },
+          "verificationStatus": "absent"
+        },
+        "environment": "closed",
+        "taskTearDown": "completed"
+      },
+      "postExitWorkspaceAbsence": {
+        "observedAtUnix": 1794209574.827947,
+        "observedAfterUnitProcessCompletion": true,
+        "unitSummaryCompletedAtUnix": 1794209225.9112089,
+        "workspacePath": "/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-browserdraw-forest-wqzy5cct/agent-workspace",
+        "workspaceExists": false,
+        "temporaryParentPath": "/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-browserdraw-forest-wqzy5cct",
+        "temporaryParentExists": false,
+        "originalCleanupRecordPreserved": true,
+        "scope": "host filesystem absence check only; no device/session changes"
+      },
+      "threePngsActuallyReviewed": true,
+      "visualConclusion": "Stopwatch selected; zero time; play/Start visible in prequit/postquit/original evaluator PNGs",
+      "diagnosticScopeLimits": [
+        "One trial per cell; fixed scheduling, no reward-based rerun",
+        "Agent navigation actions are not identical: patched P1 uses four actions, other cells three",
+        "Native Init flags log not a final effective flags measurement",
+        "Original helper has no per-message sender metadata",
+        "Prequit/postquit captures add diagnostic delay and are not historical timing reconstruction"
+      ]
+    },
+    {
+      "label": "ClockPatchedP1",
+      "officialReward": 1.0,
+      "invalidReason": null,
+      "error": null,
+      "actions": 4,
+      "actionKinds": [
+        "click",
+        "input",
+        "click",
+        "click"
+      ],
+      "actualCapability": [
+        {
+          "actualForwardedRequestCaptured": true,
+          "present": true,
+          "source": "episode/result.json appiumSessionAudit.sessionAccessibility.creations.request.capabilities",
+          "values": [
+            {
+              "key": "appium:disableSuppressAccessibilityService",
+              "location": "alwaysMatch",
+              "value": true
+            }
+          ]
+        }
+      ],
+      "originalStateCallCount": 1,
+      "chosenForest": {
+        "present": true,
+        "recvSeq": 1089,
+        "storedIdentityIsActual": true,
+        "receiveObjectIdMatchesRecord": true,
+        "identityMismatch": false,
+        "windowCount": 2,
+        "serializedBytes": 5044,
+        "sha256": "f6cd53ea23519e8e2e3928c5051caeb31c55c3b7e17ce180fd8d012b3a12c223",
+        "nodeCount": 25,
+        "successTextFound": false,
+        "windows": [
+          {
+            "id": 9826,
+            "title": "",
+            "windowType": 1,
+            "isActive": true,
+            "isFocused": true,
+            "nodeCount": 17,
+            "packageNames": [
+              "com.google.android.deskclock"
+            ]
+          },
+          {
+            "id": 9817,
+            "title": "",
+            "windowType": 3,
+            "isActive": false,
+            "isFocused": false,
+            "nodeCount": 8,
+            "packageNames": [
+              "com.android.systemui"
+            ]
+          }
+        ],
+        "receivedAtUnix": 1794209367.6915588,
+        "receivedHostUtc": "2026-11-09T07:29:27Z",
+        "receiveAgeSeconds": 0.01940298080444336,
+        "recvTransport": "unary",
+        "recvAdmitted": true,
+        "recvAdmittedByDrain": true,
+        "recvAdmittedByDrainIndex": 9,
+        "recvAdmittedByPull": null,
+        "recvPaused": false
+      },
+      "chosenSender": {
+        "fsq-forwarder-instance": "1868:1",
+        "fsq-forwarder-generation": "1",
+        "fsq-forest-sequence": "1089"
+      },
+      "originalPredicate": {
+        "listObjectId": 5065683392,
+        "actualUiElementCount": 15,
+        "returnLine": 63,
+        "rawReturn": true,
+        "startPresent": true,
+        "stopwatchCount": 2,
+        "currentActivity": "com.google.android.deskclock/com.android.deskclock.DeskClock"
+      },
+      "preQuitAppiumPostHocFields": {
+        "Start": true,
+        "StopwatchCount": 3,
+        "notOfficialInput": true
+      },
+      "appiumHostMarkers": {
+        "appium-session-request-caps": 1794209276.9923441,
+        "appium-session-created": 1794209308.441526,
+        "appium-quit-request": 1794209363.884671,
+        "appium-quit-response": 1794209364.6783261
+      },
+      "receiveGroups": [
+        {
+          "senderIdentity": {
+            "fsq-forwarder-instance": "1868:1",
+            "fsq-forwarder-generation": "1"
+          },
+          "firstSenderForestSequence": "1",
+          "lastSenderForestSequence": "1094",
+          "firstRecvSeq": 1,
+          "firstHostUnix": 1794209243.772649,
+          "lastRecvSeq": 1094,
+          "lastHostUnix": 1794209368.435236,
+          "receiveCount": 1094,
+          "emptyForestCount": 0
+        }
+      ],
+      "betweenCreateResponseAndQuitRequestReceiveCount": 476,
+      "betweenCreateResponseAndQuitRequestEmptyCount": 0,
+      "sampledForwarderPid": "1868",
+      "nativeLifecycle": [
+        {
+          "line": 7219,
+          "text": "         1697384146.447  1868  1868 I AndroidRLTask: Connected service=1868:1 generation=1 worker=a11y-1868:1-1"
+        },
+        {
+          "line": 7224,
+          "text": "         1697384146.455  1868  1914 I AndroidRLTask: Worker started service=1868:1 generation=1 source=capture worker=a11y-1868:1-1 thread=DefaultDispatcher-worker-1"
+        }
+      ],
+      "traceErrors": [],
+      "evaluatorProbeErrors": [],
+      "cleanup": {
+        "agentSession": {
+          "agentQuitReturned": true,
+          "attribution": "agent",
+          "sessionIdSha256": "9e233ebaae5be310cd5ba0f8fa1e9a89fb549e2faa3296c2ef54a7e10b2eeae4",
+          "status": "closed",
+          "verification": {
+            "activeSessionCount": 0,
+            "attemptedSessionCount": 1,
+            "ownedSessionCount": 1,
+            "pendingCreateCount": 0,
+            "pendingRequestCount": 0,
+            "reclaimedSessionCount": 0,
+            "reclaimedSessionHashes": [],
+            "sessions": [
+              {
+                "absentVerified": true,
+                "alreadyAbsent": true,
+                "errors": [],
+                "presentVerified": false,
+                "quitReturned": false,
+                "sessionHash": "9e233ebaae5be310cd5ba0f8fa1e9a89fb549e2faa3296c2ef54a7e10b2eeae4"
+              }
+            ],
+            "status": "unknown",
+            "unknownCreationOutcomeCount": 0
+          },
+          "verificationStatus": "absent"
+        },
+        "environment": "closed",
+        "taskTearDown": "completed"
+      },
+      "postExitWorkspaceAbsence": {
+        "observedAtUnix": 1794209574.8344488,
+        "observedAfterUnitProcessCompletion": true,
+        "unitSummaryCompletedAtUnix": 1794209369.3227048,
+        "workspacePath": "/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-browserdraw-forest-cq70fpzc/agent-workspace",
+        "workspaceExists": false,
+        "temporaryParentPath": "/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-browserdraw-forest-cq70fpzc",
+        "temporaryParentExists": false,
+        "originalCleanupRecordPreserved": true,
+        "scope": "host filesystem absence check only; no device/session changes"
+      },
+      "threePngsActuallyReviewed": true,
+      "visualConclusion": "Stopwatch selected; zero time; play/Start visible in prequit/postquit/original evaluator PNGs",
+      "diagnosticScopeLimits": [
+        "One trial per cell; fixed scheduling, no reward-based rerun",
+        "Agent navigation actions are not identical: patched P1 uses four actions, other cells three",
+        "Native Init flags log not a final effective flags measurement",
+        "Original helper has no per-message sender metadata",
+        "Prequit/postquit captures add diagnostic delay and are not historical timing reconstruction"
+      ]
+    }
+  ],
+  "conclusions": {
+    "directOriginalP0Failure": "Original official predicate consumed empty official forest/list despite paused stopwatch UI; reward0 preserved, not reclassified or substituted",
+    "independentCapabilityEffect": "With original APK unchanged, P1 retains sampled binding and continuous nonempty official receive stream and scores1",
+    "independentLifecycleEffect": "With capability omitted, patched P0 stops worker on unbind and starts a new service-instance capture on rebind in the same process, producing the exact nonempty DeskClock forest used for official reward1 after quit",
+    "combinedConfiguration": "Patched P1 returns official1 with continuous stream; its four navigation actions are reported, not equated to other cells",
+    "scope": "These controlled observations support both fixes for this run; do not reconstruct historical007 input or establish all-task/long-campaign stability"
+  },
+  "nativeFlagsEvidence": "clock-original-protected-conclusion.json#/nativeFlagsEvidence",
+  "firstLossTimeline": "clock-first-loss-timeline.json"
+}

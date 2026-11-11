@@ -1,0 +1,7 @@
+[
+  {
+    "rawLine": 3893,
+    "error": "Invalid \\escape: line 1 column 952 (char 951)",
+    "content": "{\"code\":\"driver.back()\\nWebDriverWait(driver,5).until(lambda d: len(d.find_elements(AppiumBy.ID,'org.tasks:id/fab'))==1)\\nxp='//android.widget.FrameLayout[@resource-id=\\\"org.tasks:id/row\\\" and .//*[@resource-id=\\\"org.tasks:id/title\\\" and @text=\\\"Renew Driver&apos;s License\\\"] and .//*[@resource-id=\\\"org.tasks:id/due_date\\\" and @text=\\\"Wed\\\"]]//*[@resource-id=\\\"org.tasks:id/rowBody\\\"]'\\nrow=driver.find_element(AppiumBy.XPATH,xp)\\nrow.click()\\nWebDriverWait(driver,5).until(lambda d: len(d.find_elements(AppiumBy.ID,'org.tasks:id/fab'))==0)\\nroot=ET.fromstring(driver.page_source)\\nradios=[]\\nfor n in root.iter():\\n    if n.attrib.get('class')=='android.widget.RadioButton':\\n        radios.append({'checked':n.attrib.get('checked'),'bounds':n.attrib.get('bounds')})\\ndateTexts=[n.attrib.get('text') for n in root.iter() if n.attrib.get('text') and ('Wednesday' in n.attrib.get('text') or 'October' in n.attrib.get('text'))]\\n{'title':'Renew Driver\\'s License','radioButtons':radios,'dateTexts':dateTexts}\",\"timeout\":15,\"title\":\"Inspecting Wednesday license task\"}"
+  }
+]

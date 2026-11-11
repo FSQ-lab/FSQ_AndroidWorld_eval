@@ -1,0 +1,161 @@
+{
+  "actualSandboxedOmpProbe": {
+    "agentCompleted": true,
+    "agentWorkspace": {
+      "digest": "a4c4dc44968c50c3522d6f3ddd0ddb6f785b167bb1c07ee69239a38fef665b49",
+      "fileCount": 154,
+      "sandboxProfileSha256": "38982f9012ccbe1290b34eee7424e7878bf6ed6c102d544504ae60f30d31070e"
+    },
+    "observedResult": {
+      "clientVersion": "5.2.5",
+      "frozenRuntimeProbe": true,
+      "python": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+      "serverSha256": "e7930d9afb2ad46d7932cb1a0faa2017e87118f02136c4ba15566b44becfa299",
+      "sourceFile": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/lib/python3.11/site-packages/amkernel/__init__.py"
+    },
+    "sessionsCreated": 0,
+    "termination": {
+      "businessDeadlineReached": false,
+      "cleanupRequested": true,
+      "deadlines": {
+        "remainingSeconds": {
+          "business": 36.562471416953485,
+          "cleanup": 27.709982667001896,
+          "force": 32.70998233300634
+        },
+        "started": true
+      },
+      "outerTermination": false,
+      "reason": "completed",
+      "rpcCommands": [
+        "set_interrupt_mode",
+        "prompt",
+        "prompt"
+      ]
+    }
+  },
+  "amkernelCommit": "33883148b4c6c6aff53a3323c9fc14d0d07bd814",
+  "constraintsSha256": "95c00800cf43e0a03f0c0539336d5a563a5463289b41f89eab2c2823bdbe608a",
+  "dependencies": {
+    "Appium-Python-Client": "5.2.5",
+    "PyJWT": "2.15.1",
+    "PySocks": "1.7.1",
+    "amkernel": "0.1.3",
+    "annotated-types": "0.8.0",
+    "anyio": "4.15.1",
+    "attrs": "26.1.0",
+    "certifi": "2026.10.23",
+    "cffi": "2.1.1",
+    "click": "8.5.0",
+    "cryptography": "50.0.2",
+    "h11": "0.16.0",
+    "httpcore2": "2.16.0",
+    "httpx2": "2.16.0",
+    "idna": "3.20",
+    "jsonschema": "4.26.0",
+    "jsonschema-specifications": "2025.9.1",
+    "mcp": "2.3.0",
+    "mcp-types": "2.3.0",
+    "opentelemetry-api": "1.45.1",
+    "outcome": "1.3.0.post0",
+    "pillow": "12.3.0",
+    "pycparser": "3.12",
+    "pydantic": "2.14.1",
+    "pydantic_core": "2.50.1",
+    "python-multipart": "0.0.32",
+    "referencing": "0.37.0",
+    "rpds-py": "2026.9.1",
+    "selenium": "4.52.0",
+    "sniffio": "1.3.1",
+    "sortedcontainers": "2.4.0",
+    "sse-starlette": "3.6.0",
+    "starlette": "1.10.0",
+    "tomlkit": "0.15.2",
+    "trio": "0.34.0",
+    "trio-websocket": "0.12.2",
+    "truststore": "0.10.5",
+    "typing-inspection": "0.4.4",
+    "typing_extensions": "4.16.0",
+    "urllib3": "2.8.0",
+    "uvicorn": "0.54.0",
+    "websocket-client": "1.9.2",
+    "wsproto": "1.3.2"
+  },
+  "emulator": {
+    "avd": "AndroidWorldAvd",
+    "grpcPort": 8554,
+    "headless": false,
+    "pid": 50840,
+    "port": 5554,
+    "readonlyInstance": true,
+    "saveSnapshot": false,
+    "serial": "emulator-5554",
+    "service": "fsqQualificationAndroid3388314",
+    "visibleWindow": true
+  },
+  "formalHarnessIdentity": {
+    "amkernelExecutableSha256": "a566d8a09d2f8e5e32bd8ddccd7325656a205a106b6d6913e4a7e1dc6d66c7e9",
+    "amkernelVersion": "0.1.3",
+    "androidWorldCheckoutRevision": "55ddaf5edc6f6c25673aed343907d5b9dca66f84",
+    "androidWorldGeneratedProtoSha256": "a731ddcc4ef82eb9a5ad6ac07463db2483e286c23285e2e2e96afffc920a985e",
+    "harnessSourceSha256": "192ab8f9b7c2adf8c5b22367893e0313261fad8f8dd0e8d777fea36b94d64f70",
+    "installedAgentAssetsSha256": "0ff33bb8ee50c160d87842ed11324e557f6fe5fc81c8e4fe06230a4d7bf792b8",
+    "officialSkillArchiveSha256": "9ce21bc92e94614fd65cf932e7951d07e40b0ce4749403479000b99b7d8b8bd2",
+    "officialSkillManifestSha256": "235e9bc07365f0822db0893f4334848cb09e93e2a1673021499146738238aff6",
+    "officialSkillSourceCommit": "e907024c210fe024c956ed9c74146fc27b1dd013",
+    "ompExecutableSha256": "cfbb5e38cd8f8a3be55e710700be587d287deaacdc58c9b0a661c5086bccfe58",
+    "ompVersion": "omp/18.12.6",
+    "pythonVersion": "3.11.16 (main, Aug 25 2026, 13:50:51) [Clang 22.1.3 ]",
+    "skillMetadataSha256": "cd10df3d883ca08c52f8ebbcc7c052a77fa852bd130c2326405e42269c1a29e0",
+    "skillRuntimeVersion": "0.1.3"
+  },
+  "installedPackageMatchesWheel": true,
+  "packageFiles": {
+    "__init__.py": "359d957cb4993975070cbce470c08010dd3e3bcdef8d2d166398726516f443a8",
+    "__main__.py": "9089fa5b6964cf0a5cb6fbbbb72e74226b5e3e13359c88fa48b52737882f3c47",
+    "artifact_store.py": "e9ab9a1e65f4dd42a926f3d58441044a57a339daa1afe6f29e514c737694dfcc",
+    "cli.py": "636c5543022e843a32f81ddbdb142535737301a6f9d5a7ab4e30eb95401e8cb9",
+    "distribution.py": "6fb3364d2a40786efeef5574eebe9c6cb3cceaab26f03c51107bdc038250596a",
+    "output.py": "46fdc7f94f488573138e5c46d173c82f1f4fe432485c98303b5a412b8f45a2fc",
+    "protocol.py": "a6bbc4e76b2735b569c5ec8b1d7244c5ce9abb44a44679460b45edbf93e5b29f",
+    "py.typed": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runner.py": "c4467ff3d37f41410d27f439dbd9239076e9334d379c65530d0a6a1c58911638",
+    "runtime.py": "fd6da51f485af522bba75e360a2525ca37d3d38baaafc67218012041f4f0aaeb",
+    "server.py": "e7930d9afb2ad46d7932cb1a0faa2017e87118f02136c4ba15566b44becfa299",
+    "skill/SKILL.md": "520bbbb380a95024d08e7e728ed0c5b92a484a0958fd098454a414ad9a7a0caa",
+    "skill/references/amkernel-appium.md": "8f4cd560fbd4e67a4f0eb5500eac4a9735843bb896aa41e091127046f2037135",
+    "skill/references/android-execution.md": "bfb8c99b5d48bcc536b67d3d1119bfd9a5ffb2c039d708d91e4561263356e2fc",
+    "skill/references/android-setup.md": "dafd16dec10715f1bafcb880c5c82bfc239f9d13e5ff9124719bbefe02ff6d6f",
+    "skill/references/appium-skills-e907024c210fe024c956ed9c74146fc27b1dd013.tar.gz": "9ce21bc92e94614fd65cf932e7951d07e40b0ce4749403479000b99b7d8b8bd2",
+    "skill/references/ios-setup.md": "ab4a9236bd9b31204ae34e7bc57a65fcfb24cbee439e29b67376418e6f8b7992",
+    "skill/references/official-skills.json": "02664d697ddfa6e2dec87fa76710bdd69325d72d448f0263883fed80a88eb678",
+    "skill/references/official-sources.json": "b5b6c78fe76ecf71500fcec567c1e1a01e60c2c6b6e024d063286603fa903485",
+    "skill/scripts/verify_official_skills.py": "947c8f5a7d06a60ce39053785bc3162b6145df4d9cc438a48ad91fca08f5bcad",
+    "structured_output.py": "7236380175a1c624561eb4c86f2c3fb34392e8729efeb3038d08c74851b0a009",
+    "supervisor.py": "d518856be642324e2cda99a101ca1f9d3d27d0973b9314221dcba487c589789f",
+    "workspace.py": "1c5321f8543e43a10fdfc61e7866982d2f43e5689abca2f936f6039aaf1640fd"
+  },
+  "projectMcpEntry": {
+    "command": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/bin/amkernel",
+    "cwd": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval",
+    "type": "stdio"
+  },
+  "pythonVersion": "3.11.16 (main, Aug 25 2026, 13:50:51) [Clang 22.1.3 ]",
+  "rollbackBackup": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/frozen-amkernel-3388314-20261106/project-activation-before.tar.gz",
+  "runtimeCommand": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/bin/amkernel",
+  "runtimeEnvironment": {
+    "AMKERNEL_DATA_HOME": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/state",
+    "PATHPrefix": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/bin",
+    "UV_TOOL_BIN_DIR": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/bin",
+    "UV_TOOL_DIR": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools"
+  },
+  "runtimeOutsideEvaluatorSandboxTree": true,
+  "runtimePython": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+  "sharedGlobalRuntimeChanged": false,
+  "wheel": {
+    "packageFileCount": 23,
+    "path": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/frozen-amkernel-3388314-20261106/wheel/amkernel-0.1.3-py3-none-any.whl",
+    "sha256": "dadc6d3f4d3370b1d9ee6fd4a39fabd8abc0c1cc262bdc4711a4619b6046cbfe"
+  },
+  "wheelMatchesNativeValidatedSource": true
+}

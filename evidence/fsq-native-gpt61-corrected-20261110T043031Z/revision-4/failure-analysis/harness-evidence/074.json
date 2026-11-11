@@ -1,0 +1,706 @@
+{
+  "index": 74,
+  "name": "SimpleCalendarEventsInTimeRange",
+  "goal": "Do I have any events between 4:15pm and 8pm Friday in Simple Calendar Pro? Answer with the titles only. If there are multiples titles, format your answer in a comma separated list.",
+  "reward": 0.0,
+  "classification": "failed",
+  "initialization": {
+    "initializationReferenceTime": {
+      "referenceTime": "2023-10-15T15:34:00+00:00",
+      "timezone": "UTC"
+    },
+    "initializedGoal": "Do I have any events between 4:15pm and 8pm Friday in Simple Calendar Pro? Answer with the titles only. If there are multiples titles, format your answer in a comma separated list."
+  },
+  "frozenTaskSpec": {
+    "apps": [
+      "simple calendar pro"
+    ],
+    "complexity": 1,
+    "difficulty": "easy",
+    "family": "information_retrieval",
+    "index": 74,
+    "instanceSeed": 481426288,
+    "maxActions": 10,
+    "maxSteps": 10,
+    "name": "SimpleCalendarEventsInTimeRange",
+    "params": {
+      "date": "October 20 2023",
+      "duration": "1 h",
+      "seed": 481426288,
+      "start_time": "4:15pm",
+      "title": "Cooking Class"
+    },
+    "paramsSha256": "69eb0351e6141421a9f804b5af6d175343852693ee02f9747da8604095cd4208",
+    "paramsTransport": "json",
+    "tags": [
+      "complex_ui_understanding",
+      "screen_reading",
+      "search",
+      "transcription",
+      "information_retrieval",
+      "parameterized"
+    ],
+    "timeBudget": {
+      "businessSeconds": 720,
+      "cleanupWindowSeconds": 180,
+      "episodeSeconds": 1330,
+      "forceSeconds": 910,
+      "recoveryWindowSeconds": 120,
+      "terminationGraceSeconds": 10
+    }
+  },
+  "mainSteps": [
+    {
+      "stepId": 4,
+      "tool": "agent_runtime.runner",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "Harness action budget prevented further navigation and verification.",
+          "Required kill_app teardown was attempted but also rejected with NativeActionBudgetExceeded: action_budget."
+        ],
+        "evidence": [
+          "Calendar navigation was attempted using top_value and top_right_arrow controls.",
+          "The final navigation attempt and its retry returned NativeActionBudgetExceeded: action_budget."
+        ],
+        "plan_updates": [
+          "Navigation could not continue because the harness rejected further actions; retry encountered the same limit."
+        ],
+        "pre_plan": [
+          {
+            "action": "Navigate to the intended Friday using calendar date controls.",
+            "status": "failed",
+            "step_id": 1,
+            "success_criteria": [
+              "Friday's schedule is displayed."
+            ]
+          },
+          {
+            "action": "Inspect all events overlapping 4:15pm–8pm and read complete titles.",
+            "status": "skipped",
+            "step_id": 2,
+            "success_criteria": [
+              "All overlapping events and their complete titles are identified."
+            ]
+          },
+          {
+            "action": "Confirm matching titles and return a comma-separated list.",
+            "status": "skipped",
+            "step_id": 3,
+            "success_criteria": [
+              "Matching titles are verified against the displayed schedule or details."
+            ]
+          }
+        ],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "inconclusive",
+        "summary": "Unable to determine the matching event titles before the harness action budget was exhausted.",
+        "unmet_criteria": [
+          "Identify and verify all Friday event titles overlapping 4:15pm–8pm, or establish that none match."
+        ]
+      }
+    },
+    {
+      "stepId": 5,
+      "tool": "agent_runtime.verifier",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "The harness action budget blocked further navigation. The supplied evidence does not establish which Friday events match, but the recorded final answer conclusively fails the required answer format and content."
+        ],
+        "evidence": [
+          "Execution step 4 records the final output: 'Unable to determine the matching event titles before the harness action budget was exhausted.' This is neither a title-only answer nor a no-matches answer.",
+          "The last supplied schedule excerpt, 000019-ui_snapshot.json, displays October 18 (Wed), not Friday.",
+          "The final navigation attempt and its retry both returned status=failed with NativeActionBudgetExceeded: action_budget."
+        ],
+        "plan_updates": [],
+        "pre_plan": [
+          {
+            "action": "Verify the final answer against the supplied verification goal.",
+            "status": "failed",
+            "step_id": 1,
+            "success_criteria": [
+              "The answer contains only all matching Friday event titles, comma-separated when multiple match, or indicates that none match."
+            ]
+          }
+        ],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "failed",
+        "summary": "The completed run returned an inability-to-determine message, not matching event titles or an indication that none match.",
+        "unmet_criteria": [
+          "The answer contains only the titles of all Friday events overlapping 4:15pm–8pm, comma-separated when multiple events match, or indicates that none match."
+        ]
+      }
+    }
+  ],
+  "budgetSummary": {
+    "admitted": 10,
+    "attempted": 13,
+    "deadlineExceeded": false,
+    "deadlineMonotonic": 719945.21934025,
+    "denied": 3,
+    "deviceRestoredByClose": false,
+    "exclusions": [
+      "driver_construction",
+      "uiautomator2_service_startup",
+      "observation_and_assertion_side_effects",
+      "external_processes_and_direct_driver_access"
+    ],
+    "exhausted": true,
+    "failed": 0,
+    "inFlight": 0,
+    "inputTextUnit": "composite_click_optional_clear_set_text",
+    "maximum": 10,
+    "securityBoundary": false,
+    "succeeded": 10,
+    "unit": "admitted_android_harness_write_capability_dispatch",
+    "writeCapabilities": [
+      "launch_app",
+      "kill_app",
+      "tap_on",
+      "tap_at",
+      "long_press_on",
+      "input_text",
+      "press_key",
+      "swipe"
+    ]
+  },
+  "actions": [
+    {
+      "ordinal": 0,
+      "stepId": "agent-launch_app-1",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [],
+      "output": {
+        "app_id": "com.simplemobiletools.calendar.pro"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[0]"
+    },
+    {
+      "ordinal": 1,
+      "stepId": "agent-ui_snapshot-2",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Sun, Oct 15",
+        "Sun, Oct 15",
+        "Gmail",
+        "Gmail",
+        "Photos",
+        "Photos",
+        "YouTube",
+        "YouTube",
+        "Home",
+        "Phone",
+        "Phone",
+        "Messages",
+        "Messages",
+        "Chrome",
+        "Chrome",
+        "Calendar",
+        "Predicted app: Calendar",
+        "Search",
+        "Google app",
+        "Voice search",
+        "Google Lens"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 27981,
+          "retained_characters": 7650
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[1]"
+    },
+    {
+      "ordinal": 2,
+      "stepId": "agent-tap_on-3",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "accessibilityId": "Predicted app: Calendar"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[2]"
+    },
+    {
+      "ordinal": 3,
+      "stepId": "agent-ui_snapshot-4",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Search",
+        "Change view",
+        "Settings",
+        "More options",
+        "October",
+        "October",
+        "New Event",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 47332,
+          "retained_characters": 14367
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 7,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[3]"
+    },
+    {
+      "ordinal": 4,
+      "stepId": "agent-tap_on-5",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.simplemobiletools.calendar.pro:id/change_view"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[4]"
+    },
+    {
+      "ordinal": 5,
+      "stepId": "agent-ui_snapshot-6",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Daily view",
+        "Weekly view",
+        "Monthly view",
+        "Monthly and daily view",
+        "Yearly view",
+        "Simple event list",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 19839,
+          "retained_characters": 5147
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 6,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[5]"
+    },
+    {
+      "ordinal": 6,
+      "stepId": "agent-tap_on-7",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "Daily view"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[6]"
+    },
+    {
+      "ordinal": 7,
+      "stepId": "agent-ui_snapshot-8",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Search",
+        "Change view",
+        "Settings",
+        "More options",
+        "October 15 (Sun)",
+        "October 15 (Sun)",
+        "Meeting with Bob",
+        "04:32 - 04:47",
+        "We will explore contract details.",
+        "Meeting with Alice",
+        "05:20 - 05:35",
+        "We will celebrate client feedback.",
+        "Workshop on Campaign",
+        "12:32 - 12:47",
+        "We will prepare for contract details. Snacks will ",
+        "Review session for Budget Planning",
+        "12:32 - 13:02",
+        "We will strategize about software updates. Looking",
+        "Workshop on Annual Report",
+        "18:40 - 19:10",
+        "We will strategize about business objectives.",
+        "New Event",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 41241,
+          "retained_characters": 11389
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 3
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[7]"
+    },
+    {
+      "ordinal": 8,
+      "stepId": "agent-tap_on-9",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.simplemobiletools.calendar.pro:id/top_value"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[8]"
+    },
+    {
+      "ordinal": 9,
+      "stepId": "agent-ui_snapshot-10",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Sep",
+        "Oct",
+        "Nov",
+        "14",
+        "15",
+        "16",
+        "2022",
+        "2023",
+        "2024",
+        "Cancel",
+        "OK",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 24796,
+          "retained_characters": 6185
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[9]"
+    },
+    {
+      "ordinal": 10,
+      "stepId": "agent-input_text-11",
+      "action": "input_text",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "xpath": "//android.widget.EditText[@text='15']"
+        },
+        "text": "20",
+        "textType": "literal"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[10]"
+    },
+    {
+      "ordinal": 11,
+      "stepId": "agent-tap_on-12",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "OK"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[11]"
+    },
+    {
+      "ordinal": 12,
+      "stepId": "agent-ui_snapshot-13",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Search",
+        "Change view",
+        "Settings",
+        "More options",
+        "October 15 (Sun)",
+        "October 15 (Sun)",
+        "Meeting with Bob",
+        "04:32 - 04:47",
+        "We will explore contract details.",
+        "Meeting with Alice",
+        "05:20 - 05:35",
+        "We will celebrate client feedback.",
+        "Workshop on Campaign",
+        "12:32 - 12:47",
+        "We will prepare for contract details. Snacks will ",
+        "Review session for Budget Planning",
+        "12:32 - 13:02",
+        "We will strategize about software updates. Looking",
+        "Workshop on Annual Report",
+        "18:40 - 19:10",
+        "We will strategize about business objectives.",
+        "New Event",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 41241,
+          "retained_characters": 11389
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 3
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[12]"
+    },
+    {
+      "ordinal": 13,
+      "stepId": "agent-tap_on-14",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.simplemobiletools.calendar.pro:id/top_right_arrow"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[13]"
+    },
+    {
+      "ordinal": 14,
+      "stepId": "agent-tap_on-15",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.simplemobiletools.calendar.pro:id/top_right_arrow"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[14]"
+    },
+    {
+      "ordinal": 15,
+      "stepId": "agent-tap_on-16",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.simplemobiletools.calendar.pro:id/top_right_arrow"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[15]"
+    },
+    {
+      "ordinal": 16,
+      "stepId": "agent-ui_snapshot-17",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Search",
+        "Go to today",
+        "Change view",
+        "More options",
+        "October 18 (Wed)",
+        "October 18 (Wed)",
+        "Review session for Project X",
+        "08:36 - 08:51",
+        "We will explore upcoming project milestones. Looki",
+        "New Event",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 29053,
+          "retained_characters": 7952
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 2
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[16]"
+    },
+    {
+      "ordinal": 17,
+      "stepId": "agent-tap_on-18",
+      "action": "tap_on",
+      "status": "failed",
+      "error": "NativeActionBudgetExceeded: action_budget",
+      "params": null,
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[17]"
+    },
+    {
+      "ordinal": 18,
+      "stepId": "agent-tap_on-19",
+      "action": "tap_on",
+      "status": "failed",
+      "error": "NativeActionBudgetExceeded: action_budget",
+      "params": null,
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[18]"
+    },
+    {
+      "ordinal": 19,
+      "stepId": "agent-kill_app-20",
+      "action": "kill_app",
+      "status": "failed",
+      "error": "NativeActionBudgetExceeded: action_budget",
+      "params": null,
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[19]"
+    }
+  ],
+  "originalNativeExecutionPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/074-SimpleCalendarEventsInTimeRange/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-074-20261110T205836Z-f11b48/execution-result.json",
+  "originalNativeResultPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/074-SimpleCalendarEventsInTimeRange/raw-private/fsq-native/worker/fsq-task-result.private.json",
+  "originalGoalPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/074-SimpleCalendarEventsInTimeRange/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-074-20261110T205836Z-f11b48/sources/000-goal.txt"
+}

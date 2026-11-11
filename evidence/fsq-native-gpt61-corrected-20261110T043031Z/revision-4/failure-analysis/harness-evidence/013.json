@@ -1,0 +1,2637 @@
+{
+  "index": 13,
+  "name": "ExpenseAddMultipleFromGallery",
+  "goal": "Add the expenses from expenses.jpg in Simple Gallery Pro to pro expense.",
+  "reward": 1.0,
+  "classification": "passed",
+  "initialization": {
+    "initializationReferenceTime": {
+      "referenceTime": "2023-10-15T15:34:00+00:00",
+      "timezone": "UTC"
+    },
+    "initializedGoal": "Add the expenses from expenses.jpg in Simple Gallery Pro to pro expense."
+  },
+  "frozenTaskSpec": {
+    "apps": [
+      "pro expense",
+      "simple gallery pro"
+    ],
+    "complexity": 6,
+    "difficulty": "hard",
+    "family": "android",
+    "index": 13,
+    "instanceSeed": 1284149777,
+    "maxActions": 60,
+    "maxSteps": 60,
+    "name": "ExpenseAddMultipleFromGallery",
+    "params": {
+      "noise_row_objects": [
+        {
+          "amount": 20900,
+          "category": 1,
+          "created_date": 1696482000000,
+          "expense_id": -1,
+          "modified_date": 1696482000000,
+          "name": "Membership Fees",
+          "note": "Want to have"
+        },
+        {
+          "amount": 41713,
+          "category": 9,
+          "created_date": 1696716000000,
+          "expense_id": -1,
+          "modified_date": 1696716000000,
+          "name": "Medical Tests",
+          "note": "Want to have"
+        },
+        {
+          "amount": 27222,
+          "category": 5,
+          "created_date": 1697086800000,
+          "expense_id": -1,
+          "modified_date": 1697086800000,
+          "name": "Event Tickets",
+          "note": "Want to have"
+        },
+        {
+          "amount": 43365,
+          "category": 5,
+          "created_date": 1697140800000,
+          "expense_id": -1,
+          "modified_date": 1697140800000,
+          "name": "Birthday Present",
+          "note": "I may repeat this"
+        },
+        {
+          "amount": 26649,
+          "category": 4,
+          "created_date": 1697004000000,
+          "expense_id": -1,
+          "modified_date": 1697004000000,
+          "name": "Mortgage",
+          "note": "Want to have"
+        },
+        {
+          "amount": 7965,
+          "category": 8,
+          "created_date": 1697184000000,
+          "expense_id": -1,
+          "modified_date": 1697184000000,
+          "name": "Shoes",
+          "note": "Monthly recurring"
+        },
+        {
+          "amount": 46005,
+          "category": 3,
+          "created_date": 1696888800000,
+          "expense_id": -1,
+          "modified_date": 1696888800000,
+          "name": "Specialty Foods",
+          "note": "Paid by card"
+        },
+        {
+          "amount": 44978,
+          "category": 9,
+          "created_date": 1696266000000,
+          "expense_id": -1,
+          "modified_date": 1696266000000,
+          "name": "Gym Membership",
+          "note": "Monthly recurring"
+        },
+        {
+          "amount": 15485,
+          "category": 5,
+          "created_date": 1697364000000,
+          "expense_id": -1,
+          "modified_date": 1697364000000,
+          "name": "Social Club Dues",
+          "note": "Urgent"
+        },
+        {
+          "amount": 21096,
+          "category": 5,
+          "created_date": 1696118400000,
+          "expense_id": -1,
+          "modified_date": 1696118400000,
+          "name": "Dinner Party",
+          "note": "A need"
+        }
+      ],
+      "row_objects": [
+        {
+          "amount": 43635,
+          "category": 8,
+          "created_date": 1696957200000,
+          "expense_id": -1,
+          "modified_date": 1696957200000,
+          "name": "Dress",
+          "note": "Paid by card"
+        },
+        {
+          "amount": 35007,
+          "category": 4,
+          "created_date": 1696431600000,
+          "expense_id": -1,
+          "modified_date": 1696431600000,
+          "name": "Furnishing",
+          "note": "A need"
+        },
+        {
+          "amount": 3954,
+          "category": 9,
+          "created_date": 1697112000000,
+          "expense_id": -1,
+          "modified_date": 1697112000000,
+          "name": "Dental Care",
+          "note": "A need"
+        }
+      ],
+      "seed": 1284149777,
+      "text_representation_type": "text_block"
+    },
+    "paramsSha256": "ed427ab66d556bc9f035445cff7f28b882f4603ee51302fce9d9192a571ee14c",
+    "paramsTransport": "seed",
+    "tags": [
+      "multi_app",
+      "screen_reading",
+      "data_entry",
+      "information_retrieval",
+      "parameterized"
+    ],
+    "timeBudget": {
+      "businessSeconds": 3720,
+      "cleanupWindowSeconds": 180,
+      "episodeSeconds": 4330,
+      "forceSeconds": 3910,
+      "recoveryWindowSeconds": 120,
+      "terminationGraceSeconds": 10
+    }
+  },
+  "mainSteps": [
+    {
+      "stepId": 1,
+      "tool": "agent_runtime.runner",
+      "status": "failed",
+      "error": "Agent exceeded the configured turn limit.",
+      "output": {
+        "failure_category": "agent_runtime_error",
+        "failure_reason": "agent_runtime_error",
+        "failure_summary": "Agent runtime execution failed before producing structured verification output."
+      }
+    },
+    {
+      "stepId": 2,
+      "tool": "agent_runtime.verifier",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "The run exceeded its configured turn limit and produced no structured main-agent output reporting the visual assertion results.",
+          "Saved Dental Care category verification is missing. The evidence supports substantial completion but neither proves the full verification goal nor proves it false."
+        ],
+        "evidence": [
+          "Source AI assertion in 000016-assert_with_ai.json transcribed three records: Dress — $436.35, Clothes, Paid by card; Furnishing — $350.07, Housing, A need; Dental Care — $39.54, Health Care, A need. It includes a passed verdict, provider metadata, and screenshot reference.",
+          "Post-save UI snapshot 000075-ui_snapshot.json shows Dental Care 39.54 USD, Furnishing 350.07 USD, and Dress 436.35 USD in the recent expense list.",
+          "Backend AI assertions 000087 and 000095 passed for reopened saved Furnishing and Dress records, including their amounts, notes, and selected categories; both include verdict metadata and screenshot references.",
+          "Backend AI assertion 000079 passed for saved Dental Care's name, amount, and note, with verdict metadata and screenshot reference. Its category was not included in that assertion.",
+          "The Dental Care pre-save snapshot 000072 shows Health Care checked, but no supplied reopened-record evidence confirms the persisted category.",
+          "The failed Furnishing detail assertion 000084 reported that its category was not displayed, rather than a mismatch; the subsequent reopened-record assertion confirmed Housing."
+        ],
+        "plan_updates": [],
+        "pre_plan": [],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "inconclusive",
+        "summary": "All three expenses were saved and appear in Pro Expense, but the supplied evidence does not fully verify every saved detail against expenses.jpg.",
+        "unmet_criteria": []
+      }
+    }
+  ],
+  "budgetSummary": {
+    "admitted": 46,
+    "attempted": 46,
+    "deadlineExceeded": false,
+    "deadlineMonotonic": 706759.456964625,
+    "denied": 0,
+    "deviceRestoredByClose": false,
+    "exclusions": [
+      "driver_construction",
+      "uiautomator2_service_startup",
+      "observation_and_assertion_side_effects",
+      "external_processes_and_direct_driver_access"
+    ],
+    "exhausted": false,
+    "failed": 0,
+    "inFlight": 0,
+    "inputTextUnit": "composite_click_optional_clear_set_text",
+    "maximum": 60,
+    "securityBoundary": false,
+    "succeeded": 46,
+    "unit": "admitted_android_harness_write_capability_dispatch",
+    "writeCapabilities": [
+      "launch_app",
+      "kill_app",
+      "tap_on",
+      "tap_at",
+      "long_press_on",
+      "input_text",
+      "press_key",
+      "swipe"
+    ]
+  },
+  "actions": [
+    {
+      "ordinal": 0,
+      "stepId": "agent-launch_app-1",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [],
+      "output": {
+        "app_id": "com.arduia.expense"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[0]"
+    },
+    {
+      "ordinal": 1,
+      "stepId": "agent-press_key-2",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Home"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Home"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[1]"
+    },
+    {
+      "ordinal": 2,
+      "stepId": "agent-ui_snapshot-3",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Sun, Oct 15",
+        "Sun, Oct 15",
+        "Gmail",
+        "Gmail",
+        "Photos",
+        "Photos",
+        "YouTube",
+        "YouTube",
+        "Home",
+        "Phone",
+        "Phone",
+        "Messages",
+        "Messages",
+        "Chrome",
+        "Chrome",
+        "Calendar",
+        "Predicted app: Calendar",
+        "Search",
+        "Google app",
+        "Voice search",
+        "Google Lens",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 27980,
+          "retained_characters": 7649
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[2]"
+    },
+    {
+      "ordinal": 3,
+      "stepId": "agent-swipe-4",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[3]"
+    },
+    {
+      "ordinal": 4,
+      "stepId": "agent-ui_snapshot-5",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Audio Recorder",
+        "Audio Recorder",
+        "Broccoli",
+        "Broccoli",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Chrome",
+        "Chrome",
+        "Clipper",
+        "Clipper",
+        "Clock",
+        "Clock",
+        "Contacts",
+        "Contacts",
+        "Draw",
+        "Draw",
+        "Drive",
+        "Drive",
+        "Files",
+        "Files",
+        "Gallery",
+        "Gallery",
+        "Gmail",
+        "Gmail",
+        "Google",
+        "Google",
+        "Joplin",
+        "Joplin",
+        "Maps",
+        "Maps",
+        "Markor",
+        "Markor",
+        "Messages",
+        "Messages",
+        "OpenTracks",
+        "OpenTracks",
+        "OsmAnd",
+        "OsmAnd",
+        "Phone",
+        "Phone",
+        "Photos",
+        "Photos",
+        "Pro Expense",
+        "Pro Expense",
+        "Gallery",
+        "Gallery",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Tasks",
+        "Tasks",
+        "Search",
+        "Google app",
+        "Search apps, web and more",
+        "Voice search",
+        "Google Lens",
+        "Home",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 37016,
+          "retained_characters": 12574
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 6,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[4]"
+    },
+    {
+      "ordinal": 5,
+      "stepId": "agent-tap_on-6",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "Gallery"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[5]"
+    },
+    {
+      "ordinal": 6,
+      "stepId": "agent-ui_snapshot-7",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Search",
+        "Search folders",
+        "Open camera",
+        "Show all folders content",
+        "More options",
+        "DCIM",
+        "11"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 25923,
+          "retained_characters": 7007
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 7,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[6]"
+    },
+    {
+      "ordinal": 7,
+      "stepId": "agent-tap_on-8",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "DCIM"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[7]"
+    },
+    {
+      "ordinal": 8,
+      "stepId": "agent-ui_snapshot-9",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Back",
+        "Search in DCIM",
+        "Toggle filename visibility",
+        "Sort by",
+        "More options"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 34033,
+          "retained_characters": 9857
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 7,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[8]"
+    },
+    {
+      "ordinal": 9,
+      "stepId": "agent-input_text-10",
+      "action": "input_text",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.simplemobiletools.gallery.pro:id/top_toolbar_search"
+        },
+        "text": "expenses",
+        "textType": "literal"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[9]"
+    },
+    {
+      "ordinal": 10,
+      "stepId": "agent-press_key-11",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[10]"
+    },
+    {
+      "ordinal": 11,
+      "stepId": "agent-tap_on-12",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.simplemobiletools.gallery.pro:id/toggle_filename"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[11]"
+    },
+    {
+      "ordinal": 12,
+      "stepId": "agent-ui_snapshot-13",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Back",
+        "expenses",
+        "Toggle filename visibility",
+        "Sort by",
+        "More options",
+        "expenses.jpg",
+        "old_expenses_4.jpg",
+        "old_expenses_5.jpg",
+        "old_expenses_6.jpg",
+        "old_expenses_7.jpg",
+        "old_expenses_8.jpg",
+        "old_expenses_9.jpg",
+        "old_expenses_0.jpg",
+        "old_expenses_1.jpg",
+        "old_expenses_2.jpg",
+        "old_expenses_3.jpg"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 39342,
+          "retained_characters": 11611
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 7,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[12]"
+    },
+    {
+      "ordinal": 13,
+      "stepId": "agent-tap_on-14",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "expenses.jpg"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[13]"
+    },
+    {
+      "ordinal": 14,
+      "stepId": "agent-assert_with_ai-15",
+      "action": "assert_with_ai",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "prompt": "Read the currently opened expenses.jpg. Verify expense records are legible and transcribe every expense and all recorded details verbatim in your reason.",
+        "optional": false
+      },
+      "uiLabels": [],
+      "output": {
+        "status": "passed",
+        "passed": true,
+        "explanation": "expenses.jpg is open, and all three expense records and their details are legible. Verbatim transcription:\n\nExpense: Dress\namount_dollars: $436.35\ncategory_name: Clothes\nnote: Paid by card\n\nExpense: Furnishing\namount_dollars: $350.07\ncategory_name: Housing\nnote: A need\n\nExpense: Dental Care\namount_dollars: $39.54\ncategory_name: Health Care\nnote: A need",
+        "confidence": 1.0,
+        "provider": "github_copilot",
+        "model": "gpt-6.1-sol",
+        "latency_ms": 5278,
+        "token_usage": {
+          "input_tokens": 3278,
+          "output_tokens": 118,
+          "total_tokens": 3396
+        },
+        "artifact_refs": [
+          {
+            "artifact_id": "screenshot-agent-assert-with-ai-15-invoke-assert-with-ai-1-273d0ae75593",
+            "kind": "screenshot",
+            "path": "artifacts/screenshots/screenshot-agent-assert-with-ai-15-invoke-assert-with-ai-1-273d0ae75593.png",
+            "mime_type": "image/png",
+            "size_bytes": 621496,
+            "sha256": "10e27bfd430391683dd40d795fd7232464c9d72f481cc41007d6e46dd829dd26",
+            "availability": "available",
+            "unavailable_reason": null,
+            "capture_occurrence": 1,
+            "created_at": "2026-11-10T16:30:23.447041Z",
+            "metadata": {
+              "capture_reason": "assert-with-ai",
+              "redacted": false
+            }
+          }
+        ],
+        "error": null,
+        "metadata": {
+          "provider_metadata": {
+            "endpoint_family": "github_copilot",
+            "copilot_plan": "enterprise"
+          }
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[14]"
+    },
+    {
+      "ordinal": 15,
+      "stepId": "agent-press_key-16",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Home"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Home"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[15]"
+    },
+    {
+      "ordinal": 16,
+      "stepId": "agent-swipe-17",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[16]"
+    },
+    {
+      "ordinal": 17,
+      "stepId": "agent-ui_snapshot-18",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Audio Recorder",
+        "Audio Recorder",
+        "Broccoli",
+        "Broccoli",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Chrome",
+        "Chrome",
+        "Clipper",
+        "Clipper",
+        "Clock",
+        "Clock",
+        "Contacts",
+        "Contacts",
+        "Draw",
+        "Draw",
+        "Drive",
+        "Drive",
+        "Files",
+        "Files",
+        "Gallery",
+        "Gallery",
+        "Gmail",
+        "Gmail",
+        "Google",
+        "Google",
+        "Joplin",
+        "Joplin",
+        "Maps",
+        "Maps",
+        "Markor",
+        "Markor",
+        "Messages",
+        "Messages",
+        "OpenTracks",
+        "OpenTracks",
+        "OsmAnd",
+        "OsmAnd",
+        "Phone",
+        "Phone",
+        "Photos",
+        "Photos",
+        "Pro Expense",
+        "Pro Expense",
+        "Gallery",
+        "Gallery",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Tasks",
+        "Tasks",
+        "Search",
+        "Google app",
+        "Search apps, web and more",
+        "Voice search",
+        "Google Lens",
+        "Home",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 37017,
+          "retained_characters": 12575
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 6,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[17]"
+    },
+    {
+      "ordinal": 18,
+      "stepId": "agent-tap_on-19",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "Pro Expense"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[18]"
+    },
+    {
+      "ordinal": 19,
+      "stepId": "agent-ui_snapshot-20",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Home",
+        "Totals",
+        "OCT 15 - 22",
+        "INCOME",
+        "0",
+        "USD",
+        "OUTCOME",
+        "154.85",
+        "USD",
+        "Expenses in this Week",
+        "OCT 15 - 22",
+        "Recent",
+        "Social Club Dues",
+        "Today 10:00 AM",
+        "154.85",
+        "USD",
+        "Shoes",
+        "2023 Oct 13",
+        "79.65",
+        "USD",
+        "Birthday Present",
+        "2023 Oct 12",
+        "433.65",
+        "USD",
+        "Event Tickets",
+        "272.22",
+        "USD",
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 42967,
+          "retained_characters": 10775
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[19]"
+    },
+    {
+      "ordinal": 20,
+      "stepId": "agent-tap_on-21",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.arduia.expense:id/fb_main_add"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[20]"
+    },
+    {
+      "ordinal": 21,
+      "stepId": "agent-ui_snapshot-22",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Expense Entry",
+        "15 Oct 2023 3:36 PM",
+        "Time",
+        "Calendar",
+        "Name",
+        "Amount",
+        "Food",
+        "Income",
+        "Housing",
+        "Social",
+        "Entertainment",
+        "Note",
+        "SAVE",
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 32504,
+          "retained_characters": 8365
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[21]"
+    },
+    {
+      "ordinal": 22,
+      "stepId": "agent-input_text-23",
+      "action": "input_text",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "Name",
+        "text": "Dress",
+        "textType": "literal"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[22]"
+    },
+    {
+      "ordinal": 23,
+      "stepId": "agent-input_text-24",
+      "action": "input_text",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "Amount",
+        "text": "436.35",
+        "textType": "literal"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[23]"
+    },
+    {
+      "ordinal": 24,
+      "stepId": "agent-press_key-25",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[24]"
+    },
+    {
+      "ordinal": 25,
+      "stepId": "agent-ui_snapshot-26",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Expense Entry",
+        "15 Oct 2023 3:36 PM",
+        "Time",
+        "Calendar",
+        "Dress",
+        "436.35",
+        "USD",
+        "Food",
+        "Income",
+        "Housing",
+        "Social",
+        "Entertainment",
+        "Note",
+        "SAVE",
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 32967,
+          "retained_characters": 8377
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 13,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[25]"
+    },
+    {
+      "ordinal": 26,
+      "stepId": "agent-swipe-27",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "start": {
+          "x": 967,
+          "y": 817
+        },
+        "end": {
+          "x": 175,
+          "y": 817
+        },
+        "duration": 400,
+        "reference_screen_size": {
+          "width": 1080,
+          "height": 2400
+        }
+      },
+      "uiLabels": [],
+      "output": {
+        "start": {
+          "x": 967,
+          "y": 817
+        },
+        "end": {
+          "x": 175,
+          "y": 817
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[26]"
+    },
+    {
+      "ordinal": 27,
+      "stepId": "agent-ui_snapshot-28",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Expense Entry",
+        "15 Oct 2023 3:36 PM",
+        "Time",
+        "Calendar",
+        "Dress",
+        "436.35",
+        "USD",
+        "Entertainment",
+        "Transportation",
+        "Clothes",
+        "Health Care",
+        "Note",
+        "SAVE",
+        "15:37",
+        "23:37",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 32044,
+          "retained_characters": 8047
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 13,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[27]"
+    },
+    {
+      "ordinal": 28,
+      "stepId": "agent-tap_on-29",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "text": "Clothes"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[28]"
+    },
+    {
+      "ordinal": 29,
+      "stepId": "agent-input_text-30",
+      "action": "input_text",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "Note",
+        "text": "Paid by card",
+        "textType": "literal"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[29]"
+    },
+    {
+      "ordinal": 30,
+      "stepId": "agent-press_key-31",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[30]"
+    },
+    {
+      "ordinal": 31,
+      "stepId": "agent-ui_snapshot-32",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Expense Entry",
+        "15 Oct 2023 3:36 PM",
+        "Time",
+        "Calendar",
+        "Dress",
+        "436.35",
+        "USD",
+        "Entertainment",
+        "Transportation",
+        "Clothes",
+        "Health Care",
+        "Paid by card",
+        "SAVE",
+        "15:37",
+        "23:37",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 32052,
+          "retained_characters": 8071
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 13,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[31]"
+    },
+    {
+      "ordinal": 32,
+      "stepId": "agent-tap_on-33",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "SAVE"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[32]"
+    },
+    {
+      "ordinal": 33,
+      "stepId": "agent-ui_snapshot-34",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Home",
+        "Totals",
+        "OCT 15 - 22",
+        "INCOME",
+        "0",
+        "USD",
+        "OUTCOME",
+        "591.2",
+        "USD",
+        "Expenses in this Week",
+        "OCT 15 - 22",
+        "Recent",
+        "Dress",
+        "Today 3:36 PM",
+        "436.35",
+        "USD",
+        "Social Club Dues",
+        "Today 10:00 AM",
+        "154.85",
+        "USD",
+        "Shoes",
+        "2023 Oct 13",
+        "79.65",
+        "USD",
+        "Birthday Present",
+        "433.65",
+        "USD",
+        "15:37",
+        "23:37",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 42959,
+          "retained_characters": 10783
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[33]"
+    },
+    {
+      "ordinal": 34,
+      "stepId": "agent-tap_on-35",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.arduia.expense:id/fb_main_add"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[34]"
+    },
+    {
+      "ordinal": 35,
+      "stepId": "agent-ui_snapshot-36",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Expense Entry",
+        "15 Oct 2023 3:37 PM",
+        "Time",
+        "Calendar",
+        "Name",
+        "Amount",
+        "Food",
+        "Income",
+        "Housing",
+        "Social",
+        "Entertainment",
+        "Note",
+        "SAVE",
+        "15:37",
+        "23:37",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 32504,
+          "retained_characters": 8365
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[35]"
+    },
+    {
+      "ordinal": 36,
+      "stepId": "agent-input_text-37",
+      "action": "input_text",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "Name",
+        "text": "Furnishing",
+        "textType": "literal"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[36]"
+    },
+    {
+      "ordinal": 37,
+      "stepId": "agent-input_text-38",
+      "action": "input_text",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "Amount",
+        "text": "350.07",
+        "textType": "literal"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[37]"
+    },
+    {
+      "ordinal": 38,
+      "stepId": "agent-press_key-39",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[38]"
+    },
+    {
+      "ordinal": 39,
+      "stepId": "agent-ui_snapshot-40",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Expense Entry",
+        "15 Oct 2023 3:37 PM",
+        "Time",
+        "Calendar",
+        "Furnishing",
+        "350.07",
+        "USD",
+        "Food",
+        "Income",
+        "Housing",
+        "Social",
+        "Entertainment",
+        "Note",
+        "SAVE",
+        "15:38",
+        "23:38",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 32973,
+          "retained_characters": 8383
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 13,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[39]"
+    },
+    {
+      "ordinal": 40,
+      "stepId": "agent-tap_on-41",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "Housing"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[40]"
+    },
+    {
+      "ordinal": 41,
+      "stepId": "agent-input_text-42",
+      "action": "input_text",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "Note",
+        "text": "A need",
+        "textType": "literal"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[41]"
+    },
+    {
+      "ordinal": 42,
+      "stepId": "agent-press_key-43",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[42]"
+    },
+    {
+      "ordinal": 43,
+      "stepId": "agent-ui_snapshot-44",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Expense Entry",
+        "15 Oct 2023 3:37 PM",
+        "Time",
+        "Calendar",
+        "Furnishing",
+        "350.07",
+        "USD",
+        "Food",
+        "Income",
+        "Housing",
+        "Social",
+        "Entertainment",
+        "A need",
+        "SAVE",
+        "15:38",
+        "23:38",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 32975,
+          "retained_characters": 8385
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 13,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[43]"
+    },
+    {
+      "ordinal": 44,
+      "stepId": "agent-tap_on-45",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.arduia.expense:id/btn_save"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[44]"
+    },
+    {
+      "ordinal": 45,
+      "stepId": "agent-ui_snapshot-46",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Home",
+        "Totals",
+        "OCT 15 - 22",
+        "INCOME",
+        "0",
+        "USD",
+        "OUTCOME",
+        "941.27",
+        "USD",
+        "Expenses in this Week",
+        "OCT 15 - 22",
+        "Recent",
+        "Furnishing",
+        "Today 3:37 PM",
+        "350.07",
+        "USD",
+        "Dress",
+        "Today 3:36 PM",
+        "436.35",
+        "USD",
+        "Social Club Dues",
+        "Today 10:00 AM",
+        "154.85",
+        "USD",
+        "Shoes",
+        "79.65",
+        "USD",
+        "15:38",
+        "23:38",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 42956,
+          "retained_characters": 10780
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[45]"
+    },
+    {
+      "ordinal": 46,
+      "stepId": "agent-tap_on-47",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.arduia.expense:id/fb_main_add"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[46]"
+    },
+    {
+      "ordinal": 47,
+      "stepId": "agent-input_text-48",
+      "action": "input_text",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "Name",
+        "text": "Dental Care",
+        "textType": "literal"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[47]"
+    },
+    {
+      "ordinal": 48,
+      "stepId": "agent-input_text-49",
+      "action": "input_text",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "Amount",
+        "text": "39.54",
+        "textType": "literal"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[48]"
+    },
+    {
+      "ordinal": 49,
+      "stepId": "agent-press_key-50",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[49]"
+    },
+    {
+      "ordinal": 50,
+      "stepId": "agent-ui_snapshot-51",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Expense Entry",
+        "15 Oct 2023 3:38 PM",
+        "Time",
+        "Calendar",
+        "Dental Care",
+        "39.54",
+        "USD",
+        "Food",
+        "Income",
+        "Housing",
+        "Social",
+        "Entertainment",
+        "Note",
+        "SAVE",
+        "15:39",
+        "23:39",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 32973,
+          "retained_characters": 8383
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 13,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[50]"
+    },
+    {
+      "ordinal": 51,
+      "stepId": "agent-swipe-52",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "start": {
+          "x": 967,
+          "y": 817
+        },
+        "end": {
+          "x": 175,
+          "y": 817
+        },
+        "duration": 400,
+        "reference_screen_size": {
+          "width": 1080,
+          "height": 2400
+        }
+      },
+      "uiLabels": [],
+      "output": {
+        "start": {
+          "x": 967,
+          "y": 817
+        },
+        "end": {
+          "x": 175,
+          "y": 817
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[51]"
+    },
+    {
+      "ordinal": 52,
+      "stepId": "agent-ui_snapshot-53",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Expense Entry",
+        "15 Oct 2023 3:38 PM",
+        "Time",
+        "Calendar",
+        "Dental Care",
+        "39.54",
+        "USD",
+        "Entertainment",
+        "Transportation",
+        "Clothes",
+        "Health Care",
+        "Note",
+        "SAVE",
+        "15:39",
+        "23:39",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 32050,
+          "retained_characters": 8053
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 13,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[52]"
+    },
+    {
+      "ordinal": 53,
+      "stepId": "agent-tap_on-54",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "Health Care"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[53]"
+    },
+    {
+      "ordinal": 54,
+      "stepId": "agent-input_text-55",
+      "action": "input_text",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "Note",
+        "text": "A need",
+        "textType": "literal"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[54]"
+    },
+    {
+      "ordinal": 55,
+      "stepId": "agent-press_key-56",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[55]"
+    },
+    {
+      "ordinal": 56,
+      "stepId": "agent-ui_snapshot-57",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Expense Entry",
+        "15 Oct 2023 3:38 PM",
+        "Time",
+        "Calendar",
+        "Dental Care",
+        "39.54",
+        "USD",
+        "Entertainment",
+        "Transportation",
+        "Clothes",
+        "Health Care",
+        "A need",
+        "SAVE",
+        "15:39",
+        "23:39",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 32051,
+          "retained_characters": 8070
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 13,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[56]"
+    },
+    {
+      "ordinal": 57,
+      "stepId": "agent-tap_on-58",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.arduia.expense:id/btn_save"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[57]"
+    },
+    {
+      "ordinal": 58,
+      "stepId": "agent-ui_snapshot-59",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Home",
+        "Totals",
+        "OCT 15 - 22",
+        "INCOME",
+        "0",
+        "USD",
+        "OUTCOME",
+        "980.81",
+        "USD",
+        "Expenses in this Week",
+        "OCT 15 - 22",
+        "Recent",
+        "Dental Care",
+        "Today 3:38 PM",
+        "39.54",
+        "USD",
+        "Furnishing",
+        "Today 3:37 PM",
+        "350.07",
+        "USD",
+        "Dress",
+        "Today 3:36 PM",
+        "436.35",
+        "USD",
+        "Social Club Dues",
+        "154.85",
+        "USD",
+        "15:40",
+        "23:40",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 42961,
+          "retained_characters": 10785
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[58]"
+    },
+    {
+      "ordinal": 59,
+      "stepId": "agent-tap_on-60",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "Dental Care"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[59]"
+    },
+    {
+      "ordinal": 60,
+      "stepId": "agent-ui_snapshot-61",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Expense Detail",
+        "Dental Care",
+        "Amount",
+        "39.54",
+        "USD",
+        "Date",
+        "Today 3:38 PM",
+        "Note",
+        "A need",
+        "EDIT",
+        "15:40",
+        "23:40",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 24159,
+          "retained_characters": 6060
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[60]"
+    },
+    {
+      "ordinal": 61,
+      "stepId": "agent-assert_with_ai-62",
+      "action": "assert_with_ai",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "prompt": "Verify saved Expense Detail shows Dental Care, amount 39.54 USD, note A need.",
+        "optional": false
+      },
+      "uiLabels": [],
+      "output": {
+        "status": "passed",
+        "passed": true,
+        "explanation": "The saved Expense Detail displays Dental Care, an amount of 39.54 USD, and the note “A need,” matching all requested values.",
+        "confidence": 1.0,
+        "provider": "github_copilot",
+        "model": "gpt-6.1-sol",
+        "latency_ms": 5069,
+        "token_usage": {
+          "input_tokens": 3268,
+          "output_tokens": 49,
+          "total_tokens": 3317
+        },
+        "artifact_refs": [
+          {
+            "artifact_id": "screenshot-agent-assert-with-ai-62-invoke-assert-with-ai-1-253cff1fd2db",
+            "kind": "screenshot",
+            "path": "artifacts/screenshots/screenshot-agent-assert-with-ai-62-invoke-assert-with-ai-1-253cff1fd2db.png",
+            "mime_type": "image/png",
+            "size_bytes": 266144,
+            "sha256": "196dfb82611a7df7119afd4b42f0ddd1ac095e95786551bcf39c3edd0c54cfbc",
+            "availability": "available",
+            "unavailable_reason": null,
+            "capture_occurrence": 1,
+            "created_at": "2026-11-10T16:35:15.620218Z",
+            "metadata": {
+              "capture_reason": "assert-with-ai",
+              "redacted": false
+            }
+          }
+        ],
+        "error": null,
+        "metadata": {
+          "provider_metadata": {
+            "endpoint_family": "github_copilot",
+            "copilot_plan": "enterprise"
+          }
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[61]"
+    },
+    {
+      "ordinal": 62,
+      "stepId": "agent-press_key-63",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[62]"
+    },
+    {
+      "ordinal": 63,
+      "stepId": "agent-ui_snapshot-64",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Home",
+        "Totals",
+        "OCT 15 - 22",
+        "INCOME",
+        "0",
+        "USD",
+        "OUTCOME",
+        "980.81",
+        "USD",
+        "Expenses in this Week",
+        "OCT 15 - 22",
+        "Recent",
+        "Dental Care",
+        "Today 3:38 PM",
+        "39.54",
+        "USD",
+        "Furnishing",
+        "Today 3:37 PM",
+        "350.07",
+        "USD",
+        "Dress",
+        "Today 3:36 PM",
+        "436.35",
+        "USD",
+        "Social Club Dues",
+        "154.85",
+        "USD",
+        "15:40",
+        "23:40",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 42961,
+          "retained_characters": 10785
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[63]"
+    },
+    {
+      "ordinal": 64,
+      "stepId": "agent-tap_on-65",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "Furnishing"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[64]"
+    },
+    {
+      "ordinal": 65,
+      "stepId": "agent-assert_with_ai-66",
+      "action": "assert_with_ai",
+      "status": "failed",
+      "error": null,
+      "params": {
+        "prompt": "Verify saved entry details match source: Furnishing, 350.07 USD, category Housing, note A need. Report all visible details and whether category is shown.",
+        "optional": false
+      },
+      "uiLabels": [],
+      "output": {
+        "status": "failed",
+        "passed": false,
+        "explanation": "The Expense Detail panel shows Furnishing, amount 350.07 USD, date Today 3:37 PM, and note A need. A furnishing icon, delete icon, collapse control, and EDIT button are visible. The title, amount, and note match the source, but no category field or Housing label is shown, so the category cannot be verified.",
+        "confidence": 0.99,
+        "provider": "github_copilot",
+        "model": "gpt-6.1-sol",
+        "latency_ms": 4881,
+        "token_usage": {
+          "input_tokens": 3282,
+          "output_tokens": 94,
+          "total_tokens": 3376
+        },
+        "artifact_refs": [
+          {
+            "artifact_id": "screenshot-agent-assert-with-ai-66-invoke-assert-with-ai-1-6fcd7c2fb330",
+            "kind": "screenshot",
+            "path": "artifacts/screenshots/screenshot-agent-assert-with-ai-66-invoke-assert-with-ai-1-6fcd7c2fb330.png",
+            "mime_type": "image/png",
+            "size_bytes": 263477,
+            "sha256": "8f8f157d3c3be0015106e53b47b2f7adaaed2c846d6c95e681dc5003621e245e",
+            "availability": "available",
+            "unavailable_reason": null,
+            "capture_occurrence": 1,
+            "created_at": "2026-11-10T16:35:46.132937Z",
+            "metadata": {
+              "capture_reason": "assert-with-ai",
+              "redacted": false
+            }
+          }
+        ],
+        "error": null,
+        "metadata": {
+          "provider_metadata": {
+            "endpoint_family": "github_copilot",
+            "copilot_plan": "enterprise"
+          }
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[65]"
+    },
+    {
+      "ordinal": 66,
+      "stepId": "agent-tap_on-67",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "EDIT"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[66]"
+    },
+    {
+      "ordinal": 67,
+      "stepId": "agent-assert_with_ai-68",
+      "action": "assert_with_ai",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "prompt": "Verify reopened saved Furnishing record has amount 350.07, note A need, and Housing selected category (highlighted).",
+        "optional": false
+      },
+      "uiLabels": [],
+      "output": {
+        "status": "passed",
+        "passed": true,
+        "explanation": "The reopened Furnishing record is shown on the Update Data screen with amount 350.07 USD, note \"A need\", and Housing highlighted as the selected category.",
+        "confidence": 0.99,
+        "provider": "github_copilot",
+        "model": "gpt-6.1-sol",
+        "latency_ms": 4301,
+        "token_usage": {
+          "input_tokens": 3274,
+          "output_tokens": 55,
+          "total_tokens": 3329
+        },
+        "artifact_refs": [
+          {
+            "artifact_id": "screenshot-agent-assert-with-ai-68-invoke-assert-with-ai-1-08dfe83b3ba3",
+            "kind": "screenshot",
+            "path": "artifacts/screenshots/screenshot-agent-assert-with-ai-68-invoke-assert-with-ai-1-08dfe83b3ba3.png",
+            "mime_type": "image/png",
+            "size_bytes": 204704,
+            "sha256": "170243eebd88c90ef32f4504e6785a36c0c5e216da0b72c690df1345cbc6fc26",
+            "availability": "available",
+            "unavailable_reason": null,
+            "capture_occurrence": 1,
+            "created_at": "2026-11-10T16:36:08.864070Z",
+            "metadata": {
+              "capture_reason": "assert-with-ai",
+              "redacted": false
+            }
+          }
+        ],
+        "error": null,
+        "metadata": {
+          "provider_metadata": {
+            "endpoint_family": "github_copilot",
+            "copilot_plan": "enterprise"
+          }
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[67]"
+    },
+    {
+      "ordinal": 68,
+      "stepId": "agent-press_key-69",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[68]"
+    },
+    {
+      "ordinal": 69,
+      "stepId": "agent-ui_snapshot-70",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Home",
+        "Totals",
+        "OCT 15 - 22",
+        "INCOME",
+        "0",
+        "USD",
+        "OUTCOME",
+        "980.81",
+        "USD",
+        "Expenses in this Week",
+        "OCT 15 - 22",
+        "Recent",
+        "Dental Care",
+        "Today 3:38 PM",
+        "39.54",
+        "USD",
+        "Furnishing",
+        "Today 3:37 PM",
+        "350.07",
+        "USD",
+        "Dress",
+        "Today 3:36 PM",
+        "436.35",
+        "USD",
+        "Social Club Dues",
+        "154.85",
+        "USD",
+        "15:41",
+        "23:41",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 42962,
+          "retained_characters": 10770
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[69]"
+    },
+    {
+      "ordinal": 70,
+      "stepId": "agent-tap_on-71",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "Dress"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[70]"
+    },
+    {
+      "ordinal": 71,
+      "stepId": "agent-assert_with_ai-72",
+      "action": "assert_with_ai",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "prompt": "Verify saved Dress expense details show amount 436.35 USD and note Paid by card.",
+        "optional": false
+      },
+      "uiLabels": [],
+      "output": {
+        "status": "passed",
+        "passed": true,
+        "explanation": "The Expense Detail panel shows Dress with an amount of 436.35 USD and the note “Paid by card.”",
+        "confidence": 1.0,
+        "provider": "github_copilot",
+        "model": "gpt-6.1-sol",
+        "latency_ms": 5223,
+        "token_usage": {
+          "input_tokens": 3267,
+          "output_tokens": 46,
+          "total_tokens": 3313
+        },
+        "artifact_refs": [
+          {
+            "artifact_id": "screenshot-agent-assert-with-ai-72-invoke-assert-with-ai-1-cf759c5557b8",
+            "kind": "screenshot",
+            "path": "artifacts/screenshots/screenshot-agent-assert-with-ai-72-invoke-assert-with-ai-1-cf759c5557b8.png",
+            "mime_type": "image/png",
+            "size_bytes": 263448,
+            "sha256": "46513cc4fe35ef1845690794c30a27a8424d2850f26e1080544afedee87f761f",
+            "availability": "available",
+            "unavailable_reason": null,
+            "capture_occurrence": 1,
+            "created_at": "2026-11-10T16:36:37.671561Z",
+            "metadata": {
+              "capture_reason": "assert-with-ai",
+              "redacted": false
+            }
+          }
+        ],
+        "error": null,
+        "metadata": {
+          "provider_metadata": {
+            "endpoint_family": "github_copilot",
+            "copilot_plan": "enterprise"
+          }
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[71]"
+    },
+    {
+      "ordinal": 72,
+      "stepId": "agent-tap_on-73",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "EDIT"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[72]"
+    },
+    {
+      "ordinal": 73,
+      "stepId": "agent-assert_with_ai-74",
+      "action": "assert_with_ai",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "prompt": "Verify reopened saved Dress record shows 436.35, note Paid by card, and Clothes selected category. If selected category is offscreen say so.",
+        "optional": false
+      },
+      "uiLabels": [],
+      "output": {
+        "status": "passed",
+        "passed": true,
+        "explanation": "The reopened Dress record shows amount 436.35 USD and note “Paid by card.” Clothes is visibly highlighted as the selected category; it is not offscreen.",
+        "confidence": 0.99,
+        "provider": "github_copilot",
+        "model": "gpt-6.1-sol",
+        "latency_ms": 4553,
+        "token_usage": {
+          "input_tokens": 3279,
+          "output_tokens": 55,
+          "total_tokens": 3334
+        },
+        "artifact_refs": [
+          {
+            "artifact_id": "screenshot-agent-assert-with-ai-74-invoke-assert-with-ai-1-ff90c94b43fb",
+            "kind": "screenshot",
+            "path": "artifacts/screenshots/screenshot-agent-assert-with-ai-74-invoke-assert-with-ai-1-ff90c94b43fb.png",
+            "mime_type": "image/png",
+            "size_bytes": 208691,
+            "sha256": "3933f6b50dacb61fe3f195d182864c6b64cd26bcd378219bff27395b23b1f4cf",
+            "availability": "available",
+            "unavailable_reason": null,
+            "capture_occurrence": 1,
+            "created_at": "2026-11-10T16:37:01.298676Z",
+            "metadata": {
+              "capture_reason": "assert-with-ai",
+              "redacted": false
+            }
+          }
+        ],
+        "error": null,
+        "metadata": {
+          "provider_metadata": {
+            "endpoint_family": "github_copilot",
+            "copilot_plan": "enterprise"
+          }
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[73]"
+    },
+    {
+      "ordinal": 74,
+      "stepId": "agent-press_key-75",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[74]"
+    },
+    {
+      "ordinal": 75,
+      "stepId": "agent-ui_snapshot-76",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Home",
+        "Totals",
+        "OCT 15 - 22",
+        "INCOME",
+        "0",
+        "USD",
+        "OUTCOME",
+        "980.81",
+        "USD",
+        "Expenses in this Week",
+        "OCT 15 - 22",
+        "Recent",
+        "Dental Care",
+        "Today 3:38 PM",
+        "39.54",
+        "USD",
+        "Furnishing",
+        "Today 3:37 PM",
+        "350.07",
+        "USD",
+        "Dress",
+        "Today 3:36 PM",
+        "436.35",
+        "USD",
+        "Social Club Dues",
+        "154.85",
+        "USD",
+        "15:42",
+        "23:42",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 42962,
+          "retained_characters": 10770
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[75]"
+    }
+  ],
+  "originalNativeExecutionPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/013-ExpenseAddMultipleFromGallery/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-013-20261110T162850Z-4fb1f6/execution-result.json",
+  "originalNativeResultPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/013-ExpenseAddMultipleFromGallery/raw-private/fsq-native/worker/fsq-task-result.private.json",
+  "originalGoalPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/013-ExpenseAddMultipleFromGallery/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-013-20261110T162850Z-4fb1f6/sources/000-goal.txt"
+}

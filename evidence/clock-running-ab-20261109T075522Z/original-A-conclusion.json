@@ -1,0 +1,194 @@
+{
+  "label": "ClockRunningOriginalP0",
+  "rawOfficialReward": 0.0,
+  "executedActionCount": 4,
+  "error": null,
+  "invalidReason": null,
+  "actualCapability": [
+    {
+      "actualForwardedRequestCaptured": true,
+      "present": false,
+      "source": "episode/result.json appiumSessionAudit.sessionAccessibility.creations.request.capabilities",
+      "values": []
+    }
+  ],
+  "originalPredicate": {
+    "listObjectId": 5026249856,
+    "actualArguments": {
+      "ui_elements": [],
+      "current_activity": "com.google.android.deskclock/com.android.deskclock.DeskClock"
+    },
+    "returnLine": 40,
+    "rawReturn": false,
+    "rawBranchLocals": {
+      "current_activity": "com.google.android.deskclock/com.android.deskclock.DeskClock",
+      "pause_present": false,
+      "lap_present": false
+    }
+  },
+  "actualOfficialState": [
+    {
+      "path": "evaluator-000/state-00",
+      "stateObjectId": 5026074704,
+      "forestObjectId": 5028045872,
+      "uiElementsObjectId": 5026249856,
+      "uiElementCount": 0,
+      "isActualPredicateInput": true,
+      "forestTrace": {
+        "present": true,
+        "recvSeq": 2118,
+        "storedIdentityIsActual": true,
+        "receiveObjectIdMatchesRecord": true,
+        "identityMismatch": false,
+        "windowCount": 0,
+        "serializedBytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "nodeCount": 0,
+        "successTextFound": false,
+        "windows": [],
+        "receivedAtUnix": 1794211574.6673741,
+        "receivedHostUtc": "2026-11-09T08:06:14Z",
+        "receiveAgeSeconds": 5.562184810638428,
+        "recvTransport": "unary",
+        "recvAdmitted": true,
+        "recvAdmittedByDrain": true,
+        "recvAdmittedByDrainIndex": 7,
+        "recvAdmittedByPull": null,
+        "recvPaused": false
+      },
+      "screenshotBackend": "exact-original-state.pixels",
+      "officialEvaluatorInput": true,
+      "saved": {
+        "unix": 1794211580.229562,
+        "monotonicNs": 586490009043625
+      }
+    }
+  ],
+  "logicalGetStateCallCount": 1,
+  "scorerReturn": 0.0,
+  "preQuitAppiumPostHocFields": {
+    "Pause": true,
+    "Lap": true,
+    "timerFields": [
+      {
+        "resourceId": "com.google.android.deskclock:id/stopwatch_time_wrapper",
+        "text": "",
+        "contentDescription": null
+      },
+      {
+        "resourceId": "com.google.android.deskclock:id/stopwatch_time_text",
+        "text": "2:25",
+        "contentDescription": null
+      },
+      {
+        "resourceId": "com.google.android.deskclock:id/stopwatch_hundredths_text",
+        "text": "72",
+        "contentDescription": null
+      }
+    ],
+    "notOfficialInput": true
+  },
+  "actualPromptMatchesHistoricalExceptDynamicProxyUrl": true,
+  "historicalPromptSha256": "952af5c25db36a402f354b7699240f19764fd8182db0d6f1f78532c6372bed9e",
+  "actualPromptSha256": "e313795c259f4150cccc5e657770068476bc5fca716bfaaf9233209f07f9d541",
+  "workspaceSkillIdentity": {
+    "installedAgentAssetsSha256": "0ff33bb8ee50c160d87842ed11324e557f6fe5fc81c8e4fe06230a4d7bf792b8",
+    "expectedOriginalSha256": "0ff33bb8ee50c160d87842ed11324e557f6fe5fc81c8e4fe06230a4d7bf792b8",
+    "matchesOriginal": true,
+    "fileCount": 152
+  },
+  "traceErrors": [],
+  "evaluatorProbeErrors": [],
+  "visualReview": {
+    "preQuit": "2:25.83 with pause control visible",
+    "postQuit": "2:26.49 with pause control visible",
+    "postQuitLater": "2:27.35 with pause control visible",
+    "officialStatePixels": "2:31.35 with pause control visible",
+    "actuallyReadAllFourPngs": true
+  },
+  "finding": "This current original008 model run received official0 because the original predicate consumed the strongly identified empty official forest/list, despite actual running UI and prequit Appium Pause+Lap. Not Agent failure to start. Historical008 input remains missing; this run cannot establish its unique historical cause.",
+  "captureOverhead": [
+    {
+      "phase": "pre-quit",
+      "requested": {
+        "unix": 1794211563.633301,
+        "monotonicNs": 586473412925208
+      },
+      "completed": {
+        "unix": 1794211574.6702678,
+        "monotonicNs": 586484449797875
+      },
+      "started": null,
+      "diagnosticOverheadSeconds": 11.036872667,
+      "screenshotSeparation": null
+    },
+    {
+      "phase": "post-quit",
+      "requested": null,
+      "completed": {
+        "unix": 1794211576.13444,
+        "monotonicNs": 586485913956958
+      },
+      "started": {
+        "unix": 1794211574.97898,
+        "monotonicNs": 586484758507125
+      },
+      "diagnosticOverheadSeconds": 1.155449833,
+      "screenshotSeparation": {
+        "requestedSeconds": 0.6,
+        "started": {
+          "unix": 1794211575.2112918,
+          "monotonicNs": 586484990816750
+        },
+        "purpose": "Read-only running-time visual comparison; diagnostic overhead",
+        "completed": {
+          "unix": 1794211575.820199,
+          "monotonicNs": 586485599719208
+        },
+        "actualSeconds": 0.608902458
+      }
+    }
+  ],
+  "cleanup": {
+    "agentSession": {
+      "agentQuitReturned": true,
+      "attribution": "agent",
+      "sessionIdSha256": "2611061fa8de0250bd6632e7e56f3d92cc83d2963ab6b06fd475412d03402452",
+      "status": "closed",
+      "verification": {
+        "activeSessionCount": 0,
+        "attemptedSessionCount": 1,
+        "ownedSessionCount": 1,
+        "pendingCreateCount": 0,
+        "pendingRequestCount": 0,
+        "reclaimedSessionCount": 0,
+        "reclaimedSessionHashes": [],
+        "sessions": [
+          {
+            "absentVerified": true,
+            "alreadyAbsent": true,
+            "errors": [],
+            "presentVerified": false,
+            "quitReturned": false,
+            "sessionHash": "2611061fa8de0250bd6632e7e56f3d92cc83d2963ab6b06fd475412d03402452"
+          }
+        ],
+        "status": "unknown",
+        "unknownCreationOutcomeCount": 0
+      },
+      "verificationStatus": "absent"
+    },
+    "environment": "closed",
+    "taskTearDown": "completed"
+  },
+  "postExitWorkspaceAbsence": {
+    "childReturnCode": 0,
+    "exists": false,
+    "observedAtUnix": 1794211581.506444,
+    "path": "/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-browserdraw-forest-xuzik736/agent-workspace",
+    "readOnlyHostFilesystemObservation": true,
+    "sourceReceipt": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/clock-running-ab-20261109T075522Z/clock-matrix/ClockRunningOriginalP0/workspace-cleanup.json",
+    "status": "absent"
+  },
+  "formalScore": null
+}

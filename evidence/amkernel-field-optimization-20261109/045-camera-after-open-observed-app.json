@@ -1,0 +1,65 @@
+{
+  "sequence": 45,
+  "label": "camera-after-open-observed-app",
+  "command": {
+    "op": "exec",
+    "label": "camera-after-open-observed-app",
+    "code": "driver.find_element(AppiumBy.ACCESSIBILITY_ID, 'Camera').click()\nfrom selenium.webdriver.support.ui import WebDriverWait\nWebDriverWait(driver, 10).until(lambda d: d.current_package != 'com.google.android.apps.nexuslauncher')\nobserve()"
+  },
+  "startedAtUnix": 1794192063.76332,
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"status\":\"completed\",\"stdout\":\"\",\"stderr\":\"\",\"result\":{\"package\":\"com.android.camera2\",\"activity\":\"com.android.camera.CameraLauncher\",\"controls\":[{\"text\":\"\",\"content-desc\":\"Home\",\"resource-id\":\"\",\"class\":\"android.view.View\",\"bounds\":\"[0,128][1080,2337]\",\"clickable\":\"false\",\"focused\":\"false\"}]},\"executionCount\":18,\"durationMs\":892,\"kernelState\":\"alive\",\"runtime\":{\"executable\":\"/Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python\",\"pythonVersion\":\"3.11.16\",\"workingDirectory\":\"/Users/qunmi/Documents/FSQ_LAB/amkernel\",\"environmentKind\":\"project_venv\",\"implementation\":\"CPython\",\"platform\":\"macOS-26.6.2-arm64-arm-64bit\",\"packages\":[]},\"output\":{\"totalBytes\":0,\"totalLines\":0,\"discardedBytes\":0,\"discardedLines\":0,\"truncated\":false,\"limitBytes\":268435456,\"limitExceeded\":false,\"live\":\"unavailable\"},\"displays\":[],\"artifacts\":[]}"
+      }
+    ],
+    "structured_content": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "com.android.camera2",
+        "activity": "com.android.camera.CameraLauncher",
+        "controls": [
+          {
+            "text": "",
+            "content-desc": "Home",
+            "resource-id": "",
+            "class": "android.view.View",
+            "bounds": "[0,128][1080,2337]",
+            "clickable": "false",
+            "focused": "false"
+          }
+        ]
+      },
+      "executionCount": 18,
+      "durationMs": 892,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/Users/qunmi/Documents/FSQ_LAB/amkernel",
+        "environmentKind": "project_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "unavailable"
+      },
+      "displays": [],
+      "artifacts": []
+    },
+    "is_error": false,
+    "result_type": "complete"
+  },
+  "completedAtUnix": 1794192064.66056
+}

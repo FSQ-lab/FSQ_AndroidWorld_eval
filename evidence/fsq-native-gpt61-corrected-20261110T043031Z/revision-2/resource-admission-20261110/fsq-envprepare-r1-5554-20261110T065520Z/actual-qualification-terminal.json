@@ -1,0 +1,158 @@
+{
+  "timestampUtc": "2026-11-10T12:36:30.059749+00:00",
+  "kind": "fresh_qualification_terminal",
+  "stageReturnCode": 0,
+  "qualified": true,
+  "reportSha256": "54bde965af9ffa68d88d6b20056ba21bfacf22f8488f71ecc6f6f6bfcd77f8fc",
+  "readiness": "execution/qualify/readiness.json",
+  "checks": {
+    "adbIsolation": true,
+    "apps": true,
+    "assets": true,
+    "baseData": true,
+    "coreEnvironment": true,
+    "snapshots": true,
+    "utc": true
+  },
+  "snapshotRestores": [
+    {
+      "app": "audio recorder",
+      "status": "restored"
+    },
+    {
+      "app": "broccoli app",
+      "status": "restored"
+    },
+    {
+      "app": "camera",
+      "status": "restored"
+    },
+    {
+      "app": "chrome",
+      "status": "restored"
+    },
+    {
+      "app": "clipper",
+      "status": "restored"
+    },
+    {
+      "app": "clock",
+      "status": "restored"
+    },
+    {
+      "app": "contacts",
+      "status": "restored"
+    },
+    {
+      "app": "dialer",
+      "status": "restored"
+    },
+    {
+      "app": "files",
+      "status": "restored"
+    },
+    {
+      "app": "joplin",
+      "status": "restored"
+    },
+    {
+      "app": "markor",
+      "status": "restored"
+    },
+    {
+      "app": "open tracks sports tracker",
+      "status": "restored"
+    },
+    {
+      "app": "osmand",
+      "status": "restored"
+    },
+    {
+      "app": "pro expense",
+      "status": "restored"
+    },
+    {
+      "app": "retro music",
+      "status": "restored"
+    },
+    {
+      "app": "settings",
+      "status": "restored"
+    },
+    {
+      "app": "simple calendar pro",
+      "status": "restored"
+    },
+    {
+      "app": "simple draw pro",
+      "status": "restored"
+    },
+    {
+      "app": "simple gallery pro",
+      "status": "restored"
+    },
+    {
+      "app": "simple sms messenger",
+      "status": "restored"
+    },
+    {
+      "app": "tasks",
+      "status": "restored"
+    },
+    {
+      "app": "vlc",
+      "status": "restored"
+    }
+  ],
+  "baseData": [
+    {
+      "app": "audio recorder",
+      "pathSha256": "92638f0aa4415c705edab5cd730314ec8b7ec259f78d4560948b8eda4aadaee5",
+      "present": true
+    },
+    {
+      "app": "joplin",
+      "pathSha256": "398358c5fb0cba40defa41bf4c6266f18e3fa15f36d4a85c18088fb3f144b285",
+      "present": true
+    },
+    {
+      "app": "open tracks sports tracker",
+      "pathSha256": "cd3fbf272c8aaf4c5c14416887298b4ba862b9a0d3a1fbf32e1a3b6de770deef",
+      "present": true
+    },
+    {
+      "app": "osmand",
+      "pathSha256": "1fbca020237a0b921c1c4e81d1e74eb69f5aada965effb90ec47e4b8746422a5",
+      "present": true
+    },
+    {
+      "app": "pro expense",
+      "pathSha256": "a2c984723159994b2925747a9c82fa1d5f97b231d152b28070b7bc7a39bcf8d3",
+      "present": true
+    },
+    {
+      "app": "simple calendar pro",
+      "pathSha256": "d9582bb8dc78eb8f984b93416196183b552a48793172fc2f714614cd52f84017",
+      "present": true
+    },
+    {
+      "app": "tasks",
+      "pathSha256": "53ebbdb5790c2291120e04aa8830c112e9afcec658654851603dc8dd2c504111",
+      "present": true
+    },
+    {
+      "app": "vlc",
+      "pathSha256": "1f4087e26e499d6e6032dfc143bafd595523dd27e273b9ff17386aa36ad9d3a8",
+      "present": true
+    }
+  ],
+  "cleanup": {
+    "environment": "closed"
+  },
+  "remainingAuthorizationSecondsBeforeSmokeAdmission": 5231.066595077515,
+  "smokeEnvelopeSecondsRequired": 1330,
+  "smokeTaskIndex": 102,
+  "smokeAttemptBudget": 1,
+  "FSQFirstRetained": true,
+  "releasedToAMK": false
+}

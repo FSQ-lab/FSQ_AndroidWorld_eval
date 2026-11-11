@@ -1,0 +1,85 @@
+{
+  "passed": true,
+  "arms": [
+    {
+      "arm": "A",
+      "wrongUdidRejected": 400,
+      "created": 200,
+      "readOwned": 200,
+      "foreignOwnedDenied": 404,
+      "oneGrantedMutation": 200,
+      "budgetRejected": 500,
+      "quit": 200,
+      "actualForwardedTargetCapability": null,
+      "actualConfirmation": false,
+      "diagnosticAdmission": true,
+      "createdCount": 1,
+      "deletedCount": 1,
+      "uiMutations": [
+        "back"
+      ],
+      "pendingRequests": 0,
+      "activeSessions": 0,
+      "proxySourceSha256": "5a24fd70061ffc156a8204a11c1c7c6c49b0c7cb51a72c07468f52ebb4502f9d",
+      "upstreamRequests": [
+        [
+          "POST",
+          "/session"
+        ],
+        [
+          "GET",
+          "/session/owned-session-secret/source"
+        ],
+        [
+          "POST",
+          "/session/owned-session-secret/back"
+        ],
+        [
+          "DELETE",
+          "/session/owned-session-secret"
+        ]
+      ],
+      "scope": "Local simulated HTTP upstream only; no device/Appium server/session"
+    },
+    {
+      "arm": "B",
+      "wrongUdidRejected": 400,
+      "created": 200,
+      "readOwned": 200,
+      "foreignOwnedDenied": 404,
+      "oneGrantedMutation": 200,
+      "budgetRejected": 500,
+      "quit": 200,
+      "actualForwardedTargetCapability": true,
+      "actualConfirmation": true,
+      "diagnosticAdmission": true,
+      "createdCount": 1,
+      "deletedCount": 1,
+      "uiMutations": [
+        "back"
+      ],
+      "pendingRequests": 0,
+      "activeSessions": 0,
+      "proxySourceSha256": "5a24fd70061ffc156a8204a11c1c7c6c49b0c7cb51a72c07468f52ebb4502f9d",
+      "upstreamRequests": [
+        [
+          "POST",
+          "/session"
+        ],
+        [
+          "GET",
+          "/session/owned-session-secret/source"
+        ],
+        [
+          "POST",
+          "/session/owned-session-secret/back"
+        ],
+        [
+          "DELETE",
+          "/session/owned-session-secret"
+        ]
+      ],
+      "scope": "Local simulated HTTP upstream only; no device/Appium server/session"
+    }
+  ]
+}

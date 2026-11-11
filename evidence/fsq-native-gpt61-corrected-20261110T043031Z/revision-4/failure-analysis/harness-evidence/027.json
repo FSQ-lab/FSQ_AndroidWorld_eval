@@ -1,0 +1,1311 @@
+{
+  "index": 27,
+  "name": "MarkorCreateNoteAndSms",
+  "goal": "Create a new note in Markor named fair_ant_XOdi.txt with the following text: Actions speak louder than words.. Share the entire content of the note with the phone number +13192815309 via SMS using Simple SMS Messenger",
+  "reward": 0.5,
+  "classification": "failed",
+  "initialization": {
+    "initializationReferenceTime": {
+      "referenceTime": "2023-10-15T15:34:00+00:00",
+      "timezone": "UTC"
+    },
+    "initializedGoal": "Create a new note in Markor named fair_ant_XOdi.txt with the following text: Actions speak louder than words.. Share the entire content of the note with the phone number +13192815309 via SMS using Simple SMS Messenger"
+  },
+  "frozenTaskSpec": {
+    "apps": [
+      "markor",
+      "simple sms messenger"
+    ],
+    "complexity": 1.8,
+    "difficulty": "hard",
+    "family": "android",
+    "index": 27,
+    "instanceSeed": 3221046986,
+    "maxActions": 18,
+    "maxSteps": 18,
+    "name": "MarkorCreateNoteAndSms",
+    "params": {
+      "file_name": "fair_ant_XOdi.txt",
+      "number": "+13192815309",
+      "seed": 3221046986,
+      "text": "Actions speak louder than words."
+    },
+    "paramsSha256": "a19471e7604242cff1ef3cebc76f84a9e983b417122a4dd47a075d11b2cd40dd",
+    "paramsTransport": "json",
+    "tags": [
+      "multi_app",
+      "data_entry",
+      "parameterized"
+    ],
+    "timeBudget": {
+      "businessSeconds": 1200,
+      "cleanupWindowSeconds": 180,
+      "episodeSeconds": 1810,
+      "forceSeconds": 1390,
+      "recoveryWindowSeconds": 120,
+      "terminationGraceSeconds": 10
+    }
+  },
+  "mainSteps": [
+    {
+      "stepId": 6,
+      "tool": "agent_runtime.runner",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "Recipient confirmation failed: NativeActionBudgetExceeded: action_budget.",
+          "kill_app teardown failed: NativeActionBudgetExceeded: action_budget."
+        ],
+        "evidence": [
+          "Markor creation, text entry, save, and plain-text sharing actions were executed.",
+          "Recipient text entry used +13192815309 in com.simplemobiletools.smsmessenger:id/new_conversation_address.",
+          "The last inspected SMS Messenger snapshot showed the recipient-entry screen with new_conversation_confirm; no sent-message evidence was collected."
+        ],
+        "plan_updates": [
+          "Execution stopped when recipient confirmation returned NativeActionBudgetExceeded: action_budget.",
+          "Lifecycle teardown was attempted but blocked by the same budget limit."
+        ],
+        "pre_plan": [
+          {
+            "action": "Create fair_ant_XOdi.txt in Markor.",
+            "status": "success",
+            "step_id": 1,
+            "success_criteria": [
+              "Create the named text note."
+            ]
+          },
+          {
+            "action": "Enter and save the exact note text.",
+            "status": "success",
+            "step_id": 2,
+            "success_criteria": [
+              "Save Actions speak louder than words.."
+            ]
+          },
+          {
+            "action": "Share the entire note as plain text to Simple SMS Messenger.",
+            "status": "success",
+            "step_id": 3,
+            "success_criteria": [
+              "Open SMS Messenger through Android sharing."
+            ]
+          },
+          {
+            "action": "Address the shared message to +13192815309.",
+            "status": "failed",
+            "step_id": 4,
+            "success_criteria": [
+              "Confirm the recipient."
+            ]
+          },
+          {
+            "action": "Send the SMS and verify the outgoing message.",
+            "status": "skipped",
+            "step_id": 5,
+            "success_criteria": [
+              "Observe a sent outgoing SMS with the exact text and recipient."
+            ]
+          }
+        ],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "inconclusive",
+        "summary": "The flow reached Simple SMS Messenger recipient entry, but the harness action budget was exhausted before recipient confirmation and SMS sending. A sent message could not be verified.",
+        "unmet_criteria": [
+          "Simple SMS Messenger shows a sent outgoing SMS to +13192815309 containing exactly \"Actions speak louder than words..\"."
+        ]
+      }
+    },
+    {
+      "stepId": 7,
+      "tool": "agent_runtime.verifier",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "NativeActionBudgetExceeded: action_budget permanently blocked further actions in this completed run before SMS sending."
+        ],
+        "evidence": [
+          "Artifact 000032-ui_snapshot.json shows the New conversation screen with +13192815309 in new_conversation_address and a new_conversation_confirm control, rather than a sent-message conversation.",
+          "Recipient-confirmation tool call call_6uPcyEc0wSZWnUpr230aJigj failed with harness_error: NativeActionBudgetExceeded: action_budget.",
+          "The only subsequent platform call was teardown, which failed with the same exhausted-budget error. No SMS-send action occurred in the supplied execution record.",
+          "The agent reports sending as skipped, consistent with the tool records."
+        ],
+        "plan_updates": [],
+        "pre_plan": [
+          {
+            "action": "Verify the required sent outgoing SMS in Simple SMS Messenger.",
+            "status": "failed",
+            "step_id": 1,
+            "success_criteria": [
+              "Simple SMS Messenger shows a sent outgoing SMS to +13192815309 containing exactly \"Actions speak louder than words..\"."
+            ]
+          }
+        ],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "failed",
+        "summary": "The run stopped at recipient entry in Simple SMS Messenger. Action-budget exhaustion blocked recipient confirmation, and the SMS was not sent.",
+        "unmet_criteria": [
+          "Simple SMS Messenger shows a sent outgoing SMS to +13192815309 containing exactly \"Actions speak louder than words..\"."
+        ]
+      }
+    }
+  ],
+  "budgetSummary": {
+    "admitted": 18,
+    "attempted": 20,
+    "deadlineExceeded": false,
+    "deadlineMonotonic": 707820.906459208,
+    "denied": 2,
+    "deviceRestoredByClose": false,
+    "exclusions": [
+      "driver_construction",
+      "uiautomator2_service_startup",
+      "observation_and_assertion_side_effects",
+      "external_processes_and_direct_driver_access"
+    ],
+    "exhausted": true,
+    "failed": 1,
+    "inFlight": 0,
+    "inputTextUnit": "composite_click_optional_clear_set_text",
+    "maximum": 18,
+    "securityBoundary": false,
+    "succeeded": 17,
+    "unit": "admitted_android_harness_write_capability_dispatch",
+    "writeCapabilities": [
+      "launch_app",
+      "kill_app",
+      "tap_on",
+      "tap_at",
+      "long_press_on",
+      "input_text",
+      "press_key",
+      "swipe"
+    ]
+  },
+  "actions": [
+    {
+      "ordinal": 0,
+      "stepId": "agent-launch_app-1",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [],
+      "output": {
+        "app_id": "net.gsantner.markor"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[0]"
+    },
+    {
+      "ordinal": 1,
+      "stepId": "agent-ui_snapshot-2",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Sun, Oct 15",
+        "Sun, Oct 15",
+        "Gmail",
+        "Gmail",
+        "Photos",
+        "Photos",
+        "YouTube",
+        "YouTube",
+        "Home",
+        "Phone",
+        "Phone",
+        "Messages",
+        "Messages",
+        "Chrome",
+        "Chrome",
+        "Calendar",
+        "Predicted app: Calendar",
+        "Search",
+        "Google app",
+        "Voice search",
+        "Google Lens",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 27981,
+          "retained_characters": 7650
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[1]"
+    },
+    {
+      "ordinal": 2,
+      "stepId": "agent-launch_app-3",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "app_id": "net.gsantner.markor"
+      },
+      "uiLabels": [],
+      "output": {
+        "app_id": "net.gsantner.markor"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[2]"
+    },
+    {
+      "ordinal": 3,
+      "stepId": "agent-swipe-4",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[3]"
+    },
+    {
+      "ordinal": 4,
+      "stepId": "agent-ui_snapshot-5",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Audio Recorder",
+        "Audio Recorder",
+        "Broccoli",
+        "Broccoli",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Chrome",
+        "Chrome",
+        "Clipper",
+        "Clipper",
+        "Clock",
+        "Clock",
+        "Contacts",
+        "Contacts",
+        "Draw",
+        "Draw",
+        "Drive",
+        "Drive",
+        "Files",
+        "Files",
+        "Gallery",
+        "Gallery",
+        "Gmail",
+        "Gmail",
+        "Google",
+        "Google",
+        "Joplin",
+        "Joplin",
+        "Maps",
+        "Maps",
+        "Markor",
+        "Markor",
+        "Messages",
+        "Messages",
+        "OpenTracks",
+        "OpenTracks",
+        "OsmAnd",
+        "OsmAnd",
+        "Phone",
+        "Phone",
+        "Photos",
+        "Photos",
+        "Pro Expense",
+        "Pro Expense",
+        "Gallery",
+        "Gallery",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Tasks",
+        "Tasks",
+        "Search",
+        "Google app",
+        "Search apps, web and more",
+        "Voice search",
+        "Google Lens",
+        "Home",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 37017,
+          "retained_characters": 12575
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 6,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[4]"
+    },
+    {
+      "ordinal": 5,
+      "stepId": "agent-tap_on-6",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "Markor"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[5]"
+    },
+    {
+      "ordinal": 6,
+      "stepId": "agent-ui_snapshot-7",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Markor",
+        "Go to",
+        "Sort by",
+        "Search",
+        "More options",
+        "Folder .. ",
+        "..",
+        "/storage/emulated/0/Documents",
+        "Folder .app ",
+        ".app",
+        "10/15/2023, 15:35",
+        "Create a new file or folder",
+        "Files",
+        "Files",
+        "To-Do",
+        "To-Do",
+        "QuickNote",
+        "QuickNote",
+        "More",
+        "More"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 37687,
+          "retained_characters": 10457
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 11,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[6]"
+    },
+    {
+      "ordinal": 7,
+      "stepId": "agent-tap_on-8",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "net.gsantner.markor:id/fab_add_new_item"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[7]"
+    },
+    {
+      "ordinal": 8,
+      "stepId": "agent-ui_snapshot-9",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Name",
+        "my_note",
+        ".md",
+        "Type",
+        "Markdown",
+        "Template",
+        "Empty file",
+        "- Folder is created without file extension",
+        "- Files and folders are not overwritten",
+        "FOLDER",
+        "CANCEL",
+        "OK",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "More features",
+        "Sticker Keyboard",
+        "GIF Keyboard",
+        "Clipboard",
+        "Settings",
+        "Theme settings",
+        "Voice input",
+        "q",
+        "1",
+        "w",
+        "2",
+        "e",
+        "3",
+        "r",
+        "4",
+        "t",
+        "5",
+        "y",
+        "6",
+        "u",
+        "7",
+        "i",
+        "8",
+        "o",
+        "9",
+        "p",
+        "0",
+        "a",
+        "s",
+        "d",
+        "f",
+        "g",
+        "h",
+        "j",
+        "k",
+        "l",
+        "Shift",
+        "z",
+        "x",
+        "c",
+        "v",
+        "b",
+        "n",
+        "m",
+        "Delete",
+        "Symbol keyboard",
+        ",",
+        "Emoji button",
+        "Space",
+        ".",
+        "Done",
+        "Back"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 101607,
+          "retained_characters": 27438
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 34,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[8]"
+    },
+    {
+      "ordinal": 9,
+      "stepId": "agent-input_text-10",
+      "action": "input_text",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "net.gsantner.markor:id/new_file_dialog__name"
+        },
+        "text": "fair_ant_XOdi",
+        "textType": "literal"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[9]"
+    },
+    {
+      "ordinal": 10,
+      "stepId": "agent-input_text-11",
+      "action": "input_text",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "net.gsantner.markor:id/new_file_dialog__ext"
+        },
+        "text": ".txt",
+        "textType": "literal"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[10]"
+    },
+    {
+      "ordinal": 11,
+      "stepId": "agent-tap_on-12",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "OK"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[11]"
+    },
+    {
+      "ordinal": 12,
+      "stepId": "agent-ui_snapshot-13",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "fair_ant_XOdi",
+        "Undo",
+        "Redo",
+        "View mode",
+        "Save",
+        "Search",
+        "More options",
+        "Check list",
+        "Unordered list",
+        "Ordered list",
+        "Delete lines",
+        "Open link",
+        "Attach",
+        "Special Key",
+        "Date and time",
+        "Indent",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "More features",
+        "Sticker Keyboard",
+        "GIF Keyboard",
+        "Clipboard",
+        "Settings",
+        "Theme settings",
+        "Voice input",
+        "Q",
+        "1",
+        "W",
+        "2",
+        "E",
+        "3",
+        "R",
+        "4",
+        "T",
+        "5",
+        "Y",
+        "6",
+        "U",
+        "7",
+        "I",
+        "8",
+        "O",
+        "9",
+        "P",
+        "0",
+        "A",
+        "S",
+        "D",
+        "F",
+        "G",
+        "H",
+        "J",
+        "K",
+        "L",
+        "Shift",
+        "Z",
+        "X",
+        "C",
+        "V",
+        "B",
+        "N",
+        "M",
+        "Delete",
+        "Symbol keyboard",
+        ",",
+        "Emoji button",
+        "Space",
+        ".",
+        "Enter",
+        "Back"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 103380,
+          "retained_characters": 28564
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 34,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[12]"
+    },
+    {
+      "ordinal": 13,
+      "stepId": "agent-input_text-14",
+      "action": "input_text",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "net.gsantner.markor:id/document__fragment__edit__highlighting_editor"
+        },
+        "text": "Actions speak louder than words..",
+        "textType": "literal"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[13]"
+    },
+    {
+      "ordinal": 14,
+      "stepId": "agent-press_key-15",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[14]"
+    },
+    {
+      "ordinal": 15,
+      "stepId": "agent-ui_snapshot-16",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "fair_ant_XOdi",
+        "Undo",
+        "Redo",
+        "View mode",
+        "Save",
+        "Search",
+        "More options",
+        "Actions speak louder than words..",
+        "Check list",
+        "Unordered list",
+        "Ordered list",
+        "Delete lines",
+        "Open link",
+        "Attach",
+        "Special Key",
+        "Date and time",
+        "Indent",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 26675,
+          "retained_characters": 7423
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 9,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[15]"
+    },
+    {
+      "ordinal": 16,
+      "stepId": "agent-tap_on-17",
+      "action": "tap_on",
+      "status": "failed",
+      "error": "Target was not found.",
+      "params": {
+        "target": "Save"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[16]"
+    },
+    {
+      "ordinal": 17,
+      "stepId": "agent-ui_snapshot-18",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "fair_ant_XOdi",
+        "Undo",
+        "Redo",
+        "View mode",
+        "Save",
+        "Search",
+        "More options",
+        "Actions speak louder than words..",
+        "Check list",
+        "Unordered list",
+        "Ordered list",
+        "Delete lines",
+        "Open link",
+        "Attach",
+        "Special Key",
+        "Date and time",
+        "Indent",
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 26676,
+          "retained_characters": 7424
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 9,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[17]"
+    },
+    {
+      "ordinal": 18,
+      "stepId": "agent-tap_on-19",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "net.gsantner.markor:id/action_save"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[18]"
+    },
+    {
+      "ordinal": 19,
+      "stepId": "agent-tap_on-20",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "accessibilityId": "More options"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[19]"
+    },
+    {
+      "ordinal": 20,
+      "stepId": "agent-ui_snapshot-21",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "File settings",
+        "Share",
+        "Tools",
+        "Info",
+        "Reload",
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 25838,
+          "retained_characters": 5988
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 10,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[20]"
+    },
+    {
+      "ordinal": 21,
+      "stepId": "agent-tap_on-22",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "Share"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[21]"
+    },
+    {
+      "ordinal": 22,
+      "stepId": "agent-ui_snapshot-23",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Share",
+        "Plain Text",
+        "Print / PDF",
+        "File",
+        "HTML",
+        "HTML (as plain text)",
+        "Image",
+        "Screenshot",
+        "Calendar",
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 31911,
+          "retained_characters": 7242
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 13,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[22]"
+    },
+    {
+      "ordinal": 23,
+      "stepId": "agent-tap_on-24",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "Plain Text"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[23]"
+    },
+    {
+      "ordinal": 24,
+      "stepId": "agent-ui_snapshot-25",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Actions speak louder than words..",
+        "Copy",
+        "Nearby",
+        "No recommended people to share with",
+        "SMS Messenger",
+        "Drive",
+        "Messages",
+        "Bluetooth",
+        "Apps list",
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 29406,
+          "retained_characters": 7581
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 10,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[24]"
+    },
+    {
+      "ordinal": 25,
+      "stepId": "agent-tap_on-26",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "SMS Messenger"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[25]"
+    },
+    {
+      "ordinal": 26,
+      "stepId": "agent-ui_snapshot-27",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Back",
+        "New conversation",
+        "Add Contact or Number…",
+        "No contacts found",
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "More features",
+        "Sticker Keyboard",
+        "GIF Keyboard",
+        "Clipboard",
+        "Settings",
+        "Theme settings",
+        "Voice input",
+        "Q",
+        "1",
+        "W",
+        "2",
+        "E",
+        "3",
+        "R",
+        "4",
+        "T",
+        "5",
+        "Y",
+        "6",
+        "U",
+        "7",
+        "I",
+        "8",
+        "O",
+        "9",
+        "P",
+        "0",
+        "A",
+        "S",
+        "D",
+        "F",
+        "G",
+        "H",
+        "J",
+        "K",
+        "L",
+        "Shift",
+        "Z",
+        "X",
+        "C",
+        "V",
+        "B",
+        "N",
+        "M",
+        "Delete",
+        "Symbol keyboard",
+        ",",
+        "Emoji button",
+        "Space",
+        ".",
+        "Done",
+        "Back"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 96677,
+          "retained_characters": 26369
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 31,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[26]"
+    },
+    {
+      "ordinal": 27,
+      "stepId": "agent-input_text-28",
+      "action": "input_text",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.simplemobiletools.smsmessenger:id/new_conversation_address"
+        },
+        "text": "+13192815309",
+        "textType": "literal"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[27]"
+    },
+    {
+      "ordinal": 28,
+      "stepId": "agent-press_key-29",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Enter"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Enter"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[28]"
+    },
+    {
+      "ordinal": 29,
+      "stepId": "agent-ui_snapshot-30",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Back",
+        "New conversation",
+        "+13192815309",
+        "No contacts found",
+        "15:37",
+        "23:37",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "More features",
+        "Sticker Keyboard",
+        "GIF Keyboard",
+        "Clipboard",
+        "Settings",
+        "Theme settings",
+        "Voice input",
+        "q",
+        "1",
+        "w",
+        "2",
+        "e",
+        "3",
+        "r",
+        "4",
+        "t",
+        "5",
+        "y",
+        "6",
+        "u",
+        "7",
+        "i",
+        "8",
+        "o",
+        "9",
+        "p",
+        "0",
+        "a",
+        "s",
+        "d",
+        "f",
+        "g",
+        "h",
+        "j",
+        "k",
+        "l",
+        "Shift",
+        "z",
+        "x",
+        "c",
+        "v",
+        "b",
+        "n",
+        "m",
+        "Delete",
+        "Symbol keyboard",
+        ",",
+        "Emoji button",
+        "Space",
+        ".",
+        "Done",
+        "Back"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 97160,
+          "retained_characters": 26539
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 31,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[29]"
+    },
+    {
+      "ordinal": 30,
+      "stepId": "agent-tap_on-31",
+      "action": "tap_on",
+      "status": "failed",
+      "error": "NativeActionBudgetExceeded: action_budget",
+      "params": null,
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[30]"
+    },
+    {
+      "ordinal": 31,
+      "stepId": "agent-kill_app-32",
+      "action": "kill_app",
+      "status": "failed",
+      "error": "NativeActionBudgetExceeded: action_budget",
+      "params": null,
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[31]"
+    }
+  ],
+  "originalNativeExecutionPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/027-MarkorCreateNoteAndSms/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-027-20261110T172832Z-403bfd/execution-result.json",
+  "originalNativeResultPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/027-MarkorCreateNoteAndSms/raw-private/fsq-native/worker/fsq-task-result.private.json",
+  "originalGoalPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/027-MarkorCreateNoteAndSms/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-027-20261110T172832Z-403bfd/sources/000-goal.txt"
+}

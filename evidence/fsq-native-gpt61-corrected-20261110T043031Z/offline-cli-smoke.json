@@ -1,0 +1,50 @@
+{
+  "environmentOverrides": {
+    "PYTHONPATH": "/Users/qunmi/.local/share/fsq-androidworld-eval/fsq-native-gpt61-corrected-20261110T043031Z/evaluator-dependencies",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "receipts": [
+    {
+      "command": [
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/bin/python",
+        "-B",
+        "-m",
+        "fsq_androidworld_eval.fsq_manifest",
+        "inspect",
+        "--manifest",
+        "evidence/fsq-native-gpt61-corrected-20261110T043031Z/candidate-manifest.json",
+        "--project",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval"
+      ],
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/src/fsq_androidworld_eval/fsq_manifest.py\", line 527, in <module>\n    main()\n  File \"/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/src/fsq_androidworld_eval/fsq_manifest.py\", line 519, in main\n    manifest = load_manifest(Path(args.manifest), Path(args.project))\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/src/fsq_androidworld_eval/fsq_manifest.py\", line 498, in load_manifest\n    raise ValueError(\"frozen task parameters or budgets differ from corrected seed-30 suite\")\nValueError: frozen task parameters or budgets differ from corrected seed-30 suite\n"
+    },
+    {
+      "command": [
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/bin/python",
+        "-B",
+        "-m",
+        "fsq_androidworld_eval.fsq_runner",
+        "--help"
+      ],
+      "exitCode": 0,
+      "stdout": "usage: fsq_runner.py [-h] --project PROJECT --manifest MANIFEST --task-index\n                     TASK_INDEX --output-dir OUTPUT_DIR --authorization\n                     AUTHORIZATION --readiness READINESS\n                     [--stage {smoke,calibrate,run}]\n                     [--rehearsal-report REHEARSAL_REPORT]\n                     [--calibration-report CALIBRATION_REPORT]\n\nOne complete native FSQ attempt; requires explicit live authorization\n\noptions:\n  -h, --help            show this help message and exit\n  --project PROJECT\n  --manifest MANIFEST\n  --task-index TASK_INDEX\n  --output-dir OUTPUT_DIR\n  --authorization AUTHORIZATION\n  --readiness READINESS\n  --stage {smoke,calibrate,run}\n  --rehearsal-report REHEARSAL_REPORT\n  --calibration-report CALIBRATION_REPORT\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/bin/python",
+        "-B",
+        "-m",
+        "fsq_androidworld_eval.fsq_campaign",
+        "--help"
+      ],
+      "exitCode": 0,
+      "stdout": "usage: fsq_campaign.py [-h] {qualify,rehearse,calibrate,run,_episode} ...\n\nFSQ-only future qualification and single-attempt campaign gates. No Android,\nFSQ, AMKernel or Appium module is imported by the offline consumers. Live\nsubcommands require independently reviewed, target-exclusive authorization.\nQualification consumes existing apps/snapshots: it never installs, repairs,\nsaves a replacement snapshot, or invents a first-launch UI recipe. Rehearsal\nis a separate non-scoring official lifecycle check, not evidence that the FSQ\npolicy succeeds.\n\npositional arguments:\n  {qualify,rehearse,calibrate,run,_episode}\n    qualify\n    rehearse\n    calibrate\n    run\n    _episode            ==SUPPRESS==\n\noptions:\n  -h, --help            show this help message and exit\n",
+      "stderr": ""
+    }
+  ],
+  "modelCalled": false,
+  "devicesAccessed": false
+}

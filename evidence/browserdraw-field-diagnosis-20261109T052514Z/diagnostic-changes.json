@@ -1,0 +1,29 @@
+{
+  "originalInputsReadOnly": true,
+  "currentWorkingTreeObservedRevision": 13,
+  "isolatedRunnerProtocolRevision": 12,
+  "reasonForIsolation": "Working-tree submission protocol was being updated concurrently; original archived prompt and pre-submission supervisor/action gate/proxy were retained in the private source snapshot, leaving those concurrent changes untouched.",
+  "originalPromptSha256": "463118879bbe14a14abfd987920f115fff29f128db4566dc282e75dc0aa906aa",
+  "executedPromptSha256": "463118879bbe14a14abfd987920f115fff29f128db4566dc282e75dc0aa906aa",
+  "legacyFiles": {
+    "omp_supervisor.py": {
+      "origin": "git HEAD:src/fsq_androidworld_eval/omp_supervisor.py",
+      "sha256": "ebad99baa993e7b250042827695449beac4fd91b0132647b6d8cb5a1ec784e1e"
+    },
+    "action_budget.py": {
+      "origin": "git HEAD:src/fsq_androidworld_eval/action_budget.py",
+      "sha256": "a24a40c35d2bd5a404776b030bf066e3a709b575598a0d89a931e5998d1b97b2"
+    },
+    "appium_proxy.py": {
+      "origin": "git HEAD:src/fsq_androidworld_eval/appium_proxy.py",
+      "sha256": "e070a3e8ef65b4ccb5126d7459ae5a6de2b1b5720a9dd6fd0926599ed942700f"
+    }
+  },
+  "runtimeInstrumentation": {
+    "Appium": "RecordingProxy records existing request boundaries and response bytes in memory, flushed after the episode; no extra observation requests.",
+    "Evaluator": "Original BrowserTask.is_successful is invoked once with sys.settrace retaining its real locals, activity return, timestamps, executed return line and raw reward. Serialization happens after the original evaluator returns.",
+    "TimingRisk": "Tracing and recording introduce CPU overhead; no sleeps, retries or observation-backend selection is added. Evaluator wrapper duration includes post-return evidence serialization.",
+    "NewDeviceObservations": "None introduced by diagnostic recorder. Ownership preflight is separately timestamped."
+  },
+  "sourceIdentityLimit": "This private reconstructed harness is fully saved and hashed; it is not claimed to match the archived aggregate harness-source hash byte for byte."
+}

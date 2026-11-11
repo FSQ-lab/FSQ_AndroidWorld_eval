@@ -1,0 +1,3076 @@
+{
+  "index": 14,
+  "name": "ExpenseAddMultipleFromMarkor",
+  "goal": "Go through the transactions in my_expenses.txt in Markor. Log only the rows whose reimbursable field is yes in the pro expense; do not log rows marked no. Copy each original note unchanged from the note field. The reimbursable field is selection metadata, not part of the note.",
+  "reward": 0.0,
+  "classification": "failed",
+  "initialization": {
+    "initializationReferenceTime": {
+      "referenceTime": "2023-10-15T15:34:00+00:00",
+      "timezone": "UTC"
+    },
+    "initializedGoal": "Go through the transactions in my_expenses.txt in Markor. Log only the rows whose reimbursable field is yes in the pro expense; do not log rows marked no. Copy each original note unchanged from the note field. The reimbursable field is selection metadata, not part of the note."
+  },
+  "frozenTaskSpec": {
+    "apps": [
+      "pro expense",
+      "markor"
+    ],
+    "complexity": 6,
+    "difficulty": "hard",
+    "family": "android",
+    "index": 14,
+    "instanceSeed": 3053860270,
+    "maxActions": 60,
+    "maxSteps": 60,
+    "name": "ExpenseAddMultipleFromMarkor",
+    "params": {
+      "noise_row_objects": [
+        {
+          "amount": 47756,
+          "category": 7,
+          "created_date": 1696255200000,
+          "expense_id": -1,
+          "modified_date": 1696255200000,
+          "name": "Ride-Sharing",
+          "note": "Urgent"
+        },
+        {
+          "amount": 19447,
+          "category": 7,
+          "created_date": 1697248800000,
+          "expense_id": -1,
+          "modified_date": 1697248800000,
+          "name": "Gas",
+          "note": "Paid by card"
+        },
+        {
+          "amount": 39871,
+          "category": 4,
+          "created_date": 1697223600000,
+          "expense_id": -1,
+          "modified_date": 1697223600000,
+          "name": "Cleaning Services",
+          "note": "Want to have"
+        },
+        {
+          "amount": 29694,
+          "category": 11,
+          "created_date": 1697198400000,
+          "expense_id": -1,
+          "modified_date": 1697198400000,
+          "name": "Educational",
+          "note": "Want to have"
+        },
+        {
+          "amount": 26978,
+          "category": 1,
+          "created_date": 1696813200000,
+          "expense_id": -1,
+          "modified_date": 1696813200000,
+          "name": "Pet Care",
+          "note": "Remember to transfer funds"
+        },
+        {
+          "amount": 28351,
+          "category": 9,
+          "created_date": 1697155200000,
+          "expense_id": -1,
+          "modified_date": 1697155200000,
+          "name": "Dental Care",
+          "note": "I may repeat this"
+        },
+        {
+          "amount": 15072,
+          "category": 10,
+          "created_date": 1696262400000,
+          "expense_id": -1,
+          "modified_date": 1696262400000,
+          "name": "Textbooks",
+          "note": "Want to have"
+        },
+        {
+          "amount": 35398,
+          "category": 1,
+          "created_date": 1696564800000,
+          "expense_id": -1,
+          "modified_date": 1696564800000,
+          "name": "Unexpected Expenses",
+          "note": "A need"
+        },
+        {
+          "amount": 18698,
+          "category": 11,
+          "created_date": 1696856400000,
+          "expense_id": -1,
+          "modified_date": 1696856400000,
+          "name": "Religious",
+          "note": "Urgent"
+        },
+        {
+          "amount": 36716,
+          "category": 3,
+          "created_date": 1696561200000,
+          "expense_id": -1,
+          "modified_date": 1696561200000,
+          "name": "Specialty Foods",
+          "note": "I may repeat this"
+        },
+        {
+          "amount": 25929,
+          "category": 5,
+          "created_date": 1696874400000,
+          "expense_id": -1,
+          "modified_date": 1696874400000,
+          "name": "Party Supplies",
+          "note": "Remember to transfer funds"
+        },
+        {
+          "amount": 9098,
+          "category": 8,
+          "created_date": 1696456800000,
+          "expense_id": -1,
+          "modified_date": 1696456800000,
+          "name": "Dress",
+          "note": "Paid by card"
+        },
+        {
+          "amount": 44635,
+          "category": 2,
+          "created_date": 1697342400000,
+          "expense_id": -1,
+          "modified_date": 1697342400000,
+          "name": "Dividends",
+          "note": "Paid by card"
+        },
+        {
+          "amount": 2070,
+          "category": 5,
+          "created_date": 1697328000000,
+          "expense_id": -1,
+          "modified_date": 1697328000000,
+          "name": "Dinner Party",
+          "note": "Urgent"
+        },
+        {
+          "amount": 35427,
+          "category": 8,
+          "created_date": 1696795200000,
+          "expense_id": -1,
+          "modified_date": 1696795200000,
+          "name": "Sportswear",
+          "note": "Monthly recurring"
+        },
+        {
+          "amount": 3178,
+          "category": 2,
+          "created_date": 1696258800000,
+          "expense_id": -1,
+          "modified_date": 1696258800000,
+          "name": "Dividends",
+          "note": "Want to have"
+        },
+        {
+          "amount": 14598,
+          "category": 2,
+          "created_date": 1697004000000,
+          "expense_id": -1,
+          "modified_date": 1697004000000,
+          "name": "Freelance Payment",
+          "note": "Paid by card"
+        },
+        {
+          "amount": 22564,
+          "category": 7,
+          "created_date": 1697374800000,
+          "expense_id": -1,
+          "modified_date": 1697374800000,
+          "name": "Parking Fees",
+          "note": "Paid by card"
+        },
+        {
+          "amount": 12904,
+          "category": 6,
+          "created_date": 1696834800000,
+          "expense_id": -1,
+          "modified_date": 1696834800000,
+          "name": "Magazines",
+          "note": "Remember to transfer funds"
+        },
+        {
+          "amount": 31860,
+          "category": 9,
+          "created_date": 1696359600000,
+          "expense_id": -1,
+          "modified_date": 1696359600000,
+          "name": "Eyecare",
+          "note": "A need"
+        },
+        {
+          "amount": 33080,
+          "category": 10,
+          "created_date": 1696197600000,
+          "expense_id": -1,
+          "modified_date": 1696197600000,
+          "name": "Educational Software",
+          "note": "I may repeat this"
+        },
+        {
+          "amount": 29898,
+          "category": 6,
+          "created_date": 1696762800000,
+          "expense_id": -1,
+          "modified_date": 1696762800000,
+          "name": "Video Games",
+          "note": "Paid by card"
+        },
+        {
+          "amount": 26718,
+          "category": 9,
+          "created_date": 1697126400000,
+          "expense_id": -1,
+          "modified_date": 1697126400000,
+          "name": "Doctor Visits",
+          "note": "A need"
+        },
+        {
+          "amount": 2782,
+          "category": 2,
+          "created_date": 1696233600000,
+          "expense_id": -1,
+          "modified_date": 1696233600000,
+          "name": "Freelance Payment",
+          "note": "I may repeat this"
+        },
+        {
+          "amount": 35599,
+          "category": 10,
+          "created_date": 1696262400000,
+          "expense_id": -1,
+          "modified_date": 1696262400000,
+          "name": "Tutoring Services",
+          "note": "Urgent"
+        },
+        {
+          "amount": 20363,
+          "category": 9,
+          "created_date": 1696881600000,
+          "expense_id": -1,
+          "modified_date": 1696881600000,
+          "name": "Medications",
+          "note": "Paid by card"
+        },
+        {
+          "amount": 19948,
+          "category": 4,
+          "created_date": 1696680000000,
+          "expense_id": -1,
+          "modified_date": 1696680000000,
+          "name": "Utilities",
+          "note": "Urgent"
+        },
+        {
+          "amount": 20806,
+          "category": 8,
+          "created_date": 1696647600000,
+          "expense_id": -1,
+          "modified_date": 1696647600000,
+          "name": "Accessories",
+          "note": "A need"
+        },
+        {
+          "amount": 31568,
+          "category": 5,
+          "created_date": 1696269600000,
+          "expense_id": -1,
+          "modified_date": 1696269600000,
+          "name": "Social Club Dues",
+          "note": "Urgent"
+        },
+        {
+          "amount": 42365,
+          "category": 5,
+          "created_date": 1696226400000,
+          "expense_id": -1,
+          "modified_date": 1696226400000,
+          "name": "Party Supplies",
+          "note": "Want to have"
+        },
+        {
+          "amount": 48328,
+          "category": 3,
+          "created_date": 1697076000000,
+          "expense_id": -1,
+          "modified_date": 1697076000000,
+          "name": "Bakery Items",
+          "note": "I may repeat this"
+        },
+        {
+          "amount": 14605,
+          "category": 5,
+          "created_date": 1696856400000,
+          "expense_id": -1,
+          "modified_date": 1696856400000,
+          "name": "Event Tickets",
+          "note": "A need"
+        },
+        {
+          "amount": 32357,
+          "category": 4,
+          "created_date": 1697331600000,
+          "expense_id": -1,
+          "modified_date": 1697331600000,
+          "name": "Utilities",
+          "note": "Paid by card"
+        },
+        {
+          "amount": 9753,
+          "category": 4,
+          "created_date": 1696960800000,
+          "expense_id": -1,
+          "modified_date": 1696960800000,
+          "name": "Furnishing",
+          "note": "A need"
+        },
+        {
+          "amount": 32706,
+          "category": 6,
+          "created_date": 1696309200000,
+          "expense_id": -1,
+          "modified_date": 1696309200000,
+          "name": "Movie Night",
+          "note": "A need"
+        },
+        {
+          "amount": 31120,
+          "category": 5,
+          "created_date": 1696194000000,
+          "expense_id": -1,
+          "modified_date": 1696194000000,
+          "name": "Wedding Gift",
+          "note": "Monthly recurring"
+        },
+        {
+          "amount": 30274,
+          "category": 11,
+          "created_date": 1697058000000,
+          "expense_id": -1,
+          "modified_date": 1697058000000,
+          "name": "Crowdfunding",
+          "note": "Paid by card"
+        },
+        {
+          "amount": 38581,
+          "category": 2,
+          "created_date": 1697407200000,
+          "expense_id": -1,
+          "modified_date": 1697407200000,
+          "name": "Reimbursements",
+          "note": "I may repeat this"
+        },
+        {
+          "amount": 36989,
+          "category": 11,
+          "created_date": 1696586400000,
+          "expense_id": -1,
+          "modified_date": 1696586400000,
+          "name": "Sponsorships",
+          "note": "Paid by card"
+        },
+        {
+          "amount": 39142,
+          "category": 10,
+          "created_date": 1696165200000,
+          "expense_id": -1,
+          "modified_date": 1696165200000,
+          "name": "Workshops",
+          "note": "Want to have"
+        },
+        {
+          "amount": 18091,
+          "category": 1,
+          "created_date": 1696258800000,
+          "expense_id": -1,
+          "modified_date": 1696258800000,
+          "name": "Emergency Repairs",
+          "note": "Urgent"
+        },
+        {
+          "amount": 49902,
+          "category": 6,
+          "created_date": 1697234400000,
+          "expense_id": -1,
+          "modified_date": 1697234400000,
+          "name": "Concert Tickets",
+          "note": "Want to have"
+        },
+        {
+          "amount": 7554,
+          "category": 9,
+          "created_date": 1697389200000,
+          "expense_id": -1,
+          "modified_date": 1697389200000,
+          "name": "Doctor Visits",
+          "note": "Paid by card"
+        },
+        {
+          "amount": 5907,
+          "category": 1,
+          "created_date": 1696348800000,
+          "expense_id": -1,
+          "modified_date": 1696348800000,
+          "name": "Stationery",
+          "note": "Want to have"
+        },
+        {
+          "amount": 34626,
+          "category": 4,
+          "created_date": 1696251600000,
+          "expense_id": -1,
+          "modified_date": 1696251600000,
+          "name": "Property Taxes",
+          "note": "Remember to transfer funds"
+        },
+        {
+          "amount": 22066,
+          "category": 5,
+          "created_date": 1696712400000,
+          "expense_id": -1,
+          "modified_date": 1696712400000,
+          "name": "Gift for Friend",
+          "note": "Remember to transfer funds"
+        },
+        {
+          "amount": 36737,
+          "category": 3,
+          "created_date": 1696298400000,
+          "expense_id": -1,
+          "modified_date": 1696298400000,
+          "name": "Dining Out",
+          "note": "Want to have"
+        },
+        {
+          "amount": 3491,
+          "category": 1,
+          "created_date": 1696604400000,
+          "expense_id": -1,
+          "modified_date": 1696604400000,
+          "name": "Pet Supplies",
+          "note": "Paid by card"
+        },
+        {
+          "amount": 35635,
+          "category": 2,
+          "created_date": 1696402800000,
+          "expense_id": -1,
+          "modified_date": 1696402800000,
+          "name": "Side Business",
+          "note": "Monthly recurring"
+        },
+        {
+          "amount": 25892,
+          "category": 4,
+          "created_date": 1696276800000,
+          "expense_id": -1,
+          "modified_date": 1696276800000,
+          "name": "Landscaping",
+          "note": "I may repeat this"
+        },
+        {
+          "amount": 39344,
+          "category": 3,
+          "created_date": 1696708800000,
+          "expense_id": -1,
+          "modified_date": 1696708800000,
+          "name": "Groceries",
+          "note": "A need"
+        },
+        {
+          "amount": 8514,
+          "category": 1,
+          "created_date": 1696186800000,
+          "expense_id": -1,
+          "modified_date": 1696186800000,
+          "name": "Stationery",
+          "note": "Urgent"
+        },
+        {
+          "amount": 33575,
+          "category": 4,
+          "created_date": 1696255200000,
+          "expense_id": -1,
+          "modified_date": 1696255200000,
+          "name": "Cleaning Services",
+          "note": "Remember to transfer funds"
+        },
+        {
+          "amount": 8852,
+          "category": 6,
+          "created_date": 1696222800000,
+          "expense_id": -1,
+          "modified_date": 1696222800000,
+          "name": "Streaming Services",
+          "note": "Monthly recurring"
+        },
+        {
+          "amount": 8130,
+          "category": 4,
+          "created_date": 1697356800000,
+          "expense_id": -1,
+          "modified_date": 1697356800000,
+          "name": "Landscaping",
+          "note": "Monthly recurring"
+        },
+        {
+          "amount": 37298,
+          "category": 9,
+          "created_date": 1696824000000,
+          "expense_id": -1,
+          "modified_date": 1696824000000,
+          "name": "Eyecare",
+          "note": "Want to have"
+        },
+        {
+          "amount": 10678,
+          "category": 9,
+          "created_date": 1696190400000,
+          "expense_id": -1,
+          "modified_date": 1696190400000,
+          "name": "Medical Tests",
+          "note": "Want to have"
+        },
+        {
+          "amount": 43660,
+          "category": 4,
+          "created_date": 1697248800000,
+          "expense_id": -1,
+          "modified_date": 1697248800000,
+          "name": "Cleaning Services",
+          "note": "Remember to transfer funds"
+        },
+        {
+          "amount": 35091,
+          "category": 11,
+          "created_date": 1696694400000,
+          "expense_id": -1,
+          "modified_date": 1696694400000,
+          "name": "Educational",
+          "note": "Remember to transfer funds"
+        },
+        {
+          "amount": 48051,
+          "category": 7,
+          "created_date": 1696870800000,
+          "expense_id": -1,
+          "modified_date": 1696870800000,
+          "name": "Car Maintenance",
+          "note": "Want to have"
+        },
+        {
+          "amount": 28596,
+          "category": 5,
+          "created_date": 1696215600000,
+          "expense_id": -1,
+          "modified_date": 1696215600000,
+          "name": "Gift for Friend",
+          "note": "Monthly recurring"
+        },
+        {
+          "amount": 33760,
+          "category": 9,
+          "created_date": 1696489200000,
+          "expense_id": -1,
+          "modified_date": 1696489200000,
+          "name": "Health Insurance",
+          "note": "Want to have"
+        },
+        {
+          "amount": 32614,
+          "category": 4,
+          "created_date": 1696809600000,
+          "expense_id": -1,
+          "modified_date": 1696809600000,
+          "name": "Mortgage",
+          "note": "A need"
+        },
+        {
+          "amount": 1273,
+          "category": 4,
+          "created_date": 1697130000000,
+          "expense_id": -1,
+          "modified_date": 1697130000000,
+          "name": "Mortgage",
+          "note": "Paid by card"
+        },
+        {
+          "amount": 28238,
+          "category": 8,
+          "created_date": 1696320000000,
+          "expense_id": -1,
+          "modified_date": 1696320000000,
+          "name": "Accessories",
+          "note": "A need"
+        },
+        {
+          "amount": 33004,
+          "category": 9,
+          "created_date": 1696942800000,
+          "expense_id": -1,
+          "modified_date": 1696942800000,
+          "name": "Medical Tests",
+          "note": "Paid by card"
+        },
+        {
+          "amount": 29382,
+          "category": 8,
+          "created_date": 1696496400000,
+          "expense_id": -1,
+          "modified_date": 1696496400000,
+          "name": "Jeans",
+          "note": "I may repeat this"
+        },
+        {
+          "amount": 27121,
+          "category": 2,
+          "created_date": 1696168800000,
+          "expense_id": -1,
+          "modified_date": 1696168800000,
+          "name": "Interest Income",
+          "note": "Want to have"
+        },
+        {
+          "amount": 33325,
+          "category": 9,
+          "created_date": 1697155200000,
+          "expense_id": -1,
+          "modified_date": 1697155200000,
+          "name": "Gym Membership",
+          "note": "Monthly recurring"
+        },
+        {
+          "amount": 22409,
+          "category": 8,
+          "created_date": 1697382000000,
+          "expense_id": -1,
+          "modified_date": 1697382000000,
+          "name": "Tailoring Services",
+          "note": "Monthly recurring"
+        },
+        {
+          "amount": 1264,
+          "category": 10,
+          "created_date": 1697288400000,
+          "expense_id": -1,
+          "modified_date": 1697288400000,
+          "name": "Seminars",
+          "note": "I may repeat this"
+        },
+        {
+          "amount": 48238,
+          "category": 2,
+          "created_date": 1696438800000,
+          "expense_id": -1,
+          "modified_date": 1696438800000,
+          "name": "Rental Income",
+          "note": "Remember to transfer funds"
+        },
+        {
+          "amount": 16716,
+          "category": 5,
+          "created_date": 1697076000000,
+          "expense_id": -1,
+          "modified_date": 1697076000000,
+          "name": "Night Out",
+          "note": "Monthly recurring"
+        },
+        {
+          "amount": 6089,
+          "category": 7,
+          "created_date": 1696960800000,
+          "expense_id": -1,
+          "modified_date": 1696960800000,
+          "name": "Taxi Fare",
+          "note": "Urgent"
+        },
+        {
+          "amount": 10074,
+          "category": 1,
+          "created_date": 1696629600000,
+          "expense_id": -1,
+          "modified_date": 1696629600000,
+          "name": "Subscriptions",
+          "note": "Urgent"
+        },
+        {
+          "amount": 29520,
+          "category": 3,
+          "created_date": 1696777200000,
+          "expense_id": -1,
+          "modified_date": 1696777200000,
+          "name": "Dining Out",
+          "note": "Remember to transfer funds"
+        },
+        {
+          "amount": 23366,
+          "category": 1,
+          "created_date": 1696172400000,
+          "expense_id": -1,
+          "modified_date": 1696172400000,
+          "name": "Emergency Repairs",
+          "note": "Urgent"
+        },
+        {
+          "amount": 16261,
+          "category": 10,
+          "created_date": 1696820400000,
+          "expense_id": -1,
+          "modified_date": 1696820400000,
+          "name": "Online Courses",
+          "note": "Urgent"
+        },
+        {
+          "amount": 15246,
+          "category": 2,
+          "created_date": 1696712400000,
+          "expense_id": -1,
+          "modified_date": 1696712400000,
+          "name": "Side Business",
+          "note": "Paid by card"
+        },
+        {
+          "amount": 20024,
+          "category": 7,
+          "created_date": 1697245200000,
+          "expense_id": -1,
+          "modified_date": 1697245200000,
+          "name": "Bike Repairs",
+          "note": "Paid by card"
+        },
+        {
+          "amount": 33752,
+          "category": 8,
+          "created_date": 1696903200000,
+          "expense_id": -1,
+          "modified_date": 1696903200000,
+          "name": "Jeans",
+          "note": "Paid by card"
+        },
+        {
+          "amount": 24090,
+          "category": 11,
+          "created_date": 1697310000000,
+          "expense_id": -1,
+          "modified_date": 1697310000000,
+          "name": "Non-Profit Support",
+          "note": "Monthly recurring"
+        },
+        {
+          "amount": 43202,
+          "category": 5,
+          "created_date": 1696258800000,
+          "expense_id": -1,
+          "modified_date": 1696258800000,
+          "name": "Gift for Friend",
+          "note": "Monthly recurring"
+        },
+        {
+          "amount": 1342,
+          "category": 10,
+          "created_date": 1696723200000,
+          "expense_id": -1,
+          "modified_date": 1696723200000,
+          "name": "Workshops",
+          "note": "Urgent"
+        },
+        {
+          "amount": 25901,
+          "category": 7,
+          "created_date": 1697108400000,
+          "expense_id": -1,
+          "modified_date": 1697108400000,
+          "name": "Car Maintenance",
+          "note": "I may repeat this"
+        },
+        {
+          "amount": 32305,
+          "category": 9,
+          "created_date": 1696280400000,
+          "expense_id": -1,
+          "modified_date": 1696280400000,
+          "name": "Therapy Sessions",
+          "note": "Paid by card"
+        },
+        {
+          "amount": 48929,
+          "category": 7,
+          "created_date": 1696370400000,
+          "expense_id": -1,
+          "modified_date": 1696370400000,
+          "name": "Parking Fees",
+          "note": "Paid by card"
+        },
+        {
+          "amount": 46629,
+          "category": 1,
+          "created_date": 1696885200000,
+          "expense_id": -1,
+          "modified_date": 1696885200000,
+          "name": "Subscriptions",
+          "note": "I may repeat this"
+        },
+        {
+          "amount": 47124,
+          "category": 2,
+          "created_date": 1697338800000,
+          "expense_id": -1,
+          "modified_date": 1697338800000,
+          "name": "Side Business",
+          "note": "Paid by card"
+        },
+        {
+          "amount": 13930,
+          "category": 8,
+          "created_date": 1696503600000,
+          "expense_id": -1,
+          "modified_date": 1696503600000,
+          "name": "Jeans",
+          "note": "Want to have"
+        },
+        {
+          "amount": 36365,
+          "category": 7,
+          "created_date": 1696251600000,
+          "expense_id": -1,
+          "modified_date": 1696251600000,
+          "name": "Public Transit Pass",
+          "note": "Monthly recurring"
+        },
+        {
+          "amount": 27131,
+          "category": 1,
+          "created_date": 1696582800000,
+          "expense_id": -1,
+          "modified_date": 1696582800000,
+          "name": "Household Items",
+          "note": "Want to have"
+        },
+        {
+          "amount": 14799,
+          "category": 11,
+          "created_date": 1696496400000,
+          "expense_id": -1,
+          "modified_date": 1696496400000,
+          "name": "Political",
+          "note": "Paid by card"
+        },
+        {
+          "amount": 38836,
+          "category": 3,
+          "created_date": 1696183200000,
+          "expense_id": -1,
+          "modified_date": 1696183200000,
+          "name": "Snacks",
+          "note": "Monthly recurring"
+        },
+        {
+          "amount": 5320,
+          "category": 6,
+          "created_date": 1696201200000,
+          "expense_id": -1,
+          "modified_date": 1696201200000,
+          "name": "Movie Night",
+          "note": "Remember to transfer funds"
+        },
+        {
+          "amount": 4459,
+          "category": 6,
+          "created_date": 1697094000000,
+          "expense_id": -1,
+          "modified_date": 1697094000000,
+          "name": "Books",
+          "note": "Remember to transfer funds"
+        },
+        {
+          "amount": 10491,
+          "category": 1,
+          "created_date": 1696618800000,
+          "expense_id": -1,
+          "modified_date": 1696618800000,
+          "name": "Pet Care",
+          "note": "Paid by card"
+        },
+        {
+          "amount": 24405,
+          "category": 2,
+          "created_date": 1696658400000,
+          "expense_id": -1,
+          "modified_date": 1696658400000,
+          "name": "Freelance Payment",
+          "note": "Want to have"
+        },
+        {
+          "amount": 10173,
+          "category": 9,
+          "created_date": 1697302800000,
+          "expense_id": -1,
+          "modified_date": 1697302800000,
+          "name": "Wellness Products",
+          "note": "Monthly recurring"
+        },
+        {
+          "amount": 22165,
+          "category": 2,
+          "created_date": 1696608000000,
+          "expense_id": -1,
+          "modified_date": 1696608000000,
+          "name": "Reimbursements",
+          "note": "A need"
+        }
+      ],
+      "row_objects": [
+        {
+          "amount": 9630,
+          "category": 8,
+          "created_date": 1697320800000,
+          "expense_id": -1,
+          "modified_date": 1697320800000,
+          "name": "Laundry",
+          "note": "Urgent"
+        },
+        {
+          "amount": 30301,
+          "category": 7,
+          "created_date": 1696338000000,
+          "expense_id": -1,
+          "modified_date": 1696338000000,
+          "name": "Car Insurance",
+          "note": "I may repeat this"
+        }
+      ],
+      "seed": 3053860270,
+      "text_representation_type": "text_block"
+    },
+    "paramsSha256": "23de427b2cc14ba77e7fc9e4f767e4a6b1e4049661a80c3ce0b957c65120c929",
+    "paramsTransport": "seed",
+    "tags": [
+      "transcription",
+      "repetition",
+      "multi_app",
+      "data_entry",
+      "memorization",
+      "parameterized"
+    ],
+    "timeBudget": {
+      "businessSeconds": 3720,
+      "cleanupWindowSeconds": 180,
+      "episodeSeconds": 4330,
+      "forceSeconds": 3910,
+      "recoveryWindowSeconds": 120,
+      "terminationGraceSeconds": 10
+    }
+  },
+  "mainSteps": [
+    {
+      "stepId": 1,
+      "tool": "agent_runtime.runner",
+      "status": "failed",
+      "error": "Agent exceeded the configured turn limit.",
+      "output": {
+        "failure_category": "agent_runtime_error",
+        "failure_reason": "agent_runtime_error",
+        "failure_summary": "Agent runtime execution failed before producing structured verification output."
+      }
+    },
+    {
+      "stepId": 2,
+      "tool": "agent_runtime.verifier",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "The main agent supplied no structured output reporting the corresponding AI assertion results.",
+          "No before-and-after expense inventory or final assertion establishes which Pro Expense entries were newly saved during this run.",
+          "The runtime failure alone does not prove the goal unmet: the source assertions indicate that no new expenses may have been required."
+        ],
+        "evidence": [
+          "Artifacts 000012, 000014, and 000018 contain passed backend AI assertion results, confidence/provider metadata, and screenshot references. They report only reimbursable=no values across overlapping source views, including the file header and apparent bottom.",
+          "The supplied tool-call history records opening Pro Expense but no expense-entry or save actions.",
+          "Artifact 000029 shows Pro Expense entries including Reimbursements ($385.81) and Doctor Visits ($75.54), which match source rows marked no. No baseline establishes when those entries were created, so their presence does not prove this run logged excluded rows.",
+          "Execution step 1 reports that the agent exceeded its configured turn limit before producing structured verification output."
+        ],
+        "plan_updates": [],
+        "pre_plan": [],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "inconclusive",
+        "summary": "The evidence does not conclusively establish the required final state. Backend AI assertions report no reimbursable=yes rows, and no expense-creation actions are recorded, but the run ended without structured verification output or a conclusive comparison of Pro Expense changes.",
+        "unmet_criteria": []
+      }
+    }
+  ],
+  "budgetSummary": {
+    "admitted": 12,
+    "attempted": 12,
+    "deadlineExceeded": false,
+    "deadlineMonotonic": 707326.491550375,
+    "denied": 0,
+    "deviceRestoredByClose": false,
+    "exclusions": [
+      "driver_construction",
+      "uiautomator2_service_startup",
+      "observation_and_assertion_side_effects",
+      "external_processes_and_direct_driver_access"
+    ],
+    "exhausted": false,
+    "failed": 0,
+    "inFlight": 0,
+    "inputTextUnit": "composite_click_optional_clear_set_text",
+    "maximum": 60,
+    "securityBoundary": false,
+    "succeeded": 12,
+    "unit": "admitted_android_harness_write_capability_dispatch",
+    "writeCapabilities": [
+      "launch_app",
+      "kill_app",
+      "tap_on",
+      "tap_at",
+      "long_press_on",
+      "input_text",
+      "press_key",
+      "swipe"
+    ]
+  },
+  "actions": [
+    {
+      "ordinal": 0,
+      "stepId": "agent-launch_app-1",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "app_id": "net.gsantner.markor"
+      },
+      "uiLabels": [],
+      "output": {
+        "app_id": "net.gsantner.markor"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[0]"
+    },
+    {
+      "ordinal": 1,
+      "stepId": "agent-ui_snapshot-2",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Sun, Oct 15",
+        "Sun, Oct 15",
+        "Gmail",
+        "Gmail",
+        "Photos",
+        "Photos",
+        "YouTube",
+        "YouTube",
+        "Home",
+        "Phone",
+        "Phone",
+        "Messages",
+        "Messages",
+        "Chrome",
+        "Chrome",
+        "Calendar",
+        "Predicted app: Calendar",
+        "Search",
+        "Google app",
+        "Voice search",
+        "Google Lens"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 27981,
+          "retained_characters": 7650
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[1]"
+    },
+    {
+      "ordinal": 2,
+      "stepId": "agent-swipe-3",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[2]"
+    },
+    {
+      "ordinal": 3,
+      "stepId": "agent-ui_snapshot-4",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Audio Recorder",
+        "Audio Recorder",
+        "Broccoli",
+        "Broccoli",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Chrome",
+        "Chrome",
+        "Clipper",
+        "Clipper",
+        "Clock",
+        "Clock",
+        "Contacts",
+        "Contacts",
+        "Draw",
+        "Draw",
+        "Drive",
+        "Drive",
+        "Files",
+        "Files",
+        "Gallery",
+        "Gallery",
+        "Gmail",
+        "Gmail",
+        "Google",
+        "Google",
+        "Joplin",
+        "Joplin",
+        "Maps",
+        "Maps",
+        "Markor",
+        "Markor",
+        "Messages",
+        "Messages",
+        "OpenTracks",
+        "OpenTracks",
+        "OsmAnd",
+        "OsmAnd",
+        "Phone",
+        "Phone",
+        "Photos",
+        "Photos",
+        "Pro Expense",
+        "Pro Expense",
+        "Gallery",
+        "Gallery",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Tasks",
+        "Tasks",
+        "Search",
+        "Google app",
+        "Search apps, web and more",
+        "Voice search",
+        "Google Lens",
+        "Home"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 37017,
+          "retained_characters": 12575
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 6,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[3]"
+    },
+    {
+      "ordinal": 4,
+      "stepId": "agent-tap_on-5",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "Markor"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[4]"
+    },
+    {
+      "ordinal": 5,
+      "stepId": "agent-ui_snapshot-6",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Markor",
+        "Go to",
+        "Sort by",
+        "Search",
+        "More options",
+        "Folder .. ",
+        "..",
+        "/storage/emulated/0/Documents",
+        "Folder .app ",
+        ".app",
+        "10/15/2023, 15:35",
+        "File my_expenses.txt ",
+        "my_expenses.txt",
+        "11/10/2026, 16:38",
+        "Create a new file or folder",
+        "Files",
+        "Files",
+        "To-Do",
+        "To-Do",
+        "QuickNote",
+        "QuickNote",
+        "More",
+        "More",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 40109,
+          "retained_characters": 11165
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[5]"
+    },
+    {
+      "ordinal": 6,
+      "stepId": "agent-tap_on-7",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "my_expenses.txt"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[6]"
+    },
+    {
+      "ordinal": 7,
+      "stepId": "agent-ui_snapshot-8",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "my_expenses",
+        "Undo",
+        "Redo",
+        "View mode",
+        "Save",
+        "Search",
+        "More options",
+        "name|amount_dollars|category_name|note|reimbursabl",
+        "Check list",
+        "Unordered list",
+        "Ordered list",
+        "Delete lines",
+        "Open link",
+        "Attach",
+        "Special Key",
+        "Date and time",
+        "Indent",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 31954,
+          "retained_characters": 7489
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 9,
+          "clipped_attributes": 2
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[7]"
+    },
+    {
+      "ordinal": 8,
+      "stepId": "agent-tap_on-9",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "net.gsantner.markor:id/action_preview"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[8]"
+    },
+    {
+      "ordinal": 9,
+      "stepId": "agent-ui_snapshot-10",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "my_expenses",
+        "Edit mode",
+        "Search",
+        "More options",
+        "name|amount_dollars|category_name|note|reimbursabl",
+        "Jump to bottom",
+        "Open with",
+        "Rotate",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 29298,
+          "retained_characters": 6012
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 10,
+          "clipped_attributes": 2
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[9]"
+    },
+    {
+      "ordinal": 10,
+      "stepId": "agent-assert_with_ai-11",
+      "action": "assert_with_ai",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "prompt": "Read the visible expense file and transcribe every complete transaction row exactly, including name, amount, category, note and reimbursable field. Confirm whether entire file is visible or more scrolling is needed.",
+        "optional": false
+      },
+      "uiLabels": [],
+      "output": {
+        "status": "passed",
+        "passed": true,
+        "explanation": "The complete visible transaction rows are transcribed below. Visual line wrapping has been joined within each row:\n\nEducational|$296.94|Donation|Want to have|no\nCleaning Services|$398.71|Housing|Want to have|no\nReligious|$186.98|Donation|Urgent|no\nReimbursements|$385.81|Income|I may repeat this|no\nInterest Income|$271.21|Income|Want to have|no\nDining Out|$367.37|Food|Want to have|no\nMedications|$203.63|Health Care|Paid by card|no\nGift for Friend|$432.02|Social|Monthly recurring|no\nParking Fees|$489.29|Transportation|Paid by card|no\nDining Out|$295.2|Food|Remember to transfer funds|no\nDividends|$446.35|Income|Paid by card|no\nSeminars|$12.64|Education|I may repeat this|no\nWedding Gift|$311.2|Social|Monthly recurring|no\nWorkshops|$391.42|Education|Want to have|no\nMortgage|$326.14|Housing|A need|no\nGroceries|$393.44|Food|A need|no\nMortgage|$12.73|Housing|Paid by card|no\nPet Care|$104.91|Others|Paid by card|no\nJeans|$337.52|Clothes|Paid by card|no\nEducational|$350.91|Donation|Remember to transfer funds|no\nEmergency Repairs|$180.91|Others|Urgent|no\nUtilities|$199.48|Housing|Urgent|no\nFreelance Payment|$27.82|Income|I may repeat this|no\nBakery Items|$483.28|Food|I may repeat this|no\nDoctor Visits|$75.54|Health Care|Paid by card|no\nSide Business|$471.24|Income|Paid by card|no\nSocial Club Dues|$315.68|Social|Urgent|no\nProperty Taxes|$346.26|Housing|Remember to transfer funds|no\nMedical Tests|$106.78|Health Care|Want to have|no\nAccessories|$208.06|Clothes|A need|no\nGas|$194.47|Transportation|Paid by card|no\nFreelance Payment|$244.05|Income|Want to have|no\n\nThe entire file is not visible; more scrolling is needed. The next row, beginning Gym Membership|$333.25|Health Care|Monthly, is cut off at the bottom and is excluded from the complete-row transcription.",
+        "confidence": 0.98,
+        "provider": "github_copilot",
+        "model": "gpt-6.1-sol",
+        "latency_ms": 13889,
+        "token_usage": {
+          "input_tokens": 3289,
+          "output_tokens": 747,
+          "total_tokens": 4036
+        },
+        "artifact_refs": [
+          {
+            "artifact_id": "screenshot-agent-assert-with-ai-11-invoke-assert-with-ai-1-83a8fe57b797",
+            "kind": "screenshot",
+            "path": "artifacts/screenshots/screenshot-agent-assert-with-ai-11-invoke-assert-with-ai-1-83a8fe57b797.png",
+            "mime_type": "image/png",
+            "size_bytes": 1367825,
+            "sha256": "a800173c7fc7de5bb1f23c4483e5cf146ee058eabcdfba03d99da6bf28dcefc4",
+            "availability": "available",
+            "unavailable_reason": null,
+            "capture_occurrence": 1,
+            "created_at": "2026-11-10T16:39:29.614353Z",
+            "metadata": {
+              "capture_reason": "assert-with-ai",
+              "redacted": false
+            }
+          }
+        ],
+        "error": null,
+        "metadata": {
+          "provider_metadata": {
+            "endpoint_family": "github_copilot",
+            "copilot_plan": "enterprise"
+          }
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[10]"
+    },
+    {
+      "ordinal": 11,
+      "stepId": "agent-swipe-12",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[11]"
+    },
+    {
+      "ordinal": 12,
+      "stepId": "agent-assert_with_ai-13",
+      "action": "assert_with_ai",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "prompt": "Inspect all visible rows: transcribe exactly any reimbursable=yes rows with every field. Confirm whether all remaining rows are no and state first and last visible rows, and whether file bottom is visible.",
+        "optional": false
+      },
+      "uiLabels": [],
+      "output": {
+        "status": "passed",
+        "passed": true,
+        "explanation": "No visible rows have reimbursable=yes; every readable reimbursable value is no. The first visible row is a partially clipped Emergency Repairs row. The first fully visible row is Utilities|$199.48|Housing|Urgent|no. The last visible row is Wellness Products|$101.73|Health Care|Monthly recurring|no. The file bottom appears visible, with the final row fully shown above the bottom toolbar.",
+        "confidence": 0.92,
+        "provider": "github_copilot",
+        "model": "gpt-6.1-sol",
+        "latency_ms": 9772,
+        "token_usage": {
+          "input_tokens": 3289,
+          "output_tokens": 210,
+          "total_tokens": 3499
+        },
+        "artifact_refs": [
+          {
+            "artifact_id": "screenshot-agent-assert-with-ai-13-invoke-assert-with-ai-1-2966ebe4aad8",
+            "kind": "screenshot",
+            "path": "artifacts/screenshots/screenshot-agent-assert-with-ai-13-invoke-assert-with-ai-1-2966ebe4aad8.png",
+            "mime_type": "image/png",
+            "size_bytes": 1415616,
+            "sha256": "ea1fa5dc81329ea9e087f7e633084b6813387cba65f7e501e592b88bb713cd77",
+            "availability": "available",
+            "unavailable_reason": null,
+            "capture_occurrence": 1,
+            "created_at": "2026-11-10T16:39:55.581447Z",
+            "metadata": {
+              "capture_reason": "assert-with-ai",
+              "redacted": false
+            }
+          }
+        ],
+        "error": null,
+        "metadata": {
+          "provider_metadata": {
+            "endpoint_family": "github_copilot",
+            "copilot_plan": "enterprise"
+          }
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[12]"
+    },
+    {
+      "ordinal": 13,
+      "stepId": "agent-swipe-14",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "down"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "down"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[13]"
+    },
+    {
+      "ordinal": 14,
+      "stepId": "agent-swipe-15",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "down"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "down"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[14]"
+    },
+    {
+      "ordinal": 15,
+      "stepId": "agent-assert_with_ai-16",
+      "action": "assert_with_ai",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "prompt": "Transcribe all visible reimbursable=yes rows exactly with every field. State first and last visible rows and whether at top of file.",
+        "optional": false
+      },
+      "uiLabels": [],
+      "output": {
+        "status": "passed",
+        "passed": true,
+        "explanation": "No visible rows have reimbursable=yes; all visible reimbursement values are no. At top of file: yes, the header is visible. First visible data row: Educational|$296.94|Donation|Want to have|no. Last visible data row (partially clipped at bottom): Gym Membership|$333.25|Health Care|Monthly recurring|no.",
+        "confidence": 0.98,
+        "provider": "github_copilot",
+        "model": "gpt-6.1-sol",
+        "latency_ms": 7218,
+        "token_usage": {
+          "input_tokens": 3276,
+          "output_tokens": 157,
+          "total_tokens": 3433
+        },
+        "artifact_refs": [
+          {
+            "artifact_id": "screenshot-agent-assert-with-ai-16-invoke-assert-with-ai-1-396ad72aee9a",
+            "kind": "screenshot",
+            "path": "artifacts/screenshots/screenshot-agent-assert-with-ai-16-invoke-assert-with-ai-1-396ad72aee9a.png",
+            "mime_type": "image/png",
+            "size_bytes": 1406826,
+            "sha256": "817d0256a4e1a003c969e58a6c94bbec65ea57a331b18a8fb28cde2ddd8f12e9",
+            "availability": "available",
+            "unavailable_reason": null,
+            "capture_occurrence": 1,
+            "created_at": "2026-11-10T16:40:28.379941Z",
+            "metadata": {
+              "capture_reason": "assert-with-ai",
+              "redacted": false
+            }
+          }
+        ],
+        "error": null,
+        "metadata": {
+          "provider_metadata": {
+            "endpoint_family": "github_copilot",
+            "copilot_plan": "enterprise"
+          }
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[15]"
+    },
+    {
+      "ordinal": 16,
+      "stepId": "agent-swipe-17",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "start": {
+          "x": 600,
+          "y": 1800
+        },
+        "end": {
+          "x": 600,
+          "y": 1100
+        },
+        "duration": 500,
+        "reference_screen_size": {
+          "width": 1080,
+          "height": 2400
+        }
+      },
+      "uiLabels": [],
+      "output": {
+        "start": {
+          "x": 600,
+          "y": 1800
+        },
+        "end": {
+          "x": 600,
+          "y": 1100
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[16]"
+    },
+    {
+      "ordinal": 17,
+      "stepId": "agent-assert_with_ai-18",
+      "action": "assert_with_ai",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "prompt": "Verify all currently visible transaction rows have reimbursable=no. List their names and reimbursement values, especially rows between Gym Membership and Emergency Repairs.",
+        "optional": false
+      },
+      "uiLabels": [],
+      "output": {
+        "status": "passed",
+        "passed": true,
+        "explanation": "All fully visible transaction rows have reimbursable=no. In screen order: Dividends=no; Seminars=no; Wedding Gift=no; Workshops=no; Mortgage ($326.14)=no; Groceries=no; Mortgage ($12.73)=no; Pet Care=no; Jeans=no; Educational=no; Emergency Repairs=no; Utilities=no; Freelance Payment ($27.82)=no; Bakery Items=no; Doctor Visits=no; Side Business ($471.24)=no; Social Club Dues=no; Property Taxes=no; Medical Tests=no; Accessories=no; Gas=no; Freelance Payment ($244.05)=no; Gym Membership=no; Dental Care=no; Dinner Party=no; Party Supplies=no; Gift for Friend=no; Side Business ($152.46)=no; Crowdfunding=no; Parking Fees=no; Non-Profit Support=no; Subscriptions=no; Concert Tickets=no; Household Items=no. Specifically, between Emergency Repairs and Gym Membership are Utilities, Freelance Payment ($27.82), Bakery Items, Doctor Visits, Side Business ($471.24), Social Club Dues, Property Taxes, Medical Tests, Accessories, Gas, and Freelance Payment ($244.05)—all no. A clipped row at the top also ends in 'no', but its name is offscreen.",
+        "confidence": 0.99,
+        "provider": "github_copilot",
+        "model": "gpt-6.1-sol",
+        "latency_ms": 10125,
+        "token_usage": {
+          "input_tokens": 3277,
+          "output_tokens": 326,
+          "total_tokens": 3603
+        },
+        "artifact_refs": [
+          {
+            "artifact_id": "screenshot-agent-assert-with-ai-18-invoke-assert-with-ai-1-8feb800b379b",
+            "kind": "screenshot",
+            "path": "artifacts/screenshots/screenshot-agent-assert-with-ai-18-invoke-assert-with-ai-1-8feb800b379b.png",
+            "mime_type": "image/png",
+            "size_bytes": 1417553,
+            "sha256": "1e3804d9ae08b366c6cdba7868c7b51f792247cfa3e9a4daf198cde3588cea7d",
+            "availability": "available",
+            "unavailable_reason": null,
+            "capture_occurrence": 1,
+            "created_at": "2026-11-10T16:40:52.847246Z",
+            "metadata": {
+              "capture_reason": "assert-with-ai",
+              "redacted": false
+            }
+          }
+        ],
+        "error": null,
+        "metadata": {
+          "provider_metadata": {
+            "endpoint_family": "github_copilot",
+            "copilot_plan": "enterprise"
+          }
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[17]"
+    },
+    {
+      "ordinal": 18,
+      "stepId": "agent-press_key-19",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Home"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Home"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[18]"
+    },
+    {
+      "ordinal": 19,
+      "stepId": "agent-ui_snapshot-20",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:37",
+        "23:37",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Sun, Oct 15",
+        "Sun, Oct 15",
+        "Gmail",
+        "Gmail",
+        "Photos",
+        "Photos",
+        "YouTube",
+        "YouTube",
+        "Home",
+        "Phone",
+        "Phone",
+        "Messages",
+        "Messages",
+        "Chrome",
+        "Chrome",
+        "Calendar",
+        "Predicted app: Calendar",
+        "Search",
+        "Google app",
+        "Voice search",
+        "Google Lens"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 27981,
+          "retained_characters": 7650
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[19]"
+    },
+    {
+      "ordinal": 20,
+      "stepId": "agent-swipe-21",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[20]"
+    },
+    {
+      "ordinal": 21,
+      "stepId": "agent-ui_snapshot-22",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:37",
+        "23:37",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Audio Recorder",
+        "Audio Recorder",
+        "Broccoli",
+        "Broccoli",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Chrome",
+        "Chrome",
+        "Clipper",
+        "Clipper",
+        "Clock",
+        "Clock",
+        "Contacts",
+        "Contacts",
+        "Draw",
+        "Draw",
+        "Drive",
+        "Drive",
+        "Files",
+        "Files",
+        "Gallery",
+        "Gallery",
+        "Gmail",
+        "Gmail",
+        "Google",
+        "Google",
+        "Joplin",
+        "Joplin",
+        "Maps",
+        "Maps",
+        "Markor",
+        "Markor",
+        "Messages",
+        "Messages",
+        "OpenTracks",
+        "OpenTracks",
+        "OsmAnd",
+        "OsmAnd",
+        "Phone",
+        "Phone",
+        "Photos",
+        "Photos",
+        "Pro Expense",
+        "Pro Expense",
+        "Gallery",
+        "Gallery",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Tasks",
+        "Tasks",
+        "Search",
+        "Google app",
+        "Search apps, web and more",
+        "Voice search",
+        "Google Lens",
+        "Home"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 37017,
+          "retained_characters": 12575
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 6,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[21]"
+    },
+    {
+      "ordinal": 22,
+      "stepId": "agent-tap_on-23",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "Pro Expense"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[22]"
+    },
+    {
+      "ordinal": 23,
+      "stepId": "agent-ui_snapshot-24",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:37",
+        "23:37",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Home",
+        "Totals",
+        "OCT 15 - 22",
+        "INCOME",
+        "1,303.4",
+        "USD",
+        "OUTCOME",
+        "930.14",
+        "USD",
+        "Expenses in this Week",
+        "OCT 15 - 22",
+        "Recent",
+        "Reimbursements",
+        "Today 10:00 PM",
+        "385.81",
+        "USD",
+        "Doctor Visits",
+        "Today 5:00 PM",
+        "75.54",
+        "USD",
+        "Tailoring Services",
+        "Today 3:00 PM",
+        "224.09",
+        "USD",
+        "Parking Fees",
+        "225.64",
+        "USD"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 42984,
+          "retained_characters": 10792
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[23]"
+    },
+    {
+      "ordinal": 24,
+      "stepId": "agent-ui_snapshot-25",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:37",
+        "23:37",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Home",
+        "Totals",
+        "OCT 15 - 22",
+        "INCOME",
+        "1,303.4",
+        "USD",
+        "OUTCOME",
+        "930.14",
+        "USD",
+        "Expenses in this Week",
+        "OCT 15 - 22",
+        "Recent",
+        "Reimbursements",
+        "Today 10:00 PM",
+        "385.81",
+        "USD",
+        "Doctor Visits",
+        "Today 5:00 PM",
+        "75.54",
+        "USD",
+        "Tailoring Services",
+        "Today 3:00 PM",
+        "224.09",
+        "USD",
+        "Parking Fees",
+        "225.64",
+        "USD"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 42984,
+          "retained_characters": 10792
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[24]"
+    },
+    {
+      "ordinal": 25,
+      "stepId": "agent-ui_snapshot-26",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:37",
+        "23:37",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Home",
+        "Totals",
+        "OCT 15 - 22",
+        "INCOME",
+        "1,303.4",
+        "USD",
+        "OUTCOME",
+        "930.14",
+        "USD",
+        "Expenses in this Week",
+        "OCT 15 - 22",
+        "Recent",
+        "Reimbursements",
+        "Today 10:00 PM",
+        "385.81",
+        "USD",
+        "Doctor Visits",
+        "Today 5:00 PM",
+        "75.54",
+        "USD",
+        "Tailoring Services",
+        "Today 3:00 PM",
+        "224.09",
+        "USD",
+        "Parking Fees",
+        "225.64",
+        "USD"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 42984,
+          "retained_characters": 10792
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[25]"
+    },
+    {
+      "ordinal": 26,
+      "stepId": "agent-ui_snapshot-27",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:38",
+        "23:38",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Home",
+        "Totals",
+        "OCT 15 - 22",
+        "INCOME",
+        "1,303.4",
+        "USD",
+        "OUTCOME",
+        "930.14",
+        "USD",
+        "Expenses in this Week",
+        "OCT 15 - 22",
+        "Recent",
+        "Reimbursements",
+        "Today 10:00 PM",
+        "385.81",
+        "USD",
+        "Doctor Visits",
+        "Today 5:00 PM",
+        "75.54",
+        "USD",
+        "Tailoring Services",
+        "Today 3:00 PM",
+        "224.09",
+        "USD",
+        "Parking Fees",
+        "225.64",
+        "USD"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 42983,
+          "retained_characters": 10791
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[26]"
+    },
+    {
+      "ordinal": 27,
+      "stepId": "agent-ui_snapshot-28",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:38",
+        "23:38",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Home",
+        "Totals",
+        "OCT 15 - 22",
+        "INCOME",
+        "1,303.4",
+        "USD",
+        "OUTCOME",
+        "930.14",
+        "USD",
+        "Expenses in this Week",
+        "OCT 15 - 22",
+        "Recent",
+        "Reimbursements",
+        "Today 10:00 PM",
+        "385.81",
+        "USD",
+        "Doctor Visits",
+        "Today 5:00 PM",
+        "75.54",
+        "USD",
+        "Tailoring Services",
+        "Today 3:00 PM",
+        "224.09",
+        "USD",
+        "Parking Fees",
+        "225.64",
+        "USD"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 42983,
+          "retained_characters": 10791
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[27]"
+    },
+    {
+      "ordinal": 28,
+      "stepId": "agent-ui_snapshot-29",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:38",
+        "23:38",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Home",
+        "Totals",
+        "OCT 15 - 22",
+        "INCOME",
+        "1,303.4",
+        "USD",
+        "OUTCOME",
+        "930.14",
+        "USD",
+        "Expenses in this Week",
+        "OCT 15 - 22",
+        "Recent",
+        "Reimbursements",
+        "Today 10:00 PM",
+        "385.81",
+        "USD",
+        "Doctor Visits",
+        "Today 5:00 PM",
+        "75.54",
+        "USD",
+        "Tailoring Services",
+        "Today 3:00 PM",
+        "224.09",
+        "USD",
+        "Parking Fees",
+        "225.64",
+        "USD"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 42984,
+          "retained_characters": 10792
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[28]"
+    },
+    {
+      "ordinal": 29,
+      "stepId": "agent-ui_snapshot-30",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:38",
+        "23:38",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Home",
+        "Totals",
+        "OCT 15 - 22",
+        "INCOME",
+        "1,303.4",
+        "USD",
+        "OUTCOME",
+        "930.14",
+        "USD",
+        "Expenses in this Week",
+        "OCT 15 - 22",
+        "Recent",
+        "Reimbursements",
+        "Today 10:00 PM",
+        "385.81",
+        "USD",
+        "Doctor Visits",
+        "Today 5:00 PM",
+        "75.54",
+        "USD",
+        "Tailoring Services",
+        "Today 3:00 PM",
+        "224.09",
+        "USD",
+        "Parking Fees",
+        "225.64",
+        "USD"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 42984,
+          "retained_characters": 10792
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[29]"
+    },
+    {
+      "ordinal": 30,
+      "stepId": "agent-ui_snapshot-31",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:39",
+        "23:39",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Home",
+        "Totals",
+        "OCT 15 - 22",
+        "INCOME",
+        "1,303.4",
+        "USD",
+        "OUTCOME",
+        "930.14",
+        "USD",
+        "Expenses in this Week",
+        "OCT 15 - 22",
+        "Recent",
+        "Reimbursements",
+        "Today 10:00 PM",
+        "385.81",
+        "USD",
+        "Doctor Visits",
+        "Today 5:00 PM",
+        "75.54",
+        "USD",
+        "Tailoring Services",
+        "Today 3:00 PM",
+        "224.09",
+        "USD",
+        "Parking Fees",
+        "225.64",
+        "USD"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 42984,
+          "retained_characters": 10792
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[30]"
+    },
+    {
+      "ordinal": 31,
+      "stepId": "agent-ui_snapshot-32",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:39",
+        "23:39",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Home",
+        "Totals",
+        "OCT 15 - 22",
+        "INCOME",
+        "1,303.4",
+        "USD",
+        "OUTCOME",
+        "930.14",
+        "USD",
+        "Expenses in this Week",
+        "OCT 15 - 22",
+        "Recent",
+        "Reimbursements",
+        "Today 10:00 PM",
+        "385.81",
+        "USD",
+        "Doctor Visits",
+        "Today 5:00 PM",
+        "75.54",
+        "USD",
+        "Tailoring Services",
+        "Today 3:00 PM",
+        "224.09",
+        "USD",
+        "Parking Fees",
+        "225.64",
+        "USD"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 42984,
+          "retained_characters": 10792
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[31]"
+    },
+    {
+      "ordinal": 32,
+      "stepId": "agent-ui_snapshot-33",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:39",
+        "23:39",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Home",
+        "Totals",
+        "OCT 15 - 22",
+        "INCOME",
+        "1,303.4",
+        "USD",
+        "OUTCOME",
+        "930.14",
+        "USD",
+        "Expenses in this Week",
+        "OCT 15 - 22",
+        "Recent",
+        "Reimbursements",
+        "Today 10:00 PM",
+        "385.81",
+        "USD",
+        "Doctor Visits",
+        "Today 5:00 PM",
+        "75.54",
+        "USD",
+        "Tailoring Services",
+        "Today 3:00 PM",
+        "224.09",
+        "USD",
+        "Parking Fees",
+        "225.64",
+        "USD"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 42984,
+          "retained_characters": 10792
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[32]"
+    },
+    {
+      "ordinal": 33,
+      "stepId": "agent-ui_snapshot-34",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:40",
+        "23:40",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Home",
+        "Totals",
+        "OCT 15 - 22",
+        "INCOME",
+        "1,303.4",
+        "USD",
+        "OUTCOME",
+        "930.14",
+        "USD",
+        "Expenses in this Week",
+        "OCT 15 - 22",
+        "Recent",
+        "Reimbursements",
+        "Today 10:00 PM",
+        "385.81",
+        "USD",
+        "Doctor Visits",
+        "Today 5:00 PM",
+        "75.54",
+        "USD",
+        "Tailoring Services",
+        "Today 3:00 PM",
+        "224.09",
+        "USD",
+        "Parking Fees",
+        "225.64",
+        "USD"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 42984,
+          "retained_characters": 10792
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[33]"
+    },
+    {
+      "ordinal": 34,
+      "stepId": "agent-ui_snapshot-35",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:40",
+        "23:40",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Home",
+        "Totals",
+        "OCT 15 - 22",
+        "INCOME",
+        "1,303.4",
+        "USD",
+        "OUTCOME",
+        "930.14",
+        "USD",
+        "Expenses in this Week",
+        "OCT 15 - 22",
+        "Recent",
+        "Reimbursements",
+        "Today 10:00 PM",
+        "385.81",
+        "USD",
+        "Doctor Visits",
+        "Today 5:00 PM",
+        "75.54",
+        "USD",
+        "Tailoring Services",
+        "Today 3:00 PM",
+        "224.09",
+        "USD",
+        "Parking Fees",
+        "225.64",
+        "USD"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 42983,
+          "retained_characters": 10791
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[34]"
+    },
+    {
+      "ordinal": 35,
+      "stepId": "agent-ui_snapshot-36",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:40",
+        "23:40",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Home",
+        "Totals",
+        "OCT 15 - 22",
+        "INCOME",
+        "1,303.4",
+        "USD",
+        "OUTCOME",
+        "930.14",
+        "USD",
+        "Expenses in this Week",
+        "OCT 15 - 22",
+        "Recent",
+        "Reimbursements",
+        "Today 10:00 PM",
+        "385.81",
+        "USD",
+        "Doctor Visits",
+        "Today 5:00 PM",
+        "75.54",
+        "USD",
+        "Tailoring Services",
+        "Today 3:00 PM",
+        "224.09",
+        "USD",
+        "Parking Fees",
+        "225.64",
+        "USD"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 42983,
+          "retained_characters": 10791
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[35]"
+    },
+    {
+      "ordinal": 36,
+      "stepId": "agent-ui_snapshot-37",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:40",
+        "23:40",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Home",
+        "Totals",
+        "OCT 15 - 22",
+        "INCOME",
+        "1,303.4",
+        "USD",
+        "OUTCOME",
+        "930.14",
+        "USD",
+        "Expenses in this Week",
+        "OCT 15 - 22",
+        "Recent",
+        "Reimbursements",
+        "Today 10:00 PM",
+        "385.81",
+        "USD",
+        "Doctor Visits",
+        "Today 5:00 PM",
+        "75.54",
+        "USD",
+        "Tailoring Services",
+        "Today 3:00 PM",
+        "224.09",
+        "USD",
+        "Parking Fees",
+        "225.64",
+        "USD"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 42984,
+          "retained_characters": 10792
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[36]"
+    },
+    {
+      "ordinal": 37,
+      "stepId": "agent-ui_snapshot-38",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:41",
+        "23:41",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Home",
+        "Totals",
+        "OCT 15 - 22",
+        "INCOME",
+        "1,303.4",
+        "USD",
+        "OUTCOME",
+        "930.14",
+        "USD",
+        "Expenses in this Week",
+        "OCT 15 - 22",
+        "Recent",
+        "Reimbursements",
+        "Today 10:00 PM",
+        "385.81",
+        "USD",
+        "Doctor Visits",
+        "Today 5:00 PM",
+        "75.54",
+        "USD",
+        "Tailoring Services",
+        "Today 3:00 PM",
+        "224.09",
+        "USD",
+        "Parking Fees",
+        "225.64",
+        "USD"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 42984,
+          "retained_characters": 10792
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[37]"
+    },
+    {
+      "ordinal": 38,
+      "stepId": "agent-ui_snapshot-39",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:41",
+        "23:41",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Home",
+        "Totals",
+        "OCT 15 - 22",
+        "INCOME",
+        "1,303.4",
+        "USD",
+        "OUTCOME",
+        "930.14",
+        "USD",
+        "Expenses in this Week",
+        "OCT 15 - 22",
+        "Recent",
+        "Reimbursements",
+        "Today 10:00 PM",
+        "385.81",
+        "USD",
+        "Doctor Visits",
+        "Today 5:00 PM",
+        "75.54",
+        "USD",
+        "Tailoring Services",
+        "Today 3:00 PM",
+        "224.09",
+        "USD",
+        "Parking Fees",
+        "225.64",
+        "USD"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 42984,
+          "retained_characters": 10792
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[38]"
+    },
+    {
+      "ordinal": 39,
+      "stepId": "agent-ui_snapshot-40",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:41",
+        "23:41",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Home",
+        "Totals",
+        "OCT 15 - 22",
+        "INCOME",
+        "1,303.4",
+        "USD",
+        "OUTCOME",
+        "930.14",
+        "USD",
+        "Expenses in this Week",
+        "OCT 15 - 22",
+        "Recent",
+        "Reimbursements",
+        "Today 10:00 PM",
+        "385.81",
+        "USD",
+        "Doctor Visits",
+        "Today 5:00 PM",
+        "75.54",
+        "USD",
+        "Tailoring Services",
+        "Today 3:00 PM",
+        "224.09",
+        "USD",
+        "Parking Fees",
+        "225.64",
+        "USD"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 42984,
+          "retained_characters": 10792
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[39]"
+    },
+    {
+      "ordinal": 40,
+      "stepId": "agent-ui_snapshot-41",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:41",
+        "23:41",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Home",
+        "Totals",
+        "OCT 15 - 22",
+        "INCOME",
+        "1,303.4",
+        "USD",
+        "OUTCOME",
+        "930.14",
+        "USD",
+        "Expenses in this Week",
+        "OCT 15 - 22",
+        "Recent",
+        "Reimbursements",
+        "Today 10:00 PM",
+        "385.81",
+        "USD",
+        "Doctor Visits",
+        "Today 5:00 PM",
+        "75.54",
+        "USD",
+        "Tailoring Services",
+        "Today 3:00 PM",
+        "224.09",
+        "USD",
+        "Parking Fees",
+        "225.64",
+        "USD"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 42984,
+          "retained_characters": 10792
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[40]"
+    },
+    {
+      "ordinal": 41,
+      "stepId": "agent-ui_snapshot-42",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:42",
+        "23:42",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Home",
+        "Totals",
+        "OCT 15 - 22",
+        "INCOME",
+        "1,303.4",
+        "USD",
+        "OUTCOME",
+        "930.14",
+        "USD",
+        "Expenses in this Week",
+        "OCT 15 - 22",
+        "Recent",
+        "Reimbursements",
+        "Today 10:00 PM",
+        "385.81",
+        "USD",
+        "Doctor Visits",
+        "Today 5:00 PM",
+        "75.54",
+        "USD",
+        "Tailoring Services",
+        "Today 3:00 PM",
+        "224.09",
+        "USD",
+        "Parking Fees",
+        "225.64",
+        "USD"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 42984,
+          "retained_characters": 10792
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[41]"
+    }
+  ],
+  "originalNativeExecutionPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/014-ExpenseAddMultipleFromMarkor/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-014-20261110T163817Z-c88635/execution-result.json",
+  "originalNativeResultPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/014-ExpenseAddMultipleFromMarkor/raw-private/fsq-native/worker/fsq-task-result.private.json",
+  "originalGoalPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/014-ExpenseAddMultipleFromMarkor/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-014-20261110T163817Z-c88635/sources/000-goal.txt"
+}

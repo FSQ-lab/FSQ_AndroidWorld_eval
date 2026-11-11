@@ -1,0 +1,297 @@
+{
+  "scope": "non-task, actual source MCP and OMP, local HTTP Appium fixture only",
+  "sourceCommit": "4086c29f89bd8abfb96155fb1ff296e543410093",
+  "cases": [
+    {
+      "name": "source_runtime_identity",
+      "status": "passed",
+      "durationSeconds": 0.365,
+      "observed": {
+        "python": "/Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python",
+        "sourceFile": "/Users/qunmi/Documents/FSQ_LAB/amkernel/src/amkernel/__init__.py",
+        "metadataVersion": "0.1.2",
+        "serverSha256": "e7930d9afb2ad46d7932cb1a0faa2017e87118f02136c4ba15566b44becfa299",
+        "clientVersion": "5.2.5"
+      }
+    },
+    {
+      "name": "ordinary_driver_quit_verified_independently",
+      "status": "passed",
+      "durationSeconds": 1.292,
+      "observed": {
+        "cleanupStatus": "closed",
+        "attribution": "agent",
+        "audit": {
+          "createdSessionCount": 1,
+          "createdSessionHashes": [
+            "30d46b9d632c72b69244d28c527fd39aef105445344fb281821750d987fe0c06"
+          ],
+          "deletedSessionCount": 1,
+          "deletedSessionHashes": [
+            "30d46b9d632c72b69244d28c527fd39aef105445344fb281821750d987fe0c06"
+          ],
+          "ownedSessionCount": 1,
+          "activeSessionCount": 0,
+          "activeSessionHashes": [],
+          "reclaimedSessionCount": 0,
+          "reclaimedSessionHashes": [],
+          "pendingRequestCount": 0,
+          "pendingCreateCount": 0,
+          "unknownCreationOutcomeCount": 0,
+          "unknownCreationOutcomes": [],
+          "errors": [],
+          "deniedCommandCount": 0,
+          "deniedCommands": []
+        }
+      }
+    },
+    {
+      "name": "cancel_create_before_response_then_reconcile_no_replay",
+      "status": "passed",
+      "durationSeconds": 1.808,
+      "observed": {
+        "originalCallOutcome": "unknown; cancelled MCP response not consumed as completion",
+        "pendingBeforeResponse": {
+          "createdSessionCount": 0,
+          "createdSessionHashes": [],
+          "deletedSessionCount": 0,
+          "deletedSessionHashes": [],
+          "ownedSessionCount": 0,
+          "activeSessionCount": 0,
+          "activeSessionHashes": [],
+          "reclaimedSessionCount": 0,
+          "reclaimedSessionHashes": [],
+          "pendingRequestCount": 1,
+          "pendingCreateCount": 1,
+          "unknownCreationOutcomeCount": 0,
+          "unknownCreationOutcomes": [],
+          "errors": [],
+          "deniedCommandCount": 0,
+          "deniedCommands": []
+        },
+        "followup": {
+          "driverPresent": false
+        },
+        "createdOnce": 1,
+        "cleanupStatus": "harness_reclaimed",
+        "audit": {
+          "createdSessionCount": 1,
+          "createdSessionHashes": [
+            "e5087080957c22dea1683f34c82e3618eed9e03ea6fb23f382f737ee9ba11df5"
+          ],
+          "deletedSessionCount": 0,
+          "deletedSessionHashes": [],
+          "ownedSessionCount": 1,
+          "activeSessionCount": 0,
+          "activeSessionHashes": [],
+          "reclaimedSessionCount": 1,
+          "reclaimedSessionHashes": [
+            "e5087080957c22dea1683f34c82e3618eed9e03ea6fb23f382f737ee9ba11df5"
+          ],
+          "pendingRequestCount": 0,
+          "pendingCreateCount": 0,
+          "unknownCreationOutcomeCount": 0,
+          "unknownCreationOutcomes": [],
+          "errors": [],
+          "deniedCommandCount": 0,
+          "deniedCommands": []
+        }
+      }
+    },
+    {
+      "name": "failed_agent_quit_then_separately_attributed_recovery",
+      "status": "passed",
+      "durationSeconds": 1.302,
+      "observed": {
+        "agentQuitStatus": "failed",
+        "kernelState": "alive",
+        "cleanupStatus": "harness_reclaimed",
+        "agentDeletedCount": 0,
+        "auditErrors": [
+          "SessionQuitFailed"
+        ]
+      }
+    },
+    {
+      "name": "kernel_death_does_not_clean_external_session",
+      "status": "passed",
+      "durationSeconds": 1.788,
+      "observed": {
+        "deathStatus": "kernel_killed",
+        "kernelState": "dead",
+        "externalSessionSurvivedKernel": true,
+        "cleanupStatus": "harness_reclaimed",
+        "agentDeletedCount": 0
+      }
+    },
+    {
+      "name": "hard_kill_survivor_targeted_recovery_preserves_baseline",
+      "status": "passed",
+      "durationSeconds": 1.21,
+      "observed": {
+        "serverExitCode": -9,
+        "agentQuitClaimed": false,
+        "cleanupStatus": "harness_reclaimed",
+        "agentDeletedCount": 0
+      }
+    },
+    {
+      "name": "actual_omp_business_deadline_during_mcp_then_same_driver_quit",
+      "status": "passed",
+      "durationSeconds": 23.79,
+      "observed": {
+        "exitCode": 0,
+        "agentCompleted": false,
+        "termination": {
+          "reason": "business_deadline",
+          "businessDeadlineReached": true,
+          "outerTermination": false,
+          "cleanupRequested": true,
+          "rpcCommands": [
+            "set_interrupt_mode",
+            "prompt",
+            "steer"
+          ],
+          "deadlines": {
+            "started": true,
+            "remainingSeconds": {
+              "business": 0.0,
+              "cleanup": 25.06184829195263,
+              "force": 28.061847749981098
+            }
+          }
+        },
+        "completedMcpCells": 2,
+        "cleanupStatus": "closed",
+        "cleanupAttribution": "agent",
+        "audit": {
+          "createdSessionCount": 1,
+          "createdSessionHashes": [
+            "2f35ee3d0ed82c2fecfa08aba007910262b2a8e1629b9f9fe67309024ecdd05e"
+          ],
+          "deletedSessionCount": 1,
+          "deletedSessionHashes": [
+            "2f35ee3d0ed82c2fecfa08aba007910262b2a8e1629b9f9fe67309024ecdd05e"
+          ],
+          "ownedSessionCount": 1,
+          "activeSessionCount": 0,
+          "activeSessionHashes": [],
+          "reclaimedSessionCount": 0,
+          "reclaimedSessionHashes": [],
+          "pendingRequestCount": 0,
+          "pendingCreateCount": 0,
+          "unknownCreationOutcomeCount": 0,
+          "unknownCreationOutcomes": [],
+          "errors": [],
+          "deniedCommandCount": 0,
+          "deniedCommands": []
+        }
+      }
+    }
+  ],
+  "nativeTarget": {
+    "status": "blocked",
+    "reason": "No attached Android device and Appium 4723 unavailable"
+  },
+  "sourceIdentity": {
+    "sha256": "33b6a35fd42d19daec44e4056b748484a14c74bd145ba99918e82e440aaa108d",
+    "files": [
+      {
+        "path": "src/amkernel/__init__.py",
+        "sha256": "359d957cb4993975070cbce470c08010dd3e3bcdef8d2d166398726516f443a8"
+      },
+      {
+        "path": "src/amkernel/__main__.py",
+        "sha256": "9089fa5b6964cf0a5cb6fbbbb72e74226b5e3e13359c88fa48b52737882f3c47"
+      },
+      {
+        "path": "src/amkernel/artifact_store.py",
+        "sha256": "e9ab9a1e65f4dd42a926f3d58441044a57a339daa1afe6f29e514c737694dfcc"
+      },
+      {
+        "path": "src/amkernel/cli.py",
+        "sha256": "636c5543022e843a32f81ddbdb142535737301a6f9d5a7ab4e30eb95401e8cb9"
+      },
+      {
+        "path": "src/amkernel/distribution.py",
+        "sha256": "6fb3364d2a40786efeef5574eebe9c6cb3cceaab26f03c51107bdc038250596a"
+      },
+      {
+        "path": "src/amkernel/output.py",
+        "sha256": "46fdc7f94f488573138e5c46d173c82f1f4fe432485c98303b5a412b8f45a2fc"
+      },
+      {
+        "path": "src/amkernel/protocol.py",
+        "sha256": "a6bbc4e76b2735b569c5ec8b1d7244c5ce9abb44a44679460b45edbf93e5b29f"
+      },
+      {
+        "path": "src/amkernel/py.typed",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "src/amkernel/runner.py",
+        "sha256": "c4467ff3d37f41410d27f439dbd9239076e9334d379c65530d0a6a1c58911638"
+      },
+      {
+        "path": "src/amkernel/runtime.py",
+        "sha256": "fd6da51f485af522bba75e360a2525ca37d3d38baaafc67218012041f4f0aaeb"
+      },
+      {
+        "path": "src/amkernel/server.py",
+        "sha256": "e7930d9afb2ad46d7932cb1a0faa2017e87118f02136c4ba15566b44becfa299"
+      },
+      {
+        "path": "src/amkernel/skill/SKILL.md",
+        "sha256": "520bbbb380a95024d08e7e728ed0c5b92a484a0958fd098454a414ad9a7a0caa"
+      },
+      {
+        "path": "src/amkernel/skill/references/amkernel-appium.md",
+        "sha256": "8f4cd560fbd4e67a4f0eb5500eac4a9735843bb896aa41e091127046f2037135"
+      },
+      {
+        "path": "src/amkernel/skill/references/android-execution.md",
+        "sha256": "bfb8c99b5d48bcc536b67d3d1119bfd9a5ffb2c039d708d91e4561263356e2fc"
+      },
+      {
+        "path": "src/amkernel/skill/references/android-setup.md",
+        "sha256": "dafd16dec10715f1bafcb880c5c82bfc239f9d13e5ff9124719bbefe02ff6d6f"
+      },
+      {
+        "path": "src/amkernel/skill/references/appium-skills-e907024c210fe024c956ed9c74146fc27b1dd013.tar.gz",
+        "sha256": "9ce21bc92e94614fd65cf932e7951d07e40b0ce4749403479000b99b7d8b8bd2"
+      },
+      {
+        "path": "src/amkernel/skill/references/ios-setup.md",
+        "sha256": "ab4a9236bd9b31204ae34e7bc57a65fcfb24cbee439e29b67376418e6f8b7992"
+      },
+      {
+        "path": "src/amkernel/skill/references/official-skills.json",
+        "sha256": "02664d697ddfa6e2dec87fa76710bdd69325d72d448f0263883fed80a88eb678"
+      },
+      {
+        "path": "src/amkernel/skill/references/official-sources.json",
+        "sha256": "b5b6c78fe76ecf71500fcec567c1e1a01e60c2c6b6e024d063286603fa903485"
+      },
+      {
+        "path": "src/amkernel/skill/scripts/verify_official_skills.py",
+        "sha256": "947c8f5a7d06a60ce39053785bc3162b6145df4d9cc438a48ad91fca08f5bcad"
+      },
+      {
+        "path": "src/amkernel/structured_output.py",
+        "sha256": "7236380175a1c624561eb4c86f2c3fb34392e8729efeb3038d08c74851b0a009"
+      },
+      {
+        "path": "src/amkernel/supervisor.py",
+        "sha256": "d518856be642324e2cda99a101ca1f9d3d27d0973b9314221dcba487c589789f"
+      },
+      {
+        "path": "src/amkernel/workspace.py",
+        "sha256": "1c5321f8543e43a10fdfc61e7866982d2f43e5689abca2f936f6039aaf1640fd"
+      }
+    ]
+  },
+  "sourceIdentityUnchanged": true,
+  "passed": 7,
+  "failed": 0,
+  "sourceValidationPassed": true
+}

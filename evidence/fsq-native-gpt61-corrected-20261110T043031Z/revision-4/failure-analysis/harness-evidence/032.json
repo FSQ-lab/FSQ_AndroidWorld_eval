@@ -1,0 +1,838 @@
+{
+  "index": 32,
+  "name": "MarkorEditNote",
+  "goal": "Edit note_SiFbv.txt in Markor. Add to the top of the note Hello, World!",
+  "reward": 0.0,
+  "classification": "failed",
+  "initialization": {
+    "initializationReferenceTime": {
+      "referenceTime": "2023-10-15T15:34:00+00:00",
+      "timezone": "UTC"
+    },
+    "initializedGoal": "Edit note_SiFbv.txt in Markor. Add to the top of the note Hello, World!"
+  },
+  "frozenTaskSpec": {
+    "apps": [
+      "markor"
+    ],
+    "complexity": 1.2,
+    "difficulty": "easy",
+    "family": "android",
+    "index": 32,
+    "instanceSeed": 240351352,
+    "maxActions": 12,
+    "maxSteps": 12,
+    "name": "MarkorEditNote",
+    "params": {
+      "edit_type": "header",
+      "file_name": "note_SiFbv.txt",
+      "header": "Hello, World!",
+      "seed": 240351352
+    },
+    "paramsSha256": "1532056c510b10c9e61a0482cc2743dad7d8e5ed05f3be0cfa2ccbeeff026856",
+    "paramsTransport": "json",
+    "tags": [
+      "data_edit",
+      "transcription",
+      "parameterized"
+    ],
+    "timeBudget": {
+      "businessSeconds": 840,
+      "cleanupWindowSeconds": 180,
+      "episodeSeconds": 1450,
+      "forceSeconds": 1030,
+      "recoveryWindowSeconds": 120,
+      "terminationGraceSeconds": 10
+    }
+  },
+  "mainSteps": [
+    {
+      "stepId": 4,
+      "tool": "agent_runtime.runner",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "Save action failed: NativeActionBudgetExceeded: action_budget.",
+          "kill_app teardown failed: NativeActionBudgetExceeded: action_budget."
+        ],
+        "evidence": [
+          "assert_state passed for the editor text: \"Hello, World!\\nDon't forget to water the plants while I'm away.\\n\".",
+          "Original text was observed before editing and restored through undo before the final text entry."
+        ],
+        "plan_updates": [
+          "Text entry replaced the editor contents; undo restored the original, then the requested prefix and original text were entered together. This did not preserve the requested insertion-only interaction.",
+          "The action budget blocked explicit saving, reopening, and app teardown."
+        ],
+        "pre_plan": [
+          {
+            "action": "Find and open note_SiFbv.txt in Markor.",
+            "status": "success",
+            "step_id": 1,
+            "success_criteria": [
+              "Target note is open."
+            ]
+          },
+          {
+            "action": "Insert Hello, World! as the first line without replacing existing content.",
+            "status": "adjusted",
+            "step_id": 2,
+            "success_criteria": [
+              "Requested line precedes unchanged original content."
+            ]
+          },
+          {
+            "action": "Save and reopen the note to inspect its beginning.",
+            "status": "failed",
+            "step_id": 3,
+            "success_criteria": [
+              "Persisted note is reopened and verified."
+            ]
+          }
+        ],
+        "satisfied_criteria": [
+          "The current editor text was asserted to contain Hello, World! on its first line followed by the original text."
+        ],
+        "schema_version": "task_run_v1",
+        "status": "inconclusive",
+        "summary": "The editor contains the requested first line followed by the original text, but saving and reopening could not be verified because the harness action budget was exhausted.",
+        "unmet_criteria": [
+          "Persistence of the modified note_SiFbv.txt was not verified by reopening it."
+        ]
+      }
+    },
+    {
+      "stepId": 5,
+      "tool": "agent_runtime.verifier",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "Persistence of the verified editor content is unconfirmed; the verification goal is neither proven satisfied nor proven unmet."
+        ],
+        "evidence": [
+          "Artifact 000011-ui_snapshot.json identifies the open note as note_SiFbv and shows its original text: \"Don't forget to water the plants while I'm away.\\n\".",
+          "The final assert_state call passed with exists=true for the editor containing the requested first line followed by that original text.",
+          "The explicit action_save tap failed with NativeActionBudgetExceeded: action_budget.",
+          "No supplied file-content read, successful save confirmation, or reopened-note observation establishes persistence. The failed save attempt alone does not prove that the final content was not saved through another editor behavior."
+        ],
+        "plan_updates": [],
+        "pre_plan": [
+          {
+            "action": "Evaluate the supplied evidence for the saved note's required content.",
+            "status": "adjusted",
+            "step_id": 1,
+            "success_criteria": [
+              "Saved note_SiFbv.txt begins with Hello, World! on its first line and preserves the original content below."
+            ]
+          }
+        ],
+        "satisfied_criteria": [
+          "The editor contained \"Hello, World!\\nDon't forget to water the plants while I'm away.\\n\", matching the requested prefix followed by the observed original content."
+        ],
+        "schema_version": "task_run_v1",
+        "status": "inconclusive",
+        "summary": "The requested text and unchanged original content were verified in the editor, but the evidence does not establish that this content was saved to note_SiFbv.txt.",
+        "unmet_criteria": []
+      }
+    }
+  ],
+  "budgetSummary": {
+    "admitted": 12,
+    "attempted": 14,
+    "deadlineExceeded": false,
+    "deadlineMonotonic": 708434.332431416,
+    "denied": 2,
+    "deviceRestoredByClose": false,
+    "exclusions": [
+      "driver_construction",
+      "uiautomator2_service_startup",
+      "observation_and_assertion_side_effects",
+      "external_processes_and_direct_driver_access"
+    ],
+    "exhausted": true,
+    "failed": 0,
+    "inFlight": 0,
+    "inputTextUnit": "composite_click_optional_clear_set_text",
+    "maximum": 12,
+    "securityBoundary": false,
+    "succeeded": 12,
+    "unit": "admitted_android_harness_write_capability_dispatch",
+    "writeCapabilities": [
+      "launch_app",
+      "kill_app",
+      "tap_on",
+      "tap_at",
+      "long_press_on",
+      "input_text",
+      "press_key",
+      "swipe"
+    ]
+  },
+  "actions": [
+    {
+      "ordinal": 0,
+      "stepId": "agent-launch_app-1",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [],
+      "output": {
+        "app_id": "net.gsantner.markor"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[0]"
+    },
+    {
+      "ordinal": 1,
+      "stepId": "agent-ui_snapshot-2",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Sun, Oct 15",
+        "Sun, Oct 15",
+        "Gmail",
+        "Gmail",
+        "Photos",
+        "Photos",
+        "YouTube",
+        "YouTube",
+        "Home",
+        "Phone",
+        "Phone",
+        "Messages",
+        "Messages",
+        "Chrome",
+        "Chrome",
+        "Calendar",
+        "Predicted app: Calendar",
+        "Search",
+        "Google app",
+        "Voice search",
+        "Google Lens",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 27980,
+          "retained_characters": 7649
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[1]"
+    },
+    {
+      "ordinal": 2,
+      "stepId": "agent-launch_app-3",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "app_id": "net.gsantner.markor"
+      },
+      "uiLabels": [],
+      "output": {
+        "app_id": "net.gsantner.markor"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[2]"
+    },
+    {
+      "ordinal": 3,
+      "stepId": "agent-swipe-4",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[3]"
+    },
+    {
+      "ordinal": 4,
+      "stepId": "agent-ui_snapshot-5",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Audio Recorder",
+        "Audio Recorder",
+        "Broccoli",
+        "Broccoli",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Chrome",
+        "Chrome",
+        "Clipper",
+        "Clipper",
+        "Clock",
+        "Clock",
+        "Contacts",
+        "Contacts",
+        "Draw",
+        "Draw",
+        "Drive",
+        "Drive",
+        "Files",
+        "Files",
+        "Gallery",
+        "Gallery",
+        "Gmail",
+        "Gmail",
+        "Google",
+        "Google",
+        "Joplin",
+        "Joplin",
+        "Maps",
+        "Maps",
+        "Markor",
+        "Markor",
+        "Messages",
+        "Messages",
+        "OpenTracks",
+        "OpenTracks",
+        "OsmAnd",
+        "OsmAnd",
+        "Phone",
+        "Phone",
+        "Photos",
+        "Photos",
+        "Pro Expense",
+        "Pro Expense",
+        "Gallery",
+        "Gallery",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Tasks",
+        "Tasks",
+        "Search",
+        "Google app",
+        "Search apps, web and more",
+        "Voice search",
+        "Google Lens",
+        "Home",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 37016,
+          "retained_characters": 12574
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 6,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[4]"
+    },
+    {
+      "ordinal": 5,
+      "stepId": "agent-tap_on-6",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "accessibilityId": "Markor"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[5]"
+    },
+    {
+      "ordinal": 6,
+      "stepId": "agent-ui_snapshot-7",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Markor",
+        "Go to",
+        "Sort by",
+        "Search",
+        "More options",
+        "Folder .. ",
+        "..",
+        "/storage/emulated/0/Documents",
+        "Folder .app ",
+        ".app",
+        "10/15/2023, 15:35",
+        "File 2023_02_26_birthday_gift_ideas_mom.md ",
+        "2023_02_26_birthday_gift_ideas_mom.md",
+        "10/15/2023, 15:34",
+        "File april_workout_routine_2023_08_26.md ",
+        "april_workout_routine_2023_08_26.md",
+        "10/15/2023, 15:34",
+        "File edited_client_meetings_schedule.md ",
+        "edited_client_meetings_schedule.md",
+        "10/15/2023, 15:34",
+        "File note_SiFbv.txt ",
+        "note_SiFbv.txt",
+        "10/15/2023, 15:34",
+        "File note_SiFbv_final.txt ",
+        "note_SiFbv_final.txt",
+        "10/15/2023, 15:34",
+        "Create a new file or folder",
+        "Files",
+        "Files",
+        "To-Do",
+        "To-Do",
+        "QuickNote",
+        "QuickNote",
+        "More",
+        "More",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 49952,
+          "retained_characters": 14147
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 16,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[6]"
+    },
+    {
+      "ordinal": 7,
+      "stepId": "agent-tap_on-8",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "text": "note_SiFbv.txt"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[7]"
+    },
+    {
+      "ordinal": 8,
+      "stepId": "agent-ui_snapshot-9",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "note_SiFbv",
+        "Undo",
+        "Redo",
+        "View mode",
+        "Save",
+        "Search",
+        "More options",
+        "Don't forget to water the plants while I'm away.\n",
+        "Check list",
+        "Unordered list",
+        "Ordered list",
+        "Delete lines",
+        "Open link",
+        "Attach",
+        "Special Key",
+        "Date and time",
+        "Indent"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 26695,
+          "retained_characters": 7473
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 9,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[8]"
+    },
+    {
+      "ordinal": 9,
+      "stepId": "agent-press_key-10",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Move Home"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Move Home"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[9]"
+    },
+    {
+      "ordinal": 10,
+      "stepId": "agent-input_text-11",
+      "action": "input_text",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "net.gsantner.markor:id/document__fragment__edit__highlighting_editor"
+        },
+        "text": "Hello, World!\n",
+        "textType": "literal"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[10]"
+    },
+    {
+      "ordinal": 11,
+      "stepId": "agent-press_key-12",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[11]"
+    },
+    {
+      "ordinal": 12,
+      "stepId": "agent-ui_snapshot-13",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "note_SiFbv",
+        "Undo",
+        "Redo",
+        "View mode",
+        "Save",
+        "Search",
+        "More options",
+        "Hello, World!\n",
+        "Check list",
+        "Unordered list",
+        "Ordered list",
+        "Delete lines",
+        "Open link",
+        "Attach",
+        "Special Key",
+        "Date and time",
+        "Indent"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 26658,
+          "retained_characters": 7406
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 9,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[12]"
+    },
+    {
+      "ordinal": 13,
+      "stepId": "agent-tap_on-14",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "net.gsantner.markor:id/action_undo"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[13]"
+    },
+    {
+      "ordinal": 14,
+      "stepId": "agent-ui_snapshot-15",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "note_SiFbv",
+        "Undo",
+        "Redo",
+        "View mode",
+        "Save",
+        "Search",
+        "More options",
+        "Check list",
+        "Unordered list",
+        "Ordered list",
+        "Delete lines",
+        "Open link",
+        "Attach",
+        "Special Key",
+        "Date and time",
+        "Indent"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 26650,
+          "retained_characters": 7364
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 9,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[14]"
+    },
+    {
+      "ordinal": 15,
+      "stepId": "agent-tap_on-16",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "net.gsantner.markor:id/action_undo"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[15]"
+    },
+    {
+      "ordinal": 16,
+      "stepId": "agent-ui_snapshot-17",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "note_SiFbv",
+        "Undo",
+        "Redo",
+        "View mode",
+        "Save",
+        "Search",
+        "More options",
+        "Don't forget to water the plants while I'm away.\n",
+        "Check list",
+        "Unordered list",
+        "Ordered list",
+        "Delete lines",
+        "Open link",
+        "Attach",
+        "Special Key",
+        "Date and time",
+        "Indent"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 26694,
+          "retained_characters": 7457
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 9,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[16]"
+    },
+    {
+      "ordinal": 17,
+      "stepId": "agent-input_text-18",
+      "action": "input_text",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "net.gsantner.markor:id/document__fragment__edit__highlighting_editor"
+        },
+        "text": "Hello, World!\nDon't forget to water the plants while I'm away.\n",
+        "textType": "literal"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[17]"
+    },
+    {
+      "ordinal": 18,
+      "stepId": "agent-press_key-19",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[18]"
+    },
+    {
+      "ordinal": 19,
+      "stepId": "agent-tap_on-20",
+      "action": "tap_on",
+      "status": "failed",
+      "error": "NativeActionBudgetExceeded: action_budget",
+      "params": null,
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[19]"
+    },
+    {
+      "ordinal": 20,
+      "stepId": "agent-assert_state-21",
+      "action": "assert_state",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "element": {
+          "resourceId": "net.gsantner.markor:id/document__fragment__edit__highlighting_editor",
+          "text": "Hello, World!\nDon't forget to water the plants while I'm away.\n"
+        },
+        "optional": false
+      },
+      "uiLabels": [],
+      "output": {
+        "exists": true
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[20]"
+    },
+    {
+      "ordinal": 21,
+      "stepId": "agent-kill_app-22",
+      "action": "kill_app",
+      "status": "failed",
+      "error": "NativeActionBudgetExceeded: action_budget",
+      "params": null,
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[21]"
+    }
+  ],
+  "originalNativeExecutionPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/032-MarkorEditNote/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-032-20261110T174445Z-384f53/execution-result.json",
+  "originalNativeResultPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/032-MarkorEditNote/raw-private/fsq-native/worker/fsq-task-result.private.json",
+  "originalGoalPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/032-MarkorEditNote/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-032-20261110T174445Z-384f53/sources/000-goal.txt"
+}

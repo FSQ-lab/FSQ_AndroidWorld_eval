@@ -1,0 +1,24 @@
+{
+  "tests": {
+    "command": ".venv/bin/python -m pytest tests/runner/test_runner_process.py -k webdriver",
+    "observedResult": "42 passed, 46 deselected in 3.04s"
+  },
+  "style": {
+    "command": ".venv/bin/python -m ruff check src/amkernel/runner.py tests/runner/test_runner_process.py",
+    "observedResult": "All checks passed!"
+  },
+  "independentReview": {
+    "reviewer": "FieldRepairReview",
+    "result": "No findings",
+    "scope": "Static review of safe exception formatter and final guidance; reviewer did not reproduce live paths"
+  },
+  "developmentSourceSha256": {
+    "src/amkernel/runner.py": "21ad803d991ffa7f145653e250e1e4249118f1e8218e78a8b7468d2931aee8a9",
+    "tests/runner/test_runner_process.py": "19e36a675e84534c9873ad752e653561d1ce65207649acbfef9fe99427eee114",
+    "src/amkernel/skill/references/amkernel-appium.md": "4a526440b8d3ef8e7584c3b439a21db718c6c6e5a9c484d9ca84e0898556be9d",
+    "src/amkernel/skill/references/android-execution.md": "bdb021d7a587f7f63c862c888988c64d908afa498282f2a71e4486b1148f8471",
+    "docs/HANDOFF.md": "d8cc5b14c5ed76831e03800f2319839a975ccaf17f389d8c97b4f2b1057b2eeb"
+  },
+  "reportReferencesValid": true,
+  "diagnosticOnlyNotCampaignScore": true
+}

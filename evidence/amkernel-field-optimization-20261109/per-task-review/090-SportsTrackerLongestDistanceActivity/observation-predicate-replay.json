@@ -1,0 +1,86 @@
+{
+  "scope": "Replay original captured observations, not a new Android run.",
+  "task": "SportsTrackerLongestDistanceActivity",
+  "rawEventFile": "campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/episodes/090-SportsTrackerLongestDistanceActivity/attempt-1/raw-private/agent-events.jsonl",
+  "taskGoalSemantics": {
+    "nowObserved": "2023-10-15 Sunday ('Wave Exploration' date label 'Today')",
+    "rule": "this week with Monday start",
+    "computedWindow": "2023-10-09 Monday through 2023-10-15 Sunday",
+    "requestedCategory": "mountain biking",
+    "requestedUnit": "meters rounded to nearest integer"
+  },
+  "trackListObservation": {
+    "rawLine": 2546,
+    "visibleRows": [
+      {"name": "Wave Exploration", "dateLabel": "Today", "timeDistance": "3:54:00 (8.09 mi)"},
+      {"name": "Road Bike Ride", "dateLabel": "Thursday", "timeDistance": "08:00 (8.65 mi)"},
+      {"name": "Downhill Skiing", "dateLabel": "Wednesday", "timeDistance": "2:09:00 (5.00 mi)"}
+    ],
+    "clickedTarget": "Scenic Cycling",
+    "targetInCapturedRows": false,
+    "note": "Only the visible portion of the list was captured; this is not a complete enumeration of all activities in the week. Scenic Cycling was found by element search and clicked, but its row was not in the first 100 captured elements."
+  },
+  "scenicCyclingObservation": {
+    "trackListRawLine": 2546,
+    "statsRawLine": 2919,
+    "name": "Scenic Cycling",
+    "startDateTime": "Oct 10, 2023, 12:16:00 PM",
+    "distance": "11.60",
+    "unit": "mi",
+    "editScreenRawLine": 3862,
+    "observedCategoryField": "biking",
+    "categoryIsMountainBiking": false
+  },
+  "skillWorkObservation": {
+    "rawLine": 4545,
+    "name": "Skill work",
+    "startDateTime": "Oct 10, 2023, 7:00:00 AM",
+    "distance": "0.75",
+    "unit": "mi",
+    "description": "Stepped outside my comfort zone.",
+    "categoryFieldObserved": false,
+    "categoryEvidence": "none captured",
+    "inWeekWindow": true
+  },
+  "conversionReplay": {
+    "miles": 0.75,
+    "metersPerMile": 1609.344,
+    "metersExact": 1207.008,
+    "roundedToNearestInteger": 1207,
+    "arithmetic": "0.75 * 1609.344 = 1207.008 -> 1207",
+    "matchesRawFinalAnswer": true,
+    "metadataCrossCheck": {
+      "taskDistanceMeters": 1200,
+      "toleranceMeters": 10,
+      "absoluteDeltaMeters": 7,
+      "withinTolerance": true,
+      "note": "Visible task-parameter cross-check only; it does not verify Skill work's category."
+    }
+  },
+  "categoryPredicate": {
+    "longestDistanceAmongVerifiedMountainBikingActivities": null,
+    "reason": "The only category field actually read was Scenic Cycling's 'biking'; Skill work's category was never opened or observed.",
+    "result": "UNPROVEN: the numeric conversion is exact for the observed 0.75 mi, but the 'mountain biking' qualification of Skill work is not grounded in captured state"
+  },
+  "finalBoundary": {
+    "rawFinalLine": 4790,
+    "rawFinalText": "{\"taskOutcome\":{\"answerMeters\":1207},\"sessionCleanup\":{\"quitReturned\":true},\"evidence\":{\"activity\":\"Skill work\",\"date\":\"Oct 10, 2023\",\"distance\":\"0.75 mi\",\"conversion\":\"0.75 × 1609.344 = 1207.008 m; rounded to 1207\"}}",
+    "runnerTaskOutcomeWouldBe": null,
+    "runnerTaskOutcomeIsString": false,
+    "runnerTaskOutcomeRejection": "runner.py:171-180 requires isinstance(taskOutcome, str); an object is rejected",
+    "normalizedFinalText": null,
+    "agentCompleted": false,
+    "agentAnswerValidContract": false,
+    "officialReward": 0.0,
+    "interactionCache": "empty because finalText is null",
+    "twoIndependentLosses": [
+      "cleanup-phase final text is not captured: omp_supervisor.py:160-169 and 203-208",
+      "taskOutcome is an object, not a string: runner.py:171-180"
+    ]
+  },
+  "missingEvidence": [
+    "Skill work's activity category was never displayed in the captured stats screen and its edit screen was never opened.",
+    "The track list was only partially observed; no full week enumeration was captured."
+  ],
+  "newAndroidRuns": 0
+}

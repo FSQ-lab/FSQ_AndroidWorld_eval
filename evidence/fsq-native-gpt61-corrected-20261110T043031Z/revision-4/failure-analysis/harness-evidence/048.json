@@ -1,0 +1,1258 @@
+{
+  "index": 48,
+  "name": "RecipeAddMultipleRecipesFromMarkor2",
+  "goal": "Add the recipes from recipes.txt in Markor that take 10 mins to prepare into the Broccoli recipe app.",
+  "reward": 0.0,
+  "classification": "failed",
+  "initialization": {
+    "initializationReferenceTime": {
+      "referenceTime": "2023-10-15T15:34:00+00:00",
+      "timezone": "UTC"
+    },
+    "initializedGoal": "Add the recipes from recipes.txt in Markor that take 10 mins to prepare into the Broccoli recipe app."
+  },
+  "frozenTaskSpec": {
+    "apps": [
+      "broccoli app",
+      "markor"
+    ],
+    "complexity": 6,
+    "difficulty": "hard",
+    "family": "android",
+    "index": 48,
+    "instanceSeed": 1406555389,
+    "maxActions": 60,
+    "maxSteps": 60,
+    "name": "RecipeAddMultipleRecipesFromMarkor2",
+    "params": {
+      "noise_row_objects": [
+        {
+          "description": "A quick and easy meal, perfect for busy weekdays.",
+          "directions": "Sauté onions and garlic, add cubed butternut squash and broth. Puree until smooth and season with nutmeg, salt, and pepper. Try adding a pinch of your favorite spices for extra flavor.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "optional ingredients",
+          "preparationTime": "30 mins",
+          "recipeId": -1,
+          "servings": "6 servings",
+          "source": "",
+          "title": "Butternut Squash Soup"
+        },
+        {
+          "description": "A delicious and healthy choice for any time of the day.",
+          "directions": "Butter bread slices, layer with cheese, tomato slices, and basil. Grill until bread is toasted and cheese is melted. Garnish with fresh herbs for a more vibrant taste.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "to preference",
+          "preparationTime": "4 hrs",
+          "recipeId": -1,
+          "servings": "2 servings",
+          "source": "",
+          "title": "Grilled Cheese with Tomato and Basil"
+        },
+        {
+          "description": "A delicious and healthy choice for any time of the day.",
+          "directions": "Toss cooked noodles with a Thai peanut sauce, sliced red bell peppers, cabbage, carrots, and cilantro. Garnish with fresh herbs for a more vibrant taste.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "as desired",
+          "preparationTime": "20 mins",
+          "recipeId": -1,
+          "servings": "6 servings",
+          "source": "",
+          "title": "Thai Peanut Noodle Salad"
+        },
+        {
+          "description": "An ideal recipe for experimenting with different flavors and ingredients.",
+          "directions": "Toss chopped romaine lettuce with Caesar dressing, grilled chicken strips, and Parmesan cheese. Wrap in a large tortilla. Garnish with fresh herbs for a more vibrant taste.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "as needed",
+          "preparationTime": "45 mins",
+          "recipeId": -1,
+          "servings": "1 serving",
+          "source": "",
+          "title": "Chicken Caesar Salad Wrap"
+        },
+        {
+          "description": "A delicious and healthy choice for any time of the day.",
+          "directions": "Layer turkey and cheese on bread, grill in a panini press until golden. Garnish with fresh herbs for a more vibrant taste.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "optional ingredients",
+          "preparationTime": "4 hrs",
+          "recipeId": -1,
+          "servings": "2 servings",
+          "source": "",
+          "title": "Turkey and Cheese Panini"
+        },
+        {
+          "description": "A quick and easy meal, perfect for busy weekdays.",
+          "directions": "Fill pita pockets with lettuce, cucumber, tomato, feta, olives, and Greek dressing. Garnish with fresh herbs for a more vibrant taste.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "various amounts",
+          "preparationTime": "2 hrs",
+          "recipeId": -1,
+          "servings": "2 servings",
+          "source": "",
+          "title": "Greek Salad Pita Pockets"
+        },
+        {
+          "description": "A delicious and healthy choice for any time of the day.",
+          "directions": "Layer turkey and cheese on bread, grill in a panini press until golden. Garnish with fresh herbs for a more vibrant taste.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "as needed",
+          "preparationTime": "1 hrs",
+          "recipeId": -1,
+          "servings": "1 serving",
+          "source": "",
+          "title": "Turkey and Cheese Panini"
+        },
+        {
+          "description": "A delicious and healthy choice for any time of the day.",
+          "directions": "Sauté cooked rice with vegetables, add soy sauce and scrambled eggs. Toss until hot. Feel free to substitute with ingredients you have on hand.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "to preference",
+          "preparationTime": "3 hrs",
+          "recipeId": -1,
+          "servings": "8 servings",
+          "source": "",
+          "title": "Quick Fried Rice"
+        },
+        {
+          "description": "A delicious and healthy choice for any time of the day.",
+          "directions": "Stir-fry tofu cubes until golden, add assorted vegetables and a stir-fry sauce. Serve over rice or noodles. Feel free to substitute with ingredients you have on hand.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "various amounts",
+          "preparationTime": "1 hrs",
+          "recipeId": -1,
+          "servings": "2 servings",
+          "source": "",
+          "title": "Vegetable Stir Fry with Tofu"
+        },
+        {
+          "description": "A quick and easy meal, perfect for busy weekdays.",
+          "directions": "Cook onions, garlic, bell peppers, and carrots. Add canned tomatoes, kidney beans, black beans, corn, and chili seasoning. Simmer until vegetables are tender. Garnish with fresh herbs for a more vibrant taste.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "quantities to taste",
+          "preparationTime": "30 mins",
+          "recipeId": -1,
+          "servings": "2 servings",
+          "source": "",
+          "title": "Vegetarian Chili"
+        },
+        {
+          "description": "An ideal recipe for experimenting with different flavors and ingredients.",
+          "directions": "Mix cooked quinoa with diced vegetables, feta cheese, and a lemon olive oil dressing. Garnish with fresh herbs for a more vibrant taste.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "per individual taste",
+          "preparationTime": "3 hrs",
+          "recipeId": -1,
+          "servings": "3-4 servings",
+          "source": "",
+          "title": "Quinoa Salad with Vegetables"
+        },
+        {
+          "description": "An ideal recipe for experimenting with different flavors and ingredients.",
+          "directions": "Cook chicken pieces in a pan, add onions, garlic, and ginger. Stir in curry powder, coconut milk, and mango pieces. Simmer until chicken is cooked. Garnish with fresh herbs for a more vibrant taste.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "per individual taste",
+          "preparationTime": "20 mins",
+          "recipeId": -1,
+          "servings": "3-4 servings",
+          "source": "",
+          "title": "Mango Chicken Curry"
+        },
+        {
+          "description": "A delicious and healthy choice for any time of the day.",
+          "directions": "Stir-fry tofu cubes until golden, add assorted vegetables and a stir-fry sauce. Serve over rice or noodles. Feel free to substitute with ingredients you have on hand.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "to preference",
+          "preparationTime": "4 hrs",
+          "recipeId": -1,
+          "servings": "6 servings",
+          "source": "",
+          "title": "Vegetable Stir Fry with Tofu"
+        },
+        {
+          "description": "A delicious and healthy choice for any time of the day.",
+          "directions": "Spread hummus on bread, add cucumber, bell pepper, carrot, and lettuce. Feel free to substitute with ingredients you have on hand.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "as desired",
+          "preparationTime": "3 hrs",
+          "recipeId": -1,
+          "servings": "1 serving",
+          "source": "",
+          "title": "Veggie and Hummus Sandwich"
+        },
+        {
+          "description": "An ideal recipe for experimenting with different flavors and ingredients.",
+          "directions": "Stuff chicken breasts with a mixture of spinach, feta, garlic, and herbs. Bake until chicken is cooked through. Garnish with fresh herbs for a more vibrant taste.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "quantities to taste",
+          "preparationTime": "2 hrs",
+          "recipeId": -1,
+          "servings": "3-4 servings",
+          "source": "",
+          "title": "Spinach and Feta Stuffed Chicken"
+        },
+        {
+          "description": "A delicious and healthy choice for any time of the day.",
+          "directions": "Pan-sear salmon fillets until crispy. Serve over cooked quinoa with a side of steamed asparagus. Try adding a pinch of your favorite spices for extra flavor.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "per individual taste",
+          "preparationTime": "4 hrs",
+          "recipeId": -1,
+          "servings": "3-4 servings",
+          "source": "",
+          "title": "Pan-Seared Salmon with Quinoa"
+        },
+        {
+          "description": "A quick and easy meal, perfect for busy weekdays.",
+          "directions": "Sauté cooked rice with vegetables, add soy sauce and scrambled eggs. Toss until hot. Try adding a pinch of your favorite spices for extra flavor.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "varies",
+          "preparationTime": "20 mins",
+          "recipeId": -1,
+          "servings": "3-4 servings",
+          "source": "",
+          "title": "Quick Fried Rice"
+        },
+        {
+          "description": "A delicious and healthy choice for any time of the day.",
+          "directions": "Toss cooked noodles with a Thai peanut sauce, sliced red bell peppers, cabbage, carrots, and cilantro. Feel free to substitute with ingredients you have on hand.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "flexible ingredients",
+          "preparationTime": "1 hrs",
+          "recipeId": -1,
+          "servings": "3-4 servings",
+          "source": "",
+          "title": "Thai Peanut Noodle Salad"
+        },
+        {
+          "description": "A delicious and healthy choice for any time of the day.",
+          "directions": "Pan-sear salmon fillets until crispy. Serve over cooked quinoa with a side of steamed asparagus. Feel free to substitute with ingredients you have on hand.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "flexible ingredients",
+          "preparationTime": "2 hrs",
+          "recipeId": -1,
+          "servings": "2 servings",
+          "source": "",
+          "title": "Pan-Seared Salmon with Quinoa"
+        },
+        {
+          "description": "An ideal recipe for experimenting with different flavors and ingredients.",
+          "directions": "Cook fettuccine pasta, toss with Alfredo sauce and grilled chicken strips. Serve with a sprinkle of Parmesan cheese. Garnish with fresh herbs for a more vibrant taste.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "various amounts",
+          "preparationTime": "3 hrs",
+          "recipeId": -1,
+          "servings": "3-4 servings",
+          "source": "",
+          "title": "Chicken Alfredo Pasta"
+        },
+        {
+          "description": "A delicious and healthy choice for any time of the day.",
+          "directions": "Spread pizza dough with tomato sauce, top with slices of mozzarella cheese and fresh basil leaves. Bake until crust is golden. Garnish with fresh herbs for a more vibrant taste.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "optional ingredients",
+          "preparationTime": "3 hrs",
+          "recipeId": -1,
+          "servings": "2 servings",
+          "source": "",
+          "title": "Classic Margherita Pizza"
+        },
+        {
+          "description": "A quick and easy meal, perfect for busy weekdays.",
+          "directions": "Toss chopped kale, cooked quinoa, dried cranberries, sliced almonds, and feta cheese with a lemon vinaigrette. Feel free to substitute with ingredients you have on hand.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "quantities to taste",
+          "preparationTime": "2 hrs",
+          "recipeId": -1,
+          "servings": "2 servings",
+          "source": "",
+          "title": "Kale and Quinoa Salad"
+        },
+        {
+          "description": "An ideal recipe for experimenting with different flavors and ingredients.",
+          "directions": "Slice eggplant, bread, and fry. Layer in a baking dish with marinara sauce and mozzarella cheese. Bake until bubbly. Try adding a pinch of your favorite spices for extra flavor.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "as desired",
+          "preparationTime": "2 hrs",
+          "recipeId": -1,
+          "servings": "8 servings",
+          "source": "",
+          "title": "Eggplant Parmesan"
+        },
+        {
+          "description": "A quick and easy meal, perfect for busy weekdays.",
+          "directions": "Blend together raspberries, almond milk, banana, and a scoop of almond butter until smooth. Garnish with fresh herbs for a more vibrant taste.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "n/a",
+          "preparationTime": "20 mins",
+          "recipeId": -1,
+          "servings": "1 serving",
+          "source": "",
+          "title": "Raspberry Almond Smoothie"
+        },
+        {
+          "description": "A quick and easy meal, perfect for busy weekdays.",
+          "directions": "Butter bread slices, layer with cheese, tomato slices, and basil. Grill until bread is toasted and cheese is melted. Try adding a pinch of your favorite spices for extra flavor.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "subject to change",
+          "preparationTime": "45 mins",
+          "recipeId": -1,
+          "servings": "6 servings",
+          "source": "",
+          "title": "Grilled Cheese with Tomato and Basil"
+        },
+        {
+          "description": "A quick and easy meal, perfect for busy weekdays.",
+          "directions": "Cook fettuccine pasta, toss with Alfredo sauce and grilled chicken strips. Serve with a sprinkle of Parmesan cheese. Garnish with fresh herbs for a more vibrant taste.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "to preference",
+          "preparationTime": "20 mins",
+          "recipeId": -1,
+          "servings": "6 servings",
+          "source": "",
+          "title": "Chicken Alfredo Pasta"
+        },
+        {
+          "description": "An ideal recipe for experimenting with different flavors and ingredients.",
+          "directions": "Top sliced baguette with a mix of chopped tomatoes, basil, garlic, olive oil, salt, and pepper. Garnish with fresh herbs for a more vibrant taste.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "as needed",
+          "preparationTime": "1 hrs",
+          "recipeId": -1,
+          "servings": "1 serving",
+          "source": "",
+          "title": "Tomato Basil Bruschetta"
+        },
+        {
+          "description": "An ideal recipe for experimenting with different flavors and ingredients.",
+          "directions": "Slice eggplant, bread, and fry. Layer in a baking dish with marinara sauce and mozzarella cheese. Bake until bubbly. Feel free to substitute with ingredients you have on hand.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "to preference",
+          "preparationTime": "45 mins",
+          "recipeId": -1,
+          "servings": "2 servings",
+          "source": "",
+          "title": "Eggplant Parmesan"
+        },
+        {
+          "description": "A delicious and healthy choice for any time of the day.",
+          "directions": "Bake salmon fillets and serve with a sauce made from Greek yogurt, dill, lemon juice, and garlic. Feel free to substitute with ingredients you have on hand.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "n/a",
+          "preparationTime": "30 mins",
+          "recipeId": -1,
+          "servings": "1 serving",
+          "source": "",
+          "title": "Salmon with Dill Sauce"
+        },
+        {
+          "description": "A delicious and healthy choice for any time of the day.",
+          "directions": "Mix cooked quinoa, black beans, corn, tomato sauce, and spices. Stuff into bell peppers and bake until tender. Garnish with fresh herbs for a more vibrant taste.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "as per recipe",
+          "preparationTime": "2 hrs",
+          "recipeId": -1,
+          "servings": "3-4 servings",
+          "source": "",
+          "title": "Stuffed Bell Peppers"
+        },
+        {
+          "description": "A delicious and healthy choice for any time of the day.",
+          "directions": "Mix cooked shrimp with avocado, tomatoes, cucumber, and onion. Dress with lime juice, olive oil, salt, and pepper. Try adding a pinch of your favorite spices for extra flavor.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "per individual taste",
+          "preparationTime": "20 mins",
+          "recipeId": -1,
+          "servings": "8 servings",
+          "source": "",
+          "title": "Shrimp Avocado Salad"
+        },
+        {
+          "description": "An ideal recipe for experimenting with different flavors and ingredients.",
+          "directions": "Layer turkey and cheese on bread, grill in a panini press until golden. Try adding a pinch of your favorite spices for extra flavor.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "adjustable",
+          "preparationTime": "45 mins",
+          "recipeId": -1,
+          "servings": "2 servings",
+          "source": "",
+          "title": "Turkey and Cheese Panini"
+        },
+        {
+          "description": "An ideal recipe for experimenting with different flavors and ingredients.",
+          "directions": "Stuff chicken breasts with a mixture of spinach, feta, garlic, and herbs. Bake until chicken is cooked through. Feel free to substitute with ingredients you have on hand.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "optional ingredients",
+          "preparationTime": "2 hrs",
+          "recipeId": -1,
+          "servings": "3-4 servings",
+          "source": "",
+          "title": "Spinach and Feta Stuffed Chicken"
+        },
+        {
+          "description": "An ideal recipe for experimenting with different flavors and ingredients.",
+          "directions": "Bake salmon fillets and serve with a sauce made from Greek yogurt, dill, lemon juice, and garlic. Garnish with fresh herbs for a more vibrant taste.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "to preference",
+          "preparationTime": "3 hrs",
+          "recipeId": -1,
+          "servings": "8 servings",
+          "source": "",
+          "title": "Salmon with Dill Sauce"
+        },
+        {
+          "description": "A quick and easy meal, perfect for busy weekdays.",
+          "directions": "Stuff chicken breasts with a mixture of spinach, feta, garlic, and herbs. Bake until chicken is cooked through. Garnish with fresh herbs for a more vibrant taste.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "flexible ingredients",
+          "preparationTime": "45 mins",
+          "recipeId": -1,
+          "servings": "8 servings",
+          "source": "",
+          "title": "Spinach and Feta Stuffed Chicken"
+        },
+        {
+          "description": "An ideal recipe for experimenting with different flavors and ingredients.",
+          "directions": "Fill pita pockets with lettuce, cucumber, tomato, feta, olives, and Greek dressing. Garnish with fresh herbs for a more vibrant taste.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "as needed",
+          "preparationTime": "20 mins",
+          "recipeId": -1,
+          "servings": "1 serving",
+          "source": "",
+          "title": "Greek Salad Pita Pockets"
+        },
+        {
+          "description": "A delicious and healthy choice for any time of the day.",
+          "directions": "Sauté onions and garlic, add cubed butternut squash and broth. Puree until smooth and season with nutmeg, salt, and pepper. Try adding a pinch of your favorite spices for extra flavor.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "see directions",
+          "preparationTime": "1 hrs",
+          "recipeId": -1,
+          "servings": "8 servings",
+          "source": "",
+          "title": "Butternut Squash Soup"
+        },
+        {
+          "description": "An ideal recipe for experimenting with different flavors and ingredients.",
+          "directions": "Blend together raspberries, almond milk, banana, and a scoop of almond butter until smooth. Try adding a pinch of your favorite spices for extra flavor.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "optional ingredients",
+          "preparationTime": "30 mins",
+          "recipeId": -1,
+          "servings": "1 serving",
+          "source": "",
+          "title": "Raspberry Almond Smoothie"
+        },
+        {
+          "description": "A delicious and healthy choice for any time of the day.",
+          "directions": "Slice eggplant, bread, and fry. Layer in a baking dish with marinara sauce and mozzarella cheese. Bake until bubbly. Feel free to substitute with ingredients you have on hand.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "subject to change",
+          "preparationTime": "20 mins",
+          "recipeId": -1,
+          "servings": "6 servings",
+          "source": "",
+          "title": "Eggplant Parmesan"
+        },
+        {
+          "description": "An ideal recipe for experimenting with different flavors and ingredients.",
+          "directions": "Cook fettuccine pasta, toss with Alfredo sauce and grilled chicken strips. Serve with a sprinkle of Parmesan cheese. Try adding a pinch of your favorite spices for extra flavor.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "see directions",
+          "preparationTime": "45 mins",
+          "recipeId": -1,
+          "servings": "1 serving",
+          "source": "",
+          "title": "Chicken Alfredo Pasta"
+        }
+      ],
+      "prep_time": "10 mins",
+      "row_objects": [
+        {
+          "description": "A delicious and healthy choice for any time of the day.",
+          "directions": "Blend together raspberries, almond milk, banana, and a scoop of almond butter until smooth. Garnish with fresh herbs for a more vibrant taste.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "n/a",
+          "preparationTime": "10 mins",
+          "recipeId": -1,
+          "servings": "2 servings",
+          "source": "",
+          "title": "Raspberry Almond Smoothie"
+        },
+        {
+          "description": "A delicious and healthy choice for any time of the day.",
+          "directions": "Stir-fry beef slices with broccoli, bell peppers, and onions in soy sauce and garlic. Serve over rice or noodles. Try adding a pinch of your favorite spices for extra flavor.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "as per recipe",
+          "preparationTime": "10 mins",
+          "recipeId": -1,
+          "servings": "2 servings",
+          "source": "",
+          "title": "Beef Stir Fry"
+        },
+        {
+          "description": "An ideal recipe for experimenting with different flavors and ingredients.",
+          "directions": "Pan-sear salmon fillets until crispy. Serve over cooked quinoa with a side of steamed asparagus. Try adding a pinch of your favorite spices for extra flavor.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "n/a",
+          "preparationTime": "10 mins",
+          "recipeId": -1,
+          "servings": "8 servings",
+          "source": "",
+          "title": "Pan-Seared Salmon with Quinoa"
+        }
+      ],
+      "seed": 1406555389,
+      "text_representation_type": "csv"
+    },
+    "paramsSha256": "644b3e97955b1abb8d0e075090437cd5c1947818d8fb1b5863fb154435832c63",
+    "paramsTransport": "seed",
+    "tags": [
+      "parameterized",
+      "screen_reading",
+      "complex_ui_understanding",
+      "repetition",
+      "multi_app",
+      "data_entry",
+      "information_retrieval"
+    ],
+    "timeBudget": {
+      "businessSeconds": 3720,
+      "cleanupWindowSeconds": 180,
+      "episodeSeconds": 4330,
+      "forceSeconds": 3910,
+      "recoveryWindowSeconds": 120,
+      "terminationGraceSeconds": 10
+    }
+  },
+  "mainSteps": [
+    {
+      "stepId": 1,
+      "tool": "agent_runtime.runner",
+      "status": "failed",
+      "error": "Agent exceeded the configured turn limit.",
+      "output": {
+        "failure_category": "agent_runtime_error",
+        "failure_reason": "agent_runtime_error",
+        "failure_summary": "Agent runtime execution failed before producing structured verification output."
+      }
+    },
+    {
+      "stepId": 2,
+      "tool": "agent_runtime.verifier",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "No evidence of Broccoli's saved recipe contents or preparation-time values was supplied.",
+          "The runtime failure prevents confirmation of completion but does not independently prove that the required saved state is absent."
+        ],
+        "evidence": [
+          "The backend AI result in 000011-assert_with_ai.json identifies a Beef Stir Fry source entry with preparationTime '10 mins', with verdict metadata and screenshot reference artifacts/screenshots/screenshot-agent-assert-with-ai-10-invoke-assert-with-ai-1-f55592b75a90.png.",
+          "Subsequent source-reading AI results report that the bottom of recipes.txt was not visible, so the complete set of qualifying entries is not established.",
+          "The supplied execution records show source inspection in Markor and repeated artifact reads, but no Broccoli recipe creation, saving, or final-state inspection.",
+          "Execution ended after exceeding the configured turn limit, without structured verification output from the main agent."
+        ],
+        "plan_updates": [],
+        "pre_plan": [],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "inconclusive",
+        "summary": "The evidence does not establish whether Broccoli contains all qualifying recipes with matching content and a recorded preparation time of 10 minutes.",
+        "unmet_criteria": []
+      }
+    }
+  ],
+  "budgetSummary": {
+    "admitted": 9,
+    "attempted": 9,
+    "deadlineExceeded": false,
+    "deadlineMonotonic": 715243.31902375,
+    "denied": 0,
+    "deviceRestoredByClose": false,
+    "exclusions": [
+      "driver_construction",
+      "uiautomator2_service_startup",
+      "observation_and_assertion_side_effects",
+      "external_processes_and_direct_driver_access"
+    ],
+    "exhausted": false,
+    "failed": 0,
+    "inFlight": 0,
+    "inputTextUnit": "composite_click_optional_clear_set_text",
+    "maximum": 60,
+    "securityBoundary": false,
+    "succeeded": 9,
+    "unit": "admitted_android_harness_write_capability_dispatch",
+    "writeCapabilities": [
+      "launch_app",
+      "kill_app",
+      "tap_on",
+      "tap_at",
+      "long_press_on",
+      "input_text",
+      "press_key",
+      "swipe"
+    ]
+  },
+  "actions": [
+    {
+      "ordinal": 0,
+      "stepId": "agent-launch_app-1",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "app_id": "net.gsantner.markor"
+      },
+      "uiLabels": [],
+      "output": {
+        "app_id": "net.gsantner.markor"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[0]"
+    },
+    {
+      "ordinal": 1,
+      "stepId": "agent-ui_snapshot-2",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Sun, Oct 15",
+        "Sun, Oct 15",
+        "Gmail",
+        "Gmail",
+        "Photos",
+        "Photos",
+        "YouTube",
+        "YouTube",
+        "Home",
+        "Phone",
+        "Phone",
+        "Messages",
+        "Messages",
+        "Chrome",
+        "Chrome",
+        "Calendar",
+        "Predicted app: Calendar",
+        "Search",
+        "Google app",
+        "Voice search",
+        "Google Lens"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 27981,
+          "retained_characters": 7650
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[1]"
+    },
+    {
+      "ordinal": 2,
+      "stepId": "agent-swipe-3",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[2]"
+    },
+    {
+      "ordinal": 3,
+      "stepId": "agent-ui_snapshot-4",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Audio Recorder",
+        "Audio Recorder",
+        "Broccoli",
+        "Broccoli",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Chrome",
+        "Chrome",
+        "Clipper",
+        "Clipper",
+        "Clock",
+        "Clock",
+        "Contacts",
+        "Contacts",
+        "Draw",
+        "Draw",
+        "Drive",
+        "Drive",
+        "Files",
+        "Files",
+        "Gallery",
+        "Gallery",
+        "Gmail",
+        "Gmail",
+        "Google",
+        "Google",
+        "Joplin",
+        "Joplin",
+        "Maps",
+        "Maps",
+        "Markor",
+        "Markor",
+        "Messages",
+        "Messages",
+        "OpenTracks",
+        "OpenTracks",
+        "OsmAnd",
+        "OsmAnd",
+        "Phone",
+        "Phone",
+        "Photos",
+        "Photos",
+        "Pro Expense",
+        "Pro Expense",
+        "Gallery",
+        "Gallery",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Tasks",
+        "Tasks",
+        "Search",
+        "Google app",
+        "Search apps, web and more",
+        "Voice search",
+        "Google Lens",
+        "Home"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 37017,
+          "retained_characters": 12575
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 6,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[3]"
+    },
+    {
+      "ordinal": 4,
+      "stepId": "agent-tap_on-5",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "Markor"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[4]"
+    },
+    {
+      "ordinal": 5,
+      "stepId": "agent-ui_snapshot-6",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Markor",
+        "Go to",
+        "Sort by",
+        "Search",
+        "More options",
+        "Folder .. ",
+        "..",
+        "/storage/emulated/0/Documents",
+        "Folder .app ",
+        ".app",
+        "10/15/2023, 15:35",
+        "File recipes.txt ",
+        "recipes.txt",
+        "11/10/2026, 18:50",
+        "Create a new file or folder",
+        "Files",
+        "Files",
+        "To-Do",
+        "To-Do",
+        "QuickNote",
+        "QuickNote",
+        "More",
+        "More"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 40101,
+          "retained_characters": 11157
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[5]"
+    },
+    {
+      "ordinal": 6,
+      "stepId": "agent-tap_on-7",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "recipes.txt"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[6]"
+    },
+    {
+      "ordinal": 7,
+      "stepId": "agent-ui_snapshot-8",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "recipes",
+        "Undo",
+        "Redo",
+        "View mode",
+        "Save",
+        "Search",
+        "More options",
+        "title|description|servings|preparationTime|ingredi",
+        "Check list",
+        "Unordered list",
+        "Ordered list",
+        "Delete lines",
+        "Open link",
+        "Attach",
+        "Special Key",
+        "Date and time",
+        "Indent"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 38911,
+          "retained_characters": 7485
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 9,
+          "clipped_attributes": 2
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[7]"
+    },
+    {
+      "ordinal": 8,
+      "stepId": "agent-tap_on-9",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "net.gsantner.markor:id/action_preview"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[8]"
+    },
+    {
+      "ordinal": 9,
+      "stepId": "agent-assert_with_ai-10",
+      "action": "assert_with_ai",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "prompt": "Read the visible recipes.txt source. Report verbatim all visible recipe rows and their fields, especially recipes with preparationTime 10 mins. This is source collection; indicate any clipping.",
+        "optional": true
+      },
+      "uiLabels": [],
+      "output": {
+        "status": "passed",
+        "passed": true,
+        "explanation": "The visible source contains the following pipe-delimited text. Display wrapping is removed below; row order and wording are preserved.\n\nHeader (clipped at the right edge):\ntitle|description|servings|preparationTime|ingredients|\n\nComplete visible rows:\nTurkey and Cheese Panini|A delicious and healthy choice for any time of the day.|1 serving|1 hrs|as needed|Layer turkey and cheese on bread, grill in a panini press until golden. Garnish with fresh herbs for a more vibrant taste.\n\nChicken Alfredo Pasta|An ideal recipe for experimenting with different flavors and ingredients.|3-4 servings|3 hrs|various amounts|Cook fettuccine pasta, toss with Alfredo sauce and grilled chicken strips. Serve with a sprinkle of Parmesan cheese. Garnish with fresh herbs for a more vibrant taste.\n\nThai Peanut Noodle Salad|A delicious and healthy choice for any time of the day.|6 servings|20 mins|as desired|Toss cooked noodles with a Thai peanut sauce, sliced red bell peppers, cabbage, carrots, and cilantro. Garnish with fresh herbs for a more vibrant taste.\n\nBeef Stir Fry|A delicious and healthy choice for any time of the day.|2 servings|10 mins|as per recipe|Stir-fry beef slices with broccoli, bell peppers, and onions in soy sauce and garlic. Serve over rice or noodles. Try adding a pinch of your favorite spices for extra flavor.\n\nTurkey and Cheese Panini|An ideal recipe for experimenting with different flavors and ingredients.|2 servings|45 mins|adjustable|Layer turkey and cheese on bread, grill in a panini press until golden. Try adding a pinch of your favorite spices for extra flavor.\n\nVegetarian Chili|A quick and easy meal, perfect for busy weekdays.|2 servings|30 mins|quantities to taste|Cook onions, garlic, bell peppers, and carrots. Add canned tomatoes, kidney beans, black beans, corn, and chili seasoning. Simmer until vegetables are tender. Garnish with fresh herbs for a more vibrant taste.\n\nPartially visible final row:\nThai Peanut Noodle Salad|A delicious and healthy choice for any time of the day.|3-4 servings|1 hrs|flexible ingredients|Toss cooked noodles with a\n\nClipping: The header's field name after ingredients is not readable at the right edge. The final row continues below the bottom toolbar; its last visible line is vertically clipped. Beef Stir Fry is the only visible row with preparationTime exactly 10 mins.",
+        "confidence": 0.98,
+        "provider": "github_copilot",
+        "model": "gpt-6.1-sol",
+        "latency_ms": 12118,
+        "token_usage": {
+          "input_tokens": 3285,
+          "output_tokens": 640,
+          "total_tokens": 3925
+        },
+        "artifact_refs": [
+          {
+            "artifact_id": "screenshot-agent-assert-with-ai-10-invoke-assert-with-ai-1-f55592b75a90",
+            "kind": "screenshot",
+            "path": "artifacts/screenshots/screenshot-agent-assert-with-ai-10-invoke-assert-with-ai-1-f55592b75a90.png",
+            "mime_type": "image/png",
+            "size_bytes": 1405932,
+            "sha256": "19e4e9649958a6572473ffcc444aaf7dbf7aebc04356092e8502f6a69b9ee3d6",
+            "availability": "available",
+            "unavailable_reason": null,
+            "capture_occurrence": 1,
+            "created_at": "2026-11-10T18:51:22.549261Z",
+            "metadata": {
+              "capture_reason": "assert-with-ai",
+              "redacted": false
+            }
+          }
+        ],
+        "error": null,
+        "metadata": {
+          "provider_metadata": {
+            "endpoint_family": "github_copilot",
+            "copilot_plan": "enterprise"
+          }
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[9]"
+    },
+    {
+      "ordinal": 10,
+      "stepId": "agent-swipe-11",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[10]"
+    },
+    {
+      "ordinal": 11,
+      "stepId": "agent-assert_with_ai-12",
+      "action": "assert_with_ai",
+      "status": "failed",
+      "error": null,
+      "params": {
+        "prompt": "Read this section of recipes.txt. Transcribe complete rows with preparationTime exactly 10 mins, including all pipe-separated fields. Summarize other titles/times and whether bottom of file visible.",
+        "optional": true
+      },
+      "uiLabels": [],
+      "output": {
+        "status": "failed",
+        "passed": false,
+        "explanation": "No complete row with preparationTime exactly '10 mins' is visible. Visible titles/times are Vegetarian Chili—30 mins; Thai Peanut Noodle Salad—1 hrs; Spinach and Feta Stuffed Chicken—45 mins; Greek Salad Pita Pockets—20 mins; Pan-Seared Salmon with Quinoa—2 hrs; Classic Margherita Pizza—3 hrs. A preceding partial row shows 45 mins, but its title is offscreen. The bottom of the file is not visible; another row is clipped at the bottom.",
+        "confidence": 0.99,
+        "provider": "github_copilot",
+        "model": "gpt-6.1-sol",
+        "latency_ms": 8140,
+        "token_usage": {
+          "input_tokens": 3288,
+          "output_tokens": 169,
+          "total_tokens": 3457
+        },
+        "artifact_refs": [
+          {
+            "artifact_id": "screenshot-agent-assert-with-ai-12-invoke-assert-with-ai-1-4ec840314cf8",
+            "kind": "screenshot",
+            "path": "artifacts/screenshots/screenshot-agent-assert-with-ai-12-invoke-assert-with-ai-1-4ec840314cf8.png",
+            "mime_type": "image/png",
+            "size_bytes": 1537539,
+            "sha256": "e962321975656ccb861928c55a60d9dab12b0101bfeb1ae3babaa0d63e3f75cc",
+            "availability": "available",
+            "unavailable_reason": null,
+            "capture_occurrence": 1,
+            "created_at": "2026-11-10T18:51:47.236049Z",
+            "metadata": {
+              "capture_reason": "assert-with-ai",
+              "redacted": false
+            }
+          }
+        ],
+        "error": null,
+        "metadata": {
+          "provider_metadata": {
+            "endpoint_family": "github_copilot",
+            "copilot_plan": "enterprise"
+          }
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[11]"
+    },
+    {
+      "ordinal": 12,
+      "stepId": "agent-swipe-13",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[12]"
+    },
+    {
+      "ordinal": 13,
+      "stepId": "agent-assert_with_ai-14",
+      "action": "assert_with_ai",
+      "status": "failed",
+      "error": null,
+      "params": {
+        "prompt": "Transcribe all visible complete recipe rows whose preparationTime is exactly 10 mins, all fields verbatim. List other visible titles/times and indicate bottom of file.",
+        "optional": true
+      },
+      "uiLabels": [],
+      "output": {
+        "status": "failed",
+        "passed": false,
+        "explanation": "No visible complete recipe row has preparationTime exactly '10 mins'. Visible titles/times are: Pan-Seared Salmon with Quinoa — 2 hrs; Classic Margherita Pizza — 3 hrs; Quinoa Salad with Vegetables — 3 hrs; Mango Chicken Curry — 20 mins; Quick Fried Rice — 20 mins; Spinach and Feta Stuffed Chicken — 2 hrs; Vegetable Stir Fry with Tofu — 4 hrs (partial row). An earlier row's ending is clipped at the top. The bottom of the file is not shown: the Vegetable Stir Fry with Tofu row continues below the viewport.",
+        "confidence": 0.99,
+        "provider": "github_copilot",
+        "model": "gpt-6.1-sol",
+        "latency_ms": 8833,
+        "token_usage": {
+          "input_tokens": 3282,
+          "output_tokens": 191,
+          "total_tokens": 3473
+        },
+        "artifact_refs": [
+          {
+            "artifact_id": "screenshot-agent-assert-with-ai-14-invoke-assert-with-ai-1-2fba40c31eda",
+            "kind": "screenshot",
+            "path": "artifacts/screenshots/screenshot-agent-assert-with-ai-14-invoke-assert-with-ai-1-2fba40c31eda.png",
+            "mime_type": "image/png",
+            "size_bytes": 1530704,
+            "sha256": "fe55ba3c0b7ba99c167a67cd7aaeb75e5f1bed017fef156c2d431fee4bbe447d",
+            "availability": "available",
+            "unavailable_reason": null,
+            "capture_occurrence": 1,
+            "created_at": "2026-11-10T18:52:17.979263Z",
+            "metadata": {
+              "capture_reason": "assert-with-ai",
+              "redacted": false
+            }
+          }
+        ],
+        "error": null,
+        "metadata": {
+          "provider_metadata": {
+            "endpoint_family": "github_copilot",
+            "copilot_plan": "enterprise"
+          }
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[13]"
+    },
+    {
+      "ordinal": 14,
+      "stepId": "agent-swipe-15",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[14]"
+    },
+    {
+      "ordinal": 15,
+      "stepId": "agent-assert_with_ai-16",
+      "action": "assert_with_ai",
+      "status": "failed",
+      "error": null,
+      "params": {
+        "prompt": "Transcribe visible recipe rows with preparationTime exactly 10 mins including all fields verbatim. List other titles/times; is file bottom visible?",
+        "optional": true
+      },
+      "uiLabels": [],
+      "output": {
+        "status": "failed",
+        "passed": false,
+        "explanation": "No visible recipe row has preparationTime exactly \"10 mins\", so there are no matching rows to transcribe. Other visible titles/times: Quick Fried Rice — 20 mins; Spinach and Feta Stuffed Chicken — 2 hrs; Vegetable Stir Fry with Tofu — 4 hrs; Raspberry Almond Smoothie — 20 mins; Pan-Seared Salmon with Quinoa — 4 hrs; Chicken Caesar Salad Wrap — 45 mins; Butternut Squash Soup — 1 hrs. A preceding recipe's ending is visible at the top, but its title/time are offscreen. The file bottom is not visible: the Butternut Squash Soup row continues below the viewport.",
+        "confidence": 0.99,
+        "provider": "github_copilot",
+        "model": "gpt-6.1-sol",
+        "latency_ms": 8608,
+        "token_usage": {
+          "input_tokens": 3278,
+          "output_tokens": 206,
+          "total_tokens": 3484
+        },
+        "artifact_refs": [
+          {
+            "artifact_id": "screenshot-agent-assert-with-ai-16-invoke-assert-with-ai-1-75c65bc0a9d8",
+            "kind": "screenshot",
+            "path": "artifacts/screenshots/screenshot-agent-assert-with-ai-16-invoke-assert-with-ai-1-75c65bc0a9d8.png",
+            "mime_type": "image/png",
+            "size_bytes": 1574609,
+            "sha256": "4402af238e21812f7390dbfb91b73add8c349416809d43835ec11bc9d9b26f22",
+            "availability": "available",
+            "unavailable_reason": null,
+            "capture_occurrence": 1,
+            "created_at": "2026-11-10T18:52:39.345881Z",
+            "metadata": {
+              "capture_reason": "assert-with-ai",
+              "redacted": false
+            }
+          }
+        ],
+        "error": null,
+        "metadata": {
+          "provider_metadata": {
+            "endpoint_family": "github_copilot",
+            "copilot_plan": "enterprise"
+          }
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[15]"
+    },
+    {
+      "ordinal": 16,
+      "stepId": "agent-swipe-17",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[16]"
+    }
+  ],
+  "originalNativeExecutionPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/048-RecipeAddMultipleRecipesFromMarkor2/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-048-20261110T185014Z-65e17d/execution-result.json",
+  "originalNativeResultPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/048-RecipeAddMultipleRecipesFromMarkor2/raw-private/fsq-native/worker/fsq-task-result.private.json",
+  "originalGoalPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/048-RecipeAddMultipleRecipesFromMarkor2/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-048-20261110T185014Z-65e17d/sources/000-goal.txt"
+}

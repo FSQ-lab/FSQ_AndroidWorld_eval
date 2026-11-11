@@ -1,0 +1,77 @@
+{
+  "sequence": 111,
+  "label": "clock-boundary-native-snapshot-two",
+  "command": {
+    "op": "exec",
+    "label": "clock-boundary-native-snapshot-two",
+    "timeout": 30,
+    "code": "snapshot=observe()\n{'package':snapshot['package'], 'activity':snapshot['activity'], 'stopwatch':[{'text':c['text'],'description':c['content-desc'],'id':c['resource-id']} for c in snapshot['controls'] if 'stopwatch_' in c['resource-id'] or c['content-desc'] in ('Pause','Lap')]}"
+  },
+  "startedAtUnix": 1794192767.334026,
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"status\":\"completed\",\"stdout\":\"\",\"stderr\":\"\",\"result\":{\"package\":\"com.google.android.deskclock\",\"activity\":\"com.android.deskclock.DeskClock\",\"stopwatch\":[{\"text\":\"28\",\"description\":\"\",\"id\":\"com.google.android.deskclock:id/stopwatch_time_text\"},{\"text\":\"03\",\"description\":\"\",\"id\":\"com.google.android.deskclock:id/stopwatch_hundredths_text\"},{\"text\":\"\",\"description\":\"Pause\",\"id\":\"com.google.android.deskclock:id/fab\"},{\"text\":\"\",\"description\":\"Lap\",\"id\":\"com.google.android.deskclock:id/right_button\"}]},\"executionCount\":7,\"durationMs\":10157,\"kernelState\":\"alive\",\"runtime\":{\"executable\":\"/Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python\",\"pythonVersion\":\"3.11.16\",\"workingDirectory\":\"/Users/qunmi/Documents/FSQ_LAB/amkernel\",\"environmentKind\":\"project_venv\",\"implementation\":\"CPython\",\"platform\":\"macOS-26.6.2-arm64-arm-64bit\",\"packages\":[]},\"output\":{\"totalBytes\":0,\"totalLines\":0,\"discardedBytes\":0,\"discardedLines\":0,\"truncated\":false,\"limitBytes\":268435456,\"limitExceeded\":false,\"live\":\"unavailable\"},\"displays\":[],\"artifacts\":[]}"
+      }
+    ],
+    "structured_content": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "com.google.android.deskclock",
+        "activity": "com.android.deskclock.DeskClock",
+        "stopwatch": [
+          {
+            "text": "28",
+            "description": "",
+            "id": "com.google.android.deskclock:id/stopwatch_time_text"
+          },
+          {
+            "text": "03",
+            "description": "",
+            "id": "com.google.android.deskclock:id/stopwatch_hundredths_text"
+          },
+          {
+            "text": "",
+            "description": "Pause",
+            "id": "com.google.android.deskclock:id/fab"
+          },
+          {
+            "text": "",
+            "description": "Lap",
+            "id": "com.google.android.deskclock:id/right_button"
+          }
+        ]
+      },
+      "executionCount": 7,
+      "durationMs": 10157,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/Users/qunmi/Documents/FSQ_LAB/amkernel",
+        "environmentKind": "project_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "unavailable"
+      },
+      "displays": [],
+      "artifacts": []
+    },
+    "is_error": false,
+    "result_type": "complete"
+  },
+  "completedAtUnix": 1794192777.498424
+}

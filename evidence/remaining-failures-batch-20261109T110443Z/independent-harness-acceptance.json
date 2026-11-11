@@ -1,0 +1,60 @@
+{
+  "signedBy": "w4:p2 independentbatch reviewer",
+  "disposition": "ACCEPTED_OFFLINE_CONTRACT_AND_OBSERVED_OWNER_VERIFICATION",
+  "reviewedFinalSourceSha256": {
+    "task_time.py": "af39b0378c52b4826a829f1a88fc002d942221b136ee18f107958387aa8de9f3",
+    "runner.py": "dcd4008669effe6707748e56abc5ab27523907a54c5a6c2a1ce16d2c0088ccd4",
+    "campaign.py": "32938a5f3a46824757d3e38193b72c05ca2d930803e4ff85d046af6be3a64b28",
+    "scorer.py": "4b7477817f75ff003687f261123f1a44da1c9f46f4f558d2e22d14663f970c21"
+  },
+  "staticReview": "independent-r15-static-interface-review.json",
+  "observedEvidence": [
+    {
+      "path": "harness/clock-interface-before.json",
+      "conclusion": "Actual r14 prompt helper lacked explicit reference anchor; no live claim."
+    },
+    {
+      "path": "harness/clock-interface-after-input-error.json",
+      "conclusion": "Preserved smoke-envelope KeyError stepBudget, not a product failure; corrected input uses frozen audited inventory maxSteps."
+    },
+    {
+      "path": "harness/clock-interface-after.json",
+      "conclusion": "Actual current helper chain18/18: byte-exact existinggoals, frozenparams unchanged, TaskEval constructor publicdevice_time, serialization and samecontext validator. Socket/env/task initialization forbidden. Not actual initialized device, liveAgent, task replay, newreward or success-rate proof."
+    },
+    {
+      "path": "harness/focused-checks.json",
+      "conclusion": "One9-file focused run:569passed/2failed; original failures preserved."
+    },
+    {
+      "path": "harness/focused-checks-corrections.json",
+      "conclusion": "Only2 affected tests rerun,2passed. Deleted incidental hardcodedr14 assertion; newfull test now assertsfullValidScore1+officialScoreNone andcalibrationtamper gatefalse. Not a571-green single run."
+    },
+    {
+      "path": "harness/clipboard-helper-boundary-smoke.json",
+      "conclusion": "Real installedSettingsApp.getClipboard with in-memoryADB adapter:1selfstartup,5000ms foreground timeout, no broadcast/IME. Offline controlflow proof only, not historicallaunchcause or presenttargetreadiness."
+    },
+    {
+      "path": "101-SystemCopyToClipboard/helper-lifecycle-source-review.json",
+      "conclusion": "Independently read actualdriverclipboard7-12, helpergetter16-30 andclient78-119/129-133. No pre-running Harness obligation established; underlying historicstartfail unknown."
+    }
+  ],
+  "invariants": [
+    "source=initialized_task.device_time is productionrunner post-successfulinitialize contract; smoke usesconstructedpublicclock withoutinitializing",
+    "reference walltime+UTCoffset preserved, naive rejected, nohost/liveclock substitution",
+    "pre-agenterrors do not inventclock or validscore",
+    "old12/13/14score reading and13/14/15receipt plus14/15coexistence remain explicit",
+    "No candidate businessanswer is promotedto newreward; latecleanupresponse isnot proofnewreceipt wouldaccept"
+  ],
+  "executionByReviewer": {
+    "checks": 0,
+    "device": 0,
+    "adb": 0,
+    "appiumSession": 0,
+    "taskInitialization": 0,
+    "database": 0,
+    "originalReplay": 0,
+    "officialEvaluator": 0,
+    "frozenWrites": 0,
+    "formalSkillRuntimeEdits": 0
+  }
+}

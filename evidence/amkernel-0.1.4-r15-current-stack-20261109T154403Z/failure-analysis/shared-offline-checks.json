@@ -1,0 +1,1433 @@
+{
+  "schemaVersion": 1,
+  "campaignId": "amkernel-0.1.4-r15-current-stack-full-20261109T154403Z",
+  "observedAtUtc8": "2026-11-10T08:15:26.234826+08:00",
+  "kind": "read_only_offline_causal_and_consistency_probes",
+  "restrictions": {
+    "deviceAccess": false,
+    "runtimeCalls": false,
+    "taskReplay": false,
+    "scoringRerun": false,
+    "testSuite": false,
+    "productChanges": false
+  },
+  "sourceAnchors": [
+    "src/fsq_androidworld_eval/submission.py:45-93",
+    "src/fsq_androidworld_eval/omp_supervisor.py:211-234",
+    "src/fsq_androidworld_eval/runner.py:136-155,716-737,771-796",
+    "src/fsq_androidworld_eval/task_time.py:21-28"
+  ],
+  "reproduciblePython": "import ast, collections, datetime, hashlib, json, pathlib\nroot = pathlib.Path.cwd()\nC = root / \"campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z\"\nE = root / \"evidence/amkernel-0.1.4-r15-current-stack-20261109T154403Z\"\nmanifest = json.loads((C / \"manifest.json\").read_text())\nfailures = json.loads((E / \"startup-handoff.json\").read_text())[\"finalResult\"][\"failures\"]\n# Pure parser source only: no evaluator, Runtime, Appium or device modules imported.\nns = {}\nexec(compile((root / \"src/fsq_androidworld_eval/submission.py\").read_text(), \"submission.py\", \"exec\"), ns)\nrows = []\nfor failure in failures:\n    p = C / failure[\"result\"]\n    r = json.loads(p.read_text())\n    A = p.parent\n    archive_bytes = (A / \"raw-private/business-submission.json\").read_bytes()\n    archive = json.loads(archive_bytes)\n    parsed = ns[\"parse_submission\"](archive[\"rawText\"])\n    prompt = None\n    prompt_line = None\n    with (A / \"raw-private/agent-events.jsonl\").open() as f:\n        for line_no, line in enumerate(f, 1):\n            event = json.loads(line)\n            message = event.get(\"message\") or {}\n            if event.get(\"type\") == \"message_end\" and message.get(\"role\") == \"user\":\n                prompt = \"\".join(x.get(\"text\", \"\") for x in message.get(\"content\", []) if isinstance(x, dict))\n                prompt_line = line_no\n                break\n    stages = {s[\"name\"]: s for s in r[\"stages\"]}\n    calls = [x for x in r[\"agent\"][\"normalized\"][\"toolCalls\"] if x.get(\"target\") == \"xd://mcp__amkernel_python_exec\"]\n    statuses = collections.Counter((x.get(\"amkernel\") or {}).get(\"status\", \"unrecorded\") for x in calls)\n    states = collections.Counter((x.get(\"amkernel\") or {}).get(\"kernelState\", \"unrecorded\") for x in calls)\n    receipt = r[\"agent\"][\"answerSubmission\"].get(\"receipt\")\n    rows.append({\n        \"index\": failure[\"index\"], \"task\": failure[\"task\"],\n        \"resultPath\": str(p.relative_to(root)),\n        \"originalPromptLine\": prompt_line,\n        \"promptGoalExact\": bool(prompt and \"BEGIN EXACT TASK GOAL\\n\" + r[\"task\"][\"goal\"] + \"\\nEND EXACT TASK GOAL\" in prompt),\n        \"promptReferenceTimeVisible\": bool(prompt and r[\"task\"][\"timeContext\"][\"referenceTime\"] in prompt),\n        \"promptStringSubmissionVisible\": bool(prompt and \"taskOutcome as a nonempty STRING\" in prompt),\n        \"archiveParserExactMatch\": parsed == archive,\n        \"archiveHashMatchesReceipt\": hashlib.sha256(archive_bytes).hexdigest() == r[\"agent\"][\"answerSubmission\"][\"sha256\"],\n        \"rawText\": archive[\"rawText\"], \"parsedValue\": archive[\"parsedValue\"], \"answerAfterStrip\": archive[\"answer\"],\n        \"validContract\": archive[\"validContract\"], \"answerType\": archive[\"taskOutcomeType\"],\n        \"receipt\": receipt,\n        \"termination\": r[\"agent\"][\"termination\"][\"reason\"],\n        \"maxSteps\": r[\"stepBudget\"][\"maxSteps\"],\n        \"executedActions\": r[\"stepBudget\"][\"executedActionCount\"],\n        \"rejectedActions\": r[\"stepBudget\"][\"rejectedActionCount\"],\n        \"actionKinds\": dict(collections.Counter(a[\"kind\"] for a in r[\"stepBudget\"][\"actions\"])),\n        \"pythonExecStatuses\": dict(statuses), \"kernelStates\": dict(states),\n        \"agentStageCompletedBeforeEvaluator\": stages[\"agent\"][\"completedAtUnix\"] <= stages[\"evaluator\"][\"startedAtUnix\"],\n        \"evaluatorBeforeTeardown\": stages[\"evaluator\"][\"completedAtUnix\"] <= stages[\"task_teardown\"][\"startedAtUnix\"],\n        \"cleanup\": {\"agentSession\": r[\"cleanup\"][\"agentSession\"][\"status\"], \"environment\": r[\"cleanup\"][\"environment\"], \"taskTearDown\": r[\"cleanup\"][\"taskTearDown\"]},\n        \"officialReward\": r[\"officialReward\"], \"invalidReason\": r.get(\"invalidReason\"), \"error\": r.get(\"error\")\n    })\noutput = {\"caseCount\": len(rows), \"allPromptGoalsExact\": all(r[\"promptGoalExact\"] for r in rows), \"allTaskReferenceTimesVisible\": all(r[\"promptReferenceTimeVisible\"] for r in rows), \"allStringSubmissionInstructionsVisible\": all(r[\"promptStringSubmissionVisible\"] for r in rows), \"allArchivedParserResultsExact\": all(r[\"archiveParserExactMatch\"] for r in rows), \"allSubmissionHashesMatch\": all(r[\"archiveHashMatchesReceipt\"] for r in rows), \"allSubmissionsValidStrings\": all(r[\"validContract\"] and r[\"answerType\"] == \"string\" for r in rows), \"allEvaluatorBeforeTeardown\": all(r[\"evaluatorBeforeTeardown\"] for r in rows), \"terminationCounts\": dict(collections.Counter(r[\"termination\"] for r in rows)), \"cases\": rows}\n",
+  "actualOutput": {
+    "caseCount": 20,
+    "allPromptGoalsExact": true,
+    "allTaskReferenceTimesVisible": true,
+    "allStringSubmissionInstructionsVisible": true,
+    "allArchivedParserResultsExact": true,
+    "allSubmissionHashesMatch": true,
+    "allSubmissionsValidStrings": true,
+    "allEvaluatorBeforeTeardown": true,
+    "terminationCounts": {
+      "completed": 11,
+      "step_budget": 9
+    },
+    "cases": [
+      {
+        "index": 1,
+        "task": "AudioRecorderRecordAudioWithFileName",
+        "resultPath": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/001-AudioRecorderRecordAudioWithFileName/attempt-1/result.json",
+        "originalPromptLine": 9,
+        "promptGoalExact": true,
+        "promptReferenceTimeVisible": true,
+        "promptStringSubmissionVisible": true,
+        "archiveParserExactMatch": true,
+        "archiveHashMatchesReceipt": true,
+        "rawText": "{\"taskOutcome\":\"Recorded and saved presentation_fGwr.m4a in Audio Recorder.\"}",
+        "parsedValue": {
+          "taskOutcome": "Recorded and saved presentation_fGwr.m4a in Audio Recorder."
+        },
+        "answerAfterStrip": "Recorded and saved presentation_fGwr.m4a in Audio Recorder.",
+        "validContract": true,
+        "answerType": "string",
+        "receipt": {
+          "eventSequence": 3539,
+          "phase": "business",
+          "receivedAtSeconds": 131.68638645799365
+        },
+        "termination": "completed",
+        "maxSteps": 20,
+        "executedActions": 9,
+        "rejectedActions": 0,
+        "actionKinds": {
+          "click": 6,
+          "input": 2,
+          "clear": 1
+        },
+        "pythonExecStatuses": {
+          "unrecorded": 1,
+          "completed": 10,
+          "failed": 1
+        },
+        "kernelStates": {
+          "unrecorded": 1,
+          "alive": 11
+        },
+        "agentStageCompletedBeforeEvaluator": true,
+        "evaluatorBeforeTeardown": true,
+        "cleanup": {
+          "agentSession": "closed",
+          "environment": "closed",
+          "taskTearDown": "completed"
+        },
+        "officialReward": 0.0,
+        "invalidReason": null,
+        "error": null
+      },
+      {
+        "index": 3,
+        "task": "BrowserMaze",
+        "resultPath": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/003-BrowserMaze/attempt-1/result.json",
+        "originalPromptLine": 9,
+        "promptGoalExact": true,
+        "promptReferenceTimeVisible": true,
+        "promptStringSubmissionVisible": true,
+        "archiveParserExactMatch": true,
+        "archiveHashMatchesReceipt": true,
+        "rawText": "{\"taskOutcome\":\"Incomplete: the action budget was exhausted with X in the bottom row, second cell from the left, two cells short of the bottom-right goal.\"}",
+        "parsedValue": {
+          "taskOutcome": "Incomplete: the action budget was exhausted with X in the bottom row, second cell from the left, two cells short of the bottom-right goal."
+        },
+        "answerAfterStrip": "Incomplete: the action budget was exhausted with X in the bottom row, second cell from the left, two cells short of the bottom-right goal.",
+        "validContract": true,
+        "answerType": "string",
+        "receipt": {
+          "eventSequence": 4067,
+          "phase": "finalization",
+          "receivedAtSeconds": 214.26541670795996
+        },
+        "termination": "step_budget",
+        "maxSteps": 20,
+        "executedActions": 20,
+        "rejectedActions": 1,
+        "actionKinds": {
+          "actions": 5,
+          "click": 15
+        },
+        "pythonExecStatuses": {
+          "unrecorded": 1,
+          "completed": 18,
+          "failed": 6
+        },
+        "kernelStates": {
+          "unrecorded": 1,
+          "alive": 24
+        },
+        "agentStageCompletedBeforeEvaluator": true,
+        "evaluatorBeforeTeardown": true,
+        "cleanup": {
+          "agentSession": "closed",
+          "environment": "closed",
+          "taskTearDown": "completed"
+        },
+        "officialReward": 0.0,
+        "invalidReason": null,
+        "error": null
+      },
+      {
+        "index": 4,
+        "task": "BrowserMultiply",
+        "resultPath": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/004-BrowserMultiply/attempt-1/result.json",
+        "originalPromptLine": 9,
+        "promptGoalExact": true,
+        "promptReferenceTimeVisible": true,
+        "promptStringSubmissionVisible": true,
+        "archiveParserExactMatch": true,
+        "archiveHashMatchesReceipt": true,
+        "rawText": "{\"taskOutcome\":\"81000\"}",
+        "parsedValue": {
+          "taskOutcome": "81000"
+        },
+        "answerAfterStrip": "81000",
+        "validContract": true,
+        "answerType": "string",
+        "receipt": {
+          "eventSequence": 5205,
+          "phase": "business",
+          "receivedAtSeconds": 203.20092675008345
+        },
+        "termination": "completed",
+        "maxSteps": 22,
+        "executedActions": 15,
+        "rejectedActions": 0,
+        "actionKinds": {
+          "actions": 2,
+          "click": 13
+        },
+        "pythonExecStatuses": {
+          "unrecorded": 1,
+          "completed": 18,
+          "failed": 4
+        },
+        "kernelStates": {
+          "unrecorded": 1,
+          "alive": 22
+        },
+        "agentStageCompletedBeforeEvaluator": true,
+        "evaluatorBeforeTeardown": true,
+        "cleanup": {
+          "agentSession": "closed",
+          "environment": "closed",
+          "taskTearDown": "completed"
+        },
+        "officialReward": 0.0,
+        "invalidReason": null,
+        "error": null
+      },
+      {
+        "index": 14,
+        "task": "ExpenseAddMultipleFromMarkor",
+        "resultPath": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/014-ExpenseAddMultipleFromMarkor/attempt-1/result.json",
+        "originalPromptLine": 9,
+        "promptGoalExact": true,
+        "promptReferenceTimeVisible": true,
+        "promptStringSubmissionVisible": true,
+        "archiveParserExactMatch": true,
+        "archiveHashMatchesReceipt": true,
+        "rawText": "{\"taskOutcome\":\"Logged both reimbursable transactions in Pro Expense: Laundry ($96.30, Clothes) and Car Insurance ($303.01, Transportation).\"}",
+        "parsedValue": {
+          "taskOutcome": "Logged both reimbursable transactions in Pro Expense: Laundry ($96.30, Clothes) and Car Insurance ($303.01, Transportation)."
+        },
+        "answerAfterStrip": "Logged both reimbursable transactions in Pro Expense: Laundry ($96.30, Clothes) and Car Insurance ($303.01, Transportation).",
+        "validContract": true,
+        "answerType": "string",
+        "receipt": {
+          "eventSequence": 6014,
+          "phase": "business",
+          "receivedAtSeconds": 224.76301295799203
+        },
+        "termination": "completed",
+        "maxSteps": 60,
+        "executedActions": 33,
+        "rejectedActions": 0,
+        "actionKinds": {
+          "actions": 4,
+          "click": 18,
+          "back": 2,
+          "mobile: pressKey": 1,
+          "input": 6,
+          "mobile: hideKeyboard": 2
+        },
+        "pythonExecStatuses": {
+          "unrecorded": 1,
+          "completed": 19,
+          "failed": 5
+        },
+        "kernelStates": {
+          "unrecorded": 1,
+          "alive": 24
+        },
+        "agentStageCompletedBeforeEvaluator": true,
+        "evaluatorBeforeTeardown": true,
+        "cleanup": {
+          "agentSession": "closed",
+          "environment": "closed",
+          "taskTearDown": "completed"
+        },
+        "officialReward": 0.0,
+        "invalidReason": null,
+        "error": null
+      },
+      {
+        "index": 23,
+        "task": "MarkorAddNoteHeader",
+        "resultPath": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/023-MarkorAddNoteHeader/attempt-1/result.json",
+        "originalPromptLine": 9,
+        "promptGoalExact": true,
+        "promptReferenceTimeVisible": true,
+        "promptStringSubmissionVisible": true,
+        "archiveParserExactMatch": true,
+        "archiveHashMatchesReceipt": true,
+        "rawText": "{\"taskOutcome\":\"Updated the note content with the requested text and blank line, but the UI action budget was exhausted before renaming the file.\"}",
+        "parsedValue": {
+          "taskOutcome": "Updated the note content with the requested text and blank line, but the UI action budget was exhausted before renaming the file."
+        },
+        "answerAfterStrip": "Updated the note content with the requested text and blank line, but the UI action budget was exhausted before renaming the file.",
+        "validContract": true,
+        "answerType": "string",
+        "receipt": {
+          "eventSequence": 3558,
+          "phase": "finalization",
+          "receivedAtSeconds": 194.24156875000335
+        },
+        "termination": "step_budget",
+        "maxSteps": 12,
+        "executedActions": 12,
+        "rejectedActions": 0,
+        "actionKinds": {
+          "actions": 1,
+          "click": 6,
+          "clear": 1,
+          "input": 1,
+          "back": 2,
+          "mobile: longClickGesture": 1
+        },
+        "pythonExecStatuses": {
+          "unrecorded": 1,
+          "completed": 16,
+          "failed": 3
+        },
+        "kernelStates": {
+          "unrecorded": 1,
+          "alive": 19
+        },
+        "agentStageCompletedBeforeEvaluator": true,
+        "evaluatorBeforeTeardown": true,
+        "cleanup": {
+          "agentSession": "closed",
+          "environment": "closed",
+          "taskTearDown": "completed"
+        },
+        "officialReward": 0.0,
+        "invalidReason": null,
+        "error": null
+      },
+      {
+        "index": 24,
+        "task": "MarkorChangeNoteContent",
+        "resultPath": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/024-MarkorChangeNoteContent/attempt-1/result.json",
+        "originalPromptLine": 9,
+        "promptGoalExact": true,
+        "promptReferenceTimeVisible": true,
+        "promptStringSubmissionVisible": true,
+        "archiveParserExactMatch": true,
+        "archiveHashMatchesReceipt": true,
+        "rawText": "{\"taskOutcome\":\"Content updated and saved, but the filename could not be changed within the UI interaction budget.\"}",
+        "parsedValue": {
+          "taskOutcome": "Content updated and saved, but the filename could not be changed within the UI interaction budget."
+        },
+        "answerAfterStrip": "Content updated and saved, but the filename could not be changed within the UI interaction budget.",
+        "validContract": true,
+        "answerType": "string",
+        "receipt": {
+          "eventSequence": 3927,
+          "phase": "business",
+          "receivedAtSeconds": 181.25186045805458
+        },
+        "termination": "completed",
+        "maxSteps": 12,
+        "executedActions": 11,
+        "rejectedActions": 0,
+        "actionKinds": {
+          "click": 7,
+          "input": 2,
+          "clear": 1,
+          "back": 1
+        },
+        "pythonExecStatuses": {
+          "unrecorded": 1,
+          "completed": 14,
+          "failed": 3
+        },
+        "kernelStates": {
+          "unrecorded": 1,
+          "alive": 17
+        },
+        "agentStageCompletedBeforeEvaluator": true,
+        "evaluatorBeforeTeardown": true,
+        "cleanup": {
+          "agentSession": "closed",
+          "environment": "closed",
+          "taskTearDown": "completed"
+        },
+        "officialReward": 0.0,
+        "invalidReason": null,
+        "error": null
+      },
+      {
+        "index": 30,
+        "task": "MarkorDeleteNewestNote",
+        "resultPath": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/030-MarkorDeleteNewestNote/attempt-1/result.json",
+        "originalPromptLine": 9,
+        "promptGoalExact": true,
+        "promptReferenceTimeVisible": true,
+        "promptStringSubmissionVisible": true,
+        "archiveParserExactMatch": true,
+        "archiveHashMatchesReceipt": true,
+        "rawText": "{\"taskOutcome\":\"Deleted the newest note in Markor.\"}",
+        "parsedValue": {
+          "taskOutcome": "Deleted the newest note in Markor."
+        },
+        "answerAfterStrip": "Deleted the newest note in Markor.",
+        "validContract": true,
+        "answerType": "string",
+        "receipt": {
+          "eventSequence": 3678,
+          "phase": "finalization",
+          "receivedAtSeconds": 144.99028741696384
+        },
+        "termination": "step_budget",
+        "maxSteps": 10,
+        "executedActions": 10,
+        "rejectedActions": 0,
+        "actionKinds": {
+          "mobile: activateApp": 1,
+          "click": 5,
+          "back": 3,
+          "actions": 1
+        },
+        "pythonExecStatuses": {
+          "unrecorded": 1,
+          "completed": 13,
+          "failed": 4
+        },
+        "kernelStates": {
+          "unrecorded": 1,
+          "alive": 17
+        },
+        "agentStageCompletedBeforeEvaluator": true,
+        "evaluatorBeforeTeardown": true,
+        "cleanup": {
+          "agentSession": "closed",
+          "environment": "closed",
+          "taskTearDown": "completed"
+        },
+        "officialReward": 0.0,
+        "invalidReason": null,
+        "error": null
+      },
+      {
+        "index": 33,
+        "task": "MarkorMergeNotes",
+        "resultPath": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/033-MarkorMergeNotes/attempt-1/result.json",
+        "originalPromptLine": 9,
+        "promptGoalExact": true,
+        "promptReferenceTimeVisible": true,
+        "promptStringSubmissionVisible": true,
+        "archiveParserExactMatch": true,
+        "archiveHashMatchesReceipt": true,
+        "rawText": "{\"taskOutcome\":\"Created and saved Markor note mIObBbo4 with the three source notes merged in the requested order, separated by new lines.\"}",
+        "parsedValue": {
+          "taskOutcome": "Created and saved Markor note mIObBbo4 with the three source notes merged in the requested order, separated by new lines."
+        },
+        "answerAfterStrip": "Created and saved Markor note mIObBbo4 with the three source notes merged in the requested order, separated by new lines.",
+        "validContract": true,
+        "answerType": "string",
+        "receipt": {
+          "eventSequence": 2543,
+          "phase": "business",
+          "receivedAtSeconds": 128.13530791690573
+        },
+        "termination": "completed",
+        "maxSteps": 78,
+        "executedActions": 17,
+        "rejectedActions": 0,
+        "actionKinds": {
+          "mobile: activateApp": 1,
+          "click": 8,
+          "back": 5,
+          "clear": 1,
+          "input": 2
+        },
+        "pythonExecStatuses": {
+          "unrecorded": 1,
+          "completed": 11
+        },
+        "kernelStates": {
+          "unrecorded": 1,
+          "alive": 11
+        },
+        "agentStageCompletedBeforeEvaluator": true,
+        "evaluatorBeforeTeardown": true,
+        "cleanup": {
+          "agentSession": "closed",
+          "environment": "closed",
+          "taskTearDown": "completed"
+        },
+        "officialReward": 0.0,
+        "invalidReason": null,
+        "error": null
+      },
+      {
+        "index": 36,
+        "task": "MarkorTranscribeVideo",
+        "resultPath": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/036-MarkorTranscribeVideo/attempt-1/result.json",
+        "originalPromptLine": 9,
+        "promptGoalExact": true,
+        "promptReferenceTimeVisible": true,
+        "promptStringSubmissionVisible": true,
+        "archiveParserExactMatch": true,
+        "archiveHashMatchesReceipt": true,
+        "rawText": "{\"taskOutcome\":\"Created and saved Download/ZwUN_moment_70__transcription.txt with: Moria, Charlotte, Emilia\"}",
+        "parsedValue": {
+          "taskOutcome": "Created and saved Download/ZwUN_moment_70__transcription.txt with: Moria, Charlotte, Emilia"
+        },
+        "answerAfterStrip": "Created and saved Download/ZwUN_moment_70__transcription.txt with: Moria, Charlotte, Emilia",
+        "validContract": true,
+        "answerType": "string",
+        "receipt": {
+          "eventSequence": 7345,
+          "phase": "finalization",
+          "receivedAtSeconds": 390.10152591601945
+        },
+        "termination": "step_budget",
+        "maxSteps": 20,
+        "executedActions": 20,
+        "rejectedActions": 0,
+        "actionKinds": {
+          "actions": 3,
+          "click": 11,
+          "mobile: pressKey": 1,
+          "clear": 2,
+          "input": 3
+        },
+        "pythonExecStatuses": {
+          "unrecorded": 1,
+          "completed": 21,
+          "failed": 4
+        },
+        "kernelStates": {
+          "unrecorded": 1,
+          "alive": 25
+        },
+        "agentStageCompletedBeforeEvaluator": true,
+        "evaluatorBeforeTeardown": true,
+        "cleanup": {
+          "agentSession": "closed",
+          "environment": "closed",
+          "taskTearDown": "completed"
+        },
+        "officialReward": 0.0,
+        "invalidReason": null,
+        "error": null
+      },
+      {
+        "index": 49,
+        "task": "RecipeAddSingleRecipe",
+        "resultPath": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/049-RecipeAddSingleRecipe/attempt-1/result.json",
+        "originalPromptLine": 9,
+        "promptGoalExact": true,
+        "promptReferenceTimeVisible": true,
+        "promptStringSubmissionVisible": true,
+        "archiveParserExactMatch": true,
+        "archiveHashMatchesReceipt": true,
+        "rawText": "{\"taskOutcome\":\"Recipe saved, but servings is incorrect: displayed as \\\"3-4 serving size of y\\\" instead of \\\"3-4 servings\\\".\"}",
+        "parsedValue": {
+          "taskOutcome": "Recipe saved, but servings is incorrect: displayed as \"3-4 serving size of y\" instead of \"3-4 servings\"."
+        },
+        "answerAfterStrip": "Recipe saved, but servings is incorrect: displayed as \"3-4 serving size of y\" instead of \"3-4 servings\".",
+        "validContract": true,
+        "answerType": "string",
+        "receipt": {
+          "eventSequence": 3700,
+          "phase": "finalization",
+          "receivedAtSeconds": 167.91274245805107
+        },
+        "termination": "step_budget",
+        "maxSteps": 24,
+        "executedActions": 24,
+        "rejectedActions": 0,
+        "actionKinds": {
+          "actions": 3,
+          "click": 11,
+          "input": 7,
+          "mobile: hideKeyboard": 2,
+          "clear": 1
+        },
+        "pythonExecStatuses": {
+          "unrecorded": 1,
+          "completed": 11,
+          "failed": 4
+        },
+        "kernelStates": {
+          "unrecorded": 1,
+          "alive": 15
+        },
+        "agentStageCompletedBeforeEvaluator": true,
+        "evaluatorBeforeTeardown": true,
+        "cleanup": {
+          "agentSession": "closed",
+          "environment": "closed",
+          "taskTearDown": "completed"
+        },
+        "officialReward": 0.0,
+        "invalidReason": null,
+        "error": null
+      },
+      {
+        "index": 52,
+        "task": "RecipeDeleteDuplicateRecipes3",
+        "resultPath": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/052-RecipeDeleteDuplicateRecipes3/attempt-1/result.json",
+        "originalPromptLine": 9,
+        "promptGoalExact": true,
+        "promptReferenceTimeVisible": true,
+        "promptStringSubmissionVisible": true,
+        "archiveParserExactMatch": true,
+        "archiveHashMatchesReceipt": true,
+        "rawText": "{\"taskOutcome\":\"Unable to complete: no recipes were deleted before the UI action budget was exhausted.\"}",
+        "parsedValue": {
+          "taskOutcome": "Unable to complete: no recipes were deleted before the UI action budget was exhausted."
+        },
+        "answerAfterStrip": "Unable to complete: no recipes were deleted before the UI action budget was exhausted.",
+        "validContract": true,
+        "answerType": "string",
+        "receipt": {
+          "eventSequence": 7353,
+          "phase": "finalization",
+          "receivedAtSeconds": 317.76614945789333
+        },
+        "termination": "step_budget",
+        "maxSteps": 34,
+        "executedActions": 34,
+        "rejectedActions": 0,
+        "actionKinds": {
+          "actions": 1,
+          "click": 15,
+          "mobile: scrollGesture": 6,
+          "input": 6,
+          "back": 1,
+          "clear": 5
+        },
+        "pythonExecStatuses": {
+          "unrecorded": 1,
+          "completed": 22,
+          "failed": 3
+        },
+        "kernelStates": {
+          "unrecorded": 1,
+          "alive": 25
+        },
+        "agentStageCompletedBeforeEvaluator": true,
+        "evaluatorBeforeTeardown": true,
+        "cleanup": {
+          "agentSession": "closed",
+          "environment": "closed",
+          "taskTearDown": "completed"
+        },
+        "officialReward": 0.0,
+        "invalidReason": null,
+        "error": null
+      },
+      {
+        "index": 58,
+        "task": "RetroCreatePlaylist",
+        "resultPath": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/058-RetroCreatePlaylist/attempt-1/result.json",
+        "originalPromptLine": 9,
+        "promptGoalExact": true,
+        "promptReferenceTimeVisible": true,
+        "promptStringSubmissionVisible": true,
+        "archiveParserExactMatch": true,
+        "archiveHashMatchesReceipt": true,
+        "rawText": "{\"taskOutcome\":\"Incomplete: playlist Hip Hop Bangers 270 contains only Dreamer's Awake; the requested three-song order was not established.\"}",
+        "parsedValue": {
+          "taskOutcome": "Incomplete: playlist Hip Hop Bangers 270 contains only Dreamer's Awake; the requested three-song order was not established."
+        },
+        "answerAfterStrip": "Incomplete: playlist Hip Hop Bangers 270 contains only Dreamer's Awake; the requested three-song order was not established.",
+        "validContract": true,
+        "answerType": "string",
+        "receipt": {
+          "eventSequence": 6630,
+          "phase": "business",
+          "receivedAtSeconds": 230.8372605420882
+        },
+        "termination": "completed",
+        "maxSteps": 24,
+        "executedActions": 23,
+        "rejectedActions": 0,
+        "actionKinds": {
+          "actions": 1,
+          "click": 20,
+          "input": 2
+        },
+        "pythonExecStatuses": {
+          "unrecorded": 1,
+          "completed": 22,
+          "failed": 3
+        },
+        "kernelStates": {
+          "unrecorded": 1,
+          "alive": 25
+        },
+        "agentStageCompletedBeforeEvaluator": true,
+        "evaluatorBeforeTeardown": true,
+        "cleanup": {
+          "agentSession": "closed",
+          "environment": "closed",
+          "taskTearDown": "completed"
+        },
+        "officialReward": 0,
+        "invalidReason": null,
+        "error": null
+      },
+      {
+        "index": 60,
+        "task": "RetroPlaylistDuration",
+        "resultPath": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/060-RetroPlaylistDuration/attempt-1/result.json",
+        "originalPromptLine": 9,
+        "promptGoalExact": true,
+        "promptReferenceTimeVisible": true,
+        "promptStringSubmissionVisible": true,
+        "archiveParserExactMatch": true,
+        "archiveHashMatchesReceipt": true,
+        "rawText": "{\"taskOutcome\":\"Incomplete: playlist \\\"Reggae Rhythms 51\\\" exists with 14 songs totaling 01:08:25; the 45–50 minute requirement was not reached before the UI action budget was exhausted.\"}",
+        "parsedValue": {
+          "taskOutcome": "Incomplete: playlist \"Reggae Rhythms 51\" exists with 14 songs totaling 01:08:25; the 45–50 minute requirement was not reached before the UI action budget was exhausted."
+        },
+        "answerAfterStrip": "Incomplete: playlist \"Reggae Rhythms 51\" exists with 14 songs totaling 01:08:25; the 45–50 minute requirement was not reached before the UI action budget was exhausted.",
+        "validContract": true,
+        "answerType": "string",
+        "receipt": {
+          "eventSequence": 9855,
+          "phase": "finalization",
+          "receivedAtSeconds": 329.42308699991554
+        },
+        "termination": "step_budget",
+        "maxSteps": 30,
+        "executedActions": 30,
+        "rejectedActions": 0,
+        "actionKinds": {
+          "click": 23,
+          "input": 2,
+          "back": 3,
+          "actions": 2
+        },
+        "pythonExecStatuses": {
+          "unrecorded": 1,
+          "completed": 28,
+          "failed": 3
+        },
+        "kernelStates": {
+          "unrecorded": 1,
+          "alive": 31
+        },
+        "agentStageCompletedBeforeEvaluator": true,
+        "evaluatorBeforeTeardown": true,
+        "cleanup": {
+          "agentSession": "closed",
+          "environment": "closed",
+          "taskTearDown": "completed"
+        },
+        "officialReward": 0.0,
+        "invalidReason": null,
+        "error": null
+      },
+      {
+        "index": 76,
+        "task": "SimpleCalendarFirstEventAfterStartTime",
+        "resultPath": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/076-SimpleCalendarFirstEventAfterStartTime/attempt-1/result.json",
+        "originalPromptLine": 9,
+        "promptGoalExact": true,
+        "promptReferenceTimeVisible": true,
+        "promptStringSubmissionVisible": true,
+        "archiveParserExactMatch": true,
+        "archiveHashMatchesReceipt": true,
+        "rawText": "{\"taskOutcome\":\"Appointment for Budget Planning\"}",
+        "parsedValue": {
+          "taskOutcome": "Appointment for Budget Planning"
+        },
+        "answerAfterStrip": "Appointment for Budget Planning",
+        "validContract": true,
+        "answerType": "string",
+        "receipt": {
+          "eventSequence": 1782,
+          "phase": "business",
+          "receivedAtSeconds": 93.5536892079981
+        },
+        "termination": "completed",
+        "maxSteps": 10,
+        "executedActions": 3,
+        "rejectedActions": 0,
+        "actionKinds": {
+          "click": 1,
+          "actions": 2
+        },
+        "pythonExecStatuses": {
+          "unrecorded": 1,
+          "completed": 7
+        },
+        "kernelStates": {
+          "unrecorded": 1,
+          "alive": 7
+        },
+        "agentStageCompletedBeforeEvaluator": true,
+        "evaluatorBeforeTeardown": true,
+        "cleanup": {
+          "agentSession": "closed",
+          "environment": "closed",
+          "taskTearDown": "completed"
+        },
+        "officialReward": 0.0,
+        "invalidReason": null,
+        "error": null
+      },
+      {
+        "index": 85,
+        "task": "SimpleSmsSendClipboardContent",
+        "resultPath": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/085-SimpleSmsSendClipboardContent/attempt-1/result.json",
+        "originalPromptLine": 9,
+        "promptGoalExact": true,
+        "promptReferenceTimeVisible": true,
+        "promptStringSubmissionVisible": true,
+        "archiveParserExactMatch": true,
+        "archiveHashMatchesReceipt": true,
+        "rawText": "{\"taskOutcome\":\"Unable to send the message: the UI interaction budget was exhausted before recipient confirmation and message submission.\"}",
+        "parsedValue": {
+          "taskOutcome": "Unable to send the message: the UI interaction budget was exhausted before recipient confirmation and message submission."
+        },
+        "answerAfterStrip": "Unable to send the message: the UI interaction budget was exhausted before recipient confirmation and message submission.",
+        "validContract": true,
+        "answerType": "string",
+        "receipt": {
+          "eventSequence": 3936,
+          "phase": "finalization",
+          "receivedAtSeconds": 180.64814508298878
+        },
+        "termination": "step_budget",
+        "maxSteps": 12,
+        "executedActions": 12,
+        "rejectedActions": 0,
+        "actionKinds": {
+          "click": 4,
+          "back": 1,
+          "actions": 1,
+          "input": 2,
+          "mobile: activateApp": 1,
+          "mobile: pressKey": 2,
+          "mobile: performEditorAction": 1
+        },
+        "pythonExecStatuses": {
+          "unrecorded": 1,
+          "completed": 14,
+          "failed": 5
+        },
+        "kernelStates": {
+          "unrecorded": 1,
+          "alive": 19
+        },
+        "agentStageCompletedBeforeEvaluator": true,
+        "evaluatorBeforeTeardown": true,
+        "cleanup": {
+          "agentSession": "closed",
+          "environment": "closed",
+          "taskTearDown": "completed"
+        },
+        "officialReward": 0.0,
+        "invalidReason": null,
+        "error": null
+      },
+      {
+        "index": 91,
+        "task": "SportsTrackerTotalDistanceForCategoryOverInterval",
+        "resultPath": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/091-SportsTrackerTotalDistanceForCategoryOverInterval/attempt-1/result.json",
+        "originalPromptLine": 9,
+        "promptGoalExact": true,
+        "promptReferenceTimeVisible": true,
+        "promptStringSubmissionVisible": true,
+        "archiveParserExactMatch": true,
+        "archiveHashMatchesReceipt": true,
+        "rawText": "{\"taskOutcome\":\"1996\"}",
+        "parsedValue": {
+          "taskOutcome": "1996"
+        },
+        "answerAfterStrip": "1996",
+        "validContract": true,
+        "answerType": "string",
+        "receipt": {
+          "eventSequence": 3792,
+          "phase": "business",
+          "receivedAtSeconds": 175.10407079092693
+        },
+        "termination": "completed",
+        "maxSteps": 20,
+        "executedActions": 12,
+        "rejectedActions": 0,
+        "actionKinds": {
+          "actions": 2,
+          "click": 10
+        },
+        "pythonExecStatuses": {
+          "unrecorded": 1,
+          "completed": 22,
+          "failed": 2
+        },
+        "kernelStates": {
+          "unrecorded": 1,
+          "alive": 24
+        },
+        "agentStageCompletedBeforeEvaluator": true,
+        "evaluatorBeforeTeardown": true,
+        "cleanup": {
+          "agentSession": "closed",
+          "environment": "closed",
+          "taskTearDown": "completed"
+        },
+        "officialReward": 0.0,
+        "invalidReason": null,
+        "error": null
+      },
+      {
+        "index": 98,
+        "task": "SystemBrightnessMaxVerify",
+        "resultPath": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/098-SystemBrightnessMaxVerify/attempt-1/result.json",
+        "originalPromptLine": 9,
+        "promptGoalExact": true,
+        "promptReferenceTimeVisible": true,
+        "promptStringSubmissionVisible": true,
+        "archiveParserExactMatch": true,
+        "archiveHashMatchesReceipt": true,
+        "rawText": "{\"taskOutcome\":\"Brightness set to maximum.\"}",
+        "parsedValue": {
+          "taskOutcome": "Brightness set to maximum."
+        },
+        "answerAfterStrip": "Brightness set to maximum.",
+        "validContract": true,
+        "answerType": "string",
+        "receipt": {
+          "eventSequence": 2238,
+          "phase": "business",
+          "receivedAtSeconds": 211.5958206669893
+        },
+        "termination": "completed",
+        "maxSteps": 10,
+        "executedActions": 3,
+        "rejectedActions": 0,
+        "actionKinds": {
+          "mobile: openNotifications": 1,
+          "actions": 2
+        },
+        "pythonExecStatuses": {
+          "unrecorded": 1,
+          "completed": 7,
+          "failed": 1
+        },
+        "kernelStates": {
+          "unrecorded": 1,
+          "alive": 8
+        },
+        "agentStageCompletedBeforeEvaluator": true,
+        "evaluatorBeforeTeardown": true,
+        "cleanup": {
+          "agentSession": "closed",
+          "environment": "closed",
+          "taskTearDown": "completed"
+        },
+        "officialReward": 0.0,
+        "invalidReason": null,
+        "error": null
+      },
+      {
+        "index": 106,
+        "task": "TasksCompletedTasksForDate",
+        "resultPath": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/106-TasksCompletedTasksForDate/attempt-1/result.json",
+        "originalPromptLine": 9,
+        "promptGoalExact": true,
+        "promptReferenceTimeVisible": true,
+        "promptStringSubmissionVisible": true,
+        "archiveParserExactMatch": true,
+        "archiveHashMatchesReceipt": true,
+        "rawText": "{\"taskOutcome\":\"Participate in brainstorming session, Plan family reunion\"}",
+        "parsedValue": {
+          "taskOutcome": "Participate in brainstorming session, Plan family reunion"
+        },
+        "answerAfterStrip": "Participate in brainstorming session, Plan family reunion",
+        "validContract": true,
+        "answerType": "string",
+        "receipt": {
+          "eventSequence": 5539,
+          "phase": "finalization",
+          "receivedAtSeconds": 251.32549287495203
+        },
+        "termination": "step_budget",
+        "maxSteps": 10,
+        "executedActions": 10,
+        "rejectedActions": 0,
+        "actionKinds": {
+          "mobile: swipeGesture": 3,
+          "click": 5,
+          "back": 1,
+          "mobile: scrollGesture": 1
+        },
+        "pythonExecStatuses": {
+          "unrecorded": 1,
+          "completed": 14,
+          "failed": 5
+        },
+        "kernelStates": {
+          "unrecorded": 1,
+          "alive": 19
+        },
+        "agentStageCompletedBeforeEvaluator": true,
+        "evaluatorBeforeTeardown": true,
+        "cleanup": {
+          "agentSession": "closed",
+          "environment": "closed",
+          "taskTearDown": "completed"
+        },
+        "officialReward": 0.0,
+        "invalidReason": null,
+        "error": null
+      },
+      {
+        "index": 107,
+        "task": "TasksDueNextWeek",
+        "resultPath": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/107-TasksDueNextWeek/attempt-1/result.json",
+        "originalPromptLine": 9,
+        "promptGoalExact": true,
+        "promptReferenceTimeVisible": true,
+        "promptStringSubmissionVisible": true,
+        "archiveParserExactMatch": true,
+        "archiveHashMatchesReceipt": true,
+        "rawText": "{\"taskOutcome\":\"20\"}",
+        "parsedValue": {
+          "taskOutcome": "20"
+        },
+        "answerAfterStrip": "20",
+        "validContract": true,
+        "answerType": "string",
+        "receipt": {
+          "eventSequence": 4268,
+          "phase": "business",
+          "receivedAtSeconds": 172.39151420805138
+        },
+        "termination": "completed",
+        "maxSteps": 10,
+        "executedActions": 8,
+        "rejectedActions": 0,
+        "actionKinds": {
+          "actions": 5,
+          "click": 1,
+          "mobile: scrollGesture": 2
+        },
+        "pythonExecStatuses": {
+          "unrecorded": 1,
+          "completed": 13,
+          "failed": 2
+        },
+        "kernelStates": {
+          "unrecorded": 1,
+          "alive": 15
+        },
+        "agentStageCompletedBeforeEvaluator": true,
+        "evaluatorBeforeTeardown": true,
+        "cleanup": {
+          "agentSession": "closed",
+          "environment": "closed",
+          "taskTearDown": "completed"
+        },
+        "officialReward": 0.0,
+        "invalidReason": null,
+        "error": null
+      },
+      {
+        "index": 115,
+        "task": "VlcCreateTwoPlaylists",
+        "resultPath": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/115-VlcCreateTwoPlaylists/attempt-1/result.json",
+        "originalPromptLine": 9,
+        "promptGoalExact": true,
+        "promptReferenceTimeVisible": true,
+        "promptStringSubmissionVisible": true,
+        "archiveParserExactMatch": true,
+        "archiveHashMatchesReceipt": true,
+        "rawText": "{\"taskOutcome\":\"Created both four-track playlists. Ultimate Fails Series is in the requested order; Adventure Marathon exists but its final two tracks remain reversed after the interaction budget closed.\"}",
+        "parsedValue": {
+          "taskOutcome": "Created both four-track playlists. Ultimate Fails Series is in the requested order; Adventure Marathon exists but its final two tracks remain reversed after the interaction budget closed."
+        },
+        "answerAfterStrip": "Created both four-track playlists. Ultimate Fails Series is in the requested order; Adventure Marathon exists but its final two tracks remain reversed after the interaction budget closed.",
+        "validContract": true,
+        "answerType": "string",
+        "receipt": {
+          "eventSequence": 8499,
+          "phase": "business",
+          "receivedAtSeconds": 314.6264648749493
+        },
+        "termination": "completed",
+        "maxSteps": 48,
+        "executedActions": 46,
+        "rejectedActions": 0,
+        "actionKinds": {
+          "actions": 3,
+          "click": 37,
+          "input": 3,
+          "back": 3
+        },
+        "pythonExecStatuses": {
+          "unrecorded": 1,
+          "completed": 28,
+          "failed": 5
+        },
+        "kernelStates": {
+          "unrecorded": 1,
+          "alive": 33
+        },
+        "agentStageCompletedBeforeEvaluator": true,
+        "evaluatorBeforeTeardown": true,
+        "cleanup": {
+          "agentSession": "closed",
+          "environment": "closed",
+          "taskTearDown": "completed"
+        },
+        "officialReward": 0.5,
+        "invalidReason": null,
+        "error": null
+      }
+    ]
+  },
+  "limits": [
+    "Parser probes only prove faithful archived answer conversion, not correctness of business answers.",
+    "Every exact goal and initialized reference clock was actually present in the first user prompt; this does not prove initialized DB sets were archived.",
+    "Successful session cleanup precedes evaluator invocation; it does not prove cleanup made no business-state mutation.",
+    "Tool status/kernel state do not prove semantic correctness; per-case archived cells/outputs are required.",
+    "No private raw logs or image bytes copied to terminal."
+  ],
+  "sourceIdentity": {
+    "reproduciblePython": "names = \"campaign runtime_migration scorer continuation runner task_time environment appium_proxy preparation omp_supervisor submission action_budget rehearsal host_prerequisites __init__ stepped_agent lifecycle mcp_runtime\".split()\npaths = [root / \"src/fsq_androidworld_eval\" / (n + \".py\") for n in names] + [root / \"pyproject.toml\"]\nrows = [{\"path\": str(p.relative_to(root)), \"sha256\": hashlib.sha256(p.read_bytes()).hexdigest()} for p in sorted(paths)]\nobserved = hashlib.sha256(json.dumps(rows, sort_keys=True, separators=(\",\", \":\")).encode()).hexdigest()\nexpected = manifest[\"protocol\"][\"runtimeIdentity\"][\"harnessSourceSha256\"]\nsource_identity_output = {\"inputCount\": len(rows), \"observedHarnessSourceSha256\": observed, \"frozenHarnessSourceSha256\": expected, \"matchesFrozenIdentity\": observed == expected}\n",
+    "actualOutput": {
+      "inputCount": 19,
+      "observedHarnessSourceSha256": "861905dba1d8dfab232cd977cdfbd3ac7837605a5199c982240ad40895599e66",
+      "frozenHarnessSourceSha256": "861905dba1d8dfab232cd977cdfbd3ac7837605a5199c982240ad40895599e66",
+      "matchesFrozenIdentity": true
+    }
+  },
+  "aggregateObservations": {
+    "actualStructuredPythonResponses": 391,
+    "completed": 328,
+    "failed": 63,
+    "kernelAlive": 391,
+    "targetDocumentationReadsWithoutExecutionStatus": 20,
+    "acceptedActionsAcross20Failures": 352,
+    "rejectedActionRequests": 1,
+    "allAgentStagesCompleteBeforeEvaluator": true
+  },
+  "normalizationNote": "Tool status/kernel state do not prove semantic correctness; per-case archived cells/outputs are required. Target-only per-case counts include 20 route documentation reads marked unrecorded; actual write calls are 391 structured Python responses, 328 completed and 63 failed, all kernelState alive.",
+  "receiptPrecedenceProbe": {
+    "reproduciblePython": "receipt_rows = []\nfor failure in failures:\n    p = C / failure[\"result\"]\n    r = json.loads(p.read_text())\n    archive = json.loads((p.parent / \"raw-private/business-submission.json\").read_text())\n    submission = r[\"agent\"][\"answerSubmission\"]\n    seq = submission[\"receipt\"][\"eventSequence\"]\n    first_stop = None\n    captured = None\n    json_sequence = 0\n    with (p.parent / \"raw-private/agent-events.jsonl\").open() as f:\n        for line_no, line in enumerate(f, 1):\n            event = json.loads(line)\n            if not isinstance(event, dict):\n                continue\n            json_sequence += 1\n            message = event.get(\"message\") or {}\n            if event.get(\"type\") == \"message_end\" and message.get(\"role\") == \"assistant\" and message.get(\"stopReason\") == \"stop\" and first_stop is None:\n                first_stop = json_sequence\n            if json_sequence == seq:\n                text = \"\".join(x[\"text\"] for x in message.get(\"content\", []) if isinstance(x, dict) and isinstance(x.get(\"text\"), str))\n                captured = {\"line\": line_no, \"eventType\": event.get(\"type\"), \"role\": message.get(\"role\"), \"stopReason\": message.get(\"stopReason\"), \"matchesArchivedRawText\": text == archive[\"rawText\"]}\n                break\n    receipt_rows.append({\"index\": failure[\"index\"], \"receiptSequence\": seq, \"firstAssistantStopSequence\": first_stop, \"receiptIsFirstAssistantStop\": seq == first_stop, \"receiptEvent\": captured, \"receiptWithinCutoff\": submission[\"receipt\"][\"receivedAtSeconds\"] <= submission[\"cutoffSeconds\"], \"receiptWithinBusinessDeadline\": submission[\"receipt\"][\"receivedAtSeconds\"] <= submission[\"businessDeadlineSeconds\"], \"phase\": submission[\"receipt\"][\"phase\"]})\nreceipt_probe_output = {\"caseCount\": len(receipt_rows), \"allReceiptsFirstAssistantStop\": all(x[\"receiptIsFirstAssistantStop\"] for x in receipt_rows), \"allArchivedRawTextsMatchActualReceipt\": all(x[\"receiptEvent\"][\"matchesArchivedRawText\"] for x in receipt_rows), \"allReceiptsWithinCutoffs\": all(x[\"receiptWithinCutoff\"] and x[\"receiptWithinBusinessDeadline\"] for x in receipt_rows), \"cases\": receipt_rows}\n",
+    "actualOutput": {
+      "caseCount": 20,
+      "allReceiptsFirstAssistantStop": true,
+      "allArchivedRawTextsMatchActualReceipt": true,
+      "allReceiptsWithinCutoffs": true,
+      "cases": [
+        {
+          "index": 1,
+          "receiptSequence": 3539,
+          "firstAssistantStopSequence": 3539,
+          "receiptIsFirstAssistantStop": true,
+          "receiptEvent": {
+            "line": 3539,
+            "eventType": "message_end",
+            "role": "assistant",
+            "stopReason": "stop",
+            "matchesArchivedRawText": true
+          },
+          "receiptWithinCutoff": true,
+          "receiptWithinBusinessDeadline": true,
+          "phase": "business"
+        },
+        {
+          "index": 3,
+          "receiptSequence": 4067,
+          "firstAssistantStopSequence": 4067,
+          "receiptIsFirstAssistantStop": true,
+          "receiptEvent": {
+            "line": 4067,
+            "eventType": "message_end",
+            "role": "assistant",
+            "stopReason": "stop",
+            "matchesArchivedRawText": true
+          },
+          "receiptWithinCutoff": true,
+          "receiptWithinBusinessDeadline": true,
+          "phase": "finalization"
+        },
+        {
+          "index": 4,
+          "receiptSequence": 5205,
+          "firstAssistantStopSequence": 5205,
+          "receiptIsFirstAssistantStop": true,
+          "receiptEvent": {
+            "line": 5205,
+            "eventType": "message_end",
+            "role": "assistant",
+            "stopReason": "stop",
+            "matchesArchivedRawText": true
+          },
+          "receiptWithinCutoff": true,
+          "receiptWithinBusinessDeadline": true,
+          "phase": "business"
+        },
+        {
+          "index": 14,
+          "receiptSequence": 6014,
+          "firstAssistantStopSequence": 6014,
+          "receiptIsFirstAssistantStop": true,
+          "receiptEvent": {
+            "line": 6014,
+            "eventType": "message_end",
+            "role": "assistant",
+            "stopReason": "stop",
+            "matchesArchivedRawText": true
+          },
+          "receiptWithinCutoff": true,
+          "receiptWithinBusinessDeadline": true,
+          "phase": "business"
+        },
+        {
+          "index": 23,
+          "receiptSequence": 3558,
+          "firstAssistantStopSequence": 3558,
+          "receiptIsFirstAssistantStop": true,
+          "receiptEvent": {
+            "line": 3558,
+            "eventType": "message_end",
+            "role": "assistant",
+            "stopReason": "stop",
+            "matchesArchivedRawText": true
+          },
+          "receiptWithinCutoff": true,
+          "receiptWithinBusinessDeadline": true,
+          "phase": "finalization"
+        },
+        {
+          "index": 24,
+          "receiptSequence": 3927,
+          "firstAssistantStopSequence": 3927,
+          "receiptIsFirstAssistantStop": true,
+          "receiptEvent": {
+            "line": 3927,
+            "eventType": "message_end",
+            "role": "assistant",
+            "stopReason": "stop",
+            "matchesArchivedRawText": true
+          },
+          "receiptWithinCutoff": true,
+          "receiptWithinBusinessDeadline": true,
+          "phase": "business"
+        },
+        {
+          "index": 30,
+          "receiptSequence": 3678,
+          "firstAssistantStopSequence": 3678,
+          "receiptIsFirstAssistantStop": true,
+          "receiptEvent": {
+            "line": 3678,
+            "eventType": "message_end",
+            "role": "assistant",
+            "stopReason": "stop",
+            "matchesArchivedRawText": true
+          },
+          "receiptWithinCutoff": true,
+          "receiptWithinBusinessDeadline": true,
+          "phase": "finalization"
+        },
+        {
+          "index": 33,
+          "receiptSequence": 2543,
+          "firstAssistantStopSequence": 2543,
+          "receiptIsFirstAssistantStop": true,
+          "receiptEvent": {
+            "line": 2543,
+            "eventType": "message_end",
+            "role": "assistant",
+            "stopReason": "stop",
+            "matchesArchivedRawText": true
+          },
+          "receiptWithinCutoff": true,
+          "receiptWithinBusinessDeadline": true,
+          "phase": "business"
+        },
+        {
+          "index": 36,
+          "receiptSequence": 7345,
+          "firstAssistantStopSequence": 7345,
+          "receiptIsFirstAssistantStop": true,
+          "receiptEvent": {
+            "line": 7345,
+            "eventType": "message_end",
+            "role": "assistant",
+            "stopReason": "stop",
+            "matchesArchivedRawText": true
+          },
+          "receiptWithinCutoff": true,
+          "receiptWithinBusinessDeadline": true,
+          "phase": "finalization"
+        },
+        {
+          "index": 49,
+          "receiptSequence": 3700,
+          "firstAssistantStopSequence": 3700,
+          "receiptIsFirstAssistantStop": true,
+          "receiptEvent": {
+            "line": 3700,
+            "eventType": "message_end",
+            "role": "assistant",
+            "stopReason": "stop",
+            "matchesArchivedRawText": true
+          },
+          "receiptWithinCutoff": true,
+          "receiptWithinBusinessDeadline": true,
+          "phase": "finalization"
+        },
+        {
+          "index": 52,
+          "receiptSequence": 7353,
+          "firstAssistantStopSequence": 7353,
+          "receiptIsFirstAssistantStop": true,
+          "receiptEvent": {
+            "line": 7353,
+            "eventType": "message_end",
+            "role": "assistant",
+            "stopReason": "stop",
+            "matchesArchivedRawText": true
+          },
+          "receiptWithinCutoff": true,
+          "receiptWithinBusinessDeadline": true,
+          "phase": "finalization"
+        },
+        {
+          "index": 58,
+          "receiptSequence": 6630,
+          "firstAssistantStopSequence": 6630,
+          "receiptIsFirstAssistantStop": true,
+          "receiptEvent": {
+            "line": 6630,
+            "eventType": "message_end",
+            "role": "assistant",
+            "stopReason": "stop",
+            "matchesArchivedRawText": true
+          },
+          "receiptWithinCutoff": true,
+          "receiptWithinBusinessDeadline": true,
+          "phase": "business"
+        },
+        {
+          "index": 60,
+          "receiptSequence": 9855,
+          "firstAssistantStopSequence": 9855,
+          "receiptIsFirstAssistantStop": true,
+          "receiptEvent": {
+            "line": 9855,
+            "eventType": "message_end",
+            "role": "assistant",
+            "stopReason": "stop",
+            "matchesArchivedRawText": true
+          },
+          "receiptWithinCutoff": true,
+          "receiptWithinBusinessDeadline": true,
+          "phase": "finalization"
+        },
+        {
+          "index": 76,
+          "receiptSequence": 1782,
+          "firstAssistantStopSequence": 1782,
+          "receiptIsFirstAssistantStop": true,
+          "receiptEvent": {
+            "line": 1782,
+            "eventType": "message_end",
+            "role": "assistant",
+            "stopReason": "stop",
+            "matchesArchivedRawText": true
+          },
+          "receiptWithinCutoff": true,
+          "receiptWithinBusinessDeadline": true,
+          "phase": "business"
+        },
+        {
+          "index": 85,
+          "receiptSequence": 3936,
+          "firstAssistantStopSequence": 3936,
+          "receiptIsFirstAssistantStop": true,
+          "receiptEvent": {
+            "line": 3936,
+            "eventType": "message_end",
+            "role": "assistant",
+            "stopReason": "stop",
+            "matchesArchivedRawText": true
+          },
+          "receiptWithinCutoff": true,
+          "receiptWithinBusinessDeadline": true,
+          "phase": "finalization"
+        },
+        {
+          "index": 91,
+          "receiptSequence": 3792,
+          "firstAssistantStopSequence": 3792,
+          "receiptIsFirstAssistantStop": true,
+          "receiptEvent": {
+            "line": 3792,
+            "eventType": "message_end",
+            "role": "assistant",
+            "stopReason": "stop",
+            "matchesArchivedRawText": true
+          },
+          "receiptWithinCutoff": true,
+          "receiptWithinBusinessDeadline": true,
+          "phase": "business"
+        },
+        {
+          "index": 98,
+          "receiptSequence": 2238,
+          "firstAssistantStopSequence": 2238,
+          "receiptIsFirstAssistantStop": true,
+          "receiptEvent": {
+            "line": 2238,
+            "eventType": "message_end",
+            "role": "assistant",
+            "stopReason": "stop",
+            "matchesArchivedRawText": true
+          },
+          "receiptWithinCutoff": true,
+          "receiptWithinBusinessDeadline": true,
+          "phase": "business"
+        },
+        {
+          "index": 106,
+          "receiptSequence": 5539,
+          "firstAssistantStopSequence": 5539,
+          "receiptIsFirstAssistantStop": true,
+          "receiptEvent": {
+            "line": 5539,
+            "eventType": "message_end",
+            "role": "assistant",
+            "stopReason": "stop",
+            "matchesArchivedRawText": true
+          },
+          "receiptWithinCutoff": true,
+          "receiptWithinBusinessDeadline": true,
+          "phase": "finalization"
+        },
+        {
+          "index": 107,
+          "receiptSequence": 4268,
+          "firstAssistantStopSequence": 4268,
+          "receiptIsFirstAssistantStop": true,
+          "receiptEvent": {
+            "line": 4268,
+            "eventType": "message_end",
+            "role": "assistant",
+            "stopReason": "stop",
+            "matchesArchivedRawText": true
+          },
+          "receiptWithinCutoff": true,
+          "receiptWithinBusinessDeadline": true,
+          "phase": "business"
+        },
+        {
+          "index": 115,
+          "receiptSequence": 8499,
+          "firstAssistantStopSequence": 8499,
+          "receiptIsFirstAssistantStop": true,
+          "receiptEvent": {
+            "line": 8499,
+            "eventType": "message_end",
+            "role": "assistant",
+            "stopReason": "stop",
+            "matchesArchivedRawText": true
+          },
+          "receiptWithinCutoff": true,
+          "receiptWithinBusinessDeadline": true,
+          "phase": "business"
+        }
+      ]
+    },
+    "limits": "Checks actual receipt selection and archived cutoff numbers, not latent model correctness or wall-clock reconstruction of every tool event."
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "scope": "Parent offline source integrity and actual-input consistency; no new scoring/device operation",
+  "originalSourceHashChecks": [
+    {
+      "path": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/episodes/009-ClockTimerEntry/attempt-1/result.json",
+      "sha256": "0c7e275f98c6fa829d72176cc566b0c8e43b872a94e92a84c34d25b9c5f55a74",
+      "matchesRecordedSource": true
+    },
+    {
+      "path": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/episodes/009-ClockTimerEntry/attempt-1/normalized-agent-events.json",
+      "sha256": "1be815cb27c1e69fe53b4c70b4061ef94bbb281382477bcf67dd42fa34a24b5c",
+      "matchesRecordedSource": true
+    },
+    {
+      "path": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/episodes/009-ClockTimerEntry/attempt-1/raw-private/agent-events.jsonl",
+      "sha256": "e10a23a937df18cef4ec7b071fbe08551b5d180ff2d7428be14ff2eaabf4c723",
+      "matchesRecordedSource": true
+    }
+  ],
+  "rawConsistencyReceipt": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/timer-entry-ab-20261109T082047Z/parent-raw-consistency.json",
+  "offlinePredicateReplay": {
+    "scope": "Offline replay of serialized actual official elements for consistency only; no new scoring/device operation",
+    "module": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/android_world/task_evals/single/clock.py",
+    "moduleSha256": "b71344f13576f6b848a6c34dc4286962e94ec228e9643a3bdfc11b299265a65c",
+    "rows": [
+      {
+        "label": "TimerEntryOriginalP0",
+        "elementCount": 0,
+        "offlinePredicateReturn": false,
+        "matchesRecordedOriginalReturn": true
+      },
+      {
+        "label": "TimerEntryPatchedP1",
+        "elementCount": 27,
+        "offlinePredicateReturn": true,
+        "matchesRecordedOriginalReturn": true
+      }
+    ]
+  },
+  "offlineReplayExitCode": 0,
+  "independentAcceptance": {
+    "path": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/timer-entry-ab-20261109T082047Z/independent-009-acceptance.json",
+    "reviewer": "w4:p2 independent read-only acceptance assistant",
+    "reviewedAtUtc": "2026-11-09T08:32:54Z",
+    "acceptance": "PASS_FOR_NEW009_FIXED_TWO_RUN_DIAGNOSTIC"
+  },
+  "ownerFinalChecks": {
+    "observedAtUnix": 1794213193.5540612,
+    "checks": {
+      "exactlyFixedTwoCompleted": true,
+      "rawRewardsPreserved": true,
+      "originalTimerBranches": true,
+      "allTimerSpecificUnitChecksPass": true,
+      "originalKwargs": true,
+      "actualBusinessActions7Each": true,
+      "noTimedOutCall": true,
+      "threeBModelErrorsRetained": true,
+      "actualARestoreMixedNotAllEmpty": true,
+      "nativeConcurrentTreeSenders": true,
+      "productionRestoredAndBound": true,
+      "settingsPreserved": true,
+      "sessionHashesEmpty": true,
+      "workspaceAndParentsAbsent": true,
+      "registeredHistoricalHashesUnchanged": true,
+      "currentSkillsUnchanged": true,
+      "originalClockModuleUnchanged": true,
+      "formalScoreNull": true,
+      "actualNewSourceHashesPreserved": true
+    },
+    "errors": [],
+    "unitCheckCounts": {
+      "TimerEntryOriginalP0": 29,
+      "TimerEntryPatchedP1": 29
+    },
+    "scope": "Offline evidence consistency after two real units, not a new task/session/scorer",
+    "independentReviewNotSubstituted": true
+  },
+  "parentDeviceOperations": 0,
+  "formalScore": null
+}

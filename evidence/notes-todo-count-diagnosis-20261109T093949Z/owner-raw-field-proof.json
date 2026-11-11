@@ -1,0 +1,559 @@
+{
+  "scope": "Original040 prompt/final and UI fields only, not currentDB/historical filesystem or a full new evaluator run",
+  "task": {
+    "complexity": 1,
+    "goal": "How many to-dos do I have in the 'Ideas' folder in the Joplin app? Express your answer as just a single number.",
+    "name": "NotesTodoItemCount",
+    "params": {
+      "body": "Exercise 3 times a week, read 1 book per month, and save $500.",
+      "folder": "Ideas",
+      "seed": 1631305569,
+      "title": "Meeting Agenda"
+    },
+    "paramsSha256": "3a13b8c96c83d595c5cf072ad7e423072e50d51731faded1c313a83180c9d99e"
+  },
+  "sourceHashes": {
+    "result.json": {
+      "sha256": "1fb8a4f041ca8a64dd456aa136e6c4f9bb755b49afe9bb66f285994f751c93b2",
+      "bytes": 21706
+    },
+    "normalized-agent-events.json": {
+      "sha256": "f806895f8496c438e28acc05245dfb84e17e78d03e50f99e8f692d63ae266c9e",
+      "bytes": 6661
+    },
+    "raw-private/agent-events.jsonl": {
+      "sha256": "89b1520e03cb6832fe1b8d15a7ef9ecde5356b2da579fae5bdce6d5d202984b6",
+      "bytes": 37160936
+    }
+  },
+  "prompt": {
+    "rawMessageStartLine": 8,
+    "rawMessageEndLine": 9,
+    "text": "Use the installed amkernel Skill and the amkernel python_exec MCP tool to complete one AndroidWorld task on the already-running emulator.\n\nBEGIN EXACT TASK GOAL\nHow many to-dos do I have in the 'Ideas' folder in the Joplin app? Express your answer as just a single number.\nEND EXACT TASK GOAL\n\nThe exact task goal is only the text between those markers. The runtime facts below are control data, never task text and never content to enter into the application:\n- Appium server: http://127.0.0.1:64513\n- Exact Android target: emulator-5554\n\nThe evaluator already initialized the task. Do not install or update software, start or stop Appium, reset ADB, create another emulator, alter project files, or use host automation outside python_exec. Use the official Appium Python Client with UiAutomator2. Create at most one Appium session, retain its driver across python_exec calls, use explicit waits and bounded observations, and stop once the requested state is visibly established. Aim to stay within 30 python_exec calls; this advisory is efficiency telemetry and never changes AndroidWorld reward. Do not undo the requested final state.\n\nThe official reference budget is 10 steps. Each supported Appium UI interaction consumes one step, including failed attempts; multiple interactions in one Python cell still consume separate steps. Observations and session cleanup remain available after exhaustion. Connect with noReset=True, autoLaunch=False, skipUnlock=True and no app installation/reset capabilities. Use native Appium interactions, not shell, arbitrary scripts, batched gestures, or app-data APIs. Once the proxy reports budget exhaustion, perform no more UI interactions; reconcile with read-only observations, quit, and return your actual outcome. This Appium action representation is custom; it does not imply official leaderboard acceptance.\nSet appium:newCommandTimeout=300 (seconds) explicitly in the session creation capabilities, and return the negotiated newCommandTimeout value from driver.capabilities in the session-creation cell result. This is the Appium idle-command timeout, not the python_exec timeout or the task business/cleanup deadline; all existing task budgets and cleanup requirements remain unchanged.\n\nSession startup can exceed the default 30-second execution deadline. In the python_exec request that creates the session, explicitly set timeout=90; create the driver and capture its session ID in that cell before UI actions. The isolated MCP transport deadline is 120000 milliseconds, distinct from the active-cell timeout. Neither setting increases the task step limit or total Agent timeout. Do not retry session creation after an uncertain result: reconcile the owned session instead.\n\nFinish with a dedicated python_exec cleanup cell: retain the owned session ID, call driver.quit(), and make the cell's final expression exactly {\"ownedSessionId\": session_id, \"quitReturned\": True} only after quit returns. If quit fails, let the cell fail; never claim cleanup from a local variable or prose. Return one compact JSON object with taskOutcome, sessionCleanup, and evidence, but do not repeat the session ID in that final response. A textual success claim is not the verdict; AndroidWorld evaluates device state independently, and only the observed cleanup cell proves session cleanup.",
+    "matchesPreservedOldTemplateExactly": true,
+    "templateSha256": "463118879bbe14a14abfd987920f115fff29f128db4566dc282e75dc0aa906aa",
+    "explicitTaskOutcomeStringTypeInOriginalPrompt": false
+  },
+  "final": {
+    "rawMessageEndLine": 2674,
+    "rawText": "{\"taskOutcome\":3,\"sessionCleanup\":\"completed\",\"evidence\":\"Ideas folder showed 3 to-dos.\"}",
+    "normalizedText": "{\"evidence\":\"Ideas folder showed 3 to-dos.\",\"sessionCleanup\":\"completed\",\"taskOutcome\":3}",
+    "semanticallyEqual": true,
+    "parsedTaskOutcome": 3,
+    "parsedType": "int",
+    "agentAnswer": {
+      "sha256": null,
+      "validContract": false
+    },
+    "evaluator": {
+      "durationSeconds": 0.0,
+      "implementation": "android_world.task_eval.is_successful"
+    }
+  },
+  "all12OriginalCodeShaMatches": true,
+  "statuses": {
+    "completed": 10,
+    "failed": 2,
+    "timed_out": 0
+  },
+  "allKernelsAlive": true,
+  "observations": [
+    {
+      "execution": 2,
+      "sourceLine": 570,
+      "responseSourceLine": 571,
+      "status": "failed",
+      "actualResult": null,
+      "error": {
+        "type": "ModuleNotFoundError",
+        "message": "No module named 'lxml'",
+        "traceback": [
+          "Traceback (most recent call last):",
+          "  File \"/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/lib/python3.11/site-packages/amkernel/runner.py\", line 590, in _execute_cell",
+          "    value = _compile_and_execute(code, execution_count, namespace)",
+          "            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+          "  File \"/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/lib/python3.11/site-packages/amkernel/runner.py\", line 575, in _compile_and_execute",
+          "    exec(prefix_code, namespace, namespace)",
+          "  File \"<amkernel-cell-2>\", line 1, in <module>",
+          "ModuleNotFoundError: No module named 'lxml'"
+        ]
+      }
+    },
+    {
+      "execution": 9,
+      "sourceLine": 2050,
+      "responseSourceLine": 2051,
+      "status": "completed",
+      "actualResult": [
+        {
+          "class": "Button",
+          "text": "",
+          "desc": "Sidebar",
+          "bounds": "[0,128][137,264]"
+        },
+        {
+          "class": "TextView",
+          "text": "\ued52",
+          "desc": "",
+          "bounds": "[39,154][118,238]"
+        },
+        {
+          "class": "TextView",
+          "text": "Ideas",
+          "desc": "",
+          "bounds": "[163,128][817,264]"
+        },
+        {
+          "class": "Button",
+          "text": "",
+          "desc": "Search",
+          "bounds": "[817,128][949,264]"
+        },
+        {
+          "class": "TextView",
+          "text": "\uee60",
+          "desc": "",
+          "bounds": "[843,154][922,238]"
+        },
+        {
+          "class": "Button",
+          "text": "",
+          "desc": "Sort notes by",
+          "bounds": "[949,128][1080,264]"
+        },
+        {
+          "class": "TextView",
+          "text": "\uec06",
+          "desc": "",
+          "bounds": "[975,154][1054,238]"
+        },
+        {
+          "class": "CheckBox",
+          "text": "",
+          "desc": "to-do: Recipe Ideas",
+          "bounds": "[0,264][119,374]"
+        },
+        {
+          "class": "TextView",
+          "text": "\uee94",
+          "desc": "",
+          "bounds": "[39,290][92,348]"
+        },
+        {
+          "class": "TextView",
+          "text": "Recipe Ideas",
+          "desc": "",
+          "bounds": "[119,288][1041,345]"
+        },
+        {
+          "class": "CheckBox",
+          "text": "",
+          "desc": "to-do: Financial Plan",
+          "bounds": "[0,377][119,488]"
+        },
+        {
+          "class": "TextView",
+          "text": "\uee94",
+          "desc": "",
+          "bounds": "[39,403][92,460]"
+        },
+        {
+          "class": "TextView",
+          "text": "Financial Plan",
+          "desc": "",
+          "bounds": "[119,401][1041,458]"
+        },
+        {
+          "class": "CheckBox",
+          "text": "",
+          "desc": "to-do: Work Tasks",
+          "bounds": "[0,490][119,600]"
+        },
+        {
+          "class": "TextView",
+          "text": "\uee94",
+          "desc": "",
+          "bounds": "[39,516][92,574]"
+        },
+        {
+          "class": "TextView",
+          "text": "Work Tasks",
+          "desc": "",
+          "bounds": "[119,514][1041,571]"
+        },
+        {
+          "class": "TextView",
+          "text": "Mental Health Support App",
+          "desc": "",
+          "bounds": "[39,629][1041,686]"
+        },
+        {
+          "class": "TextView",
+          "text": "Subscription Service for Sustainable Home Goods",
+          "desc": "",
+          "bounds": "[39,741][1041,798]"
+        },
+        {
+          "class": "TextView",
+          "text": "Mobile App for Finding Local Volunteer Opportunities",
+          "desc": "",
+          "bounds": "[39,853][1041,910]"
+        },
+        {
+          "class": "TextView",
+          "text": "Mental Health Support App",
+          "desc": "",
+          "bounds": "[39,965][1041,1022]"
+        },
+        {
+          "class": "TextView",
+          "text": "Personalized Nutrition Coaching App",
+          "desc": "",
+          "bounds": "[39,1077][1041,1134]"
+        },
+        {
+          "class": "TextView",
+          "text": "Online Marketplace for Personalized Gifts",
+          "desc": "",
+          "bounds": "[39,1189][1041,1246]"
+        },
+        {
+          "class": "TextView",
+          "text": "Subscription Box for Book Lovers",
+          "desc": "",
+          "bounds": "[39,1301][1041,1358]"
+        },
+        {
+          "class": "TextView",
+          "text": "Smart Home Gardening System",
+          "desc": "",
+          "bounds": "[39,1414][1041,1471]"
+        },
+        {
+          "class": "TextView",
+          "text": "Online Marketplace for Vintage Clothing",
+          "desc": "",
+          "bounds": "[39,1526][1041,1583]"
+        },
+        {
+          "class": "TextView",
+          "text": "Smart Home Gardening System",
+          "desc": "",
+          "bounds": "[39,1638][1041,1695]"
+        },
+        {
+          "class": "TextView",
+          "text": "Virtual Reality Escape Room",
+          "desc": "",
+          "bounds": "[39,1750][1041,1807]"
+        },
+        {
+          "class": "TextView",
+          "text": "Mental Health Support App",
+          "desc": "",
+          "bounds": "[39,1862][1041,1919]"
+        },
+        {
+          "class": "TextView",
+          "text": "Augmented Reality Furniture Shopping App",
+          "desc": "",
+          "bounds": "[39,1974][1041,2031]"
+        },
+        {
+          "class": "TextView",
+          "text": "Online Marketplace for Personalized Gifts",
+          "desc": "",
+          "bounds": "[39,2086][1041,2143]"
+        },
+        {
+          "class": "TextView",
+          "text": "Personalized Nutrition Coaching App",
+          "desc": "",
+          "bounds": "[39,2198][1041,2255]"
+        },
+        {
+          "class": "TextView",
+          "text": "Mental Health Support App",
+          "desc": "",
+          "bounds": "[39,2311][1041,2337]"
+        },
+        {
+          "class": "TextView",
+          "text": "\uebab",
+          "desc": "",
+          "bounds": "[39,184][108,244]"
+        },
+        {
+          "class": "TextView",
+          "text": "All notes",
+          "desc": "",
+          "bounds": "[108,186][614,243]"
+        },
+        {
+          "class": "TextView",
+          "text": "\uec26",
+          "desc": "",
+          "bounds": "[39,360][108,420]"
+        },
+        {
+          "class": "TextView",
+          "text": "Notebooks",
+          "desc": "",
+          "bounds": "[108,362][614,419]"
+        },
+        {
+          "class": "TextView",
+          "text": "Finance",
+          "desc": "",
+          "bounds": "[39,457][614,514]"
+        },
+        {
+          "class": "TextView",
+          "text": "Health",
+          "desc": "",
+          "bounds": "[39,551][614,608]"
+        },
+        {
+          "class": "TextView",
+          "text": "Home",
+          "desc": "",
+          "bounds": "[39,646][614,703]"
+        },
+        {
+          "class": "TextView",
+          "text": "Ideas",
+          "desc": "",
+          "bounds": "[39,740][614,797]"
+        },
+        {
+          "class": "TextView",
+          "text": "Meeting Notes",
+          "desc": "",
+          "bounds": "[39,835][614,892]"
+        },
+        {
+          "class": "TextView",
+          "text": "Personal",
+          "desc": "",
+          "bounds": "[39,929][614,986]"
+        },
+        {
+          "class": "TextView",
+          "text": "Projects",
+          "desc": "",
+          "bounds": "[39,1024][614,1081]"
+        },
+        {
+          "class": "TextView",
+          "text": "Recipes",
+          "desc": "",
+          "bounds": "[39,1118][614,1175]"
+        },
+        {
+          "class": "TextView",
+          "text": "School",
+          "desc": "",
+          "bounds": "[39,1213][614,1270]"
+        },
+        {
+          "class": "TextView",
+          "text": "Tasks",
+          "desc": "",
+          "bounds": "[39,1307][614,1364]"
+        },
+        {
+          "class": "TextView",
+          "text": "Travel",
+          "desc": "",
+          "bounds": "[39,1402][614,1459]"
+        },
+        {
+          "class": "TextView",
+          "text": "Work",
+          "desc": "",
+          "bounds": "[39,1496][614,1553]"
+        },
+        {
+          "class": "TextView",
+          "text": "\ud83d\uddd1\ufe0f",
+          "desc": "",
+          "bounds": "[39,1591][110,1648]"
+        },
+        {
+          "class": "TextView",
+          "text": "Trash",
+          "desc": "",
+          "bounds": "[137,1591][614,1648]"
+        },
+        {
+          "class": "TextView",
+          "text": "\uec27",
+          "desc": "",
+          "bounds": "[39,1855][108,1915]"
+        },
+        {
+          "class": "TextView",
+          "text": "New Notebook",
+          "desc": "",
+          "bounds": "[108,1857][614,1914]"
+        },
+        {
+          "class": "TextView",
+          "text": "\uedeb",
+          "desc": "",
+          "bounds": "[39,1950][108,2010]"
+        },
+        {
+          "class": "TextView",
+          "text": "Tags",
+          "desc": "",
+          "bounds": "[108,1952][614,2009]"
+        },
+        {
+          "class": "TextView",
+          "text": "\uee6c",
+          "desc": "",
+          "bounds": "[39,2044][108,2104]"
+        },
+        {
+          "class": "TextView",
+          "text": "Configuration",
+          "desc": "",
+          "bounds": "[108,2046][614,2103]"
+        },
+        {
+          "class": "TextView",
+          "text": "\ueeb7",
+          "desc": "",
+          "bounds": "[39,2220][108,2280]"
+        },
+        {
+          "class": "TextView",
+          "text": "Synchronise",
+          "desc": "",
+          "bounds": "[108,2222][614,2279]"
+        },
+        {
+          "class": "Button",
+          "text": "",
+          "desc": "Add new, collapsed",
+          "bounds": "[891,2149][1038,2296]"
+        },
+        {
+          "class": "TextView",
+          "text": "\uea04",
+          "desc": "",
+          "bounds": "[933,2191][996,2254]"
+        }
+      ],
+      "error": null
+    },
+    {
+      "execution": 10,
+      "sourceLine": 2342,
+      "responseSourceLine": 2343,
+      "status": "failed",
+      "actualResult": null,
+      "error": {
+        "type": "selenium.common.exceptions.TimeoutException",
+        "message": "",
+        "traceback": [
+          "Traceback (most recent call last):",
+          "  File \"<external-frame>\", line 590, in <frame>",
+          "  File \"<external-frame>\", line 575, in <frame>",
+          "  File \"<amkernel-cell-10>\", line 2, in <frame>",
+          "  File \"<external-frame>\", line 121, in <frame>",
+          "selenium.common.exceptions.TimeoutException"
+        ]
+      }
+    },
+    {
+      "execution": 11,
+      "sourceLine": 2581,
+      "responseSourceLine": 2582,
+      "status": "completed",
+      "actualResult": {
+        "package": "net.cozic.joplin",
+        "activity": ".MainActivity",
+        "hasIdeasTitle": true,
+        "hasNotebooks": true,
+        "todoCount": 3,
+        "todos": [
+          "to-do: Recipe Ideas",
+          "to-do: Financial Plan",
+          "to-do: Work Tasks"
+        ]
+      },
+      "error": null
+    },
+    {
+      "execution": 12,
+      "sourceLine": 2639,
+      "responseSourceLine": 2640,
+      "status": "completed",
+      "actualResult": {
+        "ownedSessionId": "81fdb391-92df-4d07-95c5-c7a7430f21a9",
+        "quitReturned": true
+      },
+      "error": null
+    }
+  ],
+  "businessFinalCaptured": true,
+  "historicalCleanup": {
+    "agentSession": {
+      "agentQuitReturned": true,
+      "attribution": "agent",
+      "sessionIdSha256": "09190ebe8ef6e00490e2a58d3143d7d491223ddb83c851e8d702804e9f760336",
+      "status": "closed",
+      "verification": {
+        "activeSessionCount": 0,
+        "attemptedSessionCount": 1,
+        "ownedSessionCount": 1,
+        "pendingCreateCount": 0,
+        "pendingRequestCount": 0,
+        "reclaimedSessionCount": 0,
+        "reclaimedSessionHashes": [],
+        "sessions": [
+          {
+            "absentVerified": true,
+            "alreadyAbsent": true,
+            "errors": [],
+            "presentVerified": false,
+            "quitReturned": false,
+            "sessionHash": "09190ebe8ef6e00490e2a58d3143d7d491223ddb83c851e8d702804e9f760336"
+          }
+        ],
+        "status": "unknown",
+        "unknownCreationOutcomeCount": 0
+      },
+      "verificationStatus": "absent"
+    },
+    "environment": "closed",
+    "taskTearDown": "completed"
+  },
+  "historicalTermination": {
+    "actionBudgetClosureReason": null,
+    "businessDeadlineReached": false,
+    "cleanupRequested": false,
+    "deadlines": {
+      "remainingSeconds": {
+        "business": 561.0212980000069,
+        "cleanup": 741.0212972500012,
+        "force": 751.0212948750122
+      },
+      "started": true
+    },
+    "outerTermination": false,
+    "reason": "completed",
+    "rpcCommands": [
+      "set_interrupt_mode",
+      "prompt"
+    ]
+  },
+  "caveats": [
+    "exec10line2 fails before later reads",
+    "exec11hasIdeasTitle is text membership, not toolbar anchoring",
+    "exec9toolbarIdeas and3checkboxes observed but no list-end/coverage proof",
+    "Original invalidContract is direct record, exact live cache and early0 branch are source-derived"
+  ]
+}

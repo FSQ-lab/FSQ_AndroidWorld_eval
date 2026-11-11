@@ -1,0 +1,14 @@
+{
+  "name": "original-video-raw-stat",
+  "observedAtUnix": 1794006650.779541,
+  "command": [
+    "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+    "-s",
+    "emulator-5554",
+    "shell",
+    "ls -l /data/media/0/Download/ZwUN_moment_70_.mp4; sha256sum /data/media/0/Download/ZwUN_moment_70_.mp4"
+  ],
+  "returnCode": 0,
+  "stdout": "-rw-rw---- 1 u0_a168 media_rw 13952403 2026-11-06 16:57 /data/media/0/Download/ZwUN_moment_70_.mp4\n8b01c2da29a1926302172bca43c6f7600e5d1b143a7870f4b5ddc7601b4e87cc  /data/media/0/Download/ZwUN_moment_70_.mp4\n",
+  "stderr": ""
+}

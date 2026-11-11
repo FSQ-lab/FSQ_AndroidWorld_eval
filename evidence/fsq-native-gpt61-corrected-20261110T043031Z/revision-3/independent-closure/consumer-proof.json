@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "kind": "native_canonical_swipe_independent_consumer_proof",
+  "exitCode": 0,
+  "stdout": "{\"sourceSha256\": \"1d448e1ee60b0a1c00814d5ed0b10728172ae29f69078be104d69acafa4f9c03\", \"fixtureSha256\": \"38c84f655fa2deb24e58075fde2d4dd08287e3d3c2cb6792779d0207df8bd866\", \"cases\": [{\"case\": \"canonical_swipe\", \"accepted\": true, \"answerStatus\": \"valid\", \"exactSummaryAndBusinessStatus\": true, \"attempted\": 5, \"admitted\": 5, \"succeeded\": 5, \"failed\": 0, \"inFlight\": 0, \"outstandingTickets\": [], \"killStatus\": \"succeeded\", \"mainFinalOrdering\": \"unknown\", \"eventCount\": 23}, {\"case\": \"rehashed_noncanonical_alias\", \"accepted\": false, \"exceptionType\": \"EvidenceError\", \"reason\": \"Noncanonical dispatch capability\", \"journalAndReferencesRehashed\": true}, {\"case\": \"rehashed_swipe_count_disguise\", \"accepted\": false, \"exceptionType\": \"EvidenceError\", \"reason\": \"Mislabeled counted write\", \"journalAndReferencesRehashed\": true}], \"temporaryRootRemoved\": true, \"original102ConsumerOrTaskExecuted\": false, \"deviceModelOrEvaluatorInvoked\": false}\n",
+  "stderr": "",
+  "observations": {
+    "sourceSha256": "1d448e1ee60b0a1c00814d5ed0b10728172ae29f69078be104d69acafa4f9c03",
+    "fixtureSha256": "38c84f655fa2deb24e58075fde2d4dd08287e3d3c2cb6792779d0207df8bd866",
+    "cases": [
+      {
+        "case": "canonical_swipe",
+        "accepted": true,
+        "answerStatus": "valid",
+        "exactSummaryAndBusinessStatus": true,
+        "attempted": 5,
+        "admitted": 5,
+        "succeeded": 5,
+        "failed": 0,
+        "inFlight": 0,
+        "outstandingTickets": [],
+        "killStatus": "succeeded",
+        "mainFinalOrdering": "unknown",
+        "eventCount": 23
+      },
+      {
+        "case": "rehashed_noncanonical_alias",
+        "accepted": false,
+        "exceptionType": "EvidenceError",
+        "reason": "Noncanonical dispatch capability",
+        "journalAndReferencesRehashed": true
+      },
+      {
+        "case": "rehashed_swipe_count_disguise",
+        "accepted": false,
+        "exceptionType": "EvidenceError",
+        "reason": "Mislabeled counted write",
+        "journalAndReferencesRehashed": true
+      }
+    ],
+    "temporaryRootRemoved": true,
+    "original102ConsumerOrTaskExecuted": false,
+    "deviceModelOrEvaluatorInvoked": false
+  },
+  "command": [
+    "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/bin/python",
+    "-B",
+    "-c",
+    "<inlineScript>"
+  ],
+  "inlineScript": "\nimport copy,hashlib,json,tempfile\nfrom pathlib import Path\nfrom fsq_androidworld_eval.fsq_evidence import EvidenceError,validate_native_evidence\nimport fsq_androidworld_eval.fsq_evidence as consumer\nfixture=json.loads(Path('tests/fixtures/fsq_native_swipe.json').read_text())\ndef artifact(path,payload=None,lines=None):\n data=((json.dumps(payload,ensure_ascii=False,sort_keys=True)+'\\n').encode() if lines is None else ''.join(json.dumps(e,sort_keys=True)+'\\n' for e in lines).encode())\n path.write_bytes(data)\n return {'path':str(path),'sha256':hashlib.sha256(data).hexdigest(),'sizeBytes':len(data),'visibility':'evaluator_private'}\nobserved=[]\nwith tempfile.TemporaryDirectory(prefix='fsq-r3-independent-consumer-') as td:\n root=Path(td).resolve()\n for case in ('canonical_swipe','rehashed_noncanonical_alias','rehashed_swipe_count_disguise'):\n  current=copy.deepcopy(fixture);result=current['result'];case_root=root/case;case_root.mkdir()\n  result['fsq'].update(taskResult=artifact(case_root/'task.json',current['task']),verification=artifact(case_root/'verification.json',current['verification']))\n  events=result['actionBudget']['events']\n  if case=='rehashed_noncanonical_alias':\n   for event in events:\n    if event.get('capability')=='launch_app':event['capability']='launchApp'\n  if case=='rehashed_swipe_count_disguise':\n   for event in events:\n    if event.get('capability')=='swipe':event['countedWrite']=False\n   for counter in ('attempted','admitted','succeeded'):result['actionBudget'][counter]-=1\n  result['actionAudit']=artifact(case_root/'audit.jsonl',lines=events)\n  try:\n   proof=validate_native_evidence({'result':result},episode_root=case_root,expected_task_id=result['taskId'],expected_serial=result['nativeTarget']['serial'],maximum=10)\n  except EvidenceError as error:\n   assert case!='canonical_swipe',str(error)\n   expected='Noncanonical dispatch capability' if case=='rehashed_noncanonical_alias' else 'Mislabeled counted write'\n   assert str(error)==expected,(case,str(error))\n   observed.append({'case':case,'accepted':False,'exceptionType':type(error).__name__,'reason':str(error),'journalAndReferencesRehashed':True})\n  else:\n   assert case=='canonical_swipe',case\n   audit=proof['audit']\n   assert (audit['attempted'],audit['admitted'],audit['succeeded'],audit['failed'],audit['inFlight'])==(5,5,5,0,0)\n   assert not audit['outstandingTickets']\n   assert proof['answer']['summary']==result['mainAnswer']['summary'] and proof['answer']['businessStatus']==result['mainAnswer']['businessStatus']\n   assert proof['killEvidence']['relativeToMainFinal']=='unknown'\n   observed.append({'case':case,'accepted':True,'answerStatus':proof['answer']['status'],'exactSummaryAndBusinessStatus':True,'attempted':audit['attempted'],'admitted':audit['admitted'],'succeeded':audit['succeeded'],'failed':audit['failed'],'inFlight':audit['inFlight'],'outstandingTickets':audit['outstandingTickets'],'killStatus':proof['killEvidence']['status'],'mainFinalOrdering':proof['killEvidence']['relativeToMainFinal'],'eventCount':audit['eventCount']})\n temporary_removed_on_exit=True\nprint(json.dumps({'sourceSha256':hashlib.sha256(Path(consumer.__file__).read_bytes()).hexdigest(),'fixtureSha256':hashlib.sha256(Path('tests/fixtures/fsq_native_swipe.json').read_bytes()).hexdigest(),'cases':observed,'temporaryRootRemoved':not Path(td).exists(),'original102ConsumerOrTaskExecuted':False,'deviceModelOrEvaluatorInvoked':False},ensure_ascii=False))\n",
+  "environmentOverride": {
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "scope": "Fresh subprocess imports only the revised local evidence consumer; desensitized fixture references are rebuilt inside temporary roots. No original102 consumer/task/evaluator is invoked.",
+  "owner313SuiteRerun": false,
+  "oldChecksRerun": false
+}

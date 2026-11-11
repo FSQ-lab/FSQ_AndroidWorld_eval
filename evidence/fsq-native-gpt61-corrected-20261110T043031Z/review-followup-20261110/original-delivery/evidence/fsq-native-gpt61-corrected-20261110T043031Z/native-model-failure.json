@@ -1,0 +1,55 @@
+{
+  "receipt_type": "fsq_native_provider_configuration_attempt",
+  "checkout": "/Users/qunmi/Documents/FSQ_LAB/FSQ",
+  "commit": "7e3f0793f3962ef2d8cc92f06310326c9077ce0d",
+  "python": "/Users/qunmi/Documents/FSQ_LAB/FSQ/.venv/bin/python",
+  "python_version": "3.11.16",
+  "source_package_version": "0.1.2",
+  "installed_distribution_version": "0.1.0a1",
+  "import_identity": "editable source checkout/fsq_agent",
+  "configuration_command": ".venv/bin/fsq providers configure github_copilot --model gpt-6.1-sol",
+  "requested_configuration_provider": "github_copilot",
+  "requested_configuration_model": "gpt-6.1-sol",
+  "original_authentication_process": {
+    "name": "fsq-copilot-auth-20261110",
+    "status": "failed",
+    "exit_code": 4,
+    "reported_error": "GitHub Copilot configuration failed.",
+    "reported_action": "Retry sign-in and select an available model.",
+    "underlying_cause": "unknown: native Application wrapper replaces all underlying exceptions with the same public error",
+    "new_authentication_flow_started_after_user_confirmation": false
+  },
+  "observed_configuration_after_failure": {
+    "provider": "deepseek",
+    "model": "deepseek-flash",
+    "github_oauth_credential_file": "absent",
+    "copilot_provider_credential_file": "absent",
+    "previous_provider_credential": "present_nonempty",
+    "previous_configuration_backup": "recoverable; private location and contents intentionally omitted"
+  },
+  "native_compatibility": {
+    "exact_model_id_passes_local_filter": true,
+    "authenticated_model_discovery_completion": "unknown",
+    "exact_model_offered_by_service": "unknown",
+    "intended_protocol": "OpenAI Responses via FSQ native ModelProviderSession",
+    "intended_endpoint_family": "plan-dependent https://api.githubcopilot.com, https://api.business.githubcopilot.com, or https://api.enterprise.githubcopilot.com",
+    "responses_protocol_exercised": false
+  },
+  "inference": {
+    "status": "not_run_missing_fsq_owned_authentication",
+    "inference_request_model": null,
+    "actual_returned_model": "unknown",
+    "response_text": null,
+    "usage": "unknown",
+    "visible_identity_boundary": "FSQ public ModelResult exposes text, usage, finish_reason, parsed_output; it does not expose server response.model. No claim is made that the requested model actually served a request."
+  },
+  "scope": {
+    "fsq_development_files_modified": false,
+    "borrowed_client_credentials": false,
+    "model_fallback_executed": false,
+    "android_access": false,
+    "business_agent_started": false,
+    "mock_or_monkeypatch_used": false
+  },
+  "next_step": "A fresh operator-authorized native sign-in is required because the prior process has ended without saving FSQ-owned Copilot credentials. In the FSQ checkout run .venv/bin/fsq providers configure github_copilot --model gpt-6.1-sol and complete that new official GitHub device flow while its process is active. No retry is initiated by this receipt. On successful activation use FSQ native ModelProviderSession.complete(ModelRequest(input='Reply with FSQ_OK.', reasoning_effort='low')) without constructing a Harness. Do not start evaluation before a genuine successful-call receipt, or label an unsupported model/protocol as proven."
+}

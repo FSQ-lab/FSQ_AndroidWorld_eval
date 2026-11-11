@@ -1,0 +1,31 @@
+{
+  "timestampUtc": "2026-11-10T06:45:43.471410+00:00",
+  "kind": "authorized_single_target_stage_launch",
+  "authorization": "authorization-approved-qualify-smoke.json",
+  "authorizationDigest": "41a5d46b33215a384879de34296fba1eaa737e4aa146531322f94df08b4268af",
+  "issuedAtUtc": "2026-11-10T06:44:43.285449+00:00",
+  "expiresAtUtc": "2026-11-10T08:14:43.285449+00:00",
+  "inputAdmission": "actual-input-admission.json",
+  "inputAdmissionExitCode": 0,
+  "qualify": {
+    "command": [
+      "/bin/bash",
+      "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-2/resource-admission-20261110/prospective-commands.sh",
+      "qualify"
+    ],
+    "job": "bg_84",
+    "status": "launched_result_pending",
+    "expectedReport": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-2/resource-admission-20261110/future-live-qualify-smoke-5554-7f139c2e/qualify/readiness.json"
+  },
+  "smoke": {
+    "status": "not_started",
+    "onlyIfQualificationPasses": true,
+    "taskIndex": 102,
+    "taskName": "SystemWifiTurnOff",
+    "attemptLimit": 1,
+    "expectedOutput": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-2/resource-admission-20261110/future-live-qualify-smoke-5554-7f139c2e/smoke-102-SystemWifiTurnOff"
+  },
+  "targetReleasedToAMK": false,
+  "retainFSQFirstForCoordinatorNextStage": true,
+  "laterStagesStarted": false
+}

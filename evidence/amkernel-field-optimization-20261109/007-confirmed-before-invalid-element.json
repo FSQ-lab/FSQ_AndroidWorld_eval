@@ -1,0 +1,64 @@
+{
+  "sequence": 7,
+  "label": "confirmed-before-invalid-element",
+  "command": {
+    "op": "exec",
+    "label": "confirmed-before-invalid-element",
+    "code": "from selenium.common.exceptions import InvalidElementStateException\nraise InvalidElementStateException('Cannot type into a noneditable control')"
+  },
+  "startedAtUnix": 1794191732.848057,
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"status\":\"failed\",\"stdout\":\"\",\"stderr\":\"\",\"error\":{\"type\":\"selenium.common.exceptions.InvalidElementStateException\",\"message\":\"<custom __str__ omitted for selenium.common.exceptions.InvalidElementStateException>\",\"traceback\":[\"Traceback (most recent call last):\",\"  File \\\"/Users/qunmi/Documents/FSQ_LAB/amkernel/src/amkernel/runner.py\\\", line 590, in _execute_cell\",\"    value = _compile_and_execute(code, execution_count, namespace)\",\"            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\",\"  File \\\"/Users/qunmi/Documents/FSQ_LAB/amkernel/src/amkernel/runner.py\\\", line 575, in _compile_and_execute\",\"    exec(prefix_code, namespace, namespace)\",\"  File \\\"<amkernel-cell-1>\\\", line 2, in <module>\",\"selenium.common.exceptions.InvalidElementStateException: <custom __str__ omitted for selenium.common.exceptions.InvalidElementStateException>\"]},\"executionCount\":1,\"durationMs\":1,\"kernelState\":\"alive\",\"runtime\":{\"executable\":\"/Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python\",\"pythonVersion\":\"3.11.16\",\"workingDirectory\":\"/Users/qunmi/Documents/FSQ_LAB/amkernel\",\"environmentKind\":\"project_venv\",\"implementation\":\"CPython\",\"platform\":\"macOS-26.6.2-arm64-arm-64bit\",\"packages\":[]},\"output\":{\"totalBytes\":0,\"totalLines\":0,\"discardedBytes\":0,\"discardedLines\":0,\"truncated\":false,\"limitBytes\":268435456,\"limitExceeded\":false,\"live\":\"unavailable\"},\"displays\":[],\"artifacts\":[]}"
+      }
+    ],
+    "structured_content": {
+      "status": "failed",
+      "stdout": "",
+      "stderr": "",
+      "error": {
+        "type": "selenium.common.exceptions.InvalidElementStateException",
+        "message": "<custom __str__ omitted for selenium.common.exceptions.InvalidElementStateException>",
+        "traceback": [
+          "Traceback (most recent call last):",
+          "  File \"/Users/qunmi/Documents/FSQ_LAB/amkernel/src/amkernel/runner.py\", line 590, in _execute_cell",
+          "    value = _compile_and_execute(code, execution_count, namespace)",
+          "            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+          "  File \"/Users/qunmi/Documents/FSQ_LAB/amkernel/src/amkernel/runner.py\", line 575, in _compile_and_execute",
+          "    exec(prefix_code, namespace, namespace)",
+          "  File \"<amkernel-cell-1>\", line 2, in <module>",
+          "selenium.common.exceptions.InvalidElementStateException: <custom __str__ omitted for selenium.common.exceptions.InvalidElementStateException>"
+        ]
+      },
+      "executionCount": 1,
+      "durationMs": 1,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/Users/qunmi/Documents/FSQ_LAB/amkernel",
+        "environmentKind": "project_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "unavailable"
+      },
+      "displays": [],
+      "artifacts": []
+    },
+    "is_error": false,
+    "result_type": "complete"
+  },
+  "completedAtUnix": 1794191732.924547
+}

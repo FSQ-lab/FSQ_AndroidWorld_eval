@@ -1,0 +1,1142 @@
+{
+  "index": 86,
+  "name": "SimpleSmsSendReceivedAddress",
+  "goal": "Text the address of the event to Gabriel Ibrahim that Oscar Mohamed just sent me in Simple SMS Messenger",
+  "reward": 0.0,
+  "classification": "failed",
+  "initialization": {
+    "initializationReferenceTime": {
+      "referenceTime": "2023-10-15T15:34:00+00:00",
+      "timezone": "UTC"
+    },
+    "initializedGoal": "Text the address of the event to Gabriel Ibrahim that Oscar Mohamed just sent me in Simple SMS Messenger"
+  },
+  "frozenTaskSpec": {
+    "apps": [
+      "simple sms messenger"
+    ],
+    "complexity": 1.8,
+    "difficulty": "medium",
+    "family": "android",
+    "index": 86,
+    "instanceSeed": 25708979,
+    "maxActions": 18,
+    "maxSteps": 18,
+    "name": "SimpleSmsSendReceivedAddress",
+    "params": {
+      "message": "789 E Oak St, Phoenix AZ 85006",
+      "name1": "Gabriel Ibrahim",
+      "name2": "Oscar Mohamed",
+      "number": "+19696338338",
+      "seed": 25708979
+    },
+    "paramsSha256": "7de6505a54d36b249e642ab96b03c4ced5b19fff273c961d7b6128513ff9b975",
+    "paramsTransport": "json",
+    "tags": [
+      "information_retrieval",
+      "parameterized"
+    ],
+    "timeBudget": {
+      "businessSeconds": 1200,
+      "cleanupWindowSeconds": 180,
+      "episodeSeconds": 1810,
+      "forceSeconds": 1390,
+      "recoveryWindowSeconds": 120,
+      "terminationGraceSeconds": 10
+    }
+  },
+  "mainSteps": [
+    {
+      "stepId": 6,
+      "tool": "agent_runtime.runner",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [],
+        "evidence": [
+          "Source conversation observation: 000016-ui_snapshot.json.",
+          "Final UI showed Gabriel Ibrahim, the outgoing address message, and thread_success indicator.",
+          "assert_with_ai passed with confidence 0.99, confirming the exact outgoing address, successful-send checkmark, and empty composer.",
+          "Final screenshot: artifacts/screenshots/screenshot-agent-assert-with-ai-27-invoke-assert-with-ai-1-af55b5f8a3e5.png.",
+          "Simple SMS Messenger was stopped after final verification."
+        ],
+        "plan_updates": [
+          "Opened the source conversation under +14379969633; Oscar Mohamed’s name was not displayed.",
+          "Started a new conversation with Gabriel Ibrahim using the contact picker."
+        ],
+        "pre_plan": [
+          {
+            "action": "Open Oscar Mohamed’s conversation.",
+            "status": "adjusted",
+            "step_id": 1,
+            "success_criteria": [
+              "Identify and open the source conversation."
+            ]
+          },
+          {
+            "action": "Read the latest incoming event address.",
+            "status": "success",
+            "step_id": 2,
+            "success_criteria": [
+              "Extract the address from the incoming message."
+            ]
+          },
+          {
+            "action": "Open or start Gabriel Ibrahim’s conversation.",
+            "status": "success",
+            "step_id": 3,
+            "success_criteria": [
+              "Gabriel Ibrahim is the selected recipient."
+            ]
+          },
+          {
+            "action": "Enter the event address.",
+            "status": "success",
+            "step_id": 4,
+            "success_criteria": [
+              "Composer contains the extracted address."
+            ]
+          },
+          {
+            "action": "Tap Send and verify the outgoing message.",
+            "status": "success",
+            "step_id": 5,
+            "success_criteria": [
+              "The address appears as a successfully sent outgoing message."
+            ]
+          }
+        ],
+        "satisfied_criteria": [
+          "Gabriel Ibrahim’s conversation shows a successfully sent outgoing message containing “789 E Oak St, Phoenix AZ 85006”, matching the address in the inspected incoming message."
+        ],
+        "schema_version": "task_run_v1",
+        "status": "inconclusive",
+        "summary": "Sent “789 E Oak St, Phoenix AZ 85006” to Gabriel Ibrahim and verified the outgoing message was successfully sent. The source conversation displayed only a phone number, so its attribution to Oscar Mohamed could not be confirmed.",
+        "unmet_criteria": [
+          "Could not conclusively verify that the source address was provided by Oscar Mohamed because the source conversation was identified only by phone number."
+        ]
+      }
+    },
+    {
+      "stepId": 7,
+      "tool": "agent_runtime.verifier",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [],
+        "evidence": [
+          "000002-ui_snapshot.json displays first name “Oscar”, last name “Mohamed”, and phone “+1 437-996-9633” together in the contact form.",
+          "000016-ui_snapshot.json shows the conversation headed “+14379969633” with the incoming address “789 E Oak St, Phoenix AZ 85006” at 15:34.",
+          "000026-ui_snapshot.json identifies the destination conversation as Gabriel Ibrahim; subsequent successful input and Send calls use the exact source address.",
+          "Backend assert_with_ai call_Wkdtzbfoui4bfA9fyReo3xcw returned status=passed and passed=true, confirming Gabriel Ibrahim’s right-aligned outgoing address message, successful-send checkmark, and empty composer.",
+          "The AI assertion execution references screenshot artifacts/screenshots/screenshot-agent-assert-with-ai-27-prepare-before-action-1-ff4bd448a931.png. The agent’s structured output reports the corresponding successful assertion and sent-message result."
+        ],
+        "plan_updates": [
+          "The agent’s source-attribution uncertainty is resolved by the supplied initial UI snapshot, which displays Oscar Mohamed and the source phone number together."
+        ],
+        "pre_plan": [
+          {
+            "action": "Verify the supplied final goal using source-message evidence and the backend assertion result.",
+            "status": "success",
+            "step_id": 1,
+            "success_criteria": [
+              "Link the source phone number to Oscar Mohamed.",
+              "Confirm the source address matches the sent outgoing message in Gabriel Ibrahim’s conversation."
+            ]
+          }
+        ],
+        "satisfied_criteria": [
+          "Gabriel Ibrahim’s conversation shows a sent outgoing message containing the event address Oscar Mohamed just provided."
+        ],
+        "schema_version": "task_run_v1",
+        "status": "success",
+        "summary": "The evidence supports that Gabriel Ibrahim’s conversation shows a successfully sent outgoing message containing Oscar Mohamed’s event address: “789 E Oak St, Phoenix AZ 85006”.",
+        "unmet_criteria": []
+      }
+    }
+  ],
+  "budgetSummary": {
+    "admitted": 14,
+    "attempted": 14,
+    "deadlineExceeded": false,
+    "deadlineMonotonic": 722695.289853416,
+    "denied": 0,
+    "deviceRestoredByClose": false,
+    "exclusions": [
+      "driver_construction",
+      "uiautomator2_service_startup",
+      "observation_and_assertion_side_effects",
+      "external_processes_and_direct_driver_access"
+    ],
+    "exhausted": false,
+    "failed": 0,
+    "inFlight": 0,
+    "inputTextUnit": "composite_click_optional_clear_set_text",
+    "maximum": 18,
+    "securityBoundary": false,
+    "succeeded": 14,
+    "unit": "admitted_android_harness_write_capability_dispatch",
+    "writeCapabilities": [
+      "launch_app",
+      "kill_app",
+      "tap_on",
+      "tap_at",
+      "long_press_on",
+      "input_text",
+      "press_key",
+      "swipe"
+    ]
+  },
+  "actions": [
+    {
+      "ordinal": 0,
+      "stepId": "agent-launch_app-1",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [],
+      "output": {
+        "app_id": "com.simplemobiletools.smsmessenger"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[0]"
+    },
+    {
+      "ordinal": 1,
+      "stepId": "agent-ui_snapshot-2",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:34",
+        "23:34",
+        "SMS Messenger notification: +14379969633",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Add to contacts",
+        "Save",
+        "Oscar",
+        "Mohamed",
+        "+1 437-996-9633",
+        "Mobile",
+        "Mobile Phone",
+        "Show dropdown menu",
+        "More details",
+        "Add to existing"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 35351,
+          "retained_characters": 7421
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 23,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[1]"
+    },
+    {
+      "ordinal": 2,
+      "stepId": "agent-press_key-3",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[2]"
+    },
+    {
+      "ordinal": 3,
+      "stepId": "agent-ui_snapshot-4",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:34",
+        "23:34",
+        "SMS Messenger notification: +14379969633",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Sun, Oct 15",
+        "Sun, Oct 15",
+        "Gmail",
+        "Gmail",
+        "Photos",
+        "Photos",
+        "YouTube",
+        "YouTube",
+        "Home",
+        "Phone",
+        "Phone",
+        "Messages",
+        "Messages",
+        "Chrome",
+        "Chrome",
+        "Calendar",
+        "Predicted app: Calendar",
+        "Search",
+        "Google app",
+        "Voice search",
+        "Google Lens"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 28431,
+          "retained_characters": 7773
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[3]"
+    },
+    {
+      "ordinal": 4,
+      "stepId": "agent-launch_app-5",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "app_id": "com.simplemobiletools.smsmessenger"
+      },
+      "uiLabels": [],
+      "output": {
+        "app_id": "com.simplemobiletools.smsmessenger"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[4]"
+    },
+    {
+      "ordinal": 5,
+      "stepId": "agent-swipe-6",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[5]"
+    },
+    {
+      "ordinal": 6,
+      "stepId": "agent-ui_snapshot-7",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "SMS Messenger notification: +14379969633",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "ATX",
+        "ATX",
+        "Audio Recorder",
+        "Audio Recorder",
+        "Broccoli",
+        "Broccoli",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Chrome",
+        "Chrome",
+        "Clipper",
+        "Clipper",
+        "Clock",
+        "Clock",
+        "Contacts",
+        "Contacts",
+        "Draw",
+        "Draw",
+        "Drive",
+        "Drive",
+        "Files",
+        "Files",
+        "Gallery",
+        "Gallery",
+        "Gmail",
+        "Gmail",
+        "Google",
+        "Google",
+        "Joplin",
+        "Joplin",
+        "Maps",
+        "Maps",
+        "Markor",
+        "Markor",
+        "Messages",
+        "Messages",
+        "OpenTracks",
+        "OpenTracks",
+        "OsmAnd",
+        "OsmAnd",
+        "Phone",
+        "Phone",
+        "Photos",
+        "Photos",
+        "Gallery",
+        "Gallery",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Tasks",
+        "Tasks",
+        "Search",
+        "Google app",
+        "Search apps, web and more",
+        "Voice search",
+        "Google Lens",
+        "Home"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 37450,
+          "retained_characters": 12681
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 6,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[6]"
+    },
+    {
+      "ordinal": 7,
+      "stepId": "agent-ui_snapshot-8",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "SMS Messenger notification: +14379969633",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "ATX",
+        "ATX",
+        "Audio Recorder",
+        "Audio Recorder",
+        "Broccoli",
+        "Broccoli",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Chrome",
+        "Chrome",
+        "Clipper",
+        "Clipper",
+        "Clock",
+        "Clock",
+        "Contacts",
+        "Contacts",
+        "Draw",
+        "Draw",
+        "Drive",
+        "Drive",
+        "Files",
+        "Files",
+        "Gallery",
+        "Gallery",
+        "Gmail",
+        "Gmail",
+        "Google",
+        "Google",
+        "Joplin",
+        "Joplin",
+        "Maps",
+        "Maps",
+        "Markor",
+        "Markor",
+        "Messages",
+        "Messages",
+        "OpenTracks",
+        "OpenTracks",
+        "OsmAnd",
+        "OsmAnd",
+        "Phone",
+        "Phone",
+        "Photos",
+        "Photos",
+        "Gallery",
+        "Gallery",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Tasks",
+        "Tasks",
+        "Search",
+        "Google app",
+        "Search apps, web and more",
+        "Voice search",
+        "Google Lens",
+        "Home"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 37450,
+          "retained_characters": 12681
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 6,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[7]"
+    },
+    {
+      "ordinal": 8,
+      "stepId": "agent-input_text-9",
+      "action": "input_text",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.google.android.apps.nexuslauncher:id/input"
+        },
+        "text": "SMS",
+        "textType": "literal"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[8]"
+    },
+    {
+      "ordinal": 9,
+      "stepId": "agent-ui_snapshot-10",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "SMS Messenger notification: +14379969633",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "SMS Messenger",
+        "SMS Messenger has 1 notification",
+        "SMS0",
+        "SMS0",
+        "Search null",
+        "SMS1",
+        "SMS1",
+        "Search null",
+        "SMS2",
+        "SMS2",
+        "Search null",
+        "Search",
+        "Google app",
+        "SMS",
+        "Clear search box",
+        "Home",
+        "Back",
+        "Switch input method"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 35234,
+          "retained_characters": 9257
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 11,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[9]"
+    },
+    {
+      "ordinal": 10,
+      "stepId": "agent-tap_on-11",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "SMS Messenger"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[10]"
+    },
+    {
+      "ordinal": 11,
+      "stepId": "agent-ui_snapshot-12",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "SMS Messenger notification: +14379969633",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Search",
+        "Search",
+        "Settings",
+        "About",
+        "More options",
+        "+14379969633",
+        "789 E Oak St, Phoenix AZ 85006",
+        "15:34"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 27980,
+          "retained_characters": 7666
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 7,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[11]"
+    },
+    {
+      "ordinal": 12,
+      "stepId": "agent-tap_on-13",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "+14379969633"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[12]"
+    },
+    {
+      "ordinal": 13,
+      "stepId": "agent-ui_snapshot-14",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Back",
+        "+14379969633",
+        "Delete",
+        "Dial number",
+        "Add Person",
+        "More options",
+        "15:34",
+        "789 E Oak St, Phoenix AZ 85006",
+        "Attachment",
+        "Type a message…",
+        "SMS",
+        "OK"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 26322,
+          "retained_characters": 7408
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 7,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[13]"
+    },
+    {
+      "ordinal": 14,
+      "stepId": "agent-press_key-15",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[14]"
+    },
+    {
+      "ordinal": 15,
+      "stepId": "agent-ui_snapshot-16",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Search",
+        "Search",
+        "Settings",
+        "About",
+        "More options",
+        "+14379969633",
+        "789 E Oak St, Phoenix AZ 85006",
+        "15:34"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 27530,
+          "retained_characters": 7543
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 7,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[15]"
+    },
+    {
+      "ordinal": 16,
+      "stepId": "agent-tap_on-17",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.simplemobiletools.smsmessenger:id/conversations_fab"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[16]"
+    },
+    {
+      "ordinal": 17,
+      "stepId": "agent-ui_snapshot-18",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Back",
+        "Switch input method",
+        "Back",
+        "New conversation",
+        "Add Contact or Number…",
+        "Gabriel Ibrahim",
+        "+19696338338",
+        "G"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 29930,
+          "retained_characters": 7612
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 11,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[17]"
+    },
+    {
+      "ordinal": 18,
+      "stepId": "agent-press_key-19",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[18]"
+    },
+    {
+      "ordinal": 19,
+      "stepId": "agent-ui_snapshot-20",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Back",
+        "New conversation",
+        "Add Contact or Number…",
+        "Gabriel Ibrahim",
+        "+19696338338",
+        "G"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 22390,
+          "retained_characters": 5969
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 6,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[19]"
+    },
+    {
+      "ordinal": 20,
+      "stepId": "agent-tap_on-21",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "Gabriel Ibrahim"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[20]"
+    },
+    {
+      "ordinal": 21,
+      "stepId": "agent-ui_snapshot-22",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Back",
+        "Gabriel Ibrahim",
+        "Dial number",
+        "Add Person",
+        "More options",
+        "Attachment",
+        "Type a message…",
+        "SMS",
+        "OK",
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Back",
+        "Switch input method"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 30314,
+          "retained_characters": 7741
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[21]"
+    },
+    {
+      "ordinal": 22,
+      "stepId": "agent-input_text-23",
+      "action": "input_text",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.simplemobiletools.smsmessenger:id/thread_type_message"
+        },
+        "text": "789 E Oak St, Phoenix AZ 85006",
+        "textType": "literal"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[22]"
+    },
+    {
+      "ordinal": 23,
+      "stepId": "agent-assert_state-24",
+      "action": "assert_state",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "element": {
+          "resourceId": "com.simplemobiletools.smsmessenger:id/thread_type_message",
+          "text": "789 E Oak St, Phoenix AZ 85006"
+        },
+        "optional": false
+      },
+      "uiLabels": [],
+      "output": {
+        "exists": true
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[23]"
+    },
+    {
+      "ordinal": 24,
+      "stepId": "agent-tap_on-25",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.simplemobiletools.smsmessenger:id/thread_send_message"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[24]"
+    },
+    {
+      "ordinal": 25,
+      "stepId": "agent-ui_snapshot-26",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Back",
+        "Gabriel Ibrahim",
+        "Delete",
+        "Dial number",
+        "Add Person",
+        "More options",
+        "15:36",
+        "789 E Oak St, Phoenix AZ 85006",
+        "Attachment",
+        "Type a message…",
+        "SMS",
+        "OK",
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Back",
+        "Switch input method"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 34312,
+          "retained_characters": 9163
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[25]"
+    },
+    {
+      "ordinal": 26,
+      "stepId": "agent-assert_with_ai-27",
+      "action": "assert_with_ai",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "prompt": "Verify Gabriel Ibrahim's conversation shows a sent outgoing message containing exactly '789 E Oak St, Phoenix AZ 85006', with a successful sent indicator and empty composer.",
+        "optional": false
+      },
+      "uiLabels": [],
+      "output": {
+        "status": "passed",
+        "passed": true,
+        "explanation": "Gabriel Ibrahim's conversation shows a right-aligned outgoing message with exactly '789 E Oak St, Phoenix AZ 85006', a checkmark indicating successful sending, and an empty composer displaying 'Type a message...'.",
+        "confidence": 0.99,
+        "provider": "github_copilot",
+        "model": "gpt-6.1-sol",
+        "latency_ms": 4709,
+        "token_usage": {
+          "input_tokens": 3283,
+          "output_tokens": 67,
+          "total_tokens": 3350
+        },
+        "artifact_refs": [
+          {
+            "artifact_id": "screenshot-agent-assert-with-ai-27-invoke-assert-with-ai-1-af55b5f8a3e5",
+            "kind": "screenshot",
+            "path": "artifacts/screenshots/screenshot-agent-assert-with-ai-27-invoke-assert-with-ai-1-af55b5f8a3e5.png",
+            "mime_type": "image/png",
+            "size_bytes": 243158,
+            "sha256": "23190095c8a1292ac00c3481f07a232a2cf398f7e26ef35b6d705b7a125cb994",
+            "availability": "available",
+            "unavailable_reason": null,
+            "capture_occurrence": 1,
+            "created_at": "2026-11-10T21:38:51.361387Z",
+            "metadata": {
+              "capture_reason": "assert-with-ai",
+              "redacted": false
+            }
+          }
+        ],
+        "error": null,
+        "metadata": {
+          "provider_metadata": {
+            "endpoint_family": "github_copilot",
+            "copilot_plan": "enterprise"
+          }
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[26]"
+    },
+    {
+      "ordinal": 27,
+      "stepId": "agent-kill_app-28",
+      "action": "kill_app",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "app_id": "com.simplemobiletools.smsmessenger"
+      },
+      "uiLabels": [],
+      "output": {
+        "app_id": "com.simplemobiletools.smsmessenger"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[27]"
+    }
+  ],
+  "originalNativeExecutionPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/086-SimpleSmsSendReceivedAddress/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-086-20261110T213626Z-b2c2e0/execution-result.json",
+  "originalNativeResultPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/086-SimpleSmsSendReceivedAddress/raw-private/fsq-native/worker/fsq-task-result.private.json",
+  "originalGoalPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/086-SimpleSmsSendReceivedAddress/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-086-20261110T213626Z-b2c2e0/sources/000-goal.txt"
+}

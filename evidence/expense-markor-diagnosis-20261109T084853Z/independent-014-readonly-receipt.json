@@ -1,0 +1,74 @@
+{
+  "reviewer": "w4:p2 independent read-only contract acceptance assistant",
+  "observedAtUnix": 1794214585.907688,
+  "scope": "Only three original014 source files, parent raw extraction, and seven directly implicated installed source files were checked; not a whole-host or whole-campaign immutability audit.",
+  "historicalThreeSourcesUnchangedAndStillMatchRegisteredBaseline": true,
+  "parentRawExtractionUnchanged": true,
+  "installedDistributionVersion": "0.1.0",
+  "installedRecordChecks": [
+    {
+      "path": ".venv/lib/python3.11/site-packages/android_world/task_evals/single/expense.py",
+      "sha256": "cc57bd82831a17b427ea93eb4db559f6886cc1df402c0eac4bcb72064d7f3f81",
+      "matchesOwnerSourceProof": true,
+      "matchesInstalledDistributionRECORD": true
+    },
+    {
+      "path": ".venv/lib/python3.11/site-packages/android_world/task_evals/common_validators/sqlite_validators.py",
+      "sha256": "7b932acd2e19f1d4f43cea1badf26ace2ed3363258ae26850d1b09889bfa9d78",
+      "matchesOwnerSourceProof": true,
+      "matchesInstalledDistributionRECORD": true
+    },
+    {
+      "path": ".venv/lib/python3.11/site-packages/android_world/task_evals/utils/sqlite_schema_utils.py",
+      "sha256": "d3b1d796b1faadbdedc78e7f9197f0ee27e3eebf0edd4597cd59f3d0f6e3095b",
+      "matchesOwnerSourceProof": true,
+      "matchesInstalledDistributionRECORD": true
+    },
+    {
+      "path": ".venv/lib/python3.11/site-packages/android_world/utils/fuzzy_match_lib.py",
+      "sha256": "e7376554fd9a413ff00d71656e09609c9070d0b384028b89fd931e32fcfb2969",
+      "matchesOwnerSourceProof": true,
+      "matchesInstalledDistributionRECORD": true
+    },
+    {
+      "path": ".venv/lib/python3.11/site-packages/android_world/task_evals/utils/sqlite_utils.py",
+      "sha256": "56280b32e6aaf7d561bf2e4681a2cc1a6ad930d911105593d17d093678bf1cd0",
+      "matchesOwnerSourceProof": true,
+      "matchesInstalledDistributionRECORD": true
+    },
+    {
+      "path": ".venv/lib/python3.11/site-packages/android_world/env/android_world_controller.py",
+      "sha256": "7027728b5088a9d907bb2c1b3ed65b8767e4d049c2827663c5eee5293823bd70",
+      "matchesOwnerSourceProof": true,
+      "matchesInstalledDistributionRECORD": true
+    },
+    {
+      "path": ".venv/lib/python3.11/site-packages/android_world/utils/file_utils.py",
+      "sha256": "5bd04ccdafba65f4b909c8bb9fca166e5eba92dc2e64c83f80729941dfab2d1d",
+      "matchesOwnerSourceProof": true,
+      "matchesInstalledDistributionRECORD": true
+    }
+  ],
+  "actualInheritedScorer": "AddMultipleRows.is_successful (identity independently checked)",
+  "uniqueExactFrozenTargetAttribution": [
+    {
+      "index": 14,
+      "name": "ExpenseAddMultipleFromMarkor"
+    }
+  ],
+  "ownerAndParentArtifactsIndependentlyRead": [
+    "owner-scorer-source-proof.json",
+    "parent-installed-validator-smoke.json",
+    "parent-original-field-evidence.json"
+  ],
+  "parentSmokeConsistentWithOwnIndependentSmoke": true,
+  "deviceQueries": 0,
+  "sessionsCreated": 0,
+  "builds": 0,
+  "productionOrDependencyChanges": 0,
+  "frozenOrHistoricalWrites": 0,
+  "skillChanges": 0,
+  "newOfficialRuns": 0,
+  "proposalAuthorizedOrStarted": false,
+  "closeout": "Offline branch and render/reference contract diagnosis complete; no rerun required; historical DB-specific unique cause remains unproven, not a blocking evidence request."
+}

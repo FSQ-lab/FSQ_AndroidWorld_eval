@@ -1,0 +1,188 @@
+{
+  "scope": "Original r12v2 033 raw Appium observations, not a filesystem dump or new official result",
+  "sourceAttempt": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/episodes/033-MarkorMergeNotes/attempt-1",
+  "sourceHashes": {
+    "result.json": {
+      "sha256": "e563c89d457aa19ce08b8c4bd0473c8a3e8f0e20317fa427dcb253f7b5bd7ca0"
+    },
+    "normalized-agent-events.json": {
+      "sha256": "a695eab6128571af8ed0d37612b3337f9e00167f5f3bdd7839dfeb81a1736512"
+    },
+    "raw-private/agent-events.jsonl": {
+      "sha256": "2d62d4adb8a73459945dba97a5cc8db14b6eac61127eb0ac516d759ccd56db4b"
+    }
+  },
+  "task": {
+    "complexity": 7.8,
+    "goal": "Merge the contents of Markor notes tough_frog_2023_08_05.txt, proud_cat_edited.txt and 2023_08_21_friendly_koala.md (in the same order) into a new Markor note named mIObBbo4 and save it. Add a new line between the content of each note.",
+    "name": "MarkorMergeNotes",
+    "params": {
+      "file1_content": "m4kMyOGWaENoPj6FqLjd",
+      "file1_name": "tough_frog_2023_08_05.txt",
+      "file2_content": "fxHXZsqrmnwYjXvte9pg",
+      "file2_name": "proud_cat_edited.txt",
+      "file3_content": "f42GOjFWb2aKHogAFQSY",
+      "file3_name": "2023_08_21_friendly_koala.md",
+      "new_file_name": "mIObBbo4",
+      "seed": 2594989658
+    },
+    "paramsSha256": "83d348ecd71eee0838de42e16ede8c5725cd63bf2b70490f4149eaf41fce8868"
+  },
+  "originalOutcome": {
+    "businessActions": 17,
+    "maxSteps": 78,
+    "referenceSteps": 18,
+    "officialReward": 0.0,
+    "pythonCalls": 18,
+    "completed": 17,
+    "failed": 1,
+    "allAlive": true,
+    "timedOut": 0
+  },
+  "observations": [
+    {
+      "executionCount": 11,
+      "sourceLine": 2086,
+      "responseSourceLine": 2087,
+      "status": "completed",
+      "result": {
+        "first": "'m4kMyOGWaENoPj6FqLjd\\n'",
+        "second": "'fxHXZsqrmnwYjXvte9pg\\n'",
+        "title": "proud_cat_edited"
+      },
+      "error": null
+    },
+    {
+      "executionCount": 12,
+      "sourceLine": 2275,
+      "responseSourceLine": 2276,
+      "status": "completed",
+      "result": {
+        "third": "'f42GOjFWb2aKHogAFQSY\\n'",
+        "title": "2023_08_21_friendly_koala"
+      },
+      "error": null
+    },
+    {
+      "executionCount": 13,
+      "sourceLine": 2561,
+      "responseSourceLine": 2562,
+      "status": "completed",
+      "result": [
+        {
+          "resource-id": "net.gsantner.markor:id/new_file_dialog__name",
+          "content-desc": "null",
+          "text": "my_note",
+          "className": "android.widget.EditText",
+          "clickable": "true"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/new_file_dialog__ext",
+          "content-desc": "null",
+          "text": ".md",
+          "className": "android.widget.EditText",
+          "clickable": "true"
+        },
+        {
+          "resource-id": "android:id/text1",
+          "content-desc": "null",
+          "text": "Markdown",
+          "className": "android.widget.TextView",
+          "clickable": "false"
+        }
+      ],
+      "error": null
+    },
+    {
+      "executionCount": 14,
+      "sourceLine": 2875,
+      "responseSourceLine": 2876,
+      "status": "failed",
+      "result": null,
+      "error": {
+        "type": "SyntaxError",
+        "message": "unterminated string literal (detected at line 9)",
+        "traceback": [
+          "Traceback (most recent call last):",
+          "  File \"/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/lib/python3.11/site-packages/amkernel/runner.py\", line 590, in _execute_cell",
+          "    value = _compile_and_execute(code, execution_count, namespace)",
+          "            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+          "  File \"/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/lib/python3.11/site-packages/amkernel/runner.py\", line 547, in _compile_and_execute",
+          "    module = ast.parse(code, filename=filename, mode=\"exec\")",
+          "             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+          "  File \"/Users/qunmi/.local/share/uv/python/cpython-3.11.16-macos-aarch64-none/lib/python3.11/ast.py\", line 50, in parse",
+          "    return compile(source, filename, mode, flags,",
+          "           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+          "  File \"<amkernel-cell-14>\", line 9",
+          "    merged='",
+          "           ^",
+          "SyntaxError: unterminated string literal (detected at line 9)"
+        ]
+      }
+    },
+    {
+      "executionCount": 15,
+      "sourceLine": 3338,
+      "responseSourceLine": 3339,
+      "status": "completed",
+      "result": {
+        "title": "mIObBbo4",
+        "content": "m4kMyOGWaENoPj6FqLjd\nfxHXZsqrmnwYjXvte9pg\nf42GOjFWb2aKHogAFQSY",
+        "activity": ".activity.DocumentActivity"
+      },
+      "error": null
+    },
+    {
+      "executionCount": 16,
+      "sourceLine": 3446,
+      "responseSourceLine": 3447,
+      "status": "completed",
+      "result": {
+        "package": "net.gsantner.markor",
+        "activity": ".activity.DocumentActivity",
+        "keyboardShown": true,
+        "title": "mIObBbo4",
+        "content": "m4kMyOGWaENoPj6FqLjd\nfxHXZsqrmnwYjXvte9pg\nf42GOjFWb2aKHogAFQSY"
+      },
+      "error": null
+    },
+    {
+      "executionCount": 17,
+      "sourceLine": 3807,
+      "responseSourceLine": 3808,
+      "status": "completed",
+      "result": {
+        "listed": "File mIObBbo4.md 10/15/2023, 15:34",
+        "title": "mIObBbo4",
+        "content": "m4kMyOGWaENoPj6FqLjd\nfxHXZsqrmnwYjXvte9pg\nf42GOjFWb2aKHogAFQSY",
+        "matches": true
+      },
+      "error": null
+    },
+    {
+      "executionCount": 18,
+      "sourceLine": 3867,
+      "responseSourceLine": 3868,
+      "status": "completed",
+      "result": {
+        "quitReturned": true
+      },
+      "error": null
+    }
+  ],
+  "reopenedContentFacts": {
+    "content": "m4kMyOGWaENoPj6FqLjd\nfxHXZsqrmnwYjXvte9pg\nf42GOjFWb2aKHogAFQSY",
+    "lineCount": 3,
+    "blankLines": 0,
+    "hasTrailingNewline": false,
+    "equalsOriginalThreeParamsJoinedWithSingleLF": true,
+    "listedDescription": "File mIObBbo4.md 10/15/2023, 15:34",
+    "visibleTitle": "mIObBbo4",
+    "agentMatchesBoolean": true
+  },
+  "limits": [
+    "Appium reopen evidence is not historical filesystem dump",
+    "Agent matches boolean checks self-selected single-newline target and display title; not official full filename/format contract",
+    "Actual historical first official zero branch requires original warning or retained scoring inputs"
+  ]
+}

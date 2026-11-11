@@ -1,0 +1,236 @@
+{
+  "sequence": 66,
+  "label": "markor-regression-open-app",
+  "command": {
+    "op": "exec",
+    "label": "markor-regression-open-app",
+    "code": "driver.find_element(AppiumBy.ACCESSIBILITY_ID, 'Markor').click()\nfrom selenium.webdriver.support.ui import WebDriverWait\nWebDriverWait(driver, 10).until(lambda d: 'net.gsantner.markor' in d.page_source)\nobserve()"
+  },
+  "startedAtUnix": 1794192241.445977,
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"status\":\"completed\",\"stdout\":\"\",\"stderr\":\"\",\"result\":{\"package\":\"net.gsantner.markor\",\"activity\":\".activity.MainActivity\",\"controls\":[{\"text\":\"Markor\",\"content-desc\":\"\",\"resource-id\":\"\",\"class\":\"android.widget.TextView\",\"bounds\":\"[42,166][213,237]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"\",\"content-desc\":\"Go to\",\"resource-id\":\"net.gsantner.markor:id/action_go_to\",\"class\":\"android.widget.TextView\",\"bounds\":\"[660,138][765,264]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"\",\"content-desc\":\"Sort by\",\"resource-id\":\"net.gsantner.markor:id/action_sort\",\"class\":\"android.widget.TextView\",\"bounds\":\"[765,138][870,264]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"\",\"content-desc\":\"Search\",\"resource-id\":\"net.gsantner.markor:id/action_search\",\"class\":\"android.widget.TextView\",\"bounds\":\"[870,138][975,264]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"\",\"content-desc\":\"More options\",\"resource-id\":\"\",\"class\":\"android.widget.ImageView\",\"bounds\":\"[975,138][1080,264]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"\",\"content-desc\":\"Folder .. \",\"resource-id\":\"net.gsantner.markor:id/opoc_filesystem_item__root\",\"class\":\"android.widget.LinearLayout\",\"bounds\":\"[0,275][1080,395]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"..\",\"content-desc\":\"\",\"resource-id\":\"net.gsantner.markor:id/opoc_filesystem_item__title\",\"class\":\"android.widget.TextView\",\"bounds\":\"[158,275][186,342]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"/storage/emulated/0/Documents\",\"content-desc\":\"\",\"resource-id\":\"net.gsantner.markor:id/opoc_filesystem_item__description\",\"class\":\"android.widget.TextView\",\"bounds\":\"[158,342][738,395]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"\",\"content-desc\":\"Folder .app \",\"resource-id\":\"net.gsantner.markor:id/opoc_filesystem_item__root\",\"class\":\"android.widget.LinearLayout\",\"bounds\":\"[0,419][1080,539]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\".app\",\"content-desc\":\"\",\"resource-id\":\"net.gsantner.markor:id/opoc_filesystem_item__title\",\"class\":\"android.widget.TextView\",\"bounds\":\"[158,419][255,486]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"10/15/2023, 15:35\",\"content-desc\":\"\",\"resource-id\":\"net.gsantner.markor:id/opoc_filesystem_item__description\",\"class\":\"android.widget.TextView\",\"bounds\":\"[158,486][481,539]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"\",\"content-desc\":\"Create a new file or folder\",\"resource-id\":\"net.gsantner.markor:id/fab_add_new_item\",\"class\":\"android.widget.ImageButton\",\"bounds\":\"[891,2001][1038,2148]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"\",\"content-desc\":\"Files\",\"resource-id\":\"net.gsantner.markor:id/nav_notebook\",\"class\":\"android.widget.FrameLayout\",\"bounds\":\"[0,2190][270,2337]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"Files\",\"content-desc\":\"\",\"resource-id\":\"net.gsantner.markor:id/navigation_bar_item_large_label_view\",\"class\":\"android.widget.TextView\",\"bounds\":\"[96,2271][173,2322]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"\",\"content-desc\":\"To-Do\",\"resource-id\":\"net.gsantner.markor:id/nav_todo\",\"class\":\"android.widget.FrameLayout\",\"bounds\":\"[270,2190][540,2337]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"To-Do\",\"content-desc\":\"\",\"resource-id\":\"net.gsantner.markor:id/navigation_bar_item_small_label_view\",\"class\":\"android.widget.TextView\",\"bounds\":\"[362,2277][446,2320]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"\",\"content-desc\":\"QuickNote\",\"resource-id\":\"net.gsantner.markor:id/nav_quicknote\",\"class\":\"android.widget.FrameLayout\",\"bounds\":\"[540,2190][810,2337]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"QuickNote\",\"content-desc\":\"\",\"resource-id\":\"net.gsantner.markor:id/navigation_bar_item_small_label_view\",\"class\":\"android.widget.TextView\",\"bounds\":\"[600,2277][749,2320]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"\",\"content-desc\":\"More\",\"resource-id\":\"net.gsantner.markor:id/nav_more\",\"class\":\"android.widget.FrameLayout\",\"bounds\":\"[810,2190][1080,2337]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"More\",\"content-desc\":\"\",\"resource-id\":\"net.gsantner.markor:id/navigation_bar_item_small_label_view\",\"class\":\"android.widget.TextView\",\"bounds\":\"[908,2277][982,2320]\",\"clickable\":\"false\",\"focused\":\"false\"}]},\"executionCount\":32,\"durationMs\":2184,\"kernelState\":\"alive\",\"runtime\":{\"executable\":\"/Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python\",\"pythonVersion\":\"3.11.16\",\"workingDirectory\":\"/Users/qunmi/Documents/FSQ_LAB/amkernel\",\"environmentKind\":\"project_venv\",\"implementation\":\"CPython\",\"platform\":\"macOS-26.6.2-arm64-arm-64bit\",\"packages\":[]},\"output\":{\"totalBytes\":0,\"totalLines\":0,\"discardedBytes\":0,\"discardedLines\":0,\"truncated\":false,\"limitBytes\":268435456,\"limitExceeded\":false,\"live\":\"unavailable\"},\"displays\":[],\"artifacts\":[]}"
+      }
+    ],
+    "structured_content": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "net.gsantner.markor",
+        "activity": ".activity.MainActivity",
+        "controls": [
+          {
+            "text": "Markor",
+            "content-desc": "",
+            "resource-id": "",
+            "class": "android.widget.TextView",
+            "bounds": "[42,166][213,237]",
+            "clickable": "false",
+            "focused": "false"
+          },
+          {
+            "text": "",
+            "content-desc": "Go to",
+            "resource-id": "net.gsantner.markor:id/action_go_to",
+            "class": "android.widget.TextView",
+            "bounds": "[660,138][765,264]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "",
+            "content-desc": "Sort by",
+            "resource-id": "net.gsantner.markor:id/action_sort",
+            "class": "android.widget.TextView",
+            "bounds": "[765,138][870,264]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "",
+            "content-desc": "Search",
+            "resource-id": "net.gsantner.markor:id/action_search",
+            "class": "android.widget.TextView",
+            "bounds": "[870,138][975,264]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "",
+            "content-desc": "More options",
+            "resource-id": "",
+            "class": "android.widget.ImageView",
+            "bounds": "[975,138][1080,264]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "",
+            "content-desc": "Folder .. ",
+            "resource-id": "net.gsantner.markor:id/opoc_filesystem_item__root",
+            "class": "android.widget.LinearLayout",
+            "bounds": "[0,275][1080,395]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "..",
+            "content-desc": "",
+            "resource-id": "net.gsantner.markor:id/opoc_filesystem_item__title",
+            "class": "android.widget.TextView",
+            "bounds": "[158,275][186,342]",
+            "clickable": "false",
+            "focused": "false"
+          },
+          {
+            "text": "/storage/emulated/0/Documents",
+            "content-desc": "",
+            "resource-id": "net.gsantner.markor:id/opoc_filesystem_item__description",
+            "class": "android.widget.TextView",
+            "bounds": "[158,342][738,395]",
+            "clickable": "false",
+            "focused": "false"
+          },
+          {
+            "text": "",
+            "content-desc": "Folder .app ",
+            "resource-id": "net.gsantner.markor:id/opoc_filesystem_item__root",
+            "class": "android.widget.LinearLayout",
+            "bounds": "[0,419][1080,539]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": ".app",
+            "content-desc": "",
+            "resource-id": "net.gsantner.markor:id/opoc_filesystem_item__title",
+            "class": "android.widget.TextView",
+            "bounds": "[158,419][255,486]",
+            "clickable": "false",
+            "focused": "false"
+          },
+          {
+            "text": "10/15/2023, 15:35",
+            "content-desc": "",
+            "resource-id": "net.gsantner.markor:id/opoc_filesystem_item__description",
+            "class": "android.widget.TextView",
+            "bounds": "[158,486][481,539]",
+            "clickable": "false",
+            "focused": "false"
+          },
+          {
+            "text": "",
+            "content-desc": "Create a new file or folder",
+            "resource-id": "net.gsantner.markor:id/fab_add_new_item",
+            "class": "android.widget.ImageButton",
+            "bounds": "[891,2001][1038,2148]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "",
+            "content-desc": "Files",
+            "resource-id": "net.gsantner.markor:id/nav_notebook",
+            "class": "android.widget.FrameLayout",
+            "bounds": "[0,2190][270,2337]",
+            "clickable": "false",
+            "focused": "false"
+          },
+          {
+            "text": "Files",
+            "content-desc": "",
+            "resource-id": "net.gsantner.markor:id/navigation_bar_item_large_label_view",
+            "class": "android.widget.TextView",
+            "bounds": "[96,2271][173,2322]",
+            "clickable": "false",
+            "focused": "false"
+          },
+          {
+            "text": "",
+            "content-desc": "To-Do",
+            "resource-id": "net.gsantner.markor:id/nav_todo",
+            "class": "android.widget.FrameLayout",
+            "bounds": "[270,2190][540,2337]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "To-Do",
+            "content-desc": "",
+            "resource-id": "net.gsantner.markor:id/navigation_bar_item_small_label_view",
+            "class": "android.widget.TextView",
+            "bounds": "[362,2277][446,2320]",
+            "clickable": "false",
+            "focused": "false"
+          },
+          {
+            "text": "",
+            "content-desc": "QuickNote",
+            "resource-id": "net.gsantner.markor:id/nav_quicknote",
+            "class": "android.widget.FrameLayout",
+            "bounds": "[540,2190][810,2337]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "QuickNote",
+            "content-desc": "",
+            "resource-id": "net.gsantner.markor:id/navigation_bar_item_small_label_view",
+            "class": "android.widget.TextView",
+            "bounds": "[600,2277][749,2320]",
+            "clickable": "false",
+            "focused": "false"
+          },
+          {
+            "text": "",
+            "content-desc": "More",
+            "resource-id": "net.gsantner.markor:id/nav_more",
+            "class": "android.widget.FrameLayout",
+            "bounds": "[810,2190][1080,2337]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "More",
+            "content-desc": "",
+            "resource-id": "net.gsantner.markor:id/navigation_bar_item_small_label_view",
+            "class": "android.widget.TextView",
+            "bounds": "[908,2277][982,2320]",
+            "clickable": "false",
+            "focused": "false"
+          }
+        ]
+      },
+      "executionCount": 32,
+      "durationMs": 2184,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/Users/qunmi/Documents/FSQ_LAB/amkernel",
+        "environmentKind": "project_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "unavailable"
+      },
+      "displays": [],
+      "artifacts": []
+    },
+    "is_error": false,
+    "result_type": "complete"
+  },
+  "completedAtUnix": 1794192243.636201
+}

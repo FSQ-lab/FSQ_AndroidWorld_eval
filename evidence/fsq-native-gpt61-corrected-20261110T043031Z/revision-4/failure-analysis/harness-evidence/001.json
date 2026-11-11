@@ -1,0 +1,768 @@
+{
+  "index": 1,
+  "name": "AudioRecorderRecordAudioWithFileName",
+  "goal": "Record an audio clip and save it with name \"presentation_fGwr.m4a\" using Audio Recorder app.",
+  "reward": 0.0,
+  "classification": "failed",
+  "initialization": {
+    "initializationReferenceTime": {
+      "referenceTime": "2023-10-15T15:34:00+00:00",
+      "timezone": "UTC"
+    },
+    "initializedGoal": "Record an audio clip and save it with name \"presentation_fGwr.m4a\" using Audio Recorder app."
+  },
+  "frozenTaskSpec": {
+    "apps": [
+      "audio recorder"
+    ],
+    "complexity": 2,
+    "difficulty": "easy",
+    "family": "android",
+    "index": 1,
+    "instanceSeed": 170855541,
+    "maxActions": 20,
+    "maxSteps": 20,
+    "name": "AudioRecorderRecordAudioWithFileName",
+    "params": {
+      "file_name": "presentation_fGwr.m4a",
+      "seed": 170855541,
+      "text": ""
+    },
+    "paramsSha256": "e0c1d46a956694ff68c4efa1be7cf92abe00764f76c47a61dec422b76dc14543",
+    "paramsTransport": "json",
+    "tags": [
+      "data_entry",
+      "complex_ui_understanding",
+      "parameterized"
+    ],
+    "timeBudget": {
+      "businessSeconds": 1320,
+      "cleanupWindowSeconds": 180,
+      "episodeSeconds": 1930,
+      "forceSeconds": 1510,
+      "recoveryWindowSeconds": 120,
+      "terminationGraceSeconds": 10
+    }
+  },
+  "mainSteps": [
+    {
+      "stepId": 4,
+      "tool": "agent_runtime.runner",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [],
+        "evidence": [
+          "Records list showed presentation_fGwr.m4a with duration 00:16 and format M4a.",
+          "assert_visible passed for list_item_name with exact text presentation_fGwr.m4a.",
+          "Screenshot: artifacts/screenshots/screenshot-agent-assert-visible-18-prepare-before-action-1-8a659e938851.png"
+        ],
+        "plan_updates": [],
+        "pre_plan": [
+          {
+            "action": "Start a new recording using Record.",
+            "status": "success",
+            "step_id": 1,
+            "success_criteria": [
+              "Recording starts."
+            ]
+          },
+          {
+            "action": "Allow a short clip to record, then tap Stop.",
+            "status": "success",
+            "step_id": 2,
+            "success_criteria": [
+              "Recording stops and the save dialog opens."
+            ]
+          },
+          {
+            "action": "Name the recording presentation_fGwr.m4a and confirm saving.",
+            "status": "success",
+            "step_id": 3,
+            "success_criteria": [
+              "The clip is saved with the requested name."
+            ]
+          }
+        ],
+        "satisfied_criteria": [
+          "The app visibly lists the newly saved audio clip as \"presentation_fGwr.m4a\"."
+        ],
+        "schema_version": "task_run_v1",
+        "status": "success",
+        "summary": "Recorded and saved an audio clip as \"presentation_fGwr.m4a\", then verified it appears in the Records list.",
+        "unmet_criteria": []
+      }
+    },
+    {
+      "stepId": 5,
+      "tool": "agent_runtime.verifier",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [],
+        "evidence": [
+          "The recording flow reached a Save dialog, entered presentation_fGwr.m4a, and confirmed Save successfully.",
+          "The post-save UI snapshot in artifacts/tools/000017-ui_snapshot.json contains presentation_fGwr.m4a and a clip duration of 00:16.",
+          "After opening the recordings list, assert_visible (call_o8UGAAqcR944K07OePo8ATE9) passed for resourceId com.dimowner.audiorecorder:id/list_item_name with text presentation_fGwr.m4a and optional=false.",
+          "The visibility assertion references screenshot artifact artifacts/screenshots/screenshot-agent-assert-visible-18-prepare-before-action-1-8a659e938851.png.",
+          "The agent's structured result reports the corresponding successful list visibility check; no supplied evidence contradicts it."
+        ],
+        "plan_updates": [],
+        "pre_plan": [
+          {
+            "action": "Verify the requested clip name is visible in the app's recordings list.",
+            "status": "success",
+            "step_id": 1,
+            "success_criteria": [
+              "Execution evidence confirms a visible list item named presentation_fGwr.m4a."
+            ]
+          }
+        ],
+        "satisfied_criteria": [
+          "The app visibly lists the newly saved audio clip as \"presentation_fGwr.m4a\"."
+        ],
+        "schema_version": "task_run_v1",
+        "status": "success",
+        "summary": "The supplied execution evidence confirms that the app visibly listed the newly saved clip as \"presentation_fGwr.m4a\".",
+        "unmet_criteria": []
+      }
+    }
+  ],
+  "budgetSummary": {
+    "admitted": 10,
+    "attempted": 10,
+    "deadlineExceeded": false,
+    "deadlineMonotonic": 701874.427861916,
+    "denied": 0,
+    "deviceRestoredByClose": false,
+    "exclusions": [
+      "driver_construction",
+      "uiautomator2_service_startup",
+      "observation_and_assertion_side_effects",
+      "external_processes_and_direct_driver_access"
+    ],
+    "exhausted": false,
+    "failed": 0,
+    "inFlight": 0,
+    "inputTextUnit": "composite_click_optional_clear_set_text",
+    "maximum": 20,
+    "securityBoundary": false,
+    "succeeded": 10,
+    "unit": "admitted_android_harness_write_capability_dispatch",
+    "writeCapabilities": [
+      "launch_app",
+      "kill_app",
+      "tap_on",
+      "tap_at",
+      "long_press_on",
+      "input_text",
+      "press_key",
+      "swipe"
+    ]
+  },
+  "actions": [
+    {
+      "ordinal": 0,
+      "stepId": "agent-launch_app-1",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [],
+      "output": {
+        "app_id": "com.dimowner.audiorecorder"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[0]"
+    },
+    {
+      "ordinal": 1,
+      "stepId": "agent-ui_snapshot-2",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Sun, Oct 15",
+        "Sun, Oct 15",
+        "Gmail",
+        "Gmail",
+        "Photos",
+        "Photos",
+        "YouTube",
+        "YouTube",
+        "Home",
+        "Phone",
+        "Phone",
+        "Messages",
+        "Messages",
+        "Chrome",
+        "Chrome",
+        "Calendar",
+        "Predicted app: Calendar",
+        "Search",
+        "Google app",
+        "Voice search",
+        "Google Lens",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 27981,
+          "retained_characters": 7650
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[1]"
+    },
+    {
+      "ordinal": 2,
+      "stepId": "agent-launch_app-3",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "app_id": "com.dimowner.audiorecorder"
+      },
+      "uiLabels": [],
+      "output": {
+        "app_id": "com.dimowner.audiorecorder"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[2]"
+    },
+    {
+      "ordinal": 3,
+      "stepId": "agent-swipe-4",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[3]"
+    },
+    {
+      "ordinal": 4,
+      "stepId": "agent-ui_snapshot-5",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Audio Recorder",
+        "Audio Recorder",
+        "Broccoli",
+        "Broccoli",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Chrome",
+        "Chrome",
+        "Clipper",
+        "Clipper",
+        "Clock",
+        "Clock",
+        "Contacts",
+        "Contacts",
+        "Draw",
+        "Draw",
+        "Drive",
+        "Drive",
+        "Files",
+        "Files",
+        "Gallery",
+        "Gallery",
+        "Gmail",
+        "Gmail",
+        "Google",
+        "Google",
+        "Joplin",
+        "Joplin",
+        "Maps",
+        "Maps",
+        "Markor",
+        "Markor",
+        "Messages",
+        "Messages",
+        "OpenTracks",
+        "OpenTracks",
+        "OsmAnd",
+        "OsmAnd",
+        "Phone",
+        "Phone",
+        "Photos",
+        "Photos",
+        "Pro Expense",
+        "Pro Expense",
+        "Gallery",
+        "Gallery",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Tasks",
+        "Tasks",
+        "Search",
+        "Google app",
+        "Search apps, web and more",
+        "Voice search",
+        "Google Lens",
+        "Home",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 37016,
+          "retained_characters": 12574
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 6,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[4]"
+    },
+    {
+      "ordinal": 5,
+      "stepId": "agent-tap_on-6",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "accessibilityId": "Audio Recorder"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[5]"
+    },
+    {
+      "ordinal": 6,
+      "stepId": "agent-ui_snapshot-7",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Audio Recorder",
+        "00:00",
+        "0 Mb, M4a, 44.1kHz",
+        "0.0",
+        "Settings",
+        "Recording: %s",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 21751,
+          "retained_characters": 4980
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[6]"
+    },
+    {
+      "ordinal": 7,
+      "stepId": "agent-tap_on-8",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.dimowner.audiorecorder:id/btn_record"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[7]"
+    },
+    {
+      "ordinal": 8,
+      "stepId": "agent-ui_snapshot-9",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Audio Recorder",
+        "00:03",
+        "Recording…",
+        "0.04 Mb, M4a, 44.1kHz",
+        "0.0",
+        "Settings",
+        "Delete",
+        "Recording: %s",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 22688,
+          "retained_characters": 5334
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[8]"
+    },
+    {
+      "ordinal": 9,
+      "stepId": "agent-wait_ms-10",
+      "action": "wait_ms",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "duration_ms": 3000,
+        "reason": "Allow a short audio clip to record."
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[9]"
+    },
+    {
+      "ordinal": 10,
+      "stepId": "agent-tap_on-11",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.dimowner.audiorecorder:id/btn_record_stop"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[10]"
+    },
+    {
+      "ordinal": 11,
+      "stepId": "agent-ui_snapshot-12",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "New name",
+        "Record-1",
+        "Don't ask again",
+        "Cancel",
+        "Save",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "More features",
+        "Sticker Keyboard",
+        "GIF Keyboard",
+        "Clipboard",
+        "Settings",
+        "Theme settings",
+        "Voice input",
+        "q",
+        "1",
+        "w",
+        "2",
+        "e",
+        "3",
+        "r",
+        "4",
+        "t",
+        "5",
+        "y",
+        "6",
+        "u",
+        "7",
+        "i",
+        "8",
+        "o",
+        "9",
+        "p",
+        "0",
+        "a",
+        "s",
+        "d",
+        "f",
+        "g",
+        "h",
+        "j",
+        "k",
+        "l",
+        "Shift",
+        "z",
+        "x",
+        "c",
+        "v",
+        "b",
+        "n",
+        "m",
+        "Delete",
+        "Symbol keyboard",
+        ",",
+        "Emoji button",
+        "Space",
+        ".",
+        "Done",
+        "Back"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 95424,
+          "retained_characters": 25874
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 32,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[11]"
+    },
+    {
+      "ordinal": 12,
+      "stepId": "agent-input_text-13",
+      "action": "input_text",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.dimowner.audiorecorder:id/input_name"
+        },
+        "text": "presentation_fGwr.m4a",
+        "textType": "literal"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[12]"
+    },
+    {
+      "ordinal": 13,
+      "stepId": "agent-tap_on-14",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.dimowner.audiorecorder:id/dialog_positive_btn"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[13]"
+    },
+    {
+      "ordinal": 14,
+      "stepId": "agent-ui_snapshot-15",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Audio Recorder",
+        "00:00",
+        "presentation_fGwr.m4a",
+        "0.19 Mb, M4a, 44.1kHz",
+        "00:00",
+        "00:16",
+        "0.0",
+        "Settings",
+        "Recording: %s",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 24053,
+          "retained_characters": 5758
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[14]"
+    },
+    {
+      "ordinal": 15,
+      "stepId": "agent-tap_on-16",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.dimowner.audiorecorder:id/btn_records_list"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[15]"
+    },
+    {
+      "ordinal": 16,
+      "stepId": "agent-ui_snapshot-17",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Today",
+        "presentation_fGwr.m4a",
+        "0.19 Mb, M4a, 44.1kHz",
+        "00:16",
+        "Records",
+        "By date (newest)",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 24561,
+          "retained_characters": 5849
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[16]"
+    },
+    {
+      "ordinal": 17,
+      "stepId": "agent-assert_visible-18",
+      "action": "assert_visible",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.dimowner.audiorecorder:id/list_item_name",
+          "text": "presentation_fGwr.m4a"
+        },
+        "optional": false
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[17]"
+    },
+    {
+      "ordinal": 18,
+      "stepId": "agent-kill_app-19",
+      "action": "kill_app",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "app_id": "com.dimowner.audiorecorder"
+      },
+      "uiLabels": [],
+      "output": {
+        "app_id": "com.dimowner.audiorecorder"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[18]"
+    }
+  ],
+  "originalNativeExecutionPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/001-AudioRecorderRecordAudioWithFileName/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-001-20261110T154725Z-70bee4/execution-result.json",
+  "originalNativeResultPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/001-AudioRecorderRecordAudioWithFileName/raw-private/fsq-native/worker/fsq-task-result.private.json",
+  "originalGoalPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/001-AudioRecorderRecordAudioWithFileName/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-001-20261110T154725Z-70bee4/sources/000-goal.txt"
+}

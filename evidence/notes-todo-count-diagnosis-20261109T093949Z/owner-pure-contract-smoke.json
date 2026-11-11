@@ -1,0 +1,29 @@
+{
+  "scope": "Offline pure actual historical extractor AST and installed proto count/check functions only. No env/init/is_successful/device/currentDB, no new reward. Template-based count is not an observed historical DB input.",
+  "dynamicTaskClass": "abc.NotesTodoItemCount",
+  "actualScorer": "android_world.task_evals.information_retrieval.information_retrieval.InformationRetrieval.is_successful",
+  "initialized": false,
+  "originalTemplateSha256": "463118879bbe14a14abfd987920f115fff29f128db4566dc282e75dc0aa906aa",
+  "originalRawPromptMatchesSnapshotTemplateExactly": true,
+  "extractorSourceFile": "evidence/browserdraw-forest-provenance-20261109T060244Z/source-snapshot/fsq_androidworld_eval/runner.py",
+  "extractorStartLine": 139,
+  "originalFinal": "{\"evidence\":\"Ideas folder showed 3 to-dos.\",\"sessionCleanup\":\"completed\",\"taskOutcome\":3}",
+  "rawFinalSemanticEqualsNormalized": true,
+  "actualExtractedOriginalAnswer": null,
+  "actualOriginalTaskOutcomeType": "int",
+  "controlledStringFieldAnswer": "3",
+  "bareNumberExtractedAnswer": null,
+  "actualInstalledTemplateExpectedAnswer": [
+    3
+  ],
+  "actualInstalledCheckString3AgainstTemplate": true,
+  "originalRecordedAgentAnswer": {
+    "sha256": null,
+    "validContract": false
+  },
+  "originalEvaluator": {
+    "durationSeconds": 0.0,
+    "implementation": "android_world.task_eval.is_successful"
+  },
+  "notHistoricalDbRecomputation": true
+}

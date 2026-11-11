@@ -1,0 +1,59 @@
+{
+  "candidateCommit": "4086c29f89bd8abfb96155fb1ff296e543410093",
+  "harnessCommit": "ebd0855",
+  "scope": "macOS source-based non-task acceptance; no AndroidWorld task or campaign execution",
+  "runtimeIdentity": {
+    "candidateSourceLoaded": true,
+    "sourceHashesUnchangedDuringProbes": true,
+    "declaredSourceVersion": "0.1.3",
+    "existingMetadataVersion": "0.1.2",
+    "publishedPackageValidation": "not exercised; no package installation or release"
+  },
+  "verification": {
+    "amkernelRegressionTests": {"passed": 254, "failed": 0},
+    "harnessRegressionTests": {"passed": 217, "failed": 0},
+    "stdioContractSmoke": {"checksPassed": 48, "checksFailed": 0, "scenarioRecords": 9},
+    "jointOmpMcpFixtureSmoke": {"casesPassed": 7, "casesFailed": 0},
+    "actualOmpBoundary": {
+      "model": "github-copilot/gpt-5.6-sol",
+      "exitCode": 0,
+      "agentCompleted": false,
+      "reason": "business_deadline",
+      "inflightMcpReturned": true,
+      "sameDriverQuitVerified": true,
+      "cleanupAttribution": "agent"
+    },
+    "resourceScope": "local HTTP Appium fixture, official Python Client through actual candidate MCP; not a native device",
+    "sourceEvaluatorCounterexamplesReproduced": 2
+  },
+  "findings": [
+    {
+      "priority": "P2",
+      "path": "amkernel/tests/e2e/skill_behavior.py",
+      "line": 4311,
+      "confirmed": true,
+      "problem": "A successful sessions query after deletion satisfies reconciliation. The executed counterexample deletes at 2.5, lists zero active sessions at 3, and all checks pass without identity-bearing reconciliation before cleanup.",
+      "requiredCorrection": "Require an observed owned-session identity before its cleanup, and test that deletion before reconciliation is rejected."
+    },
+    {
+      "priority": "P2",
+      "path": "amkernel/tests/e2e/test_skill_behavior_evaluator.py",
+      "line": 926,
+      "confirmed": true,
+      "problem": "The response-still-pending negative case uses timeout=4 while evaluator independently requires timeout=1. In-memory removal of the pending-response guard leaves this test passing.",
+      "requiredCorrection": "Use timeout=1 to isolate the pending-response negative case; test invalid timeout separately. An executed in-memory mutation demonstrates this isolated case detects the missing guard."
+    }
+  ],
+  "gate": {
+    "nonTaskCoreRuntimeAndHarnessIntegration": "passed for exercised paths",
+    "newAmkernelCoreRuntimeDefectObserved": false,
+    "acceptanceEvaluator": "requires corrections in two test/evaluator locations",
+    "nativeSessionClosure": "blocked: no attached device and Appium unavailable at 127.0.0.1:4723",
+    "qualification": "not started",
+    "calibration12": "not started",
+    "campaign116": "not started",
+    "resumeEvaluation": false
+  },
+  "changes": "No AMKernel/Harness source or active MCP configuration changes; no installs, release, device launch, old campaign changes, or commits. Disposable probe scripts removed; evidence retained.",
+  "evidence": ["regressions.json", "cancellation.json", "joint-fixture.json", "review.json", "evaluator-counterexamples.json", "omp-inflight/normalized-agent-events.json"]
+}

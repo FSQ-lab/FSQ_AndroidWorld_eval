@@ -1,0 +1,45 @@
+{
+  "kind": "point_in_time_native_fsq_identity_snapshot",
+  "identities": {
+    "evaluator": {
+      "head": "977020aa4306bc7f5628ec69f65ea998af3013a1",
+      "worktree": {
+        "dirty": true,
+        "status": "observed",
+        "statusSha256": "cbf26a83d79d12e422ddc0d8dd1e383b360a1a8f2813f95e959701f8bf70b606"
+      },
+      "sourceSha256": "eb007df8f2d05326486b888021e1b050bbfc5cd04cf58a751d1beb42b92108de"
+    },
+    "androidWorld": {
+      "head": "55ddaf5edc6f6c25673aed343907d5b9dca66f84",
+      "worktree": {
+        "dirty": true,
+        "status": "observed",
+        "statusSha256": "a5521018da3b835a654e4f66ba4ac560525bcb3d7cd5deb54b40b2004b89666b"
+      },
+      "sourceSha256": "0ac9428da2e9d78d0303c44c682184268e708a3116134646401d5c8425671b94",
+      "importSha256": "0ac9428da2e9d78d0303c44c682184268e708a3116134646401d5c8425671b94"
+    },
+    "fsq": {
+      "head": "7e3f0793f3962ef2d8cc92f06310326c9077ce0d",
+      "worktree": {
+        "dirty": true,
+        "status": "observed",
+        "statusSha256": "02b5cb7e16091ff7c103ccc2af6e4dd4e5a5eba0f6deee6ac240b985c14a93a3"
+      },
+      "sourceSha256": "269c82d12cf3414c0a56b02fc169aa44cf76bec8fe44c0456c370f1e7aa7eb1a",
+      "importSha256": "269c82d12cf3414c0a56b02fc169aa44cf76bec8fe44c0456c370f1e7aa7eb1a"
+    },
+    "nativeProviderMetadata": {
+      "model": "deepseek-flash",
+      "path": "/Users/qunmi/.fsq/config.yaml",
+      "provider": "deepseek",
+      "status": "metadata_observed_not_authenticated"
+    }
+  },
+  "snapshotOnly": true,
+  "liveReady": false,
+  "externalReviewedFixCommitWindow": "acknowledged, awaiting w6:p1 release; no Git writes by implementation owner",
+  "authorizedFSQDiagnostics": "in flight; any subsequent native-source change requires new freeze",
+  "postCommitIdentityRefreshRequired": true
+}

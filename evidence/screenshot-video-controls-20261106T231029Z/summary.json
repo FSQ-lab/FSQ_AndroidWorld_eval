@@ -1,0 +1,37 @@
+{
+  "status": "all_planned_controls_completed_without_system_failure",
+  "causalConclusion": "Screenshot-induced fault not established; same video plus screenshot cadence did not reproduce after cold boot. Permanent repair and long-campaign stability remain unproven.",
+  "controls": {
+    "static": {
+      "screenshots": 32,
+      "elapsedSeconds": 23.704
+    },
+    "videoWithoutScreenshots": {
+      "screenshots": 0,
+      "clipSeconds": 24,
+      "playingObservedSeconds": 20.661,
+      "eofObserved": true,
+      "endObservedSeconds": 36.824
+    },
+    "videoWithScreenshots": {
+      "screenshots": 32,
+      "elapsedSeconds": 23.536,
+      "maxScreenshotSeconds": 0.305
+    }
+  },
+  "systemServerRestartCountAfterInitialBoot": 0,
+  "watchdogKills": 0,
+  "sessionsCreated": 4,
+  "sessionsRemoved": 4,
+  "effectiveVlcAllFilesPermissionRestoredToUnauthorized": true,
+  "publicVideoRestored": true,
+  "headlessExperimentExecuted": false,
+  "formalCampaignStarted": false,
+  "officialScore": null,
+  "servicesPreservedRunning": [
+    "ScreenshotControlEmulatorReady20261107",
+    "ScreenshotControlAppium20261107"
+  ],
+  "report": "report.md",
+  "evidenceAudit": "independent-audit.json"
+}

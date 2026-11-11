@@ -1,0 +1,42 @@
+{
+  "reviewer": "w4:p2 independent offline contract reviewer",
+  "scope": "Original snapshot extractor/prompt AST functions plus installed pure proto/check functions on an uninitialized local task. No env/init/is_successful/DB/device or official score; controlled string result is not a scored historical answer.",
+  "snapshotRunner": {
+    "path": "evidence/browserdraw-forest-provenance-20261109T060244Z/source-snapshot/fsq_androidworld_eval/runner.py",
+    "sha256": "11a1a39602904b02d66a9d316686291194bba46d7fb219366d2ad4c4bdac589d",
+    "originalPromptTemplateSha256": "463118879bbe14a14abfd987920f115fff29f128db4566dc282e75dc0aa906aa",
+    "renderedPromptEqualsOriginalRaw": true,
+    "wholeSnapshotTreeClaimedEqualToHistoricalHarnessDigest": false,
+    "versionLimit": "Saved source tree contains later files; exact raw prompt/template binding and compatible extractor evidence do not attest the entire historical harness tree."
+  },
+  "originalFinalText": "{\"taskOutcome\":3,\"sessionCleanup\":\"completed\",\"evidence\":\"Ideas folder showed 3 to-dos.\"}",
+  "rawFinalEqualsNormalizedSemantically": true,
+  "originalTaskOutcomeType": "int",
+  "actualHistoricalExtractorResultOnOriginal": null,
+  "controlledStringFieldExtractorResult": "3",
+  "originalRecordedAgentAnswer": {
+    "sha256": null,
+    "validContract": false
+  },
+  "actualScorerIdentity": "InformationRetrieval.is_successful",
+  "actualScorerOrder": [
+    "empty interaction_cache ->0",
+    "otherwise pure check_agent_answer; ValueError->0; bool->1/0"
+  ],
+  "countContract": {
+    "source": "tasks.textproto NotesTodoItemCount + proto_utils COUNT over relevant_state.state is_todo fields",
+    "templateRelevantNotes": 3,
+    "actualPureTemplateExpected": [
+      3
+    ],
+    "controlledStringAgainstUninitializedTemplate": true,
+    "isHistoricalDbCount": false,
+    "isOriginalScoredAnswerVerifiedCorrect": false,
+    "expectedComparisonReachedInOriginalClaimed": false
+  },
+  "historicalEmptyCacheBranch": "Source-supported inference from initial reset + invalid typed extraction + guarded cache assignment and no ANSWER route; not a captured original cache/branch trace.",
+  "actualOriginalReward": 0.0,
+  "newOfficialReward": null,
+  "promptTypeJudgment": "Old prompt requests compact JSON but does not declare taskOutcome must be string. Do not blame historical agent using current explicit-string prompt.",
+  "wholeJsonForwardedToFloatClaimed": false
+}

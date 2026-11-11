@@ -1,0 +1,56 @@
+{
+  "case": "080-SimpleDrawProCreateDrawing",
+  "reviewedAt": "2026-11-09",
+  "sourceCampaign": "amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z",
+  "sourceFiles": {
+    "campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/episodes/080-SimpleDrawProCreateDrawing/attempt-1/result.json": {
+      "sha256Before": "cc8c218fc9b12f80d611a330ddecb26eb41fcf7f5b55f1d5cb17f4abf8adc71c",
+      "sha256After": "cc8c218fc9b12f80d611a330ddecb26eb41fcf7f5b55f1d5cb17f4abf8adc71c",
+      "unchanged": true
+    },
+    "campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/episodes/080-SimpleDrawProCreateDrawing/attempt-1/raw-private/agent-events.jsonl": {
+      "sha256Before": "bb52d1d13ab5a756f946b38861c001e4842f0b010f06e4999fbb447a5c2742cb",
+      "sha256After": "bb52d1d13ab5a756f946b38861c001e4842f0b010f06e4999fbb447a5c2742cb",
+      "unchanged": true
+    },
+    "campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/manifest.json": {
+      "sha256Before": "dbb6fe354f9a1cf7b87e52feeafd08903596d87b8531c37c9d12a50b6dc6362c",
+      "sha256After": "dbb6fe354f9a1cf7b87e52feeafd08903596d87b8531c37c9d12a50b6dc6362c",
+      "unchanged": true
+    }
+  },
+  "checks": {
+    "saveAttemptRawLine": 5040,
+    "saveAttemptWas19thMutation": true,
+    "deniedCommandCount": 1,
+    "deniedReason": "step budget exhausted",
+    "lastGrantedAction": "Pictures",
+    "filePersistedVerified": false,
+    "crashDialogRawLine": 2467,
+    "firstLaunchTimeoutRawLine": 1654,
+    "executedUiActions": 18,
+    "maxSteps": 18,
+    "rejectedActions": 1,
+    "pythonExecsCaptured": 23,
+    "resultBudgetPythonExecCalls": 23
+  },
+  "constraints": {
+    "liveDevice": false,
+    "appiumSession": false,
+    "androidRestart": false,
+    "installOrClear": false,
+    "buildLintTestFormatter": false,
+    "codeOrSkillModified": false,
+    "newOfficialScore": false,
+    "originalCampaignModified": false
+  },
+  "artifacts": {
+    "review": "review.md",
+    "originalPythonExecutions": "original-python-executions.json",
+    "observationReplay": "observation-replay.json"
+  },
+  "result": {
+    "actor": "notes-media-draw review",
+    "verdict": "grounded original-state review; no rerun"
+  }
+}

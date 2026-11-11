@@ -1,0 +1,219 @@
+{
+  "schemaVersion": 1,
+  "kind": "native_fsq_independent_review",
+  "status": "request_changes",
+  "approved": false,
+  "liveAuthorized": false,
+  "scope": "Complete original offline native-FSQ delivery only; not old AMKernel acceptance or future changed snapshots.",
+  "reviewOwner": "w4:p2",
+  "implementationOwner": "w4:p1",
+  "coordinator": "w6:p2",
+  "reviewedAtUtc": "2026-11-10T05:18:58.011865+00:00",
+  "delivery": {
+    "path": "evidence/fsq-native-gpt61-corrected-20261110T043031Z/delivery.json",
+    "sha256": "70c9cd3659b532314c84e36a6a4fcce8262936e3298f2796c96632f639d9d7a8"
+  },
+  "candidate": {
+    "path": "evidence/fsq-native-gpt61-corrected-20261110T043031Z/candidate-final-manifest.json",
+    "sha256": "0c135fad4250aed48afed72bd5e2b48f6708d5718245a475b55c885ed4578d4c"
+  },
+  "sourceInventory": {
+    "path": "evidence/fsq-native-gpt61-corrected-20261110T043031Z/source-inventory.json",
+    "ownedFileCount": 15,
+    "matchedAtReviewStart": true
+  },
+  "consumerEvidence": {
+    "path": "evidence/fsq-native-gpt61-corrected-20261110T043031Z/independent-review/consumer-counterexamples.json",
+    "sha256": "a441312fac8ded493d5335ca1f722b203c6b7a13db1d18a445c77145a00b593e"
+  },
+  "severityCounts": {
+    "P1": 3,
+    "P2": 5
+  },
+  "findings": [
+    {
+      "id": "FSQ-R01",
+      "severity": "P1",
+      "title": "Local filesystem oracle boundary omits retained source copies and external results",
+      "locations": [
+        "src/fsq_androidworld_eval/fsq_runner.py:256-259",
+        "src/fsq_androidworld_eval/fsq_supervisor.py:33-48",
+        "../FSQ/fsq_agent/tools/_file_ops.py:29-62"
+      ],
+      "observed": "Real sandbox-exec plus real native FileOps read the retained corrected source IR tasks.textproto and an external raw-private sentinel. The denied evaluator-site copy failed to read. Only content digests were recorded.",
+      "consumerEvidence": [
+        "native_fileops_reaches_omitted_oracle_roots"
+      ],
+      "requiredClosure": [
+        "Deny canonical paths for every retained evaluator/oracle source/data copy and actual episode/stage/private results roots; reject overlap with worker staging.",
+        "Prove real sandbox plus native FileOps denies both previously readable targets while worker-owned files remain usable. Do not rely on native relative-path confinement or a network/u2 exclusion."
+      ]
+    },
+    {
+      "id": "FSQ-R02",
+      "severity": "P1",
+      "title": "Forced-worker evidence disappears on result parse or archival errors and scheduling can continue",
+      "locations": [
+        "src/fsq_androidworld_eval/fsq_supervisor.py:145-163",
+        "src/fsq_androidworld_eval/fsq_runner.py:264-271",
+        "src/fsq_androidworld_eval/fsq_runner.py:306-339",
+        "src/fsq_androidworld_eval/fsq_campaign.py:200-209"
+      ],
+      "observed": "A controlled forced receipt plus truncated JSON raised JSONDecodeError without returning the receipt. An archival failure after an attempted forced worker produced fsq=null, cleanupFailure=false, invalid_agent, and halt_reason=None.",
+      "consumerEvidence": [
+        "forced_worker_evidence_lost_on_parse_or_archive"
+      ],
+      "requiredClosure": [
+        "Preserve process/ownership/termination evidence before parsing or archival, independently of native result validity.",
+        "Keep post-spawn missing process/cleanup evidence explicitly unknown; halt scheduling on forced or unproven worker cleanup even when official task/environment cleanup succeeds.",
+        "Cover truncated result and archival-error transitions; prove no next task is scheduled."
+      ]
+    },
+    {
+      "id": "FSQ-R03",
+      "severity": "P1",
+      "title": "Official scoring and ordering claim do not require observed successful native kill",
+      "locations": [
+        "src/fsq_androidworld_eval/fsq_worker.py:197-218",
+        "src/fsq_androidworld_eval/fsq_runner.py:272-299",
+        "../FSQ/fsq_agent/agent_engine/_runner.py:155-173",
+        "../FSQ/fsq_agent/resources/skills/android-harness.md:7-10"
+      ],
+      "observed": "The actual runner accepted a controlled completed full-native envelope with zero write events and no kill, called the official evaluator once, and claimed after_complete_native_FSQ_and_kill_and_internal_verification. Real native code statically enforces schema-valid final output, not kill occurrence; Harness close is not app_stop.",
+      "consumerEvidence": [
+        "native_full_return_without_kill_admitted_to_oracle"
+      ],
+      "requiredClosure": [
+        "Prove successful model-issued native kill and its required ordering before main final/full-return/official scoring; omitted, failed, or budget-denied kill must not satisfy this ordering gate.",
+        "Do not synthesize a replacement kill, suppress original kill, rewrite native Skills, or claim kill from close()/literal test events.",
+        "Record evidence-backed ordering and cover missing/failed/denied kill plus a valid native sequence. Preserve full FSQ internal verification and exactly one terminal official evaluation after the admitted full return."
+      ]
+    },
+    {
+      "id": "FSQ-R04",
+      "severity": "P2",
+      "title": "Worker SIGTERM escalation observes only the leader, leaving owned same-group children alive",
+      "locations": [
+        "src/fsq_androidworld_eval/fsq_supervisor.py:77-104"
+      ],
+      "observed": "Actual _supervise returned after leader SIGTERM with terminated=true/killed=false while its same-group SIGTERM-ignoring child remained in S state. Probe-owned group was then SIGKILLed and child disappearance observed.",
+      "consumerEvidence": [
+        "same_group_child_survives_leader_SIGTERM"
+      ],
+      "requiredClosure": [
+        "Observe and settle remaining owned group members through the grace window even if the leader exits; escalate remaining owned members without killing shared services or process-name matches.",
+        "Report group cleanup separately from leader exit and halt on unproven cleanup.",
+        "Prove the same-group SIGTERM-ignoring child is gone before supervisor completion; clean all probe descendants."
+      ]
+    },
+    {
+      "id": "FSQ-R05",
+      "severity": "P2",
+      "title": "Public standalone episode bypasses the outer episode watchdog",
+      "locations": [
+        "src/fsq_androidworld_eval/fsq_runner.py:347-364",
+        "pyproject.toml:22",
+        "evidence/fsq-native-gpt61-corrected-20261110T043031Z/handoff.md:109-110"
+      ],
+      "observed": "Actual public main(argv) with controlled offline admission/environment entered blocked initialization. A 0.2-second injected episode bound did not stop it; external termination was required at 4 seconds. No model or device was invoked.",
+      "consumerEvidence": [
+        "standalone_main_bypasses_outer_watchdog"
+      ],
+      "requiredClosure": [
+        "Route the public standalone entry through the bounded outer supervisor; keep direct run_episode only as its supervised internal operation.",
+        "Exercise blocked initialization and/or terminal evaluation through the public entry under a shortened envelope; prove bounded owned-process termination and explicit unknown/forced cleanup.",
+        "Preserve exact original documented allocator/envelope and exclusive resource checks; do not replace them with a receipt-age TTL."
+      ]
+    },
+    {
+      "id": "FSQ-R06",
+      "severity": "P2",
+      "title": "Report consumer accepts an answer different from the referenced native runner summary",
+      "locations": [
+        "src/fsq_androidworld_eval/fsq_campaign.py:250-281"
+      ],
+      "observed": "Changing only mainAnswer.summary to a different string and updating its outcome hash still returned operational_errors=[]. The referenced runner retained exact parsed summary.",
+      "consumerEvidence": [
+        "summary_mismatch"
+      ],
+      "requiredClosure": [
+        "Require exact selected-summary equality with the unique successful referenced agent_runtime.runner task_run_v1 output and preserve empty/whitespace/Unicode and business status.",
+        "Reject mismatched summaries through report consumption; do not accept top-level/pre-plan/verifier substitutes or compare normalized strings."
+      ]
+    },
+    {
+      "id": "FSQ-R07",
+      "severity": "P2",
+      "title": "Report consumer does not reconcile counted dispatch audit with budget counters",
+      "locations": [
+        "src/fsq_androidworld_eval/fsq_campaign.py:253-260",
+        "src/fsq_androidworld_eval/fsq_campaign.py:282-288"
+      ],
+      "observed": "Actual NativeDispatchBudget generated 11 counted successful write admissions. An outcome declaring maximum=10 and admitted/succeeded/failed/inFlight=0 retained those identical embedded/journal events and still returned operational_errors=[]. No device action was executed.",
+      "consumerEvidence": [
+        "audit_over_budget_hidden_by_counters"
+      ],
+      "requiredClosure": [
+        "Replay counted-write attempted/completion/denial transitions by ticket and compare totals, outstanding tickets, and maximum with the snapshot; reject duplicates/unmatched events and contradictory counters.",
+        "Preserve valid zero-write runs, failed admissions without refund, and denied writes without admission; cover the demonstrated 11-versus-10 contradiction."
+      ]
+    },
+    {
+      "id": "FSQ-R08",
+      "severity": "P2",
+      "title": "Stage admission does not bind episode stage, native task identity, or serial",
+      "locations": [
+        "src/fsq_androidworld_eval/fsq_campaign.py:225-291",
+        "src/fsq_androidworld_eval/fsq_campaign.py:328-347",
+        "src/fsq_androidworld_eval/fsq_runner.py:193-198",
+        "src/fsq_androidworld_eval/fsq_runner.py:240-252"
+      ],
+      "observed": "A fully rehashed 12-attempt calibration report containing a smoke-stage episode was qualified. A native outcome and TaskResult with another campaign/task ID and serial emulator-9998 instead of emulator-5560 also returned operational_errors=[].",
+      "consumerEvidence": [
+        "wrong_native_task_and_serial",
+        "smoke_episode_reused_in_calibration"
+      ],
+      "requiredClosure": [
+        "Bind every episode to the expected stage, campaign, manifest, readiness and authorization; bind native outcome.taskId and native TaskResult.task_id to the producer episode ID and exact manifest serial.",
+        "Reject smoke/calibration reuse as a formal-stage attempt and wrong native task/serial artifacts even when all hashes are internally correct.",
+        "Use complete producer-shaped positive fixtures instead of accepting absent stage/native identity fields."
+      ]
+    }
+  ],
+  "positiveObservations": [
+    "Complete native from_settings/runtime/DynamicExecutionService(record=False) path and original native Skills/observations/u2 behavior are preserved by static interface review.",
+    "Exact serial injection occurs before Harness construction; actual atomic reservation gate covers supported eight writes, aliases, setup/teardown, failures and multiple tool calls with documented exclusions.",
+    "Worker exact-answer selector validates the native schema and preserves empty/whitespace/Unicode. Findings R06-R08 concern downstream admission, not a proven normal producer fabrication.",
+    "All 116 corrected tasks and 84 JSON/32 seed transport identities are frozen; source and installed AndroidWorld full maps matched the original candidate at review start.",
+    "Rehearsal and business stages are separate; calibration selects the original ordered 12; one-attempt/no-retry immutable-output intent is implemented.",
+    "Legacy and three native module --help commands exited 0; legacy import emitted the existing missing-ffmpeg warning. This proves import/parse compatibility only."
+  ],
+  "verificationAttribution": {
+    "ownerFinalNativeTests": {
+      "passed": 199,
+      "sourceTreeSha256": "eb007df8f2d05326486b888021e1b050bbfc5cd04cf58a751d1beb42b92108de",
+      "rerunByReviewer": false
+    },
+    "ownerEarlierFullSuite": {
+      "passed": 894,
+      "sourceTreeSha256": "d7e4ca1a44a2b14bc5db3199845a21edb63f52d453aae833974bb1f643873966",
+      "beforeFinalManifestFixes": true,
+      "rerunByReviewer": false
+    },
+    "reviewerNewCounterexamples": 9,
+    "reviewerCliHelpSmokes": 4,
+    "realModelOrDeviceCalls": 0
+  },
+  "requiredClosure": [
+    "Implementation owner may make the necessary in-scope fixes under the existing repair authorization; no new user confirmation is needed. Reviewer retains exclusive ownership of independent-review files.",
+    "Keep original delivery, candidate, seals and review evidence immutable. Return a new source inventory and separate fix/closure delivery with exact hashes; refreeze a NEW candidate after implementation/native-auth/source/HEAD/config changes.",
+    "Close each of FSQ-R01..FSQ-R08 with exact changed symbols, targeted consumer regression evidence and actual smoke evidence. Reviewer performs only directed closure on changed paths; do not repeat already accepted failing reproductions or broaden this audit.",
+    "Do not infer approval from owner idle/tests passing. Independent review remains request_changes until explicit targeted closure. No live execution is authorized by this receipt."
+  ],
+  "remainingOutsideThisReview": [
+    "Native Copilot authentication, actual target model/usage and Responses compatibility remain unproven by this review.",
+    "Exclusive disposable serial/ports/resource grant and actual device qualification remain pending.",
+    "A fresh candidate plus approved independent closure/model/resource/stage receipts precede any live qualification/rehearsal/calibration/formal execution.",
+    "No original AMKernel receipt, score, or approval is reused as FSQ acceptance."
+  ]
+}

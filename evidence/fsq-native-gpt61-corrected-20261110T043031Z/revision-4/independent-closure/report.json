@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "kind": "native_fsq_independent_clock_delta_closure",
+  "status": "approved_offline_clock_delta_closure",
+  "approved": true,
+  "liveAuthorized": false,
+  "createdAtUtc": "2026-11-10T13:58:36.086263+00:00",
+  "reviewOwner": "w4:p2",
+  "implementationOwner": "w4:p1",
+  "coordinator": "w6:p2",
+  "scope": "Only revision4 stable-identity versus task-owned clock separation, explicit prepare-clock token/authorization/lifecycle/diagnostics and fresh clock-baseline readiness. Not a whole R01-R08/AMKernel/swipe review or live permission.",
+  "candidate": {
+    "path": "evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/candidate-final-manifest.json",
+    "sha256": "a8550aee3e1b9438377d34b5cf48ff4adde732785afe40aae2249f6266773030"
+  },
+  "evaluatorSourceTreeSha256": "92b8bc71f0b26b19aacb1b23cd0944c3a3f614dbd46c72ab93076629590e2625",
+  "reviewedFiles": [
+    {
+      "path": "src/fsq_androidworld_eval/fsq_campaign.py",
+      "sha256": "fe0b3280562b2801b3faca509e34b4a98db79c247ebfe41bbaaba5bab57e3210",
+      "matchesFrozen": true,
+      "sizeMatches": true
+    },
+    {
+      "path": "tests/test_fsq_campaign.py",
+      "sha256": "177e430895d7a8395be5ec60db583612c648dcae1cc6263752a4c23eb7bdc022",
+      "matchesFrozen": true,
+      "sizeMatches": true
+    },
+    {
+      "path": "README.md",
+      "sha256": "e99d430cf941010e1ae00ace32844841ea031be3998fa007c2fe4dfdeefd9b58",
+      "matchesFrozen": true,
+      "sizeMatches": true
+    }
+  ],
+  "bindingProof": {
+    "runtimeDelta": [
+      "fsq_campaign.py"
+    ],
+    "currentSourceMapMatchesCandidate": true,
+    "changedIdentityDomains": [
+      "evaluator"
+    ],
+    "all116FrozenTaskRowsUnchanged": true,
+    "targetProtocolPathsBudgetsUnchanged": true,
+    "nativeSdkAndroidWorldProviderModelAdbParserFrozenIdentitiesUnchanged": true,
+    "allNewCandidateGatesPending": true,
+    "oldQualificationPartialRehearsalGrantNotTransferred": true
+  },
+  "conclusions": [
+    {
+      "area": "root_cause_and_official_semantics",
+      "status": "closed_offline",
+      "conclusion": "A permanent pre-environment UTC identity gate conflicts with legitimate official Browser clock ownership. Removing mutable clock from stable identity fixes that contract conflict without changing Browser tasks, SDK, host timezone or benchmark semantics.",
+      "source": [
+        "fsq_campaign.py:377-432,462-466",
+        "android_world/task_evals/single/browser.py:49-54,87-96"
+      ],
+      "limit": "Original API/timezone raw values were not retained, so this is not a fabricated historical property diagnosis. The later API33/AsiaShanghai observation is separately dated."
+    },
+    {
+      "area": "stable_target_admission",
+      "status": "closed_offline",
+      "conclusion": "Exact serial/console and API33 remain required; stable ABI/build/boot/screen/device/app/version/APK comparisons remain intact. Clock variability alone does not weaken these checks or automatically repair the target.",
+      "source": [
+        "fsq_campaign.py:384-432,462-466"
+      ],
+      "evidence": [
+        "clock-smoke.xml::test_task_clock_transition_does_not_hide_stable_identity_drift",
+        "clock-smoke.xml::test_clock_preparation_never_repairs_or_accepts_stable_target_drift",
+        "entry-proof.json::postTaskMutableClockAttestation"
+      ]
+    },
+    {
+      "area": "prepare_clock_authority_and_ordering",
+      "status": "closed_offline",
+      "conclusion": "Public token is exactly prepare-clock. It requires its own approved stage plus existing qualify/review/model/exclusive-disposable authority and a full1210-second window. Verified assets, stable target and installed pins precede any official environment mutation; clock setup is only the existing official freeze_datetime=True path.",
+      "source": [
+        "fsq_campaign.py:102-126,497-525,772-815,894-911,939-956"
+      ],
+      "evidence": [
+        "clock-smoke.xml::test_clock_preparation_needs_its_own_stage_permission_before_mutation",
+        "entry-proof.json::missingOwnPermission",
+        "entry-proof.json::actualPublicParentChildTransition"
+      ]
+    },
+    {
+      "area": "partial_effects_close_and_outer_failure",
+      "status": "closed_offline",
+      "conclusion": "Preparation records before/after stable identity and clock, requires stable equality and UTC/auto00, and only remains prepared after owned environment close. Failed restoration, stable drift, unknown close, forced outer or missing report never becomes prepared. No rollback/global restoration is fabricated.",
+      "source": [
+        "fsq_campaign.py:500-540,811-828"
+      ],
+      "evidence": [
+        "clock-smoke.xml::test_clock_preparation_failure_retains_effects_and_never_qualifies",
+        "clock-smoke.xml::test_clock_preparation_never_repairs_or_accepts_stable_target_drift",
+        "entry-proof.json::forcedOuterCannotPrepare",
+        "entry-proof.json::missingChildCannotPrepare"
+      ]
+    },
+    {
+      "area": "strict_fresh_qualification_and_task_clock",
+      "status": "closed_offline",
+      "conclusion": "Qualification refuses non-UTC or auto-time-on before environment creation and never silently repairs. Its actual clock baseline and UTC flag are both consumed. Fresh readiness remains candidate/authorization-bound. Subsequent official per-task setup owns clock state, preserving Browser automatic-time behavior.",
+      "source": [
+        "fsq_campaign.py:154-182,543-608,912-928",
+        "environment.py:468-470"
+      ],
+      "evidence": [
+        "clock-smoke.xml::test_qualification_requires_explicit_clock_baseline_without_repair",
+        "clock-smoke.xml::test_readiness_utc_flag_cannot_replace_the_actual_clock_baseline",
+        "entry-proof.json::actualPublicParentChildTransition",
+        "entry-proof.json::foreignRevisionReadiness"
+      ]
+    }
+  ],
+  "newBlockingFindings": [],
+  "verificationSummary": {
+    "independentClockCases": "15 passed,67 deselected; only -k clock",
+    "independentDirectEntry": "Public parent/child offline flow, own-stage denial, prepare→fresh qualify, mutable-clock attestation, foreign-readiness rejection, forced/missing child failure; exit0",
+    "owner82": "Retained owner module evidence, overlaps the15; not added or rerun as whole",
+    "noFull313OrOldCheckOrIndex3Replay": true,
+    "noDeviceModelTaskScoringOrServiceCalls": true,
+    "temporaryRootsRemoved": true
+  },
+  "historyAndLimits": {
+    "originalFailureProperties": "API and timezone raw values were not persisted; no reconstruction claimed.",
+    "onlyAuthorizedLaterObservation": "Archived2026-11-10T13:29:24.692241Z API33 / AsiaShanghai. Not historical failure values or a current live observation by reviewer.",
+    "autoTimeCurrentValues": "unknown in the archived two-property observation",
+    "failedChildEnvironment": "Stack is at admission before environment construction; no BrowserMaze environment creation/teardown is claimed.",
+    "guestGlobalCleanup": "unknown remains unknown; outer leader exit is not global process/guest restoration proof.",
+    "oldGrant": "operationally terminated by coordinator, original bytes and historical expiry unchanged; not a current execution permission."
+  },
+  "preservation": "Old report/checkpoint, first3 complete lifecycles, fourth fallback cleanup unknown, old qualification/business results, prior approvals and old grant bytes remain untouched. No migration or resume. New evidence only under revision4/independent-closure.",
+  "remaining": [
+    "No live action follows this approval automatically. Coordinator must issue a new immutable grant bound to this candidate/review/model, exact target/controller safety scope, finite window and explicit prepare-clock plus qualify/stage permissions.",
+    "Under that explicit grant, preparation can establish the observable official clock baseline and owned environment close, followed by fresh qualification and a new all116 no-Agent rehearsal from index0; not resume index3.",
+    "Preserve old guest/global cleanup unknowns rather than retroactively relabel them clean. A future scoped preparation/qualification receipt describes only its actual observed effects and cleanup.",
+    "Any stable identity drift, preparation/close/qualification failure stops for a new actual receipt; no automatic retry/repair or killing unknown services.",
+    "No repeated102/97 business smoke, rescoring or Agent/Skill/model optimization is authorized. Calibration/formal execution still needs coordinator release; FSQ-first retained and no automatic target release."
+  ],
+  "evidence": [
+    {
+      "path": "verification.json",
+      "sha256": "a036ba3b4ba07a07fde1a32976e3984a1cb85b8fc4cf58913bf2d1f90865f90e"
+    },
+    {
+      "path": "clock-smoke.json",
+      "sha256": "f43eb1b0e086713e1b4f0b8e3395c1bdad21fac090ce720cccafbce3219dca8e"
+    },
+    {
+      "path": "clock-smoke.xml",
+      "sha256": "c11f9843b4eac58674e6b13f06774e33e7972c89a8446d40ae4eed69a97193f8"
+    },
+    {
+      "path": "entry-proof.json",
+      "sha256": "a51f1f6cc325faf9e09955ec4c537cb6568659af5f1c256cf30d0f9834f79636"
+    }
+  ],
+  "invalidation": "Approval binds exact stated revision4 source/candidate and scoped delta. Later source/import/target/bound-receipt changes need appropriate new bindings and review/coordinator handling.",
+  "writes": "Only independent closure artifacts; no implementation, original evidence, SDK, task, device, model, Git, host/global timezone or timer changes."
+}

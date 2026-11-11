@@ -1,0 +1,198 @@
+{
+  "task": "ClockStopWatchPausedVerify",
+  "variant": "original-APK",
+  "arm": "A",
+  "evidenceScope": "ClockOriginalP0 current controlled run only; no new device operations or rerun",
+  "firstLossBoundary": "Appium session creation, not quit",
+  "lastNonemptyReceive": {
+    "recvSeq": 472,
+    "unix": 1794208914.109598,
+    "windowCount": 2,
+    "nodeCount": 24
+  },
+  "firstEmptyReceive": {
+    "recvSeq": 473,
+    "unix": 1794208914.213598,
+    "windowCount": 0,
+    "nodeCount": 0
+  },
+  "sessionCreatedHostUnix": 1794208914.73454,
+  "firstEmptyBeforeCreationResponseSeconds": 0.520941972732544,
+  "postTransitionReceiveCount": 301,
+  "postTransitionAllReceivedForestsEmpty": true,
+  "receiveSequenceFinal": 773,
+  "chosenOfficialReceive": 773,
+  "deviceLogFacts": {
+    "uiautomationInit": {
+      "deviceEpoch": 1697384090.176,
+      "pid": 25443,
+      "tid": 25463,
+      "id": 900,
+      "flags": 0,
+      "lines": "device-logcat.txt:11483-11496"
+    },
+    "oldSender": {
+      "pid": 23889,
+      "tid": 23915,
+      "lastPreInitCaptureDeviceEpoch": 1697384090.099,
+      "firstPostInitSendDeviceEpoch": 1697384090.203,
+      "blockingRpcSucceededDeviceEpoch": 1697384090.206,
+      "continuesUnboundSendingThroughDeviceEpoch": 1697384121.918
+    },
+    "quitReconnectionCrash": {
+      "deviceEpoch": 1697384121.933,
+      "pid": 23889,
+      "tid": 25691,
+      "exception": "NullPointerException: Context.getSystemServiceName on null Context; AccessibilityService.getWindows; AccessibilityForwarder._init_$lambda$0",
+      "lines": "device-logcat.txt:12823-12835"
+    },
+    "restartedProcess": {
+      "deviceEpoch": 1697384122.989,
+      "pid": 25775,
+      "firstWorkerLog": "Not logging accessibility tree",
+      "lines": "device-logcat.txt:12950-12965"
+    }
+  },
+  "clockAlignment": {
+    "deviceDateCommand": {
+      "args": [
+        "-s",
+        "emulator-5554",
+        "shell",
+        "date",
+        "+%s.%N"
+      ],
+      "returncode": 0,
+      "startedAtUnix": 1794208914.734647,
+      "completedAtUnix": 1794208914.7539,
+      "durationSeconds": 0.019253969192504883,
+      "stdout": "1697384090.744714815\n",
+      "stderr": ""
+    },
+    "hostMinusDeviceOffsetIntervalSeconds": [
+      96824823.9899323,
+      96824824.00918531
+    ],
+    "uiautomationInitHostUnixInterval": [
+      1794208914.1659324,
+      1794208914.1851854
+    ],
+    "firstEmptyReceiveAfterInitSecondsInterval": [
+      0.028412580490112305,
+      0.04766559600830078
+    ],
+    "limit": "Offset interval brackets a sampled device date command, not hardware clock synchronization or sender generation timestamps"
+  },
+  "bindingSnapshots": [
+    {
+      "label": "appium-session-request",
+      "startedAtUnix": 1794208883.233044,
+      "completedAtUnix": 1794208883.4662,
+      "accessibility": [
+        "     Bound services:{Service[label=com.google.androidenv.accessibilityforwarder.Acce\u2026, feedbackType[FEEDBACK_GENERIC], capabilities=1, eventTypes=TYPES_ALL_MASK, notificationTimeout=0, requestA11yBtn=false]}",
+        "     Enabled services:{{com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.AccessibilityForwarder}}",
+        "     Binding services:{}",
+        "     Crashed services:{}"
+      ],
+      "forwarderPid": "23889",
+      "uia2Pid": ""
+    },
+    {
+      "label": "appium-session-created",
+      "startedAtUnix": 1794208914.734646,
+      "completedAtUnix": 1794208914.951467,
+      "accessibility": [
+        "     Bound services:{}",
+        "     Enabled services:{{com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.AccessibilityForwarder}}",
+        "     Binding services:{}",
+        "     Crashed services:{}"
+      ],
+      "forwarderPid": "23889",
+      "uia2Pid": "25443"
+    },
+    {
+      "label": "appium-quit-request",
+      "startedAtUnix": 1794208945.233279,
+      "completedAtUnix": 1794208945.462042,
+      "accessibility": [
+        "     Bound services:{}",
+        "     Enabled services:{{com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.AccessibilityForwarder}}",
+        "     Binding services:{}",
+        "     Crashed services:{}"
+      ],
+      "forwarderPid": "23889",
+      "uia2Pid": "25443"
+    },
+    {
+      "label": "appium-quit-response",
+      "startedAtUnix": 1794208946.081932,
+      "completedAtUnix": 1794208946.299863,
+      "accessibility": [
+        "     Bound services:{}",
+        "     Enabled services:{{com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.AccessibilityForwarder}}",
+        "     Binding services:{}",
+        "     Crashed services:{{com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.AccessibilityForwarder}}"
+      ],
+      "forwarderPid": "",
+      "uia2Pid": ""
+    },
+    {
+      "label": "postrun",
+      "startedAtUnix": 1794208951.433734,
+      "completedAtUnix": 1794208951.845712,
+      "accessibility": [
+        "     Bound services:{Service[label=com.google.androidenv.accessibilityforwarder.Acce\u2026, feedbackType[FEEDBACK_GENERIC], capabilities=1, eventTypes=TYPES_ALL_MASK, notificationTimeout=0, requestA11yBtn=false]}",
+        "     Enabled services:{{com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.AccessibilityForwarder}}",
+        "     Binding services:{}",
+        "     Crashed services:{}"
+      ],
+      "forwarderPid": "25775",
+      "uia2Pid": ""
+    }
+  ],
+  "mechanism": {
+    "observed": "UiAutomation starts flags=0 during creation; enabled forwarder becomes unbound but original constructor-owned PID23889/TID23915 keeps sending. Host receive stream changes from 2 windows/24 nodes to empty before create response and remains empty. Quit later triggers a separate constructor-worker null-context crash in the same forwarder PID; restarted PID25775 is bound postrun but no further forest receives are recorded. Original get_state actually drains seq773 and passes that exact empty forest/list to the original predicate.",
+    "inference": "UiAutomation suppression disconnects the forwarder. Original constructor thread is not lifecycle-cancelled and keeps capturing/sending empty windows while detached; a constructor worker of the reconnecting service reads windows before context attachment and kills the shared process. Rebound/enabled service alone cannot prove recovered gRPC data delivery.",
+    "notProven": "Original RPC sender metadata is empty; device PID/TID continuity is evidenced by logcat and sampled processes, but no per-message service-instance/generation identity can be retroactively assigned. No one-to-one payload hash correlation with a particular device-side send is claimed."
+  },
+  "officialGetState": {
+    "stateCall": 1,
+    "parentContext": null,
+    "startUnix": 1794208950.367508,
+    "startMonotonicNs": 583860138151291,
+    "thread": "MainThread",
+    "waitToStabilize": false,
+    "endUnix": 1794208950.4072452,
+    "endHostUtc": "2026-11-09T07:22:30Z",
+    "durationSeconds": 0.03973722457885742,
+    "forest": {
+      "present": true,
+      "recvSeq": 773,
+      "storedIdentityIsActual": true,
+      "receiveObjectIdMatchesRecord": true,
+      "identityMismatch": false,
+      "windowCount": 0,
+      "serializedBytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "nodeCount": 0,
+      "successTextFound": false,
+      "windows": [],
+      "receivedAtUnix": 1794208945.9262998,
+      "receivedHostUtc": "2026-11-09T07:22:25Z",
+      "receiveAgeSeconds": 4.480938196182251,
+      "recvTransport": "unary",
+      "recvAdmitted": true,
+      "recvAdmittedByDrain": true,
+      "recvAdmittedByDrainIndex": 8,
+      "recvAdmittedByPull": null,
+      "recvPaused": false
+    },
+    "uiElementCount": 0,
+    "pixelShape": [
+      2400,
+      1080,
+      3
+    ]
+  },
+  "traceErrors": []
+}

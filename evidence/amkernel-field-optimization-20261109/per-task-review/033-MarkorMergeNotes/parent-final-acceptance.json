@@ -1,0 +1,51 @@
+{
+  "task": "033-MarkorMergeNotes",
+  "verdict": "OFFLINE_COMPLETION_VALIDATION_DIAGNOSIS_COMPLETE",
+  "ownerEvidenceDirectory": "evidence/markor-merge-diagnosis-20261109T090714Z",
+  "parentReview": "review.md",
+  "independentAcceptance": {
+    "path": "evidence/markor-merge-diagnosis-20261109T090714Z/independent-033-acceptance.md",
+    "signedAtUtc": "2026-11-09T09:15:14Z",
+    "parentReadSignedAcceptanceAndReadonlyReceipt": true,
+    "finalFiveOwnerFilesIndependentlyReadAndHashed": true,
+    "finalOwnerSummarySha256": "87a1943f8d75640a84a27b003a333921c6a796d6fe30b5d9a7b660772c164995",
+    "originalRawCodePairsMatched": 18,
+    "originalRawResponsePairsMatched": 18,
+    "directInstalledSourcesMatchedToRECORD": 7,
+    "scope": "Offline diagnosis only, not fix acceptance"
+  },
+  "parentVerification": {
+    "exactOriginalRawRequestsAndResponsesRead": true,
+    "actualInstalledFuzzyFunctionExecuted": true,
+    "actualInstalledTerminalLayoutBlockExtractedFromASTAndExecuted": true,
+    "originalReopenedUIContentFuzzy": true,
+    "originalReopenedUIContentTerminalLayout": 0.0,
+    "controlledReferenceTerminalLayout": 1.0,
+    "originalCell14ParseFailsAtLine": 9,
+    "originalCell15Parses": true,
+    "originalRunLogWindowRead": "583-601",
+    "notFullEvaluatorOrHistoricalFilesystemOrNewReward": true
+  },
+  "historicalOutcome": {"businessActions": 17, "maxSteps": 78, "referenceSteps": 18, "pythonExecCalls": 18, "officialReward": 0.0},
+  "established": [
+    "Original successful request edits base name but keeps separate default .md extension; reopened UI lists mIObBbo4.md",
+    "Original successful request strips source final newlines and joins with one LF; reopened UI has three nonempty lines without blank lines",
+    "Agent completion check compares hidden-extension base title and its own merged string, not full target identity or requested formatting",
+    "Actual scorer expects exact extensionless path and, after existence/fuzzy gates, five-line blank-line layout"
+  ],
+  "limits": [
+    "Original filesystem find/cat inputs unavailable; original first zero-return branch unobserved",
+    "No claim that original strict-layout branch was reached",
+    "No unique historical cause or task-unsatisfiability claim",
+    "No proof that current UI can create extensionless files",
+    "No demonstrated AMKernel or skill defect, task-contract contradiction, or fix"
+  ],
+  "fixApplied": false,
+  "newOfficialReward": null,
+  "deviceQueriesInThisSlice": 0,
+  "newSessionsInThisSlice": 0,
+  "productionOrSkillChangesInThisSlice": 0,
+  "liveReplayAuthorizedOrPending": false,
+  "nextTaskStarted": false,
+  "decision": "Close this offline diagnosis only. Do not query device, replay, alter filename acceptance or layout rules, modify frozen score, or advance another item."
+}

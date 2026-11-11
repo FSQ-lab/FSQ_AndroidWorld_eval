@@ -1,0 +1,2267 @@
+{
+  "schemaVersion": 1,
+  "domain": "system-sms",
+  "campaignId": "amkernel-0.1.4-r15-current-stack-full-20261109T154403Z",
+  "scope": {
+    "cases": [
+      85,
+      98
+    ],
+    "evidenceImmutable": true,
+    "productConfigurationTestChanges": false,
+    "deviceAccess": false,
+    "mcpAppiumAdbCalls": false,
+    "formalTaskOrScoreRerun": false,
+    "testSuite": false
+  },
+  "sourceProvenance": {
+    "harness": {
+      "path": "evidence/amkernel-0.1.4-r15-current-stack-20261109T154403Z/failure-analysis/shared-offline-checks.json",
+      "anchors": [
+        "sourceIdentity.actualOutput",
+        "actualOutput.allArchivedParserResultsExact",
+        "actualOutput.allPromptGoalsExact"
+      ],
+      "fact": "Current 19-file Harness digest matches frozen campaign identity; exact goals/clock/STRING envelope and first-final archive conversion were checked offline by parent."
+    },
+    "androidWorld": {
+      "recordedRevision": "55ddaf5edc6f6c25673aed343907d5b9dca66f84",
+      "sourceRead": "Current checkout paths/lines cited below; no independent per-file frozen hash comparison performed in this domain."
+    },
+    "appium": {
+      "route": "Historical service-receipt.json:13-17 binds shared appium.log to this campaign; log queries restricted to exact owned session IDs. Installed driver/Settings source is current local explanatory source, not a byte-attested historical snapshot."
+    }
+  },
+  "cases": [
+    {
+      "index": 85,
+      "task": "SimpleSmsSendClipboardContent",
+      "goal": "Send a message to +15459061746 with the clipboard content in Simple SMS Messenger",
+      "params": {
+        "message": "I think, therefore I am.",
+        "number": "+15459061746",
+        "seed": 3566412234
+      },
+      "classification": {
+        "userFacing": "behavior failure",
+        "secondary": "environment/helper symptom with unknown underlying cause; budget comparability caveat",
+        "notEstablished": [
+          "AMKernel Runtime defect",
+          "empty or corrupt initialized clipboard",
+          "emulator SMS transport failure",
+          "oracle false negative"
+        ]
+      },
+      "oracle": {
+        "sources": [
+          {
+            "path": "android_world/android_world/task_evals/single/sms.py",
+            "symbol": "SimpleSmsSendClipboardContent",
+            "lines": "158-170",
+            "fact": "Goal names recipient and clipboard source; initializer writes self.params[message] via Clipper."
+          },
+          {
+            "path": "android_world/android_world/task_evals/common_validators/sms_validators.py",
+            "symbol": "SimpleSMSSendSms.initialize_task / is_successful / get_sent_messages / was_sent",
+            "lines": "93-152,176-180,211-276",
+            "fact": "Airplane off, SMS+threads cleared, then query content://sms/sent and require matching recipient/body/recent date plus correct active app."
+          },
+          {
+            "path": "android_world/android_world/utils/fuzzy_match_lib.py",
+            "symbol": "fuzzy_match",
+            "lines": "20-50",
+            "fact": "Case-insensitive difflib.SequenceMatcher ratio >=0.9."
+          },
+          {
+            "path": "android_world/android_world/env/adb_utils.py",
+            "symbol": "set_clipboard_contents / get_clipboard_contents / VALID_APP_NAMES",
+            "lines": "126-132,1143-1174,1208-1238",
+            "fact": "Clipper foreground + broadcast initializer; AndroidWorld getter is distinct from Appium getter."
+          }
+        ],
+        "exactPredicates": {
+          "reward": "1.0 iff sms_was_sent AND in_correct_app; otherwise 0.0",
+          "sms_was_sent": {
+            "query": "shell content query --uri content://sms/sent",
+            "address": "row.address.replace(\"-\", \"\").replace(\" \", \"\") == \"+15459061746\"",
+            "body": "fuzzy_match(row.body,\"I think, therefore I am.\") == True; default ignore_case=True, SequenceMatcher ratio >=0.9",
+            "recency": "get_android_time() - row.date <= 5*60*1000; get_android_time reads device date +%s and multiplies by1000. No lower bound is coded."
+          },
+          "in_correct_app": "extract_package_name(get_current_activity()[0]) == \"com.simplemobiletools.smsmessenger\"",
+          "exceptionInsteadOfScore": "A current UI text starting Sending makes _check_if_stuck_at_sending raise ValueError. No evaluator exception recorded here.",
+          "subscores": "None persisted; conjunction result only."
+        },
+        "initializationDependencies": {
+          "expectedClipboard": "I think, therefore I am.",
+          "actualClipboardReadback": "Not captured. Initializer completed but does not archive a post-init getter value. Appium getter failed before producing content.",
+          "smsDatabase": "/data/data/com.android.providers.telephony/databases/mmssms.db; SMS and threads cleared by initializer; no actual before/after rows archived here.",
+          "deviceClock": {
+            "referenceTime": "2023-10-15T15:34:00+00:00",
+            "timezone": "UTC"
+          },
+          "setupStatus": "task_initialization completed in7.938s"
+        },
+        "answerSemantics": "Not an information retrieval task. Valid first final string is not compared to a textual expected answer; oracle reads state."
+      },
+      "timeline": [
+        {
+          "pythonExecution": 1,
+          "path": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/085-SimpleSmsSendClipboardContent/attempt-1/raw-private/agent-events.jsonl",
+          "startLine": 328,
+          "endLine": 329,
+          "toolCallId": "call_N4CeCJ3kmvfuPKv7Dp9ZVKP7|UrDajE3XQwnJ+vlfoRvXHLtvrB7ebRhG3pIYBWKPGKV2qjIqmCs092GZZl3RET+z709WVdolzMlQf1SYFX0uoIPXnrolJ3Wz/3hwMdEC6moMZZk0BbxyhpTqgJFwTpDEsVhfpgBKNYDW/FSmDvd5LmQltxqdbciORlF5AJ+AWsCaAXKQBvreswpZHgH/yk9bH+XsOzgHY6qf85RMuP1JYtnaj5FVwXYIAJQhkEjD6oDETzbNLFTM9rGXnws04TcUc18gvYV3/9V3yeMZAVJ40U4GyzIrqW3LceGQ7N1vi2gA/jHV6fGA12bTz6Glio7WyH0HThCw1f6NZsdmMbZG23xhFPb0E2Jz9vlfboEwtMoF54SaDoqKFzNRJEn+2RQRz6bCfabPjBFcg7XH+GHJwFPwLqAJbr27+C4gmMuh",
+          "precedingAssistantMessageEnd": {
+            "line": 327,
+            "timestampMs": 1794262848691,
+            "limitation": "Tool event itself has no timestamp; this is the immediately preceding assistant message timestamp, not an asserted exact execution start."
+          },
+          "exactCode": "from appium import webdriver\nfrom appium.options.android import UiAutomator2Options\nfrom appium.webdriver.common.appiumby import AppiumBy\nfrom selenium.webdriver.support.ui import WebDriverWait\noptions = UiAutomator2Options().load_capabilities({\n    'platformName': 'Android',\n    'appium:automationName': 'UiAutomator2',\n    'appium:udid': 'emulator-5554',\n    'appium:noReset': True,\n    'appium:autoLaunch': False,\n    'appium:skipUnlock': True,\n    'appium:newCommandTimeout': 300,\n})\ndriver = webdriver.Remote('http://127.0.0.1:52643', options=options)\nsession_id = driver.session_id\n{'sessionId': session_id, 'newCommandTimeout': driver.capabilities.get('newCommandTimeout'), 'package': driver.current_package, 'activity': driver.current_activity}",
+          "requestedTimeoutSeconds": 90,
+          "originalResponse": {
+            "status": "completed",
+            "kernelState": "alive",
+            "durationMs": 31617,
+            "result": {
+              "sessionId": "fb607e05-8328-496b-b945-d7384303e186",
+              "newCommandTimeout": 300,
+              "package": "com.google.android.apps.nexuslauncher",
+              "activity": ".NexusLauncherActivity"
+            }
+          },
+          "displayEvidence": []
+        },
+        {
+          "pythonExecution": 2,
+          "path": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/085-SimpleSmsSendClipboardContent/attempt-1/raw-private/agent-events.jsonl",
+          "startLine": 553,
+          "endLine": 554,
+          "toolCallId": "call_sOwAPSgxkH1sN6rOYYHpo9x0|OAS3npF0g562dCcwDvqMZda2LTCsjy5MoyrR+Cg222i8FxGLRH1TzaSdEv6oROeyZupfgmkj6Gkijf/7DtXbiRR0KUkRNxO9s87tTGQ0HW7lDFG6wpesj5fQMEmZj9gmOWjK400ugswxgCe6LmU28X5vVMNLx1YlZkfM75R+kdnbgwEQM/ln5S/iYORSKBUbe0i62Q90G6ozrNt77xGnBoYWfO4Si41TLinMpehoNoqfINZz0vjWQjKQX75Tp0tm939+yNvI+OHUKiRbUEGG3c3Xcrf7aFx5FLiY3GtTQ/R3YRDoWAqynoEzLjRYyQ74rEtyzNJACZ9age+4i7EbnFIKskceBE9bOKWIvfmsapzTxper3rQph32hs81H/4Dc4vw2xOpJPggsYHHyCowj9jUPPkHjjN3YmaOUsYHH",
+          "precedingAssistantMessageEnd": {
+            "line": 552,
+            "timestampMs": 1794262884126,
+            "limitation": "Tool event itself has no timestamp; this is the immediately preceding assistant message timestamp, not an asserted exact execution start."
+          },
+          "exactCode": "els = driver.find_elements(AppiumBy.XPATH, '//*')\n[{'class': e.get_attribute('className'), 'text': e.get_attribute('text'), 'desc': e.get_attribute('contentDescription'), 'id': e.get_attribute('resourceId')} for e in els if (e.get_attribute('text') or e.get_attribute('contentDescription'))][:40]",
+          "requestedTimeoutSeconds": 30,
+          "originalResponse": {
+            "status": "completed",
+            "kernelState": "alive",
+            "durationMs": 1271,
+            "result": [
+              {
+                "class": "android.widget.FrameLayout",
+                "text": "",
+                "desc": "null",
+                "id": "null"
+              },
+              {
+                "class": "android.widget.LinearLayout",
+                "text": "",
+                "desc": "null",
+                "id": "null"
+              },
+              {
+                "class": "android.widget.FrameLayout",
+                "text": "",
+                "desc": "null",
+                "id": "android:id/content"
+              },
+              {
+                "class": "android.widget.FrameLayout",
+                "text": "",
+                "desc": "null",
+                "id": "com.google.android.apps.nexuslauncher:id/launcher"
+              },
+              {
+                "class": "android.widget.FrameLayout",
+                "text": "",
+                "desc": "null",
+                "id": "com.google.android.apps.nexuslauncher:id/drag_layer"
+              },
+              {
+                "class": "android.view.View",
+                "text": "",
+                "desc": "null",
+                "id": "com.google.android.apps.nexuslauncher:id/scrim_view"
+              },
+              {
+                "class": "android.widget.ScrollView",
+                "text": "",
+                "desc": "null",
+                "id": "com.google.android.apps.nexuslauncher:id/workspace"
+              },
+              {
+                "class": "android.view.ViewGroup",
+                "text": "",
+                "desc": "null",
+                "id": "null"
+              },
+              {
+                "class": "android.view.ViewGroup",
+                "text": "",
+                "desc": "null",
+                "id": "null"
+              },
+              {
+                "class": "android.widget.FrameLayout",
+                "text": "",
+                "desc": "null",
+                "id": "com.google.android.apps.nexuslauncher:id/search_container_workspace"
+              },
+              {
+                "class": "android.widget.FrameLayout",
+                "text": "",
+                "desc": "null",
+                "id": "com.google.android.apps.nexuslauncher:id/bc_smartspace_view"
+              },
+              {
+                "class": "androidx.viewpager.widget.ViewPager",
+                "text": "",
+                "desc": "null",
+                "id": "com.google.android.apps.nexuslauncher:id/smartspace_card_pager"
+              },
+              {
+                "class": "android.view.ViewGroup",
+                "text": "",
+                "desc": "null",
+                "id": "null"
+              },
+              {
+                "class": "android.widget.RelativeLayout",
+                "text": "",
+                "desc": "null",
+                "id": "com.google.android.apps.nexuslauncher:id/text_group"
+              },
+              {
+                "class": "android.widget.TextView",
+                "text": "Sun, Oct 15",
+                "desc": "Sun, Oct 15",
+                "id": "com.google.android.apps.nexuslauncher:id/date"
+              },
+              {
+                "class": "android.view.ViewGroup",
+                "text": "",
+                "desc": "null",
+                "id": "com.google.android.apps.nexuslauncher:id/smartspace_subtitle_group"
+              },
+              {
+                "class": "android.widget.TextView",
+                "text": "Gmail",
+                "desc": "Gmail",
+                "id": "null"
+              },
+              {
+                "class": "android.widget.TextView",
+                "text": "Photos",
+                "desc": "Photos",
+                "id": "null"
+              },
+              {
+                "class": "android.widget.TextView",
+                "text": "YouTube",
+                "desc": "YouTube",
+                "id": "null"
+              },
+              {
+                "class": "android.view.View",
+                "text": "",
+                "desc": "Home",
+                "id": "null"
+              },
+              {
+                "class": "android.view.View",
+                "text": "",
+                "desc": "null",
+                "id": "com.google.android.apps.nexuslauncher:id/page_indicator"
+              },
+              {
+                "class": "android.view.ViewGroup",
+                "text": "",
+                "desc": "null",
+                "id": "com.google.android.apps.nexuslauncher:id/hotseat"
+              },
+              {
+                "class": "android.view.ViewGroup",
+                "text": "",
+                "desc": "null",
+                "id": "null"
+              },
+              {
+                "class": "android.widget.TextView",
+                "text": "Phone",
+                "desc": "Phone",
+                "id": "null"
+              },
+              {
+                "class": "android.widget.TextView",
+                "text": "Messages",
+                "desc": "Messages",
+                "id": "null"
+              },
+              {
+                "class": "android.widget.TextView",
+                "text": "Chrome",
+                "desc": "Chrome",
+                "id": "null"
+              },
+              {
+                "class": "android.widget.TextView",
+                "text": "Calendar",
+                "desc": "Predicted app: Calendar",
+                "id": "null"
+              },
+              {
+                "class": "android.widget.FrameLayout",
+                "text": "",
+                "desc": "Search",
+                "id": "com.google.android.apps.nexuslauncher:id/search_container_hotseat"
+              },
+              {
+                "class": "android.widget.ImageView",
+                "text": "",
+                "desc": "Google app",
+                "id": "com.google.android.apps.nexuslauncher:id/g_icon"
+              },
+              {
+                "class": "android.widget.LinearLayout",
+                "text": "",
+                "desc": "null",
+                "id": "com.google.android.apps.nexuslauncher:id/end_part"
+              },
+              {
+                "class": "android.widget.ImageView",
+                "text": "",
+                "desc": "Voice search",
+                "id": "com.google.android.apps.nexuslauncher:id/mic_icon"
+              },
+              {
+                "class": "android.widget.ImageButton",
+                "text": "",
+                "desc": "Google Lens",
+                "id": "com.google.android.apps.nexuslauncher:id/lens_icon"
+              },
+              {
+                "class": "android.widget.FrameLayout",
+                "text": "",
+                "desc": "null",
+                "id": "com.google.android.apps.nexuslauncher:id/overview_actions_view"
+              }
+            ]
+          },
+          "displayEvidence": []
+        },
+        {
+          "pythonExecution": 3,
+          "path": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/085-SimpleSmsSendClipboardContent/attempt-1/raw-private/agent-events.jsonl",
+          "startLine": 731,
+          "endLine": 732,
+          "toolCallId": "call_mSnQGIFPNbDPb1B4qhXOenyi|9aRF/CVmTeHyVpq+n3/iuQoIsUMxDZg05QCxuyr4Yhw6ngReZucstgQb2lFrKtcfjWjsuzkVp5BvuGCHimQNcofUVf3Ixb+U9Xd+zyd7CW3PsbpRjXV0ASsSidJZXoGwe407bsi9SFMEMmq+qFferMn6nDIkPyJ4ekXcQ85Ugk7fawb7cfD/3Fliw4gMH02OQq3ZBEZaGWrX/HJL7fLz6kvv0IIunPtgWhzPwwxFf5oVCt0Qo/clV69z/Fn91KEQwo05dXKdJlQf6w6m/UlIMmrI0fNCioHhqNdi2Z+LfSzCS7bxuZklsWRXjBYbyU21eCiRtAMimkyZySixRoQREMCiu+c+6y8ZXXvX9EXz4SM9mL9O0SmakaOAt5L7AdCTg/V/CaxsUuEJrLTq3FywmHGOMZNcJeSZwyYxqtD4",
+          "precedingAssistantMessageEnd": {
+            "line": 730,
+            "timestampMs": 1794262889649,
+            "limitation": "Tool event itself has no timestamp; this is the immediately preceding assistant message timestamp, not an asserted exact execution start."
+          },
+          "exactCode": "driver.find_element(AppiumBy.XPATH, '//*[@text=\"Messages\"]').click()\nWebDriverWait(driver, 10).until(lambda d: d.current_package != 'com.google.android.apps.nexuslauncher')\n{'package': driver.current_package, 'activity': driver.current_activity}",
+          "requestedTimeoutSeconds": 30,
+          "originalResponse": {
+            "status": "completed",
+            "kernelState": "alive",
+            "durationMs": 766,
+            "result": {
+              "package": "com.google.android.apps.messaging",
+              "activity": ".ui.ConversationListActivity"
+            }
+          },
+          "displayEvidence": []
+        },
+        {
+          "pythonExecution": 4,
+          "path": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/085-SimpleSmsSendClipboardContent/attempt-1/raw-private/agent-events.jsonl",
+          "startLine": 1022,
+          "endLine": 1023,
+          "toolCallId": "call_oNAtJweIEWP0lkkQgf328IKj|R1p6B9u9qwEzXs98EKYMNPHrVKqhEBzjqWy15q6e0hdXQ1srR3DIoE8Rm77D5h0jQFHdCgMT08yNYSUJPm8v/ry6ZNjv5pSwwnYVjNFH//Ycw2sfJF2W5teGlVGA8B1W4X/IhtZ0jjHF40xzxWbkXzNicEArQ6Gy3/lwys1HNiTvaLPKttLV/1jn5j5gBlihFx6ufLA2mcnq8gpaV7FcpD40gIHtXV0qSTi4zEk/UG/yfIdwaa0ry5r3yPwc8s5+4Z4hhYJB/pvEVFupx+G/fqGsLknlzmGveOjqbXTRTn7YuFgbeusBy/4igIbU75eVObCFSjfXpVyuY1kDIt2r83HHW4b7LjZgK2eyOGvu4sabYPfBL+dzqicK/wCX5wRbks+/+JauGs+R+qm53Q3J/hN2TJ14eM7o5AB3Rm8c",
+          "precedingAssistantMessageEnd": {
+            "line": 1021,
+            "timestampMs": 1794262895034,
+            "limitation": "Tool event itself has no timestamp; this is the immediately preceding assistant message timestamp, not an asserted exact execution start."
+          },
+          "exactCode": "driver.back()\nWebDriverWait(driver, 10).until(lambda d: d.current_package == 'com.google.android.apps.nexuslauncher')\nsize = driver.get_window_size()\ndriver.swipe(size['width']//2, int(size['height']*0.82), size['width']//2, int(size['height']*0.22), 400)\nWebDriverWait(driver, 10).until(lambda d: len(d.find_elements(AppiumBy.XPATH, '//*[@text=\"Simple SMS Messenger\"]')) > 0)\napps = driver.find_elements(AppiumBy.XPATH, '//*[@text]')\n[e.get_attribute('text') for e in apps if e.get_attribute('text')][:40]",
+          "requestedTimeoutSeconds": 30,
+          "originalResponse": {
+            "status": "failed",
+            "kernelState": "alive",
+            "durationMs": 12433,
+            "error": {
+              "type": "selenium.common.exceptions.TimeoutException",
+              "message": "",
+              "traceback": [
+                "Traceback (most recent call last):",
+                "  File \"<external-frame>\", line 590, in <frame>",
+                "  File \"<external-frame>\", line 575, in <frame>",
+                "  File \"<amkernel-cell-4>\", line 5, in <frame>",
+                "  File \"<external-frame>\", line 121, in <frame>",
+                "selenium.common.exceptions.TimeoutException"
+              ]
+            }
+          },
+          "displayEvidence": []
+        },
+        {
+          "pythonExecution": 5,
+          "path": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/085-SimpleSmsSendClipboardContent/attempt-1/raw-private/agent-events.jsonl",
+          "startLine": 1166,
+          "endLine": 1167,
+          "toolCallId": "call_CfvokTyCsszlkO41ke3V7pGu|ezkZ6HXcPIVSaetGh2njUZl2N7l+7WIliwIXEgT2U5+24JfTyRHGHv2sxrx4yzh/lSYvcvFd+fSWPnKlmoH03nRNjQS9YKRM6YHZYZq10Z6WF9JXAnj5aEt3xQN4P8oweFwmEHHaE3BmPAecxxcvZ+sVDjz5DB9ocEiBmzRi59ECjXoVz+bRhnBJTa/nH3bojhzvM33JOnwDJaY4edsi3sY0cjafvR7ypECwLA+x/RnLy+X8913kCIQdOpfpAW3uTIUMaO9HGI1QlkcGItZoU2SP9XBDkjrOjm/9iobr/juOIWEDs8ktrn+rNnctL8l+DyZ/LDKiJpWP8fWjcmPunEACdDOtP3hvzOPGX7vHZbeM9uZOlBT67YVrgcpXA0C0Ut4WNLYu3snF2q+5bvESeE+n2ztvE3OJCzj04Fkr",
+          "precedingAssistantMessageEnd": {
+            "line": 1165,
+            "timestampMs": 1794262912212,
+            "limitation": "Tool event itself has no timestamp; this is the immediately preceding assistant message timestamp, not an asserted exact execution start."
+          },
+          "exactCode": "{'package': driver.current_package, 'activity': driver.current_activity, 'texts': [e.get_attribute('text') for e in driver.find_elements(AppiumBy.XPATH, '//*[@text]') if e.get_attribute('text')][:80], 'descs': [e.get_attribute('contentDescription') for e in driver.find_elements(AppiumBy.XPATH, '//*[@content-desc]') if e.get_attribute('contentDescription')][:30]}",
+          "requestedTimeoutSeconds": 30,
+          "originalResponse": {
+            "status": "completed",
+            "kernelState": "alive",
+            "durationMs": 587,
+            "result": {
+              "package": "com.google.android.apps.nexuslauncher",
+              "activity": ".NexusLauncherActivity",
+              "texts": [
+                "Audio Recorder",
+                "Broccoli",
+                "Calendar",
+                "Calendar",
+                "Camera",
+                "Chrome",
+                "Clipper",
+                "Clock",
+                "Contacts",
+                "Draw",
+                "Drive",
+                "Files",
+                "Gallery",
+                "Gmail",
+                "Google",
+                "Joplin",
+                "Maps",
+                "Markor",
+                "Messages",
+                "OpenTracks",
+                "OsmAnd",
+                "Phone",
+                "Photos",
+                "Pro Expense",
+                "Gallery",
+                "Calendar",
+                "Camera",
+                "Tasks",
+                "Search apps, web and more"
+              ],
+              "descs": [
+                "Audio Recorder",
+                "Broccoli",
+                "Calendar",
+                "Calendar",
+                "Camera",
+                "Chrome",
+                "Clipper",
+                "Clock",
+                "Contacts",
+                "Draw",
+                "Drive",
+                "Files",
+                "Gallery",
+                "Gmail",
+                "Google",
+                "Joplin",
+                "Maps",
+                "Markor",
+                "Messages",
+                "OpenTracks",
+                "OsmAnd",
+                "Phone",
+                "Photos",
+                "Pro Expense",
+                "Gallery",
+                "Calendar",
+                "Camera",
+                "Tasks",
+                "Search",
+                "Google app"
+              ]
+            }
+          },
+          "displayEvidence": []
+        },
+        {
+          "pythonExecution": 6,
+          "path": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/085-SimpleSmsSendClipboardContent/attempt-1/raw-private/agent-events.jsonl",
+          "startLine": 1514,
+          "endLine": 1515,
+          "toolCallId": "call_TsnCkqvTJRr7zAaNaHEWPZHX|phW+tglwlY6WtNCi/8ZMTLyi7sg3x6+vq6qNvc0SsR6aHtjHpxHdaaj0bwfH987b5XKEKCTMUsxd3qCg1rfFzq8xYus2u9tKuGzgx+3uwHaH6ccZqTAe/n0ITLgQceD01i9xeiWFfGbmQDyHeDxQT52pAU5QdUzbs2TeCtZ6FnfuoAxbsvqOc0y+uBDf0P2ALD5DPIPyZq75NQfYUljY1/xXokdHpJbNqRi8115Tv1hhNsfXSSi3Wl2CV5QsBtPyW2AHgPJvQdLg0lIpnQLb45yvu+BxMZbmDVxMCtW0NtkxzBG6BDr2n9JqNoyBU3aOTEXREUc8d4nv8nC+KF7+UxtBWtmc8qgVbinrEJ1zILls/P3RjbIS1zl8PLru4C5pxEopToyvMQysEL/hH9KJGs6a2hjGI/BZq/2E/yHD",
+          "precedingAssistantMessageEnd": {
+            "line": 1513,
+            "timestampMs": 1794262916547,
+            "limitation": "Tool event itself has no timestamp; this is the immediately preceding assistant message timestamp, not an asserted exact execution start."
+          },
+          "exactCode": "search = driver.find_element(AppiumBy.XPATH, '//*[@text=\"Search apps, web and more\"]')\nsearch.click()\nWebDriverWait(driver, 5).until(lambda d: d.switch_to.active_element.get_attribute('focused') == 'true')\ndriver.switch_to.active_element.send_keys('Simple SMS Messenger')\nWebDriverWait(driver, 5).until(lambda d: any((e.get_attribute('text') or '') for e in d.find_elements(AppiumBy.XPATH, '//*[@text]')))\n{'texts': [e.get_attribute('text') for e in driver.find_elements(AppiumBy.XPATH, '//*[@text]') if e.get_attribute('text')][:40], 'descs': [e.get_attribute('contentDescription') for e in driver.find_elements(AppiumBy.XPATH, '//*[@content-desc]') if e.get_attribute('contentDescription')][:30]}",
+          "requestedTimeoutSeconds": 30,
+          "originalResponse": {
+            "status": "completed",
+            "kernelState": "alive",
+            "durationMs": 2595,
+            "result": {
+              "texts": [
+                "Simple SMS Messenger0",
+                "Simple SMS Messenger0",
+                "Simple SMS Messenger1",
+                "Simple SMS Messenger1",
+                "Simple SMS Messenger2",
+                "Simple SMS Messenger2",
+                "Simple SMS Messenger3",
+                "Simple SMS Messenger3",
+                "Simple SMS Messenger4",
+                "Simple SMS Messenger4",
+                "Simple SMS Messenger5",
+                "Simple SMS Messenger5",
+                "Simple SMS Messenger6",
+                "Simple SMS Messenger6",
+                "Simple SMS Messenger7",
+                "Simple SMS Messenger7",
+                "Simple SMS Messenger8",
+                "Simple SMS Messenger"
+              ],
+              "descs": [
+                "Search null",
+                "Search null",
+                "Search null",
+                "Search null",
+                "Search null",
+                "Search null",
+                "Search null",
+                "Search null",
+                "Search",
+                "Google app",
+                "Clear search box",
+                "Home"
+              ]
+            }
+          },
+          "displayEvidence": []
+        },
+        {
+          "pythonExecution": 7,
+          "path": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/085-SimpleSmsSendClipboardContent/attempt-1/raw-private/agent-events.jsonl",
+          "startLine": 1687,
+          "endLine": 1688,
+          "toolCallId": "call_S6z3GP9uefthPujpnTUnFB1d|sOFUyz1IzAc6hAhtozBRJHD2lVwYjA6raUXtoFNQdXfD2HnH7ltVXrtoPVcqeqI5H+5rJX4C3oSOuZGaxWEMbwMXuvnXlxiRgTnixpPt9IKDtPuOfqtlUX+nz5w7zjCCyO/3yNIkWKyh3jYcHKkuE7X0V1s0ciYIZ+ijG2FrpUGsDsL9CrK0L+0GB4hcCQK4fLx3r1Gud1hnf2EFvafndiuKRWqV8B6tc70GdnNqqYu027XCtGM+Plk1mMapiwDp+dscJ1hZW4Fv7r78r19PvCej552VsSkbyCg6m+kgl/tKkOlpEGh2vwG/Q6c865jd63YZo5LjyuRcz2KGvuxqsZiuAoJj28jqLKzd5+JIvWOClWx8qD1YE46Z43uPtmmEm559aOCJ12N1M9I3zWRTZiFTfl/7nfGIPYPUDpe2",
+          "precedingAssistantMessageEnd": {
+            "line": 1686,
+            "timestampMs": 1794262925261,
+            "limitation": "Tool event itself has no timestamp; this is the immediately preceding assistant message timestamp, not an asserted exact execution start."
+          },
+          "exactCode": "matches = driver.find_elements(AppiumBy.XPATH, '//*[@text=\"Simple SMS Messenger\"]')\n[(m.get_attribute('className'), m.get_attribute('clickable'), m.get_attribute('bounds')) for m in matches]",
+          "requestedTimeoutSeconds": 30,
+          "originalResponse": {
+            "status": "completed",
+            "kernelState": "alive",
+            "durationMs": 63,
+            "result": {
+              "kind": "repr",
+              "typeName": "list",
+              "value": "<list len=1; bounded non-JSON representation>",
+              "truncated": true
+            }
+          },
+          "displayEvidence": []
+        },
+        {
+          "pythonExecution": 8,
+          "path": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/085-SimpleSmsSendClipboardContent/attempt-1/raw-private/agent-events.jsonl",
+          "startLine": 1786,
+          "endLine": 1787,
+          "toolCallId": "call_ywjUXwNY2wZKW3ymPdCtAAnp|yAWPmhWAupui6fCTFAS9npXkntvLzQQumNwoKPqDK0SccK4G7PlP712v+8EafpuSOOyLho3io9ZzXaIXVAb9nAxdyXQnaOxA/VtaTFp5D/PPQeDlAf+AF3+ELJcn3DUWkKIuvB7OIjAAFIbdwYgAVKSau1epV2pKjF2+9E9v37l6B+LsUf4Tm4M7A6lW3ZW0Ijnx6YIbah2JJB39nbGw20dWUdEymH5DnU1AXt3HIyWd73iEr3kuRqqeDm3eCYHEhMwkFN2b78Op3QMzf7Q8RZl3b3LEE2xXI7Ywa1uuPkart6qp4pKaUe3lHqHCYDKe7PtNiRQ/PTvWQa9GjqGP1kmpHCgoHphp2veEiz8vT13qPPkxuSHIjim25xPB1CkGRvSfskQM9L9V52n2C0dveaQIYJILtP886TteBD8J",
+          "precedingAssistantMessageEnd": {
+            "line": 1785,
+            "timestampMs": 1794262929057,
+            "limitation": "Tool event itself has no timestamp; this is the immediately preceding assistant message timestamp, not an asserted exact execution start."
+          },
+          "exactCode": "matches[0].click()\nWebDriverWait(driver, 10).until(lambda d: d.current_package != 'com.google.android.apps.nexuslauncher')\n{'package': driver.current_package, 'activity': driver.current_activity}",
+          "requestedTimeoutSeconds": 30,
+          "originalResponse": {
+            "status": "failed",
+            "kernelState": "alive",
+            "durationMs": 10819,
+            "error": {
+              "type": "selenium.common.exceptions.TimeoutException",
+              "message": "",
+              "traceback": [
+                "Traceback (most recent call last):",
+                "  File \"<external-frame>\", line 590, in <frame>",
+                "  File \"<external-frame>\", line 575, in <frame>",
+                "  File \"<amkernel-cell-8>\", line 2, in <frame>",
+                "  File \"<external-frame>\", line 121, in <frame>",
+                "selenium.common.exceptions.TimeoutException"
+              ]
+            }
+          },
+          "displayEvidence": []
+        },
+        {
+          "pythonExecution": 9,
+          "path": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/085-SimpleSmsSendClipboardContent/attempt-1/raw-private/agent-events.jsonl",
+          "startLine": 1941,
+          "endLine": 1942,
+          "toolCallId": "call_tLgAEJHz8JkmOLiTONBiRQPB|adi7LydQI18n2K7Y4vZY9T4BJl1TiOUXL21ET4u5uguxsmLjqW8mF9i87B/vqb60Il4YSVzryRdmyIolJKg92w+5cc7zC8t1wQP7E4ayOWX7wjctpv7u2/Rxj9aEfzbLbxGjmWp0BikQH/0o9fLQKk2pZ6e/yqOuZMUi/cy0OTUzTu6rB5oyeWwH7lMizcUMjm752SuuCjNtvGKqKeOoTxBtduayW8RXo5xmo+MkjrHBckSKfz33gPVF51x9ujuY2fsM3Si6gy5HsB1IJelFuj5FD6xsiz6qqiqr7vf6DrxXP2A90XeqPx3Rph9JnuGZmRmSPyIbuLibX3nI++RB2wnaHhvFRqMrVB3qd7Bi4TuJq/b8gnaPZSXFpNM/iVjKtdxOPdVXBxdBwJSsJSsQFkCD5UHI3dKd9G/Zkb75",
+          "precedingAssistantMessageEnd": {
+            "line": 1940,
+            "timestampMs": 1794262942895,
+            "limitation": "Tool event itself has no timestamp; this is the immediately preceding assistant message timestamp, not an asserted exact execution start."
+          },
+          "exactCode": "els = driver.find_elements(AppiumBy.XPATH, '//*')\n{'package': driver.current_package, 'items': [{'class': str(e.get_attribute('className')), 'text': str(e.get_attribute('text')), 'desc': str(e.get_attribute('contentDescription')), 'clickable': str(e.get_attribute('clickable')), 'bounds': str(e.get_attribute('bounds'))} for e in els if 'Simple SMS Messenger' in str(e.get_attribute('text'))][-8:]}",
+          "requestedTimeoutSeconds": 30,
+          "originalResponse": {
+            "status": "completed",
+            "kernelState": "alive",
+            "durationMs": 531,
+            "result": {
+              "package": "com.google.android.apps.nexuslauncher",
+              "items": [
+                {
+                  "class": "android.widget.TextView",
+                  "text": "Simple SMS Messenger5",
+                  "desc": "null",
+                  "clickable": "false",
+                  "bounds": "[78,1073][204,1199]"
+                },
+                {
+                  "class": "android.widget.TextView",
+                  "text": "Simple SMS Messenger5",
+                  "desc": "Search null",
+                  "clickable": "false",
+                  "bounds": "[225,1108][703,1165]"
+                },
+                {
+                  "class": "android.widget.TextView",
+                  "text": "Simple SMS Messenger6",
+                  "desc": "null",
+                  "clickable": "false",
+                  "bounds": "[78,1220][204,1346]"
+                },
+                {
+                  "class": "android.widget.TextView",
+                  "text": "Simple SMS Messenger6",
+                  "desc": "Search null",
+                  "clickable": "false",
+                  "bounds": "[225,1255][703,1312]"
+                },
+                {
+                  "class": "android.widget.TextView",
+                  "text": "Simple SMS Messenger7",
+                  "desc": "null",
+                  "clickable": "false",
+                  "bounds": "[78,1367][204,1493]"
+                },
+                {
+                  "class": "android.widget.TextView",
+                  "text": "Simple SMS Messenger7",
+                  "desc": "Search null",
+                  "clickable": "false",
+                  "bounds": "[225,1402][703,1459]"
+                },
+                {
+                  "class": "android.widget.TextView",
+                  "text": "Simple SMS Messenger8",
+                  "desc": "null",
+                  "clickable": "false",
+                  "bounds": "[78,1514][204,1640]"
+                },
+                {
+                  "class": "android.widget.EditText",
+                  "text": "Simple SMS Messenger",
+                  "desc": "null",
+                  "clickable": "true",
+                  "bounds": "[214,156][886,301]"
+                }
+              ]
+            }
+          },
+          "displayEvidence": []
+        },
+        {
+          "pythonExecution": 10,
+          "path": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/085-SimpleSmsSendClipboardContent/attempt-1/raw-private/agent-events.jsonl",
+          "startLine": 2048,
+          "endLine": 2049,
+          "toolCallId": "call_itEdpfwaR3g8WH8sWpsH2hB9|pQgIqv3VkWXAZABqbBd2zTOyNwYjU7/jrGgGDUJdp3+qcUnuEKOweKYGKFUHmPK3ObLVe2kL++HvxuCDOLES9Vct8s+tJjmxhhKkngN6rrG3qGUBV0xNBOHOl5OMjo3QRfiPNMkDXwyH4eYPv0zSEzzJSMoSHETIrM17zvUS9EVejCT95xHDOn2mMd8ufnP0vgcqedQIHh+WVOvTxk30mgZ2NUKKYH/60ghndhLhMwz/euTT9VFRgK4dAFERpDdNlpSm4XdtBINKvL2v8J9qYo6FMnefY4BeOiG+++jh68G6T7Yem0N43hrs/FhpLU4QsKD130rtjJ/rqaoyiKca/Fa6SH4ZStYxKL/3LnS1o4C9r9sjMFqd93Y5muS4989lvd9K1PiO39KaGmVC9H7gBTzviShc1mvkVoBuYf29",
+          "precedingAssistantMessageEnd": {
+            "line": 2047,
+            "timestampMs": 1794262946512,
+            "limitation": "Tool event itself has no timestamp; this is the immediately preceding assistant message timestamp, not an asserted exact execution start."
+          },
+          "exactCode": "driver.activate_app('com.simplemobiletools.smsmessenger')\nWebDriverWait(driver, 10).until(lambda d: d.current_package == 'com.simplemobiletools.smsmessenger')\n{'package': driver.current_package, 'activity': driver.current_activity}",
+          "requestedTimeoutSeconds": 30,
+          "originalResponse": {
+            "status": "completed",
+            "kernelState": "alive",
+            "durationMs": 201,
+            "result": {
+              "package": "com.simplemobiletools.smsmessenger",
+              "activity": ".activities.SplashActivity.Orange"
+            }
+          },
+          "displayEvidence": []
+        },
+        {
+          "pythonExecution": 11,
+          "path": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/085-SimpleSmsSendClipboardContent/attempt-1/raw-private/agent-events.jsonl",
+          "startLine": 2338,
+          "endLine": 2339,
+          "toolCallId": "call_IVx9O6QvKPwf4sgzZaXk59kl|2DzGzRDCc3dgzvDsb1dF1sLybJlb6+ezr97dr9+5ZP+3UJ/Z7cnCiqzBTJkw0fzpGDgs+vnPV7SaBhW0vivaVE6Q5resFv1NuurDlLD1uNnKDDDuS666a9jCDJghmKUunnMz6o7D9NW+7yKXwPuXMU2JAqMYeJQptg/bBlJzQd8rU8rsPIcudK3HZbANT1oW+I6LX9Bcub+lqMxOf/R3bpxYrJux9ph4GesXUI6U6SOp/Sq0guCqvHDcZYsKdgq4OpeFGIjv/MQnOe79FjtsIV1I39Ime2zqxCHK7QoKvdoifMNGuUKt+Lv5Xiw7TEHj7VK6cxRbLjIL4MhtICgpSo62vqLRYUN8RjdxcI/OGcyN4aXSF7BiccRDivuEbd8k/Oa/vo2o89xOJJ17c9ktMPGNytytJaQkIGbvuKkS",
+          "precedingAssistantMessageEnd": {
+            "line": 2337,
+            "timestampMs": 1794262951848,
+            "limitation": "Tool event itself has no timestamp; this is the immediately preceding assistant message timestamp, not an asserted exact execution start."
+          },
+          "exactCode": "WebDriverWait(driver, 10).until(lambda d: d.current_activity != '.activities.SplashActivity.Orange' or len(d.find_elements(AppiumBy.XPATH, '//*[@text]')) > 0)\nels=driver.find_elements(AppiumBy.XPATH,'//*')\n{'activity':driver.current_activity,'items':[{'class':str(e.get_attribute('className')),'text':str(e.get_attribute('text')),'desc':str(e.get_attribute('contentDescription')),'id':str(e.get_attribute('resourceId')),'clickable':str(e.get_attribute('clickable'))} for e in els if e.get_attribute('text') or (e.get_attribute('contentDescription') not in (None,'null',''))][:50]}",
+          "requestedTimeoutSeconds": 30,
+          "originalResponse": {
+            "status": "completed",
+            "kernelState": "alive",
+            "durationMs": 343,
+            "result": {
+              "activity": ".activities.MainActivity",
+              "items": [
+                {
+                  "class": "android.widget.ImageView",
+                  "text": "",
+                  "desc": "Search",
+                  "id": "com.simplemobiletools.smsmessenger:id/top_toolbar_search_icon",
+                  "clickable": "true"
+                },
+                {
+                  "class": "android.widget.EditText",
+                  "text": "Search",
+                  "desc": "null",
+                  "id": "com.simplemobiletools.smsmessenger:id/top_toolbar_search",
+                  "clickable": "true"
+                },
+                {
+                  "class": "android.widget.Button",
+                  "text": "",
+                  "desc": "Settings",
+                  "id": "com.simplemobiletools.smsmessenger:id/settings",
+                  "clickable": "true"
+                },
+                {
+                  "class": "android.widget.Button",
+                  "text": "",
+                  "desc": "About",
+                  "id": "com.simplemobiletools.smsmessenger:id/about",
+                  "clickable": "true"
+                },
+                {
+                  "class": "android.widget.ImageView",
+                  "text": "",
+                  "desc": "More options",
+                  "id": "null",
+                  "clickable": "true"
+                },
+                {
+                  "class": "android.widget.TextView",
+                  "text": "No stored conversations have been found",
+                  "desc": "null",
+                  "id": "com.simplemobiletools.smsmessenger:id/no_conversations_placeholder",
+                  "clickable": "false"
+                },
+                {
+                  "class": "android.widget.TextView",
+                  "text": "Start a conversation",
+                  "desc": "null",
+                  "id": "com.simplemobiletools.smsmessenger:id/no_conversations_placeholder_2",
+                  "clickable": "true"
+                }
+              ]
+            }
+          },
+          "displayEvidence": []
+        },
+        {
+          "pythonExecution": 12,
+          "path": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/085-SimpleSmsSendClipboardContent/attempt-1/raw-private/agent-events.jsonl",
+          "startLine": 2662,
+          "endLine": 2663,
+          "toolCallId": "call_Zg79XfnNC7hHmrdahqeJYQ9x|KFnFwzWQi4u5weGuQIMnSnfl6TsAO13D/kVcaYgK0mf8Zvd4pQsmrORR1zl4D5kYoVa4Voi3JEwlOnUrLlwp8qtSCBIIfxyte3uZKnjqhhmSu6gbyJYbHVC0BOyiEx0mafWPiIo1wtL6FlCWmKOQaQj6O0Wx5qUxV1uRecXkdVwx35FFXTZ/k4avur3A5PApNlPvDKh2wtqcGK310Xolr5iMQvpPrDtLxMpT9EP0gUK4OqZxYyex09Cznri5G7AIHKPEuHo6q1z3oVyGI8EnP66AqRbU1E+U2+Mi4D27jIcyvaqwYjbXpPN5Xck4wrKV+xdUNc5T9YGUZyf+bYcWGMFuAPYyDMXm8dQDvNyqDTfkpe5I6CNp/35RPQkYAUTMhmDsA9JDqYL2QNSyaB3lMFfcyPl8enFrOvj1VdUU",
+          "precedingAssistantMessageEnd": {
+            "line": 2661,
+            "timestampMs": 1794262958155,
+            "limitation": "Tool event itself has no timestamp; this is the immediately preceding assistant message timestamp, not an asserted exact execution start."
+          },
+          "exactCode": "clipboard_text = driver.get_clipboard_text()\ndriver.find_element(AppiumBy.ID, 'com.simplemobiletools.smsmessenger:id/no_conversations_placeholder_2').click()\nWebDriverWait(driver, 10).until(lambda d: d.current_activity != '.activities.MainActivity')\nels=driver.find_elements(AppiumBy.XPATH,'//*')\n{'clipboardLength':len(clipboard_text),'activity':driver.current_activity,'items':[{'class':str(e.get_attribute('className')),'text':str(e.get_attribute('text')),'desc':str(e.get_attribute('contentDescription')),'id':str(e.get_attribute('resourceId')),'focused':str(e.get_attribute('focused')),'clickable':str(e.get_attribute('clickable'))} for e in els if e.get_attribute('text') or (e.get_attribute('contentDescription') not in (None,'null',''))][:40]}",
+          "requestedTimeoutSeconds": 30,
+          "originalResponse": {
+            "status": "failed",
+            "kernelState": "alive",
+            "durationMs": 5105,
+            "error": {
+              "type": "selenium.common.exceptions.WebDriverException",
+              "message": "Appium Settings app is not running after 5000ms",
+              "traceback": [
+                "Traceback (most recent call last):",
+                "  File \"<external-frame>\", line 590, in <frame>",
+                "  File \"<external-frame>\", line 575, in <frame>",
+                "  File \"<amkernel-cell-12>\", line 1, in <frame>",
+                "  File \"<external-frame>\", line 95, in <frame>",
+                "  File \"<external-frame>\", line 83, in <frame>",
+                "  File \"<external-frame>\", line 677, in <frame>",
+                "  File \"<external-frame>\", line 566, in <frame>",
+                "  File \"<external-frame>\", line 125, in <frame>",
+                "selenium.common.exceptions.WebDriverException: Appium Settings app is not running after 5000ms"
+              ]
+            }
+          },
+          "displayEvidence": []
+        },
+        {
+          "pythonExecution": 13,
+          "path": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/085-SimpleSmsSendClipboardContent/attempt-1/raw-private/agent-events.jsonl",
+          "startLine": 2982,
+          "endLine": 2983,
+          "toolCallId": "call_kkKlMjm4v7D3lWQbMfOFRnfv|1NOvB+JBwoYTcs1x9EYtqVHV2uVzNqOC1TB7SSq8MQhQ8IvVJ/+h3s/WiSj4xGR3kn1VD542vT1OyF6tKXPXpm2vxX+xFDKtvevPlw5SZpubSq+XmLA3WxJXcuoOI28WrliLTCcXkPbkDMWm9fEovJvCtoSD/AdWOTDblEbqKjlSt7ecP4nb1sFm6f7tfLAx7t2vioJJnYmjcpkUVho2uzGDRoVg48lASiSK/CtULImmYYDTQF3DG885BODt5i31MlVWQSbU7n6WtYkTWjoDniiYX3NjWCEBE8m3Qqlc4J1nJponxW0hyn21WJfVE9VMAumMJYmLERfxgsB+m4hb+QyPpa5p841luuYWrxqZ9PiPsXUlIW5RqaT92xp/QkbppIw93aTCHLZGyk4ZYC9izIjYTqIt5bEEHYb3T8G7",
+          "precedingAssistantMessageEnd": {
+            "line": 2981,
+            "timestampMs": 1794262968866,
+            "limitation": "Tool event itself has no timestamp; this is the immediately preceding assistant message timestamp, not an asserted exact execution start."
+          },
+          "exactCode": "driver.find_element(AppiumBy.ID, 'com.simplemobiletools.smsmessenger:id/no_conversations_placeholder_2').click()\nWebDriverWait(driver, 10).until(lambda d: d.current_activity != '.activities.MainActivity')\nels=driver.find_elements(AppiumBy.XPATH,'//*')\n{'activity':driver.current_activity,'items':[{'class':str(e.get_attribute('className')),'text':str(e.get_attribute('text')),'desc':str(e.get_attribute('contentDescription')),'id':str(e.get_attribute('resourceId')),'focused':str(e.get_attribute('focused')),'clickable':str(e.get_attribute('clickable'))} for e in els if e.get_attribute('text') or (e.get_attribute('contentDescription') not in (None,'null',''))][:40]}",
+          "requestedTimeoutSeconds": 30,
+          "originalResponse": {
+            "status": "completed",
+            "kernelState": "alive",
+            "durationMs": 1734,
+            "result": {
+              "activity": ".activities.NewConversationActivity",
+              "items": [
+                {
+                  "class": "android.widget.ImageButton",
+                  "text": "",
+                  "desc": "Back",
+                  "id": "null",
+                  "focused": "false",
+                  "clickable": "true"
+                },
+                {
+                  "class": "android.widget.TextView",
+                  "text": "New conversation",
+                  "desc": "null",
+                  "id": "null",
+                  "focused": "false",
+                  "clickable": "false"
+                },
+                {
+                  "class": "android.widget.EditText",
+                  "text": "Add Contact or Number…",
+                  "desc": "null",
+                  "id": "com.simplemobiletools.smsmessenger:id/new_conversation_address",
+                  "focused": "true",
+                  "clickable": "true"
+                },
+                {
+                  "class": "android.widget.TextView",
+                  "text": "No contacts found",
+                  "desc": "null",
+                  "id": "com.simplemobiletools.smsmessenger:id/no_contacts_placeholder",
+                  "focused": "false",
+                  "clickable": "false"
+                }
+              ]
+            }
+          },
+          "displayEvidence": []
+        },
+        {
+          "pythonExecution": 14,
+          "path": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/085-SimpleSmsSendClipboardContent/attempt-1/raw-private/agent-events.jsonl",
+          "startLine": 3226,
+          "endLine": 3227,
+          "toolCallId": "call_z4g0WTPMGbcIFMre3mI06KxX|HbatzD3cpwAFygsikLqexVVh8dudHJ6XgHTL8ZV5LwKmASR5hM2mfe96hFKR6Kp2DkFaqRjwcSWkhOol/FITPS9ilPIkEVF6YkF8aJoeNo61cJhwUf3pqKw4RN10/wCwxZ9jHvZnAJ5z72WxVyHhTyQGRHrNh/nJ8KnZ2eZGScrLe9LyORIChrLG7KECw0KLnynnfwxC4Jxf7yIKA8NpjqKfi2Zj6f+TnlsIJp22CJgwkKZSQJmlhsZcpJUVdJekCj+0JB+HcgRhJKEodxbMBYvKd+CNDk4ioBBa5DZBfcUO8vnKuimmplbcNW9QScIM8UzhcuaJEMwKZ3ZrAweMqvVLT1IpskuGN98gGEiredRYJjyUVMwfWXvkXLCZmpdDMyv+opvx5oOrJFphY6lvLOwdoG0DqXLBYh6goP3m",
+          "precedingAssistantMessageEnd": {
+            "line": 3225,
+            "timestampMs": 1794262978569,
+            "limitation": "Tool event itself has no timestamp; this is the immediately preceding assistant message timestamp, not an asserted exact execution start."
+          },
+          "exactCode": "address=driver.find_element(AppiumBy.ID,'com.simplemobiletools.smsmessenger:id/new_conversation_address')\naddress.send_keys('+15459061746\\n')\nWebDriverWait(driver,10).until(lambda d: d.current_activity != '.activities.NewConversationActivity' or len(d.find_elements(AppiumBy.XPATH,'//*[contains(@text,\"15459061746\")]'))>0)\n{'activity':driver.current_activity,'address':address.get_attribute('text') if driver.current_activity=='.activities.NewConversationActivity' else None,'items':[{'text':str(e.get_attribute('text')),'desc':str(e.get_attribute('contentDescription')),'id':str(e.get_attribute('resourceId'))} for e in driver.find_elements(AppiumBy.XPATH,'//*') if e.get_attribute('text') or (e.get_attribute('contentDescription') not in (None,'null',''))][-20:]}",
+          "requestedTimeoutSeconds": 30,
+          "originalResponse": {
+            "status": "completed",
+            "kernelState": "alive",
+            "durationMs": 1647,
+            "result": {
+              "activity": ".activities.NewConversationActivity",
+              "address": "+15459061746 ",
+              "items": [
+                {
+                  "text": "",
+                  "desc": "Back",
+                  "id": "null"
+                },
+                {
+                  "text": "New conversation",
+                  "desc": "null",
+                  "id": "null"
+                },
+                {
+                  "text": "+15459061746 ",
+                  "desc": "null",
+                  "id": "com.simplemobiletools.smsmessenger:id/new_conversation_address"
+                },
+                {
+                  "text": "No contacts found",
+                  "desc": "null",
+                  "id": "com.simplemobiletools.smsmessenger:id/no_contacts_placeholder"
+                }
+              ]
+            }
+          },
+          "displayEvidence": []
+        },
+        {
+          "pythonExecution": 15,
+          "path": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/085-SimpleSmsSendClipboardContent/attempt-1/raw-private/agent-events.jsonl",
+          "startLine": 3428,
+          "endLine": 3429,
+          "toolCallId": "call_mevVQxhWOMW6zigk5sHW2BgX|C2n8nhgHg+9rK6Ckf7YXhdm/9IU3hDnzvyUZbbmi6NJUKgNmI4w0RYDBAQfXy1aWA0NlHh3MmN3Ra2UcEpP+EMZ6Gm1XYxqD5oy2XpiwHednKcI1JGSywNrxRE6Tj/pRaGPMbUdAHUqr13hDFmB7EHgUZMYG5+bnWN/0PxnWIBE36CKkoxfeXh5LqiJdsU590cZBy6F1ydaCTynxaKdPtIpcFGGRdFN/xEwfNqXBiLBs68eGaqED9SAZ+BJM99C0m1+RlU+4fAtxO7a3Z6BagQQygQsfb5Myf12eUeK9mV5xeHsMI14eh5ad6fcxFQ27qCYy7qOL5nQEetE8/lmB7A4IVXWoFUEtha9Xef7fWZ25hIbMWNjCwD8/2lOjefNmtEdzYU/mOJWAALk52EIJPqw7dK7a1x34NR8Zfc42",
+          "precedingAssistantMessageEnd": {
+            "line": 3427,
+            "timestampMs": 1794262984389,
+            "limitation": "Tool event itself has no timestamp; this is the immediately preceding assistant message timestamp, not an asserted exact execution start."
+          },
+          "exactCode": "driver.press_keycode(66)\nWebDriverWait(driver,10).until(lambda d: d.current_activity != '.activities.NewConversationActivity')\nels=driver.find_elements(AppiumBy.XPATH,'//*')\n{'activity':driver.current_activity,'items':[{'class':str(e.get_attribute('className')),'text':str(e.get_attribute('text')),'desc':str(e.get_attribute('contentDescription')),'id':str(e.get_attribute('resourceId')),'focused':str(e.get_attribute('focused')),'enabled':str(e.get_attribute('enabled'))} for e in els if e.get_attribute('text') or (e.get_attribute('contentDescription') not in (None,'null',''))][-30:]}",
+          "requestedTimeoutSeconds": 30,
+          "originalResponse": {
+            "status": "failed",
+            "kernelState": "alive",
+            "durationMs": 10300,
+            "error": {
+              "type": "selenium.common.exceptions.TimeoutException",
+              "message": "",
+              "traceback": [
+                "Traceback (most recent call last):",
+                "  File \"<external-frame>\", line 590, in <frame>",
+                "  File \"<external-frame>\", line 575, in <frame>",
+                "  File \"<amkernel-cell-15>\", line 2, in <frame>",
+                "  File \"<external-frame>\", line 121, in <frame>",
+                "selenium.common.exceptions.TimeoutException"
+              ]
+            }
+          },
+          "displayEvidence": []
+        },
+        {
+          "pythonExecution": 16,
+          "path": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/085-SimpleSmsSendClipboardContent/attempt-1/raw-private/agent-events.jsonl",
+          "startLine": 3606,
+          "endLine": 3607,
+          "toolCallId": "call_AHWMXxE0AhPKxBXRSBAjVtPV|hV0whNPdu8OjvPqh3Gqv2krxGGTrxl8rzntuywQ/x3oU+QpS7RyC22XNVSS8iYf5yDMmy0fdVZElzO6/5xhWwhE1rKoQQhhCOx2cKGphKZafXf/zAtEI98U3z2aJRIKeJFWow5++R8dMPRow8kZgRXKpSlwXHU69DG/3XXqcjIrP3qZu5n5AH15MG+PgLZrm5sirUyqzhylsaFbKchc8z+fwdkAfcX0cET1HIPMQVVrJubav6wOWRHM4Xxxw1+C2erFe+ILN0KkMoJ/Zgo7rrtC81gUhmKAKNnGb412D3hOdtRUTe6a4MnNxDKF2cpbLnDzBZdOxLBhDpp9uSWL8CJ7l139Gs/JGOubiTCeHGmXh5LKCMts+zL/3zIayneA4+PpkUzcG9y/ZioG8cGaC4yGMrdWglRfx3WlLpJVt",
+          "precedingAssistantMessageEnd": {
+            "line": 3605,
+            "timestampMs": 1794262999345,
+            "limitation": "Tool event itself has no timestamp; this is the immediately preceding assistant message timestamp, not an asserted exact execution start."
+          },
+          "exactCode": "{'activity':driver.current_activity,'items':[{'class':str(e.get_attribute('className')),'text':str(e.get_attribute('text')),'desc':str(e.get_attribute('contentDescription')),'id':str(e.get_attribute('resourceId')),'focused':str(e.get_attribute('focused')),'clickable':str(e.get_attribute('clickable')),'bounds':str(e.get_attribute('bounds'))} for e in driver.find_elements(AppiumBy.XPATH,'//*') if e.get_attribute('text') or (e.get_attribute('contentDescription') not in (None,'null',''))][-30:]}",
+          "requestedTimeoutSeconds": 30,
+          "originalResponse": {
+            "status": "completed",
+            "kernelState": "alive",
+            "durationMs": 256,
+            "result": {
+              "activity": ".activities.NewConversationActivity",
+              "items": [
+                {
+                  "class": "android.widget.ImageButton",
+                  "text": "",
+                  "desc": "Back",
+                  "id": "null",
+                  "focused": "false",
+                  "clickable": "true",
+                  "bounds": "[0,138][147,285]"
+                },
+                {
+                  "class": "android.widget.TextView",
+                  "text": "New conversation",
+                  "desc": "null",
+                  "id": "null",
+                  "focused": "false",
+                  "clickable": "false",
+                  "bounds": "[157,175][595,249]"
+                },
+                {
+                  "class": "android.widget.EditText",
+                  "text": "+15459061746 ",
+                  "desc": "null",
+                  "id": "com.simplemobiletools.smsmessenger:id/new_conversation_address",
+                  "focused": "true",
+                  "clickable": "true",
+                  "bounds": "[42,296][912,422]"
+                },
+                {
+                  "class": "android.widget.TextView",
+                  "text": "No contacts found",
+                  "desc": "null",
+                  "id": "com.simplemobiletools.smsmessenger:id/no_contacts_placeholder",
+                  "focused": "false",
+                  "clickable": "false",
+                  "bounds": "[0,477][1080,534]"
+                }
+              ]
+            }
+          },
+          "displayEvidence": []
+        },
+        {
+          "pythonExecution": 17,
+          "path": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/085-SimpleSmsSendClipboardContent/attempt-1/raw-private/agent-events.jsonl",
+          "startLine": 3800,
+          "endLine": 3801,
+          "toolCallId": "call_A0elllHAEZLLwSjFn0riK0XY|XhbETm260pjPiFmXuZZHOnGO0fFzceuLvuNTyM2+2zoTM9reT8CMrKYShcOT+wI51c9gOogjDNdGnVqsvom97OD/QfyphAH/r0wW5sPd9Xxf2Nx1A0kI39UI9xQ9aWUpzPNrAwOrZEFKY0IWK8hAbsKCIimMPU8TzZHM5DEnb9PsgR1ibqiVnSEc/1BFlQHTHRLVxdqlh0yxtjam4WMI64EDNemv5LGy78UdufpLpS512PJ8YdcOr4NiB5SO0IlIH2Hhlgo1O7Mvy1UfJmYHWr206rQOlOpfvPIKNOjKESefkdHJkvugZGw8GLn/WD0ar7+1LnB/Kje7I0U82YnSyvyOBynDD5J9lfHUwFNStHGo8RiVFKC6c+aYyqAgpa7pGhVXQRAPV3S74GkvoB1V7LfBAeOqn3LIPA/3PnSK",
+          "precedingAssistantMessageEnd": {
+            "line": 3799,
+            "timestampMs": 1794263002575,
+            "limitation": "Tool event itself has no timestamp; this is the immediately preceding assistant message timestamp, not an asserted exact execution start."
+          },
+          "exactCode": "driver.press_keycode(67)\nWebDriverWait(driver,5).until(lambda d: d.find_element(AppiumBy.ID,'com.simplemobiletools.smsmessenger:id/new_conversation_address').get_attribute('text')=='+15459061746')\n{'address':driver.find_element(AppiumBy.ID,'com.simplemobiletools.smsmessenger:id/new_conversation_address').get_attribute('text'),'items':[{'text':str(e.get_attribute('text')),'id':str(e.get_attribute('resourceId')),'clickable':str(e.get_attribute('clickable'))} for e in driver.find_elements(AppiumBy.XPATH,'//*[@text]') if e.get_attribute('text')]}",
+          "requestedTimeoutSeconds": 30,
+          "originalResponse": {
+            "status": "completed",
+            "kernelState": "alive",
+            "durationMs": 875,
+            "result": {
+              "address": "+15459061746",
+              "items": [
+                {
+                  "text": "New conversation",
+                  "id": "null",
+                  "clickable": "false"
+                },
+                {
+                  "text": "+15459061746",
+                  "id": "com.simplemobiletools.smsmessenger:id/new_conversation_address",
+                  "clickable": "true"
+                },
+                {
+                  "text": "No contacts found",
+                  "id": "com.simplemobiletools.smsmessenger:id/no_contacts_placeholder",
+                  "clickable": "false"
+                }
+              ]
+            }
+          },
+          "displayEvidence": []
+        },
+        {
+          "pythonExecution": 18,
+          "path": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/085-SimpleSmsSendClipboardContent/attempt-1/raw-private/agent-events.jsonl",
+          "startLine": 3899,
+          "endLine": 3900,
+          "toolCallId": "call_UNMJ0WhOX9gXg2rGpPV8heWQ|6VXT0SnikbRaXx5prKTm92z6P3geUoMNxi8QqUQ4Vl01+omPo/gds84A7/AUy54OB5tXKNkm+3zpjWN94H/8S0OGgu4/Me1E/rkWEDEKRbChkVj1BaGLahjepvhtiD0dBuP0HhMijrpNnNcSp5vaK+u89MOwucsx1aipKbAkPbZVQVTUYq5KXPAdednsvHYxQ7PQEvCjlxtu/cE7QT2w210eYzinWFn5pAR/5ipzi0a6zsONIJt5Xr7S97iPGp1xoxxPT4fgBRlDtAfNB2J7/diCiJeui8RN/gw4K85iDkTZckI8K7Vi25Xp08Nm/0xiJrgM/fClnTii17KVIwm1oz7om9CIT4FzqPBO+xdfhch+lMYuAkcP1sNDv0R57pUDkIiuBJv6jUxHZ1TxqbXn30iqgev87PjFjoYg9JXJ",
+          "precedingAssistantMessageEnd": {
+            "line": 3898,
+            "timestampMs": 1794263010554,
+            "limitation": "Tool event itself has no timestamp; this is the immediately preceding assistant message timestamp, not an asserted exact execution start."
+          },
+          "exactCode": "driver.execute_script('mobile: performEditorAction', {'action': 'done'})\nWebDriverWait(driver,10).until(lambda d: d.current_activity != '.activities.NewConversationActivity')\n{'activity':driver.current_activity}",
+          "requestedTimeoutSeconds": 30,
+          "originalResponse": {
+            "status": "failed",
+            "kernelState": "alive",
+            "durationMs": 68,
+            "error": {
+              "type": "selenium.common.exceptions.WebDriverException",
+              "message": "<WebDriver message omitted: sensitive or oversized details>",
+              "traceback": [
+                "Traceback (most recent call last):",
+                "  File \"<external-frame>\", line 590, in <frame>",
+                "  File \"<external-frame>\", line 575, in <frame>",
+                "  File \"<amkernel-cell-18>\", line 1, in <frame>",
+                "  File \"<external-frame>\", line 677, in <frame>",
+                "  File \"<external-frame>\", line 566, in <frame>",
+                "  File \"<external-frame>\", line 125, in <frame>",
+                "selenium.common.exceptions.WebDriverException: <WebDriver message omitted: sensitive or oversized details>"
+              ]
+            }
+          },
+          "displayEvidence": []
+        },
+        {
+          "pythonExecution": 19,
+          "path": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/085-SimpleSmsSendClipboardContent/attempt-1/raw-private/agent-events.jsonl",
+          "startLine": 4054,
+          "endLine": 4055,
+          "toolCallId": "call_YwrKNSyJxoNZxHPXe87RThtl|U9/lF+hOpx2rvKSwxwJTfs8K3lofPj6X22Rmp5TxW1SBhY3cMSz43j1UQdNDt4Ftxtv8y4DV0anm1e/HddV38cTSlD1kG8d8BA8G5UG519TNCHlD8UgG17bjxYonj3L73yLCbT6cHWUTOxqUNo0M9VNBI/59MoH5VrDXvzeE9J62XLFbJEiUfPayqBgl8o1kYdcXg5LWWccYI7rpa5G0uBbWxDaAHZnvxeOJ0woGMG+7GY+fQEWRwBL4lKEdsD8ZJBXPrE5VR32iCoYyunPR2GTZdj92yxz94KDBjqo+/GxOCmWiU7AJrW+zJCAfA7CuicLArdD51GeTsBFJpfVrnOIPM7YOdfNVkwsnfpJd7VxLtuW/pa/0A0K7ltZrZOkf/mhUeO4aimAYHVBY7xYMq2+DeRmCVPhSOSsRUfUB",
+          "precedingAssistantMessageEnd": {
+            "line": 4053,
+            "timestampMs": 1794263026794,
+            "limitation": "Tool event itself has no timestamp; this is the immediately preceding assistant message timestamp, not an asserted exact execution start."
+          },
+          "exactCode": "session_id = driver.session_id\ndriver.quit()\n{'ownedSessionId': session_id, 'quitReturned': True}",
+          "requestedTimeoutSeconds": 30,
+          "originalResponse": {
+            "status": "completed",
+            "kernelState": "alive",
+            "durationMs": 157,
+            "result": {
+              "ownedSessionId": "fb607e05-8328-496b-b945-d7384303e186",
+              "quitReturned": true
+            }
+          },
+          "displayEvidence": []
+        }
+      ],
+      "evidence": [
+        {
+          "path": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/085-SimpleSmsSendClipboardContent/attempt-1/result.json",
+          "anchors": [
+            "task:877-890",
+            "officialReward:539",
+            "stepBudget:791-870",
+            "agent.answerSubmission:4-26",
+            "stages:759-773"
+          ],
+          "facts": [
+            "Reward0.0, invalidReason null, error null.12 admitted UI actions, zero rejected requests.",
+            "First accepted business final at raw event3936; finalization phase180.648145s."
+          ]
+        },
+        {
+          "path": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/085-SimpleSmsSendClipboardContent/attempt-1/raw-private/agent-events.jsonl",
+          "anchors": [
+            "user prompt message_end line9",
+            "tool starts/ends mapped in timeline",
+            "message_end3936,3969,4070"
+          ],
+          "facts": [
+            "Visible goal contains number but not hidden expected clipboard body.",
+            "Call3 returns Google Messages package. Call9 exact search text is android.widget.EditText. Call10 confirms requested Simple SMS package.",
+            "Call12 fails at first statement driver.get_clipboard_text(); the subsequent new-conversation click in that cell never runs.",
+            "Call14 returns address \"+15459061746 \" and same NewConversationActivity. Call17 returns clean number but no composer. No paste/body entry/send operation exists in captured calls."
+          ]
+        },
+        {
+          "path": "evidence/screenshot-video-controls-20261106T231029Z/appium.log",
+          "anchors": [
+            "560179-560199",
+            "561098",
+            "561269-561271",
+            "561274",
+            "561386",
+            "561483",
+            "561643",
+            "561705-561713"
+          ],
+          "facts": [
+            "Appium clipboard execute returned HTTP500 after5101ms; actual Python error Appium Settings app is not running after5000ms.",
+            "Final editor action was admitted and returned500; not a budget-denial response.",
+            "DELETE session returned200; later GET same session404."
+          ]
+        },
+        {
+          "path": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/085-SimpleSmsSendClipboardContent/attempt-1/raw-private/business-submission.json",
+          "anchors": [
+            "rawText",
+            "answer",
+            "parsedValue.taskOutcome"
+          ],
+          "facts": [
+            "First final says unable to send; preserved unchanged except envelope extraction/strip. Duplicate later final cannot override."
+          ]
+        },
+        {
+          "path": "evidence/amkernel-0.1.4-r15-current-stack-20261109T154403Z/failure-analysis/domain-system-sms.md",
+          "anchors": [
+            "#case-085",
+            "offline-methods-and-output"
+          ],
+          "facts": [
+            "Full causal distinction, helper API source and offline query outputs."
+          ]
+        }
+      ],
+      "actionBudget": {
+        "allocated": 12,
+        "consumed": 12,
+        "acceptedFailedActions": 1,
+        "rejected": 0,
+        "actualBreakdown": [
+          {
+            "step": 1,
+            "pythonExecution": 3,
+            "action": "Click launcher Messages; actual Google Messages, not requested app",
+            "appiumLogLine": 560179,
+            "kind": "click",
+            "httpStatus": 200
+          },
+          {
+            "step": 2,
+            "pythonExecution": 4,
+            "action": "Back to launcher",
+            "appiumLogLine": 560189,
+            "kind": "back",
+            "httpStatus": 200
+          },
+          {
+            "step": 3,
+            "pythonExecution": 4,
+            "action": "Swipe app drawer",
+            "appiumLogLine": 560197,
+            "kind": "actions",
+            "httpStatus": 200
+          },
+          {
+            "step": 4,
+            "pythonExecution": 6,
+            "action": "Focus launcher search field",
+            "appiumLogLine": 560539,
+            "kind": "click",
+            "httpStatus": 200
+          },
+          {
+            "step": 5,
+            "pythonExecution": 6,
+            "action": "Type Simple SMS Messenger into launcher search",
+            "appiumLogLine": 560551,
+            "kind": "input",
+            "httpStatus": 200
+          },
+          {
+            "step": 6,
+            "pythonExecution": 8,
+            "action": "Click exact-text search EditText, not app result",
+            "appiumLogLine": 560772,
+            "kind": "click",
+            "httpStatus": 200
+          },
+          {
+            "step": 7,
+            "pythonExecution": 10,
+            "action": "Activate com.simplemobiletools.smsmessenger",
+            "appiumLogLine": 561098,
+            "kind": "mobile: activateApp",
+            "httpStatus": 200
+          },
+          {
+            "step": 8,
+            "pythonExecution": 13,
+            "action": "Click Start a conversation",
+            "appiumLogLine": 561274,
+            "kind": "click",
+            "httpStatus": 200
+          },
+          {
+            "step": 9,
+            "pythonExecution": 14,
+            "action": "send_keys recipient plus newline",
+            "appiumLogLine": 561386,
+            "kind": "input",
+            "httpStatus": 200
+          },
+          {
+            "step": 10,
+            "pythonExecution": 15,
+            "action": "KEYCODE_ENTER (66); no stage transition",
+            "appiumLogLine": 561483,
+            "kind": "mobile: pressKey",
+            "httpStatus": 200
+          },
+          {
+            "step": 11,
+            "pythonExecution": 17,
+            "action": "KEYCODE_DEL (67); remove trailing space",
+            "appiumLogLine": 561643,
+            "kind": "mobile: pressKey",
+            "httpStatus": 200
+          },
+          {
+            "step": 12,
+            "pythonExecution": 18,
+            "action": "mobile: performEditorAction done; upstream500",
+            "appiumLogLine": 561705,
+            "kind": "mobile: performEditorAction",
+            "httpStatus": 500
+          }
+        ],
+        "categoryCounts": {
+          "wrongAppAndLauncherSearch": 6,
+          "correctAppActivation": 1,
+          "openConversation": 1,
+          "recipientInput": 1,
+          "recipientKeyCorrectionsAndConfirmationAttempts": 3,
+          "messageBodyInput": 0,
+          "send": 0
+        },
+        "gate": {
+          "agentFinished": true,
+          "agentIndicatedDone": false,
+          "closed": true,
+          "closedAtMonotonic": 637927.282554458,
+          "closureReason": "step_budget",
+          "executedActionCount": 12,
+          "exhausted": true,
+          "inflightActionCount": 0,
+          "maxSteps": 12,
+          "protocol": {
+            "allocator": "android_world.suite_utils._allocate_step_budget",
+            "runner": "android_world.episode_runner.run_episode",
+            "stepUnit": "one gated Appium UI interaction",
+            "version": 1
+          },
+          "referenceStepsExecuted": 12,
+          "rejectedActionCount": 0
+        },
+        "deniedExhaustionSequence": [
+          "12th admitted action was performEditorAction done, upstream HTTP500. Gate then closed with step_budget; zero rejected actions means there was no subsequent attempted UI mutation refused by the gate.",
+          "Raw first final event3936 admitted in finalization,5.246s after finalizationStartedAtSeconds175.402140; duplicate final3969 ignored.",
+          "Dedicated quit call19 completed; observations and cleanup remained available."
+        ],
+        "pythonExec": {
+          "allocatedAdvisory": 30,
+          "actualTotal": 19,
+          "business": 18,
+          "cleanup": 1,
+          "completed": 14,
+          "failed": 5,
+          "kernelAlive": 19
+        },
+        "time": {
+          "businessSeconds": 840,
+          "agentDurationSeconds": 190.884,
+          "businessDeadlineReached": false
+        }
+      },
+      "finalOutcome": {
+        "officialReward": 0.0,
+        "validAttempt": true,
+        "agentCompleted": false,
+        "terminationReason": "step_budget",
+        "firstBusinessFinal": {
+          "answer": "Unable to send the message: the UI interaction budget was exhausted before recipient confirmation and message submission.",
+          "parsedValue": {
+            "taskOutcome": "Unable to send the message: the UI interaction budget was exhausted before recipient confirmation and message submission."
+          },
+          "rawText": "{\"taskOutcome\":\"Unable to send the message: the UI interaction budget was exhausted before recipient confirmation and message submission.\"}",
+          "reason": "valid",
+          "sha256": "944a088996acd6ea4f95d158c7883f88e1c221cb84ab8c620d5f4ab99bcc4a8d",
+          "taskOutcomeType": "string",
+          "validContract": true
+        },
+        "lastObservedUI": {
+          "package": "com.simplemobiletools.smsmessenger",
+          "activity": ".activities.NewConversationActivity",
+          "address": "+15459061746",
+          "proofLimit": "Recipient entry only; no confirmed composer, message body, send, sent-state readback, or DB row."
+        },
+        "persistence": {
+          "sentDBRows": "Not archived; do not infer a specific empty table from reward0.",
+          "provenUI": "No stored conversations before new-conversation; never reached message composing/sending in trace.",
+          "oracleComponents": "Aggregate failed, but query rows/current activity at evaluator time were not retained."
+        },
+        "cleanup": {
+          "exactCode": "session_id=driver.session_id; driver.quit(); {ownedSessionId:session_id,quitReturned:True}",
+          "structuredQuitReturned": true,
+          "sessionAbsent": true,
+          "targetRestoration": "No agent restore/back/home action in cleanup. It only quits. No positive post-quit package/DB value captured.",
+          "evaluatorAfterQuitBeforeTaskTeardown": true
+        },
+        "outcomeConfidence": "confirmed noncompletion in trace and official0; exact final DB row/component state not captured"
+      },
+      "causal": {
+        "symptom": "Could not complete send; final honest inability and oracle0.",
+        "firstDivergence": {
+          "anchor": "raw lines731-732; appium.log560179",
+          "fact": "Agent chose launcher Messages by uncertain app-name equivalence and opened com.google.android.apps.messaging rather than required Simple SMS app."
+        },
+        "proximateCause": {
+          "confirmed": "12 UI permits consumed before a recipient was confirmed or any clipboard text was placed into a message and sent.",
+          "keyEvidence": [
+            "Actions1-6 did not advance requested app flow.",
+            "send_keys(number+newline) became a trailing space; wait accepted number text OR activity change, so it passed without recipient confirmation.",
+            "KEYCODE_ENTER timed out at unchanged page; delete corrected only space; final editor done command returned500."
+          ]
+        },
+        "rootCause": {
+          "behavior": "Target identity discovery and stage/acceptance planning failed under fixed UI budget. Exact-text search echo was treated as app target; number-present predicate was treated as sufficient progress despite unchanged conversation stage.",
+          "confidence": "confirmed",
+          "scope": "Confirmed explanation for noncompletion and wasted actions, not proof that any one alternative route would fit12 steps.",
+          "clipboardBranch": {
+            "symptom": "Appium clipboard getter requires Settings helper foreground-service readiness, and that readiness wait failed.",
+            "localMechanism": "Current installed UiAutomator2 getClipboard routes API>=29 to settingsApp.getClipboard; that calls requireRunning, starts io.appium.settings, waits isRunningInForeground using dumpsys service output containing isForeground=true, then throws after5000ms. The failure occurs before broadcast/IME clipboard retrieval.",
+            "underlyingRootConfidence": "unknown",
+            "notProven": [
+              "Why helper readiness predicate stayed false",
+              "Whether clipboard itself was correct",
+              "AMKernel Runtime defect or kernel loss"
+            ],
+            "contribution": "Prevented this attempted clipboard read, but consumed no gated UI action and does not explain the earlier6-action wrong-route spend or missing recipient confirmation. No alternative paste route was reached."
+          }
+        },
+        "confidence": "confirmed",
+        "alternativesExcluded": [
+          {
+            "alternative": "Runtime/kernel death ended execution",
+            "evidence": "19 structured responses all kernelState alive; subsequent native interactions and quit completed."
+          },
+          {
+            "alternative": "Business wall deadline caused stopping",
+            "evidence": "termination.businessDeadlineReached false;12-step gate closure is explicit."
+          },
+          {
+            "alternative": "Final command was rejected by exhausted gate",
+            "evidence": "stepBudget rejectedActionCount0; final command forwarded upstream and returned500."
+          },
+          {
+            "alternative": "Default Messages equivalent fulfills oracle",
+            "evidence": "Oracle independently requires active package com.simplemobiletools.smsmessenger."
+          },
+          {
+            "alternative": "Task text/STRING parse or clock omission",
+            "evidence": "Shared offline receipt verifies exact goal, clock, and valid unchanged first-final archive."
+          },
+          {
+            "alternative": "SMS stuck Sending explains reward",
+            "evidence": "No send attempted in trace; evaluator error null and reward0, whereas stuck Sending raises."
+          }
+        ],
+        "missingEvidence": [
+          "Actual initialized clipboard readback",
+          "Sent SMS provider rows and evaluator current-package component",
+          "Full unfiltered recipient-page source or screenshot showing the confirmation affordance",
+          "Full underlying server stack/logcat for editorAction HTTP500 and Settings helper service-start readiness failure"
+        ]
+      },
+      "responsibility": [
+        {
+          "boundary": "Agent",
+          "project": "execution policy",
+          "module": "amkernel Skill execution consumer",
+          "file": "raw-private/agent-events.jsonl",
+          "function": "cells3-18",
+          "finding": "Confirmed incorrect app candidate, search input click, insufficient recipient-stage acceptance and exhausted whole-task planning."
+        },
+        {
+          "boundary": "Skill",
+          "project": "amkernel",
+          "file": ".agents/skills/amkernel/references/android-execution.md",
+          "section": "Locate from current evidence / Choose useful call boundaries / Recover from observed failure",
+          "finding": "Frozen guidance already warns similar icon/search echo is not target proof, native shortcuts can be literal, helper failure is symptom, reserve recipient/send/readback budget. Consumer compliance failure is established; missing guidance is not sole cause."
+        },
+        {
+          "boundary": "environment/Appium helper",
+          "project": "appium-uiautomator2-driver + io.appium.settings",
+          "file": "lib/commands/clipboard.ts; node_modules/io.appium.settings/lib/commands/clipboard.ts; lib/client.ts",
+          "function": "getClipboard / requireRunning / isRunningInForeground",
+          "finding": "Confirmed helper-readiness error; underlying cause unknown, not assigned to AMKernel."
+        },
+        {
+          "boundary": "Harness/oracle comparability",
+          "project": "fsq_androidworld_eval + AndroidWorld",
+          "file": "src/fsq_androidworld_eval/action_budget.py; android_world/android_world/task_evals/common_validators/sms_validators.py",
+          "finding": "Native Appium action-unit budget includes launch/search/corrections and failed forwarded commands. Clipboard helper internals are not gated UI actions. This can affect comparability with reference actions; it does not erase this observed behavior failure."
+        }
+      ],
+      "fixes": [
+        {
+          "status": "proposed",
+          "target": ".agents/skills/amkernel/references/android-execution.md: installed-app selection and observed-stage predicates",
+          "invariants": [
+            "Keep exact task app and recipient/content unchanged.",
+            "No oracle body leaked into Agent prompt; clipboard content must come from permitted UI/clipboard evidence.",
+            "No extra session, helper forced start, or budget extension."
+          ],
+          "change": "Strengthen execution examples: distinguish text-bearing EditText search echo from an actionable app result; validate app identity before spending another route action; reserve commit/readback steps; recipient acceptance must establish composer/confirmed recipient, not a number merely present in the input. Preserve and inspect controls without text/description when needed, then one bounded screenshot if semantics are insufficient.",
+          "alternatives/tradeoffs": "Existing frozen instructions already state core rules; improving examples may reduce recurring behavior but cannot guarantee model compliance or12-step completion. Do not prescribe an unobserved app-specific Next control.",
+          "risks": "Overbroad package discovery or repeated launch probing can spend the budget itself.",
+          "expectedImpact": "Avoid6 launch/search actions that did not advance the requested flow and avoid newline-as-confirmation assumptions.",
+          "falsification": "A future appropriately authorized independent scenario still spends identical route actions despite an observed correct app/semantic control, or shows newline reliably confirms this exact native field."
+        },
+        {
+          "status": "decision_needed",
+          "target": "Appium Settings helper readiness boundary (io.appium.settings/lib/client.ts:78-133); optional prequalified environment contract",
+          "invariants": [
+            "Diagnosis-only campaign remains immutable.",
+            "No automatic shared-service restart, privilege escalation or blanket driver capability change."
+          ],
+          "change": "Before choosing a fix, obtain historical helper foreground-service/logcat/startup evidence or a separately authorized minimal causal reproduction; distinguish failed service start from a false-negative dumpsys predicate. If the suite promises Appium clipboard getter readiness, prequalification should attest that interface, or execution guidance should use supported native paste without treating getter failure as proof of empty clipboard.",
+          "alternatives/tradeoffs": "Native paste can avoid the getter but does not identify source text independently; a readiness fix has environment scope and needs evidence.",
+          "risks": "Forcing helper startup or modifying IME/permissions may alter task state or benchmark comparability.",
+          "expectedImpact": "Remove the observed clipboard read blocker only if that specific interface is needed; does not by itself fix recipient/budget failure.",
+          "falsification": "Helper readiness is already true in contemporaneous evidence while getter fails for a different command, or no clipboard text remains after successful getter readiness."
+        }
+      ],
+      "unknowns": [
+        "Exact underlying helper service failure and final editorAction server exception were not captured in retained structured errors.",
+        "No proof that fixed target discovery alone would complete the full clipboard-to-SMS route within12 actions.",
+        "Recipient confirmation control is not identified from the filtered observations; do not invent one.",
+        "No persistent DB rows or evaluator component breakdown are available."
+      ],
+      "loadedSkillEvidence": {
+        "path": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/085-SimpleSmsSendClipboardContent/attempt-1/raw-private/agent-events.jsonl",
+        "toolEnd32": [
+          "embedded170-173 acceptance/budget reservation",
+          "embedded216-221 preserve requested final state"
+        ],
+        "toolEnd54": [
+          "embedded344-352 whole-outcome budgeting,failed admitted action accounting"
+        ],
+        "toolEnd55": [
+          "embedded42-46 app/search-echo identity",
+          "embedded253-257 helper failure is symptom,not root",
+          "embedded271-275 recipient/send/readback budget"
+        ]
+      }
+    },
+    {
+      "index": 98,
+      "task": "SystemBrightnessMaxVerify",
+      "goal": "Turn brightness to the max value.",
+      "params": {
+        "max_or_min": "max",
+        "seed": 770927068
+      },
+      "classification": {
+        "userFacing": "behavior failure (unverified completion); probable exact-maximum regression after unnecessary drag",
+        "secondary": "Agent XML parser contract bug; UI-versus-oracle exactness is a comparability/observability risk, not a proven oracle bug",
+        "notEstablished": [
+          "AMKernel Runtime defect",
+          "actual final integer brightness value",
+          "cleanup-induced brightness restoration",
+          "false-negative oracle despite actual255"
+        ]
+      },
+      "oracle": {
+        "sources": [
+          {
+            "path": "android_world/android_world/task_evals/single/system.py",
+            "symbol": "_SystemBrightnessToggle.is_successful; SystemBrightnessMaxVerify.initialize_task",
+            "lines": "29-52,74-86",
+            "fact": "Verify subclass initializes max; inherited visible template says Turn brightness to the max value. Success is exact integer255 from settings."
+          },
+          {
+            "path": "android_world/android_world/env/adb_utils.py",
+            "symbol": "set_brightness",
+            "lines": "971-1001",
+            "fact": "Initialization executes shell settings put system screen_brightness255; no screen_brightness_mode change."
+          },
+          {
+            "path": "android_world/android_world/task_evals/task_eval.py",
+            "symbol": "initialize_task; is_successful; tear_down",
+            "lines": "142-180,182-190",
+            "fact": "Initialize clock/apps; base evaluation only initialization check; teardown restores apps AFTER evaluator in Harness."
+          }
+        ],
+        "exactPredicates": {
+          "request": "shell settings get system screen_brightness",
+          "parse": "int(res.generic.output.decode().strip())",
+          "maxReward": "1.0 iff brightness_level ==255 else0.0",
+          "subscores": "None; no UI percentage, gamma slider value, answer text, automatic-brightness flag or screenshot is compared.",
+          "answer": "Neither Brightness set to maximum nor any other taskOutcome string is used by this state oracle."
+        },
+        "initializationDependencies": {
+          "declaredPrecondition": "Already maximum",
+          "exactInitializer": "adb_utils.set_brightness(\"max\") -> settings put system screen_brightness255",
+          "mode": "Initializer shown does not set screen_brightness_mode; historical automatic mode not captured.",
+          "taskClock": {
+            "referenceTime": "2023-10-15T15:34:00+00:00",
+            "timezone": "UTC"
+          },
+          "taskInitializationStage": "completed0.478s",
+          "actualInitialSettingsReadback": "Not archived for this attempt. Earlier campaign rehearsal for this exact task params hash returned initialStateReturn1.0, but that is not a replay or direct readback of formal attempt."
+        },
+        "goalVersusName": "Verify is subclass semantics, not an instruction to change already-max state. Visible goal requests end state; leaving an already-correct state is valid. Do not infer agent knew hidden initialized integer or subclass name."
+      },
+      "timeline": [
+        {
+          "pythonExecution": 1,
+          "path": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/098-SystemBrightnessMaxVerify/attempt-1/raw-private/agent-events.jsonl",
+          "startLine": 372,
+          "endLine": 373,
+          "toolCallId": "call_2IRGIsBUKVVzs9YHen6YRtBs|z/FDOVYvkZsJHFDSajYC6DSNDctl1HZmrOz9cSxgZ9PReRmxINRlMAXnHcjWO/NhH+PS2LmC5eAQv/n/Pes6a5snzSmuTHh5sEqm9KNnBBVJz/EbzJGqYwigp9bZfoNJ1zAmVNGRG5tljZnLv/1EciVz3ecMtOGJUoCk5Ae7qBXiLkDCXivp5oxsqDFJo1BV2lZEILxkf/xSjEwuPXmx15oaEG0yGEQtylUGH2KXhYcU7S0OLjjyQeqpQyGEq/nFiLKs+ODbcAA6YlKVzbSd3k3VMN5c+Nk/j6GvaripLjDcBDfNXwDa6ZrhcF/ofn06O9rhI3PAqRpQY2mB0iowPAPozkhQj8d6fKFsU8uY5IjIukN2jjkXh+1GtX6l/3WazmLNUas13EPbppybcdXtQbg4yXmPwV+BQVQl8YHo",
+          "precedingAssistantMessageEnd": {
+            "line": 371,
+            "timestampMs": 1794265475321,
+            "limitation": "Tool event itself has no timestamp; this is the immediately preceding assistant message timestamp, not an asserted exact execution start."
+          },
+          "exactCode": "from appium import webdriver\nfrom appium.options.android import UiAutomator2Options\nfrom appium.webdriver.common.appiumby import AppiumBy\nfrom selenium.webdriver.support.ui import WebDriverWait\nimport xml.etree.ElementTree as ET\n\noptions = UiAutomator2Options().load_capabilities({\n    'platformName': 'Android',\n    'appium:automationName': 'UiAutomator2',\n    'appium:udid': 'emulator-5554',\n    'appium:noReset': True,\n    'appium:autoLaunch': False,\n    'appium:skipUnlock': True,\n    'appium:newCommandTimeout': 300,\n})\ndriver = webdriver.Remote('http://127.0.0.1:50810', options=options)\nsession_id = driver.session_id\nnegotiated_timeout = driver.capabilities.get('newCommandTimeout', driver.capabilities.get('appium:newCommandTimeout'))\nstate = {'package': driver.current_package, 'activity': driver.current_activity}\n{'sessionId': session_id, 'newCommandTimeout': negotiated_timeout, 'state': state}",
+          "requestedTimeoutSeconds": 90,
+          "originalResponse": {
+            "status": "completed",
+            "kernelState": "alive",
+            "durationMs": 31628,
+            "result": {
+              "sessionId": "d5ecafcc-25b3-4721-af53-e79c6bbdb9fc",
+              "newCommandTimeout": 300,
+              "state": {
+                "package": "com.google.android.apps.nexuslauncher",
+                "activity": ".NexusLauncherActivity"
+              }
+            }
+          },
+          "displayEvidence": []
+        },
+        {
+          "pythonExecution": 2,
+          "path": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/098-SystemBrightnessMaxVerify/attempt-1/raw-private/agent-events.jsonl",
+          "startLine": 658,
+          "endLine": 659,
+          "toolCallId": "call_omANCz30h7PAIbugiMZYlnvP|2Bdgsv+gUQ9xObOWceoF2rTsKAnK2Rs56QZD0Q2Nez+VKH0UJGyHMj8DFgmX6AIUN3fjyoP9gJjgK6psh2EJK4o7aFEFWOXugff4ZgI1Sca+49oA+G9VGlAOLO9lLVMjjuHurjeWm14BvsoDmmW/sXGAwZomRszlrd6J1qGQlFMp1qDimfjqi9xj/V1XHeAbZ2MSCQ4OhEy0MxuU7dmB+Y9rzwsqPPH7iVZjRzzKlADzLQ16kyBgnUIpe6o+Ym7QxUUwnCUclN4AyarE1KteTBsDiLd56C559c7ZW+OcI4/w8d6psAhpqozuchv7W6WyicvLJ1X9HZTq3Ab2HPzUi7dFG1io04mTLRQ3+4ClZoIeT7FCNRCtGoxsekH1UuK44whZa4dyUlUXFFeNKPOnPA1k+O2K5Q4GuQjLM/ni",
+          "precedingAssistantMessageEnd": {
+            "line": 657,
+            "timestampMs": 1794265520170,
+            "limitation": "Tool event itself has no timestamp; this is the immediately preceding assistant message timestamp, not an asserted exact execution start."
+          },
+          "exactCode": "driver.open_notifications()\nWebDriverWait(driver, 5).until(lambda d: d.current_package == 'com.android.systemui')\nroot = ET.fromstring(driver.page_source)\nitems = []\nfor n in root.iter('node'):\n    text = n.attrib.get('text','')\n    desc = n.attrib.get('content-desc','')\n    rid = n.attrib.get('resource-id','')\n    cls = n.attrib.get('class','')\n    if n.attrib.get('displayed','true') != 'false' and (text or desc or 'slider' in cls.lower() or 'seek' in cls.lower()):\n        items.append({'text': text, 'desc': desc, 'id': rid, 'class': cls, 'bounds': n.attrib.get('bounds',''), 'clickable': n.attrib.get('clickable',''), 'enabled': n.attrib.get('enabled','')})\n{'state': {'package': driver.current_package, 'activity': driver.current_activity}, 'items': items[:30], 'count': len(items)}",
+          "requestedTimeoutSeconds": 15,
+          "originalResponse": {
+            "status": "failed",
+            "kernelState": "alive",
+            "durationMs": 6009,
+            "error": {
+              "type": "selenium.common.exceptions.TimeoutException",
+              "message": "",
+              "traceback": [
+                "Traceback (most recent call last):",
+                "  File \"<external-frame>\", line 590, in <frame>",
+                "  File \"<external-frame>\", line 575, in <frame>",
+                "  File \"<amkernel-cell-2>\", line 2, in <frame>",
+                "  File \"<external-frame>\", line 121, in <frame>",
+                "selenium.common.exceptions.TimeoutException"
+              ]
+            }
+          },
+          "displayEvidence": []
+        },
+        {
+          "pythonExecution": 3,
+          "path": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/098-SystemBrightnessMaxVerify/attempt-1/raw-private/agent-events.jsonl",
+          "startLine": 940,
+          "endLine": 941,
+          "toolCallId": "call_ucQam18eqnF34lZfaFCtnmcu|dTkw/Y2QQNUZW+x/rVzxy4fJGtjVvd9i2a02tvtuMDM42xShtHHuLsLd0jpJgl2P80ZS9nmfBxNXQHNpKDGvicFSEQh4AjuTP/CnMuq7rjl6Lom3O/nz/6GGtnBoPxEkHYbXAM5YGX5oYXxYvxoyzjDV89dQEVnGBNSbKKH0RPPsPa3eJ2fik0eT90hZCvfh5XrR/HfEQ397O0KHsWlzxzbHs2WhcbXg7IPbsNLPNIDcR9iknyacrm2iudHzlsAG6I4RMxVgxj31PkKYCcYOupXvTMAJbmNTdFhxbDLQ41BB/ClbZ8pHx4kce9Wo1JBfJxFInn2WpLXpMICxJ5NeyLNDYrGJyqRx1IUybmd5wZpfIKFlrNr0ttIJvpqTLwH40FOL6ap4HYWpePi16UdA9X1V/xBdZcw6J2LMQKv/",
+          "precedingAssistantMessageEnd": {
+            "line": 939,
+            "timestampMs": 1794265535731,
+            "limitation": "Tool event itself has no timestamp; this is the immediately preceding assistant message timestamp, not an asserted exact execution start."
+          },
+          "exactCode": "live_state = {'package': driver.current_package, 'activity': driver.current_activity, 'session': driver.session_id}\nroot = ET.fromstring(driver.page_source)\nitems = []\nfor n in root.iter('node'):\n    text = n.attrib.get('text','')\n    desc = n.attrib.get('content-desc','')\n    rid = n.attrib.get('resource-id','')\n    cls = n.attrib.get('class','')\n    if n.attrib.get('displayed','true') != 'false' and (text or desc or 'slider' in cls.lower() or 'seek' in cls.lower()):\n        items.append({'text': text, 'desc': desc, 'id': rid, 'class': cls, 'bounds': n.attrib.get('bounds',''), 'clickable': n.attrib.get('clickable',''), 'enabled': n.attrib.get('enabled',''), 'selected': n.attrib.get('selected','')})\n{'state': live_state, 'items': items[:40], 'count': len(items)}",
+          "requestedTimeoutSeconds": 15,
+          "originalResponse": {
+            "status": "completed",
+            "kernelState": "alive",
+            "durationMs": 103,
+            "result": {
+              "state": {
+                "package": "com.google.android.apps.nexuslauncher",
+                "activity": ".NexusLauncherActivity",
+                "session": "d5ecafcc-25b3-4721-af53-e79c6bbdb9fc"
+              },
+              "items": [],
+              "count": 0
+            }
+          },
+          "displayEvidence": []
+        },
+        {
+          "pythonExecution": 4,
+          "path": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/098-SystemBrightnessMaxVerify/attempt-1/raw-private/agent-events.jsonl",
+          "startLine": 1088,
+          "endLine": 1090,
+          "toolCallId": "call_BYkwn2J7WwN1rqhxcrGgHynH|K7MhmNbBzBUmh91IxzZZOkHIQRf98p8Y75NCqgAx+dBgxL7oBz16ZZgiq4G6rKiGHnFqBp3ODkLXIf2cBKg7g5P4QMW52a+Uyel6iS5bVgh5gi452UlslaopAYSoEFI9u2/PTZtPQM2owaSDiaYofT5Vk6YP9xgcgMM5gTEOESJYb3XIVCVvcAX2UcM1Sdx7IykbMA8ntGQWx3bIJwQ9CQ+Qsh5+tWzqJQSKIyiwubub5W7aKPcAdAJAwIvrfYj3/32l63mgBdfBHQ676WGIa2XrXQ4dWhZMjIRu+NkICsJqC95AlHpt+rxfn0sZnUPi8e8vG8ZydVvIOUqSqyeZZXAwoFGtDLG8T9csd0s/knIbol/n6Z9g3SixUG0lInxydG55RZ7Sjkl21HFh1o+4Lya4+RN/FrIrlnYKrotq",
+          "precedingAssistantMessageEnd": {
+            "line": 1087,
+            "timestampMs": 1794265560365,
+            "limitation": "Tool event itself has no timestamp; this is the immediately preceding assistant message timestamp, not an asserted exact execution start."
+          },
+          "exactCode": "png = driver.get_screenshot_as_png()\nfrom PIL import Image\nimport io\nim = Image.open(io.BytesIO(png))\ndisplay(png, mime_type='image/png')\n{'state': {'package': driver.current_package, 'activity': driver.current_activity}, 'imageSize': im.size, 'sourceNodeCount': sum(1 for _ in ET.fromstring(driver.page_source).iter('node'))}",
+          "requestedTimeoutSeconds": 15,
+          "originalResponse": {
+            "status": "completed",
+            "kernelState": "alive",
+            "durationMs": 212,
+            "result": {
+              "kind": "repr",
+              "typeName": "dict",
+              "value": "<dict len=3; bounded non-JSON representation>",
+              "truncated": true
+            }
+          },
+          "displayEvidence": [
+            {
+              "sequence": 1,
+              "kind": "image",
+              "mimeType": "image/png",
+              "size": 145566,
+              "sha256": "1c3f34b6e4b96d8ceb2941cf108cdd27e7d0aa50c326aa6fa720dbad1de42ef1",
+              "width": 1080,
+              "height": 2400,
+              "inline": true,
+              "artifact": {
+                "uri": "amkernel://artifact/f3321c2ab7d54017b065141e07a8ccee/a3b83d9ff80a4430acaa4f122fdefe9b",
+                "name": "image",
+                "declaredMimeType": "image/png",
+                "mimeType": "image/png",
+                "representation": "raw",
+                "size": 145566,
+                "sha256": "1c3f34b6e4b96d8ceb2941cf108cdd27e7d0aa50c326aa6fa720dbad1de42ef1"
+              }
+            }
+          ]
+        },
+        {
+          "pythonExecution": 5,
+          "path": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/098-SystemBrightnessMaxVerify/attempt-1/raw-private/agent-events.jsonl",
+          "startLine": 1343,
+          "endLine": 1345,
+          "toolCallId": "call_TRdmiy2a3g7ZeaID62hBfZUp|LThW645sStAxuiWKYkaMdhzR+Kn4cdKdW3BnQZv3yhfQ1FCjcqArxB27/ulNyxPqBpcr4hgLsipwB+7ap08oneR4zsnaBTdpYxmGRaCHasK05MBjXlLZIGR/hNq3W60iC2/dEDmRwp1fXF0012XkxrZvbf9fFR4PVr0MPxyIbPPXCfjEQkHoaz3T2Cth7y5DuVG8/25/vVgGunfquji8mMOLj21iCYA5yKtsUFQ+cqOC+pDmiDn8PZL6af9aMV6hOQVNb5z/n0C9sayfoxSzKpSXpCD8L4iqsOMvyxXKRVqvowcqbh5RrCeAayWaAl/NeGq3G5AInV3FeMgU52Z2bzrdZimQ+9TAiHCY8JIpwm3rXNKYCowURm76SHMzLebjCF4crzB39N+Py2yLy231P7849JyxFNccNAovFsQD",
+          "precedingAssistantMessageEnd": {
+            "line": 1342,
+            "timestampMs": 1794265565865,
+            "limitation": "Tool event itself has no timestamp; this is the immediately preceding assistant message timestamp, not an asserted exact execution start."
+          },
+          "exactCode": "driver.swipe(540, 250, 540, 1650, 500)\nimport time\ntime.sleep(1)\npng = driver.get_screenshot_as_png()\nim = Image.open(io.BytesIO(png))\ndisplay(png, mime_type='image/png')\n{'imageSize': im.size, 'state': {'package': driver.current_package, 'activity': driver.current_activity}}",
+          "requestedTimeoutSeconds": 15,
+          "originalResponse": {
+            "status": "completed",
+            "kernelState": "alive",
+            "durationMs": 2415,
+            "result": {
+              "kind": "repr",
+              "typeName": "dict",
+              "value": "<dict len=2; bounded non-JSON representation>",
+              "truncated": true
+            }
+          },
+          "displayEvidence": [
+            {
+              "sequence": 1,
+              "kind": "image",
+              "mimeType": "image/png",
+              "size": 124751,
+              "sha256": "ea75cdea7c5bc7c32ee2395daecd17b6d5f3769671288bb93f86393d66e8dffd",
+              "width": 1080,
+              "height": 2400,
+              "inline": true,
+              "artifact": {
+                "uri": "amkernel://artifact/f3321c2ab7d54017b065141e07a8ccee/418fdf28dbe74c63a77b7dd3ca0e9536",
+                "name": "image",
+                "declaredMimeType": "image/png",
+                "mimeType": "image/png",
+                "representation": "raw",
+                "size": 124751,
+                "sha256": "ea75cdea7c5bc7c32ee2395daecd17b6d5f3769671288bb93f86393d66e8dffd"
+              }
+            }
+          ]
+        },
+        {
+          "pythonExecution": 6,
+          "path": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/098-SystemBrightnessMaxVerify/attempt-1/raw-private/agent-events.jsonl",
+          "startLine": 1644,
+          "endLine": 1645,
+          "toolCallId": "call_4837cMLJuki8KqT3rpq0F8ha|nuJgDmWxfR4eNqPhYzHt8VcNYbaQt4Jo/HANJbF3bFgEtNa5bDDAUBt4QpGusKfJfrcoedCuLYkVcpzM5L3xau+5gKRCxRlXADRtZezw8sOuHj0GATCzf20FTeVuezQ0eEj1CkwmpKn4UTaEnwFG/jMnlsLK3NMS4/C8EOnOsNEXaaNe16EHMoR8x30q6u9q10pSwfJF0FVPLvxEFG0Zbq0m36Lj3/gwFl3Iu1ZMmBMozPXDFDKLNARRBu/L4qAscDyUxwzuOkYi0mGs3dxnpeomFrlaTwSe9X+iaYAt5/OhiKd2YrMUrUHGVVtc+NxOxyHXRiggt4/y3QkKyzfg4Qi1Fxw05Bjgf5nOU+MXDfDvd5CkbkffAU47JH/GbzWspiRjZCZIEwEguGnzyLPCSRK4sjfZzCtx+yvZxLPK",
+          "precedingAssistantMessageEnd": {
+            "line": 1643,
+            "timestampMs": 1794265575569,
+            "limitation": "Tool event itself has no timestamp; this is the immediately preceding assistant message timestamp, not an asserted exact execution start."
+          },
+          "exactCode": "root = ET.fromstring(driver.page_source)\ncontrols = []\nfor n in root.iter('node'):\n    a = n.attrib\n    cls = a.get('class','')\n    if ('SeekBar' in cls or 'brightness' in (a.get('resource-id','')+' '+a.get('content-desc','')+' '+a.get('text','')).lower()):\n        controls.append({k:a.get(k,'') for k in ('text','content-desc','resource-id','class','bounds','clickable','enabled','focusable','focused','selected','checked')})\n{'controls': controls, 'nodeCount': sum(1 for _ in root.iter('node')), 'state': {'package': driver.current_package, 'activity': driver.current_activity}}",
+          "requestedTimeoutSeconds": 15,
+          "originalResponse": {
+            "status": "completed",
+            "kernelState": "alive",
+            "durationMs": 86,
+            "result": {
+              "controls": [],
+              "nodeCount": 0,
+              "state": {
+                "package": "com.google.android.apps.nexuslauncher",
+                "activity": ".NexusLauncherActivity"
+              }
+            }
+          },
+          "displayEvidence": []
+        },
+        {
+          "pythonExecution": 7,
+          "path": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/098-SystemBrightnessMaxVerify/attempt-1/raw-private/agent-events.jsonl",
+          "startLine": 2138,
+          "endLine": 2140,
+          "toolCallId": "call_baV9f0v2QrsSLeEUCmIfTIgR|Vj+K2ephdJUoDjnitC0LBlL2Fq0MKE0O8zlPehxau7xsrJhR7iI3qFrPN/yD7agAoy+xW6bP9IK2LizlHlsKJLaFPKiwYFKJn3PBqfkMpqHaQpYEsHI1qMGB30HBq4/fOke7OkCicgzVbJS5JnIYmw0fU22Herjx6RhUvic8eVDud21ecRlSgENxdQ9XdNz/4EgSs0X62lfimxP+MLPyVB3rbLGqirparpeGUf5+jWffRj+ycmRDiFRZDXPAmm2/PnzrlRcAsGAdHZZiR3yLor7eGyZnhesu1AQw5bHx2xS/ARHcj+Edw/3n816thXT8qwwz6tH+62A4o7AxGyeyueBasi9FhldH10eGfi4IdOOvhyFTAEVIBENrTPRHtM30yE9PBELpRoiUh05z9k9kc055rREPJHHJ9fRspDz4",
+          "precedingAssistantMessageEnd": {
+            "line": 2137,
+            "timestampMs": 1794265598445,
+            "limitation": "Tool event itself has no timestamp; this is the immediately preceding assistant message timestamp, not an asserted exact execution start."
+          },
+          "exactCode": "# The screenshot is 1080x2400 and the expanded brightness track spans x=42..1038 at y=420; its maximum thumb center is x=976.\ndriver.swipe(300, 420, 976, 420, 500)\nimport time\ntime.sleep(1)\npng_after = driver.get_screenshot_as_png()\nim_after = Image.open(io.BytesIO(png_after))\ndisplay(png_after, mime_type='image/png')\n{'imageSize': im_after.size, 'verificationRegion': {'trackBounds': [42,357,1038,482], 'expectedMaxThumbCenter': [976,420]}}",
+          "requestedTimeoutSeconds": 15,
+          "originalResponse": {
+            "status": "completed",
+            "kernelState": "alive",
+            "durationMs": 2526,
+            "result": {
+              "kind": "repr",
+              "typeName": "dict",
+              "value": "<dict len=2; bounded non-JSON representation>",
+              "truncated": true
+            }
+          },
+          "displayEvidence": [
+            {
+              "sequence": 1,
+              "kind": "image",
+              "mimeType": "image/png",
+              "size": 125284,
+              "sha256": "ba9fda334a27069e02d2a7abad90cd00a38980b08bdad3e1a711c24886347b0a",
+              "width": 1080,
+              "height": 2400,
+              "inline": true,
+              "artifact": {
+                "uri": "amkernel://artifact/f3321c2ab7d54017b065141e07a8ccee/4fcc9d36059246d6bc5b0b79511bee35",
+                "name": "image",
+                "declaredMimeType": "image/png",
+                "mimeType": "image/png",
+                "representation": "raw",
+                "size": 125284,
+                "sha256": "ba9fda334a27069e02d2a7abad90cd00a38980b08bdad3e1a711c24886347b0a"
+              }
+            }
+          ]
+        },
+        {
+          "pythonExecution": 8,
+          "path": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/098-SystemBrightnessMaxVerify/attempt-1/raw-private/agent-events.jsonl",
+          "startLine": 2330,
+          "endLine": 2331,
+          "toolCallId": "call_57gjZU69gBi7d7MEgAZ6APSU|SYayToNrc9gjABxQeXASxa3l49eg6dfm5JE7pSl89TLiXqXnClSWdu2YBRfu4Uzn6SFozDQtA/L8MlMtQe7UUoVxdFJyUKk3faDd0Tb5XSufLXTADnj6vTa3b+Mob7MOeXKTtNEHD6ATYqiFOHPxjJI5yMaOc/mYx3TVYVKvDJcQJC5AQE0wrnrX6RUMJN+BAqJ3Hs0ehdrStWHqCiR2/WBHqzhPuUzbmZAdUqbMJ31qYaIVPpKwSf8oewCbUDA6aNvOugBzwHgjttCAh2gKof9/PLb9MRCgsMk3NgHsiNoXDeo00dRU7eKzfAsOfRoAA4Aw1PpiNqBfbWnFeoD2GWRPWmbDscRK2igRtPziELcqyRaBNF41KaDK+uWlA8rSXHt+l6APhNqUOGeqHs0wpJ0AtYfYzOxRGXNPl3xo",
+          "precedingAssistantMessageEnd": {
+            "line": 2329,
+            "timestampMs": 1794265669771,
+            "limitation": "Tool event itself has no timestamp; this is the immediately preceding assistant message timestamp, not an asserted exact execution start."
+          },
+          "exactCode": "session_id = driver.session_id\ndriver.quit()\n{'ownedSessionId': session_id, 'quitReturned': True}",
+          "requestedTimeoutSeconds": 30,
+          "originalResponse": {
+            "status": "completed",
+            "kernelState": "alive",
+            "durationMs": 152,
+            "result": {
+              "ownedSessionId": "d5ecafcc-25b3-4721-af53-e79c6bbdb9fc",
+              "quitReturned": true
+            }
+          },
+          "displayEvidence": []
+        }
+      ],
+      "evidence": [
+        {
+          "path": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/098-SystemBrightnessMaxVerify/attempt-1/result.json",
+          "anchors": [
+            "task:687-699",
+            "officialReward:395",
+            "stepBudget:646-680",
+            "agent.answerSubmission:4-26",
+            "stages:614-629"
+          ],
+          "facts": [
+            "Reward0.0, invalidReason null,error null; no evaluator exception.",
+            "3 actual UI interactions of10, no rejected actions, agent completed normally. ReferenceStepsExecuted4 includes terminal completion as fourth reference step, not an unlogged mutation."
+          ]
+        },
+        {
+          "path": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/098-SystemBrightnessMaxVerify/attempt-1/raw-private/agent-events.jsonl",
+          "anchors": [
+            "user message_end9",
+            "tool658-659",
+            "tool940-941",
+            "tool1088-1090",
+            "tool1343-1345",
+            "tool1644-1645",
+            "assistant message_end1643,2137",
+            "tool2138-2140",
+            "first final2238",
+            "cleanup2330-2331"
+          ],
+          "facts": [
+            "open_notifications returned HTTP200, but Agent wait incorrectly demanded foreground package com.android.systemui; launcher identity stayed reported while screenshot proved shade open.",
+            "Agent parsed XML with root.iter(\"node\") and returned0; later same driver campaign097 actual source has hierarchy/android.widget.* tag names, not node.",
+            "After expansion Agent described thumb at far right and said no action might be necessary, then dragged x300->976 at y420.",
+            "Original final claims Brightness set to maximum; no numeric semantic property or settings readback follows drag."
+          ]
+        },
+        {
+          "path": "evidence/screenshot-video-controls-20261106T231029Z/appium.log",
+          "anchors": [
+            "588620-588643",
+            "588648-588651",
+            "588658-588661",
+            "588662-588681",
+            "588682-588688"
+          ],
+          "facts": [
+            "Nonempty /source responses:88838 bytes twice and77170 bytes after expansion. A zero result from root.iter(node) is not evidence source was empty.",
+            "All3 action responses200. Last drag request coordinates precisely retained.",
+            "DELETE returned200; cleanup logs restore hidden API policy, not brightness. No action/brightness restore is present in captured agent cleanup."
+          ]
+        },
+        {
+          "path": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/097-SystemBrightnessMax/attempt-1/raw-private/agent-events.jsonl",
+          "anchors": [
+            "3290-3291",
+            "3761-3762",
+            "3923-3924",
+            "4182-4183"
+          ],
+          "facts": [
+            "Targeted neighboring success, same visible goal and oracle, not rerun: native source class-tag XML and SeekBar bounds[42,149][1038,275].",
+            "Click x1032 produced slider text65140.0; swipe to1037 produced65469.0; swipe to1075 produced65535.0.",
+            "This proves on this stack near-right is distinguishable from exact maximum and semantic numeric property is available. It does not prove formal098 gamma value or equal interaction geometry for expanded QS."
+          ]
+        },
+        {
+          "path": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/097-SystemBrightnessMax/attempt-1/result.json",
+          "anchors": [
+            "officialReward:561"
+          ],
+          "facts": [
+            "097 officialReward1.0 after reaching gamma65535; targeted mechanism counterexample only."
+          ]
+        },
+        {
+          "path": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/harness-rehearsal/tasks/098-SystemBrightnessMaxVerify/result.json",
+          "anchors": [
+            "evaluatorProbe:11-14",
+            "task:65-68"
+          ],
+          "facts": [
+            "Earlier initialized-state probe returned1.0 with same params hash; not proof of formal attempt initial readback."
+          ]
+        },
+        {
+          "path": "evidence/amkernel-0.1.4-r15-current-stack-20261109T154403Z/failure-analysis/domain-system-sms.md",
+          "anchors": [
+            "#case-098",
+            "offline-methods-and-output"
+          ],
+          "facts": [
+            "Screenshot descriptions separately marked interpretation; numeric unknown and cleanup boundary retained."
+          ]
+        }
+      ],
+      "actionBudget": {
+        "allocated": 10,
+        "consumed": 3,
+        "remainingAtAgentFinish": 7,
+        "acceptedFailedActions": 0,
+        "rejected": 0,
+        "actualBreakdown": [
+          {
+            "step": 1,
+            "pythonExecution": 2,
+            "action": "Open notifications",
+            "appiumLogLine": 588620,
+            "kind": "mobile: openNotifications",
+            "httpStatus": 200
+          },
+          {
+            "step": 2,
+            "pythonExecution": 5,
+            "action": "Expand quick settings: swipe (540,250)->(540,1650)",
+            "appiumLogLine": 588662,
+            "kind": "actions",
+            "httpStatus": 200
+          },
+          {
+            "step": 3,
+            "pythonExecution": 7,
+            "action": "Drag brightness at y420 from x300 to x976",
+            "appiumLogLine": 588678,
+            "kind": "actions",
+            "httpStatus": 200
+          }
+        ],
+        "categoryCounts": {
+          "openShade": 1,
+          "expandShade": 1,
+          "brightnessDrag": 1
+        },
+        "gate": {
+          "agentFinished": true,
+          "agentIndicatedDone": true,
+          "closed": true,
+          "closedAtMonotonic": 640577.3849095,
+          "closureReason": "agent_finished",
+          "executedActionCount": 3,
+          "exhausted": false,
+          "inflightActionCount": 0,
+          "maxSteps": 10,
+          "protocol": {
+            "allocator": "android_world.suite_utils._allocate_step_budget",
+            "runner": "android_world.episode_runner.run_episode",
+            "stepUnit": "one gated Appium UI interaction",
+            "version": 1
+          },
+          "referenceStepsExecuted": 4,
+          "rejectedActionCount": 0
+        },
+        "referenceAccounting": {
+          "referenceStepsExecuted": 4,
+          "explanation": "3 action steps plus terminal done=True step; stepped_agent.py:113-124,131-156. Only3 UI interactions were admitted."
+        },
+        "deniedExhaustionSequence": [
+          "No exhaustion or denial. Agent declared completion with7 permits unused.",
+          "First business final2238 arrived211.595821s; cleanup prompt2248 followed; dedicated quit call8 completed."
+        ],
+        "pythonExec": {
+          "allocatedAdvisory": 30,
+          "actualTotal": 8,
+          "business": 7,
+          "cleanup": 1,
+          "completed": 7,
+          "failed": 1,
+          "kernelAlive": 8
+        },
+        "time": {
+          "businessSeconds": 720,
+          "agentDurationSeconds": 222.844,
+          "businessDeadlineReached": false
+        }
+      },
+      "finalOutcome": {
+        "officialReward": 0.0,
+        "validAttempt": true,
+        "agentCompleted": true,
+        "terminationReason": "completed",
+        "firstBusinessFinal": {
+          "answer": "Brightness set to maximum.",
+          "parsedValue": {
+            "taskOutcome": "Brightness set to maximum."
+          },
+          "rawText": "{\"taskOutcome\":\"Brightness set to maximum.\"}",
+          "reason": "valid",
+          "sha256": "39974c50a54351257f98b81808526a374a6f048574e6487316a2d42d8d8486e3",
+          "taskOutcomeType": "string",
+          "validContract": true
+        },
+        "lastObservedUI": {
+          "retainedScreenshotLine": 2140,
+          "sha256": "ba9fda334a27069e02d2a7abad90cd00a38980b08bdad3e1a711c24886347b0a",
+          "visibleFacts": "Expanded quick settings, light-blue brightness bar near top; gesture path at y420 ends at x976 near sun/thumb icon.",
+          "interpretation": "Appears full/near full, but cannot distinguish exact integer255 from a near-max value.",
+          "numericBrightness": "Unknown. Under cited oracle source, normal reward0 implies evaluator integer was not255; the actual int was not archived."
+        },
+        "outcomeConfidence": "confirmed official failure and unverified success claim; persistent numeric value unknown",
+        "cleanup": {
+          "exactBusinessFinalBeforeCleanup": true,
+          "exactCode": "session_id=driver.session_id; driver.quit(); {ownedSessionId:session_id,quitReturned:True}",
+          "structuredQuitReturned": true,
+          "sessionAbsent": true,
+          "targetRestoreObserved": false,
+          "targetRestoreEvidence": "Cleanup cell performs only quit. Appium log588682-588686 records session deletion and hidden API policy restoration, no explicit brightness operation. Current local driver deleteSession508-615 restores animation/IME/hidden API policy under conditions, not brightness; provenance not byte-attested.",
+          "evaluationOrder": "quit returned before evaluator at1794265680.306703; task teardown starts1794265680.3549619, after reward.",
+          "limits": "No brightness setting read before quit or after quit, so cannot prove externally unchanged state across cleanup; task teardown cannot explain this already-issued reward."
+        }
+      },
+      "causal": {
+        "symptom": "Agent claimed exact maximum from a visually full bar; official exact255 state check returned0.",
+        "firstDivergence": {
+          "observation": "cell2 equated open notification shade with foreground package switch; cell3/6 equated zero <node> elements with absent UI controls.",
+          "consequentialMutation": "After observing/describing already-max appearance, cell7 dragged to interior x976, not the observed track right bound1038. No semantic endpoint check followed."
+        },
+        "proximateCause": {
+          "confirmed": "Completion acceptance did not establish exact maximum. Zero-node parser hid usable semantics and final answer relied on screenshot appearance.",
+          "probable": "Unnecessary drag reset a previously initialized255 to a near-max rather than exact-max value. Endpoint x976 is62px inside Agent-stated right bound1038; neighboring097 shows near-edge65140/65469 is not endpoint65535.",
+          "notProven": "Exact float/gamma/integer after098 drag, first formal initial brightness value, or causation of reward0 by this drag alone."
+        },
+        "rootCause": {
+          "value": "Agent control-observation/acceptance bug: parsing native class-tag XML as literal node tags, then treating the graphic thumb/icon center as exact slider maximum and mutating an already-satisfied target without numeric endpoint verification.",
+          "confidence": "probable",
+          "confirmedContributors": [
+            "Parser used a tag convention incompatible with actual native XML observed in neighboring same-campaign097.",
+            "Package-based wait failed even though screenshot shows shade; package is not reliable overlay/page-stage acceptance.",
+            "No semantic slider readback followed admitted drag, despite7 remaining permits and read-only observations available."
+          ],
+          "sourceBug": "The XML parser bug is in Agent-authored cell code, not a demonstrated AMKernel serializer or Appium source bug."
+        },
+        "confidence": "probable",
+        "alternativesExcluded": [
+          {
+            "alternative": "Runtime/kernel death, transport timeout, or unsupported action prevented execution",
+            "evidence": "Every response kernelStatealive; brightness drag completed and Appium returned200; screenshot returned."
+          },
+          {
+            "alternative": "Insufficient UI budget forced unverified stop",
+            "evidence": "Only3/10 used, closure agent_finished, no rejected requests."
+          },
+          {
+            "alternative": "Empty source means driver could not expose controls",
+            "evidence": "Appium /source response lengths88838/77170; Agent iterator restricts exact node tag.097 source/SeekBar numeric facts show native class-tag format and available semantics."
+          },
+          {
+            "alternative": "Wrong output envelope caused score0",
+            "evidence": "First final valid string, parsed exactly; state oracle ignores text."
+          },
+          {
+            "alternative": "Task tear_down restored brightness before scoring",
+            "evidence": "Frozen Harness ordering and formal stage timestamps show evaluator before teardown."
+          },
+          {
+            "alternative": "All maximum tasks necessarily fail under this oracle/device stack",
+            "evidence": "Neighbor097 reward1 and earlier098 initial-state rehearsal1; neither proves098 precise state."
+          }
+        ],
+        "missingEvidence": [
+          "Formal098 exact screen_brightness immediately after init,before drag,after drag,before quit,after quit and actual evaluator integer",
+          "Formal098 original source XML or semantic slider value/range; only nonempty byte lengths and filtered0 are retained",
+          "Formal098 automatic brightness mode and any asynchronous external brightness changes",
+          "Historical byte identity of installed explanatory Appium helper sources"
+        ]
+      },
+      "responsibility": [
+        {
+          "boundary": "Agent",
+          "project": "execution cell",
+          "file": "raw-private/agent-events.jsonl",
+          "function": "cells2,3,6,7",
+          "finding": "Overlay package wait and exact-tag node iteration are authored assumptions; screenshot endpoint interpretation and unverified success are behavior errors."
+        },
+        {
+          "boundary": "Skill",
+          "project": "amkernel",
+          "file": ".agents/skills/amkernel/references/android-execution.md; references/amkernel-appium.md",
+          "section": "evidence ladder; controls-first observation; acceptance; preserve requested state",
+          "finding": "Loaded guidance already distinguishes package from page/result and commands from success. Possible Android-native XML/slider examples are proposed, not proof of missing core rule. Stop-if-already-true wording in shared doc is in Apple paragraph; explicit Android example may help but this is not sole cause evidence."
+        },
+        {
+          "boundary": "Runtime",
+          "project": "amkernel",
+          "finding": "Structured responses convey actual completed/failed cells with alive kernel. Bounded repr on dicts containing tuple imageSize omits auxiliary return properties, but actual image arrives; it does not explain parser mismatch or exact255 failure."
+        },
+        {
+          "boundary": "Harness/oracle",
+          "project": "fsq_androidworld_eval + AndroidWorld",
+          "file": "runner.py:716-737,790-826; system.py:41-52",
+          "finding": "Oracle exact int requirement differs from visual full-bar acceptance, but user max aligns with exact maximum. No source bug or false-negative proved. Cleanup-before-evaluator is real boundary; no observed brightness restore."
+        }
+      ],
+      "fixes": [
+        {
+          "status": "proposed",
+          "target": ".agents/skills/amkernel/references/android-execution.md: native XML observation examples / overlay acceptance; Agent cells3,6",
+          "invariants": [
+            "Do not assume literal node tags; inspect actual XML tags or use Appium class/semantic locators.",
+            "An overlay can be open while current_package remains underlying app.",
+            "No global source parser, driver setting changes, new session or extra budget."
+          ],
+          "change": "Illustrate native UiAutomator2 source using actual class-name tags; iterate root.iter() filtered by observed class/resource-id attributes, or direct CLASS_NAME android.widget.SeekBar. Distinguish parse-empty from document-empty via root/tag summary, not exhaustive dump. Wait for observed overlay controls instead of a mandatory foreground-package switch.",
+          "alternatives/tradeoffs": "Existing generic evidence ladder already supplies invariant; focused example may improve compliance. Direct semantic locator avoids parser entirely when exposed.",
+          "risks": "A universal slider class assumption can fail for custom controls; observe the actual target first.",
+          "expectedImpact": "Recover numeric/semantic state without screenshot-only inference or false missing-UI diagnosis.",
+          "falsification": "Captured actual098 XML contains only node tags but still returns0, or native control unavailable despite valid class-tag iteration."
+        },
+        {
+          "status": "proposed",
+          "target": "Agent slider acceptance policy; .agents/skills/amkernel/references/amkernel-appium.md controls-first/acceptance and Android-specific stop-if-satisfied example",
+          "invariants": [
+            "Preserve already-correct requested target.",
+            "Never compare or inject hidden oracle int as business text; use legitimate exposed range/value.",
+            "No automatic retries, enlarged budget or oracle weakening."
+          ],
+          "change": "If current semantic slider property establishes max, stop without drag. Otherwise determine observed bounds/range, perform one bounded endpoint interaction, and read exposed numeric endpoint/range after it. Do not equate sun/thumb graphic center with track touch maximum. If only visual near-max evidence remains, report unverified rather than exact success.",
+          "alternatives/tradeoffs": "097 shows native gamma65535 endpoint; do not hardcode65535 for all controls or map screen coordinates universally. Exact setting evidence may be unavailable under UI-only policy; retain uncertainty.",
+          "risks": "Dragging to an unobserved far edge could hit another control. Use target-bounded current evidence.",
+          "expectedImpact": "Avoid regression from initialized max and distinguish visually similar near-max state from exact endpoint.",
+          "falsification": "Historical settings prove255 after drag and before evaluator yet reward0, shifting investigation to state change during cleanup or oracle comparison."
+        },
+        {
+          "status": "decision_needed",
+          "target": "Future isolated evidence protocol around state-only oracle and same-driver cleanup (runner.py evaluation boundary)",
+          "invariants": [
+            "Do not modify this campaign evidence or rerun its formal task.",
+            "No evaluator result exposed as answer hint to Agent.",
+            "No approved coordinated fix is claimed."
+          ],
+          "change": "For a separately authorized diagnostic only, retain raw state-oracle component before and after cleanup plus exact comparator input/mode; this would discriminate endpoint regression from asynchronous/cleanup changes or actual oracle false negative.",
+          "alternatives/tradeoffs": "Observability adds evidence but is not itself a task-behavior fix; changing formal scoring timing changes comparability and requires independent decision.",
+          "risks": "Extra queries or altered timing can change a time-dependent environment; cannot retroactively repair original score.",
+          "expectedImpact": "Resolve presently unknown integer and cleanup boundary rather than assigning Runtime/oracle blame from reward alone.",
+          "falsification": "Existing immutable capture already contains those exact values; use them instead of collecting new data."
+        }
+      ],
+      "unknowns": [
+        "Exact formal098 brightness value and mode at every scoring boundary.",
+        "Whether interior drag alone caused oracle0, although it is strongest supported mechanism.",
+        "No proof that visible max persisted across driver.quit; no observed explicit brightness restoration.",
+        "097 dialog and098 expanded quick-settings track share width but different vertical geometry; endpoint evidence is a mechanism counterexample, not numeric reconstruction of098."
+      ],
+      "loadedSkillEvidence": {
+        "path": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/098-SystemBrightnessMaxVerify/attempt-1/raw-private/agent-events.jsonl",
+        "toolEnd54": [
+          "controls-first native semantic evidence; outcome not HTTP success; Apple paragraph stop-if-already-satisfied"
+        ],
+        "toolEnd55": [
+          "evidence ladder package/activity vs page/result; preserve requested state"
+        ]
+      }
+    }
+  ],
+  "offlineProbes": {
+    "kind": "read_only JSONL/static-source/image decoding; no Runtime or device execution",
+    "narrative": "domain-system-sms.md#offline-methods-and-output",
+    "actualOutput": {
+      "returnedPythonExecutions": {
+        "85": {
+          "completed": 14,
+          "failed": 5,
+          "alive": 19
+        },
+        "98": {
+          "completed": 7,
+          "failed": 1,
+          "alive": 8
+        }
+      },
+      "matchedOwnedSessionAppiumLines": {
+        "85": {
+          "count": 1947,
+          "firstLine": 559766,
+          "lastLine": 561713
+        },
+        "98": {
+          "count": 97,
+          "firstLine": 588591,
+          "lastLine": 588688
+        }
+      },
+      "nativeSourcePrefix097": {
+        "rawLine": 3291,
+        "length": 1200,
+        "tagNames": [
+          "hierarchy",
+          "android.widget.FrameLayout",
+          "android.widget.FrameLayout"
+        ],
+        "literalNodeOpeners": 0
+      },
+      "geometry": {
+        "case98StatedRightBound": 1038,
+        "case98Endpoint": 976,
+        "shortfallPixels": 62,
+        "case97NearEdgeGamma": 65469.0,
+        "case97MaxGamma": 65535.0,
+        "delta": 66.0
+      }
+    },
+    "limitations": [
+      "No final SMS provider rows or brightness settings output captured.",
+      "Source-prefix097 probes do not reconstruct formal098 document or int.",
+      "Screenshot interpretations are not semantic numeric proof.",
+      "Current installed Appium helper source is not byte-attested historical source."
+    ]
+  }
+}

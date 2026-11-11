@@ -1,0 +1,52 @@
+{
+  "kind": "rehearsal_continuation_blocker",
+  "rehearsalReport": "evidence/harness-r11-rehearsal-20261106-r2/run/report.json",
+  "rehearsalReportIdentitySha256": "5b27a9b0c7ddb97463a6c1c1f4e40e68703b462b056f87c518d2f79acfb197d3",
+  "completedTaskCount": 115,
+  "qualifiedTaskCount": 114,
+  "failedTask": "VlcCreatePlaylist",
+  "unstartedTask": "VlcCreateTwoPlaylists",
+  "failure": {
+    "stage": "task_initialization",
+    "type": "FileNotFoundError",
+    "message": "/data/data/org.videolan.vlc/app_db does not exist.",
+    "taskTearDown": "failed:FileNotFoundError",
+    "environment": "closed",
+    "sessions": "absent",
+    "officialReward": null
+  },
+  "additionalLiveFinding": {
+    "package": "io.appium.settings",
+    "registeredVersionCode": 191,
+    "registeredPackageObject": null,
+    "pmPathExitCode": 1,
+    "registeredApkPath": "/data/app/~~EIcQQU-_mDPkIb7eEgjc3Q==/io.appium.settings-0WrN3lLLLPkzJorWGFxiqQ==/base.apk",
+    "registeredApkStat": "No such file or directory",
+    "launch": "Error type 3: Activity class does not exist",
+    "appiumConnectionError": "Appium Settings app is not running after 30000ms",
+    "deletionCause": "unknown",
+    "availableLocalRecoveryApk": "/Users/qunmi/.appium/node_modules/appium-uiautomator2-driver/node_modules/io.appium.settings/apks/settings_apk-debug.apk",
+    "availableLocalRecoveryVersionCode": 191,
+    "availableLocalRecoveryVersionName": "8.0.9",
+    "availableLocalRecoverySha256": "bcfc5e6c2547d83beb3202c43c54cd0a0d3fe48511c87e43585db214259e11f8",
+    "reinstallAuthorized": false,
+    "reinstallPerformed": false
+  },
+  "diagnosticSessionOwnership": {
+    "firstRequest": "transport_timeout; reconciled: no retained driver and no UiAutomator2 processes",
+    "secondRequest": "future settled with WebDriverException; no retained driver",
+    "finalUiAutomator2ServerPids": [],
+    "finalUiAutomator2TestPids": [],
+    "externalServerAndEmulatorPreserved": true
+  },
+  "calibrationStarted": false,
+  "formalCampaignCreated": false,
+  "formalAgentStarted": false,
+  "sourceAndDependencyEdits": false,
+  "budgetsScoringAndCleanupGatesChanged": false,
+  "frozenMarkorCreateFolder": {
+    "folder_name": "folder_20261106_170323",
+    "paramsSha256": "63d411885513306c8963fc7a16de1d2257f1a73abafb47042488bff600cdd5f0"
+  },
+  "nextAction": "Obtain authorization for same-version local helper APK reinstall and actual VLC first-launch snapshot repair. Preserve this failed run, qualify target, and execute a brand-new full116 rehearsal; never resume or splice this run."
+}

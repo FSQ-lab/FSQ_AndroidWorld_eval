@@ -1,0 +1,1223 @@
+{
+  "actualAttemptStartCount": 3,
+  "actualStartedEpisodeCount": 3,
+  "calibrationGateSatisfied": true,
+  "campaignId": "amkernel-3388314-r12-headless-full-20261107T004632Z",
+  "cleanupFailureCount": 0,
+  "coverageAudit": {
+    "checkpointNullRewardCount": 0,
+    "checkpointSha256": "81084c97ce436142435ded1e378b54d2c813f26fc518c362a6c47285cbcd705a",
+    "cleanupFailureCount": 0,
+    "complete": false,
+    "errors": [],
+    "initialCoreServices": {
+      "activityService": true,
+      "adbState": "device",
+      "appiumReady": true,
+      "bootCompleted": "1",
+      "bootId": "0f36e370-012a-4423-a1f9-959beae8f90d",
+      "grpcReady": true,
+      "packageService": true,
+      "qualified": true,
+      "settingsService": true,
+      "surfaceFlingerPids": [
+        "333"
+      ],
+      "systemServerPids": [
+        "500"
+      ],
+      "windowService": true
+    },
+    "nullRewardCount": 0,
+    "originalFailures": [],
+    "sourceTaskSpecsEqual": true,
+    "startEventCount": 3,
+    "startedTaskIndexes": [
+      0,
+      1,
+      2
+    ],
+    "startedWithoutTerminal": [],
+    "terminalAttemptCount": 3,
+    "terminalEpisodeCount": 3,
+    "terminalEventCount": 3,
+    "terminalTaskIndexes": [
+      0,
+      1,
+      2
+    ],
+    "terminals": [
+      {
+        "attempt": 1,
+        "checkpointClassification": "passed",
+        "checkpointOfficialReward": 1.0,
+        "classification": "passed",
+        "cleanupFailure": false,
+        "officialReward": 1.0,
+        "result": "episodes/000-AudioRecorderRecordAudio/attempt-1/result.json",
+        "resultSha256": "1e38cd8c3ac4a63a378b25c4dd532022fec3398596e7de50a13fa75c2ee8c169",
+        "taskIndex": 0
+      },
+      {
+        "attempt": 1,
+        "checkpointClassification": "passed",
+        "checkpointOfficialReward": 1.0,
+        "classification": "passed",
+        "cleanupFailure": false,
+        "officialReward": 1.0,
+        "result": "episodes/001-AudioRecorderRecordAudioWithFileName/attempt-1/result.json",
+        "resultSha256": "0fa1aff56dd7be3f3f3fecec70dea560f15e8fee9f80b9168c3bc502433dad2d",
+        "taskIndex": 1
+      },
+      {
+        "attempt": 1,
+        "checkpointClassification": "failed",
+        "checkpointOfficialReward": 0.0,
+        "classification": "failed",
+        "cleanupFailure": false,
+        "officialReward": 0.0,
+        "result": "episodes/002-BrowserDraw/attempt-1/result.json",
+        "resultSha256": "dcb8aa7c144a8a5099fdf6eee97d58b8330333fd1f0a13e94a5614d680475d2d",
+        "taskIndex": 2
+      }
+    ],
+    "valid": false
+  },
+  "diagnosticScoreOnValidEpisodes": 0.6666666666666666,
+  "episodes": [
+    {
+      "classification": "passed",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 0,
+      "officialReward": 1.0,
+      "result": "episodes/000-AudioRecorderRecordAudio/attempt-1/result.json",
+      "task": "AudioRecorderRecordAudio"
+    },
+    {
+      "classification": "passed",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 1,
+      "officialReward": 1.0,
+      "result": "episodes/001-AudioRecorderRecordAudioWithFileName/attempt-1/result.json",
+      "task": "AudioRecorderRecordAudioWithFileName"
+    },
+    {
+      "classification": "failed",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 2,
+      "officialReward": 0.0,
+      "result": "episodes/002-BrowserDraw/attempt-1/result.json",
+      "task": "BrowserDraw"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 3,
+      "officialReward": null,
+      "task": "BrowserMaze"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 4,
+      "officialReward": null,
+      "task": "BrowserMultiply"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 5,
+      "officialReward": null,
+      "task": "CameraTakePhoto"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 6,
+      "officialReward": null,
+      "task": "CameraTakeVideo"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 7,
+      "officialReward": null,
+      "task": "ClockStopWatchPausedVerify"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 8,
+      "officialReward": null,
+      "task": "ClockStopWatchRunning"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 9,
+      "officialReward": null,
+      "task": "ClockTimerEntry"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 10,
+      "officialReward": null,
+      "task": "ContactsAddContact"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 11,
+      "officialReward": null,
+      "task": "ContactsNewContactDraft"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 12,
+      "officialReward": null,
+      "task": "ExpenseAddMultiple"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 13,
+      "officialReward": null,
+      "task": "ExpenseAddMultipleFromGallery"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 14,
+      "officialReward": null,
+      "task": "ExpenseAddMultipleFromMarkor"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 15,
+      "officialReward": null,
+      "task": "ExpenseAddSingle"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 16,
+      "officialReward": null,
+      "task": "ExpenseDeleteDuplicates"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 17,
+      "officialReward": null,
+      "task": "ExpenseDeleteDuplicates2"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 18,
+      "officialReward": null,
+      "task": "ExpenseDeleteMultiple"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 19,
+      "officialReward": null,
+      "task": "ExpenseDeleteMultiple2"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 20,
+      "officialReward": null,
+      "task": "ExpenseDeleteSingle"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 21,
+      "officialReward": null,
+      "task": "FilesDeleteFile"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 22,
+      "officialReward": null,
+      "task": "FilesMoveFile"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 23,
+      "officialReward": null,
+      "task": "MarkorAddNoteHeader"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 24,
+      "officialReward": null,
+      "task": "MarkorChangeNoteContent"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 25,
+      "officialReward": null,
+      "task": "MarkorCreateFolder"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 26,
+      "officialReward": null,
+      "task": "MarkorCreateNote"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 27,
+      "officialReward": null,
+      "task": "MarkorCreateNoteAndSms"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 28,
+      "officialReward": null,
+      "task": "MarkorCreateNoteFromClipboard"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 29,
+      "officialReward": null,
+      "task": "MarkorDeleteAllNotes"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 30,
+      "officialReward": null,
+      "task": "MarkorDeleteNewestNote"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 31,
+      "officialReward": null,
+      "task": "MarkorDeleteNote"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 32,
+      "officialReward": null,
+      "task": "MarkorEditNote"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 33,
+      "officialReward": null,
+      "task": "MarkorMergeNotes"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 34,
+      "officialReward": null,
+      "task": "MarkorMoveNote"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 35,
+      "officialReward": null,
+      "task": "MarkorTranscribeReceipt"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 36,
+      "officialReward": null,
+      "task": "MarkorTranscribeVideo"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "information_retrieval",
+      "index": 37,
+      "officialReward": null,
+      "task": "NotesIsTodo"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "information_retrieval",
+      "index": 38,
+      "officialReward": null,
+      "task": "NotesMeetingAttendeeCount"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "information_retrieval",
+      "index": 39,
+      "officialReward": null,
+      "task": "NotesRecipeIngredientCount"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "information_retrieval",
+      "index": 40,
+      "officialReward": null,
+      "task": "NotesTodoItemCount"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 41,
+      "officialReward": null,
+      "task": "OpenAppTaskEval"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 42,
+      "officialReward": null,
+      "task": "OsmAndFavorite"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 43,
+      "officialReward": null,
+      "task": "OsmAndMarker"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 44,
+      "officialReward": null,
+      "task": "OsmAndTrack"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 45,
+      "officialReward": null,
+      "task": "RecipeAddMultipleRecipes"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 46,
+      "officialReward": null,
+      "task": "RecipeAddMultipleRecipesFromImage"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 47,
+      "officialReward": null,
+      "task": "RecipeAddMultipleRecipesFromMarkor"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 48,
+      "officialReward": null,
+      "task": "RecipeAddMultipleRecipesFromMarkor2"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 49,
+      "officialReward": null,
+      "task": "RecipeAddSingleRecipe"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 50,
+      "officialReward": null,
+      "task": "RecipeDeleteDuplicateRecipes"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 51,
+      "officialReward": null,
+      "task": "RecipeDeleteDuplicateRecipes2"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 52,
+      "officialReward": null,
+      "task": "RecipeDeleteDuplicateRecipes3"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 53,
+      "officialReward": null,
+      "task": "RecipeDeleteMultipleRecipes"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 54,
+      "officialReward": null,
+      "task": "RecipeDeleteMultipleRecipesWithConstraint"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 55,
+      "officialReward": null,
+      "task": "RecipeDeleteMultipleRecipesWithNoise"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 56,
+      "officialReward": null,
+      "task": "RecipeDeleteSingleRecipe"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 57,
+      "officialReward": null,
+      "task": "RecipeDeleteSingleWithRecipeWithNoise"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 58,
+      "officialReward": null,
+      "task": "RetroCreatePlaylist"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 59,
+      "officialReward": null,
+      "task": "RetroPlayingQueue"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 60,
+      "officialReward": null,
+      "task": "RetroPlaylistDuration"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 61,
+      "officialReward": null,
+      "task": "RetroSavePlaylist"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 62,
+      "officialReward": null,
+      "task": "SaveCopyOfReceiptTaskEval"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 63,
+      "officialReward": null,
+      "task": "SimpleCalendarAddOneEvent"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 64,
+      "officialReward": null,
+      "task": "SimpleCalendarAddOneEventInTwoWeeks"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 65,
+      "officialReward": null,
+      "task": "SimpleCalendarAddOneEventRelativeDay"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 66,
+      "officialReward": null,
+      "task": "SimpleCalendarAddOneEventTomorrow"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 67,
+      "officialReward": null,
+      "task": "SimpleCalendarAddRepeatingEvent"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "information_retrieval",
+      "index": 68,
+      "officialReward": null,
+      "task": "SimpleCalendarAnyEventsOnDate"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 69,
+      "officialReward": null,
+      "task": "SimpleCalendarDeleteEvents"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 70,
+      "officialReward": null,
+      "task": "SimpleCalendarDeleteEventsOnRelativeDay"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 71,
+      "officialReward": null,
+      "task": "SimpleCalendarDeleteOneEvent"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "information_retrieval",
+      "index": 72,
+      "officialReward": null,
+      "task": "SimpleCalendarEventOnDateAtTime"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "information_retrieval",
+      "index": 73,
+      "officialReward": null,
+      "task": "SimpleCalendarEventsInNextWeek"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "information_retrieval",
+      "index": 74,
+      "officialReward": null,
+      "task": "SimpleCalendarEventsInTimeRange"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "information_retrieval",
+      "index": 75,
+      "officialReward": null,
+      "task": "SimpleCalendarEventsOnDate"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "information_retrieval",
+      "index": 76,
+      "officialReward": null,
+      "task": "SimpleCalendarFirstEventAfterStartTime"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "information_retrieval",
+      "index": 77,
+      "officialReward": null,
+      "task": "SimpleCalendarLocationOfEvent"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "information_retrieval",
+      "index": 78,
+      "officialReward": null,
+      "task": "SimpleCalendarNextEvent"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "information_retrieval",
+      "index": 79,
+      "officialReward": null,
+      "task": "SimpleCalendarNextMeetingWithPerson"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 80,
+      "officialReward": null,
+      "task": "SimpleDrawProCreateDrawing"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 81,
+      "officialReward": null,
+      "task": "SimpleSmsReply"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 82,
+      "officialReward": null,
+      "task": "SimpleSmsReplyMostRecent"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 83,
+      "officialReward": null,
+      "task": "SimpleSmsResend"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 84,
+      "officialReward": null,
+      "task": "SimpleSmsSend"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 85,
+      "officialReward": null,
+      "task": "SimpleSmsSendClipboardContent"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 86,
+      "officialReward": null,
+      "task": "SimpleSmsSendReceivedAddress"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "information_retrieval",
+      "index": 87,
+      "officialReward": null,
+      "task": "SportsTrackerActivitiesCountForWeek"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "information_retrieval",
+      "index": 88,
+      "officialReward": null,
+      "task": "SportsTrackerActivitiesOnDate"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "information_retrieval",
+      "index": 89,
+      "officialReward": null,
+      "task": "SportsTrackerActivityDuration"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "information_retrieval",
+      "index": 90,
+      "officialReward": null,
+      "task": "SportsTrackerLongestDistanceActivity"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "information_retrieval",
+      "index": 91,
+      "officialReward": null,
+      "task": "SportsTrackerTotalDistanceForCategoryOverInterval"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "information_retrieval",
+      "index": 92,
+      "officialReward": null,
+      "task": "SportsTrackerTotalDurationForCategoryThisWeek"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 93,
+      "officialReward": null,
+      "task": "SystemBluetoothTurnOff"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 94,
+      "officialReward": null,
+      "task": "SystemBluetoothTurnOffVerify"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 95,
+      "officialReward": null,
+      "task": "SystemBluetoothTurnOn"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 96,
+      "officialReward": null,
+      "task": "SystemBluetoothTurnOnVerify"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 97,
+      "officialReward": null,
+      "task": "SystemBrightnessMax"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 98,
+      "officialReward": null,
+      "task": "SystemBrightnessMaxVerify"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 99,
+      "officialReward": null,
+      "task": "SystemBrightnessMin"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 100,
+      "officialReward": null,
+      "task": "SystemBrightnessMinVerify"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 101,
+      "officialReward": null,
+      "task": "SystemCopyToClipboard"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 102,
+      "officialReward": null,
+      "task": "SystemWifiTurnOff"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 103,
+      "officialReward": null,
+      "task": "SystemWifiTurnOffVerify"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 104,
+      "officialReward": null,
+      "task": "SystemWifiTurnOn"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 105,
+      "officialReward": null,
+      "task": "SystemWifiTurnOnVerify"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "information_retrieval",
+      "index": 106,
+      "officialReward": null,
+      "task": "TasksCompletedTasksForDate"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "information_retrieval",
+      "index": 107,
+      "officialReward": null,
+      "task": "TasksDueNextWeek"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "information_retrieval",
+      "index": 108,
+      "officialReward": null,
+      "task": "TasksDueOnDate"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "information_retrieval",
+      "index": 109,
+      "officialReward": null,
+      "task": "TasksHighPriorityTasks"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "information_retrieval",
+      "index": 110,
+      "officialReward": null,
+      "task": "TasksHighPriorityTasksDueOnDate"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "information_retrieval",
+      "index": 111,
+      "officialReward": null,
+      "task": "TasksIncompleteTasksOnDate"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 112,
+      "officialReward": null,
+      "task": "TurnOffWifiAndTurnOnBluetooth"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 113,
+      "officialReward": null,
+      "task": "TurnOnWifiAndOpenApp"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 114,
+      "officialReward": null,
+      "task": "VlcCreatePlaylist"
+    },
+    {
+      "classification": "incomplete",
+      "cleanupFailure": false,
+      "family": "android",
+      "index": 115,
+      "officialReward": null,
+      "task": "VlcCreateTwoPlaylists"
+    }
+  ],
+  "family": {
+    "android": {
+      "officialRewardSum": 2.0,
+      "scoreOnValidEpisodes": 0.6666666666666666,
+      "validEpisodeCount": 3
+    }
+  },
+  "fullValidScore": null,
+  "invalidBreakdown": {},
+  "legacyOfficialScore": null,
+  "lowerBoundScoreOnPlannedEpisodes": 0.017241379310344827,
+  "matchesSummary": true,
+  "officialRewardSum": 2.0,
+  "officialScore": null,
+  "pauseReason": "readiness_unavailable_requires_coordinated_recovery",
+  "paused": true,
+  "plannedEpisodeCount": 116,
+  "protocolIdentity": "r12.full_coverage_after_verified_recovery.v1",
+  "qualified": false,
+  "recoveryReferences": [
+    {
+      "attempt": 1,
+      "bootChanged": false,
+      "checkpointPrefixSha256": "90a3092625e2111e77bda809a5f26d3a62992eb9f766ad54e573434dfcf0fc0b",
+      "checkpointSequence": 7,
+      "continuationAllowed": false,
+      "coreServices": {
+        "activityService": true,
+        "adbState": "device",
+        "appiumReady": true,
+        "bootCompleted": "1",
+        "bootId": "0f36e370-012a-4423-a1f9-959beae8f90d",
+        "grpcReady": true,
+        "packageService": true,
+        "qualified": true,
+        "settingsService": true,
+        "surfaceFlingerPids": [
+          "333"
+        ],
+        "systemServerPids": [
+          "500"
+        ],
+        "windowService": true
+      },
+      "evidence": "recoveries/002-BrowserDraw-attempt-1.json",
+      "evidenceSha256": "6567aebfec9e2b48162e2ea4d37cf19bbc15fd17dc892cd26c1d3af48926847f",
+      "originalClassification": "failed",
+      "originalCleanup": {
+        "agentSession": {
+          "agentQuitReturned": true,
+          "attribution": "agent",
+          "sessionIdSha256": "d84b258dce6fa3d78665e781bf68b313bf65158940692ce03817be4500ac931b",
+          "status": "closed",
+          "verification": {
+            "activeSessionCount": 0,
+            "attemptedSessionCount": 1,
+            "ownedSessionCount": 1,
+            "pendingCreateCount": 0,
+            "pendingRequestCount": 0,
+            "reclaimedSessionCount": 0,
+            "reclaimedSessionHashes": [],
+            "sessions": [
+              {
+                "absentVerified": true,
+                "alreadyAbsent": true,
+                "errors": [],
+                "presentVerified": false,
+                "quitReturned": false,
+                "sessionHash": "d84b258dce6fa3d78665e781bf68b313bf65158940692ce03817be4500ac931b"
+              }
+            ],
+            "status": "unknown",
+            "unknownCreationOutcomeCount": 0
+          },
+          "verificationStatus": "absent"
+        },
+        "environment": "closed",
+        "taskTearDown": "completed"
+      },
+      "originalResultSha256": "dcb8aa7c144a8a5099fdf6eee97d58b8330333fd1f0a13e94a5614d680475d2d",
+      "pauseReason": "readiness_unavailable_requires_coordinated_recovery",
+      "surfaceFlingerChanged": false,
+      "systemServerChanged": false,
+      "taskIndex": 2
+    }
+  ],
+  "schemaVersion": 1,
+  "unstartedTaskIndexes": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99,
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    112,
+    113,
+    114,
+    115
+  ],
+  "validEpisodeCount": 3
+}

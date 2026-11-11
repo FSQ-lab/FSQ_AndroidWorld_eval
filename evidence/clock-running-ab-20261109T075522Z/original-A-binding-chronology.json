@@ -1,0 +1,33 @@
+{
+  "label": "ClockRunningOriginalP0",
+  "originalScorerReturnUnix": 1794211579.9959822,
+  "actualOfficialSelectedRecv": 2118,
+  "selectedReceiveAtUnix": 1794211574.6673741,
+  "logicalGetStateReturnUnix": 1794211579.9645262,
+  "postrunSampleStartedAtUnix": 1794211580.97579,
+  "postrunSampleCompletedAtUnix": 1794211581.369783,
+  "postrunAccessibilityCommand": {
+    "args": [
+      "-s",
+      "emulator-5554",
+      "shell",
+      "dumpsys",
+      "accessibility"
+    ],
+    "returncode": 0,
+    "startedAtUnix": 1794211581.089761,
+    "completedAtUnix": 1794211581.131486,
+    "durationSeconds": 0.04172492027282715,
+    "stdout": "ACCESSIBILITY MANAGER (dumpsys accessibility)\n\ncurrentUserId=0\nhasWindowMagnificationConnection=false\nMagnifier on display#0\n    MagnificationConfig[mode: 1, scale: 1.0, centerX: 540.0, centerY: 1200.0] \n    Magnification region=SkRegion((5,5,1075,2395))\n    IdOfLastServiceToMagnify=-1\n    SupportWindowMagnification=false\n    WindowMagnificationConnectionState=DISCONNECTED\nUser state[\n     attributes:{id=0, touchExplorationEnabled=false, serviceHandlesDoubleTap=false, requestMultiFingerGestures=false, requestTwoFingerPassthrough=false, sendMotionEventsEnabledfalse, displayMagnificationEnabled=false, autoclickEnabled=false, nonInteractiveUiTimeout=0, interactiveUiTimeout=0, installedServiceCount=4, magnificationModes={0=1}, magnificationCapabilities=3, audioDescriptionByDefaultEnabled=false, magnificationFollowTypingEnabled=true}\n     shortcut key:{}\n     button:{}\n     button target:{null}\n     Bound services:{Service[label=com.google.androidenv.accessibilityforwarder.Acce\u2026, feedbackType[FEEDBACK_GENERIC], capabilities=1, eventTypes=TYPES_ALL_MASK, notificationTimeout=0, requestA11yBtn=false]}\n     Enabled services:{{com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.AccessibilityForwarder}}\n     Binding services:{}\n     Crashed services:{}\n     Client list info:{\n          Client list callbacks: 10\n          Client list killed: false\n          Client list broadcasts count: -1\n          Registered clients:{\n[com.google.android.googlequicksearchbox][com.google.android.apps.wellbeing][com.google.android.googlequicksearchbox][com.google.android.calendar][com.google.android.as][com.google.androidenv.accessibilityforwarder][com.google.android.youtube][com.google.android.inputmethod.latin][com.google.android.apps.nexuslauncher][com.google.android.contacts]}]\nGlobal Info [ Top focused display Id = 0\n     Active Window Id = 9918\n     Top Focused Window Id = 9918\n     Accessibility Focused Window Id = 9846 ]\n\nDisplay[0] : \nA11yWindow[AccessibilityWindowInfo[title=null, displayId=0, id=9911, taskId=-1, type=TYPE_SYSTEM, layer=1, region=SkRegion((0,0,1080,128)), bounds=Rect(0, 0 - 1080, 128), focused=false, active=false, pictureInPicture=false, hasParent=false, isAnchored=false, hasChildren=false]]\nWindowInfo[WindowInfo[title=null, displayId=0, taskId=-1, type=2000, layer=0, token=android.os.BinderProxy@baaa4b1, region=SkRegion((0,0,1080,128)), bounds=Rect(0, 0 - 1080, 128), parent=null, focused=false, children=null, accessibility anchor=9223372034707292159, pictureInPicture=false, watchOutsideTouch=false, mTransformMatrix=Matrix{[1.0, 0.0, 0.0][0.0, 1.0, 0.0][0.0, 0.0, 1.0]}, mMagnificationSpec=<scale:1.0,offsetX:0.0,offsetY:0.0>]]\n,\nA11yWindow[AccessibilityWindowInfo[title=Home, displayId=0, id=9918, taskId=525, type=TYPE_APPLICATION, layer=0, region=SkRegion((0,0,1080,2400)), bounds=Rect(0, 0 - 1080, 2400), focused=true, active=true, pictureInPicture=false, hasParent=false, isAnchored=false, hasChildren=false]]\nWindowInfo[WindowInfo[title=Home, displayId=0, taskId=525, type=1, layer=1, token=android.os.BinderProxy@612bc3e, region=SkRegion((0,0,1080,2400)), bounds=Rect(0, 0 - 1080, 2400), parent=null, focused=true, children=null, accessibility anchor=9223372034707292159, pictureInPicture=false, watchOutsideTouch=false, mTransformMatrix=Matrix{[1.0, 0.0, 0.0][0.0, 1.0, 0.0][0.0, 0.0, 1.0]}, mMagnificationSpec=<scale:1.0,offsetX:0.0,offsetY:0.0>]]\n\nGlobal client list info:{\n    Client list callbacks: 4\n    Client list killed: false\n    Client list broadcasts count: -1\n    Registered clients:{\n[com.android.keychain, com.android.providers.settings, android, com.android.settings, com.android.wallpaperbackup, com.android.localtransport, com.android.inputdevices, com.android.emulator.multidisplay, com.android.server.telecom, com.android.dynsystem, com.android.location.fused][com.android.systemui][com.google.android.documentsui][com.google.android.permissioncontroller]",
+    "stderr": ""
+  },
+  "postrunForwarderPid": "13131",
+  "postrunBoundLines": [
+    "     Bound services:{Service[label=com.google.androidenv.accessibilityforwarder.Acce\u2026, feedbackType[FEEDBACK_GENERIC], capabilities=1, eventTypes=TYPES_ALL_MASK, notificationTimeout=0, requestA11yBtn=false]}",
+    "     Enabled services:{{com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.AccessibilityForwarder}}",
+    "     Binding services:{}",
+    "     Crashed services:{}"
+  ],
+  "interpretation": "The saved bound PID13131 snapshot is observed after original scorer return; it does not prove binding transition happened after the scorer, nor prove a healthy scoring input at that earlier instant. Actual selected official forest is empty seq2118. No claim that binding never restored or cannot restore.",
+  "notProven": "Exact binding state at scorer return and the time it became bound are not directly measured by this asynchronous snapshot."
+}

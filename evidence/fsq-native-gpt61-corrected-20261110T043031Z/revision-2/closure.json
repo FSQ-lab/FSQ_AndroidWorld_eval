@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "kind": "native_fsq_revision2_targeted_closure_handoff",
+  "status": "ready_for_independent_targeted_closure",
+  "approved": false,
+  "reviewOwner": "w4:p2",
+  "implementationOwner": "w4:p1",
+  "coordinator": "w6:p2",
+  "candidate": {
+    "path": "candidate-final-manifest.json",
+    "sha256": "94a33fc3719cb2b289b274a415e78d91aeef5d9c34f8a63fedeac0e638e615f2"
+  },
+  "sourceInventory": "source-inventory.json",
+  "identity": "identity-snapshot.json",
+  "handoff": "handoff.md",
+  "findings": [
+    {
+      "id": "FSQ-R01",
+      "status": "implemented_and_offline_proved_pending_independent_review",
+      "sourceFiles": [
+        "src/fsq_androidworld_eval/fsq_manifest.py",
+        "src/fsq_androidworld_eval/fsq_supervisor.py",
+        "src/fsq_androidworld_eval/fsq_runner.py"
+      ],
+      "evidence": [
+        "closure-final.xml",
+        "real-sandbox-native-fileops-atomic-fixed.xml"
+      ]
+    },
+    {
+      "id": "FSQ-R02",
+      "status": "implemented_and_offline_proved_pending_independent_review",
+      "sourceFiles": [
+        "src/fsq_androidworld_eval/fsq_supervisor.py",
+        "src/fsq_androidworld_eval/fsq_runner.py",
+        "src/fsq_androidworld_eval/fsq_campaign.py"
+      ],
+      "evidence": [
+        "closure-final.xml",
+        "native-failure-scheduling-final.xml"
+      ]
+    },
+    {
+      "id": "FSQ-R03",
+      "status": "implemented_and_offline_proved_pending_independent_review",
+      "sourceFiles": [
+        "src/fsq_androidworld_eval/fsq_native.py",
+        "src/fsq_androidworld_eval/fsq_worker.py",
+        "src/fsq_androidworld_eval/fsq_runner.py",
+        "src/fsq_androidworld_eval/fsq_evidence.py"
+      ],
+      "evidence": [
+        "closure-final.xml",
+        "../independent-review/r03-scope-clarification.json"
+      ]
+    },
+    {
+      "id": "FSQ-R04",
+      "status": "implemented_and_offline_proved_pending_independent_review",
+      "sourceFiles": [
+        "src/fsq_androidworld_eval/fsq_supervisor.py"
+      ],
+      "evidence": [
+        "closure-final.xml"
+      ]
+    },
+    {
+      "id": "FSQ-R05",
+      "status": "implemented_and_offline_proved_pending_independent_review",
+      "sourceFiles": [
+        "src/fsq_androidworld_eval/fsq_runner.py",
+        "src/fsq_androidworld_eval/fsq_campaign.py"
+      ],
+      "evidence": [
+        "closure-final.xml"
+      ]
+    },
+    {
+      "id": "FSQ-R06",
+      "status": "implemented_and_offline_proved_pending_independent_review",
+      "sourceFiles": [
+        "src/fsq_androidworld_eval/fsq_evidence.py",
+        "src/fsq_androidworld_eval/fsq_runner.py",
+        "src/fsq_androidworld_eval/fsq_campaign.py"
+      ],
+      "evidence": [
+        "closure-final.xml"
+      ]
+    },
+    {
+      "id": "FSQ-R07",
+      "status": "implemented_and_offline_proved_pending_independent_review",
+      "sourceFiles": [
+        "src/fsq_androidworld_eval/fsq_evidence.py",
+        "src/fsq_androidworld_eval/fsq_runner.py",
+        "src/fsq_androidworld_eval/fsq_campaign.py"
+      ],
+      "evidence": [
+        "closure-final.xml"
+      ]
+    },
+    {
+      "id": "FSQ-R08",
+      "status": "implemented_and_offline_proved_pending_independent_review",
+      "sourceFiles": [
+        "src/fsq_androidworld_eval/fsq_evidence.py",
+        "src/fsq_androidworld_eval/fsq_runner.py",
+        "src/fsq_androidworld_eval/fsq_campaign.py"
+      ],
+      "evidence": [
+        "closure-final.xml"
+      ]
+    }
+  ],
+  "r03Contract": "Truthful kill outcome and complete native verification observations only; no successful-kill eligibility/main-final ordering gate and no substitute kill. Later clarification supersedes original R03 requiredClosure.",
+  "verification": {
+    "junit": "closure-final.xml",
+    "passed": 309,
+    "failed": 0,
+    "skipped": 0,
+    "includesOptInRealSandbox": true,
+    "realCandidatePrepareExit": 0,
+    "realCandidateInspectExit": 0,
+    "finalCampaignRegression": {
+      "junit": "native-failure-scheduling-final.xml",
+      "passed": 67,
+      "failed": 0,
+      "skipped": 0,
+      "includesTwoAddedNativeForcedFailureTransitions": true
+    },
+    "snapshotNote": "closure-final.xml proves final product source with the preceding 65-case campaign test version; only the campaign test fixture/new two cases changed afterwards, and the final campaign file then passed all 67 cases. No product source changed."
+  },
+  "modelGate": {
+    "path": "model-gate.json",
+    "acceptedMinimalNativeResponses": true,
+    "actualReturnedModel": "unknown",
+    "newModelCall": false
+  },
+  "resources": {
+    "receipt": "shared-resource-readonly.json",
+    "priority": "FSQ first, then explicit release to w6:p1",
+    "appiumSessions": "unknown",
+    "failedGETRepeated": false,
+    "newProbe": false,
+    "exclusiveCampaignAuthorized": false
+  },
+  "liveAuthorized": false,
+  "businessAgentInvoked": false,
+  "deviceAccessedByThisRepair": false,
+  "repoIndexModifiedByThisRepair": false,
+  "nativeSDKModifiedByThisRepair": false,
+  "originalReviewAndDeliveryPreserved": true,
+  "next": "Independent targeted closure, then coordinator-approved holder/safety boundary and explicit stage/resource authorization. No automatic live execution."
+}

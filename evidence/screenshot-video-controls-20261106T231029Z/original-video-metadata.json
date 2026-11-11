@@ -1,0 +1,16 @@
+{
+  "name": "original-video-metadata",
+  "observedAtUnix": 1794011067.428149,
+  "command": [
+    "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/imageio_ffmpeg/binaries/ffmpeg-macos-aarch64-v7.1",
+    "-hide_banner",
+    "-i",
+    "evidence/screenshot-video-controls-20261106T231029Z/ZwUN_moment_70_.mp4",
+    "-f",
+    "null",
+    "-"
+  ],
+  "returnCode": 0,
+  "stdout": "",
+  "stderr": "Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'evidence/screenshot-video-controls-20261106T231029Z/ZwUN_moment_70_.mp4':\n  Metadata:\n    major_brand     : isom\n    minor_version   : 512\n    compatible_brands: isomiso2mp41\n    encoder         : Lavf61.7.100\n  Duration: 00:00:24.00, start: 0.000000, bitrate: 4650 kb/s\n  Stream #0:0[0x1](und): Video: mpeg4 (Simple Profile) (mp4v / 0x7634706D), yuv420p, 320x240 [SAR 1:1 DAR 4:3], 4648 kb/s, 30 fps, 30 tbr, 15360 tbn (default)\n      Metadata:\n        handler_name    : VideoHandler\n        vendor_id       : [0][0][0][0]\nStream mapping:\n  Stream #0:0 -> #0:0 (mpeg4 (native) -> wrapped_avframe (native))\nPress [q] to stop, [?] for help\nOutput #0, null, to 'pipe:':\n  Metadata:\n    major_brand     : isom\n    minor_version   : 512\n    compatible_brands: isomiso2mp41\n    encoder         : Lavf61.7.100\n  Stream #0:0(und): Video: wrapped_avframe, yuv420p(progressive), 320x240 [SAR 1:1 DAR 4:3], q=2-31, 200 kb/s, 30 fps, 30 tbn (default)\n      Metadata:\n        handler_name    : VideoHandler\n        vendor_id       : [0][0][0][0]\n        encoder         : Lavc61.19.100 wrapped_avframe\n[out#0/null @ 0x6000034e8000] video:309KiB audio:0KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown\nframe=  720 fps=0.0 q=-0.0 Lsize=N/A time=00:00:24.00 bitrate=N/A speed= 884x    \n"
+}

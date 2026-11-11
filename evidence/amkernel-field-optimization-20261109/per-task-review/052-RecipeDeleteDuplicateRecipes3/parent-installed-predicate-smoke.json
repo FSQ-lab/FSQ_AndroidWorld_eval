@@ -1,0 +1,193 @@
+{
+  "runtime": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/bin/python",
+  "code": "import json,sys,itertools,dataclasses\nfrom android_world.task_evals.single.recipe import RecipeDeleteDuplicateRecipes3\nfrom android_world.task_evals.utils.sqlite_schema_utils import Recipe\nparams=json.loads(sys.argv[1])\nrows=[Recipe(**{**row,'recipeId':i+1}) for i,row in enumerate(params['noise_row_objects']+params['row_objects'])]\ntask=object.__new__(RecipeDeleteDuplicateRecipes3)\ntask.rows_to_delete=rows[-2:]\ndef count_contents(items):\n return len({tuple((f.name,getattr(row,f.name)) for f in dataclasses.fields(row) if f.name!='recipeId') for row in items})\ndef scenario(ids):\n after=[row for row in rows if row.recipeId not in ids]\n return {'syntheticDeletedIds':sorted(ids),'pureInstalledPredicate':task.validate_deletion_integrity(rows,after),'remainingRows':len(after),'remainingContentGroups':count_contents(after)}\npan=[r.recipeId for r in rows if r.title=='Pan-Seared Salmon with Quinoa']\navocado=[r.recipeId for r in rows if r.title=='Avocado Toast with Egg']\nresult={'scope':'Pure installed validation helper only; synthetic row IDs from original params, no init/env/is_successful/device/DB','beforeRows':len(rows),'beforeContentGroups':count_contents(rows),'unchanged':scenario(set()),'deleteTarget1Only':scenario({rows[-2].recipeId}),'deleteTarget2Only':scenario({rows[-1].recipeId}),'deleteBothTargets':scenario({rows[-2].recipeId,rows[-1].recipeId}),'deleteAnyPanOrAvocadoOnly':[scenario({i}) for i in pan+avocado],'deleteCorrectTargetPlusAnyPanOrAvocado':[scenario({rows[-1].recipeId,i}) for i in pan+avocado],'onePanPlusTwoAvocadoCombinations':[scenario({p,*a}) for p in pan for a in itertools.combinations(avocado,2)]}\nassert result['unchanged']['pureInstalledPredicate'] is False\nassert result['deleteTarget1Only']['pureInstalledPredicate'] is True and result['deleteTarget2Only']['pureInstalledPredicate'] is True\nassert result['deleteBothTargets']['pureInstalledPredicate'] is False\nassert len(result['deleteAnyPanOrAvocadoOnly'])==5\nassert len(result['onePanPlusTwoAvocadoCombinations'])==6\nassert all(case['pureInstalledPredicate'] is False for key in ('deleteAnyPanOrAvocadoOnly','deleteCorrectTargetPlusAnyPanOrAvocado','onePanPlusTwoAvocadoCombinations') for case in result[key])\nprint(json.dumps(result,ensure_ascii=False))\n",
+  "exitCode": 0,
+  "stderr": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/pydub/utils.py:170: RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work\n  warn(\"Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work\", RuntimeWarning)\n",
+  "actualOutput": {
+    "scope": "Pure installed validation helper only; synthetic row IDs from original params, no init/env/is_successful/device/DB",
+    "beforeRows": 32,
+    "beforeContentGroups": 31,
+    "unchanged": {
+      "syntheticDeletedIds": [],
+      "pureInstalledPredicate": false,
+      "remainingRows": 32,
+      "remainingContentGroups": 31
+    },
+    "deleteTarget1Only": {
+      "syntheticDeletedIds": [
+        31
+      ],
+      "pureInstalledPredicate": true,
+      "remainingRows": 31,
+      "remainingContentGroups": 31
+    },
+    "deleteTarget2Only": {
+      "syntheticDeletedIds": [
+        32
+      ],
+      "pureInstalledPredicate": true,
+      "remainingRows": 31,
+      "remainingContentGroups": 31
+    },
+    "deleteBothTargets": {
+      "syntheticDeletedIds": [
+        31,
+        32
+      ],
+      "pureInstalledPredicate": false,
+      "remainingRows": 30,
+      "remainingContentGroups": 30
+    },
+    "deleteAnyPanOrAvocadoOnly": [
+      {
+        "syntheticDeletedIds": [
+          8
+        ],
+        "pureInstalledPredicate": false,
+        "remainingRows": 31,
+        "remainingContentGroups": 30
+      },
+      {
+        "syntheticDeletedIds": [
+          14
+        ],
+        "pureInstalledPredicate": false,
+        "remainingRows": 31,
+        "remainingContentGroups": 30
+      },
+      {
+        "syntheticDeletedIds": [
+          22
+        ],
+        "pureInstalledPredicate": false,
+        "remainingRows": 31,
+        "remainingContentGroups": 30
+      },
+      {
+        "syntheticDeletedIds": [
+          23
+        ],
+        "pureInstalledPredicate": false,
+        "remainingRows": 31,
+        "remainingContentGroups": 30
+      },
+      {
+        "syntheticDeletedIds": [
+          24
+        ],
+        "pureInstalledPredicate": false,
+        "remainingRows": 31,
+        "remainingContentGroups": 30
+      }
+    ],
+    "deleteCorrectTargetPlusAnyPanOrAvocado": [
+      {
+        "syntheticDeletedIds": [
+          8,
+          32
+        ],
+        "pureInstalledPredicate": false,
+        "remainingRows": 30,
+        "remainingContentGroups": 30
+      },
+      {
+        "syntheticDeletedIds": [
+          14,
+          32
+        ],
+        "pureInstalledPredicate": false,
+        "remainingRows": 30,
+        "remainingContentGroups": 30
+      },
+      {
+        "syntheticDeletedIds": [
+          22,
+          32
+        ],
+        "pureInstalledPredicate": false,
+        "remainingRows": 30,
+        "remainingContentGroups": 30
+      },
+      {
+        "syntheticDeletedIds": [
+          23,
+          32
+        ],
+        "pureInstalledPredicate": false,
+        "remainingRows": 30,
+        "remainingContentGroups": 30
+      },
+      {
+        "syntheticDeletedIds": [
+          24,
+          32
+        ],
+        "pureInstalledPredicate": false,
+        "remainingRows": 30,
+        "remainingContentGroups": 30
+      }
+    ],
+    "onePanPlusTwoAvocadoCombinations": [
+      {
+        "syntheticDeletedIds": [
+          8,
+          22,
+          23
+        ],
+        "pureInstalledPredicate": false,
+        "remainingRows": 29,
+        "remainingContentGroups": 28
+      },
+      {
+        "syntheticDeletedIds": [
+          8,
+          22,
+          24
+        ],
+        "pureInstalledPredicate": false,
+        "remainingRows": 29,
+        "remainingContentGroups": 28
+      },
+      {
+        "syntheticDeletedIds": [
+          8,
+          23,
+          24
+        ],
+        "pureInstalledPredicate": false,
+        "remainingRows": 29,
+        "remainingContentGroups": 28
+      },
+      {
+        "syntheticDeletedIds": [
+          14,
+          22,
+          23
+        ],
+        "pureInstalledPredicate": false,
+        "remainingRows": 29,
+        "remainingContentGroups": 28
+      },
+      {
+        "syntheticDeletedIds": [
+          14,
+          22,
+          24
+        ],
+        "pureInstalledPredicate": false,
+        "remainingRows": 29,
+        "remainingContentGroups": 28
+      },
+      {
+        "syntheticDeletedIds": [
+          14,
+          23,
+          24
+        ],
+        "pureInstalledPredicate": false,
+        "remainingRows": 29,
+        "remainingContentGroups": 28
+      }
+    ]
+  }
+}

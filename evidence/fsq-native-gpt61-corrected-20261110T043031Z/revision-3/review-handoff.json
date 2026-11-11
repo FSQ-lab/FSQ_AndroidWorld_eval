@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "kind": "native_canonical_swipe_delta_review_request",
+  "candidateSha256": "d9f3237c0d6d26f512bfdd3870fd4563519fc24f6cae160beb93a015a597a057",
+  "sourceSha256": "69158f28eadbcd1921bd58a4dd9207b7dcbc10d5fd2756507604313d163bf99c",
+  "baseCandidateSha256": "94a33fc3719cb2b289b274a415e78d91aeef5d9c34f8a63fedeac0e638e615f2",
+  "scope": "Only canonical swipe self-alias consumer acceptance plus desensitized real fixture/regressions/docs; not a new whole R01-R08 audit.",
+  "files": [
+    {
+      "path": "src/fsq_androidworld_eval/fsq_evidence.py",
+      "sha256": "1d448e1ee60b0a1c00814d5ed0b10728172ae29f69078be104d69acafa4f9c03",
+      "bytes": 20471
+    },
+    {
+      "path": "tests/test_fsq_evidence.py",
+      "sha256": "5fbb3b26c0c65a3f9b6bf52b7dd73bfe2fd357fd6280dba485fcaeae19f892a1",
+      "bytes": 26267
+    },
+    {
+      "path": "tests/fixtures/fsq_native_swipe.json",
+      "sha256": "38c84f655fa2deb24e58075fde2d4dd08287e3d3c2cb6792779d0207df8bd866",
+      "bytes": 18950
+    },
+    {
+      "path": "README.md",
+      "sha256": "636dd453a262d0830a6d1b0af9881870a5963a5c33ffe39fec05fb52c198d936",
+      "bytes": 41812
+    }
+  ],
+  "staticCause": {
+    "producer": "fsq_native.py WRITE_CAPABILITIES[swipe]=swipe, WRITE_ALIASES[swipe]=swipe; genuine actual journal sequence5 capability=swipe",
+    "oldConsumer": "capability not in WRITE_ALIASES rejects that canonical spelling",
+    "newConsumer": "WRITE_ALIASES.get(capability,capability)==capability; genuinely different aliases still rejected"
+  },
+  "safetyUnchanged": [
+    "artifact canonical paths/root containment/symlink/regular-file rules",
+    "exact artifact hash/bytes/private visibility",
+    "TaskResult/main-runner summary/businessStatus provenance without fallback",
+    "task/serial/native-return identity",
+    "event schema/order/ticket pairing/deadline/counters/maximum/close settlement",
+    "no oracle until all evidence admitted and trusted worker process settled",
+    "secret/oracle filesystem boundary and native SDK unchanged"
+  ],
+  "offlineEvidence": {
+    "suite": "regression-pass.json",
+    "result": "313 passed, 1 opt-in macOS sandbox proof skipped",
+    "standaloneConsumer": "offline-consumer-smoke.json",
+    "fixtureProvenance": "fixture-provenance.json"
+  },
+  "reviewStatus": "pending independent review; this file is a request, not approval",
+  "qualificationStatus": "pending for revision3; revision2 successful qualification not transferred",
+  "businessPolicy": "No retry of consumed102; no new device/model/score/qualification command authorized by this repair. Different-task smoke requires coordinator decision after actual root cause.",
+  "originalResultPolicy": "Keep actual invalid_agent/native_evidence_invalid/null reward/evaluatorCalls0, SDK native success is not official success",
+  "FSQFirstRetained": true,
+  "releasedToAMK": false
+}

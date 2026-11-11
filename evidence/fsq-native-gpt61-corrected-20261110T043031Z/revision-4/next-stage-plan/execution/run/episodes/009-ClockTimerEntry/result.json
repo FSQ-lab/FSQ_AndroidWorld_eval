@@ -1,0 +1,948 @@
+{
+  "agentStartedAtUnix": 1794327230.4541178,
+  "artifacts": [
+    {
+      "bytes": 952,
+      "path": "raw-private/evaluator-diagnostics.json",
+      "sha256": "7797b6987c2fe987fea709ad8ff685f0dba2e9a93dbd925f9aa4bc0ab6ade1d9"
+    },
+    {
+      "bytes": 9517,
+      "path": "raw-private/fsq-native/worker/fsq-task-result.private.json",
+      "sha256": "1d76ba5ab8d2e99ee162cebf450b59cf101d7ca887d55906773c99c4e213dcfe"
+    },
+    {
+      "bytes": 1127,
+      "path": "raw-private/fsq-native/worker/fsq-verification.private.json",
+      "sha256": "635c597287f0426b5fe83a85b508b3a0fb0c1be11e5965a9bd3fea1a770a6623"
+    },
+    {
+      "bytes": 6263,
+      "path": "raw-private/fsq-native/worker/native-action-audit.jsonl",
+      "sha256": "716676727d16bdf6b413882a91956470a16eda9560a2763e8a031783f911a3ea"
+    },
+    {
+      "bytes": 11466,
+      "path": "raw-private/fsq-native/worker/oracle-isolation.sb",
+      "sha256": "13496ebba6eef61bec547b12c8601eaef2f8df06193bd0cb7eddff23aecd6c6d"
+    },
+    {
+      "bytes": 964,
+      "path": "raw-private/fsq-native/worker/request.json",
+      "sha256": "e60d3c3c02e58a6192c9c3480e9c67c87057d0ccaeb4fad9ba4ed5f6159f07b7"
+    },
+    {
+      "bytes": 13339,
+      "path": "raw-private/fsq-native/worker/worker-result.json",
+      "sha256": "b65e76a468da1bf551381a4e1bdbf565c677442da6b2bb3ddeab293eb3d69651"
+    },
+    {
+      "bytes": 0,
+      "path": "raw-private/fsq-native/worker/worker.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 301,
+      "path": "raw-private/fsq-native/worker-site/fsq_androidworld_eval/__init__.py",
+      "sha256": "a60299a21d9057e09e5370de1567399711f8ab5e4ee9932ff3eaf4bf8e25f47f"
+    },
+    {
+      "bytes": 10834,
+      "path": "raw-private/fsq-native/worker-site/fsq_androidworld_eval/fsq_native.py",
+      "sha256": "0af6d9b3802fcfd5708bc9dcdf2132bf48a9e3da01ae0401fafa6ae9ad468e13"
+    },
+    {
+      "bytes": 16257,
+      "path": "raw-private/fsq-native/worker-site/fsq_androidworld_eval/fsq_worker.py",
+      "sha256": "22cfac33ddf511c8b75b4d92ffe6067b3ec745f2c9b29eb93601484a005176d2"
+    },
+    {
+      "bytes": 356,
+      "path": "raw-private/fsq-native/workspace/.fsq/config/config.android.yaml",
+      "sha256": "fce0eae22b49a6f3759d167a73f812e026d81ce520b98a6535722d5adf3b31b9"
+    },
+    {
+      "bytes": 393916,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/screenshots/screenshot-agent-assert-with-ai-15-invoke-assert-with-ai-1-b88839d412a3.png",
+      "sha256": "42f324ab4ee5cf5d7292eb762e0ad98bd0a8cfd015fd353a5cd051ef0eb038cf"
+    },
+    {
+      "bytes": 393916,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/screenshots/screenshot-agent-assert-with-ai-15-prepare-before-action-1-9a70c81d8ea9.png",
+      "sha256": "42f324ab4ee5cf5d7292eb762e0ad98bd0a8cfd015fd353a5cd051ef0eb038cf"
+    },
+    {
+      "bytes": 393916,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/screenshots/screenshot-agent-kill-app-16-prepare-before-action-1-49fae0b3f991.png",
+      "sha256": "42f324ab4ee5cf5d7292eb762e0ad98bd0a8cfd015fd353a5cd051ef0eb038cf"
+    },
+    {
+      "bytes": 658045,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/screenshots/screenshot-agent-launch-app-1-finalize-after-action-1-df67917d2ca7.png",
+      "sha256": "1e235488970f6a411c6de97fefd6e034e098d145a15f4af9095433466911164a"
+    },
+    {
+      "bytes": 658045,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/screenshots/screenshot-agent-launch-app-3-finalize-after-action-1-15d03836ff46.png",
+      "sha256": "1e235488970f6a411c6de97fefd6e034e098d145a15f4af9095433466911164a"
+    },
+    {
+      "bytes": 944096,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/screenshots/screenshot-agent-swipe-4-finalize-after-action-1-84eda4fe20c6.png",
+      "sha256": "62eaef4380504fc9f70f914a071e1e7ef0b952cee2d17d71c52c3818aa945c70"
+    },
+    {
+      "bytes": 658045,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/screenshots/screenshot-agent-swipe-4-prepare-before-action-1-c7ac70364ebb.png",
+      "sha256": "1e235488970f6a411c6de97fefd6e034e098d145a15f4af9095433466911164a"
+    },
+    {
+      "bytes": 379107,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/screenshots/screenshot-agent-tap-on-10-finalize-after-action-1-deee992bfde3.png",
+      "sha256": "52cbb18992f58cbe4dc3b2277ce3327069a4f96af6421a3d8119daf3ec4163de"
+    },
+    {
+      "bytes": 340049,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/screenshots/screenshot-agent-tap-on-10-prepare-before-action-1-b14389323eee.png",
+      "sha256": "1ad297b226027fac28a43200bf3e1d1b8dc07e01279102cfc318eecea06cd32e"
+    },
+    {
+      "bytes": 379180,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/screenshots/screenshot-agent-tap-on-11-finalize-after-action-1-e2a0837d675c.png",
+      "sha256": "82024c55e0c14e4d3e4be7ebaaba7f2091518dcc74cabd127e6a86ec52f48261"
+    },
+    {
+      "bytes": 379107,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/screenshots/screenshot-agent-tap-on-11-prepare-before-action-1-f13cc9ef7619.png",
+      "sha256": "52cbb18992f58cbe4dc3b2277ce3327069a4f96af6421a3d8119daf3ec4163de"
+    },
+    {
+      "bytes": 395812,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/screenshots/screenshot-agent-tap-on-12-finalize-after-action-1-1fb881134606.png",
+      "sha256": "ca86f676f0da61c17bf5469d9d5a38106eb648b6aed06b3181d467e5af224ffe"
+    },
+    {
+      "bytes": 379180,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/screenshots/screenshot-agent-tap-on-12-prepare-before-action-1-b114e9bac8af.png",
+      "sha256": "82024c55e0c14e4d3e4be7ebaaba7f2091518dcc74cabd127e6a86ec52f48261"
+    },
+    {
+      "bytes": 393916,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/screenshots/screenshot-agent-tap-on-13-finalize-after-action-1-bc7577fc341f.png",
+      "sha256": "42f324ab4ee5cf5d7292eb762e0ad98bd0a8cfd015fd353a5cd051ef0eb038cf"
+    },
+    {
+      "bytes": 395812,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/screenshots/screenshot-agent-tap-on-13-prepare-before-action-1-cb5408560de9.png",
+      "sha256": "ca86f676f0da61c17bf5469d9d5a38106eb648b6aed06b3181d467e5af224ffe"
+    },
+    {
+      "bytes": 266361,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/screenshots/screenshot-agent-tap-on-6-finalize-after-action-1-8748e0676d05.png",
+      "sha256": "e3e1d77abd7fb187494599cd233632be2e615a808acfdb630813e06c9d4667ff"
+    },
+    {
+      "bytes": 943998,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/screenshots/screenshot-agent-tap-on-6-prepare-before-action-1-ab0e0eb3f19d.png",
+      "sha256": "21569284c2bfb24b74bcc904ab46782e9cace4d6e6d7434e31929edef344e2cf"
+    },
+    {
+      "bytes": 339907,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/screenshots/screenshot-agent-tap-on-8-finalize-after-action-1-67200f92b7c7.png",
+      "sha256": "fe8515dd17055e884b92fc135e7cfac3970ea4a286e50cd2888c420e5eb2ffe1"
+    },
+    {
+      "bytes": 266328,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/screenshots/screenshot-agent-tap-on-8-prepare-before-action-1-14e7c4d748e3.png",
+      "sha256": "a93429ffe5f27770b827f1eafd42c7fda561adfb000f6a456f7888f60c0e7070"
+    },
+    {
+      "bytes": 11255,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/tools/000001-launch_app.json",
+      "sha256": "85c526b53319a343fd0dbb8082fc06b89d35eed83ab181bdd0999d6fd8ec24ab"
+    },
+    {
+      "bytes": 24048,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/tools/000002-ui_snapshot.json",
+      "sha256": "1d0abf66b6016cae38cd5188749871487c87a042e68366f59583f8e2c13c623e"
+    },
+    {
+      "bytes": 35916,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/tools/000003-ui_snapshot.json",
+      "sha256": "9c155f5d895c146d158b62ee750b795142f08a8d3c3351b345221ab83bd49c56"
+    },
+    {
+      "bytes": 11255,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/tools/000004-launch_app.json",
+      "sha256": "1ffe06e7688bb07330f14cfa8a6fbc1ceaccc1c954411a8dd14d01e783ea3b3f"
+    },
+    {
+      "bytes": 16292,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/tools/000005-swipe.json",
+      "sha256": "c1efb602757ca1ab727e48e7d59177c58b4974428364e0b3d7abb1d1354edd5d"
+    },
+    {
+      "bytes": 6820,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/tools/000006-search_artifact.json",
+      "sha256": "0a9a2133a971df790ff829e7459b5c4461afe903ff6248b78b86278bc750dd14"
+    },
+    {
+      "bytes": 16362,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/tools/000007-tap_on.json",
+      "sha256": "ac46513955867d9f43767deec8d8d922c16e713faf4e817b8c7b912ffb4977d3"
+    },
+    {
+      "bytes": 33518,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/tools/000008-ui_snapshot.json",
+      "sha256": "251ad221844ebcc17a2d9e257c3b71e19c596c127179e1a7ecf50f09c284df6e"
+    },
+    {
+      "bytes": 29436,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/tools/000009-ui_snapshot.json",
+      "sha256": "0dab258dfd6ad919e0c50d17840a177f8d8fc2f5912a5a0b71846c4648915e68"
+    },
+    {
+      "bytes": 16435,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/tools/000010-tap_on.json",
+      "sha256": "b032d3ea1d807d8410c8db28124a658a2f217ed475487e4dcc4b69f59b1e7415"
+    },
+    {
+      "bytes": 13719,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/tools/000011-read_artifact_slice.json",
+      "sha256": "81f1c0737772dc9f8730838bcc12e121e1ef217bc038835cc5ff933ee4bbb3d8"
+    },
+    {
+      "bytes": 16504,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/tools/000012-tap_on.json",
+      "sha256": "32cad4e6bf49030b977672d1032c1760f422897a68d55f3c014cedddbc96f077"
+    },
+    {
+      "bytes": 16504,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/tools/000013-tap_on.json",
+      "sha256": "d3e6aa7a97387d722baddc239919a751a64a388c958cc42465b941910f81ecfd"
+    },
+    {
+      "bytes": 33922,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/tools/000014-ui_snapshot.json",
+      "sha256": "9465c796eb8996c5a06e241097a1ff6f66344e9083dcb6ee6093c826781fd074"
+    },
+    {
+      "bytes": 16504,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/tools/000015-tap_on.json",
+      "sha256": "928f0fdea16e4925a9e040942dfea747d52743257482b6fa5bcfeca4ed14127e"
+    },
+    {
+      "bytes": 16504,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/tools/000016-tap_on.json",
+      "sha256": "34c0ff5f3448d9eeb0d55932c74803950b621d178ee31785d1713b9345808dee"
+    },
+    {
+      "bytes": 12891,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/ui-snapshots/ui_snapshot-agent-assert-with-ai-15-prepare-before-action-1-af9ab9abf211.json",
+      "sha256": "cf6f8e08f05e864c9f99d4b0bc52c6168aac4e7ae9b6fd238b5174181da1b55d"
+    },
+    {
+      "bytes": 12891,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/ui-snapshots/ui_snapshot-agent-kill-app-16-prepare-before-action-1-870c638cf5db.json",
+      "sha256": "cf6f8e08f05e864c9f99d4b0bc52c6168aac4e7ae9b6fd238b5174181da1b55d"
+    },
+    {
+      "bytes": 8364,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/ui-snapshots/ui_snapshot-agent-launch-app-1-finalize-after-action-1-e57a4b302bb3.json",
+      "sha256": "fe545e10eb96fb8fd0b5b7b53604bf9535fa94a331a97b85cd863dbbc94d6aa1"
+    },
+    {
+      "bytes": 8364,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/ui-snapshots/ui_snapshot-agent-launch-app-3-finalize-after-action-1-e49ed259d30d.json",
+      "sha256": "fe545e10eb96fb8fd0b5b7b53604bf9535fa94a331a97b85cd863dbbc94d6aa1"
+    },
+    {
+      "bytes": 13626,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/ui-snapshots/ui_snapshot-agent-swipe-4-finalize-after-action-1-fe7837efd6a1.json",
+      "sha256": "866918d43da5e0607e5cc9ab97b87642d3806b9de017e8637237936012b9f76a"
+    },
+    {
+      "bytes": 8364,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/ui-snapshots/ui_snapshot-agent-swipe-4-prepare-before-action-1-4bb88eb44ab2.json",
+      "sha256": "fe545e10eb96fb8fd0b5b7b53604bf9535fa94a331a97b85cd863dbbc94d6aa1"
+    },
+    {
+      "bytes": 12888,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/ui-snapshots/ui_snapshot-agent-tap-on-10-finalize-after-action-1-edde7820f6e5.json",
+      "sha256": "0d06adcc8f48b391062c59934b5ced80ab9208b14999e6ccbd9f9b5d83727399"
+    },
+    {
+      "bytes": 12715,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/ui-snapshots/ui_snapshot-agent-tap-on-10-prepare-before-action-1-0c3eefe66b8a.json",
+      "sha256": "50636e642e8954ddd88479411c58932bfd32627a146086afe2d2e602523d0543"
+    },
+    {
+      "bytes": 12890,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/ui-snapshots/ui_snapshot-agent-tap-on-11-finalize-after-action-1-7bffa0844a3b.json",
+      "sha256": "e7c3d64676395ba388ea567cee64335ad454e80436905262774827833bc55c61"
+    },
+    {
+      "bytes": 12888,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/ui-snapshots/ui_snapshot-agent-tap-on-11-prepare-before-action-1-55f8cdaa431f.json",
+      "sha256": "0d06adcc8f48b391062c59934b5ced80ab9208b14999e6ccbd9f9b5d83727399"
+    },
+    {
+      "bytes": 12889,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/ui-snapshots/ui_snapshot-agent-tap-on-12-finalize-after-action-1-2cb998f0f659.json",
+      "sha256": "450b5085f0bc168f4b9f8995682c93dbc0e6ab14b961a6fc41884a3a01f9fa27"
+    },
+    {
+      "bytes": 12890,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/ui-snapshots/ui_snapshot-agent-tap-on-12-prepare-before-action-1-15a92465054a.json",
+      "sha256": "e7c3d64676395ba388ea567cee64335ad454e80436905262774827833bc55c61"
+    },
+    {
+      "bytes": 12891,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/ui-snapshots/ui_snapshot-agent-tap-on-13-finalize-after-action-1-fa002e5f51ac.json",
+      "sha256": "cf6f8e08f05e864c9f99d4b0bc52c6168aac4e7ae9b6fd238b5174181da1b55d"
+    },
+    {
+      "bytes": 12889,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/ui-snapshots/ui_snapshot-agent-tap-on-13-prepare-before-action-1-e3fbc4502211.json",
+      "sha256": "450b5085f0bc168f4b9f8995682c93dbc0e6ab14b961a6fc41884a3a01f9fa27"
+    },
+    {
+      "bytes": 10906,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/ui-snapshots/ui_snapshot-agent-tap-on-6-finalize-after-action-1-6be3a5eaff26.json",
+      "sha256": "6d42ba70373e15787d7e96941dcaa69c9d3f798446532c0b23ca26682861ae63"
+    },
+    {
+      "bytes": 13627,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/ui-snapshots/ui_snapshot-agent-tap-on-6-prepare-before-action-1-f7d9aa59be6c.json",
+      "sha256": "708b68936e8859b84810a47fe9114957e5cd789f93e7b57bd300f9d04842f94c"
+    },
+    {
+      "bytes": 12715,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/ui-snapshots/ui_snapshot-agent-tap-on-8-finalize-after-action-1-5517fc69950b.json",
+      "sha256": "4f0c73cd37908cc0180206d0e67bb624b8a8aab261da8cddfac49088a11975ac"
+    },
+    {
+      "bytes": 10906,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/artifacts/ui-snapshots/ui_snapshot-agent-tap-on-8-prepare-before-action-1-a1618ca2167e.json",
+      "sha256": "6d42ba70373e15787d7e96941dcaa69c9d3f798446532c0b23ca26682861ae63"
+    },
+    {
+      "bytes": 239140,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/events.jsonl",
+      "sha256": "b37f4442482406adcd9d597327c5d4c0b976b77f838755ba96cd8afc7c694910"
+    },
+    {
+      "bytes": 548811,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/evidence-events.jsonl",
+      "sha256": "5eda8de62b5f467230db3d762b537cb65cd3de50b5cedc667b288d1a62d29b46"
+    },
+    {
+      "bytes": 658945,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/evidence-manifest.json",
+      "sha256": "5f0811b6760a2c46895b805472d0be87905dffb8d9c6b4f90e27e0093f6f65e2"
+    },
+    {
+      "bytes": 184751,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/execution-result.json",
+      "sha256": "7558050e372a59a8b852b26b2e3a7a604f247e542657af94397a37de54e79958"
+    },
+    {
+      "bytes": 131,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/owner.json",
+      "sha256": "8eb99a6678b422d02d191fa717b541b40ffab3e86c992e8b664f68b231b1b411"
+    },
+    {
+      "bytes": 45962,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/report.json",
+      "sha256": "430a5b51a5272e3b7fb3e9e18c42f62cbc6e7d03ddf240c0fca402912872690c"
+    },
+    {
+      "bytes": 4523,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/report.md",
+      "sha256": "ad6968c5462529e4af1be30fb8335f577143e53afc3e85c134f3fb8ca8686ab9"
+    },
+    {
+      "bytes": 2982,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/run.json",
+      "sha256": "9c0979096ad58987524bd813d1c18b896d57432784f4b728b4700203c8732b10"
+    },
+    {
+      "bytes": 80,
+      "path": "raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009-20261110T161350Z-4835a4/sources/000-goal.txt",
+      "sha256": "7cdf64bc5ff8914aaa55ddd2585c5e8bf7fb3e0c420ffca007f84755da9eaace"
+    },
+    {
+      "bytes": 16330,
+      "path": "raw-private/fsq-worker-outcome.json",
+      "sha256": "a57b4221690c2be22cd7a1014cde89d2e34a41e62e6d437b42f082e9ab8a1eb8"
+    },
+    {
+      "bytes": 981,
+      "path": "raw-private/task-initialization.json",
+      "sha256": "0dd062f2c34cfe706ae00a7102a7cf01625720d89aeda95c36e24088d3c8d7cb"
+    },
+    {
+      "bytes": 1164,
+      "path": "raw-private/worker-process.json",
+      "sha256": "444d101ccf5d27486a0e69fe89d5ad71430a543fe83804e91df6d634f4e3573d"
+    }
+  ],
+  "attempt": 1,
+  "attemptStarted": true,
+  "authorizationSha256": "b5b15d69a3e41f0687c54d3e003f190f1883e6d43d9581aeb0c59d9f4e973a61",
+  "campaignId": "fsq-native-gpt61-r4-clock-lifecycle-20261110",
+  "classification": "failed",
+  "cleanup": {
+    "environment": "closed",
+    "nativeDeviceRestoration": "not_provided_by_close",
+    "taskTearDown": "completed",
+    "workerProcessGroup": "settled"
+  },
+  "cleanupFailure": false,
+  "complete": true,
+  "completedAtUnix": 1794327345.263716,
+  "episodeId": "fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009",
+  "evaluator": {
+    "afterFullFsq": true,
+    "called": true,
+    "diagnostics": {
+      "bytes": 952,
+      "path": "raw-private/evaluator-diagnostics.json",
+      "sha256": "7797b6987c2fe987fea709ad8ff685f0dba2e9a93dbd925f9aa4bc0ab6ade1d9",
+      "status": "written"
+    },
+    "durationSeconds": 0.057098250021226704,
+    "implementation": "android_world.task_eval.is_successful",
+    "ordering": "after_complete_native_FSQ_return_and_internal_verification"
+  },
+  "evaluatorCalls": 1,
+  "evidenceFailure": null,
+  "fsq": {
+    "budget": {
+      "admitted": 10,
+      "attempted": 10,
+      "deadlineExceeded": false,
+      "deadlineMonotonic": 702859.574046333,
+      "denied": 0,
+      "deviceRestoredByClose": false,
+      "events": [
+        {
+          "capability": "launch_app",
+          "countedWrite": true,
+          "event": "attempted",
+          "monotonic": 702158.544296583,
+          "phase": "setup",
+          "sequence": 1,
+          "stepId": "agent-launch_app-1",
+          "ticket": 1
+        },
+        {
+          "capability": "launch_app",
+          "countedWrite": true,
+          "errorType": null,
+          "event": "succeeded",
+          "monotonic": 702158.664560541,
+          "phase": "setup",
+          "sequence": 2,
+          "ticket": 1
+        },
+        {
+          "capability": "ui_snapshot",
+          "countedWrite": false,
+          "event": "attempted",
+          "monotonic": 702162.806600208,
+          "phase": "observation",
+          "sequence": 3,
+          "stepId": "agent-ui_snapshot-2",
+          "ticket": 2
+        },
+        {
+          "capability": "ui_snapshot",
+          "countedWrite": false,
+          "errorType": null,
+          "event": "succeeded",
+          "monotonic": 702162.829259166,
+          "phase": "observation",
+          "sequence": 4,
+          "ticket": 2
+        },
+        {
+          "capability": "launch_app",
+          "countedWrite": true,
+          "event": "attempted",
+          "monotonic": 702166.745857791,
+          "phase": "setup",
+          "sequence": 5,
+          "stepId": "agent-launch_app-3",
+          "ticket": 3
+        },
+        {
+          "capability": "launch_app",
+          "countedWrite": true,
+          "errorType": null,
+          "event": "succeeded",
+          "monotonic": 702166.870114208,
+          "phase": "setup",
+          "sequence": 6,
+          "ticket": 3
+        },
+        {
+          "capability": "swipe",
+          "countedWrite": true,
+          "event": "attempted",
+          "monotonic": 702171.510112375,
+          "phase": "action",
+          "sequence": 7,
+          "stepId": "agent-swipe-4",
+          "ticket": 4
+        },
+        {
+          "capability": "swipe",
+          "countedWrite": true,
+          "errorType": null,
+          "event": "succeeded",
+          "monotonic": 702173.062393541,
+          "phase": "action",
+          "sequence": 8,
+          "ticket": 4
+        },
+        {
+          "capability": "ui_snapshot",
+          "countedWrite": false,
+          "event": "attempted",
+          "monotonic": 702176.696508041,
+          "phase": "observation",
+          "sequence": 9,
+          "stepId": "agent-ui_snapshot-5",
+          "ticket": 5
+        },
+        {
+          "capability": "ui_snapshot",
+          "countedWrite": false,
+          "errorType": null,
+          "event": "succeeded",
+          "monotonic": 702176.725474458,
+          "phase": "observation",
+          "sequence": 10,
+          "ticket": 5
+        },
+        {
+          "capability": "tap_on",
+          "countedWrite": true,
+          "event": "attempted",
+          "monotonic": 702184.090927916,
+          "phase": "action",
+          "sequence": 11,
+          "stepId": "agent-tap_on-6",
+          "ticket": 6
+        },
+        {
+          "capability": "tap_on",
+          "countedWrite": true,
+          "errorType": null,
+          "event": "succeeded",
+          "monotonic": 702184.298840291,
+          "phase": "action",
+          "sequence": 12,
+          "ticket": 6
+        },
+        {
+          "capability": "ui_snapshot",
+          "countedWrite": false,
+          "event": "attempted",
+          "monotonic": 702188.776488833,
+          "phase": "observation",
+          "sequence": 13,
+          "stepId": "agent-ui_snapshot-7",
+          "ticket": 7
+        },
+        {
+          "capability": "ui_snapshot",
+          "countedWrite": false,
+          "errorType": null,
+          "event": "succeeded",
+          "monotonic": 702188.804441875,
+          "phase": "observation",
+          "sequence": 14,
+          "ticket": 7
+        },
+        {
+          "capability": "tap_on",
+          "countedWrite": true,
+          "event": "attempted",
+          "monotonic": 702193.842996083,
+          "phase": "action",
+          "sequence": 15,
+          "stepId": "agent-tap_on-8",
+          "ticket": 8
+        },
+        {
+          "capability": "tap_on",
+          "countedWrite": true,
+          "errorType": null,
+          "event": "succeeded",
+          "monotonic": 702194.248460208,
+          "phase": "action",
+          "sequence": 16,
+          "ticket": 8
+        },
+        {
+          "capability": "ui_snapshot",
+          "countedWrite": false,
+          "event": "attempted",
+          "monotonic": 702197.757908375,
+          "phase": "observation",
+          "sequence": 17,
+          "stepId": "agent-ui_snapshot-9",
+          "ticket": 9
+        },
+        {
+          "capability": "ui_snapshot",
+          "countedWrite": false,
+          "errorType": null,
+          "event": "succeeded",
+          "monotonic": 702197.79084475,
+          "phase": "observation",
+          "sequence": 18,
+          "ticket": 9
+        },
+        {
+          "capability": "tap_on",
+          "countedWrite": true,
+          "event": "attempted",
+          "monotonic": 702204.287139333,
+          "phase": "action",
+          "sequence": 19,
+          "stepId": "agent-tap_on-10",
+          "ticket": 10
+        },
+        {
+          "capability": "tap_on",
+          "countedWrite": true,
+          "errorType": null,
+          "event": "succeeded",
+          "monotonic": 702204.513217666,
+          "phase": "action",
+          "sequence": 20,
+          "ticket": 10
+        },
+        {
+          "capability": "tap_on",
+          "countedWrite": true,
+          "event": "attempted",
+          "monotonic": 702209.54491975,
+          "phase": "action",
+          "sequence": 21,
+          "stepId": "agent-tap_on-11",
+          "ticket": 11
+        },
+        {
+          "capability": "tap_on",
+          "countedWrite": true,
+          "errorType": null,
+          "event": "succeeded",
+          "monotonic": 702209.764677958,
+          "phase": "action",
+          "sequence": 22,
+          "ticket": 11
+        },
+        {
+          "capability": "tap_on",
+          "countedWrite": true,
+          "event": "attempted",
+          "monotonic": 702214.000169375,
+          "phase": "action",
+          "sequence": 23,
+          "stepId": "agent-tap_on-12",
+          "ticket": 12
+        },
+        {
+          "capability": "tap_on",
+          "countedWrite": true,
+          "errorType": null,
+          "event": "succeeded",
+          "monotonic": 702214.237565208,
+          "phase": "action",
+          "sequence": 24,
+          "ticket": 12
+        },
+        {
+          "capability": "tap_on",
+          "countedWrite": true,
+          "event": "attempted",
+          "monotonic": 702218.018502458,
+          "phase": "action",
+          "sequence": 25,
+          "stepId": "agent-tap_on-13",
+          "ticket": 13
+        },
+        {
+          "capability": "tap_on",
+          "countedWrite": true,
+          "errorType": null,
+          "event": "succeeded",
+          "monotonic": 702218.249216583,
+          "phase": "action",
+          "sequence": 26,
+          "ticket": 13
+        },
+        {
+          "capability": "ui_snapshot",
+          "countedWrite": false,
+          "event": "attempted",
+          "monotonic": 702221.869872583,
+          "phase": "observation",
+          "sequence": 27,
+          "stepId": "agent-ui_snapshot-14",
+          "ticket": 14
+        },
+        {
+          "capability": "ui_snapshot",
+          "countedWrite": false,
+          "errorType": null,
+          "event": "succeeded",
+          "monotonic": 702221.901192666,
+          "phase": "observation",
+          "sequence": 28,
+          "ticket": 14
+        },
+        {
+          "capability": "assert_with_ai",
+          "countedWrite": false,
+          "event": "attempted",
+          "monotonic": 702225.895113083,
+          "phase": "assertion",
+          "sequence": 29,
+          "stepId": "agent-assert_with_ai-15",
+          "ticket": 15
+        },
+        {
+          "capability": "assert_with_ai",
+          "countedWrite": false,
+          "errorType": null,
+          "event": "succeeded",
+          "monotonic": 702233.110489625,
+          "phase": "assertion",
+          "sequence": 30,
+          "ticket": 15
+        },
+        {
+          "capability": "kill_app",
+          "countedWrite": true,
+          "event": "attempted",
+          "monotonic": 702239.022422,
+          "phase": "teardown",
+          "sequence": 31,
+          "stepId": "agent-kill_app-16",
+          "ticket": 16
+        },
+        {
+          "capability": "kill_app",
+          "countedWrite": true,
+          "errorType": null,
+          "event": "succeeded",
+          "monotonic": 702239.064639375,
+          "phase": "teardown",
+          "sequence": 32,
+          "ticket": 16
+        },
+        {
+          "deviceRestored": false,
+          "event": "close_started",
+          "monotonic": 702245.135865041,
+          "resource": "android_harness",
+          "sequence": 33
+        },
+        {
+          "deviceRestored": false,
+          "event": "close_succeeded",
+          "monotonic": 702245.135960333,
+          "resource": "android_harness",
+          "sequence": 34
+        },
+        {
+          "event": "native_execution_returned",
+          "monotonic": 702253.815192333,
+          "nativeTaskId": "fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009",
+          "sequence": 35,
+          "taskId": "fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009",
+          "taskStatus": "success",
+          "verificationObserved": true,
+          "verificationStatus": "success"
+        }
+      ],
+      "exclusions": [
+        "driver_construction",
+        "uiautomator2_service_startup",
+        "observation_and_assertion_side_effects",
+        "external_processes_and_direct_driver_access"
+      ],
+      "exhausted": true,
+      "failed": 0,
+      "inFlight": 0,
+      "inputTextUnit": "composite_click_optional_clear_set_text",
+      "maximum": 10,
+      "securityBoundary": false,
+      "succeeded": 10,
+      "unit": "admitted_android_harness_write_capability_dispatch",
+      "writeCapabilities": [
+        "launch_app",
+        "kill_app",
+        "tap_on",
+        "tap_at",
+        "long_press_on",
+        "input_text",
+        "press_key",
+        "swipe"
+      ]
+    },
+    "close": {
+      "closeReceipts": [
+        {
+          "deviceRestored": false,
+          "event": "close_started",
+          "monotonic": 702245.135865041,
+          "resource": "android_harness",
+          "sequence": 33
+        },
+        {
+          "deviceRestored": false,
+          "event": "close_succeeded",
+          "monotonic": 702245.135960333,
+          "resource": "android_harness",
+          "sequence": 34
+        }
+      ],
+      "deviceRestored": false,
+      "note": "FSQ owns Harness disposal; native u2 driver close is a no-op and does not restore device state. In-flight synchronous calls/construction require supervisor process-group termination.",
+      "workerProcessExitRequiredBeforeOracle": true
+    },
+    "internalVerification": {
+      "observation": "returned_in_complete_native_task_result",
+      "status": "success"
+    },
+    "killEvidence": {
+      "admitted": 1,
+      "attempted": 1,
+      "denied": 0,
+      "events": [
+        {
+          "attemptSequence": 31,
+          "errorType": null,
+          "monotonic": 702239.022422,
+          "outcome": "succeeded",
+          "outcomeMonotonic": 702239.064639375,
+          "outcomeSequence": 32,
+          "phase": "teardown",
+          "ticket": 16
+        }
+      ],
+      "failed": 0,
+      "mainFinalBoundary": "not_observed",
+      "nativeExecutionReturnedSequence": 35,
+      "observed": true,
+      "relativeToMainFinal": "unknown",
+      "relativeToNativeExecutionReturned": "before",
+      "status": "succeeded",
+      "succeeded": 1
+    },
+    "mainAnswer": {
+      "businessStatus": "success",
+      "source": "agent_runtime.runner.tool_output.summary",
+      "status": "valid"
+    },
+    "nativeArtifactsRoot": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/009-ClockTimerEntry/raw-private/fsq-native",
+    "nativeStatus": "success",
+    "privateOutcome": {
+      "bytes": 16330,
+      "path": "raw-private/fsq-worker-outcome.json",
+      "sha256": "a57b4221690c2be22cd7a1014cde89d2e34a41e62e6d437b42f082e9ab8a1eb8"
+    },
+    "restoration": "not_provided_by_native_driver_close",
+    "unarchivedNativeRoot": "/Users/qunmi/.local/share/fsq-androidworld-eval/fsq-native-gpt61-corrected-20261110T043031Z/episodes/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-009"
+  },
+  "kind": "fsq_androidworld_episode",
+  "manifestSha256": "a8550aee3e1b9438377d34b5cf48ff4adde732785afe40aae2249f6266773030",
+  "officialReward": 0.0,
+  "readinessSha256": "fe413d66d4686e44faa0cf601d29be03057709300916bcc63c048de20d5a7bdf",
+  "schemaVersion": 1,
+  "stage": "run",
+  "startedAtUnix": 1794327212.3283489,
+  "target": {
+    "adbPath": "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+    "authenticationStatus": "pending",
+    "consolePort": 5554,
+    "grpcPort": 8554,
+    "model": "gpt-6.1-sol",
+    "provider": "github_copilot",
+    "readinessStatus": "pending",
+    "resourceStatus": "pending",
+    "serial": "emulator-5554"
+  },
+  "task": {
+    "index": 9,
+    "name": "ClockTimerEntry",
+    "paramsSha256": "3c6dc22a2339a8e10eab5472bd837b52efb43b0125410cd5522c8ce88a29192b"
+  },
+  "workerProcess": {
+    "businessDeadlineReached": false,
+    "elapsedSeconds": 114.443807,
+    "exitCode": 0,
+    "groupCleanup": "settled",
+    "groupDisappearanceObserved": true,
+    "groupObservation": {
+      "members": [],
+      "observed": true,
+      "runningPids": [],
+      "sameOwner": true
+    },
+    "groupObservations": [
+      {
+        "elapsedSeconds": 0.026812,
+        "observation": {
+          "members": [
+            {
+              "pgid": 61192,
+              "pid": 61192,
+              "ppid": 61041,
+              "started": "Wed Nov 11 00:13:50 2026    ",
+              "state": "Rs",
+              "uid": 501
+            }
+          ],
+          "observed": true,
+          "runningPids": [
+            61192
+          ],
+          "sameOwner": true
+        }
+      },
+      {
+        "elapsedSeconds": 114.443791,
+        "observation": {
+          "members": [],
+          "observed": true,
+          "runningPids": [],
+          "sameOwner": true
+        }
+      }
+    ],
+    "groupOwnership": "new_session_same_uid_observed",
+    "killed": false,
+    "leaderCleanup": "reaped",
+    "pgid": 61192,
+    "phase": "terminal",
+    "pid": 61192,
+    "signals": [],
+    "spawnCount": 1,
+    "terminated": false,
+    "uid": 501,
+    "workerExitObserved": true
+  },
+  "workerProcessReference": {
+    "bytes": 1164,
+    "path": "raw-private/worker-process.json",
+    "sha256": "444d101ccf5d27486a0e69fe89d5ad71430a543fe83804e91df6d634f4e3573d"
+  },
+  "workerSpawnAttempted": true
+}

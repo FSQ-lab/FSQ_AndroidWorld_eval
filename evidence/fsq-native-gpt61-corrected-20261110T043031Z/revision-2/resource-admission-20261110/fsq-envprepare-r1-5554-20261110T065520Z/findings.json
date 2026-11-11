@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "kind": "retained_evidence_and_official_preparation_findings",
+  "proposedRunId": "fsq-envprepare-r1-5554-20261110T065520Z",
+  "status": "readonly_investigation_complete_minimal_bounded_plan_not_executed",
+  "originalFailure": "../actual-qualification-terminal.json",
+  "originalFailurePreserved": true,
+  "originalStdoutStderr": "not persisted by capture_output -> type/str serialization; irrecoverable from current retained artifacts",
+  "currentMapState": "unknown: rc1 does not distinguish absent/unreadable/permissions/context",
+  "historicalTargetLineage": {
+    "currentFailedQualifyBootId": "0f36e370-012a-4423-a1f9-959beae8f90d",
+    "initialBootSources": [
+      "evidence/headless-fullcoverage-20261107T004632Z/headless-baseline.json",
+      "campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/run-metadata.json",
+      "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/run-metadata.json"
+    ],
+    "target": "AndroidWorldAvd/emulator-5554/console5554/grpc8554",
+    "mapSources": [
+      "campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/harness-rehearsal/tasks/042-OsmAndFavorite/result.json",
+      "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/harness-rehearsal/tasks/042-OsmAndFavorite/result.json"
+    ],
+    "historicalMapOutcome": "restored_and_verified",
+    "limit": "Per-task map receipts do not separately record bootId; their containing campaign initial boot and current failed qualification boot match. Not a current path/permission observation.",
+    "olderDifferentBootNotUsed": "evidence/screenshot-video-controls-20261106T231029Z/recovered-boot.json"
+  },
+  "hostAsset": {
+    "path": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.cache/androidworld-assets/Liechtenstein_europe.obf",
+    "sha256": "57a1955c6f517a114999fa50480ecc1402ed9b524db602540ac1c08f57ff140e",
+    "sizeBytes": 7241271,
+    "alreadyPresent": true,
+    "alreadyPassedFrozenHostAssetCheck": true,
+    "redownloadOrRehashToConfirmFailurePerformed": false
+  },
+  "completedQualificationBoundary": {
+    "deviceProbeAndInstalledPins": "completed before failure;22app records API33 UTC",
+    "mapGate": "failed",
+    "officialEnvironment": "not_created",
+    "officialSnapshotsRestored": 0,
+    "baseDataChecked": false,
+    "nativeBusinessStarted": false
+  },
+  "initializationOrderSource": "src/fsq_androidworld_eval/fsq_campaign.py489-552",
+  "databaseRisk": {
+    "historicalDeviceReadinessSources": [
+      "campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/device-readiness.json",
+      "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/device-readiness.json"
+    ],
+    "historicalSnapshotRestores": 22,
+    "historicalTrackedDatabasesReportedAbsent": 7,
+    "currentFsqRequirement": "After strict official snapshot restoration, seven app database paths must be nonempty; stricter than historical advisory test-e reports.",
+    "currentDatabaseState": "unobserved; historical absences not projected as present facts",
+    "forbiddenRemediation": "No fabricated SQL/schema/base files, ad-hoc first-launch recipe, skipped predicate, changed pin or reduced suite.",
+    "historicalMeasurementCaveat": "Legacy nested sh-c quoting may mismeasure;7 present:false facts describe receipts, not proven seven absent files. No device replay to resolve.",
+    "officialContractEvidence": [
+      "frozen evaluator-site/android_world/task_evals/utils/sqlite_utils.py149-152 handles missing table/database by launching app",
+      "task_evals/common_validators/sqlite_validators.py257-263 clears before/after base task initialization and snapshot restore",
+      "task_evals/single/expense.py66-69 invokes official Expense setup for missing table"
+    ],
+    "finding": "Current seven-nonempty-file pre-task gate is stronger than the official lazy task-initialization contract; not proven current target failure, no DB manufacturing or snapshot replacement proposed."
+  },
+  "officialMechanisms": {
+    "mapRestoration": "existing restore_shared_assets(env, project, [\"osmand\"]) with pinned local map, official copy/chmod, checked chcon and post-change SHA",
+    "mapSnapshotScope": "official app snapshots cover private /data/data package state, not the external OsmAnd map",
+    "privilege": "official adb_utils.set_root_if_needed may request adb root after whoami; adbd lifecycle change, not guest OS reboot",
+    "baseline": "Do not run full setup just to force7DBs: setup_app saves after app.setup but several apps have deferred DB lifecycle; full setup_apps also reinstalls APKs. Chosen plan only restores fixed map, then unchanged fresh qualification."
+  },
+  "hostOrGuestChangesPerformedByThisInvestigation": false,
+  "sameFailedAdbReplayed": false,
+  "newModelOrBusiness": false,
+  "FSQFirstRetained": true,
+  "AMKReleased": false,
+  "proposedRoute": "prepare_official_map.py: bounded raw exact-target ADB sequence matching official map copy/mode/context, optional guest adbd root/wait before write; no AndroidEnv controller during prepare.",
+  "conditionalSharedHostSideEffect": "Fresh unchanged qualification uses AndroidEnv AdbController which may restart shared host ADB server on device-specific command failure. Disclosed for distinct grant; no host SDK/system change or guest OS reboot required."
+}

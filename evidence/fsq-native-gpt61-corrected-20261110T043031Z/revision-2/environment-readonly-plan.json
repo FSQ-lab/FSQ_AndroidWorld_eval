@@ -1,0 +1,91 @@
+{
+  "kind": "read_only_independent_fsq_target_feasibility",
+  "source": "FSQReadOnlyTargetPlan read-only agent host/SDK inspection",
+  "holderStatements": {
+    "w6:p1": "no retained exclusive window or in-flight real task",
+    "w1:p1": "no reservation",
+    "w2:p1": "no reservation",
+    "globalAvailability": "unknown; statements are not a lease"
+  },
+  "proposal": {
+    "status": "proposal_not_reserved_not_created",
+    "avdName": "FSQAndroidWorldDisposable_20261110_5560",
+    "consolePort": 5560,
+    "adbCompanionPort": 5561,
+    "grpcPort": 8560,
+    "nativeControl": "uiautomator2; no Appium required",
+    "image": "system-images/android-33/google_apis/arm64-v8a",
+    "imageRevision": 17,
+    "imageBuild": "TE1A.240213.009",
+    "bootstrap": "new private AVD from installed read-only image, never clone active shared userdata or use kill-all launcher; later authorized APK/base-data/UTC/app-snapshot setup before qualification"
+  },
+  "observedHost": {
+    "cpu": "Apple M4, 10 logical/physical cores",
+    "ramGiB": 32,
+    "freeMemoryApproxMiB": 83,
+    "compressedMemoryApproxGiB": 12.75,
+    "swapConfiguredMiB": 0,
+    "filesystemAvailableGiB": 221.67,
+    "existingAvdAllocatedGiB": 3.53,
+    "systemImageGiB": 8.17,
+    "apkAndMapCacheGiB": 0.6,
+    "temporaryOverlayAllocatedGiB": 2.44
+  },
+  "observedListeners": {
+    "4723": {
+      "name": "node/appium",
+      "pid": 16153,
+      "address": "127.0.0.1"
+    },
+    "5554/5555/8554": {
+      "name": "qemu-system-aarch64-headless",
+      "pid": 22585,
+      "avd": "AndroidWorldAvd",
+      "flags": [
+        "-read-only",
+        "-no-snapshot-load",
+        "-no-snapshot-save",
+        "-no-window"
+      ]
+    },
+    "5556..5565": "no TCP listener observed",
+    "8555..8565": "no TCP listener observed"
+  },
+  "existingSnapshots": {
+    "hostMarker": "default_boot marker only, no usable host snapshot payload established",
+    "officialAppSnapshots": "guest-private state not inspected; existence/restoration unknown",
+    "activeBaseCopy": "not safe to copy now: open base/backing files and temporary overlays, consistency not established"
+  },
+  "inferences": {
+    "storage": "feasible; propose reserve ~35GiB for independent working image/baseline and evidence margin",
+    "concurrentRam": "not established; low free/high compression is a risk, not proof another emulator can run reliably"
+  },
+  "laterAdmission": [
+    "coordinator grants exact AVD/serial/ports/lifecycle/window after global holder boundaries",
+    "fresh independent userdata/cache/encryption; no mutable hardlinks or active-overlay references",
+    "non-destructive emulator launch with explicit -port 5560 -grpc 8560; never old kill-all start_emu_headless.sh",
+    "private per-process temporary paths and direct endpoint privacy boundaries",
+    "approved bootstrap and fresh native FSQ qualification/model/review receipts"
+  ],
+  "actionsNotTaken": [
+    "no adb command",
+    "no target HTTP/gRPC call",
+    "no device/model/auth access",
+    "no process kill or service change",
+    "no emulator creation/launch",
+    "no package install",
+    "no reservation or lease inferred"
+  ],
+  "actualReadOnlyCommands": [
+    "sysctl host CPU/RAM/swap/load",
+    "vm_stat",
+    "df -k SDK/AVD roots",
+    "du -sk AVD/system-image/asset-cache",
+    "lsof selected TCP listeners and owned emulator file metadata",
+    "sanitized ps Android/emulator/Appium/adb metadata"
+  ],
+  "fullAgentEvidence": "agent://FSQReadOnlyTargetPlan",
+  "modelReady": false,
+  "reviewClosureReady": false,
+  "liveAuthorized": false
+}

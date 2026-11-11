@@ -1,0 +1,261 @@
+{
+  "schemaVersion": 1,
+  "kind": "native_fsq_revision2_actual_forced_transition_smoke",
+  "exitCode": 0,
+  "results": [
+    {
+      "transition": "native_result_parse",
+      "stageExitCode": 2,
+      "attempts": 1,
+      "expected": 12,
+      "haltReason": "forced_worker",
+      "evaluatorCalls": 0,
+      "officialReward": null,
+      "evidenceFailure": "native_result_parse",
+      "cleanup": {
+        "taskTearDown": "completed",
+        "environment": "closed",
+        "nativeDeviceRestoration": "not_provided_by_close",
+        "workerProcessGroup": "settled"
+      },
+      "terminalBytesPreserved": true,
+      "nativeParser": [
+        {
+          "resultError": {
+            "type": "JSONDecodeError",
+            "reason": "invalid_worker_result"
+          },
+          "hasResult": false
+        }
+      ],
+      "actualOwnedWorkerProcess": [
+        {
+          "pid": 13725,
+          "pgid": 13725,
+          "uid": 501,
+          "exitCode": -15,
+          "businessDeadlineReached": true,
+          "terminated": true,
+          "killed": false,
+          "workerExitObserved": true,
+          "spawnCount": 1,
+          "elapsedSeconds": 0.37338,
+          "leaderCleanup": "reaped",
+          "groupCleanup": "settled",
+          "groupOwnership": "new_session_same_uid_observed",
+          "groupObservation": {
+            "observed": true,
+            "sameOwner": true,
+            "members": [],
+            "runningPids": []
+          },
+          "groupObservations": [
+            {
+              "elapsedSeconds": 0.017992,
+              "observation": {
+                "observed": true,
+                "sameOwner": true,
+                "members": [
+                  {
+                    "pid": 13725,
+                    "ppid": 13724,
+                    "pgid": 13725,
+                    "uid": 501,
+                    "state": "Rs",
+                    "started": "Tue Nov 10 14:26:27 2026    "
+                  }
+                ],
+                "runningPids": [
+                  13725
+                ]
+              }
+            },
+            {
+              "elapsedSeconds": 0.335643,
+              "observation": {
+                "observed": true,
+                "sameOwner": true,
+                "members": [
+                  {
+                    "pid": 13725,
+                    "ppid": 13724,
+                    "pgid": 13725,
+                    "uid": 501,
+                    "state": "Ss",
+                    "started": "Tue Nov 10 14:26:27 2026    "
+                  }
+                ],
+                "runningPids": [
+                  13725
+                ]
+              }
+            },
+            {
+              "elapsedSeconds": 0.373365,
+              "observation": {
+                "observed": true,
+                "sameOwner": true,
+                "members": [],
+                "runningPids": []
+              }
+            }
+          ],
+          "signals": [
+            {
+              "signal": "SIGTERM",
+              "sent": true,
+              "observedPids": [
+                13725
+              ],
+              "ownershipBasis": "new_session_same_uid_group_observation"
+            }
+          ],
+          "phase": "terminal",
+          "groupDisappearanceObserved": true
+        }
+      ],
+      "pathsExercised": [
+        "actual run_fsq_worker result parser",
+        "actual run_episode proof/archive/finally",
+        "actual campaign.run_stage terminal consumer"
+      ],
+      "injection": "Offline task/environment/admission and in-process outer-spawn seam; archive write error controlled. Native result for archive uses producer-shaped offline artifact factory. Worker subprocess is a real throwaway Python sleeper/result writer, not FSQ/model/device."
+    },
+    {
+      "transition": "native_archive",
+      "stageExitCode": 2,
+      "attempts": 1,
+      "expected": 12,
+      "haltReason": "forced_worker",
+      "evaluatorCalls": 0,
+      "officialReward": null,
+      "evidenceFailure": "native_archive",
+      "cleanup": {
+        "taskTearDown": "completed",
+        "environment": "closed",
+        "nativeDeviceRestoration": "not_provided_by_close",
+        "workerProcessGroup": "settled"
+      },
+      "terminalBytesPreserved": true,
+      "nativeParser": [
+        {
+          "resultError": null,
+          "hasResult": true
+        }
+      ],
+      "actualOwnedWorkerProcess": [
+        {
+          "pid": 13735,
+          "pgid": 13735,
+          "uid": 501,
+          "exitCode": -15,
+          "businessDeadlineReached": true,
+          "terminated": true,
+          "killed": false,
+          "workerExitObserved": true,
+          "spawnCount": 1,
+          "elapsedSeconds": 0.367502,
+          "leaderCleanup": "reaped",
+          "groupCleanup": "settled",
+          "groupOwnership": "new_session_same_uid_observed",
+          "groupObservation": {
+            "observed": true,
+            "sameOwner": true,
+            "members": [],
+            "runningPids": []
+          },
+          "groupObservations": [
+            {
+              "elapsedSeconds": 0.018572,
+              "observation": {
+                "observed": true,
+                "sameOwner": true,
+                "members": [
+                  {
+                    "pid": 13735,
+                    "ppid": 13724,
+                    "pgid": 13735,
+                    "uid": 501,
+                    "state": "Rs",
+                    "started": "Tue Nov 10 14:26:28 2026    "
+                  }
+                ],
+                "runningPids": [
+                  13735
+                ]
+              }
+            },
+            {
+              "elapsedSeconds": 0.332258,
+              "observation": {
+                "observed": true,
+                "sameOwner": true,
+                "members": [
+                  {
+                    "pid": 13735,
+                    "ppid": 13724,
+                    "pgid": 13735,
+                    "uid": 501,
+                    "state": "Ss",
+                    "started": "Tue Nov 10 14:26:28 2026    "
+                  }
+                ],
+                "runningPids": [
+                  13735
+                ]
+              }
+            },
+            {
+              "elapsedSeconds": 0.367486,
+              "observation": {
+                "observed": true,
+                "sameOwner": true,
+                "members": [],
+                "runningPids": []
+              }
+            }
+          ],
+          "signals": [
+            {
+              "signal": "SIGTERM",
+              "sent": true,
+              "observedPids": [
+                13735
+              ],
+              "ownershipBasis": "new_session_same_uid_group_observation"
+            }
+          ],
+          "phase": "terminal",
+          "groupDisappearanceObserved": true
+        }
+      ],
+      "pathsExercised": [
+        "actual run_fsq_worker result parser",
+        "actual run_episode proof/archive/finally",
+        "actual campaign.run_stage terminal consumer"
+      ],
+      "injection": "Offline task/environment/admission and in-process outer-spawn seam; archive write error controlled. Native result for archive uses producer-shaped offline artifact factory. Worker subprocess is a real throwaway Python sleeper/result writer, not FSQ/model/device."
+    }
+  ],
+  "stdout": "{\"atUnix\":1000.0,\"event\":\"stage_started\",\"manifestSha256\":\"668331f64d84de676232cda3a5ae8f2b4f044d080338d8a116383d068c8f0949\",\"stage\":\"calibrate\"}\n{\"attemptId\":\"cc0fbd3c-8efc-432b-aeb4-1a9c6b23a08d\",\"event\":\"attempt_started\",\"task\":{\"index\":0,\"name\":\"SystemWifiTurnOff\",\"paramsSha256\":\"3afdb03adbfe30a9001316d485ae8dcb7ba2d842da265d3d86e4a49c35074af3\"}}\n{\"artifacts\":[{\"bytes\":10117,\"path\":\"raw-private/fsq-native/worker/oracle-isolation.sb\",\"sha256\":\"06124b04754cb1955f34625a40cc555bd5003953aad2115a659f848073b74c1e\"},{\"bytes\":941,\"path\":\"raw-private/fsq-native/worker/request.json\",\"sha256\":\"0cdd768807e6add9ec94800c7353ccb7213e8b23f6f7e4ce5e5b829356b1b7da\"},{\"bytes\":10,\"path\":\"raw-private/fsq-native/worker/worker-result.json\",\"sha256\":\"29c4ee76f0ca251d68310ac4b2467307746fbab53504dbd80417aee62b6a6bad\"},{\"bytes\":0,\"path\":\"raw-private/fsq-native/worker/worker.log\",\"sha256\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"},{\"bytes\":301,\"path\":\"raw-private/fsq-native/worker-site/fsq_androidworld_eval/__init__.py\",\"sha256\":\"a60299a21d9057e09e5370de1567399711f8ab5e4ee9932ff3eaf4bf8e25f47f\"},{\"bytes\":10834,\"path\":\"raw-private/fsq-native/worker-site/fsq_androidworld_eval/fsq_native.py\",\"sha256\":\"0af6d9b3802fcfd5708bc9dcdf2132bf48a9e3da01ae0401fafa6ae9ad468e13\"},{\"bytes\":16257,\"path\":\"raw-private/fsq-native/worker-site/fsq_androidworld_eval/fsq_worker.py\",\"sha256\":\"22cfac33ddf511c8b75b4d92ffe6067b3ec745f2c9b29eb93601484a005176d2\"},{\"bytes\":346,\"path\":\"raw-private/fsq-native/workspace/.fsq/config/config.android.yaml\",\"sha256\":\"626d1aefe811572294224dcc5865e2987a49ddc70d6d39c085becebac533747f\"},{\"bytes\":2574,\"path\":\"raw-private/fsq-worker-outcome.json\",\"sha256\":\"9f97b3cf8b862aa899cbc3dd36458755daf77860d2249519bb987af08f45f4e7\"},{\"bytes\":632,\"path\":\"raw-private/task-initialization.json\",\"sha256\":\"43a4fd7cf47ea5350a69b7e736bad9b9a81bf0174e7fdbc863f03ae77967a601\"},{\"bytes\":1756,\"path\":\"raw-private/worker-process.json\",\"sha256\":\"4f8987fd2a2d706af82e215a9917f317243d376f44190d444e5552d2ce6134e2\"},{\"bytes\":6303,\"path\":\"result.json\",\"sha256\":\"34ff3638e758cf488745dd4fb97fa65593aae3adb750c90dcbdbb24f55a81bd1\"}],\"attemptId\":\"cc0fbd3c-8efc-432b-aeb4-1a9c6b23a08d\",\"classification\":\"invalid_agent\",\"directory\":\"episodes/000-SystemWifiTurnOff\",\"event\":\"attempt_completed\",\"officialReward\":null,\"operationalErrors\":[\"invalid_official_evaluation\",\"forced_worker\",\"worker_exit\",\"full_native_execution\",\"native_model_identity\",\"native_evidence\",\"official_evaluator_ordering\",\"native_or_evaluator_artifacts\"],\"outerProcess\":{\"exitCode\":1,\"forced\":false,\"spawnCount\":1,\"timeoutSeconds\":1330},\"task\":{\"index\":0,\"name\":\"SystemWifiTurnOff\",\"paramsSha256\":\"3afdb03adbfe30a9001316d485ae8dcb7ba2d842da265d3d86e4a49c35074af3\"}}\n{\"event\":\"stage_halted\",\"reason\":\"forced_worker\"}\n{\"event\":\"stage_completed\",\"qualified\":false,\"reportSha256\":\"6cb96f227acc39adf95f5e4d3e2b0250b0d619e07cf97a85f52828d854d1e6b8\",\"summary\":{\"attempted\":1,\"classifications\":{\"invalid_agent\":1},\"coverage\":0.08333333333333333,\"expected\":12,\"officialLeaderboardClaim\":false,\"policyProven\":false,\"purpose\":\"native_operational_protocol\",\"reward\":{\"count\":0,\"denominator\":\"valid_official_rewards_only\",\"diagnosticOnly\":true,\"mean\":null,\"sum\":0}}}\n{\"atUnix\":1000.0,\"event\":\"stage_started\",\"manifestSha256\":\"3bfbcfcf22b59efc69bbe30439064f1b4ef9ce7b9e572d868ac5a8802bd7b2d2\",\"stage\":\"calibrate\"}\n{\"attemptId\":\"c5decb6a-906a-40c6-ba40-672f63b3db7d\",\"event\":\"attempt_started\",\"task\":{\"index\":0,\"name\":\"SystemWifiTurnOff\",\"paramsSha256\":\"3afdb03adbfe30a9001316d485ae8dcb7ba2d842da265d3d86e4a49c35074af3\"}}\n{\"artifacts\":[{\"bytes\":44,\"path\":\"raw-private/failure.json\",\"sha256\":\"ec481086f7830308c802de317e56cee1a7e9ac60161481144e889fc2a9ea9035\"},{\"bytes\":632,\"path\":\"raw-private/task-initialization.json\",\"sha256\":\"43a4fd7cf47ea5350a69b7e736bad9b9a81bf0174e7fdbc863f03ae77967a601\"},{\"bytes\":1757,\"path\":\"raw-private/worker-process.json\",\"sha256\":\"bf3ecc8e5a5343f1f6c50a7a43fe44b07cd34773085df5a5e4ab7e718ff65599\"},{\"bytes\":4548,\"path\":\"result.json\",\"sha256\":\"0b5e4a73053ac0edbf660ccfce3ad669199278082a09c6f5d9e6a66f9aa14d95\"}],\"attemptId\":\"c5decb6a-906a-40c6-ba40-672f63b3db7d\",\"classification\":\"invalid_agent\",\"directory\":\"episodes/000-SystemWifiTurnOff\",\"event\":\"attempt_completed\",\"officialReward\":null,\"operationalErrors\":[\"invalid_official_evaluation\",\"forced_worker\",\"private_native_outcome\"],\"outerProcess\":{\"exitCode\":1,\"forced\":false,\"spawnCount\":1,\"timeoutSeconds\":1330},\"task\":{\"index\":0,\"name\":\"SystemWifiTurnOff\",\"paramsSha256\":\"3afdb03adbfe30a9001316d485ae8dcb7ba2d842da265d3d86e4a49c35074af3\"}}\n{\"event\":\"stage_halted\",\"reason\":\"forced_worker\"}\n{\"event\":\"stage_completed\",\"qualified\":false,\"reportSha256\":\"a89647c954fc7bc594599cd2cb01d5b0af36d9c9db333c869ffb05f2691febc7\",\"summary\":{\"attempted\":1,\"classifications\":{\"invalid_agent\":1},\"coverage\":0.08333333333333333,\"expected\":12,\"officialLeaderboardClaim\":false,\"policyProven\":false,\"purpose\":\"native_operational_protocol\",\"reward\":{\"count\":0,\"denominator\":\"valid_official_rewards_only\",\"diagnosticOnly\":true,\"mean\":null,\"sum\":0}}}\nCLOSURE_PIPELINE_JSON=[{\"transition\": \"native_result_parse\", \"stageExitCode\": 2, \"attempts\": 1, \"expected\": 12, \"haltReason\": \"forced_worker\", \"evaluatorCalls\": 0, \"officialReward\": null, \"evidenceFailure\": \"native_result_parse\", \"cleanup\": {\"taskTearDown\": \"completed\", \"environment\": \"closed\", \"nativeDeviceRestoration\": \"not_provided_by_close\", \"workerProcessGroup\": \"settled\"}, \"terminalBytesPreserved\": true, \"nativeParser\": [{\"resultError\": {\"type\": \"JSONDecodeError\", \"reason\": \"invalid_worker_result\"}, \"hasResult\": false}], \"actualOwnedWorkerProcess\": [{\"pid\": 13725, \"pgid\": 13725, \"uid\": 501, \"exitCode\": -15, \"businessDeadlineReached\": true, \"terminated\": true, \"killed\": false, \"workerExitObserved\": true, \"spawnCount\": 1, \"elapsedSeconds\": 0.37338, \"leaderCleanup\": \"reaped\", \"groupCleanup\": \"settled\", \"groupOwnership\": \"new_session_same_uid_observed\", \"groupObservation\": {\"observed\": true, \"sameOwner\": true, \"members\": [], \"runningPids\": []}, \"groupObservations\": [{\"elapsedSeconds\": 0.017992, \"observation\": {\"observed\": true, \"sameOwner\": true, \"members\": [{\"pid\": 13725, \"ppid\": 13724, \"pgid\": 13725, \"uid\": 501, \"state\": \"Rs\", \"started\": \"Tue Nov 10 14:26:27 2026    \"}], \"runningPids\": [13725]}}, {\"elapsedSeconds\": 0.335643, \"observation\": {\"observed\": true, \"sameOwner\": true, \"members\": [{\"pid\": 13725, \"ppid\": 13724, \"pgid\": 13725, \"uid\": 501, \"state\": \"Ss\", \"started\": \"Tue Nov 10 14:26:27 2026    \"}], \"runningPids\": [13725]}}, {\"elapsedSeconds\": 0.373365, \"observation\": {\"observed\": true, \"sameOwner\": true, \"members\": [], \"runningPids\": []}}], \"signals\": [{\"signal\": \"SIGTERM\", \"sent\": true, \"observedPids\": [13725], \"ownershipBasis\": \"new_session_same_uid_group_observation\"}], \"phase\": \"terminal\", \"groupDisappearanceObserved\": true}], \"pathsExercised\": [\"actual run_fsq_worker result parser\", \"actual run_episode proof/archive/finally\", \"actual campaign.run_stage terminal consumer\"], \"injection\": \"Offline task/environment/admission and in-process outer-spawn seam; archive write error controlled. Native result for archive uses producer-shaped offline artifact factory. Worker subprocess is a real throwaway Python sleeper/result writer, not FSQ/model/device.\"}, {\"transition\": \"native_archive\", \"stageExitCode\": 2, \"attempts\": 1, \"expected\": 12, \"haltReason\": \"forced_worker\", \"evaluatorCalls\": 0, \"officialReward\": null, \"evidenceFailure\": \"native_archive\", \"cleanup\": {\"taskTearDown\": \"completed\", \"environment\": \"closed\", \"nativeDeviceRestoration\": \"not_provided_by_close\", \"workerProcessGroup\": \"settled\"}, \"terminalBytesPreserved\": true, \"nativeParser\": [{\"resultError\": null, \"hasResult\": true}], \"actualOwnedWorkerProcess\": [{\"pid\": 13735, \"pgid\": 13735, \"uid\": 501, \"exitCode\": -15, \"businessDeadlineReached\": true, \"terminated\": true, \"killed\": false, \"workerExitObserved\": true, \"spawnCount\": 1, \"elapsedSeconds\": 0.367502, \"leaderCleanup\": \"reaped\", \"groupCleanup\": \"settled\", \"groupOwnership\": \"new_session_same_uid_observed\", \"groupObservation\": {\"observed\": true, \"sameOwner\": true, \"members\": [], \"runningPids\": []}, \"groupObservations\": [{\"elapsedSeconds\": 0.018572, \"observation\": {\"observed\": true, \"sameOwner\": true, \"members\": [{\"pid\": 13735, \"ppid\": 13724, \"pgid\": 13735, \"uid\": 501, \"state\": \"Rs\", \"started\": \"Tue Nov 10 14:26:28 2026    \"}], \"runningPids\": [13735]}}, {\"elapsedSeconds\": 0.332258, \"observation\": {\"observed\": true, \"sameOwner\": true, \"members\": [{\"pid\": 13735, \"ppid\": 13724, \"pgid\": 13735, \"uid\": 501, \"state\": \"Ss\", \"started\": \"Tue Nov 10 14:26:28 2026    \"}], \"runningPids\": [13735]}}, {\"elapsedSeconds\": 0.367486, \"observation\": {\"observed\": true, \"sameOwner\": true, \"members\": [], \"runningPids\": []}}], \"signals\": [{\"signal\": \"SIGTERM\", \"sent\": true, \"observedPids\": [13735], \"ownershipBasis\": \"new_session_same_uid_group_observation\"}], \"phase\": \"terminal\", \"groupDisappearanceObserved\": true}], \"pathsExercised\": [\"actual run_fsq_worker result parser\", \"actual run_episode proof/archive/finally\", \"actual campaign.run_stage terminal consumer\"], \"injection\": \"Offline task/environment/admission and in-process outer-spawn seam; archive write error controlled. Native result for archive uses producer-shaped offline artifact factory. Worker subprocess is a real throwaway Python sleeper/result writer, not FSQ/model/device.\"}]\n",
+  "stderr": "",
+  "reproduction": {
+    "command": [
+      "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/bin/python",
+      "-B",
+      "-c",
+      "<inlineScript>"
+    ],
+    "inlineScript": "\nimport copy,json,os,runpy,sys,tempfile,time\nfrom pathlib import Path\nimport pytest\nfrom fsq_androidworld_eval import fsq_runner as runner,fsq_campaign as campaign,fsq_supervisor as supervisor\ncf=runpy.run_path('tests/test_fsq_campaign.py');rf=runpy.run_path('tests/test_fsq_runner.py')\nreal_supervise=supervisor._supervise\nobservations=[]\nwith tempfile.TemporaryDirectory(prefix='fsq-r2-consumer-pipeline-') as td:\n for transition in ('native_result_parse','native_archive'):\n  base=Path(td).resolve()/transition;base.mkdir()\n  with pytest.MonkeyPatch.context() as mp:\n   runner_base=base/'runner';runner_base.mkdir()\n   execute,events,_=rf['offline_episode'].__wrapped__(runner_base,mp)\n   runner_fixture=execute.fixture\n   candidate=cf['candidate'].__wrapped__(base/'campaign',mp)\n   candidate.manifest['paths'].update({key:value for key,value in runner_fixture.manifest['paths'].items() if key!='project'})\n   candidate.manifest['identities'].update(runner_fixture.manifest['identities'])\n   cf['put'](candidate.manifest_path,candidate.manifest)\n   candidate.auth['manifestSha256']=campaign._hash(candidate.manifest_path)\n   cf['put'](candidate.auth_path,candidate.auth)\n   readiness=campaign._load(candidate.readiness_path);readiness.pop('identitySha256')\n   readiness['binding']=campaign._binding(candidate.manifest_path,candidate.manifest,candidate.auth)\n   cf['put'](candidate.readiness_path,campaign._sealed(readiness))\n   rehearsal=cf['stage_report'](candidate,'rehearse')\n   mp.setattr(runner,'load_manifest',lambda *args:copy.deepcopy(candidate.manifest))\n   mp.setattr(runner,'load_authorization',lambda *args:copy.deepcopy(candidate.auth))\n   mp.setattr(campaign,'_load_candidate',lambda *args:copy.deepcopy(candidate.manifest))\n   mp.setattr(campaign,'_runner_api',lambda:runner)\n   calls=[];parsed_outcomes=[];process_receipts=[]\n   def forced_supervise(command,**kwargs):\n    output=Path(command[command.index('--output')+1])\n    if transition=='native_result_parse':\n     payload='{\"status\":'\n    else:\n     spec=candidate.manifest['tasks'][0]\n     seed_root=output.parent.parent/'prebuilt-native'\n     seed_record=cf['native_record'](candidate,spec,seed_root,stage='calibrate')\n     seed_outcome=campaign._load(seed_root/seed_record['fsq']['privateOutcome']['path'])\n     payload=json.dumps(seed_outcome['result'],sort_keys=True)\n    code='import sys,time;from pathlib import Path;Path(sys.argv[1]).write_text(sys.argv[2]);time.sleep(60)'\n    receipt=real_supervise([sys.executable,'-B','-c',code,str(output),payload],cwd=kwargs['cwd'],environment=dict(os.environ),log_path=kwargs['log_path'],business_deadline=time.monotonic()+0.3,cleanup_seconds=0.01,grace_seconds=0.1,receipt_path=kwargs['receipt_path'])\n    process_receipts.append(receipt)\n    return receipt\n   mp.setattr(supervisor,'_supervise',forced_supervise)\n   actual_run_worker=supervisor.run_fsq_worker\n   def observed_run_worker(*args,**kwargs):\n    outcome=actual_run_worker(*args,**kwargs)\n    parsed_outcomes.append({'resultError':outcome['resultError'],'hasResult':isinstance(outcome['result'],dict)})\n    return outcome\n   mp.setattr(runner,'run_fsq_worker',observed_run_worker)\n   if transition=='native_archive':\n    def fail_archive(*args,**kwargs):raise OSError('controlled archive write failure')\n    mp.setattr(runner,'_archive_outcome',fail_archive)\n   def actual_episode_spawn(command,launch,timeout):\n    index=int(command[command.index('--task-index')+1]);output=Path(command[command.index('--output')+1])\n    record=runner.run_episode(candidate.manifest_path,candidate.root,index,output,candidate.auth_path,candidate.readiness_path,stage='calibrate',rehearsal_path=rehearsal,oracle_result_roots=[candidate.root/'execution-calibrate'])\n    calls.append({'index':index,'root':str(output),'record':record,'terminalBytes':(output/'result.json').read_bytes()})\n    (launch/'process.log').write_text('actual in-process run_episode delegate, controlled environment; real owned worker subprocess\\n')\n    return {'forced':False,'exitCode':1,'spawnCount':1,'timeoutSeconds':timeout}\n   mp.setattr(campaign,'_spawn',actual_episode_spawn)\n   args=cf['args_for'](candidate,'calibrate',rehearsal=rehearsal)\n   status=campaign.run_stage(args)\n   report=campaign._load(Path(args.output)/'report.json')\n   assert len(calls)==1,(transition,len(calls),report)\n   terminal=calls[0]['record']\n   assert terminal['workerProcess']['terminated'] is True,terminal\n   assert terminal['workerProcess']['groupCleanup']=='settled',terminal\n   assert terminal['evidenceFailure']==transition,terminal\n   assert terminal['evaluatorCalls']==0 and terminal['officialReward'] is None,terminal\n   assert report['haltReason']=='forced_worker' and report['summary']['attempted']==1 and report['summary']['expected']==12,report\n   assert calls[0]['terminalBytes']==(Path(calls[0]['root'])/'result.json').read_bytes()\n   assert 'teardown' in events and 'environment_close' in events\n   observations.append({'transition':transition,'stageExitCode':status,'attempts':len(calls),'expected':report['summary']['expected'],'haltReason':report['haltReason'],'evaluatorCalls':terminal['evaluatorCalls'],'officialReward':terminal['officialReward'],'evidenceFailure':terminal['evidenceFailure'],'cleanup':terminal['cleanup'],'terminalBytesPreserved':True,'nativeParser':parsed_outcomes,'actualOwnedWorkerProcess':process_receipts,'pathsExercised':['actual run_fsq_worker result parser','actual run_episode proof/archive/finally','actual campaign.run_stage terminal consumer'],'injection':'Offline task/environment/admission and in-process outer-spawn seam; archive write error controlled. Native result for archive uses producer-shaped offline artifact factory. Worker subprocess is a real throwaway Python sleeper/result writer, not FSQ/model/device.'})\nprint('CLOSURE_PIPELINE_JSON='+json.dumps(observations,ensure_ascii=False))\n"
+  },
+  "scope": "Actual supervisor-owned short Python subprocess, actual worker result parser, actual runner and actual campaign scheduler; controlled offline admission/task/environment and outer in-process spawn seam. Not a real native business execution.",
+  "evidenceGapResolution": "Owner final two campaign tests alone manufacture terminal records. This additional direct-function smoke establishes forced receipt propagation through actual parser/archive runner branches into the actual scheduling consumer.",
+  "cleanup": {
+    "temporaryDirectoryRemovedByContext": true,
+    "ownedWorkerGroupsSettledAndLeadersReaped": true
+  },
+  "devicesAccessed": false,
+  "modelsCalled": false,
+  "sharedServicesAccessed": false,
+  "gitWrites": false
+}

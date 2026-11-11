@@ -1,0 +1,89 @@
+{
+  "reviewer": "w4:p2 independent offline contract reviewer",
+  "task": "MarkorMergeNotes",
+  "seed": 2594989658,
+  "paramsSha256": "83d348ecd71eee0838de42e16ede8c5725cd63bf2b70490f4149eaf41fce8868",
+  "scope": "Actual installed pure fuzzy/path helpers, constructor, and AST-selected existing pure expressions only. No environment, initialize_task, is_successful, adb, DB, device, session, or new reward. Candidate find sets are controlled, never original scorer find results. Original UI content is not filesystem cat input.",
+  "installedSourceHashes": {
+    ".venv/lib/python3.11/site-packages/android_world/task_evals/single/markor.py": {
+      "sha256": "183d3763e34ede196c0df795235ab3aa79d434d744da54aefb82bfd753a93340",
+      "matchesInstalledDistributionRECORD": true
+    },
+    ".venv/lib/python3.11/site-packages/android_world/task_evals/common_validators/file_validators.py": {
+      "sha256": "ce7137e22fe94d25a6ebdf1fdd8bf0cf327ed20907af48a2f2ee34ca6b13bf20",
+      "matchesInstalledDistributionRECORD": true
+    },
+    ".venv/lib/python3.11/site-packages/android_world/utils/file_utils.py": {
+      "sha256": "5bd04ccdafba65f4b909c8bb9fca166e5eba92dc2e64c83f80729941dfab2d1d",
+      "matchesInstalledDistributionRECORD": true
+    },
+    ".venv/lib/python3.11/site-packages/android_world/utils/fuzzy_match_lib.py": {
+      "sha256": "e7376554fd9a413ff00d71656e09609c9070d0b384028b89fd931e32fcfb2969",
+      "matchesInstalledDistributionRECORD": true
+    }
+  },
+  "originalSourceHashes": {
+    "result.json": {
+      "path": "campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/episodes/033-MarkorMergeNotes/attempt-1/result.json",
+      "sha256": "e563c89d457aa19ce08b8c4bd0473c8a3e8f0e20317fa427dcb253f7b5bd7ca0"
+    },
+    "normalized-agent-events.json": {
+      "path": "campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/episodes/033-MarkorMergeNotes/attempt-1/normalized-agent-events.json",
+      "sha256": "a695eab6128571af8ed0d37612b3337f9e00167f5f3bdd7839dfeb81a1736512"
+    },
+    "raw-private/agent-events.jsonl": {
+      "path": "campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/episodes/033-MarkorMergeNotes/attempt-1/raw-private/agent-events.jsonl",
+      "sha256": "2d62d4adb8a73459945dba97a5cc8db14b6eac61127eb0ac516d759ccd56db4b"
+    }
+  },
+  "expectedFileName": "mIObBbo4",
+  "expectedFullPath": "/storage/emulated/0/Documents/Markor/mIObBbo4",
+  "childCreateFileReferenceText": "m4kMyOGWaENoPj6FqLjd\n\nfxHXZsqrmnwYjXvte9pg\n\nf42GOjFWb2aKHogAFQSY\n",
+  "originalUIListed": "File mIObBbo4.md 10/15/2023, 15:34",
+  "contentCases": [
+    {
+      "candidate": "actual_original_reopened_UI_content_not_filesystem",
+      "rawContent": "m4kMyOGWaENoPj6FqLjd\nfxHXZsqrmnwYjXvte9pg\nf42GOjFWb2aKHogAFQSY",
+      "normalizedContent": "m4kMyOGWaENoPj6FqLjd\nfxHXZsqrmnwYjXvte9pg\nf42GOjFWb2aKHogAFQSY",
+      "childCreateFileActualFuzzy": true,
+      "fuzzyRatio": 0.9763779527559056,
+      "actualStrictExpressionLineCount": 3,
+      "actualStrictExpressionBlankLinePass": false
+    },
+    {
+      "candidate": "controlled_constructor_reference_content",
+      "rawContent": "m4kMyOGWaENoPj6FqLjd\n\nfxHXZsqrmnwYjXvte9pg\n\nf42GOjFWb2aKHogAFQSY\n",
+      "normalizedContent": "m4kMyOGWaENoPj6FqLjd\n\nfxHXZsqrmnwYjXvte9pg\n\nf42GOjFWb2aKHogAFQSY",
+      "childCreateFileActualFuzzy": true,
+      "fuzzyRatio": 0.9922480620155039,
+      "actualStrictExpressionLineCount": 5,
+      "actualStrictExpressionBlankLinePass": true
+    }
+  ],
+  "pathCases": [
+    {
+      "candidate": "controlled_find_contains_only_md",
+      "paths": [
+        "/storage/emulated/0/Documents/Markor/mIObBbo4.md"
+      ],
+      "actualExistenceExpressionPass": false
+    },
+    {
+      "candidate": "controlled_find_contains_exact_extensionless",
+      "paths": [
+        "/storage/emulated/0/Documents/Markor/mIObBbo4"
+      ],
+      "actualExistenceExpressionPass": true
+    }
+  ],
+  "pureASTSourceLineRanges": {
+    "MarkorMergeNotes": [
+      632,
+      633
+    ],
+    "check_file_or_folder_exists": 258
+  },
+  "actualHistoricalScoringBranchObservedByThisReviewer": false,
+  "originalReward": 0.0,
+  "newOfficialReward": null
+}

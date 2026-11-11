@@ -1,0 +1,54 @@
+{
+  "sequence": 69,
+  "label": "markor-regression-name-document",
+  "command": {
+    "op": "exec",
+    "label": "markor-regression-name-document",
+    "code": "name = driver.find_element(AppiumBy.ID, 'net.gsantner.markor:id/new_file_dialog__name')\nname.clear()\nname.send_keys('2023_01_26_wise_yacht')\n{'name':name.text, 'extension':driver.find_element(AppiumBy.ID,'net.gsantner.markor:id/new_file_dialog__ext').text}"
+  },
+  "startedAtUnix": 1794192270.841268,
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"status\":\"completed\",\"stdout\":\"\",\"stderr\":\"\",\"result\":{\"name\":\"2023_01_26_wise_yacht\",\"extension\":\".md\"},\"executionCount\":35,\"durationMs\":1925,\"kernelState\":\"alive\",\"runtime\":{\"executable\":\"/Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python\",\"pythonVersion\":\"3.11.16\",\"workingDirectory\":\"/Users/qunmi/Documents/FSQ_LAB/amkernel\",\"environmentKind\":\"project_venv\",\"implementation\":\"CPython\",\"platform\":\"macOS-26.6.2-arm64-arm-64bit\",\"packages\":[]},\"output\":{\"totalBytes\":0,\"totalLines\":0,\"discardedBytes\":0,\"discardedLines\":0,\"truncated\":false,\"limitBytes\":268435456,\"limitExceeded\":false,\"live\":\"unavailable\"},\"displays\":[],\"artifacts\":[]}"
+      }
+    ],
+    "structured_content": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "name": "2023_01_26_wise_yacht",
+        "extension": ".md"
+      },
+      "executionCount": 35,
+      "durationMs": 1925,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/Users/qunmi/Documents/FSQ_LAB/amkernel",
+        "environmentKind": "project_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "unavailable"
+      },
+      "displays": [],
+      "artifacts": []
+    },
+    "is_error": false,
+    "result_type": "complete"
+  },
+  "completedAtUnix": 1794192272.771117
+}

@@ -1,0 +1,145 @@
+{
+  "scope": "Three assigned SMS budget-exhaustion cases 082/084/086; independent earliest-divergence reviews; original rewards unchanged.",
+  "campaign": "amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z",
+  "newAndroidRuns": 0,
+  "newAppiumSessions": 0,
+  "originalsUnchanged": true,
+  "cases": [
+    {
+      "index": 82,
+      "task": "SimpleSmsReplyMostRecent",
+      "actions": 12,
+      "maxSteps": 12,
+      "pythonCalls": 18,
+      "officialReward": 0.0,
+      "earliestDivergence": "action1 cell3 opened com.google.android.apps.messaging instead of Simple SMS Messenger; action3 swipe exposed home customization (not the app drawer), and action5-6 used Google Search, whose clickable=false duplicate suggestions never launched the target app.",
+      "primaryLayer": "model planning/UI inference; app/launcher environment contributor (Android System Intelligence crash dialog and duplicated non-clickable search rows); not Runtime or evaluator",
+      "decisiveEvidence": [
+        {
+          "rawLine": 695,
+          "fact": "click Messages returned com.google.android.apps.messaging/.ui.ConversationListActivity at raw:696"
+        },
+        {
+          "rawLine": 934,
+          "fact": "home swipe exposed Wallpaper & style / Widgets / Home settings (home customization), not the app drawer"
+        },
+        {
+          "rawLine": 1246,
+          "fact": "back + Search + input Simple SMS Messenger; Google Search surface, not app drawer"
+        },
+        {
+          "rawLine": 2300,
+          "fact": "click Simple SMS Messenger0 timed out with package unchanged"
+        },
+        {
+          "rawLine": 3054,
+          "fact": "captured PNG shows duplicate suggestion rows and Android System Intelligence keeps stopping dialog"
+        },
+        {
+          "rawLine": 3389,
+          "fact": "cleanup-phase final JSON exists but normalized.finalText=null; evaluator requires a DB sent record plus Simple SMS Messenger in the foreground. The trace has no successful send action and foreground was not the target; DB absence is inferred, not independently queried. This is not an answer-forwarding issue."
+        }
+      ],
+      "proposalFit": "Current candidate rules on launch readiness, non-clickable candidates, no-progress retries, and package activation would address this failure. This is a prospective candidate-vs-historical-frozen-run comparison; it does not establish that the original run had or violated those rules. No benchmark-specific route needed.",
+      "needsNewRule": false,
+      "unresolved": "Exact Android System Intelligence fault and duplicated-search-label mechanism; whether package activation would have succeeded in this frozen episode (not tested).",
+      "reportPath": "evidence/amkernel-field-optimization-20261109/per-task-review/082-SimpleSmsReplyMostRecent/review.md"
+    },
+    {
+      "index": 84,
+      "task": "SimpleSmsSend",
+      "actions": 12,
+      "maxSteps": 12,
+      "pythonCalls": 21,
+      "officialReward": 0.0,
+      "earliestDivergence": "action1 cell3 opened Google Messages and consumed 7 actions before target app; decisive action11 cell18 send_keys(\"\\n\") did not submit, left NewConversationActivity, and blanked the valid +16597910719 recipient; action12 refilled it with no budget to use the confirm/send path.",
+      "primaryLayer": "model input semantics/UI observation and budget planning; not Runtime (UiScrollable UnknownMethod is a known protocol boundary, not causal)",
+      "decisiveEvidence": [
+        {
+          "rawLine": 711,
+          "fact": "click Messages returned com.google.android.apps.messaging/.ui.ConversationListActivity at raw:712"
+        },
+        {
+          "rawLine": 2793,
+          "fact": "address field readback +16597910719 in NewConversationActivity"
+        },
+        {
+          "rawLine": 2885,
+          "fact": "send_keys(\"\\n\") admitted; wait for activity change timed out"
+        },
+        {
+          "rawLine": 3045,
+          "fact": "still NewConversationActivity; address field readback single space"
+        },
+        {
+          "rawLine": 3143,
+          "fact": "address refilled as last admitted action; no send"
+        },
+        {
+          "rawLine": 3280,
+          "fact": "cleanup-phase assistant JSON says recipient populated but no send; normalized.finalText=null"
+        }
+      ],
+      "proposalFit": "Current candidate skill explicitly says newline is not an IME submit, can replace a recipient, must inspect newly exposed clickable controls, and must include clickable state for empty-text controls. The candidate text covers the decisive failure, but historical guidance availability is unverified and no same-frozen-environment follow-up smoke was run.",
+      "needsNewRule": false,
+      "unresolved": "The campaign saved observation lacks the unlabeled new_conversation_confirm; prior field XML evidence reports it, but it is not replayable here. Exact full confirmation UI at the decisive moment remains unverified.",
+      "reportPath": "evidence/amkernel-field-optimization-20261109/per-task-review/084-SimpleSmsSend/review.md"
+    },
+    {
+      "index": 86,
+      "task": "SimpleSmsSendReceivedAddress",
+      "actions": 18,
+      "maxSteps": 18,
+      "pythonCalls": 25,
+      "officialReward": 0.0,
+      "earliestDivergence": "action1 cell3 opened Google Messages; actions 2-11 added home/system-UI and launcher-search detours. activate_app recovered at action12, but the 18th action was message input and the 19th send click was rejected at the 18-step budget gate.",
+      "primaryLayer": "model budget/route planning plus frozen step-budget contract boundary; not a Runtime bug and not evaluator error",
+      "decisiveEvidence": [
+        {
+          "rawLine": 823,
+          "fact": "click Messages returned com.google.android.apps.messaging/.ui.ConversationListActivity at raw:824"
+        },
+        {
+          "rawLine": 3306,
+          "fact": "activate_app recovered com.simplemobiletools.smsmessenger at cell15"
+        },
+        {
+          "rawLine": 4745,
+          "fact": "cell23 proves target package, Gabriel Ibrahim thread, thread_type_message, and disabled thread_send_message"
+        },
+        {
+          "rawLine": 4991,
+          "fact": "18th action input accepted; wait for thread_send_message clickable passed; next click at raw:4994 rejected"
+        },
+        {
+          "rawLine": 5001,
+          "fact": "cleanup steer; raw:5223 final JSON says send rejected after budget closed; normalized.finalText=null"
+        }
+      ],
+      "proposalFit": "Current candidate skill requires budgeting failed admitted actions, launch readiness, package activation, and observing before repeat. A direct activate_app+FAB+Gabriel+input+send path would fit within 18 admitted actions only as an untested lower-step arithmetic proposal; no same-frozen-environment smoke proves that outcome. No new SMS rule/coordinates justified.",
+      "needsNewRule": false,
+      "unresolved": "No post-rejection observation/screenshot, so composer draft persistence is unproved. Exact rejection text is hidden by AMKernel sensitive-detail filtering; rejection is established by rejectedActionCount=1 and traceback line.",
+      "reportPath": "evidence/amkernel-field-optimization-20261109/per-task-review/086-SimpleSmsSendReceivedAddress/review.md"
+    }
+  ],
+  "commonObservations": {
+    "firstWrongAction": "All three independently opened Google Messages at action1 via ambiguous accessibility text Messages. This is a shared first divergence but not treated as the sole root: 082 never recovered, 084 recovered but lost the recipient at newline, 086 recovered but exhausted 18 actions before send.",
+    "rawFinalVsNormalized": "All three have assistant final JSON in raw (~3389/3280/5223) but normalized.finalText=null, agentCompleted=false, agentIndicatedDone=false because cleanup had already been requested. SMS evaluators require a DB sent SMS plus the target app; DB absence is inferred from the trace, not independently queried. Missing forwarded answer is not the cause of these zeros.",
+    "runtimeExceptionMessage": "Prior InvalidElementStateException message fix was not exercised. 084 UiScrollable UnknownMethod message is fully preserved; 086 final UnknownMethod is filtered because the proxy message contains session (sensitive-token filter), not because the type is unknown. No new Runtime/skill rule recommended from these cases.",
+    "actionAccounting": {
+      "82": {
+        "admitted": 12,
+        "rejected": 0
+      },
+      "84": {
+        "admitted": 12,
+        "rejected": 0
+      },
+      "86": {
+        "admitted": 18,
+        "rejected": 1
+      }
+    },
+    "replay": "Read-only replay of saved envelopes/stepBudget/captured PNG; no fake Android reproduction and no new official scores."
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "sourceAttempt": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/episodes/014-ExpenseAddMultipleFromMarkor/attempt-1",
+  "sourceAnchors": {
+    "result.json": {
+      "sha256": "198faa876422efc67531fc1f3b318013a660e2af295fc7dfc2fc8f82b57ef6bd"
+    },
+    "normalized-agent-events.json": {
+      "sha256": "5d5b1de0ef465e8165e33fe73510e601fe4fe60104f29a14efdcd31010e89456"
+    },
+    "raw-private/agent-events.jsonl": {
+      "sha256": "690dac2ad773a09f3b41f2ded10dd7d6df2486352eccdb9637debf3eb86b79e4"
+    }
+  },
+  "observedResultTargets": [
+    {
+      "amount": 9630,
+      "category": 8,
+      "created_date": 1697320800000,
+      "expense_id": -1,
+      "modified_date": 1697320800000,
+      "name": "Laundry",
+      "note": "Urgent"
+    },
+    {
+      "amount": 30301,
+      "category": 7,
+      "created_date": 1696338000000,
+      "expense_id": -1,
+      "modified_date": 1696338000000,
+      "name": "Car Insurance",
+      "note": "I may repeat this"
+    }
+  ],
+  "observedResultParamsSha256": "23de427b2cc14ba77e7fc9e4f767e4a6b1e4049661a80c3ce0b957c65120c929",
+  "actualCodeInputCells": [
+    {
+      "executionCount": 13,
+      "sourceLine": 3352,
+      "responseSourceLine": 3353,
+      "code": "name=driver.find_element(AppiumBy.ID,'com.arduia.expense:id/edt_name')\namount=driver.find_element(AppiumBy.ID,'com.arduia.expense:id/edt_amount')\nnote=driver.find_element(AppiumBy.ID,'com.arduia.expense:id/edt_note')\nname.send_keys('Laundry')\namount.send_keys('96.3')\nnote.send_keys('Urgent. Reimbursable.')\n{'name':name.get_attribute('text'),'amount':amount.get_attribute('text'),'note':note.get_attribute('text')}",
+      "result": {
+        "name": "Laundry",
+        "amount": "96.3",
+        "note": "Urgent. Reimbursable."
+      }
+    },
+    {
+      "executionCount": 21,
+      "sourceLine": 4981,
+      "responseSourceLine": 4982,
+      "code": "name=driver.find_element(AppiumBy.ID,'com.arduia.expense:id/edt_name')\namount=driver.find_element(AppiumBy.ID,'com.arduia.expense:id/edt_amount')\nnote=driver.find_element(AppiumBy.ID,'com.arduia.expense:id/edt_note')\nname.send_keys('Car Insurance')\namount.send_keys('303.01')\nnote.send_keys('I may repeat this. Reimbursable.')\n{'name':name.get_attribute('text'),'amount':amount.get_attribute('text'),'note':note.get_attribute('text')}",
+      "result": {
+        "name": "Car Insurance",
+        "amount": "303.01",
+        "note": "I may repeat this. Reimbursable."
+      }
+    }
+  ],
+  "conflictNotice": "Resolved: parent explicitly withdrew the inconsistent paraphrase. The SHA-anchored r12v2 014 originals and unmodified parent extraction consistently identify Laundry and Car Insurance; ongoing analysis uses only those originals.",
+  "deviceQueries": 0,
+  "sessionsCreated": 0,
+  "experimentStarted": false
+}

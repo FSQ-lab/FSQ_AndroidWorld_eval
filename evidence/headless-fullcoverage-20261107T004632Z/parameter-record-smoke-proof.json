@@ -1,0 +1,34 @@
+{
+  "kind": "non_scoring_metadata_smoke",
+  "notUsedAsCampaignOrGate": true,
+  "tasks": [
+    {
+      "task": "TasksHighPriorityTasks",
+      "frozenRecordMatches": true,
+      "agentInvoked": false,
+      "officialReward": null,
+      "cleanup": {
+        "agentSession": {
+          "status": "not_created",
+          "verificationStatus": "absent"
+        },
+        "environment": "closed",
+        "taskTearDown": "completed"
+      }
+    },
+    {
+      "task": "SimpleCalendarEventsOnDate",
+      "frozenRecordMatches": true,
+      "agentInvoked": false,
+      "officialReward": null,
+      "cleanup": {
+        "agentSession": {
+          "status": "not_created",
+          "verificationStatus": "absent"
+        },
+        "environment": "closed",
+        "taskTearDown": "completed"
+      }
+    }
+  ]
+}

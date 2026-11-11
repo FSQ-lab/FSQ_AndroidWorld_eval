@@ -1,0 +1,122 @@
+{
+  "boundary": "non_empty_selected",
+  "chosen": {
+    "recvSeq": 2228,
+    "windowCount": 2,
+    "serializedBytes": 8917,
+    "successTextFound": true,
+    "phase": "afterQuitResponse",
+    "receiveAgeAtEvaluatorStartSeconds": -0.015
+  },
+  "counts": {
+    "receiveTotal": 2245,
+    "receiveEmpty": 0,
+    "receiveNonEmpty": 2245,
+    "receiveBeforeSessionRequest": 196,
+    "receiveSessionCreationInFlight": 286,
+    "receiveDuringSession": 1703,
+    "receiveAfterQuit": 60,
+    "drainTotal": 9,
+    "emptyReturningDrains": 0,
+    "pauseCalls": 6,
+    "wrapperCalls": 29,
+    "stepCalls": 1,
+    "stateCalls": 1,
+    "selections": 3,
+    "appiumCommands": 129
+  },
+  "firstEmptyReceive": null,
+  "firstEmptyDrain": null,
+  "a11yTransitions": [
+    {
+      "label": "a11y-install-apk-before",
+      "relSec": 0.947,
+      "phase": "beforeSessionCreate",
+      "changed": {
+        "bound": {
+          "before": "{Service[label=com.google.androidenv.accessibilityforwarder.Acce\u2026, feedbackType[FEEDBACK_GENERIC], capabilities=1, eventTypes=TYPES_ALL_MASK, notificationTimeout=0, requestA11yBtn=false]}",
+          "after": "{}"
+        },
+        "crashed": {
+          "before": "{}",
+          "after": "{{com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.AccessibilityForwarder}}"
+        },
+        "forwarderPid": {
+          "before": "7959",
+          "after": ""
+        }
+      }
+    },
+    {
+      "label": "a11y-install-apk-after",
+      "relSec": 1.27,
+      "phase": "beforeSessionCreate",
+      "changed": {
+        "binding": {
+          "before": "{}",
+          "after": "{{com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.AccessibilityForwarder}}"
+        },
+        "crashed": {
+          "before": "{{com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.AccessibilityForwarder}}",
+          "after": "{}"
+        },
+        "forwarderPid": {
+          "before": "",
+          "after": "11143"
+        }
+      }
+    },
+    {
+      "label": "a11y-start-services-before",
+      "relSec": 11.28,
+      "phase": "beforeSessionCreate",
+      "changed": {
+        "bound": {
+          "before": "{}",
+          "after": "{Service[label=com.google.androidenv.accessibilityforwarder.Acce\u2026, feedbackType[FEEDBACK_GENERIC], capabilities=1, eventTypes=TYPES_ALL_MASK, notificationTimeout=0, requestA11yBtn=false]}"
+        },
+        "binding": {
+          "before": "{{com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.AccessibilityForwarder}}",
+          "after": "{}"
+        }
+      }
+    },
+    {
+      "label": "appium-session-created",
+      "relSec": 70.846,
+      "phase": "duringSession",
+      "changed": {
+        "uia2ServerPid": {
+          "before": "",
+          "after": "12758"
+        }
+      }
+    },
+    {
+      "label": "appium-quit-request",
+      "relSec": 266.234,
+      "phase": "duringSession",
+      "changed": {
+        "uia2ServerPid": {
+          "before": "12758",
+          "after": ""
+        }
+      }
+    }
+  ],
+  "instrumentationArgs": [
+    {
+      "label": "appium-session-created",
+      "relSec": 70.846,
+      "line": "12742  6787 app_process                 app_process /system/bin com.android.commands.am.Am instrument -w -e DISABLE_SUPPRESS_ACCESSIBILITY_SERVICES true -e disableAnalytics true io.appium.uiautomator2.server.test/androidx.test.runner.AndroidJUnitRunner"
+    }
+  ],
+  "logcatNotable": {
+    "path": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/browserdraw-forest-capability-B-20261109T061859Z/device-logcat.txt",
+    "byteSize": 33097227,
+    "notableCount": 51261,
+    "notablePath": "logcat-notable.json",
+    "clockMapDistanceMaxSeconds": 96819858.876
+  },
+  "capsRequestFlag": []
+}

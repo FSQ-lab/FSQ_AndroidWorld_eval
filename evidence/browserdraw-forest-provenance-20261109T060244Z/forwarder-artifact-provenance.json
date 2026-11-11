@@ -1,0 +1,112 @@
+{
+  "capturedAtHostUtc": "2026-11-09T06:13:21Z",
+  "installedForwarder": {
+    "devicePath": "/data/app/~~5jqgDuTra4zXHc_JRksJJw==/com.google.androidenv.accessibilityforwarder-a_c2pLg3w6WZgfed6gbzsw==/base.apk",
+    "pulledPath": "forwarder-artifact/base.apk",
+    "sha256": "97a56a544e44d79f9b3181fc7dbdd72cffa908efd3d53c82afad1773061a350a",
+    "bytes": 4490495
+  },
+  "frozenCachedForwarder": {
+    "path": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.cache/androidworld-assets/2024.05.13-accessibility_forwarder.apk",
+    "sha256": "97a56a544e44d79f9b3181fc7dbdd72cffa908efd3d53c82afad1773061a350a",
+    "bytes": 4490495
+  },
+  "installedMatchesFrozenCache": true,
+  "decompileToolAvailable": false,
+  "decompileNote": "No jadx/apktool/baksmali on this host (which returned no matches); raw DEX was not decompiled. Frozen Kotlin source used instead.",
+  "sourceEvidence": {
+    "sourcePath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/android_world/android_world/google/apps/java/com/google/androidenv/accessibilityforwarder/AccessibilityForwarder.kt",
+    "sourceSha256": "93d81083596dc05cfa23883deedf81d74c85122ea12ca49f923767a30352ba22",
+    "initLine": 39,
+    "workerReadsWindowsLine": 45,
+    "workerThreadComment": "init block spawns Thread; an uncaught NPE in the worker can terminate the whole process (historical fatal PID 5878 observed), not merely the worker thread.",
+    "logFlagsPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/android_world/android_world/google/apps/java/com/google/androidenv/accessibilityforwarder/LogFlags.kt",
+    "logFlagsSha256": "dd395ac50dc2ac0ca32822c9d53aa79698dcc28300bc16a99c4b732234afa480",
+    "logFlags": [
+      "var logUsingGRPC: Boolean = false",
+      "var logAccessibilityTree: Boolean = false",
+      "var a11yTreePeriodMs: Long = 100"
+    ],
+    "installedVsCheckoutCaveat": "Checkout line 45 and installed-DEX worker line 51 differ; installed DEX is authoritative for the installed APK."
+  },
+  "rawLog": {
+    "path": "historical-logcat-buffer-20261109T061045Z.txt",
+    "sha256": "e18326aa9bbc53ad14643ea774db9c86647f577ff9111648d998e89924ad8b1d",
+    "bytes": 1947375,
+    "metaPath": "historical-logcat-buffer-20261109T061045Z.meta.txt",
+    "meta": [
+      "capturedAtUtc=20261109T061045Z bootId=0f36e370-012a-4423-a1f9-959beae8f90d",
+      "bytes=1947375"
+    ],
+    "crashBlockLineRange": [
+      6594,
+      6628
+    ],
+    "crashBlock": [
+      "         1697384127.821  7014  7031 I TestRunner: finished: startServer(io.appium.uiautomator2.server.test.AppiumUiAutomator2Server)",
+      "         1697384127.823  7014  7031 I TestRunner: run finished: 1 tests, 0 failed, 0 ignored",
+      "         1697384127.827   500   515 I ActivityManager: Force stopping io.appium.uiautomator2.server appid=10180 user=0: finished inst",
+      "         1697384127.828   500   515 I ActivityManager: Killing 7014:io.appium.uiautomator2.server/u0a180 (adj 0): stop io.appium.uiautomator2.server due to finished inst",
+      "         1697384127.830  6997  6997 I app_process: System.exit called, status: 0",
+      "         1697384127.830  6997  6997 I AndroidRuntime: VM exiting with result code 0.",
+      "--------- beginning of crash",
+      "         1697384127.833  5878  7148 E AndroidRuntime: FATAL EXCEPTION: Thread-3",
+      "         1697384127.833  5878  7148 E AndroidRuntime: Process: com.google.androidenv.accessibilityforwarder, PID: 5878",
+      "         1697384127.833  5878  7148 E AndroidRuntime: java.lang.NullPointerException: Attempt to invoke virtual method 'java.lang.String android.content.Context.getSystemServiceName(java.lang.Class)' on a null object reference",
+      "         1697384127.833  5878  7148 E AndroidRuntime: \tat android.content.ContextWrapper.getSystemServiceName(ContextWrapper.java:905)",
+      "         1697384127.833  5878  7148 E AndroidRuntime: \tat android.content.Context.getSystemService(Context.java:4167)",
+      "         1697384127.833  5878  7148 E AndroidRuntime: \tat android.view.accessibility.AccessibilityInteractionClient.<init>(AccessibilityInteractionClient.java:283)",
+      "         1697384127.833  5878  7148 E AndroidRuntime: \tat android.view.accessibility.AccessibilityInteractionClient.getInstanceForThread(AccessibilityInteractionClient.java:202)",
+      "         1697384127.833  5878  7148 E AndroidRuntime: \tat android.view.accessibility.AccessibilityInteractionClient.getInstance(AccessibilityInteractionClient.java:184)",
+      "         1697384127.833  5878  7148 E AndroidRuntime: \tat android.accessibilityservice.AccessibilityService.getWindows(AccessibilityService.java:962)",
+      "         1697384127.833  5878  7148 E AndroidRuntime: \tat com.google.androidenv.accessibilityforwarder.AccessibilityForwarder._init_$lambda$0(AccessibilityForwarder.kt:51)",
+      "         1697384127.833  5878  7148 E AndroidRuntime: \tat com.google.androidenv.accessibilityforwarder.AccessibilityForwarder.$r8$lambda$IZI2uTtTnjfGji38MZTGxYV2qus(Unknown Source:0)",
+      "         1697384127.833  5878  7148 E AndroidRuntime: \tat com.google.androidenv.accessibilityforwarder.AccessibilityForwarder$$ExternalSyntheticLambda0.run(Unknown Source:2)",
+      "         1697384127.833  5878  7148 E AndroidRuntime: \tat java.lang.Thread.run(Thread.java:1012)",
+      "         1697384127.835   500  7151 I DropBoxManagerService: add tag=data_app_crash isTagEnabled=true flags=0x2",
+      "         1697384127.836   500   532 I libprocessgroup: Successfully killed process cgroup uid 10180 pid 7014 in 5ms",
+      "         1697384127.837  5878  7148 I Process : Sending signal. PID: 5878 SIG: 9",
+      "         1697384127.840   295   295 I Zygote  : Process 7014 exited due to signal 9 (Killed)",
+      "         1697384127.840   500   530 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver",
+      "         1697384127.841   500   842 V ActivityManager: Got obituary of 7014:io.appium.uiautomator2.server",
+      "         1697384127.841   500   530 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver",
+      "         1697384127.839 12701 12701 I binder  : undelivered TRANSACTION_COMPLETE",
+      "         1697384127.839 12701 12701 I binder  : undelivered transaction 22892358, process died.",
+      "         1697384127.842   500  2202 I ActivityManager: Process com.google.androidenv.accessibilityforwarder (pid 5878) has died: vis BFGS",
+      "         1697384127.842   500   532 I libprocessgroup: Successfully killed process cgroup uid 10174 pid 5878 in 0ms",
+      "         1697384127.843   295   295 I Zygote  : Process 5878 exited due to signal 9 (Killed)",
+      "         1697384127.844   500  2202 W ActivityManager: Scheduling restart of crashed service com.google.androidenv.accessibilityforwarder/.AccessibilityForwarder in 1000ms for connection",
+      "         1697384127.848 11420 11420 V SafetyCenterAccessibilityListener: accessibility event occurred, safety center feature not enabled.",
+      "         1697384127.848 11420 11420 V SafetyCenterAccessibilityListener: accessibility event occurred, safety center feature not enabled."
+    ],
+    "uiAutomationInitLines": [
+      "         1697384085.748  7014  7033 V UiAutomation: Init UiAutomation@a6803de[id=887, flags=0]"
+    ],
+    "testRunnerFinishedLines": [
+      "         1697384127.821  7014  7031 I TestRunner: finished: startServer(io.appium.uiautomator2.server.test.AppiumUiAutomator2Server)",
+      "         1697384127.823  7014  7031 I TestRunner: run finished: 1 tests, 0 failed, 0 ignored"
+    ],
+    "caveats": [
+      "This is the live device logcat ring buffer captured read-only; it spans multiple past experiments.",
+      "Crash buffer entry PID 5878 at 1697384127.833 is immediately preceded by Appium TestRunner finishing and uiautomator2 force-stop at 1697384127.821-127.828; causal link to Appium teardown is inference, not proven here.",
+      "PID 5878 is also used for a later process start (1697384178.540, after an installPackageLI update), so PID reuse makes strict ordering across buffers ambiguous; the crash block itself is verbatim.",
+      "UiAutomation Init flags=0 belongs to the Appium uiautomator2 server instrumentation (PID 7014), not to the forwarder; it shows the Appium UiAutomation flags value during that past run."
+    ]
+  },
+  "dexdumpProvenance": {
+    "path": "forwarder-artifact/AccessibilityForwarder.dexdump.txt",
+    "sha256": "4f9997d5f9224f708d168cbb1f702daabd1c26390ac79218f223cf853294c861",
+    "bytes": 104795,
+    "lines": 1206,
+    "tool": "/Users/qunmi/Library/Android/sdk/build-tools/33.0.2/dexdump (offline; parent-executed)",
+    "constructorAnchors": "L75-133: creates Thread capturing this and Thread.start at dexPC001c before constructor return",
+    "workerAnchors": "L171-217: getWindows at PC0012/line51, catch only ConcurrentModificationException",
+    "callbackAnchors": "L1185-1206: onInterrupt sets period 0",
+    "absenceCheck": "whole-class dump has no onDestroy/onUnbind override",
+    "matchCaveat": "Installed APK sha256 equals frozen cache and DEX confirms the installed worker implementation; checkout source line 45 vs installed stack line 51 means not a byte-identical checkout-to-APK claim."
+  },
+  "crashInterpretation": {
+    "scope": "Supporting mechanism only; the historical device timestamps are not host-current and PIDs/experiments are reused.",
+    "note": "historical uncaught NPE killed process 5878; not treated as causal proof for the frozen BrowserDraw run."
+  }
+}

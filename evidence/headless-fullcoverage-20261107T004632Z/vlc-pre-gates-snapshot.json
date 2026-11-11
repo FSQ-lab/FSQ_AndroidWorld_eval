@@ -1,0 +1,13 @@
+{
+  "command": [
+    "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+    "-s",
+    "emulator-5554",
+    "shell",
+    "su 0 sh -c \"for d in /data/data/org.videolan.vlc/shared_prefs /data/data/android_world/snapshots/org.videolan.vlc/shared_prefs; do echo $d; find $d -maxdepth 1 -type f; done\""
+  ],
+  "returnCode": 0,
+  "stdout": "\n./init.environ.rc\n./adb_keys\n\n./init.environ.rc\n./adb_keys\n",
+  "stderr": "",
+  "observedAtUnix": 1794012445.1336908
+}

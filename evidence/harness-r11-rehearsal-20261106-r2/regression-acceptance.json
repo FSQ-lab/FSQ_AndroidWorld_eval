@@ -1,0 +1,17 @@
+{
+  "kind": "harness_regression_acceptance",
+  "command": "env PATH=/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/bin:$PATH uv run --no-sync pytest -q",
+  "passed": 338,
+  "failed": 0,
+  "durationSeconds": 98.78,
+  "environmentTestsPassed": 37,
+  "rehearsalGateTestsPassed": 61,
+  "newDatabaseTransportRegressions": [
+    "Replacing a database preserves sibling database rows and sibling WAL/SHM bytes",
+    "Missing source is rejected before removing target database or journals",
+    "ADB copy error propagates; sibling database remains intact"
+  ],
+  "allPreviousTerminationSessionBudgetScoringAndRehearsalRegressions": "passed",
+  "agentInvoked": false,
+  "officialReward": null
+}

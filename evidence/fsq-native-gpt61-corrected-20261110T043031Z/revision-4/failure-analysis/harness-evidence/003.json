@@ -1,0 +1,1133 @@
+{
+  "index": 3,
+  "name": "BrowserMaze",
+  "goal": "Open the file task.html in Downloads in the file manager; when prompted open it with Chrome. Then navigate the X to the bottom-right cell, by using the direction buttons.",
+  "reward": 0.0,
+  "classification": "failed",
+  "initialization": {
+    "initializationReferenceTime": {
+      "referenceTime": "2023-10-15T15:34:00+00:00",
+      "timezone": "UTC"
+    },
+    "initializedGoal": "Open the file task.html in Downloads in the file manager; when prompted open it with Chrome. Then navigate the X to the bottom-right cell, by using the direction buttons."
+  },
+  "frozenTaskSpec": {
+    "apps": [
+      "chrome"
+    ],
+    "complexity": 2,
+    "difficulty": "easy",
+    "family": "android",
+    "index": 3,
+    "instanceSeed": 3308742614,
+    "maxActions": 20,
+    "maxSteps": 20,
+    "name": "BrowserMaze",
+    "params": {
+      "browser_task_seed": 1364588068,
+      "seed": 3308742614
+    },
+    "paramsSha256": "70afdabec18be5d937700f54f4fc854e6bff0c1e8c65a613801a872bc43dd7bc",
+    "paramsTransport": "json",
+    "tags": [
+      "game_playing",
+      "multi_app",
+      "complex_ui_understanding",
+      "memorization",
+      "parameterized"
+    ],
+    "timeBudget": {
+      "businessSeconds": 1320,
+      "cleanupWindowSeconds": 180,
+      "episodeSeconds": 1930,
+      "forceSeconds": 1510,
+      "recoveryWindowSeconds": 120,
+      "terminationGraceSeconds": 10
+    }
+  },
+  "mainSteps": [
+    {
+      "stepId": 5,
+      "tool": "agent_runtime.runner",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "The final visual assertion failed because the Success message had replaced the grid; the exact verification goal remains unproven."
+        ],
+        "evidence": [
+          "Final UI snapshot showed Chrome displaying the Maze Puzzle page with “Success!”.",
+          "Final visual assertion confirmed: “No grid or bottom-right cell is currently visible, so X is not currently visible.”",
+          "Assertion screenshot: artifacts/screenshots/screenshot-agent-assert-with-ai-31-invoke-assert-with-ai-1-ca3b431a67dc.png",
+          "App teardown completed after final evidence collection."
+        ],
+        "plan_updates": [
+          "Completed Chrome first-run prompts and reopened the file.",
+          "Direction-button interactions led to a Success message that replaced the grid."
+        ],
+        "pre_plan": [
+          {
+            "action": "Open the file manager and access Downloads.",
+            "status": "adjusted",
+            "step_id": 1,
+            "success_criteria": [
+              "Downloads contents are available."
+            ]
+          },
+          {
+            "action": "Open task.html.",
+            "status": "success",
+            "step_id": 2,
+            "success_criteria": [
+              "The file-opening flow starts."
+            ]
+          },
+          {
+            "action": "Open the file with Chrome.",
+            "status": "success",
+            "step_id": 3,
+            "success_criteria": [
+              "The maze page loads in Chrome."
+            ]
+          },
+          {
+            "action": "Use direction buttons and verify X in the bottom-right cell.",
+            "status": "adjusted",
+            "step_id": 4,
+            "success_criteria": [
+              "X is visibly in the bottom-right cell."
+            ]
+          }
+        ],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "inconclusive",
+        "summary": "Opened task.html in Chrome and used the direction buttons until the page displayed “Success!”. The grid was then replaced, preventing verification that X visibly occupies the bottom-right cell.",
+        "unmet_criteria": [
+          "The task.html grid in Chrome visibly shows X in the bottom-right cell."
+        ]
+      }
+    },
+    {
+      "stepId": 6,
+      "tool": "agent_runtime.verifier",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "A Success message does not satisfy the explicit requirement that X visibly occupy the bottom-right grid cell."
+        ],
+        "evidence": [
+          "Final assert_with_ai call call_uFOaqSa1DpI2P73r4kmvFbpi returned status=failed, passed=false, failure_category=assertion_error, and confidence=1.0.",
+          "The backend explanation states: “The maze grid has been replaced by a ‘Success!’ message in Chrome. No grid or bottom-right cell is currently visible, so X is not currently visible.”",
+          "The assertion execution record references screenshot artifacts/screenshots/screenshot-agent-assert-with-ai-31-prepare-before-action-1-8925a2352fe2.png.",
+          "The main agent's structured output reports the corresponding failed visual assertion. No supplied evidence contradicts the backend's final visual finding."
+        ],
+        "plan_updates": [],
+        "pre_plan": [
+          {
+            "action": "Verify the supplied final visual assertion against the verification goal.",
+            "status": "failed",
+            "step_id": 1,
+            "success_criteria": [
+              "The task.html grid in Chrome visibly shows X in the bottom-right cell."
+            ]
+          }
+        ],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "failed",
+        "summary": "The required final visible state is false: the backend AI assertion found that Chrome displayed “Success!” instead of the maze grid, with no X or bottom-right cell visible.",
+        "unmet_criteria": [
+          "The task.html grid in Chrome visibly shows X in the bottom-right cell."
+        ]
+      }
+    }
+  ],
+  "budgetSummary": {
+    "admitted": 18,
+    "attempted": 18,
+    "deadlineExceeded": false,
+    "deadlineMonotonic": 702323.528536958,
+    "denied": 0,
+    "deviceRestoredByClose": false,
+    "exclusions": [
+      "driver_construction",
+      "uiautomator2_service_startup",
+      "observation_and_assertion_side_effects",
+      "external_processes_and_direct_driver_access"
+    ],
+    "exhausted": false,
+    "failed": 0,
+    "inFlight": 0,
+    "inputTextUnit": "composite_click_optional_clear_set_text",
+    "maximum": 20,
+    "securityBoundary": false,
+    "succeeded": 18,
+    "unit": "admitted_android_harness_write_capability_dispatch",
+    "writeCapabilities": [
+      "launch_app",
+      "kill_app",
+      "tap_on",
+      "tap_at",
+      "long_press_on",
+      "input_text",
+      "press_key",
+      "swipe"
+    ]
+  },
+  "actions": [
+    {
+      "ordinal": 0,
+      "stepId": "agent-launch_app-1",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [],
+      "output": {
+        "app_id": "com.android.chrome"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[0]"
+    },
+    {
+      "ordinal": 1,
+      "stepId": "agent-ui_snapshot-2",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "23:55",
+        "23:55",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Tue, Nov 10",
+        "Tue, Nov 10",
+        "Gmail",
+        "Gmail",
+        "Photos",
+        "Photos",
+        "YouTube",
+        "YouTube",
+        "Home",
+        "Phone",
+        "Phone",
+        "Messages",
+        "Messages",
+        "Chrome",
+        "Chrome",
+        "Calendar",
+        "Predicted app: Calendar",
+        "Search",
+        "Google app",
+        "Voice search",
+        "Google Lens"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 27981,
+          "retained_characters": 7650
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[1]"
+    },
+    {
+      "ordinal": 2,
+      "stepId": "agent-swipe-3",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[2]"
+    },
+    {
+      "ordinal": 3,
+      "stepId": "agent-ui_snapshot-4",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "23:55",
+        "23:55",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Audio Recorder",
+        "Audio Recorder",
+        "Broccoli",
+        "Broccoli",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Chrome",
+        "Chrome",
+        "Clipper",
+        "Clipper",
+        "Clock",
+        "Clock",
+        "Contacts",
+        "Contacts",
+        "Draw",
+        "Draw",
+        "Drive",
+        "Drive",
+        "Files",
+        "Files",
+        "Gallery",
+        "Gallery",
+        "Gmail",
+        "Gmail",
+        "Google",
+        "Google",
+        "Joplin",
+        "Joplin",
+        "Maps",
+        "Maps",
+        "Markor",
+        "Markor",
+        "Messages",
+        "Messages",
+        "OpenTracks",
+        "OpenTracks",
+        "OsmAnd",
+        "OsmAnd",
+        "Phone",
+        "Phone",
+        "Photos",
+        "Photos",
+        "Pro Expense",
+        "Pro Expense",
+        "Gallery",
+        "Gallery",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Tasks",
+        "Tasks",
+        "Search",
+        "Google app",
+        "Search apps, web and more",
+        "Voice search",
+        "Google Lens",
+        "Home"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 37017,
+          "retained_characters": 12575
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 6,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[3]"
+    },
+    {
+      "ordinal": 4,
+      "stepId": "agent-tap_on-5",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "accessibilityId": "Files"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[4]"
+    },
+    {
+      "ordinal": 5,
+      "stepId": "agent-ui_snapshot-6",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "23:55",
+        "23:55",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Downloads",
+        "Images",
+        "Audio",
+        "Videos",
+        "Documents",
+        "Files in Downloads",
+        "List view",
+        "Show roots",
+        "Downloads",
+        "Search",
+        "More options",
+        "task.html",
+        "4.77 kB",
+        "23:54"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 38138,
+          "retained_characters": 9013
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 15,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[5]"
+    },
+    {
+      "ordinal": 6,
+      "stepId": "agent-tap_on-7",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "text": "task.html"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[6]"
+    },
+    {
+      "ordinal": 7,
+      "stepId": "agent-ui_snapshot-8",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "23:55",
+        "23:55",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Open with Chrome",
+        "Just once",
+        "Always",
+        "Use a different app",
+        "HTML Viewer",
+        "Markor"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 24704,
+          "retained_characters": 5658
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[7]"
+    },
+    {
+      "ordinal": 8,
+      "stepId": "agent-tap_on-9",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "android:id/button_once"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[8]"
+    },
+    {
+      "ordinal": 9,
+      "stepId": "agent-ui_snapshot-10",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "23:56",
+        "23:56",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Welcome to Chrome",
+        "By using Chrome, you agree to the Google Terms of ",
+        "Help make Chrome better by sending usage statistic",
+        "Accept & continue"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 21634,
+          "retained_characters": 5288
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 9,
+          "clipped_attributes": 3
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[9]"
+    },
+    {
+      "ordinal": 10,
+      "stepId": "agent-tap_on-11",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.android.chrome:id/terms_accept"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[10]"
+    },
+    {
+      "ordinal": 11,
+      "stepId": "agent-ui_snapshot-12",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "23:56",
+        "23:56",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Turn on sync?",
+        "Sync your passwords, history & more on all devices",
+        "Google may use your history to personalize Search ",
+        "You can always choose what to sync in settings.",
+        "No thanks",
+        "Add account"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 21943,
+          "retained_characters": 5303
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 10,
+          "clipped_attributes": 2
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[11]"
+    },
+    {
+      "ordinal": 12,
+      "stepId": "agent-tap_on-13",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.android.chrome:id/negative_button"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[12]"
+    },
+    {
+      "ordinal": 13,
+      "stepId": "agent-ui_snapshot-14",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "23:56",
+        "23:56",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Turn on sync?",
+        "Sync your passwords, history & more on all devices",
+        "Google may use your history to personalize Search ",
+        "You can always choose what to sync in settings.",
+        "No thanks",
+        "Add account"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 21943,
+          "retained_characters": 5303
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 10,
+          "clipped_attributes": 2
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[13]"
+    },
+    {
+      "ordinal": 14,
+      "stepId": "agent-tap_on-15",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "text": "No thanks"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[14]"
+    },
+    {
+      "ordinal": 15,
+      "stepId": "agent-ui_snapshot-16",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "23:56",
+        "23:56",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Downloads",
+        "Images",
+        "Audio",
+        "Videos",
+        "Documents",
+        "Files in Downloads",
+        "List view",
+        "Show roots",
+        "Downloads",
+        "Search",
+        "More options",
+        "task.html",
+        "4.77 kB",
+        "23:54"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 38138,
+          "retained_characters": 9013
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 15,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[15]"
+    },
+    {
+      "ordinal": 16,
+      "stepId": "agent-tap_on-17",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "text": "task.html"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[16]"
+    },
+    {
+      "ordinal": 17,
+      "stepId": "agent-ui_snapshot-18",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "23:56",
+        "23:56",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Open with Chrome",
+        "Just once",
+        "Always",
+        "Use a different app",
+        "HTML Viewer",
+        "Markor"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 24704,
+          "retained_characters": 5658
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[17]"
+    },
+    {
+      "ordinal": 18,
+      "stepId": "agent-tap_on-19",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "android:id/button_once"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[18]"
+    },
+    {
+      "ordinal": 19,
+      "stepId": "agent-ui_snapshot-20",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "23:56",
+        "23:56",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Search with Sogou",
+        "Chrome can use Sogou for search in China. You can ",
+        "Keep Google",
+        "OK"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 18745,
+          "retained_characters": 4828
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 6,
+          "clipped_attributes": 2
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[19]"
+    },
+    {
+      "ordinal": 20,
+      "stepId": "agent-tap_on-21",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.android.chrome:id/button_secondary"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[20]"
+    },
+    {
+      "ordinal": 21,
+      "stepId": "agent-ui_snapshot-22",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "23:56",
+        "23:56",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Maze Puzzle",
+        "X",
+        "Up",
+        "Down",
+        "Left",
+        "Right",
+        "No internet connection",
+        "Home",
+        "Your connection to this site is not secure",
+        "content://com.android.providers.downloads.document",
+        "Switch or close tabs",
+        "More options"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 27712,
+          "retained_characters": 6969
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 11,
+          "clipped_attributes": 2
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[21]"
+    },
+    {
+      "ordinal": 22,
+      "stepId": "agent-assert_with_ai-23",
+      "action": "assert_with_ai",
+      "status": "failed",
+      "error": null,
+      "params": {
+        "prompt": "Inspect the grid: describe its row and column count, current X cell, and whether X is in the bottom-right cell. State the directions needed to reach bottom-right if unobstructed.",
+        "optional": false
+      },
+      "uiLabels": [],
+      "output": {
+        "status": "failed",
+        "passed": false,
+        "explanation": "The grid has 4 rows and 4 columns. X is at row 1, column 1 (top-left), not the bottom-right cell at row 4, column 4. If unobstructed, reaching bottom-right requires 3 moves down and 3 moves right. With the visible obstacles, a clear route is Right, Down, Down, Down, Right, Right.",
+        "confidence": 1.0,
+        "provider": "github_copilot",
+        "model": "gpt-6.1-sol",
+        "latency_ms": 9304,
+        "token_usage": {
+          "input_tokens": 3289,
+          "output_tokens": 187,
+          "total_tokens": 3476
+        },
+        "artifact_refs": [
+          {
+            "artifact_id": "screenshot-agent-assert-with-ai-23-invoke-assert-with-ai-1-774ec504e350",
+            "kind": "screenshot",
+            "path": "artifacts/screenshots/screenshot-agent-assert-with-ai-23-invoke-assert-with-ai-1-774ec504e350.png",
+            "mime_type": "image/png",
+            "size_bytes": 146705,
+            "sha256": "d75d58517cfbfb67e607b6134313b6737a95d0a271a6df46763ca0f7e062615b",
+            "availability": "available",
+            "unavailable_reason": null,
+            "capture_occurrence": 1,
+            "created_at": "2026-11-10T15:56:58.237110Z",
+            "metadata": {
+              "capture_reason": "assert-with-ai",
+              "redacted": false
+            }
+          }
+        ],
+        "error": null,
+        "metadata": {
+          "provider_metadata": {
+            "endpoint_family": "github_copilot",
+            "copilot_plan": "enterprise"
+          }
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[22]"
+    },
+    {
+      "ordinal": 23,
+      "stepId": "agent-tap_on-24",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "Right"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[23]"
+    },
+    {
+      "ordinal": 24,
+      "stepId": "agent-tap_on-25",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "Down"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[24]"
+    },
+    {
+      "ordinal": 25,
+      "stepId": "agent-tap_on-26",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "Down"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[25]"
+    },
+    {
+      "ordinal": 26,
+      "stepId": "agent-tap_on-27",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "Down"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[26]"
+    },
+    {
+      "ordinal": 27,
+      "stepId": "agent-tap_on-28",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "Right"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[27]"
+    },
+    {
+      "ordinal": 28,
+      "stepId": "agent-tap_on-29",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "Right"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[28]"
+    },
+    {
+      "ordinal": 29,
+      "stepId": "agent-ui_snapshot-30",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "23:57",
+        "23:57",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Maze Puzzle",
+        "Success!",
+        "No internet connection",
+        "Home",
+        "Your connection to this site is not secure",
+        "content://com.android.providers.downloads.document",
+        "Switch or close tabs",
+        "More options"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 25646,
+          "retained_characters": 6513
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 10,
+          "clipped_attributes": 2
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[29]"
+    },
+    {
+      "ordinal": 30,
+      "stepId": "agent-assert_with_ai-31",
+      "action": "assert_with_ai",
+      "status": "failed",
+      "error": null,
+      "params": {
+        "prompt": "Verify that the task.html maze grid in Chrome visibly shows X in the bottom-right cell. If the grid has been replaced by a Success message, explicitly state that and do not claim X is currently visible.",
+        "optional": false
+      },
+      "uiLabels": [],
+      "output": {
+        "status": "failed",
+        "passed": false,
+        "explanation": "The maze grid has been replaced by a “Success!” message in Chrome. No grid or bottom-right cell is currently visible, so X is not currently visible.",
+        "confidence": 1.0,
+        "provider": "github_copilot",
+        "model": "gpt-6.1-sol",
+        "latency_ms": 4650,
+        "token_usage": {
+          "input_tokens": 3292,
+          "output_tokens": 52,
+          "total_tokens": 3344
+        },
+        "artifact_refs": [
+          {
+            "artifact_id": "screenshot-agent-assert-with-ai-31-invoke-assert-with-ai-1-ca3b431a67dc",
+            "kind": "screenshot",
+            "path": "artifacts/screenshots/screenshot-agent-assert-with-ai-31-invoke-assert-with-ai-1-ca3b431a67dc.png",
+            "mime_type": "image/png",
+            "size_bytes": 128292,
+            "sha256": "ffa007ea408ebc3a0c2576558ce2b403eedff32bdc36ff7af49e8300c6af2361",
+            "availability": "available",
+            "unavailable_reason": null,
+            "capture_occurrence": 1,
+            "created_at": "2026-11-10T15:57:51.308169Z",
+            "metadata": {
+              "capture_reason": "assert-with-ai",
+              "redacted": false
+            }
+          }
+        ],
+        "error": null,
+        "metadata": {
+          "provider_metadata": {
+            "endpoint_family": "github_copilot",
+            "copilot_plan": "enterprise"
+          }
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[30]"
+    },
+    {
+      "ordinal": 31,
+      "stepId": "agent-kill_app-32",
+      "action": "kill_app",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [],
+      "output": {
+        "app_id": "com.android.chrome"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[31]"
+    }
+  ],
+  "originalNativeExecutionPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/003-BrowserMaze/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-003-20261110T155454Z-035d6c/execution-result.json",
+  "originalNativeResultPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/003-BrowserMaze/raw-private/fsq-native/worker/fsq-task-result.private.json",
+  "originalGoalPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/003-BrowserMaze/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-003-20261110T155454Z-035d6c/sources/000-goal.txt"
+}

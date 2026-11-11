@@ -1,0 +1,14 @@
+{
+  "name": "after-static-system",
+  "observedAtUnix": 1794007161.932301,
+  "command": [
+    "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+    "-s",
+    "emulator-5554",
+    "shell",
+    "pidof system_server surfaceflinger; service check activity; service check settings; service check window"
+  ],
+  "returnCode": 0,
+  "stdout": "340 505\nService activity: found\nService settings: found\nService window: found\n",
+  "stderr": ""
+}

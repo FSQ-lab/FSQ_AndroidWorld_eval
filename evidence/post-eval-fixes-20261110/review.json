@@ -1,0 +1,717 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc8": "2026-11-10T10:57:06+08:00",
+  "status": "contract_review_complete",
+  "verdict": "no_actionable_contract_code_findings; not_qualified_for_future_launch",
+  "scope": {
+    "taskIds": [
+      "001",
+      "014",
+      "076"
+    ],
+    "role": "independent read-only reviewer, not implementation owner",
+    "instructions": "Auto-loaded FSQ_LAB/AGENTS.md read; its coordination-only role excludes this subproject implementation/review session. User restricts writes to these two review artifacts.",
+    "excluded": [
+      "third-batch runner/private-scoring implementation and tests (not read)",
+      "devices and live application behavior",
+      "project test suites and previously reported consumer smoke",
+      "source/config/docs edits, service operations, release, staging, commit"
+    ],
+    "timer": "FSQRepairHourly01a1c098 untouched: no stop, reconfiguration or service operations in this review"
+  },
+  "sourceIdentity": {
+    "parentHeadObserved": "977020aa4306bc7f5628ec69f65ea998af3013a1",
+    "submoduleHeadAndParentGitlink": "55ddaf5edc6f6c25673aed343907d5b9dca66f84",
+    "submoduleState": "8 modified tracked contract files; generated state_pb2.py/state_pb2_grpc.py/task_pb2.py/task_pb2_grpc.py untracked and preserved",
+    "parentREADMEState": "untracked (?? README.md); git diff alone would omit it",
+    "reviewedSourceSetSha256": "995e8378ec4ca435a7f739356e64089597a97c7c76a8870efe75e6a44925286d",
+    "digestAlgorithm": "SHA256 of UTF-8 concatenation of sorted path + TAB + file SHA256 + LF for the nine sourceFiles entries; working-tree byte identity, not commit or installed identity",
+    "sourceFiles": [
+      {
+        "path": "README.md",
+        "sha256": "8f2ff828646796e75c6854f446021f129d267995846373d021d05faf79a8568b"
+      },
+      {
+        "path": "android_world/android_world/task_evals/single/audio_recorder.py",
+        "sha256": "f9a3a0143f711c9f111a372ce8ed27db93fe5d5788322f4f1425106ea529357f"
+      },
+      {
+        "path": "android_world/android_world/task_evals/single/audio_recorder_test.py",
+        "sha256": "d13a7d093646fb4b03f94d5d84b92306c93c7cfd0ab46a5aa6e2da38d1f82b93"
+      },
+      {
+        "path": "android_world/android_world/task_evals/single/expense.py",
+        "sha256": "2068db47b2e4681a6bf3adfaa639db431acf6a60c8b0523101f8eb6b7efabba9"
+      },
+      {
+        "path": "android_world/android_world/task_evals/single/expense_test.py",
+        "sha256": "8f67e35a2bdd4cd6eef12a0af6b2326a8bbf7e4f69e6828311290f7abdd463db"
+      },
+      {
+        "path": "android_world/android_world/task_evals/information_retrieval/proto/tasks.textproto",
+        "sha256": "9442158ac415199aa6b6511e65626491c6dd325e601f572f9aa5012aa6ec15e4"
+      },
+      {
+        "path": "android_world/android_world/task_evals/information_retrieval/proto_utils_test.py",
+        "sha256": "563a951e04852c84fe58d4883a34406d892fc7cde27ef9928de9bbbe39ced7bb"
+      },
+      {
+        "path": "android_world/android_world/task_metadata.json",
+        "sha256": "17b65f385c353491044ba639b625a87af8d18e9c2f4dd26b73dc31c5baafd14c"
+      },
+      {
+        "path": "android_world/docs/tasks_guide.md",
+        "sha256": "b047752d906639f2d1d841e9d77e99e3669ae323d126b6733b071d3ac27c630b"
+      }
+    ],
+    "dependencyFiles": [
+      {
+        "path": "android_world/android_world/utils/file_utils.py",
+        "sha256": "5bd04ccdafba65f4b909c8bb9fca166e5eba92dc2e64c83f80729941dfab2d1d"
+      },
+      {
+        "path": "android_world/android_world/task_evals/utils/user_data_generation.py",
+        "sha256": "7dd456f18429668d0dfd48f3ddcdc4134b1a26f66cbe84ad0d85bbc902cb9c7b"
+      },
+      {
+        "path": "android_world/android_world/task_evals/common_validators/file_validators.py",
+        "sha256": "ce7137e22fe94d25a6ebdf1fdd8bf0cf327ed20907af48a2f2ee34ca6b13bf20"
+      },
+      {
+        "path": "android_world/android_world/task_evals/common_validators/sqlite_validators.py",
+        "sha256": "7b932acd2e19f1d4f43cea1badf26ace2ed3363258ae26850d1b09889bfa9d78"
+      },
+      {
+        "path": "android_world/android_world/task_evals/utils/sqlite_utils.py",
+        "sha256": "56280b32e6aaf7d561bf2e4681a2cc1a6ad930d911105593d17d093678bf1cd0"
+      },
+      {
+        "path": "android_world/android_world/task_evals/information_retrieval/proto_utils.py",
+        "sha256": "9ffabe0879ca094db1fac1b79dea98450f52778bc785b784cbe81e3d4bfc28c1"
+      },
+      {
+        "path": "android_world/android_world/task_evals/information_retrieval/calendar_utils.py",
+        "sha256": "ffd4ea91a5c6a9f9331612d4dfa04e4b4b2ca2f3b4c6e0d8c991d7560e043cd8"
+      },
+      {
+        "path": "android_world/android_world/task_evals/information_retrieval/datetime_utils.py",
+        "sha256": "6812cb1dedc17914eb3c89678fedaacb360a4f71bf3cc5bd8849a986f9f5ba90"
+      },
+      {
+        "path": "android_world/android_world/utils/datetime_utils.py",
+        "sha256": "32594fcd09e038467166678c7894b649f32c3a815f054b5d85c0fdb69b9d6e81"
+      },
+      {
+        "path": "android_world/android_world/task_evals/information_retrieval/information_retrieval_registry.py",
+        "sha256": "8d147c7a186d698b8fc37f388d1ab9e3dd8befb182a927ecc9af65eb644f9e40"
+      },
+      {
+        "path": "android_world/android_world/task_evals/information_retrieval/information_retrieval.py",
+        "sha256": "c222532161018cc3523d9f481f1d8c1ce65c2aa7c44066ff2f51892284c4f75b"
+      },
+      {
+        "path": "android_world/setup.py",
+        "sha256": "b2c0afdc7369646a76abb1c25c80e1f2bb30868e1b4d36981b42a12c246827ae"
+      },
+      {
+        "path": "pyproject.toml",
+        "sha256": "2b9e6f8fb7748f4273e76f2de38070a425e61f712bad93735f52e96a3d8ae137"
+      }
+    ],
+    "analysisFiles": [
+      {
+        "path": "evidence/amkernel-0.1.4-r15-current-stack-20261109T154403Z/failure-analysis/module-map.md",
+        "sha256": "7931c7749911dafff9ff904df3ab486347c109d2c776c838844f644b97ce21e7"
+      },
+      {
+        "path": "evidence/amkernel-0.1.4-r15-current-stack-20261109T154403Z/failure-analysis/review-resolution.md",
+        "sha256": "85b29499493554b7192e02e2a4dab432d62669b344dd885a8b49d8f9ff817f0c"
+      },
+      {
+        "path": "evidence/amkernel-0.1.4-r15-current-stack-20261109T154403Z/failure-analysis/cases.json",
+        "sha256": "42e21b37921ee1a3c76ce011461685543d29c3f54ce1159c84d25e37a208cebd"
+      }
+    ],
+    "frozenManifest": {
+      "path": "campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/manifest.json",
+      "sha256": "b63bb9973bc78729da8ab058d0087c87cb06456479f40737c84e1eeb7a7721b8"
+    },
+    "installedFiles": [
+      {
+        "path": ".venv/lib/python3.11/site-packages/android_world/task_evals/single/audio_recorder.py",
+        "sha256": "8f0f48f51577a831ba5a7e52dc5e4b9ad1c90d41fbcb456c640e5a14add340cb"
+      },
+      {
+        "path": ".venv/lib/python3.11/site-packages/android_world/task_evals/single/expense.py",
+        "sha256": "cc57bd82831a17b427ea93eb4db559f6886cc1df402c0eac4bcb72064d7f3f81"
+      },
+      {
+        "path": ".venv/lib/python3.11/site-packages/android_world/task_evals/information_retrieval/proto/tasks.textproto",
+        "sha256": "953ccec9987c4bd3a23178f13c77b28f315ce66f3dd57cbdbdaa1497a83403d0"
+      },
+      {
+        "path": ".venv/lib/python3.11/site-packages/android_world/task_metadata.json",
+        "sha256": "fd3cf23ebb26e461a961dd60ff3f011d7e6ec78c992c10babbbdb86f9dd591e1"
+      }
+    ],
+    "installedOrigin": {
+      "url": "file:///Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/android_world",
+      "editable": false,
+      "evidence": ".venv/lib/python3.11/site-packages/android_world-0.1.0.dist-info/direct_url.json"
+    },
+    "warning": "Modified source checkout is not the historical oracle. Current retained installed bytes are not proof of formal-time import identity. No project imports executed to infer active runtime resolution."
+  },
+  "findings": [],
+  "contractAssessments": [
+    {
+      "taskId": "001",
+      "verdict": "correct_in_reviewed_source",
+      "anchors": [
+        "android_world/android_world/task_evals/single/audio_recorder.py:85-123,125-159",
+        "android_world/android_world/utils/file_utils.py:228-258",
+        "android_world/android_world/task_evals/utils/user_data_generation.py:108-131",
+        "android_world/android_world/task_evals/single/audio_recorder_test.py:76-122"
+      ],
+      "evidence": "Generator preserves the .m4a extension; goal interpolates complete file_name; evaluator now passes it unchanged into exact full-path set membership. No suffix append or stem/alias fallback. Wrong double suffix/stem/unrelated/missing paths cannot equal requested full path. Explicit double-suffixed params remain literal requests, not aliases. Tests replace ADB transport only and retain the real lookup; not a mocked Boolean echo.",
+      "unchangedBoundary": "Existence helper accepts a file or directory and does not check nonzero audio/duration. This is pre-existing, not a new audio-validity guarantee or a reason to expand this repair.",
+      "minimalCorrection": null
+    },
+    {
+      "taskId": "014",
+      "verdict": "correct_in_reviewed_source",
+      "anchors": [
+        "android_world/android_world/task_evals/single/expense.py:233-244,247-281,324-372",
+        "android_world/android_world/task_evals/common_validators/sqlite_validators.py:118-192,257-310",
+        "android_world/android_world/task_evals/utils/sqlite_utils.py:27-103",
+        "android_world/android_world/task_evals/single/expense_test.py:168-349"
+      ],
+      "evidence": "Actual csv.writer emits original fields with independent yes/no selection metadata; quotes pipes, quotes and LF. Rows/reference notes are not annotated or mutated. Only Markor task overrides free_form_fields to name, leaving note/amount/category exact in production comparator. Production scorer lists persisted SQLite rows before invoking that comparator; exact-note enforcement is not confined to display or mocked return values. Row-count and preservation of original DB rows remain enforced.",
+      "sharedBehavior": "Ordinary and Gallery expense tasks retain fuzzy name/note semantics; shared CSV/text helper and sqlite comparator are unchanged. Existing threshold is not relaxed.",
+      "limits": "New tests create synthetic Expense objects, not actual app persistence. Real Markor editing/Pro Expense database persistence was not exercised. Bare-CR stdlib probe round-tripped under current Python; proposed CR concern was falsified, no hardening request.",
+      "minimalCorrection": null
+    },
+    {
+      "taskId": "076",
+      "verdict": "correct_in_reviewed_source",
+      "anchors": [
+        "android_world/android_world/task_evals/information_retrieval/proto/tasks.textproto:857-963",
+        "android_world/android_world/task_evals/information_retrieval/information_retrieval_registry.py:51-60,90-112",
+        "android_world/android_world/task_evals/information_retrieval/proto_utils.py:147-251,297-325,409-430",
+        "android_world/android_world/task_evals/information_retrieval/calendar_utils.py:35-73,76-189,192-331",
+        "android_world/android_world/task_evals/information_retrieval/information_retrieval.py:65-119",
+        "android_world/android_world/task_evals/information_retrieval/proto_utils_test.py:1049-1156",
+        "android_world/android_world/utils/datetime_utils.py:215-234"
+      ],
+      "evidence": "Prompt explicitly restricts event starts to named date 00:00..23:59 and strict > hour:00. Target is hour:30; exactly one relevant event. Same-date GREATER_THAN exclusion removes every qualifying random competitor including intervening starts, target ties and later crossing-midnight starts. Therefore existing IDENTITY(title) answer equals the unique earliest qualifying title without an argmin oracle change.",
+      "parameterDomains": {
+        "date": "15 dates October 15..29 2023",
+        "title": "10 nonempty comma-free titles",
+        "hour": [
+          "06",
+          "07",
+          "09",
+          "10",
+          "11",
+          "12",
+          "13",
+          "15",
+          "16",
+          "17",
+          "18",
+          "20",
+          "21"
+        ],
+        "duration": "16 declared positive supported formats, 5 minutes..3 h"
+      },
+      "rangeAndNulls": "All target starts are same-day 06:30..21:30. A 3h target at21:30 ends next day; allowed by start-only contract, not a cross-date answer. Every declared duration matches existing h/m parser. Random datetime returns a concrete datetime, parser returns concrete values or raises, and 100 failed noise attempts raise ValueError rather than returning null. No introduced nullable/random rollover path found.",
+      "equalityAndTies": "Threshold-equality events are not answers. Existing shared endpoint checks can also conservatively exclude positive-duration equality/earlier or off-date-overlapping noise. Tests isolate equality with point events and correctly exclude random target ties; multiple relevant ties are not generated or tested. Tie wording is consistent with the singleton generated answer, not evidence that a new general tie/minimum scorer exists.",
+      "legacyParams": "New declaration is hour only. Registry/formatter use that declaration; no time-to-hour shim. Existing old campaign time params remain historical; do not load them into this new definition. Metadata/docs updated. Scoped symbol search found no additional active task-specific caller outside definition/test/metadata/guide.",
+      "unchangedBoundary": "Shared fuzzy list comparator is pre-existing and has no one-to-one matching guarantee; singleton task does not introduce that weakness. Shared helpers have no patch changes.",
+      "minimalCorrection": null
+    }
+  ],
+  "integrationGates": [
+    {
+      "id": "G1",
+      "severity": "P1_before_future_evaluation",
+      "kind": "known_integration_gate_not_contract_defect",
+      "location": "README.md:198-200; android_world/docs/tasks_guide.md:219; parent android_world gitlink",
+      "evidence": "Submodule HEAD and parent gitlink both remain55ddaf5..., while8 tracked definition/test/docs files are dirty. Parent README is untracked. Commit/gitlink alone cannot reproduce reviewed new definitions.",
+      "consumerRisk": "A fresh checkout loses repaired definitions and possibly their parent contract record; using old revision as new source identity is incorrect.",
+      "minimalAction": "Under separate authorization, review/commit intended submodule changes without sweeping generated/unrelated files; advance parent gitlink and include intended README. No such action performed here."
+    },
+    {
+      "id": "G2",
+      "severity": "P1_before_future_evaluation",
+      "kind": "known_installation_and_qualification_gate",
+      "location": "README.md:198-200; pyproject.toml:24-25; android_world/setup.py:64-93; .venv/lib/python3.11/site-packages/android_world-0.1.0.dist-info/direct_url.json:1",
+      "evidence": "Installed package is a non-editable local-path install. All3 installed implementation/textproto hashes and metadata hash differ from reviewed checkout. Installed metadata hash fd3cf23e... equals frozen manifest metadata pin, while new source metadata is17b65f38....",
+      "consumerRisk": "Ordinary installed imports may still consume old definitions; PYTHONPATH-source regression proof is not installed-consumer qualification. Reusing the frozen manifest could mix old time params and identity with new hour definition.",
+      "minimalAction": "Package/install the separately approved identity, verify actual consumer import and task-data bytes, create a new manifest/task identity and perform fresh normal qualification. Do not silently rewrite old manifests/params or install as part of this review."
+    }
+  ],
+  "verification": {
+    "executed": [
+      "Read scoped Git patch/status/gitlink/HEAD and actual current source/test/docs sections; source SHA256 receipts",
+      "Read final analysis module-map/review-resolution and projected001/014/076 case provenance/oracle/unknowns",
+      "Read frozen manifest identity/affected params; hash installed copies and read non-editable origin",
+      "NEW isolated stdlib-only bare-CR CSV round-trip probe in eval and project Python3.11.16; no project imports, device access or file writes"
+    ],
+    "stdlibCRProbe": {
+      "inputNoteRepr": "'Receipt\\rKeep original'",
+      "projectPython": "3.11.16 (Aug25 2026)",
+      "outputCSVRepr": "'name|note|reimbursable\\nTaxi|\"Receipt\\rKeep original\"|yes\\n'",
+      "parsed": [
+        {
+          "name": "Taxi",
+          "note": "Receipt\rKeep original",
+          "reimbursable": "yes"
+        }
+      ],
+      "result": "one record, exact note; no defect"
+    },
+    "notExecuted": [
+      "Existing15-test command or any project test suite",
+      "Existing offline consumer smoke",
+      "Application UI/device/SQLite persistence validation",
+      "Real registry initialization/generation/IR scoring execution",
+      "Install/build/release, manifest preparation, qualification or rescoring",
+      "Historical whole-campaign raw immutability audit"
+    ],
+    "ownerReportedOnly": {
+      "result": "15 passed,2 warnings; offline consumer smoke passed",
+      "receipt": "README.md:202-213",
+      "independentlyRerun": false
+    },
+    "reviewerContributions": {
+      "ReviewExpenseContract": "Read-only014 plus persisted consumer review; no tests/probes by child; CR inference withdrawn after observed parent probe",
+      "ReviewCalendarContract": "Read-only076 generator/parser/exclusion/expected-answer review; no tests/probes by child"
+    },
+    "lsp": "No language servers configured; navigation used scoped file reads and grep."
+  },
+  "historicalBoundary": {
+    "campaignId": "amkernel-0.1.4-r15-current-stack-full-20261109T154403Z",
+    "recordedValidScore": 0.8318965517241379,
+    "scoreStatus": "Existing analysis receipt only; unchanged by this review, not recalculated",
+    "confidence": "Historical001/014/076 source-contract defects confirmed, episode causal attribution probable; physical recording path, final expense DB and historical strict-first inventory remain unknown. No retroactive pass claims.",
+    "writes": "Only review.md and review.json; historical manifests/results/analysis/source/config and unrelated user files untouched"
+  },
+  "handoff": {
+    "contractReviewComplete": true,
+    "thirdBatchRunnerReview": "Not started; await owner delivery and separate assignment",
+    "sourceCorrectionsRequested": []
+  },
+  "diagnosticsReview": {
+    "recordedAtUtc8": "2026-11-10T11:05:50+08:00",
+    "scope": "Second independent review: delivered runner private evaluator diagnostics only",
+    "status": "review_complete_changes_requested",
+    "verdict": "3 P2 findings; no demonstrated historical score mutation or new public expected-value disclosure; helper source identity inclusion is correct",
+    "sourceIdentity": {
+      "sourceFiles": [
+        {
+          "path": "src/fsq_androidworld_eval/runner.py",
+          "sha256": "a1d14605496f4778b99d5f89a30eb69571990dfe419ffdaa0c18a5d04ba3b7de"
+        },
+        {
+          "path": "src/fsq_androidworld_eval/evaluator_diagnostics.py",
+          "sha256": "bb1d37ea7c62df2d7457a704f7f333df244e850fb2b2b4b3fd6e7130eca359e6"
+        },
+        {
+          "path": "tests/test_evaluator_diagnostics.py",
+          "sha256": "ca39f13fef7baf325bb3d59a439c59b611bfe8f6c02453fe1d01302619908a75"
+        }
+      ],
+      "matchesOwnerVerificationSourceHashes": true,
+      "consumerFiles": [
+        {
+          "path": "src/fsq_androidworld_eval/campaign.py",
+          "sha256": "538348c40a9a8d05918c89c383235c825f3e636aa92da1bb9725472ee6867072"
+        },
+        {
+          "path": "src/fsq_androidworld_eval/scorer.py",
+          "sha256": "3a06d155fbc349c51614dfc316733e28d53f30b4d5a3a8836638a151ea95f896"
+        },
+        {
+          "path": "src/fsq_androidworld_eval/preparation.py",
+          "sha256": "79cad04da100d9f345940db991a875447c60fea63dea3f859de73d216125066d"
+        },
+        {
+          "path": "src/fsq_androidworld_eval/continuation.py",
+          "sha256": "a1108b95424273be2a704b39be1855f8809376b59b7c187fbbd6389dde303c10"
+        },
+        {
+          "path": "src/fsq_androidworld_eval/runtime_migration.py",
+          "sha256": "39931f98b49263d38e09b78f99f125f7d2820227f599a4067cb6ffd30ad983c4"
+        }
+      ],
+      "implementationReceipts": [
+        {
+          "path": "evidence/evaluator-private-diagnostics-20261110/implementation.md",
+          "sha256": "1a83817df4a887e8c062b8f61cf06cf30534dee8edd844ad21e4c987bb0b1d57"
+        },
+        {
+          "path": "evidence/evaluator-private-diagnostics-20261110/verification.json",
+          "sha256": "5f4a95cf73b86e44240931d40606229a8270a52c7a6195a3f004617bc7b6f21a"
+        }
+      ],
+      "firstContractReviewPreserved": {
+        "markdownPrefixSha256": "c222426a83b209590cf83cd8c6b5ed66cb72400b7341bd9132c1559ee77d382f",
+        "originalJsonSha256": "d4a7b84c6b1aa90b78f992ce444943c7193c37bc04e5ff6120c491561f55a582",
+        "policy": "Preserve original Markdown bytes as prefix and all original JSON members structurally unchanged; this addendum supersedes only the historical first-part handoff saying runner review had not started."
+      }
+    },
+    "findings": [
+      {
+        "id": "D01",
+        "severity": "P2",
+        "title": "Concurrent in-place filter removal silently skips another active capture",
+        "file": "src/fsq_androidworld_eval/evaluator_diagnostics.py",
+        "symbol": "EvaluatorDiagnostics.__exit__ / __enter__",
+        "lines": [
+          130,
+          144
+        ],
+        "primaryLines": [
+          142,
+          144
+        ],
+        "evidence": "addFilter appends to and removeFilter mutates the shared Logger.filters list in place. Python3.11 Filterer.filter iterates that live list. For [A,B], while threadB is returning from A (thread mismatch), threadA removesA; B shifts to already visited index0, so B receives no record. Normal log sinks still run, and B has no dropped/captureError accounting for the loss, possibly reporting written. Existing test291-319 synchronizes both threads after logging and before detach, excluding this race.",
+        "executedEvidence": {
+          "scope": "NEW isolated stdlib Logger/Filterer primitive, no root/absl changes and no file writes; not real runner or owner tests",
+          "interleaving": "A.filter blocked; removeFilter(A); resume dispatch",
+          "output": {
+            "thread_finished": true,
+            "B_still_registered": true,
+            "B_observed_records": []
+          }
+        },
+        "consumerImpact": "Concurrent private receipts can omit an in-scope evaluator record without declaring loss. No evidence that this occurred in a historical or delivered smoke attempt. Reward logic is not directly changed by this defect.",
+        "minimalCorrection": "Use concurrency-safe immutable/copy-on-write registration snapshots for managed root/absl filters, with serialized updates, or an equivalently safe dispatcher. Do not rely only on a lock inside filter or around removeFilter because stdlib iteration does not acquire it. Preserve foreign filters and logging levels/sinks.",
+        "regressionNeeded": "A deterministic consumer test interleaving one context detach with another record dispatch must preserve the second context record and unchanged foreign sinks/filters; no such test was run here."
+      },
+      {
+        "id": "D02",
+        "severity": "P2",
+        "title": "Unsupported type names bypass projection character budget before serialization",
+        "file": "src/fsq_androidworld_eval/evaluator_diagnostics.py",
+        "symbol": "EvaluatorDiagnostics._value / filter / __exit__",
+        "lines": [
+          58,
+          83,
+          113,
+          173
+        ],
+        "evidence": "Both omission branches insert kind.__name__ without any metadata cap or budget debit, including after node budget exhaustion. json.dumps serializes these strings before log/receipt-byte checks. Large exception-argument type names also cannot be removed by the log/frame-only receipt trimming loop.",
+        "executedEvidence": {
+          "scope": "NEW in-memory execution of actual helper._value, no __enter/logger registration/files",
+          "input": "instance of type(\"T\"*10000,(),{})",
+          "output": {
+            "MAX_VALUE_CHARS": 2048,
+            "omittedType_chars": 10000,
+            "serialized_projection_bytes": 10066
+          }
+        },
+        "consumerImpact": "The claimed2048-character projection bound is false for unsupported values, and transient serialization CPU/memory can scale with arbitrary type-name length. The probe does NOT show a persisted file exceeding64KiB; final receipt checking still bounds successful writes or reports write_failed. No current native-task trigger or privacy disclosure demonstrated.",
+        "minimalCorrection": "Bound type metadata before encoding/copying and charge remaining shared character budget in every omission branch, including node exhaustion. Use a small metadata cap; exhausted budget must not fall back to the full name. A bounded literal omission label is a simpler alternative if type names are not required.",
+        "regressionNeeded": "Behavior test using a long unsupported type name and an exception containing that object must demonstrate bounded projection before serialization; retain honest truncated/write_failed state. Not executed here."
+      },
+      {
+        "id": "D03",
+        "severity": "P2",
+        "title": "Type membership invokes evaluator-owned metaclass hooks and can interrupt scoring",
+        "file": "src/fsq_androidworld_eval/evaluator_diagnostics.py",
+        "symbol": "EvaluatorDiagnostics._value / filter",
+        "lines": [
+          73,
+          121
+        ],
+        "relatedLines": [
+          58,
+          83,
+          95
+        ],
+        "evidence": "kind in (tuple,list,dict) uses equality, not identity. An unsupported object with metaclass.__eq__ can run arbitrary evaluator-owned code during observation. filter catches Exception only, so a hook-raised SystemExit escapes. Ordinary kind.__name__ and exception type-name lookups can also dispatch metaclass attributes/descriptors (static evidence).",
+        "executedEvidence": {
+          "scope": "NEW in-memory call to actual helper.filter with a valid standard LogRecord(funcName=\"probe\"), active same-thread capture; no __enter/root changes/files",
+          "fixture": "Custom metaclass __eq__ raises SystemExit and retains type.__hash__; log arguments contain its instance",
+          "output": {
+            "events": [
+              "metaclass_eq"
+            ],
+            "escaped_exception_type": "SystemExit",
+            "captureErrors": 0,
+            "str_or_repr_called": false
+          },
+          "setupLimit": "Initial synthetic fixture setup needed a hashable metaclass and non-null funcName before reaching the intended branch; final output is from the corrected valid record, not from running a real task."
+        },
+        "consumerImpact": "The supposedly passive observer can abort an otherwise returning evaluator at a log call; runner exceptException does not contain SystemExit (runner817). This contradicts outcome noninterference even when existing sinks do not format the object. No deployed native object exhibiting this behavior was demonstrated.",
+        "minimalCorrection": "Use only kind is tuple/list/dict checks. Avoid user-dispatched type metadata lookup too: use the built-in type-name descriptor (not merely type.__getattribute__, which can still resolve metaclass descriptors) followed by hook-free bounded builtin-str operations, or fixed literals. Do not mask the problem by broadly swallowing BaseException.",
+        "regressionNeeded": "A logging consumer test with hostile metaclass equality/name access must prove no observer-owned hook invocation and unchanged evaluator outcome; not executed here."
+      }
+    ],
+    "acceptanceReview": {
+      "1_scoring": "runner.py791-836 contains exactly one task.is_successful(env), direct reward assignment, original invalidReason/exit/cleanup routing. Ordinary diagnostic IO failures are caught. D03 is an observer-triggered outcome exception; no actual native task outcome was rerun. No timer/deadline values reset; sidecar serialization/IO is added before teardown and is not latency-bounded, as owner explicitly discloses.",
+      "2_privacy": "New result reference contains only relative path/hash/status/bytes or status/errorType. Evaluator native args/trace frames remain in raw-private sidecar and frames include no locals; prompt is assembled before capture. Ordinary evaluator public error is type-only. Existing logging sinks remain unsuppressed and can already emit expected rows to their inherited stderr/log destinations: a pre-existing privacy boundary, not a new leak or proof that all native output is exclusively raw-private. No real sandbox/OS confidentiality validation performed.",
+      "3_logging": "No level/handler/propagate changes; direct root/absl same-thread capture. Other-thread and propagated-child-logger coverage intentionally limited. D01 breaks concurrent detach safety. Same-instance reuse/reentrancy retains/overwrites state, and distinct same-thread nested captures overlap; current runner creates a fresh single-use context and has no nested caller, so no additional current-callsite defect claimed. Ordinary attachment/removal Exception is counted; failed removal leaves inactive filter, not an assurance of arbitrary hostile logger lifecycle safety.",
+      "4_bounds": "Exact builtin value types, finite floats/small ints, depth/items/nodes/record limits and Unicode string slicing bound ordinary values; flood fast-path avoids projecting after filled record/log-byte budget. D02 andD03 show unsupported type handling is not fully bounded or hook-free. Successful sidecar payload still checked <=65536bytes. No performance guarantee against disk latency or arbitrary existing logging sinks.",
+      "5_sidecar": "Helper185-202 creates private directory0700 when needed, exclusive temp file0600, closes then atomic replace and cleanup; production supervisor already creates raw-private0700. write_failed exposes error type without args and no fake hash/path. silent scalar explicitly reports componentResults.not_provided; written does not mean complete logs. No durability/fsync or OS adversarial symlink guarantee claimed. IO error does not replace ordinary native evaluator exception.",
+      "6_identity": "PASS: existing campaign._runtime_identity194-211 globs every src/fsq_androidworld_eval/*.py, so helper is already part of harnessSourceSha256, regardless of Git tracked state. No second identity needed. Existing manifest/qualification/readiness/scorer path mapped below; no complete runtime identity or qualification run because first-batch dirty-submodule/future-install gates remain.",
+      "7_public_error_consumers": "In-repo scorer.record_classification209-220 honors invalidReason first and only tests error presence; cleanup, result provenance and campaign continuation likewise test presence/type rather than evaluator message/traceback. Existing type-only synthetic error contracts already occur in tests/test_campaign.py353,578-589 and tests/test_scorer.py. New tests193-213 assert privacy and invalid_evaluator/cleanup. Message-dependent tests found belong to unchanged preparation/rehearsal errors, not runner evaluator errors. Thus known repo consumers tolerate intentional security narrowing; external/private scripts were not audited.",
+      "8_tests": "Read new319-line tests and owner receipts, did not rerun26passed or5smokes. Most tests use real runner/scorer/native row predicate and persisted JSON references while replacing external device/process boundaries: meaningful consumer behavior, not simple mockecho/wording. Tests do not cover D01detach race, D02long type metadata or D03metaclass dispatch; no new permanent tests written."
+    },
+    "identityConsumerMap": [
+      {
+        "location": "campaign.py133-138,194-211,419-420,520-521",
+        "role": "Existing canonical paths digest and manifest runtimeIdentity producer includes helper."
+      },
+      {
+        "location": "campaign.py624-668,1386-1389,1584-1587",
+        "role": "Live manifest load compares current full runtime identity; qualification and run call it before normal launch."
+      },
+      {
+        "location": "preparation.py367-370; campaign.py820-837",
+        "role": "Readiness stores canonical manifestSha256 (including runtimeIdentity), later checked against manifest; no separate helper-only pin required."
+      },
+      {
+        "location": "continuation.py54-66; runtime_migration.py58-72",
+        "role": "Legacy inheritance permits a new harness hash relative to historical source; current_stack migration requires observed target identity equal explicit approval. This is not permission to drift after the new manifest is pinned."
+      },
+      {
+        "location": "scorer.py686-699,717-735,788-791; campaign.py1251-1256",
+        "role": "Offline audit validates recorded migration/manifest/readiness/checkpoint provenance; recovery rechecks live manifest. Offline scorer deliberately does not recompute current checkout bytes when reading historical results; it is not installed-consumer qualification or a validator of new private sidecar contents."
+      }
+    ],
+    "identityProbe": {
+      "scope": "NEW read-only AST-extracted existing campaign._paths_digest plus canonical native-row hashing; no import of campaign, runtime version/device calls, manifest writes or second deployed identity",
+      "pathCount": 20,
+      "helperIncluded": true,
+      "harnessSourceSha256AtReview": "c64470ac2a06d05ac6ecd727832bebb7f5ccfd941766336ad9225ded0dd23e7f",
+      "withoutHelperDigest": "235acb09bad34e73d1f4e0b81d469bdf4f988765715ed37ce4b8847dfcb52232",
+      "digestsDiffer": true,
+      "limit": "Only source-set membership/hash calculation, not full _runtime_identity or manifest qualification; unrelated source edits later change this snapshot."
+    },
+    "verification": {
+      "executed": [
+        "Read delivered three files, runner patch and implementation/verification receipts",
+        "Scoped reads/grep of existing source identity, public error, classification, cleanup, readiness and offline scorer consumers",
+        "Exact source/receipt SHA256 lock matches owner hashes",
+        "NEW no-file in-memory probes: stdlib dispatch/removal interleaving; actualhelper long type-name projection; actualhelper valid-record metaclass hook escape; existing identity digest membership calculation"
+      ],
+      "interpreter": "Python3.11.16 (Aug25 2026)",
+      "notExecuted": [
+        "Owner26-test command or any project suite",
+        "Owner5offline scenarios or real runner smoke",
+        "Real evaluator/task/device/Agent/sandbox run",
+        "Service operations, including timer checks/stops/reconfiguration",
+        "Full_runtime_identity, preparation, manifest creation/requalification, install/build/release",
+        "Historical rescoring/raw log modifications, source edits, commit/push"
+      ],
+      "ownerEvidenceOnly": {
+        "result": "26passed/2warnings;5offline scenarios",
+        "paths": [
+          "evidence/evaluator-private-diagnostics-20261110/implementation.md",
+          "evidence/evaluator-private-diagnostics-20261110/verification.json"
+        ],
+        "rerun": false
+      },
+      "reviewerContributions": {
+        "ReviewDiagnosticIsolation": "Static scoring/logger lifecycle/concurrent safety review; no execution or writes",
+        "ReviewDiagnosticBounds": "Static projection/private IO review; no execution or writes; parent owns novel probe evidence"
+      }
+    },
+    "handoff": {
+      "sourceChangesPerformed": false,
+      "fixesRequested": [
+        "D01",
+        "D02",
+        "D03"
+      ],
+      "firstContractVerdict": "Unchanged: no actionable001/014/076 code findings; G1/G2 future identity/install/manifest/qualification gates remain open",
+      "timer": "FSQRepairHourly01a1c098 untouched and not reconfigured/stopped by this review",
+      "historicalResults": "Untouched; no new score claim"
+    }
+  },
+  "diagnosticsClosure": {
+    "recordedAtUtc8": "2026-11-10T11:23:37+08:00",
+    "scope": "Targeted close-out of original D01,D02,D03 only; no expanded audit",
+    "status": "resolved",
+    "verdict": "All three original P2 findings resolved in the reviewed corrected bytes; future run gates remain open",
+    "priorReview": {
+      "markdownSha256": "97e7f914073cabc445c249e10c204645a539d6d57a7abfa98ba3e283b7750877",
+      "jsonSha256": "dcdae789b81bd2c416b14aada52fed2bfa1ae3c4b00c5a6e0276c2af1020adf0",
+      "originalFindingsPointer": "#/diagnosticsReview/findings",
+      "policy": "Original findings, old hashes, first contract conclusions and prior review records retained unchanged; this closure is the latest targeted disposition, not a rewrite of history"
+    },
+    "sourceIdentity": {
+      "sourceFiles": [
+        {
+          "path": "src/fsq_androidworld_eval/runner.py",
+          "sha256": "a5864ca8edd0a00af6903ea27b4df84fb73630f6759de2105a9d463cb4fb766c"
+        },
+        {
+          "path": "src/fsq_androidworld_eval/evaluator_diagnostics.py",
+          "sha256": "d231b78432685fc61787a49a3a3cc3b0f31e7567498d90c33fce59192f80febc"
+        },
+        {
+          "path": "tests/test_evaluator_diagnostics.py",
+          "sha256": "95f091f2384889430aab4f00d839933f5fcd2946851ef98a7516f62b67d31977"
+        }
+      ],
+      "allMatchOwnerCorrections0": true,
+      "ownerReceipt": {
+        "path": "evidence/evaluator-private-diagnostics-20261110/verification.json",
+        "pointer": "#/corrections/0",
+        "sha256": "7e44cb90737500675277b7a837e0d7e2254a7bc1ece64cea749c1721e1ddf8bf"
+      },
+      "implementationReceipt": {
+        "path": "evidence/evaluator-private-diagnostics-20261110/implementation.md",
+        "lines": [
+          122,
+          198
+        ],
+        "sha256": "edb76403177d42154554ccb242a3d941c913385a658f32cc1f73b3790768b50a"
+      },
+      "identityLimit": "These three source hashes are a correction review snapshot, not complete runtime/installed/manifest identity or launch qualification. Previous identity consumer analysis not re-audited."
+    },
+    "resolutions": [
+      {
+        "id": "D01",
+        "originalSeverity": "P2",
+        "status": "resolved",
+        "code": [
+          {
+            "file": "src/fsq_androidworld_eval/evaluator_diagnostics.py",
+            "symbol": "_FILTER_UPDATE_LOCK / EvaluatorDiagnostics.__enter__ / __exit__",
+            "lines": [
+              34,
+              36,
+              153,
+              176
+            ]
+          }
+        ],
+        "evidence": "Module-private lock serializes managed registrations/detach. Both operations assign new logger.filters lists, leaving in-flight stdlib iterators on their old snapshot; removal is identity-only and retains foreign objects/order. No in-place addFilter/removeFilter in helper and no handler/level/propagation changes.",
+        "consumerTest": {
+          "file": "tests/test_evaluator_diagnostics.py",
+          "symbol": "test_detaching_capture_preserves_inflight_other_attempt_and_foreign_filters",
+          "lines": [
+            328,
+            399
+          ],
+          "assessment": "root+absl cases pause B after the real A.filter, fully exit A while B dispatch is in flight, then inspect both persisted receipts and native sinks/foreign filters. Tests enforce own-record attribution, no silent drops/errors, preserved before+late foreign filter order/sink/level. This is the original missing schedule, not counter-only or wiring proof."
+        },
+        "boundary": "Guarantee covers this helper-managed updates. Arbitrary concurrent third-party in-place logger.filters mutation remains outside scope and is explicitly documented; not a residual original D01 defect."
+      },
+      {
+        "id": "D02",
+        "originalSeverity": "P2",
+        "status": "resolved",
+        "code": [
+          {
+            "file": "src/fsq_androidworld_eval/evaluator_diagnostics.py",
+            "symbol": "bounded_type_name / _name / _value / _exception",
+            "lines": [
+              31,
+              51,
+              72,
+              124
+            ]
+          }
+        ],
+        "evidence": "Builtin type-name descriptor is read by reference; builtin string length/slice clips to128characters and remaining2048character budget before copying/encoding. _name debits all omission paths including node exhaustion and marks metadata truncation. Container labels are charged; exception type and arguments share one budget. No full-name fallback remains at the old defect branches.",
+        "consumerTest": {
+          "file": "tests/test_evaluator_diagnostics.py",
+          "symbol": "test_long_type_metadata_is_bounded_before_json_in_logs_and_native_exception",
+          "lines": [
+            402,
+            448
+          ],
+          "assessment": "Uses10k type/exception names, checks active/exhausted node and character budgets, audits inputs to real json.dumps before encoding, then reads actual receipt and asserts preserved original exception, capped log/exception types, truncated accounting and file-size bound. Covers the allocation boundary rather than only final64KiB file."
+        },
+        "boundary": "Shared budget covers retained literals/type labels, not fixed schema keys/reason labels or separately capped source/frame fields. File cap remains65536bytes; no new performance, disk-latency or current native-task claims."
+      },
+      {
+        "id": "D03",
+        "originalSeverity": "P2",
+        "status": "resolved",
+        "code": [
+          {
+            "file": "src/fsq_androidworld_eval/evaluator_diagnostics.py",
+            "symbol": "bounded_type_name / _value / _exception / __exit__",
+            "lines": [
+              37,
+              51,
+              80,
+              109,
+              111,
+              124,
+              228,
+              233
+            ]
+          },
+          {
+            "file": "src/fsq_androidworld_eval/runner.py",
+            "symbol": "run evaluator exception boundary",
+            "lines": [
+              116,
+              822
+            ]
+          }
+        ],
+        "evidence": "Container checks use kind is tuple/list/dict. Type-name access uses cached builtin descriptor and builtin-str operations, avoiding metaclass equality/name __getattribute__/descriptor hooks and custom str/repr. Helper omission/container/native-exception/write-error paths and runner evaluator public error all use the bounded hook-free function. Catching remains Exception, not broader BaseException suppression.",
+        "consumerTest": {
+          "file": "tests/test_evaluator_diagnostics.py",
+          "symbol": "_hostile_metadata / test_hostile_metaclass_hooks_do_not_change_scoring_terminal_or_cleanup; offline_attempt",
+          "lines": [
+            32,
+            72,
+            145,
+            159,
+            451,
+            522
+          ],
+          "assessment": "Hostile equality/name access/name descriptor/str-repr hooks would raise SystemExit. Three real offline runner paths return, native raise and diagnostic write failure assert zero hooks, exactly one evaluator call, original reward/classification/terminal and cleanup, native/logged error metadata and write-error public type. External devices/processes are mocked; result/receipt consumers remain real."
+        },
+        "boundary": "Pre-existing non-evaluator runner error paths are not migrated or re-audited; they are outside the original finding. Native/system logging sinks still have their prior behavior."
+      }
+    ],
+    "verification": {
+      "reviewerExecuted": [
+        "Read corrected helper, runner evaluator boundary and all six new parametrized consumer cases plus their changed fixture paths",
+        "Read implementation D01-D03 append and verification.json corrections[0] including owner32passed and directed-smoke outcomes",
+        "Computed source/receipt SHA256 and checked source equality against correction receipt"
+      ],
+      "reviewerDidNotExecute": [
+        "32-test suite or prior26tests",
+        "Owner directed correction smoke or prior5offline smoke scenarios",
+        "Additional probes: unnecessary after source/test/receipt closure; none executed",
+        "Runtime evaluator, device, Agent, sandbox, installed imports, full runtime identity, manifest/readiness/fresh qualification",
+        "Source/config/test/implementation receipt edits, service/timer operations, commit/push/release"
+      ],
+      "ownerEvidenceOnly": {
+        "testResult": "32passed,2warnings,0.51s; one run after corrections",
+        "newCases": 6,
+        "directedSmoke": "root+absl deterministic detach;10ktype-name pre-JSON cap; hostile-metadata returning/native-error runner scenarios; reward/cleanup unchanged as recorded",
+        "receipt": "verification.json#/corrections/0",
+        "independentlyRerun": false
+      }
+    },
+    "remaining": {
+      "unresolvedOriginalFindings": [],
+      "newFindingsWithinThisTargetedRecheck": [],
+      "expandedAuditPerformed": false,
+      "G1_futureSourceIdentity": "open",
+      "G2_installedImportIdentity": "open",
+      "newManifestAndFreshQualification": "open",
+      "interpretation": "Open integration/launch gates are not unresolved D01-D03 code P2s. No future readiness or install completion implied.",
+      "priorLimits": "Existing logging sinks/coverage, IO latency, no native component/DB snapshots and historical unknowns retained unchanged"
+    },
+    "handoff": {
+      "targetedReviewComplete": true,
+      "noImplementationChangesRequestedForD01D03": true,
+      "timer": "FSQRepairHourly01a1c098 not touched, stopped or reconfigured",
+      "historicalResults": "Untouched; no rescoring",
+      "firstContractReview": "Unchanged"
+    }
+  }
+}

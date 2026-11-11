@@ -1,0 +1,72 @@
+{
+  "scope": "Parent direct check of both raw calls/list object identities/PB file hashes and exact official predicate offline replay; not another independent-review job or new scores",
+  "checkedBy": "w3:p1",
+  "noDeviceOperations": true,
+  "formalScore": null,
+  "rows": [
+    {
+      "label": "ClockRunningOriginalP0",
+      "officialReward": 0.0,
+      "predicateReturn": false,
+      "pausePresent": false,
+      "lapPresent": false,
+      "listObjectIdentityMatched": true,
+      "actualOfficialForestSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "forestFileHashMatches": true,
+      "rawUiElementsPath": "evidence/clock-running-ab-20261109T075522Z/clock-matrix/ClockRunningOriginalP0/clock-probe/evaluator-000/state-00/ui-elements.json",
+      "currentActivity": "com.google.android.deskclock/com.android.deskclock.DeskClock",
+      "uiElementCount": 0,
+      "nodeCount": 0,
+      "recvSeq": 2118,
+      "actions": 4,
+      "budget": 10
+    },
+    {
+      "label": "ClockRunningPatchedP1",
+      "officialReward": 1.0,
+      "predicateReturn": true,
+      "pausePresent": true,
+      "lapPresent": true,
+      "listObjectIdentityMatched": true,
+      "actualOfficialForestSha256": "06442ba3b97c22192b00f8acee3a7f99a7b62b13806e60373cc6ab17a3eb1c06",
+      "forestFileHashMatches": true,
+      "rawUiElementsPath": "evidence/clock-running-ab-20261109T075522Z/clock-matrix/ClockRunningPatchedP1/clock-probe/evaluator-000/state-00/ui-elements.json",
+      "currentActivity": "com.google.android.deskclock/com.android.deskclock.DeskClock",
+      "uiElementCount": 17,
+      "nodeCount": 27,
+      "recvSeq": 1414,
+      "actions": 4,
+      "budget": 10
+    }
+  ],
+  "offlinePredicateRun": {
+    "python": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/bin/python",
+    "exitCode": 0,
+    "code": "import json,sys,hashlib\nfrom pathlib import Path\nfrom android_world.task_evals.single import clock\nfrom android_world.env.representation_utils import UIElement\nrows=json.loads(sys.argv[1]); root=Path(sys.argv[2]); out=[]\nfor row in rows:\n values=json.loads((root/row['rawUiElementsPath']).read_text())\n elements=[UIElement(**v) for v in values]\n actual=clock._is_stopwatch_running(elements,row['currentActivity'])\n assert actual==row['predicateReturn']\n out.append({'label':row['label'],'elementCount':len(elements),'offlinePredicateReturn':actual,'matchesRecordedOriginalReturn':True})\nprint(json.dumps({'scope':'Offline replay of serialized actual official elements for consistency only; no new scoring/device operation','module':clock.__file__,'moduleSha256':hashlib.sha256(Path(clock.__file__).read_bytes()).hexdigest(),'rows':out}))\n",
+    "output": {
+      "scope": "Offline replay of serialized actual official elements for consistency only; no new scoring/device operation",
+      "module": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/android_world/task_evals/single/clock.py",
+      "moduleSha256": "b71344f13576f6b848a6c34dc4286962e94ec228e9643a3bdfc11b299265a65c",
+      "rows": [
+        {
+          "label": "ClockRunningOriginalP0",
+          "elementCount": 0,
+          "offlinePredicateReturn": false,
+          "matchesRecordedOriginalReturn": true
+        },
+        {
+          "label": "ClockRunningPatchedP1",
+          "elementCount": 17,
+          "offlinePredicateReturn": true,
+          "matchesRecordedOriginalReturn": true
+        }
+      ]
+    }
+  },
+  "actuallyReadPngs": [
+    "ClockRunningOriginalP0/clock-probe/post-quit-001/pixels-later.png",
+    "ClockRunningOriginalP0/clock-probe/evaluator-000/state-00/pixels.png",
+    "ClockRunningPatchedP1/clock-probe/post-quit-001/pixels-later.png",
+    "ClockRunningPatchedP1/clock-probe/evaluator-000/state-00/pixels.png"
+  ]
+}

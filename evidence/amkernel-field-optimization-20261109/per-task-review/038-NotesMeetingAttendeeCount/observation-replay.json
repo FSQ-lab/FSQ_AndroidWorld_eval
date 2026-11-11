@@ -1,0 +1,115 @@
+{
+  "scope": "Replay original captured observations and contract predicates; no Android/Appium run.",
+  "rawObservation": {
+    "noteOpenedByFinalGrantedAction": true,
+    "noteBodyRawLine": 4026,
+    "observedAttendeeNumber": "25",
+    "noteBodyText": "25 individuals were present"
+  },
+  "finalAnswerBoundary": {
+    "cleanupSteerRawLine": 4024,
+    "finalAssistantMessageRawLine": 4147,
+    "finalRawText": "{\"taskOutcome\":25,\"sessionCleanup\":\"completed\",\"evidence\":\"Employee Performance Evaluation displayed “25 individuals were present”.\"}",
+    "rawTaskOutcomeValue": 25,
+    "rawTaskOutcomeType": "int",
+    "taskOutcomeFromRawText": null,
+    "taskOutcomeAfterStringCasting": "25",
+    "onDiskNormalizedFinalText": null,
+    "terminationCleanupRequested": true,
+    "agentAnswerValidContract": false,
+    "contractFacts": [
+      "runner._task_outcome requires a dict taskOutcome of type str",
+      "omp_supervisor only captures task_final before cleanup_requested; cleanup_requested became true when the 10-step gate closed",
+      "final assistant text arrived after the cleanup steer, so the on-disk normalized finalText is null"
+    ],
+    "normalizerOnRawFinalText": "{\"evidence\":\"Employee Performance Evaluation displayed \\u201c25 individuals were present\\u201d.\",\"sessionCleanup\":\"completed\",\"taskOutcome\":25}",
+    "normalizerAgentCompleted": true,
+    "normalizerNote": "Replayed _normalize_agent_events on the raw file; it retains the final text. The on-disk normalized file is null because omp_supervisor excludes cleanup-phase text."
+  },
+  "actionReplay": {
+    "executedUiActions": 10,
+    "maxSteps": 10,
+    "rejectedActions": 0,
+    "kinds": {
+      "actions": 3,
+      "click": 6,
+      "input": 1
+    },
+    "mapping": [
+      {
+        "n": 1,
+        "cell": 4,
+        "rawLine": 943,
+        "action": "swipe app drawer"
+      },
+      {
+        "n": 2,
+        "cell": 5,
+        "rawLine": 1184,
+        "action": "click Joplin"
+      },
+      {
+        "n": 3,
+        "cell": 6,
+        "rawLine": 1392,
+        "action": "click Meeting Notes"
+      },
+      {
+        "n": 4,
+        "cell": 7,
+        "rawLine": 1589,
+        "action": "click Back"
+      },
+      {
+        "n": 5,
+        "cell": 8,
+        "rawLine": 1883,
+        "action": "click Search; post-click wait timed out"
+      },
+      {
+        "n": 6,
+        "cell": 11,
+        "rawLine": 2546,
+        "action": "type Employee Performance Evaluation"
+      },
+      {
+        "n": 7,
+        "cell": 12,
+        "rawLine": 2854,
+        "action": "click result center covered by sidebar; post-click wait timed out"
+      },
+      {
+        "n": 8,
+        "cell": 14,
+        "rawLine": 3299,
+        "action": "click Sidebar; post-click wait timed out"
+      },
+      {
+        "n": 9,
+        "cell": 15,
+        "rawLine": 3570,
+        "action": "coordinate tap; note did not open"
+      },
+      {
+        "n": 10,
+        "cell": 17,
+        "rawLine": 4026,
+        "action": "coordinate tap (900,429); note opened and body observed"
+      }
+    ],
+    "sumCheck": 10
+  },
+  "predicateChecks": {
+    "noteBodyContainsObservedNumber": true,
+    "rawAnswerEqualsObservedNumber": true,
+    "rawAnswerForwarded": false,
+    "stringTaskOutcomeWouldBeForwarded": true,
+    "firstDivergenceLine": 4024,
+    "noteObservationWasSuccessful": true
+  },
+  "limits": [
+    "No screenshot decoding was needed; conclusion rests on text observations, stepBudget, and source contract."
+  ],
+  "newAndroidRuns": 0,
+  "newAppiumSessions": 0
+}

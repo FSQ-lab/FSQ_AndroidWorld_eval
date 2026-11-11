@@ -1,0 +1,38 @@
+{
+  "code": "import hashlib,json\nfrom pathlib import Path\nfrom android_world.task_evals.single import clock\nfrom android_world.env.representation_utils import UIElement\nsource=Path(clock.__file__)\ncases=[('empty_official_input_counterexample',[]),('recorded_partial_descriptions_only',['Stopwatch','Pause']),('synthetic_minimum_contract_witness',['Pause','Lap'])]\nrows=[]\nfor label,descs in cases:\n elements=[UIElement(content_description=d) for d in descs]\n rows.append({'label':label,'inputDescriptions':descs,'currentActivity':'com.android.deskclock.DeskClock','predicate':clock._is_stopwatch_running(elements,'com.android.deskclock.DeskClock')})\nprint(json.dumps({'scope':'Offline contract smoke only: inputs are explicit counterexamples/partial observations, NOT historical official input, rewards, or device reproduction','module':str(source),'sourceSha256':hashlib.sha256(source.read_bytes()).hexdigest(),'cases':rows}))\n",
+  "pythonExecutable": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/bin/python",
+  "exitCode": 0,
+  "output": {
+    "scope": "Offline contract smoke only: inputs are explicit counterexamples/partial observations, NOT historical official input, rewards, or device reproduction",
+    "module": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/android_world/task_evals/single/clock.py",
+    "sourceSha256": "b71344f13576f6b848a6c34dc4286962e94ec228e9643a3bdfc11b299265a65c",
+    "cases": [
+      {
+        "label": "empty_official_input_counterexample",
+        "inputDescriptions": [],
+        "currentActivity": "com.android.deskclock.DeskClock",
+        "predicate": false
+      },
+      {
+        "label": "recorded_partial_descriptions_only",
+        "inputDescriptions": [
+          "Stopwatch",
+          "Pause"
+        ],
+        "currentActivity": "com.android.deskclock.DeskClock",
+        "predicate": false
+      },
+      {
+        "label": "synthetic_minimum_contract_witness",
+        "inputDescriptions": [
+          "Pause",
+          "Lap"
+        ],
+        "currentActivity": "com.android.deskclock.DeskClock",
+        "predicate": true
+      }
+    ]
+  },
+  "noDeviceOperations": true,
+  "historicalRewardUnchanged": true
+}

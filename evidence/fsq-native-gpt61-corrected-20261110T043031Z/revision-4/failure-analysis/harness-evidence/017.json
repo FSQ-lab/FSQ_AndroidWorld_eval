@@ -1,0 +1,2296 @@
+{
+  "index": 17,
+  "name": "ExpenseDeleteDuplicates2",
+  "goal": "Delete all but one of any expenses in pro expense that are exact duplicates, ensuring at least one instance of each unique expense remains.",
+  "reward": 0.0,
+  "classification": "failed",
+  "initialization": {
+    "initializationReferenceTime": {
+      "referenceTime": "2023-10-15T15:34:00+00:00",
+      "timezone": "UTC"
+    },
+    "initializedGoal": "Delete all but one of any expenses in pro expense that are exact duplicates, ensuring at least one instance of each unique expense remains."
+  },
+  "frozenTaskSpec": {
+    "apps": [
+      "pro expense"
+    ],
+    "complexity": 1.8,
+    "difficulty": "medium",
+    "family": "android",
+    "index": 17,
+    "instanceSeed": 124863876,
+    "maxActions": 18,
+    "maxSteps": 18,
+    "name": "ExpenseDeleteDuplicates2",
+    "params": {
+      "noise_row_objects": [
+        {
+          "amount": 37081,
+          "category": 6,
+          "created_date": 1697288400000,
+          "expense_id": -1,
+          "modified_date": 1697288400000,
+          "name": "Video Games",
+          "note": "Remember to transfer funds"
+        },
+        {
+          "amount": 4040,
+          "category": 11,
+          "created_date": 1696572000000,
+          "expense_id": -1,
+          "modified_date": 1696572000000,
+          "name": "Non-Profit Support",
+          "note": "A need"
+        },
+        {
+          "amount": 15507,
+          "category": 10,
+          "created_date": 1696309200000,
+          "expense_id": -1,
+          "modified_date": 1696309200000,
+          "name": "Seminars",
+          "note": "A need"
+        },
+        {
+          "amount": 10031,
+          "category": 9,
+          "created_date": 1696690800000,
+          "expense_id": -1,
+          "modified_date": 1696690800000,
+          "name": "Therapy Sessions",
+          "note": "I may repeat this"
+        },
+        {
+          "amount": 21035,
+          "category": 3,
+          "created_date": 1696222800000,
+          "expense_id": -1,
+          "modified_date": 1696222800000,
+          "name": "Restaurant Meal",
+          "note": "Paid by card"
+        },
+        {
+          "amount": 37200,
+          "category": 11,
+          "created_date": 1696996800000,
+          "expense_id": -1,
+          "modified_date": 1696996800000,
+          "name": "Non-Profit Support",
+          "note": "Monthly recurring"
+        },
+        {
+          "amount": 31482,
+          "category": 7,
+          "created_date": 1696561200000,
+          "expense_id": -1,
+          "modified_date": 1696561200000,
+          "name": "Car Maintenance",
+          "note": "Want to have"
+        },
+        {
+          "amount": 23266,
+          "category": 7,
+          "created_date": 1696960800000,
+          "expense_id": -1,
+          "modified_date": 1696960800000,
+          "name": "Car Insurance",
+          "note": "A need"
+        },
+        {
+          "amount": 30285,
+          "category": 3,
+          "created_date": 1696305600000,
+          "expense_id": -1,
+          "modified_date": 1696305600000,
+          "name": "Food Delivery",
+          "note": "A need"
+        },
+        {
+          "amount": 25011,
+          "category": 2,
+          "created_date": 1696298400000,
+          "expense_id": -1,
+          "modified_date": 1696298400000,
+          "name": "Freelance Payment",
+          "note": "Want to have"
+        },
+        {
+          "amount": 36751,
+          "category": 4,
+          "created_date": 1696330800000,
+          "expense_id": -1,
+          "modified_date": 1696330800000,
+          "name": "Utilities",
+          "note": "I may repeat this"
+        },
+        {
+          "amount": 3388,
+          "category": 3,
+          "created_date": 1697238000000,
+          "expense_id": -1,
+          "modified_date": 1697238000000,
+          "name": "Snacks",
+          "note": "A need"
+        },
+        {
+          "amount": 37697,
+          "category": 11,
+          "created_date": 1697353200000,
+          "expense_id": -1,
+          "modified_date": 1697353200000,
+          "name": "Educational",
+          "note": "Remember to transfer funds"
+        },
+        {
+          "amount": 7819,
+          "category": 10,
+          "created_date": 1697162400000,
+          "expense_id": -1,
+          "modified_date": 1697162400000,
+          "name": "Educational Software",
+          "note": "I may repeat this"
+        },
+        {
+          "amount": 49613,
+          "category": 8,
+          "created_date": 1696518000000,
+          "expense_id": -1,
+          "modified_date": 1696518000000,
+          "name": "Laundry",
+          "note": "Monthly recurring"
+        },
+        {
+          "amount": 4379,
+          "category": 8,
+          "created_date": 1696953600000,
+          "expense_id": -1,
+          "modified_date": 1696953600000,
+          "name": "Shirt Purchase",
+          "note": "I may repeat this"
+        },
+        {
+          "amount": 46915,
+          "category": 10,
+          "created_date": 1696168800000,
+          "expense_id": -1,
+          "modified_date": 1696168800000,
+          "name": "Tuition Fees",
+          "note": "Paid by card"
+        },
+        {
+          "amount": 32999,
+          "category": 10,
+          "created_date": 1697364000000,
+          "expense_id": -1,
+          "modified_date": 1697364000000,
+          "name": "Workshops",
+          "note": "I may repeat this"
+        },
+        {
+          "amount": 36455,
+          "category": 9,
+          "created_date": 1696190400000,
+          "expense_id": -1,
+          "modified_date": 1696190400000,
+          "name": "Dental Care",
+          "note": "Paid by card"
+        },
+        {
+          "amount": 35219,
+          "category": 4,
+          "created_date": 1696165200000,
+          "expense_id": -1,
+          "modified_date": 1696165200000,
+          "name": "Property Taxes",
+          "note": "I may repeat this"
+        },
+        {
+          "amount": 16438,
+          "category": 9,
+          "created_date": 1696215600000,
+          "expense_id": -1,
+          "modified_date": 1696215600000,
+          "name": "Gym Membership",
+          "note": "A need"
+        },
+        {
+          "amount": 48924,
+          "category": 4,
+          "created_date": 1696514400000,
+          "expense_id": -1,
+          "modified_date": 1696514400000,
+          "name": "Furnishing",
+          "note": "Want to have"
+        },
+        {
+          "amount": 36965,
+          "category": 5,
+          "created_date": 1696809600000,
+          "expense_id": -1,
+          "modified_date": 1696809600000,
+          "name": "Charity Donations",
+          "note": "A need"
+        },
+        {
+          "amount": 23463,
+          "category": 4,
+          "created_date": 1696672800000,
+          "expense_id": -1,
+          "modified_date": 1696672800000,
+          "name": "Pest Control",
+          "note": "Monthly recurring"
+        },
+        {
+          "amount": 15073,
+          "category": 2,
+          "created_date": 1697256000000,
+          "expense_id": -1,
+          "modified_date": 1697256000000,
+          "name": "Dividends",
+          "note": "Monthly recurring"
+        },
+        {
+          "amount": 36754,
+          "category": 10,
+          "created_date": 1696287600000,
+          "expense_id": -1,
+          "modified_date": 1696287600000,
+          "name": "School Supplies",
+          "note": "Remember to transfer funds"
+        },
+        {
+          "amount": 28074,
+          "category": 10,
+          "created_date": 1697065200000,
+          "expense_id": -1,
+          "modified_date": 1697065200000,
+          "name": "Online Courses",
+          "note": "I may repeat this"
+        },
+        {
+          "amount": 32458,
+          "category": 3,
+          "created_date": 1696230000000,
+          "expense_id": -1,
+          "modified_date": 1696230000000,
+          "name": "Snacks",
+          "note": "Monthly recurring"
+        },
+        {
+          "amount": 45232,
+          "category": 2,
+          "created_date": 1696485600000,
+          "expense_id": -1,
+          "modified_date": 1696485600000,
+          "name": "Consulting Fees",
+          "note": "A need"
+        },
+        {
+          "amount": 36297,
+          "category": 5,
+          "created_date": 1696410000000,
+          "expense_id": -1,
+          "modified_date": 1696410000000,
+          "name": "Wedding Gift",
+          "note": "Urgent"
+        },
+        {
+          "amount": 18810,
+          "category": 2,
+          "created_date": 1697364000000,
+          "expense_id": -1,
+          "modified_date": 1697364000000,
+          "name": "Dividends",
+          "note": "Want to have"
+        },
+        {
+          "amount": 41860,
+          "category": 1,
+          "created_date": 1697382000000,
+          "expense_id": -1,
+          "modified_date": 1697382000000,
+          "name": "Membership Fees",
+          "note": "Urgent"
+        },
+        {
+          "amount": 18523,
+          "category": 6,
+          "created_date": 1697209200000,
+          "expense_id": -1,
+          "modified_date": 1697209200000,
+          "name": "Magazines",
+          "note": "Paid by card"
+        },
+        {
+          "amount": 15571,
+          "category": 8,
+          "created_date": 1696536000000,
+          "expense_id": -1,
+          "modified_date": 1696536000000,
+          "name": "New Jacket",
+          "note": "Want to have"
+        },
+        {
+          "amount": 3237,
+          "category": 3,
+          "created_date": 1696705200000,
+          "expense_id": -1,
+          "modified_date": 1696705200000,
+          "name": "Restaurant Meal",
+          "note": "Want to have"
+        },
+        {
+          "amount": 22350,
+          "category": 3,
+          "created_date": 1697281200000,
+          "expense_id": -1,
+          "modified_date": 1697281200000,
+          "name": "Dining Out",
+          "note": "Paid by card"
+        },
+        {
+          "amount": 38186,
+          "category": 6,
+          "created_date": 1696698000000,
+          "expense_id": -1,
+          "modified_date": 1696698000000,
+          "name": "Concert Tickets",
+          "note": "Want to have"
+        },
+        {
+          "amount": 49938,
+          "category": 8,
+          "created_date": 1696352400000,
+          "expense_id": -1,
+          "modified_date": 1696564800000,
+          "name": "Jeans",
+          "note": "Want to have"
+        },
+        {
+          "amount": 50010,
+          "category": 8,
+          "created_date": 1696122000000,
+          "expense_id": -1,
+          "modified_date": 1697079600000,
+          "name": "Jeans",
+          "note": "Want to have"
+        },
+        {
+          "amount": 50198,
+          "category": 8,
+          "created_date": 1697324400000,
+          "expense_id": -1,
+          "modified_date": 1697061600000,
+          "name": "Jeans",
+          "note": "Want to have"
+        }
+      ],
+      "row_objects": [
+        {
+          "amount": 49636,
+          "category": 8,
+          "created_date": 1696118400000,
+          "expense_id": -1,
+          "modified_date": 1696118400000,
+          "name": "Jeans",
+          "note": "Want to have"
+        },
+        {
+          "amount": 49636,
+          "category": 8,
+          "created_date": 1696118400000,
+          "expense_id": -1,
+          "modified_date": 1696118400000,
+          "name": "Jeans",
+          "note": "Want to have"
+        }
+      ],
+      "seed": 124863876
+    },
+    "paramsSha256": "535bda7e7310916e7016130286315f0b32b4acaae51128a76e8d3b6d7449c8d8",
+    "paramsTransport": "seed",
+    "tags": [
+      "data_edit",
+      "requires_setup",
+      "parameterized"
+    ],
+    "timeBudget": {
+      "businessSeconds": 1200,
+      "cleanupWindowSeconds": 180,
+      "episodeSeconds": 1810,
+      "forceSeconds": 1390,
+      "recoveryWindowSeconds": 120,
+      "terminationGraceSeconds": 10
+    }
+  },
+  "mainSteps": [
+    {
+      "stepId": 5,
+      "tool": "agent_runtime.runner",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "App teardown failed with NativeActionBudgetExceeded: action_budget."
+        ],
+        "evidence": [
+          "Opened Pro Expense’s expense list and collected snapshots while scrolling.",
+          "assert_visible passed for the active filter label: 2023 Oct 1 - 15 . DESC.",
+          "No expense deletion controls were invoked."
+        ],
+        "plan_updates": [
+          "Inspection remained limited to a date-filtered list; deletion was withheld because exact duplicate groups were not confirmed."
+        ],
+        "pre_plan": [
+          {
+            "action": "Inspect the complete expense list and active filters.",
+            "status": "adjusted",
+            "step_id": 1,
+            "success_criteria": [
+              "Inventory all expenses across the full date range."
+            ]
+          },
+          {
+            "action": "Compare complete expense details and designate retained instances.",
+            "status": "skipped",
+            "step_id": 2,
+            "success_criteria": [
+              "Confirm duplicate groups using all available details."
+            ]
+          },
+          {
+            "action": "Delete only confirmed surplus duplicates.",
+            "status": "skipped",
+            "step_id": 3,
+            "success_criteria": [
+              "Retain one instance of each confirmed duplicate group."
+            ]
+          },
+          {
+            "action": "Verify remaining expenses against the original inventory.",
+            "status": "skipped",
+            "step_id": 4,
+            "success_criteria": [
+              "Prove exactly one instance of every original unique expense remains."
+            ]
+          }
+        ],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "inconclusive",
+        "summary": "Inspected Pro Expense’s filtered expense list, but did not complete the full inventory or detail comparisons needed to safely identify exact duplicates. No expenses were deleted.",
+        "unmet_criteria": [
+          "Could not verify that Pro Expense contains exactly one instance of every originally present unique expense, with all surplus duplicates removed and no unique expense lost."
+        ]
+      }
+    },
+    {
+      "stepId": 6,
+      "tool": "agent_runtime.verifier",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "assert_state failed with 'Text assertion failed' while checking the filter text; the later assert_visible check passed. Neither assertion evaluated expense uniqueness.",
+          "kill_app teardown failed with 'NativeActionBudgetExceeded: action_budget'; this does not establish whether the required expense state is true or false.",
+          "Artifact excerpts are truncated and insufficient to verify the entire expense collection."
+        ],
+        "evidence": [
+          "Expense-list snapshots show the active date range '2023 Oct 1 - 15 . DESC'; assert_visible independently passed for that label.",
+          "Recorded interactions consist of navigation, filter inspection, scrolling, snapshots, and filter-label assertions; no expense deletion invocation is recorded.",
+          "The supplied excerpts do not provide a complete original inventory, complete expense-detail comparisons, or a complete final inventory.",
+          "The agent reports an inconclusive outcome and no deletions, consistent with the recorded interactions. However, the evidence does not establish that exact duplicates originally existed, so lack of deletion alone does not prove the final target false."
+        ],
+        "plan_updates": [],
+        "pre_plan": [
+          {
+            "action": "Verify the final expense collection against the originally present unique expenses.",
+            "status": "skipped",
+            "step_id": 1,
+            "success_criteria": [
+              "Exactly one instance of every original unique expense remains, with no surplus exact duplicates or unique expenses lost."
+            ]
+          }
+        ],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "inconclusive",
+        "summary": "The evidence does not establish whether Pro Expense contains exactly one instance of every original unique expense. Inspection covered only a date-filtered list, with no confirmed exact-duplicate comparisons or complete before-and-after inventory.",
+        "unmet_criteria": []
+      }
+    }
+  ],
+  "budgetSummary": {
+    "admitted": 18,
+    "attempted": 19,
+    "deadlineExceeded": false,
+    "deadlineMonotonic": 705720.715601916,
+    "denied": 1,
+    "deviceRestoredByClose": false,
+    "exclusions": [
+      "driver_construction",
+      "uiautomator2_service_startup",
+      "observation_and_assertion_side_effects",
+      "external_processes_and_direct_driver_access"
+    ],
+    "exhausted": true,
+    "failed": 0,
+    "inFlight": 0,
+    "inputTextUnit": "composite_click_optional_clear_set_text",
+    "maximum": 18,
+    "securityBoundary": false,
+    "succeeded": 18,
+    "unit": "admitted_android_harness_write_capability_dispatch",
+    "writeCapabilities": [
+      "launch_app",
+      "kill_app",
+      "tap_on",
+      "tap_at",
+      "long_press_on",
+      "input_text",
+      "press_key",
+      "swipe"
+    ]
+  },
+  "actions": [
+    {
+      "ordinal": 0,
+      "stepId": "agent-launch_app-1",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [],
+      "output": {
+        "app_id": "com.arduia.expense"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[0]"
+    },
+    {
+      "ordinal": 1,
+      "stepId": "agent-ui_snapshot-2",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Sun, Oct 15",
+        "Sun, Oct 15",
+        "Gmail",
+        "Gmail",
+        "Photos",
+        "Photos",
+        "YouTube",
+        "YouTube",
+        "Home",
+        "Phone",
+        "Phone",
+        "Messages",
+        "Messages",
+        "Chrome",
+        "Chrome",
+        "Calendar",
+        "Predicted app: Calendar",
+        "Search",
+        "Google app",
+        "Voice search",
+        "Google Lens"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 27981,
+          "retained_characters": 7650
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[1]"
+    },
+    {
+      "ordinal": 2,
+      "stepId": "agent-launch_app-3",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "app_id": "com.arduia.expense"
+      },
+      "uiLabels": [],
+      "output": {
+        "app_id": "com.arduia.expense"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[2]"
+    },
+    {
+      "ordinal": 3,
+      "stepId": "agent-swipe-4",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[3]"
+    },
+    {
+      "ordinal": 4,
+      "stepId": "agent-ui_snapshot-5",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Audio Recorder",
+        "Audio Recorder",
+        "Broccoli",
+        "Broccoli",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Chrome",
+        "Chrome",
+        "Clipper",
+        "Clipper",
+        "Clock",
+        "Clock",
+        "Contacts",
+        "Contacts",
+        "Draw",
+        "Draw",
+        "Drive",
+        "Drive",
+        "Files",
+        "Files",
+        "Gallery",
+        "Gallery",
+        "Gmail",
+        "Gmail",
+        "Google",
+        "Google",
+        "Joplin",
+        "Joplin",
+        "Maps",
+        "Maps",
+        "Markor",
+        "Markor",
+        "Messages",
+        "Messages",
+        "OpenTracks",
+        "OpenTracks",
+        "OsmAnd",
+        "OsmAnd",
+        "Phone",
+        "Phone",
+        "Photos",
+        "Photos",
+        "Pro Expense",
+        "Pro Expense",
+        "Gallery",
+        "Gallery",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Tasks",
+        "Tasks",
+        "Search",
+        "Google app",
+        "Search apps, web and more",
+        "Voice search",
+        "Google Lens",
+        "Home"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 37017,
+          "retained_characters": 12575
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 6,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[4]"
+    },
+    {
+      "ordinal": 5,
+      "stepId": "agent-tap_on-6",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "accessibilityId": "Pro Expense"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[5]"
+    },
+    {
+      "ordinal": 6,
+      "stepId": "agent-ui_snapshot-7",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Home",
+        "Totals",
+        "OCT 15 - 22",
+        "INCOME",
+        "188.1",
+        "USD",
+        "OUTCOME",
+        "1,125.56",
+        "USD",
+        "Expenses in this Week",
+        "OCT 15 - 22",
+        "Recent",
+        "Membership Fees",
+        "Today 3:00 PM",
+        "418.6",
+        "USD",
+        "Workshops",
+        "Today 10:00 AM",
+        "329.99",
+        "USD",
+        "Dividends",
+        "Today 10:00 AM",
+        "188.1",
+        "USD",
+        "Educational",
+        "376.97",
+        "USD",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 42971,
+          "retained_characters": 10779
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[6]"
+    },
+    {
+      "ordinal": 7,
+      "stepId": "agent-tap_on-8",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "xpath": "//android.view.ViewGroup[@resource-id='com.arduia.expense:id/toolbar']/android.widget.ImageButton"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[7]"
+    },
+    {
+      "ordinal": 8,
+      "stepId": "agent-ui_snapshot-9",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Home",
+        "Totals",
+        "OCT 15 - 22",
+        "INCOME",
+        "188.1",
+        "USD",
+        "OUTCOME",
+        "1,125.56",
+        "USD",
+        "Expenses in this Week",
+        "OCT 15 - 22",
+        "Recent",
+        "Membership Fees",
+        "Today 3:00 PM",
+        "418.6",
+        "USD",
+        "Workshops",
+        "Today 10:00 AM",
+        "329.99",
+        "USD",
+        "Dividends",
+        "Today 10:00 AM",
+        "188.1",
+        "USD",
+        "Educational",
+        "376.97",
+        "USD",
+        "Pro Expense",
+        "BETA",
+        "Home",
+        "Expense Logs",
+        "Statistics",
+        "Backup",
+        "Feedback",
+        "About",
+        "Settings",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 53737,
+          "retained_characters": 14221
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 13,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[8]"
+    },
+    {
+      "ordinal": 9,
+      "stepId": "agent-tap_on-10",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.arduia.expense:id/dest_expense_logs"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[9]"
+    },
+    {
+      "ordinal": 10,
+      "stepId": "agent-ui_snapshot-11",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Expense Logs",
+        "2023 Oct 1 - 15 . DESC",
+        "Filter",
+        "Membership Fees",
+        "Today 3:00 PM",
+        "418.6",
+        "$",
+        "Delete",
+        "Workshops",
+        "Today 10:00 AM",
+        "329.99",
+        "$",
+        "Delete",
+        "Dividends",
+        "Today 10:00 AM",
+        "188.1",
+        "$",
+        "Delete",
+        "Educational",
+        "Today 7:00 AM",
+        "376.97",
+        "$",
+        "Delete",
+        "Video Games",
+        "Yesterday 1:00 PM",
+        "370.81",
+        "$",
+        "Delete",
+        "Dining Out",
+        "Yesterday 11:00 AM",
+        "223.5",
+        "$",
+        "Delete",
+        "Dividends",
+        "Yesterday 4:00 AM",
+        "150.73",
+        "$",
+        "Delete",
+        "Snacks",
+        "2023 Oct 13",
+        "33.88",
+        "$",
+        "Delete",
+        "Magazines",
+        "2023 Oct 13",
+        "185.23",
+        "$",
+        "Delete",
+        "Educational Software",
+        "2023 Oct 13",
+        "78.19",
+        "$",
+        "Delete",
+        "Jeans",
+        "2023 Oct 12",
+        "500.1",
+        "$",
+        "Delete",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 99946,
+          "retained_characters": 24299
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 32,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[10]"
+    },
+    {
+      "ordinal": 11,
+      "stepId": "agent-tap_on-12",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.arduia.expense:id/filter"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[11]"
+    },
+    {
+      "ordinal": 12,
+      "stepId": "agent-ui_snapshot-13",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Filter",
+        "From",
+        "To",
+        "Oct",
+        "1",
+        "2023",
+        "Oct",
+        "15",
+        "2023",
+        "Order by Date in",
+        "DESC",
+        "ASC",
+        "APPLY FILTER",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 25086,
+          "retained_characters": 6378
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 9,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[12]"
+    },
+    {
+      "ordinal": 13,
+      "stepId": "agent-tap_on-14",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.arduia.expense:id/cv_start_date"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[13]"
+    },
+    {
+      "ordinal": 14,
+      "stepId": "agent-ui_snapshot-15",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "2023",
+        "Sun, Oct 1",
+        "1",
+        "01 October 2023",
+        "2",
+        "02 October 2023",
+        "3",
+        "03 October 2023",
+        "4",
+        "04 October 2023",
+        "5",
+        "05 October 2023",
+        "6",
+        "06 October 2023",
+        "7",
+        "07 October 2023",
+        "8",
+        "08 October 2023",
+        "9",
+        "09 October 2023",
+        "10",
+        "10 October 2023",
+        "11",
+        "11 October 2023",
+        "12",
+        "12 October 2023",
+        "13",
+        "13 October 2023",
+        "14",
+        "14 October 2023",
+        "15",
+        "15 October 2023",
+        "16",
+        "16 October 2023",
+        "17",
+        "17 October 2023",
+        "18",
+        "18 October 2023",
+        "19",
+        "19 October 2023",
+        "20",
+        "20 October 2023",
+        "21",
+        "21 October 2023",
+        "22",
+        "22 October 2023",
+        "23",
+        "23 October 2023",
+        "24",
+        "24 October 2023",
+        "25",
+        "25 October 2023",
+        "26",
+        "26 October 2023",
+        "27",
+        "27 October 2023",
+        "28",
+        "28 October 2023",
+        "29",
+        "29 October 2023",
+        "30",
+        "30 October 2023",
+        "31",
+        "31 October 2023",
+        "CANCEL",
+        "OK",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 35080,
+          "retained_characters": 9359
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[14]"
+    },
+    {
+      "ordinal": 15,
+      "stepId": "agent-press_key-16",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[15]"
+    },
+    {
+      "ordinal": 16,
+      "stepId": "agent-ui_snapshot-17",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Filter",
+        "From",
+        "To",
+        "Oct",
+        "1",
+        "2023",
+        "Oct",
+        "15",
+        "2023",
+        "Order by Date in",
+        "DESC",
+        "ASC",
+        "APPLY FILTER",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 25085,
+          "retained_characters": 6377
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 9,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[16]"
+    },
+    {
+      "ordinal": 17,
+      "stepId": "agent-press_key-18",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[17]"
+    },
+    {
+      "ordinal": 18,
+      "stepId": "agent-ui_snapshot-19",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Expense Logs",
+        "2023 Oct 1 - 15 . DESC",
+        "Filter",
+        "Membership Fees",
+        "Today 3:00 PM",
+        "418.6",
+        "$",
+        "Delete",
+        "Workshops",
+        "Today 10:00 AM",
+        "329.99",
+        "$",
+        "Delete",
+        "Dividends",
+        "Today 10:00 AM",
+        "188.1",
+        "$",
+        "Delete",
+        "Educational",
+        "Today 7:00 AM",
+        "376.97",
+        "$",
+        "Delete",
+        "Video Games",
+        "Yesterday 1:00 PM",
+        "370.81",
+        "$",
+        "Delete",
+        "Dining Out",
+        "Yesterday 11:00 AM",
+        "223.5",
+        "$",
+        "Delete",
+        "Dividends",
+        "Yesterday 4:00 AM",
+        "150.73",
+        "$",
+        "Delete",
+        "Snacks",
+        "2023 Oct 13",
+        "33.88",
+        "$",
+        "Delete",
+        "Magazines",
+        "2023 Oct 13",
+        "185.23",
+        "$",
+        "Delete",
+        "Educational Software",
+        "2023 Oct 13",
+        "78.19",
+        "$",
+        "Delete",
+        "Jeans",
+        "2023 Oct 12",
+        "500.1",
+        "$",
+        "Delete",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 99945,
+          "retained_characters": 24298
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 32,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[18]"
+    },
+    {
+      "ordinal": 19,
+      "stepId": "agent-tap_on-20",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.arduia.expense:id/filter"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[19]"
+    },
+    {
+      "ordinal": 20,
+      "stepId": "agent-ui_snapshot-21",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Filter",
+        "From",
+        "To",
+        "Oct",
+        "1",
+        "2023",
+        "Oct",
+        "15",
+        "2023",
+        "Order by Date in",
+        "DESC",
+        "ASC",
+        "APPLY FILTER"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 25085,
+          "retained_characters": 6377
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 9,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[20]"
+    },
+    {
+      "ordinal": 21,
+      "stepId": "agent-press_key-22",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[21]"
+    },
+    {
+      "ordinal": 22,
+      "stepId": "agent-ui_snapshot-23",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Expense Logs",
+        "2023 Oct 1 - 15 . DESC",
+        "Filter",
+        "Membership Fees",
+        "Today 3:00 PM",
+        "418.6",
+        "$",
+        "Delete",
+        "Workshops",
+        "Today 10:00 AM",
+        "329.99",
+        "$",
+        "Delete",
+        "Dividends",
+        "Today 10:00 AM",
+        "188.1",
+        "$",
+        "Delete",
+        "Educational",
+        "Today 7:00 AM",
+        "376.97",
+        "$",
+        "Delete",
+        "Video Games",
+        "Yesterday 1:00 PM",
+        "370.81",
+        "$",
+        "Delete",
+        "Dining Out",
+        "Yesterday 11:00 AM",
+        "223.5",
+        "$",
+        "Delete",
+        "Dividends",
+        "Yesterday 4:00 AM",
+        "150.73",
+        "$",
+        "Delete",
+        "Snacks",
+        "2023 Oct 13",
+        "33.88",
+        "$",
+        "Delete",
+        "Magazines",
+        "2023 Oct 13",
+        "185.23",
+        "$",
+        "Delete",
+        "Educational Software",
+        "2023 Oct 13",
+        "78.19",
+        "$",
+        "Delete",
+        "Jeans",
+        "2023 Oct 12",
+        "500.1",
+        "$",
+        "Delete",
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 99946,
+          "retained_characters": 24299
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 32,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[22]"
+    },
+    {
+      "ordinal": 23,
+      "stepId": "agent-swipe-24",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[23]"
+    },
+    {
+      "ordinal": 24,
+      "stepId": "agent-ui_snapshot-25",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Expense Logs",
+        "2023 Oct 1 - 15 . DESC",
+        "Filter",
+        "Delete",
+        "Snacks",
+        "2023 Oct 13",
+        "33.88",
+        "$",
+        "Delete",
+        "Magazines",
+        "2023 Oct 13",
+        "185.23",
+        "$",
+        "Delete",
+        "Educational Software",
+        "2023 Oct 13",
+        "78.19",
+        "$",
+        "Delete",
+        "Jeans",
+        "2023 Oct 12",
+        "500.1",
+        "$",
+        "Delete",
+        "Online Courses",
+        "2023 Oct 11",
+        "280.74",
+        "$",
+        "Delete",
+        "Jeans",
+        "2023 Oct 11",
+        "501.98",
+        "$",
+        "Delete",
+        "Non-Profit Support",
+        "2023 Oct 11",
+        "372",
+        "$",
+        "Delete",
+        "Car Insurance",
+        "2023 Oct 10",
+        "232.66",
+        "$",
+        "Delete",
+        "Shirt Purchase",
+        "2023 Oct 10",
+        "43.79",
+        "$",
+        "Delete",
+        "Charity Donations",
+        "2023 Oct 9",
+        "369.65",
+        "$",
+        "Delete",
+        "Restaurant Meal",
+        "2023 Oct 7",
+        "32.37",
+        "$",
+        "Delete",
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 100417,
+          "retained_characters": 24416
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 32,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[24]"
+    },
+    {
+      "ordinal": 25,
+      "stepId": "agent-swipe-26",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[25]"
+    },
+    {
+      "ordinal": 26,
+      "stepId": "agent-ui_snapshot-27",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Expense Logs",
+        "2023 Oct 1 - 15 . DESC",
+        "Filter",
+        "Non-Profit Support",
+        "2023 Oct 11",
+        "372",
+        "$",
+        "Delete",
+        "Car Insurance",
+        "2023 Oct 10",
+        "232.66",
+        "$",
+        "Delete",
+        "Shirt Purchase",
+        "2023 Oct 10",
+        "43.79",
+        "$",
+        "Delete",
+        "Charity Donations",
+        "2023 Oct 9",
+        "369.65",
+        "$",
+        "Delete",
+        "Restaurant Meal",
+        "2023 Oct 7",
+        "32.37",
+        "$",
+        "Delete",
+        "Concert Tickets",
+        "2023 Oct 7",
+        "381.86",
+        "$",
+        "Delete",
+        "Therapy Sessions",
+        "2023 Oct 7",
+        "100.31",
+        "$",
+        "Delete",
+        "Pest Control",
+        "2023 Oct 7",
+        "234.63",
+        "$",
+        "Delete",
+        "Non-Profit Support",
+        "2023 Oct 6",
+        "40.4",
+        "$",
+        "Delete",
+        "Jeans",
+        "2023 Oct 6",
+        "499.38",
+        "$",
+        "Delete",
+        "Car Maintenance",
+        "2023 Oct 6",
+        "314.82",
+        "$",
+        "Delete",
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 102234,
+          "retained_characters": 24706
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 34,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[26]"
+    },
+    {
+      "ordinal": 27,
+      "stepId": "agent-swipe-28",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[27]"
+    },
+    {
+      "ordinal": 28,
+      "stepId": "agent-ui_snapshot-29",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Expense Logs",
+        "2023 Oct 1 - 15 . DESC",
+        "Filter",
+        "Delete",
+        "Pest Control",
+        "2023 Oct 7",
+        "234.63",
+        "$",
+        "Delete",
+        "Non-Profit Support",
+        "2023 Oct 6",
+        "40.4",
+        "$",
+        "Delete",
+        "Jeans",
+        "2023 Oct 6",
+        "499.38",
+        "$",
+        "Delete",
+        "Car Maintenance",
+        "2023 Oct 6",
+        "314.82",
+        "$",
+        "Delete",
+        "New Jacket",
+        "2023 Oct 5",
+        "155.71",
+        "$",
+        "Delete",
+        "Laundry",
+        "2023 Oct 5",
+        "496.13",
+        "$",
+        "Delete",
+        "Furnishing",
+        "2023 Oct 5",
+        "489.24",
+        "$",
+        "Delete",
+        "Consulting Fees",
+        "2023 Oct 5",
+        "452.32",
+        "$",
+        "Delete",
+        "Wedding Gift",
+        "2023 Oct 4",
+        "362.97",
+        "$",
+        "Delete",
+        "Utilities",
+        "2023 Oct 3",
+        "367.51",
+        "$",
+        "Delete",
+        "Seminars",
+        "2023 Oct 3",
+        "155.07",
+        "$",
+        "Delete",
+        "15:37",
+        "23:37",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 100860,
+          "retained_characters": 24525
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 32,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[28]"
+    },
+    {
+      "ordinal": 29,
+      "stepId": "agent-tap_on-30",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.arduia.expense:id/filter"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[29]"
+    },
+    {
+      "ordinal": 30,
+      "stepId": "agent-ui_snapshot-31",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:37",
+        "23:37",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Filter",
+        "From",
+        "To",
+        "Oct",
+        "1",
+        "2023",
+        "Oct",
+        "15",
+        "2023",
+        "Order by Date in",
+        "DESC",
+        "ASC",
+        "APPLY FILTER"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 25086,
+          "retained_characters": 6378
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 9,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[30]"
+    },
+    {
+      "ordinal": 31,
+      "stepId": "agent-press_key-32",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[31]"
+    },
+    {
+      "ordinal": 32,
+      "stepId": "agent-ui_snapshot-33",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Expense Logs",
+        "2023 Oct 1 - 15 . DESC",
+        "Filter",
+        "Delete",
+        "Pest Control",
+        "2023 Oct 7",
+        "234.63",
+        "$",
+        "Delete",
+        "Non-Profit Support",
+        "2023 Oct 6",
+        "40.4",
+        "$",
+        "Delete",
+        "Jeans",
+        "2023 Oct 6",
+        "499.38",
+        "$",
+        "Delete",
+        "Car Maintenance",
+        "2023 Oct 6",
+        "314.82",
+        "$",
+        "Delete",
+        "New Jacket",
+        "2023 Oct 5",
+        "155.71",
+        "$",
+        "Delete",
+        "Laundry",
+        "2023 Oct 5",
+        "496.13",
+        "$",
+        "Delete",
+        "Furnishing",
+        "2023 Oct 5",
+        "489.24",
+        "$",
+        "Delete",
+        "Consulting Fees",
+        "2023 Oct 5",
+        "452.32",
+        "$",
+        "Delete",
+        "Wedding Gift",
+        "2023 Oct 4",
+        "362.97",
+        "$",
+        "Delete",
+        "Utilities",
+        "2023 Oct 3",
+        "367.51",
+        "$",
+        "Delete",
+        "Seminars",
+        "2023 Oct 3",
+        "155.07",
+        "$",
+        "Delete",
+        "15:37",
+        "23:37",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 100860,
+          "retained_characters": 24525
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 32,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[32]"
+    },
+    {
+      "ordinal": 33,
+      "stepId": "agent-swipe-34",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[33]"
+    },
+    {
+      "ordinal": 34,
+      "stepId": "agent-ui_snapshot-35",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Expense Logs",
+        "2023 Oct 1 - 15 . DESC",
+        "Filter",
+        "Furnishing",
+        "2023 Oct 5",
+        "489.24",
+        "$",
+        "Delete",
+        "Consulting Fees",
+        "2023 Oct 5",
+        "452.32",
+        "$",
+        "Delete",
+        "Wedding Gift",
+        "2023 Oct 4",
+        "362.97",
+        "$",
+        "Delete",
+        "Utilities",
+        "2023 Oct 3",
+        "367.51",
+        "$",
+        "Delete",
+        "Seminars",
+        "2023 Oct 3",
+        "155.07",
+        "$",
+        "Delete",
+        "Food Delivery",
+        "2023 Oct 3",
+        "302.85",
+        "$",
+        "Delete",
+        "Freelance Payment",
+        "2023 Oct 3",
+        "250.11",
+        "$",
+        "Delete",
+        "School Supplies",
+        "2023 Oct 2",
+        "367.54",
+        "$",
+        "Delete",
+        "Snacks",
+        "2023 Oct 2",
+        "324.58",
+        "$",
+        "Delete",
+        "Restaurant Meal",
+        "2023 Oct 2",
+        "210.35",
+        "$",
+        "Delete",
+        "Gym Membership",
+        "2023 Oct 2",
+        "164.38",
+        "$",
+        "Delete",
+        "15:37",
+        "23:37",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 102215,
+          "retained_characters": 24687
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 34,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[34]"
+    },
+    {
+      "ordinal": 35,
+      "stepId": "agent-assert_state-36",
+      "action": "assert_state",
+      "status": "failed",
+      "error": "Text assertion failed.",
+      "params": {
+        "text": {
+          "contains": "2023 Oct 1 - 15"
+        },
+        "optional": false
+      },
+      "uiLabels": [],
+      "output": {
+        "text": ""
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[35]"
+    },
+    {
+      "ordinal": 36,
+      "stepId": "agent-ui_snapshot-37",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Expense Logs",
+        "2023 Oct 1 - 15 . DESC",
+        "Filter",
+        "Furnishing",
+        "2023 Oct 5",
+        "489.24",
+        "$",
+        "Delete",
+        "Consulting Fees",
+        "2023 Oct 5",
+        "452.32",
+        "$",
+        "Delete",
+        "Wedding Gift",
+        "2023 Oct 4",
+        "362.97",
+        "$",
+        "Delete",
+        "Utilities",
+        "2023 Oct 3",
+        "367.51",
+        "$",
+        "Delete",
+        "Seminars",
+        "2023 Oct 3",
+        "155.07",
+        "$",
+        "Delete",
+        "Food Delivery",
+        "2023 Oct 3",
+        "302.85",
+        "$",
+        "Delete",
+        "Freelance Payment",
+        "2023 Oct 3",
+        "250.11",
+        "$",
+        "Delete",
+        "School Supplies",
+        "2023 Oct 2",
+        "367.54",
+        "$",
+        "Delete",
+        "Snacks",
+        "2023 Oct 2",
+        "324.58",
+        "$",
+        "Delete",
+        "Restaurant Meal",
+        "2023 Oct 2",
+        "210.35",
+        "$",
+        "Delete",
+        "Gym Membership",
+        "2023 Oct 2",
+        "164.38",
+        "$",
+        "Delete",
+        "15:37",
+        "23:37",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 102214,
+          "retained_characters": 24686
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 34,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[36]"
+    },
+    {
+      "ordinal": 37,
+      "stepId": "agent-assert_visible-38",
+      "action": "assert_visible",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "text": "2023 Oct 1 - 15 . DESC"
+        },
+        "optional": false
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[37]"
+    },
+    {
+      "ordinal": 38,
+      "stepId": "agent-kill_app-39",
+      "action": "kill_app",
+      "status": "failed",
+      "error": "NativeActionBudgetExceeded: action_budget",
+      "params": null,
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[38]"
+    }
+  ],
+  "originalNativeExecutionPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/017-ExpenseDeleteDuplicates2/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-017-20261110T165331Z-6053d7/execution-result.json",
+  "originalNativeResultPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/017-ExpenseDeleteDuplicates2/raw-private/fsq-native/worker/fsq-task-result.private.json",
+  "originalGoalPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/017-ExpenseDeleteDuplicates2/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-017-20261110T165331Z-6053d7/sources/000-goal.txt"
+}

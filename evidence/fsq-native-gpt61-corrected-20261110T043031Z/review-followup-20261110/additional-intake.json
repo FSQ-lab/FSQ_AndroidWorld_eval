@@ -1,0 +1,43 @@
+{
+  "status": "review_not_approved_waiting_final_receipt",
+  "sourceAndCandidateEdited": false,
+  "counterexamplesRerun": false,
+  "additionalFindings": [
+    {
+      "id": "R5",
+      "kind": "demonstrated_local_filesystem_oracle_leak",
+      "source": "fsq_runner.py:256-260; fsq_supervisor.py:33-48,128-134",
+      "sourceObservation": "Policy resolves supplied roots, but production passes only project/evaluatorSite. It does not collect the corrected-source sibling or external result/raw-private roots.",
+      "acceptedEvidence": "Real sandbox plus native FileOps read IR tasks.textproto in corrected-source and raw-private outside repository. No reproduction requested.",
+      "requiredBoundary": "Close real local filesystem access to every actual oracle/result root with canonicalized complete boundaries and verifiable host isolation; network/u2 disclaimer is not a remedy."
+    },
+    {
+      "id": "R6",
+      "kind": "forced_process_receipt_loss_and_fail_open_scheduling",
+      "source": "fsq_supervisor.py:145-155; fsq_runner.py:263-271,306-343; fsq_campaign.py:200-209",
+      "sourceObservation": "Process result exists only in memory before JSON parse; parent persists after archive. Parse/archive errors can leave fsq null; cleanupFailure considers only official teardown/environment; halt_reason accepts absent worker receipt.",
+      "acceptedEvidence": "Forced receipt was lost after truncated JSON/archive failure; fsq=null, cleanupFailure=false, halt_reason=None. Accepted, not rerun.",
+      "requiredBoundary": "Persist trusted process evidence before parsing or archiving; preserve on every exception path; missing/unknown process cleanup must halt scheduling."
+    },
+    {
+      "id": "R7",
+      "kind": "owned_process_group_survives_leader",
+      "source": "fsq_supervisor.py:58-105",
+      "sourceObservation": "All waits observe only Popen leader; normal/TERM leader exit ends supervision without verifying remaining owned process-group members.",
+      "acceptedEvidence": "Owned same-group SIGTERM-ignoring child survived while killed=false; reviewer cleaned only their own group. Accepted, not rerun.",
+      "requiredBoundary": "Detect and boundedly terminate remaining members of the owned group, preserving actual group-cleanup evidence; never kill shared/name-matched processes."
+    },
+    {
+      "id": "R8",
+      "kind": "static_public_cli_outer_watchdog_bypass",
+      "source": "fsq_runner.py:347-364",
+      "sourceObservation": "Public standalone main calls run_episode directly, without campaign outer B+610 subprocess watchdog.",
+      "requiredBoundary": "Apply a real outer watchdog to standalone CLI path too, including initialization/evaluation/archive/cleanup, without removing the feature or changing B."
+    }
+  ],
+  "originalPreservation": "original-delivery/preservation.json",
+  "finalReviewReceipt": "not yet supplied",
+  "modelAndDeviceExecution": false,
+  "testsExecuted": false,
+  "gitWrites": false
+}

@@ -1,0 +1,255 @@
+{
+  "scope": "Replay original captured playlist summary and song-list observations; no Android/Appium run.",
+  "rawObservation": {
+    "playlistSummaryRawLine": 7208,
+    "playlistSummary": "12 Songs  •  01:01:13",
+    "songCount": 12,
+    "durationSeconds": 3673,
+    "requiredRangeSeconds": [
+      2700,
+      3000
+    ],
+    "withinRequiredRange": false,
+    "overshootSecondsAboveUpperBound": 673,
+    "songListRawLine": 4324,
+    "songListTitlesObserved": [
+      "Beyond the Horizon",
+      "City of Stars",
+      "Endless Summer",
+      "Eternal Flame",
+      "Falling Feathers",
+      "Forever Young",
+      "Golden Days",
+      "Heartbeat Away",
+      "Hidden Paths",
+      "Moonlight Sonata",
+      "Return to Paradise",
+      "Silent Dreams"
+    ],
+    "songListShowedDurationField": false,
+    "selectionStatesObserved": [
+      "10 selected",
+      "12 selected"
+    ],
+    "firstDurationObservationCell": 27,
+    "cleanupSteerRawLine": 7213,
+    "finalReportRawLine": 7717
+  },
+  "actionReplay": {
+    "executedUiActions": 30,
+    "maxSteps": 30,
+    "rejectedActions": 1,
+    "kinds": {
+      "actions": 4,
+      "back": 1,
+      "click": 23,
+      "input": 2
+    },
+    "mapping": [
+      {
+        "n": 1,
+        "cell": 4,
+        "rawLine": 1105,
+        "action": "click launcher Search"
+      },
+      {
+        "n": 2,
+        "cell": 4,
+        "rawLine": 1105,
+        "action": "type Retro Music"
+      },
+      {
+        "n": 3,
+        "cell": 5,
+        "rawLine": 1314,
+        "action": "click Retro Music result"
+      },
+      {
+        "n": 4,
+        "cell": 7,
+        "rawLine": 1907,
+        "action": "click Playlists"
+      },
+      {
+        "n": 5,
+        "cell": 8,
+        "rawLine": 2064,
+        "action": "click More options"
+      },
+      {
+        "n": 6,
+        "cell": 10,
+        "rawLine": 2459,
+        "action": "tap New playlist"
+      },
+      {
+        "n": 7,
+        "cell": 11,
+        "rawLine": 2814,
+        "action": "type playlist name"
+      },
+      {
+        "n": 8,
+        "cell": 11,
+        "rawLine": 2814,
+        "action": "click Create"
+      },
+      {
+        "n": 9,
+        "cell": 14,
+        "rawLine": 3646,
+        "action": "click created playlist card"
+      },
+      {
+        "n": 10,
+        "cell": 15,
+        "rawLine": 3737,
+        "action": "click More options"
+      },
+      {
+        "n": 11,
+        "cell": 17,
+        "rawLine": 4324,
+        "action": "back"
+      },
+      {
+        "n": 12,
+        "cell": 17,
+        "rawLine": 4324,
+        "action": "click Navigate up"
+      },
+      {
+        "n": 13,
+        "cell": 17,
+        "rawLine": 4324,
+        "action": "click Songs"
+      },
+      {
+        "n": 14,
+        "cell": 18,
+        "rawLine": 4699,
+        "action": "long-press first song"
+      },
+      {
+        "n": 15,
+        "cell": 20,
+        "rawLine": 5282,
+        "action": "click City of Stars"
+      },
+      {
+        "n": 16,
+        "cell": 20,
+        "rawLine": 5282,
+        "action": "click Endless Summer"
+      },
+      {
+        "n": 17,
+        "cell": 20,
+        "rawLine": 5282,
+        "action": "click Eternal Flame"
+      },
+      {
+        "n": 18,
+        "cell": 20,
+        "rawLine": 5282,
+        "action": "click Falling Feathers"
+      },
+      {
+        "n": 19,
+        "cell": 20,
+        "rawLine": 5282,
+        "action": "click Forever Young"
+      },
+      {
+        "n": 20,
+        "cell": 20,
+        "rawLine": 5282,
+        "action": "click Golden Days"
+      },
+      {
+        "n": 21,
+        "cell": 20,
+        "rawLine": 5282,
+        "action": "click Heartbeat Away"
+      },
+      {
+        "n": 22,
+        "cell": 20,
+        "rawLine": 5282,
+        "action": "click Hidden Paths"
+      },
+      {
+        "n": 23,
+        "cell": 20,
+        "rawLine": 5282,
+        "action": "click Moonlight Sonata"
+      },
+      {
+        "n": 24,
+        "cell": 22,
+        "rawLine": 5804,
+        "action": "swipe song list"
+      },
+      {
+        "n": 25,
+        "cell": 25,
+        "rawLine": 6401,
+        "action": "click Return to Paradise"
+      },
+      {
+        "n": 26,
+        "cell": 25,
+        "rawLine": 6401,
+        "action": "click Silent Dreams"
+      },
+      {
+        "n": 27,
+        "cell": 25,
+        "rawLine": 6401,
+        "action": "click More options"
+      },
+      {
+        "n": 28,
+        "cell": 26,
+        "rawLine": 6712,
+        "action": "tap Add to playlist"
+      },
+      {
+        "n": 29,
+        "cell": 27,
+        "rawLine": 7208,
+        "action": "click target playlist"
+      },
+      {
+        "n": 30,
+        "cell": 27,
+        "rawLine": 7208,
+        "action": "click Playlists"
+      }
+    ],
+    "rejected": [
+      {
+        "n": 31,
+        "cell": 28,
+        "rawLine": 7472,
+        "action": "click playlist card to adjust",
+        "reason": "step budget exhausted"
+      }
+    ],
+    "sumCheck": 30
+  },
+  "predicateChecks": {
+    "durationWithinRange": false,
+    "selectedSongCount": 12,
+    "durationFieldVisibleInSongList": false,
+    "firstDurationObservationRawLine": 7208,
+    "adjustmentAttemptAfterBudget": true,
+    "firstDivergenceRawLine": 5282
+  },
+  "limits": [
+    "The exact final 12-title set is not fully observed after the failed adjustment; only the pre-add selection titles and the two added titles are grounded.",
+    "Screenshot contents from cells 9/15/16/19/25 are image payloads and were not decoded as evidence; menu state conclusions use text observations."
+  ],
+  "newAndroidRuns": 0,
+  "newAppiumSessions": 0
+}

@@ -1,0 +1,613 @@
+{
+  "schemaVersion": 1,
+  "kind": "post_eval_implementation_working_handoff",
+  "recordedDate": "2026-11-10",
+  "status": "three_batch_coordination_complete_scoped_acceptance_with_limits_archive_only_deployment_open",
+  "FSQportionComplete": true,
+  "FSQportionScope": "FSQ_AndroidWorld_eval repair batches1/3 source and scoped independent review; not a new FSQ task-Agent adapter or runtime deployment",
+  "deploymentComplete": false,
+  "allThreeBatchesComplete": true,
+  "finalAcceptance": true,
+  "futureLaunchAuthorized": false,
+  "integrationScope": {
+    "allowedWrites": [
+      "evidence/post-eval-fixes-20261110/handoff.md",
+      "evidence/post-eval-fixes-20261110/handoff.json"
+    ],
+    "mode": "Final documentation-only handoff update and subsequent stop of only the owned repair-hourly session service. No README/adapter/source/test/config/review edits or model/test/device/hash-wide audit.",
+    "newHandoffFiles": false
+  },
+  "historicalBoundary": {
+    "campaignId": "amkernel-0.1.4-r15-current-stack-full-20261109T154403Z",
+    "recordedValidScore": 0.8318965517241379,
+    "displayScore": "83.1897%",
+    "basis": "Existing formal/review receipts only; no recalculation, rescoring or historical whole-campaign immutability audit by this integration.",
+    "policy": "Original manifests/params/goals/results/raw and analysis evidence remain unchanged; no retroactive passes or private-receipt backfill."
+  },
+  "batch1": {
+    "taskIds": [
+      "001",
+      "014",
+      "076"
+    ],
+    "status": "implemented_independent_contract_review_complete_not_launch_qualified",
+    "reviewEvidence": [
+      "evidence/post-eval-fixes-20261110/review.md",
+      "evidence/post-eval-fixes-20261110/review.json"
+    ],
+    "reviewVerdict": "no_actionable_contract_code_findings; not_qualified_for_future_launch",
+    "actionableCodeFindings": [],
+    "reviewedSourceSetSha256": "995e8378ec4ca435a7f739356e64089597a97c7c76a8870efe75e6a44925286d",
+    "reviewIdentityBoundary": "Review-time working-tree bytes, not installed or committed identity. This documentation integration changes README bytes; the original review artifacts/digests are not rewritten or represented as a new overall review.",
+    "implementationFiles": [
+      "android_world/android_world/task_evals/single/audio_recorder.py",
+      "android_world/android_world/task_evals/single/audio_recorder_test.py",
+      "android_world/android_world/task_evals/single/expense.py",
+      "android_world/android_world/task_evals/single/expense_test.py",
+      "android_world/android_world/task_evals/information_retrieval/proto/tasks.textproto",
+      "android_world/android_world/task_evals/information_retrieval/proto_utils_test.py",
+      "android_world/android_world/task_metadata.json",
+      "android_world/docs/tasks_guide.md"
+    ],
+    "implementationVerification": {
+      "reported": "15 passed, 2 warnings in 0.35s; offline consumer smoke passed",
+      "source": "README.md, Narrow verification actually run once",
+      "rerunByThisIntegration": false
+    }
+  },
+  "openFutureRunGates": [
+    {
+      "id": "G1",
+      "severity": "P1_before_future_evaluation",
+      "kind": "known_integration_gate_not_contract_defect",
+      "location": "README.md:198-200; android_world/docs/tasks_guide.md:219; parent android_world gitlink",
+      "evidence": "Submodule HEAD and parent gitlink both remain55ddaf5..., while8 tracked definition/test/docs files are dirty. Parent README is untracked. Commit/gitlink alone cannot reproduce reviewed new definitions.",
+      "consumerRisk": "A fresh checkout loses repaired definitions and possibly their parent contract record; using old revision as new source identity is incorrect.",
+      "minimalAction": "Under separate authorization, review/commit intended submodule changes without sweeping generated/unrelated files; advance parent gitlink and include intended README. No such action performed here.",
+      "status": "open",
+      "resolvedByThisIntegration": false
+    },
+    {
+      "id": "G2",
+      "severity": "P1_before_future_evaluation",
+      "kind": "known_installation_and_qualification_gate",
+      "location": "README.md:198-200; pyproject.toml:24-25; android_world/setup.py:64-93; .venv/lib/python3.11/site-packages/android_world-0.1.0.dist-info/direct_url.json:1",
+      "evidence": "Installed package is a non-editable local-path install. All3 installed implementation/textproto hashes and metadata hash differ from reviewed checkout. Installed metadata hash fd3cf23e... equals frozen manifest metadata pin, while new source metadata is17b65f38....",
+      "consumerRisk": "Ordinary installed imports may still consume old definitions; PYTHONPATH-source regression proof is not installed-consumer qualification. Reusing the frozen manifest could mix old time params and identity with new hour definition.",
+      "minimalAction": "Package/install the separately approved identity, verify actual consumer import and task-data bytes, create a new manifest/task identity and perform fresh normal qualification. Do not silently rewrite old manifests/params or install as part of this review.",
+      "status": "open",
+      "resolvedByThisIntegration": false
+    }
+  ],
+  "gitAndInstallObservation": {
+    "source": "First-batch independent review, not a fresh Git/import check by this integration",
+    "submoduleHeadAndParentGitlink": "55ddaf5edc6f6c25673aed343907d5b9dca66f84",
+    "submoduleState": "8 modified tracked contract files; generated state_pb2.py/state_pb2_grpc.py/task_pb2.py/task_pb2_grpc.py untracked and preserved",
+    "parentREADMEState": "untracked (?? README.md); git diff alone would omit it",
+    "installedOrigin": {
+      "url": "file:///Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/android_world",
+      "editable": false,
+      "evidence": ".venv/lib/python3.11/site-packages/android_world-0.1.0.dist-info/direct_url.json"
+    },
+    "installedSourceDifference": "All three installed implementations/textproto and metadata differ from reviewed source; source PYTHONPATH proof is not installed-consumer qualification. No actual import resolution inferred here."
+  },
+  "batch2": {
+    "owner": "amkernel owner",
+    "status": "coordination_complete_final_review_accepted_with_limits_candidate_archive_only",
+    "statusSource": "Latest finalOutcomeReview / review.md section8 plus coordinator archive-only decision; historical pending receipts untouched",
+    "delivery": {
+      "pathBase": "FSQ_AndroidWorld_eval repository root; external sibling repository, not copied/merged here",
+      "report": "../amkernel/evidence/skill-boundary-ab-20261110T024711Z/report.md",
+      "reviewHandoff": "../amkernel/evidence/skill-boundary-ab-20261110T024711Z/review-handoff.json",
+      "candidatePatch": "../amkernel/evidence/skill-boundary-ab-20261110T024711Z/candidate.patch",
+      "candidateManifest": "../amkernel/evidence/skill-boundary-ab-20261110T024711Z/candidate-manifest.json",
+      "candidatePatchSha256AsReported": "297410142516e60ce95edfbed2006f2872cb398bd11b039ed4d51aad22f670a1",
+      "originalPairedExperiment": {
+        "plannedSlots": 12,
+        "completedSlots": 12,
+        "discardedSlots": 0,
+        "unstartedSlots": 0,
+        "OLD": {
+          "businessPassed": 6,
+          "businessTotal": 6,
+          "pythonCalls": 37,
+          "actions": 49,
+          "elapsedSeconds": 293.626
+        },
+        "NEW": {
+          "businessPassed": 6,
+          "businessTotal": 6,
+          "pythonCalls": 34,
+          "actions": 51,
+          "elapsedSeconds": 349.422
+        },
+        "surface": "Synthetic loopback W3C UI via native Copilot CLI; not physical Android or formal OMP",
+        "successRateImprovementEstablished": false,
+        "overallCostBenefitEstablished": false,
+        "unknown": [
+          "tokens",
+          "monetary cost",
+          "actual provider model identity",
+          "complete historical SDK/transitive dependency/environment/prompt identity"
+        ],
+        "originalStructuredRecoveryQualification": "not established; R1 retained"
+      },
+      "candidateState": "Archived broad Skill candidate only; coordinator declines default adoption, original-tree merge and publication. No demonstrated pass-rate or overall cost benefit; no17case repair claim.",
+      "structuredSupplement": {
+        "id": "structured-recovery-supplement-20261110T031940Z",
+        "criterionPackage": "../amkernel/evidence/skill-boundary-ab-20261110T024711Z/structured-recovery-supplement-20261110T031940Z/criterion-review-package.json",
+        "status": "revision2_actual_pair_complete_final_review_accepted_with_limits",
+        "reviewOwner": "Existing independent amkernel reviewer; finalOutcomeReview / review.md section8",
+        "actualAttempts": 2,
+        "afterApprovalOnly": "Historical exact-pin launch prerequisite has been consumed: OLD then NEW completed once each; final independent interpretation accepted-with-limits. No additional attempt or rerun authorized.",
+        "revision": 2,
+        "finalReview": {
+          "json": "../amkernel/evidence/post-eval-skill-review-20261110/review.json#/finalOutcomeReview",
+          "markdown": "../amkernel/evidence/post-eval-skill-review-20261110/review.md",
+          "markdownSection": "8",
+          "decision": "accepted-with-limits",
+          "reviewedAt": "2026-11-10T04:29:34.999254+00:00",
+          "newEvidenceProblems": []
+        },
+        "actualPair": {
+          "order": [
+            "OLD",
+            "NEW"
+          ],
+          "actualAttempts": 2,
+          "perArm": {
+            "OLD": 1,
+            "NEW": 1
+          },
+          "unstartedRuns": [],
+          "noFallbackOrReplacement": true,
+          "surface": "Copilot CLI1.0.105 synthetic loopback; not formal OMP or real Android device",
+          "OLD": {
+            "hazardCovered": true,
+            "recoveryQualified": true,
+            "businessPassed": true,
+            "protocolPassed": true,
+            "qualifiedPassed": true,
+            "mutationActions": 5,
+            "mutationBudget": 10,
+            "pythonExecCalls": 7,
+            "nativeHttpRequests": 100,
+            "elapsedSeconds": 56.568,
+            "failedCells": 1,
+            "successfulSessionCreates": 1,
+            "successfulSessionDeletes": 1,
+            "activeSessionSnapshot": false
+          },
+          "NEW": {
+            "hazardCovered": true,
+            "recoveryQualified": true,
+            "businessPassed": true,
+            "protocolPassed": true,
+            "qualifiedPassed": true,
+            "mutationActions": 5,
+            "mutationBudget": 10,
+            "pythonExecCalls": 7,
+            "nativeHttpRequests": 69,
+            "elapsedSeconds": 55.813,
+            "failedCells": 1,
+            "successfulSessionCreates": 1,
+            "successfulSessionDeletes": 1,
+            "activeSessionSnapshot": false
+          }
+        },
+        "adverseEvidenceRetained": {
+          "OLD": "After successful DELETEseq99, second POST/sessionseq100 rejectedHTTP400; cell7failed/alive SessionNotCreatedException. Earlier post-save lookup404s retained. One successful create/delete, not only one create attempt.",
+          "NEW": "After saveseq60, old-page lookupseq61HTTP404; cell4failed/alive NoSuchElementException retained. Stale describes page state, not StaleElementReferenceException.",
+          "meaning": "Fixed protocol/qualified true is not error-free behavior; failed cells not discarded or retrospectively rescored."
+        },
+        "limits": [
+          "Closes actual positive recovery evidence for this exact revision2 supplement only; does not retroactively qualify the original six scenes.",
+          "OLD/NEW both pass; no success-rate improvement, causal Skill benefit or generalized reliability conclusion. HTTP/elapsed are descriptive single-pair observations only; no overall cost proof.",
+          "Actual provider/model, vendor closed-source system prompt/embedded SDK and tokens/billing remain unknown; usage empty is not zero.",
+          "No original17-case repair, deployment/publication, formal OMP/device result or newadapter completion claim."
+        ]
+      },
+      "basis": "Read latest external report/review-handoff and finalOutcomeReview section8; final review supersedes historical pending fields. No model/test/device/HTTP execution or new source/hash-wide audit.",
+      "historicalDeliverySnapshot": {
+        "candidatePatchSha256AsPreviouslyReported": "28a5506199f809e3315d95cddddbe844aac6a7c6bafd5b26d0dab7a49b4c1906",
+        "structuredSupplementStatus": "awaiting_w3_p3_criterion_review",
+        "actualAttempts": 0,
+        "interpretation": "Superseded prior handoff cutoff only; original external pending/prelaunch receipts are not rewritten."
+      }
+    },
+    "requiredDeliveryFields": [
+      {
+        "field": "candidateIdentity",
+        "required": "Candidate/change paths, source commit if any, dirty-source digest if applicable, package/Skill versions and artifact provenance/hash; distinguish unpublished candidate from released artifact."
+      },
+      {
+        "field": "runtimeAndAgentIdentity",
+        "required": "Actual AMKernel/Skill/OMP/model identities and execution entry point/MCP route used by the real Agent; relevant runtime/config evidence and differences from the comparator, if used."
+      },
+      {
+        "field": "scenarioAndTaskBinding",
+        "required": "Actual scenario/task IDs and target behavior, definition/instance identity, goal/params provenance or hash, fixture versus real-device boundary; no preselected IDs or invented manifest."
+      },
+      {
+        "field": "executionProtocol",
+        "required": "Actual commands, run/attempt IDs, timestamps, seeds if used, attempt count, step/time/action budgets; comparator controls/differences or explicit statement that no comparison was run."
+      },
+      {
+        "field": "actualRealAgentEvidence",
+        "required": "Real-Agent trajectory/tool/session logs, output paths and hashes, observed end state versus acceptance criteria, reward only if actually evaluated; distinguish measured results from inference or offline fixtures."
+      },
+      {
+        "field": "resourceAndCleanup",
+        "required": "Authorized resource window/target and session identities, conflicts, actual cleanup/restoration evidence and any unknown/failed cleanup; do not infer cleanup from idle state."
+      },
+      {
+        "field": "outcomeAndLimits",
+        "required": "Actual outcomes, failures and limitations, unverified scope, evidence-backed causal claims and requested next decision; publication/installation/qualification require separate authorization."
+      }
+    ],
+    "boundary": "Original six and revision2 two-attempt supplement delivered; exact final interpretation accepted-with-limits, no remaining evidence blocker. Archive candidate only, no default merge/publication or claimed overall benefit/17case repair. Historical pending/prelaunch snapshots and original structured-recovery limits retained."
+  },
+  "batch3": {
+    "status": "source_complete_D01_D03_independent_closure_resolved_deployment_pending",
+    "implementationEvidence": "evidence/evaluator-private-diagnostics-20261110/implementation.md",
+    "verificationEvidence": "evidence/evaluator-private-diagnostics-20261110/verification.json",
+    "deliveredPaths": [
+      "src/fsq_androidworld_eval/runner.py",
+      "src/fsq_androidworld_eval/evaluator_diagnostics.py",
+      "tests/test_evaluator_diagnostics.py"
+    ],
+    "sourceSha256AsReported": {
+      "src/fsq_androidworld_eval/runner.py": "a5864ca8edd0a00af6903ea27b4df84fb73630f6759de2105a9d463cb4fb766c",
+      "src/fsq_androidworld_eval/evaluator_diagnostics.py": "d231b78432685fc61787a49a3a3cc3b0f31e7567498d90c33fce59192f80febc",
+      "tests/test_evaluator_diagnostics.py": "95f091f2384889430aab4f00d839933f5fcd2946851ef98a7516f62b67d31977"
+    },
+    "sourceIdentityBoundary": "Corrected source snapshot from review.json#/diagnosticsClosure and verification.json#/corrections/0; helper inclusion in existing Harness glob reviewed, but complete new runtime/installed/manifest identity is not locked or qualified.",
+    "independentReview": {
+      "owner": "w4:p2",
+      "status": "targeted_closure_complete_resolved",
+      "verdict": "All three original P2 findings resolved in the reviewed corrected bytes; future run gates remain open",
+      "delivery": {
+        "markdown": "evidence/post-eval-fixes-20261110/review.md",
+        "json": "evidence/post-eval-fixes-20261110/review.json#/diagnosticsClosure",
+        "recordedAtUtc8": "2026-11-10T11:23:37+08:00"
+      },
+      "scope": "D01-D03 targeted close-out; no expanded audit or runtime/installed/manifest/qualification acceptance",
+      "resolutions": {
+        "D01": "resolved",
+        "D02": "resolved",
+        "D03": "resolved"
+      },
+      "unresolvedOriginalFindings": [],
+      "newFindingsWithinTargetedRecheck": [],
+      "reviewerReranOwnerChecks": false,
+      "identityAnalysis": "Existing Harness source glob includes helper; corrected source hashes match corrections[0]. These are source-review snapshots, not a complete new runtime identity.",
+      "privacyBoundary": "Public evaluator result/type narrowing reviewed; existing native sinks may still emit hidden values. Not an all-output privacy, OS sandbox or performance certification."
+    },
+    "verificationAsReported": {
+      "scope": {
+        "realDevice": false,
+        "realAgentProcess": false,
+        "formalCampaign": false,
+        "qualification": false,
+        "historicalAttemptsModified": false,
+        "source": "Synthetic in-memory rows through the real native row predicate; real runner/reference loop/action gate/step adapter; external host/device/process boundaries replaced by the offline fixture."
+      },
+      "initialDeliveryFocusedCheck": {
+        "command": ".venv/bin/python -B -m pytest -q -p no:cacheprovider tests/test_evaluator_diagnostics.py tests/test_runner.py",
+        "initialRun": {
+          "failed": 7,
+          "passed": 19,
+          "elapsedSeconds": 0.53,
+          "cause": "OfflineProxy fixture omitted the existing wait_for_idle interface; production cleanup was not changed."
+        },
+        "finalRun": {
+          "passed": 26,
+          "failed": 0,
+          "warnings": 2,
+          "elapsedSeconds": 0.44,
+          "summary": "26 passed, 2 warnings in 0.44s",
+          "warningSources": [
+            "pydub: audioop deprecated for Python 3.13",
+            "pydub: ffmpeg/avconv absent from PATH; not exercised by these checks"
+          ]
+        },
+        "behaviorCovered": [
+          "native rejection logs remain private",
+          "reward 0.5 and 1.0/classification/lifecycle preserved",
+          "native exception arguments/frames private and invalid_evaluator cleanup preserved",
+          "diagnostic rename failure does not invalidate reward or override native exception",
+          "no components invented for scalar-only task",
+          "no receipt for pre-evaluator protocol rejection",
+          "1000-record flood and large Unicode exception bounded",
+          "no diagnostic-owned repr/str formatting",
+          "overlapping threads do not mix attempt logs; filters/sinks restored"
+        ]
+      },
+      "offlineScenarios": [
+        {
+          "scenario": "reject",
+          "output": "evidence/evaluator-private-diagnostics-20261110/offline-smoke/attempt-1",
+          "evaluatorCalls": 1,
+          "reward": 0.5,
+          "classification": "failed",
+          "exitCode": 0,
+          "diagnostics": {
+            "bytes": 1415,
+            "path": "raw-private/evaluator-diagnostics.json",
+            "sha256": "d0ccd061338e51c9366643ece451ad89f6628ed203e1d18cc0320a05e458915c",
+            "status": "truncated"
+          },
+          "receiptHashMatches": true
+        },
+        {
+          "scenario": "pass",
+          "output": "evidence/evaluator-private-diagnostics-20261110/offline-smoke/attempt-2",
+          "evaluatorCalls": 1,
+          "reward": 1.0,
+          "classification": "passed",
+          "exitCode": 0,
+          "diagnostics": {
+            "bytes": 928,
+            "path": "raw-private/evaluator-diagnostics.json",
+            "sha256": "6a0bd5cf137bec4fe0399c841bd28c6d41c6b250dd2f8902b43c8f169b23e1f2",
+            "status": "written"
+          },
+          "receiptHashMatches": true
+        },
+        {
+          "scenario": "raise",
+          "output": "evidence/evaluator-private-diagnostics-20261110/offline-smoke/attempt-3",
+          "evaluatorCalls": 1,
+          "reward": null,
+          "classification": "invalid_evaluator",
+          "exitCode": 1,
+          "diagnostics": {
+            "bytes": 1753,
+            "path": "raw-private/evaluator-diagnostics.json",
+            "sha256": "bbe563c8724c9b4c409aded2138b2b5e7a3741c6332b5f1638c4f58037359bcd",
+            "status": "truncated"
+          },
+          "receiptHashMatches": true
+        },
+        {
+          "scenario": "silent",
+          "output": "evidence/evaluator-private-diagnostics-20261110/offline-smoke/attempt-4",
+          "evaluatorCalls": 1,
+          "reward": 0.5,
+          "classification": "failed",
+          "exitCode": 0,
+          "diagnostics": {
+            "bytes": 930,
+            "path": "raw-private/evaluator-diagnostics.json",
+            "sha256": "a327c291a3d6ed1bd33b2f730b9e14c716add50b7769ecb57e6cfc09204c942d",
+            "status": "written"
+          },
+          "receiptHashMatches": true
+        },
+        {
+          "scenario": "write_failure",
+          "output": "evidence/evaluator-private-diagnostics-20261110/offline-smoke/attempt-5",
+          "evaluatorCalls": 1,
+          "reward": 0.5,
+          "classification": "failed",
+          "exitCode": 0,
+          "diagnostics": {
+            "errorType": "PermissionError",
+            "status": "write_failed"
+          },
+          "receiptHashMatches": null
+        }
+      ],
+      "realAgentOrDeviceProof": false,
+      "rerunByThisIntegration": false,
+      "initialDeliveryNotVerified": [
+        "real Agent/sandbox execution",
+        "device/runtime evaluator behavior",
+        "campaign requalification/new identity launch",
+        "wall-clock IO latency bound",
+        "native structured component scores not supplied through scalar interface",
+        "final DB/device snapshots",
+        "independent code review"
+      ]
+    },
+    "latestCorrectionEvidence": {
+      "receipt": "evidence/evaluator-private-diagnostics-20261110/verification.json#/corrections/0",
+      "receiptFileSha256AsRecordedByClosure": "7e44cb90737500675277b7a837e0d7e2254a7bc1ece64cea749c1721e1ddf8bf",
+      "implementationReceipt": "evidence/evaluator-private-diagnostics-20261110/implementation.md:122-198",
+      "implementationFileSha256AsRecordedByClosure": "edb76403177d42154554ccb242a3d941c913385a658f32cc1f73b3790768b50a",
+      "dispositionPrecedence": "review.json#/diagnosticsClosure supersedes the older pending-review labels preserved in implementation.md and corrections[0]. Those original receipts are not rewritten.",
+      "check": {
+        "command": ".venv/bin/python -B -m pytest -q -p no:cacheprovider tests/test_evaluator_diagnostics.py tests/test_runner.py",
+        "passed": 32,
+        "failed": 0,
+        "oldCases": 26,
+        "newCases": 6,
+        "warnings": 2,
+        "elapsedSeconds": 0.51,
+        "runsAfterCorrections": 1,
+        "rerunByThisIntegration": false
+      },
+      "directedSmoke": {
+        "outputRoot": "evidence/evaluator-private-diagnostics-20261110/correction-smoke-D01-D03",
+        "D01": "root/absl controlled detach versus inflight dispatch: A/B own records, zero drop/error, foreign filters/sinks retained",
+        "D02": "10k type/exception names capped to128 before encoding/shared budget; receipt2208bytes, truncated",
+        "D03": "offline runner returning/native-exception: zero hostile metadata hooks, one evaluator call, original reward/terminal/cleanup, persisted receipt hashes match",
+        "boundary": "External device/process boundaries replaced by fixture; original five scenarios not rerun by correction smoke. No smoke rerun by this documentation integration."
+      },
+      "currentNotVerified": [
+        "real device/Agent/sandbox behavior",
+        "new complete runtime and installed/import identity",
+        "new manifest/readiness/fresh qualification",
+        "storage latency/performance equivalence",
+        "all native logging destinations private",
+        "native structured component scores or final DB/device snapshots"
+      ]
+    },
+    "receiptContract": {
+      "privateRelativePath": "raw-private/evaluator-diagnostics.json",
+      "accessPolicy": "Trusted maintainers offline only; never inject private receipt contents into Agent inputs/Skills/events/public indexes. Scoped source/privacy review complete, but original native sinks can still emit hidden values; no all-output or OS/sandbox confidentiality guarantee.",
+      "capture": "Existing root/absl scoring-thread records as bounded templates/literal arguments, exception type/bounded args/up to 16 no-locals frames, original reward/task identity/phase/start-end timestamps; not newly rendered full messages.",
+      "timing": "After Agent exit, adapter/session cleanup and protocol/submission/interaction_cache checks; only the original single is_successful call; stop/remove filters before disk write and before task teardown.",
+      "excludedCapture": [
+        "initialization/Agent/recovery/teardown logs",
+        "other threads and records not reaching root/absl filter points",
+        "stdout/stderr/native output",
+        "logs suppressed by existing levels/filters"
+      ],
+      "limits": {
+        "receiptBytes": 65536,
+        "typeNameCharacters": 128,
+        "logBytes": 49152,
+        "logRecords": 256,
+        "literalCharactersPerProjection": 2048,
+        "valueNodesPerProjection": 64,
+        "itemsPerContainer": 8,
+        "valueDepth": 3,
+        "exceptionFrames": 16
+      },
+      "permissionsAsReported": {
+        "privateDirectory": "0700",
+        "sidecarAndTemporaryFile": "0600",
+        "write": "atomic replace"
+      },
+      "publicReference": {
+        "field": "evaluator.diagnostics",
+        "persistedFields": [
+          "path",
+          "sha256",
+          "status",
+          "bytes"
+        ],
+        "persistedStatuses": [
+          "written",
+          "truncated",
+          "capture_error"
+        ],
+        "failure": {
+          "status": "write_failed",
+          "fields": [
+            "status",
+            "errorType"
+          ],
+          "validPathOrHash": false
+        }
+      },
+      "publicEvaluatorError": "Type only; no message/traceback/native args fallback if private write fails. Non-evaluator error format unchanged according to implementation delivery.",
+      "componentResults": {
+        "status": "not_provided",
+        "source": "scalar_return_interface"
+      },
+      "noInventedOrExtraObservation": [
+        "no scalar-derived component scores or parsed-log Boolean substitutes",
+        "no extra evaluator/oracle calls",
+        "no added DB/device queries or snapshot",
+        "no historical backfill"
+      ],
+      "nonInterferenceBoundary": "Offline paths preserve original reward/exception/classification/cleanup as reported, not an accepted privacy/security or performance-equivalence guarantee.",
+      "ioCost": "Additional bounded CPU/projection/encoding and local disk IO after scoring, before teardown. evaluator.durationSeconds excludes sidecar writing; stage time includes it. Byte limits do not bound storage latency; no zero-IO/zero-wall-clock-disturbance claim.",
+      "unknownsRetained": [
+        "silent failure branches",
+        "unsupplied structured component scores (including which VLC playlist earned 0.5)",
+        "omitted unsafe arguments, full exception chain and other threads/channels",
+        "final DB/device snapshots",
+        "historical 060/098/106 final-state gaps and other prior unknowns"
+      ]
+    }
+  },
+  "priorDocumentationVerification": {
+    "status": "passed",
+    "localMarkdownReferencesChecked": 11,
+    "unchangedInputReceipts": [
+      "evidence/post-eval-fixes-20261110/review.md",
+      "evidence/post-eval-fixes-20261110/review.json",
+      "evidence/evaluator-private-diagnostics-20261110/implementation.md",
+      "evidence/evaluator-private-diagnostics-20261110/verification.json"
+    ],
+    "verificationBoundary": "Document structure/state/link and input-receipt checks only; not a new whole-campaign raw immutability audit or source/installed/runtime qualification.",
+    "mode": "Standard-library-only document JSON parsing, cross-document state/reference and unchanged input-receipt checks; no project imports/test suites/device access.",
+    "implementationEvidenceRerun": false
+  },
+  "remainingForCoordinator": [
+    "Three-batch implementation/validation/scoped-review coordination is complete; batch1 source15passed and batch3 privateDiag32passed/D01-D03 closure remain complete.",
+    "Broad Skill candidate archive-only: no default adoption/merge/publication, no demonstrated success-rate or overall cost benefit; final exact supplement accepted-with-limits and actualAttempts=2.",
+    "Separate unapproved future deployment gates remain: intended submodule commit/parent gitlink, installed/import identity, full new identity admission and newmanifest/readiness/freshqualification.",
+    "Independent new FSQ adapter work directed by w6:p2/w4:p1 is outside this batch; do not interrupt it or claim adapter completion/current whole-project review."
+  ],
+  "deploymentIdentity": {
+    "status": "not_locked_not_installed_not_qualified",
+    "completeNewRuntimeIdentity": null,
+    "newSubmoduleCommit": null,
+    "updatedParentGitlink": null,
+    "newManifest": null,
+    "newReadiness": null,
+    "basis": "No placeholder hashes or fabricated completed identity; G1/G2 remain open and unauthorized."
+  },
+  "nextEnablementSteps": [
+    "Obtain explicit deployment/resource authorization; choose accepted task definitions and protocol. Preserve historical manifests/results/83.1897%; scope completion alone is not launch permission.",
+    "Under separate Git authorization, review intended changes, commit the AndroidWorld submodule and advance the parent gitlink; include intended parent source/docs without sweeping unrelated/generated files. Capture actual commits and source hashes.",
+    "Build/install the accepted package identity separately; verify actual consumer imports and implementation/textproto/metadata bytes. Do not equate source PYTHONPATH proof with installed acceptance.",
+    "Capture the complete Harness/runtime/target/artifact identity, including corrected runner/helper. Check evaluator revision and migration admission policy; the old current_stack allowlist is not blanket approval of new AndroidWorld definitions. Any needed policy change requires separate authorization.",
+    "Prepare a distinct new manifest with approved definition/instance/protocol/runtime identities and fresh readiness/qualification in the authorized exclusive resource window; never rewrite or borrow old frozen evidence.",
+    "Run fresh non-scoring rehearsal and calibration required by the approved protocol, inspect actual identity/cleanup/evidence gates, and only then separately authorize a new campaign/output directory. No step is performed by this handoff."
+  ],
+  "documentationUpdate": {
+    "status": "final_external_outcome_and_archive_decision_recorded_readback_only",
+    "mode": "Only handoff.md/json updated using latest retained receipts; necessary readback, no model/test/device/HTTP or source/hash-wide audit. Historical documentation verification retained unchanged.",
+    "FSQportionComplete": true,
+    "externalWait": "closed: exact revision2 actualAttempts=2 finalOutcomeReview accepted-with-limits; historical pending fields in original external receipts not rewritten",
+    "noSourceChanges": true,
+    "noDeploymentActions": true
+  },
+  "prohibitedActionsPerformed": [],
+  "finalBatchClosure": {
+    "recordedAtUtc8": "2026-11-10T12:34:35+08:00",
+    "state": "three_batch_implementation_validation_and_scoped_review_coordination_complete",
+    "finalAcceptanceScope": "FSQ contracts/private diagnostics scoped reviews complete; exact Skill supplement outcome accepted-with-limits; broad Skill candidate archive-only. Not deployed, not17cases fixed, not whole current project reviewed.",
+    "skillFinalReview": {
+      "json": "../amkernel/evidence/post-eval-skill-review-20261110/review.json#/finalOutcomeReview",
+      "markdown": "../amkernel/evidence/post-eval-skill-review-20261110/review.md",
+      "markdownSection": "8",
+      "decision": "accepted-with-limits",
+      "reviewedAt": "2026-11-10T04:29:34.999254+00:00",
+      "receiptBase": "../amkernel/evidence/skill-boundary-ab-20261110T024711Z/",
+      "receiptCount": 13,
+      "receiptSha256AsRecordedByFinalReview": {
+        "review-handoff.json": "d69270414c82c5edb7a0f917606325df65499351ccc0ae779ad37859c358e049",
+        "report.md": "00388266b00f1e6ec1e30b94b18d73c98d5306f874668883158db29f1dc402f8",
+        "receipt-index.json": "0acb4d27f91bb54814ad32858fb4caeac2881125eb0255e318dbd246a0684ed5",
+        "candidate-manifest.json": "78f26cc04efc96dc84461a68e406a86ecfdfa8903c1bb75f6ff35015689d6283",
+        "candidate.patch": "297410142516e60ce95edfbed2006f2872cb398bd11b039ed4d51aad22f670a1",
+        "structured-recovery-supplement-20261110T031940Z/criterion-review-package.json": "4e6d3f215700b3b8e530ddb1c0999efe22e88d5f7e0a7845f4fa68e5894e1c0b",
+        "structured-recovery-supplement-20261110T031940Z/revision-2/execution-authorization.json": "9a1a9fc917e2f6c7d04cb4edb7334a22ecdbf44f8abe173050c0d852280b4aea",
+        "structured-recovery-supplement-20261110T031940Z/revision-2/actual-pair/manifest.json": "4834ac5ca110a78423080a0e807cd1da0f76b4a0b1cde093c6d72fb3eed9954f",
+        "structured-recovery-supplement-20261110T031940Z/revision-2/actual-pair/summary.json": "3c4a7977e13d94d2374d39c9cef0dd4c52abf2e61eeb8ebb1e125071257dc51f",
+        "structured-recovery-supplement-20261110T031940Z/revision-2/actual-pair/structured-recovery-boundary-old.json": "39d738b862cc71653bcc5748052b193d960b06a0734766af991bd42e9c080a0a",
+        "structured-recovery-supplement-20261110T031940Z/revision-2/actual-pair/structured-recovery-boundary-new.json": "c50013976936622d5cdf066bf17c3dee974a5da63bb6506b29f6d0d0b65ba24e",
+        "structured-recovery-supplement-20261110T031940Z/revision-2/actual-outcome-interpretation.json": "3e5ec0fbd25c5e33fe0628e34b321dc5066b8ee666bc55b0fc3cd12c8ef12e0e",
+        "structured-recovery-supplement-20261110T031940Z/revision-2/workspace-safety-after-actual.json": "b2e5aa128f5dd77c3da90bdb919ae72d76ef8d4d08ee8701508a271e2bb2c27e"
+      },
+      "hashBoundary": "Thirteen historical anchors cited by final review, not new current-file hashes. Later administrative report/handoff/index closure edits do not rewrite the final review cutoff; no new hash-wide audit."
+    },
+    "adoptionDecision": {
+      "broadSkillCandidate": "archive_only",
+      "defaultAdoption": false,
+      "mergeIntoOriginalTree": false,
+      "publish": false,
+      "successRateImprovementEstablished": false,
+      "overallCostBenefitEstablished": false,
+      "basis": "Original six scenes and exact supplement both OLD/NEW pass; retain failures and provider/closed-source prompt/token limits."
+    },
+    "independentAdapterWork": {
+      "includedInThisBatchClosure": false,
+      "status": "Separate in-flight integration directed by new coordinator w6:p2 to w4:p1; neither completion nor source review claimed here",
+      "interruptedByThisClosure": false
+    },
+    "remaining": [
+      "G1 intended commit/submodule-parent gitlink and complete source identity open",
+      "G2 installed/import bytes validation open",
+      "newmanifest/readiness/freshqualification remain open; no launch authorization",
+      "Existing source-review snapshots preserved; not a current whole-project acceptance"
+    ],
+    "permittedFinalOperation": "After necessary handoff readback, stop only owned session service FSQRepairHourly01a1c098 via its confirmed proc handle; final timer receipt is reported separately. No other timer/device/service/agent action."
+  }
+}

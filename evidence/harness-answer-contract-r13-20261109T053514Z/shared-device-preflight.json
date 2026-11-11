@@ -1,0 +1,13 @@
+{
+  "args": [
+    "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+    "-s",
+    "emulator-5554",
+    "shell",
+    "cat /proc/sys/kernel/random/boot_id; pidof system_server surfaceflinger; pidof io.appium.uiautomator2.server io.appium.uiautomator2.server.test; service check activity; service check settings"
+  ],
+  "returnCode": 0,
+  "stdout": "0f36e370-012a-4423-a1f9-959beae8f90d\n333 500\nService activity: found\nService settings: found\n",
+  "stderr": "",
+  "observedAtUnix": 1794202535.69393
+}

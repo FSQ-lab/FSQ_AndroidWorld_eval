@@ -1,0 +1,27 @@
+{
+  "amkernelCommit": "33883148b4c6c6aff53a3323c9fc14d0d07bd814",
+  "commitSubject": "fix: require session identity reconciliation before cleanup",
+  "harnessCommit": "ebd0855",
+  "bindingChecks": {
+    "relevantSourceAndEvaluatorWorkingTreeClean": true,
+    "evaluatorSha256": "b1ddee00e6d6913fd4c900b8556b15e16b42e9fa93460a417f9954e3bc57b360",
+    "regressionFileSha256": "2ba77f8110668604ff64d39eceebf32aeaaa76357dc098e76048533d824b98a1",
+    "evaluatorAndRegressionMatchRevalidation": true,
+    "runtimeAndPackagedSkillMatchPriorJointValidation": true,
+    "runtimeAndSkillFilesMatched": 23,
+    "changedOrAddedRuntimeAndSkillPaths": []
+  },
+  "retainedVerification": {
+    "amkernelRelatedTestsPassed": 265,
+    "harnessTestsPassed": 217,
+    "actualStdioContractChecksPassed": 48,
+    "actualOmpMcpLocalFixtureCasesPassed": 7,
+    "twoEvaluatorFindings": "closed by executed behavioral and mutation-sensitivity verification"
+  },
+  "newExecutionScope": "Commit identity and content matching only; prior tests/probes not rerun or relabeled as new executions",
+  "remainingGate": "Real Android/Appium non-task session closure has not been exercised. Qualification, 12-task calibration and 116-task campaign have not started.",
+  "evidence": ["evaluator-fixes-summary.json", "evaluator-fixes-revalidation.json", "joint-fixture.json", "cancellation.json", "regressions.json"],
+  "activeMcpConfigurationChanged": false,
+  "packageInstalledOrReleased": false,
+  "evaluationResumed": false
+}

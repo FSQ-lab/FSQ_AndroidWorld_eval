@@ -1,0 +1,11 @@
+{
+  "scope": "diagnostic orchestration, not a scored retry",
+  "reason": "Agent workspace was placed inside the source repository denied by the existing sandbox",
+  "evidence": "campaign.py _prepare_agent_workspace denies source_project subtree",
+  "agentExitCode": 1,
+  "executedUiActions": 0,
+  "modelEvents": 0,
+  "sessionStatus": "not_created and absent",
+  "originalAttemptPreserved": true,
+  "correction": "Use the production pattern: temporary agent workspace outside the repository; do not weaken sandbox"
+}

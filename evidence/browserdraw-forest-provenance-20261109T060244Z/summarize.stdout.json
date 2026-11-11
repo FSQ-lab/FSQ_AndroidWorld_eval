@@ -1,0 +1,140 @@
+{
+  "boundary": "non_empty_selected",
+  "chosen": {
+    "recvSeq": 1901,
+    "windowCount": 2,
+    "serializedBytes": 8916,
+    "successTextFound": true,
+    "phase": "afterQuitResponse",
+    "receiveAgeAtEvaluatorStartSeconds": -0.037
+  },
+  "counts": {
+    "receiveTotal": 1938,
+    "receiveEmpty": 1417,
+    "receiveNonEmpty": 521,
+    "receiveBeforeSessionRequest": 180,
+    "receiveSessionCreationInFlight": 285,
+    "receiveDuringSession": 1340,
+    "receiveAfterQuit": 133,
+    "drainTotal": 7,
+    "emptyReturningDrains": 0,
+    "pauseCalls": 6,
+    "wrapperCalls": 25,
+    "stepCalls": 1,
+    "stateCalls": 1,
+    "selections": 3,
+    "appiumCommands": 111
+  },
+  "firstEmptyReceive": {
+    "recvSeq": 459,
+    "receiveUnix": 1794204760.69288,
+    "relSec": 67.479,
+    "hostUtc": "2026-11-09T06:12:40Z",
+    "transport": "unary",
+    "windowCount": 0,
+    "serializedBytes": 0,
+    "successTextFound": false,
+    "paused": false,
+    "latestForestOnly": true,
+    "admittedByDrain": null,
+    "admittedByDrainIndex": null,
+    "admittedByPull": null,
+    "pausedAfterSnapshot": false,
+    "candidateReplacedSeqsSnapshot": [
+      458
+    ],
+    "replacementProven": false,
+    "queueKind": "received_forests",
+    "queueDepthSnapshotBefore": 1,
+    "queueSeqsSnapshotBefore": [
+      458
+    ],
+    "queueDepthSnapshotAfter": 1,
+    "queueSeqsSnapshotAfter": [
+      459
+    ],
+    "completionObserved": true,
+    "nodeCount": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "receiveObjectId": 5059443136,
+    "phase": "sessionCreationInFlight"
+  },
+  "firstEmptyDrain": null,
+  "a11yTransitions": [
+    {
+      "label": "a11y-install-apk-before",
+      "relSec": 0.912,
+      "phase": "beforeSessionCreate",
+      "changed": {
+        "forwarderPid": {
+          "before": "7189",
+          "after": ""
+        }
+      }
+    },
+    {
+      "label": "a11y-install-apk-after",
+      "relSec": 1.228,
+      "phase": "beforeSessionCreate",
+      "changed": {
+        "bound": {
+          "before": "{}",
+          "after": "{Service[label=com.google.androidenv.accessibilityforwarder.Acce\u2026, feedbackType[FEEDBACK_GENERIC], capabilities=1, eventTypes=TYPES_ALL_MASK, notificationTimeout=0, requestA11yBtn=false]}"
+        },
+        "crashed": {
+          "before": "{{com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.AccessibilityForwarder}}",
+          "after": "{}"
+        },
+        "forwarderPid": {
+          "before": "",
+          "after": "7959"
+        }
+      }
+    },
+    {
+      "label": "appium-session-created",
+      "relSec": 68.139,
+      "phase": "duringSession",
+      "changed": {
+        "bound": {
+          "before": "{Service[label=com.google.androidenv.accessibilityforwarder.Acce\u2026, feedbackType[FEEDBACK_GENERIC], capabilities=1, eventTypes=TYPES_ALL_MASK, notificationTimeout=0, requestA11yBtn=false]}",
+          "after": "{}"
+        },
+        "uia2ServerPid": {
+          "before": "",
+          "after": "9247"
+        }
+      }
+    },
+    {
+      "label": "appium-quit-request",
+      "relSec": 210.058,
+      "phase": "duringSession",
+      "changed": {
+        "bound": {
+          "before": "{}",
+          "after": "{Service[label=com.google.androidenv.accessibilityforwarder.Acce\u2026, feedbackType[FEEDBACK_GENERIC], capabilities=1, eventTypes=TYPES_ALL_MASK, notificationTimeout=0, requestA11yBtn=false]}"
+        },
+        "uia2ServerPid": {
+          "before": "9247",
+          "after": ""
+        }
+      }
+    }
+  ],
+  "instrumentationArgs": [
+    {
+      "label": "appium-session-created",
+      "relSec": 68.139,
+      "line": " 9232  6787 app_process                 app_process /system/bin com.android.commands.am.Am instrument -w -e disableAnalytics true io.appium.uiautomator2.server.test/androidx.test.runner.AndroidJUnitRunner"
+    }
+  ],
+  "logcatNotable": {
+    "path": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/browserdraw-forest-provenance-20261109T060244Z/device-logcat.txt",
+    "byteSize": 3459939,
+    "notableCount": 263,
+    "notablePath": "logcat-notable.json",
+    "clockMapDistanceMaxSeconds": 1394.992
+  },
+  "capsRequestFlag": []
+}

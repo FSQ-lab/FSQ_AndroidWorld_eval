@@ -1,0 +1,60 @@
+{
+  "sequence": 11,
+  "label": "sms-connect",
+  "command": {
+    "op": "exec",
+    "label": "sms-connect",
+    "timeout": 90,
+    "code": "from appium import webdriver\nfrom appium.options.android import UiAutomator2Options\nfrom appium.webdriver.common.appiumby import AppiumBy\nimport xml.etree.ElementTree as ET\nimport time\noptions = UiAutomator2Options().load_capabilities({'platformName':'Android','appium:automationName':'UiAutomator2','appium:udid':'emulator-5554','appium:noReset':True,'appium:autoLaunch':False,'appium:skipUnlock':True,'appium:newCommandTimeout':300,'appium:skipDeviceInitialization':True,'appium:skipServerInstallation':True})\ndriver = webdriver.Remote('http://127.0.0.1:4723', options=options)\nowned_session_id = driver.session_id\ndef observe():\n    tree = ET.fromstring(driver.page_source)\n    rows = [{k: n.attrib.get(k,'') for k in ('text','content-desc','resource-id','class','bounds','clickable','focused')} for n in tree.iter('node') if n.attrib.get('text') or n.attrib.get('content-desc') or n.attrib.get('class') == 'android.widget.EditText']\n    return {'package':driver.current_package, 'activity':driver.current_activity, 'controls':rows[:55]}\n{'ownedSessionId':owned_session_id, 'newCommandTimeout':driver.capabilities.get('newCommandTimeout'), 'state':observe()}\n"
+  },
+  "startedAtUnix": 1794191788.573449,
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"status\":\"completed\",\"stdout\":\"\",\"stderr\":\"\",\"result\":{\"ownedSessionId\":\"5a423726-4b4b-4bf7-9230-50755b56c9ea\",\"newCommandTimeout\":300,\"state\":{\"package\":\"com.google.android.apps.nexuslauncher\",\"activity\":\".NexusLauncherActivity\",\"controls\":[]}},\"executionCount\":4,\"durationMs\":1365,\"kernelState\":\"alive\",\"runtime\":{\"executable\":\"/Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python\",\"pythonVersion\":\"3.11.16\",\"workingDirectory\":\"/Users/qunmi/Documents/FSQ_LAB/amkernel\",\"environmentKind\":\"project_venv\",\"implementation\":\"CPython\",\"platform\":\"macOS-26.6.2-arm64-arm-64bit\",\"packages\":[]},\"output\":{\"totalBytes\":0,\"totalLines\":0,\"discardedBytes\":0,\"discardedLines\":0,\"truncated\":false,\"limitBytes\":268435456,\"limitExceeded\":false,\"live\":\"unavailable\"},\"displays\":[],\"artifacts\":[]}"
+      }
+    ],
+    "structured_content": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "ownedSessionId": "5a423726-4b4b-4bf7-9230-50755b56c9ea",
+        "newCommandTimeout": 300,
+        "state": {
+          "package": "com.google.android.apps.nexuslauncher",
+          "activity": ".NexusLauncherActivity",
+          "controls": []
+        }
+      },
+      "executionCount": 4,
+      "durationMs": 1365,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/Users/qunmi/Documents/FSQ_LAB/amkernel",
+        "environmentKind": "project_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "unavailable"
+      },
+      "displays": [],
+      "artifacts": []
+    },
+    "is_error": false,
+    "result_type": "complete"
+  },
+  "completedAtUnix": 1794191789.945871
+}

@@ -1,0 +1,41 @@
+{
+  "status": "independent_review_not_approved_pending_final_receipt",
+  "originalDeliverySha256": "70c9cd3659b532314c84e36a6a4fcce8262936e3298f2796c96632f639d9d7a8",
+  "originalPreservation": "original-delivery/preservation.json",
+  "sourceAndCandidateEdited": false,
+  "reviewCounterexamplesRerun": false,
+  "testsExecuted": false,
+  "modelOrDeviceExecution": false,
+  "gitWrites": false,
+  "findings": [
+    {
+      "id": "R1",
+      "source": "src/fsq_androidworld_eval/fsq_runner.py:272-299",
+      "sourceObservation": "Oracle admission checks completeDynamicExecutionReturned and inFlight only; ordering string unconditionally asserts kill. No native kill evidence or main-final ordering proof is checked.",
+      "reportedCounterexample": "No-kill offline worker reached oracle once with reward 0.5. Accepted as reviewer-observed evidence, not rerun.",
+      "requiredBoundary": "Require native kill evidence and order admission; never supply an evaluator-issued substitute kill or infer execution from Skill instructions."
+    },
+    {
+      "id": "R2",
+      "source": "src/fsq_androidworld_eval/fsq_campaign.py:274-281",
+      "sourceObservation": "Checks runner schema/status and businessStatus, not exact equality between mainAnswer.summary and runner.tool_output.summary.",
+      "reportedCounterexample": "Different answer with updated hashes produced operational_errors=[]. Accepted, not rerun.",
+      "requiredBoundary": "Bind exact native main summary, preserving empty/whitespace and existing native redaction; no verifier or guessed fallback."
+    },
+    {
+      "id": "R3",
+      "source": "src/fsq_androidworld_eval/fsq_campaign.py:253-260,284-288",
+      "sourceObservation": "Snapshot arithmetic and journal-vs-events equality are checked separately; no semantic event replay reconstructs counters or maximum-prefix admissions.",
+      "reportedCounterexample": "11 real admitted-write events at M=10 with zero claimed counters still produced operational_errors=[]. Accepted, not rerun.",
+      "requiredBoundary": "Replay original ticket/sequence/capability/write/outcome events, reconstruct totals/pending/denials and enforce the frozen maximum instead of trusting reported counters."
+    },
+    {
+      "id": "R4",
+      "source": "src/fsq_androidworld_eval/fsq_campaign.py:328-345",
+      "sourceObservation": "Stage report validates coverage/artifacts but operational_errors is not given expected stage/campaign/target, and does not bind worker taskId/native task identity/serial to the episode.",
+      "reportedCounterexample": "Repacked smoke episodes qualified as 12-task calibration; wrong native taskId and serial also passed operational_errors. Accepted, not rerun.",
+      "requiredBoundary": "Bind expected campaign, stage, task/index/parameter identity, native task ID and exact manifest serial across stage report, episode, request/outcome and native TaskResult."
+    }
+  ],
+  "nextAction": "Wait for final isolated review receipt exact path/hash before editing implementation or issuing a replacement candidate. Original delivery remains immutable."
+}

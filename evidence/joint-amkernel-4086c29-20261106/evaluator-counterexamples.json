@@ -1,0 +1,26 @@
+{
+  "scope": "Executed evaluator counterexamples and in-memory AST mutation; no source files edited",
+  "candidateCommit": "4086c29f89bd8abfb96155fb1ff296e543410093",
+  "blindCleanupBeforeReconciliation": {
+    "deleteAt": 2.5,
+    "sessionListingAt": 3,
+    "listingActiveCount": 0,
+    "allChecksAccepted": true,
+    "reconciliationCheck": {
+      "id": "create-interruption-reconciled-read-only",
+      "ok": true,
+      "detail": "Read-only session reconciliations after interruption=1"
+    },
+    "finding": "Evaluator accepts deletion before observation of session identity."
+  },
+  "pendingResponseNegativeRegression": {
+    "existingTimeout": 4,
+    "existingCheckOriginal": false,
+    "existingCheckWithPendingGuardRemoved": false,
+    "isolatedTimeout": 1,
+    "isolatedCheckOriginal": false,
+    "isolatedCheckWithPendingGuardRemoved": true,
+    "finding": "Existing negative regression still passes after removal of its intended guard; timeout=1 isolates and catches the mutation."
+  },
+  "amkernelCoreModificationIndicated": false
+}

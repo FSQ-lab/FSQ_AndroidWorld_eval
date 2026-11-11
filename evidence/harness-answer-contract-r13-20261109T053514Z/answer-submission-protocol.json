@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "identity": "bounded_business_submission.v1",
+  "maximumFinalizationSeconds": 120,
+  "deadline": "min(action_gate_closed + maximumFinalizationSeconds, business_deadline)",
+  "taskOutcomeType": "string",
+  "selection": "first_business_final",
+  "cleanupCanSubmit": false
+}

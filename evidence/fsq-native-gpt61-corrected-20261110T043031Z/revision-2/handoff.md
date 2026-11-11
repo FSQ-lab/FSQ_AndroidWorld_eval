@@ -1,0 +1,62 @@
+# Native FSQ revision 2 — R01–R08 implementation closure handoff
+
+Status: repaired implementation and offline proofs ready for independent targeted closure by w4:p2. **Not independent approval, a resource lease, or live authorization.** No business Agent, device qualification, rehearsal, calibration or formal evaluation was started. No device/service/dependency or native FSQ source was changed by this repair.
+
+## Authority and immutable inputs
+
+- Original delivery, original `independent-review/review.json`, `consumer-counterexamples.json` and failed receipts remain unchanged.
+- R03 follows the later `independent-review/r03-scope-clarification.json` and coordinator/user clarification: truthful observations only. Do not retain the original review's successful-kill eligibility/main-final ordering demand.
+- Final candidate: `candidate-final-manifest.json`, SHA256 `94a33fc3719cb2b289b274a415e78d91aeef5d9c34f8a63fedeac0e638e615f2`, plus its byte seal. Campaign ID `fsq-native-gpt61-r2-final-5554-20261110`; exact corrected 116-task suite, seed 30, one instance; original-12 calibration; unchanged M and B/B+610 allocation.
+- `candidate-manifest.json` and `offline-cli-smoke.json` are intermediate pre-sandbox-repair captures, not execution candidates. The final real prepare/inspect receipt is `offline-cli-final.json`.
+- Exact integration-owned source/test/docs inventory: `source-inventory.json`, 18 files. `fsq_evidence.py`, its tests and public-entry regression are additions to the original 15-file inventory. Existing AMKernel implementation, official tasks and historical results were not edited.
+
+## R01–R08 repair map
+
+| Finding | Implemented behavior | Evidence |
+| --- | --- | --- |
+| R01 | Freeze retained/direct-URL oracle source roots; deny all actual episode/stage/result roots, including external outputs. Canonical narrow runtime reads, owned writes and private TMPDIR. Preserve metadata for interpreter symlink chains; permit only literal package-discovery directory reads, not sibling contents. Native config/auth has named-file/atomic-temp permissions, not a subtree grant. | Real macOS sandbox + real native FileOps and worker dependency imports; retained/external/unlisted/shared-temp/OMP/Copilot probes and oracle symlink denied; owned read/write and native atomic provider-file updates succeed in a fake HOME. `closure-final.xml`, `test_real_sandbox_native_fileops_allowlist`. |
+| R02 | Parent-owned durable worker receipt precedes result parsing/archive and is outside worker-writable roots. Forced attribution survives both errors. Missing/unobserved exit/group cleanup stays unknown; no oracle or task mutation while group settlement is unproven. Scheduling halts on forced/unknown state independently of task/environment cleanup. | Runner parse/archive regressions; supervisor malformed-result receipts; campaign native forced parse/archive cases preserve terminal bytes and schedule exactly one of 12 tasks. `native-failure-scheduling-final.xml`. |
+| R03 | Record actual native kill admission/outcome/denial/absence and observed full-return/internal-verification boundary. No successful-kill eligibility gate, no main-final ordering inference and no supplementary kill. Official ordering label claims only complete native return + internal verification, not successful kill. | Full-native absent/failed/denied/succeeded cases each score once; forwarded kill counts remain actual; failed main output never uses verifier/cache fallback. Runner/worker/evidence tests in `closure-final.xml`. |
+| R04 | Observe owned process group independently of leader exit; settle or escalate remaining owned members through grace. Group cleanup is explicit and unknown fails closed. No process-name/shared-service kill. | Real owned same-group SIGTERM-ignoring children under leader-exits/leader-terminated transitions; process disappearance/zombie-only settlement before completion. Supervisor tests in `closure-final.xml`. |
+| R05 | Public standalone main goes through the outer subprocess supervisor for the whole internal episode, including initialization/evaluation. Original allocator and explicit resource-window checks remain. Forced outer exit yields unknown device cleanup, not a fabricated clean terminal. | Actual public main and real owned child, controlled offline admission/environment, initialization blocked under injected 2-second envelope; forced exit/reaping and explicit unknown cleanup observed. `test_fsq_outer_entry.py` in `closure-final.xml`. |
+| R06 | Independently reload/hash native TaskResult and verification; select the unique exact successful runner, validate complete task_run_v1 fields and compare summary verbatim/business status. No fallback from failed/missing/multiple/invalid runners. | Rehashed envelope-summary substitution, native schema/status/string boundaries and duplicate/malformed artifacts rejected. Shared evidence validator used before oracle and by report consumer. |
+| R07 | Replay journal sequence/clock, write/read tickets, admissions/outcomes/denials, maximum, monotonic totals and pending operations; compare the embedded snapshot and journal. | Eleven admitted writes cannot be hidden behind maximum=10/zero counters; forged totals, impossible tickets, duplicate outcomes and pending operations rejected. Native/evidence/campaign regressions. |
+| R08 | Bind stage, campaign, task/parameter identity, episode/native task ID, target serial, manifest bytes, readiness and authorization at the consuming boundary. | Individually resealed wrong task/serial/readiness/authorization/campaign inputs and coherent smoke-as-calibration replay rejected by actual consumers. |
+
+## Exercised verification and retained failures
+
+| Receipt | Observed result | Scope |
+| --- | ---: | --- |
+| `closure-final.xml` | 309 passed; 0 skipped | Eight FSQ-specific files; opt-in real native sandbox included; final product source. |
+| `native-failure-scheduling-final.xml` | 67 passed | Final campaign test file, including two subsequently added native-forced parse/archive scheduling transitions. These overlap the earlier campaign cases; do not add the two suite totals. |
+| `real-sandbox-native-fileops-atomic-fixed.xml` | 1 passed | Separate real sandbox/native import/FileOps/auth-atomic-file smoke before the final directed suite. |
+| `offline-cli-final.json` | prepare=0, inspect=0 | Real corrected 116-task package, actual SDK import/configuration and final candidate. No device/model. |
+| `shared-evidence-references.json` | all 285 SDK checksum entries matched | Actual working bytes checked against the accepted diagnostic source manifest; SDK suite/model call not repeated. |
+
+After the 309-case run only the campaign test fixture and two new cases changed; the final campaign file then passed all 67 cases. No product source changed. Exact final test hash is in the inventory; do not call this a single 311-case execution.
+
+Earlier failures are retained, not retroactively made successful: initial invocation omitted the already-owned parser overlay; initial fixture references omitted private visibility; coherent resealing reused an append journal; nested CLI proof bootstrap needed indentation repair. Real sandbox execution additionally exposed SBPL deny precedence, intermediate uv interpreter-alias metadata, Python package-discovery directory access and SBPL regex literal escaping. Corresponding failed JUnit/diagnostic JSON captures remain here. Production policy was corrected and then exercised; broad HOME/tmp/project data grants were not substituted. Policy-source-string tests were removed instead of re-pinning incidental syntax.
+
+## Actual source, import and model identity
+
+`identity-snapshot.json` records actual dirty flags and full hashes; HEAD is not clean-source provenance:
+
+- Evaluator observed HEAD `9b9736abf98ea2e0a047b546109b8a3c77075d09`, dirty=true; source map `593cb591a5e8e040f305272c1f8837d69d05d41c5f27ebbaf3597eb94ca05180`.
+- AndroidWorld observed HEAD `09a579126c2a4d33902b33bbcf5cb80b3eb521a7`, dirty=true; corrected source and isolated imported package both `0ac9428da2e9d78d0303c44c682184268e708a3116134646401d5c8425671b94`.
+- Native FSQ observed HEAD `7e3f0793f3962ef2d8cc92f06310326c9077ce0d`, dirty=true; current source/imported package both `5ae6f139056ce10164f47fa2f91ec068fbdcdfe0235b2fcea821ad9ddc2c648d`.
+- Accepted SDK working-byte anchor `native-package.sha256` has SHA256 `f85de27cec9e3e9949559b120dd3f595e9512c076aa82aef7a25e4a552dd2f68`; accepted diagnostic full diff is `0c2fe96ab975d2f5a25a79ad72162d05e443138c5826d142e7640ff3e7b01afc`. Different aggregate formats explain why these are not package-tree hashes.
+- Native source version remains 0.1.2 / installed distribution 0.1.0a1, editable source, not a released FSQ wheel. Runtime/import paths are captured, not inferred from the version string.
+- `model-gate.json`, `native-model-success.json` and `native-source-identity.json` retain the coordinator-accepted genuine native Responses call for configured/requested github_copilot/gpt-6.1-sol, input/output tokens 12/7. No new call, sign-in, borrowed credentials or fallback. Actual server-returned model stays unknown because native ModelResult does not expose it.
+- Candidate gates remain pending by construction. The separate accepted model receipt does not mutate an offline candidate into live approval; coordinator authorization must bind the actual review/model receipts and candidate bytes.
+
+## Resource handoff and precise next live preparation
+
+`shared-resource-readonly.json` is the same C receipt, byte-copied without a new probe: 2026-11-10T06:00:13Z; 5554/8554 correspond to AndroidWorldAvd qemu identity; Appium status is HTTP200 ready 3.7.0. GET/sessions failed with HTTPError, specific code unretained: **sessions and complete exclusive control remain unknown**. No repeated GET, ADB fallback, u2 connection, business session, reset, restart or kill occurred here. Historical PIDs in that receipt are observations, never action handles.
+
+1. w4:p2 closes only this exact repair snapshot, R03 under its clarified scope. Coordinator w6:p2 then decides explicit stage/resource authorization. Human scheduling is FSQ first, AMKernel waits; no second target or dual-target feature is needed.
+2. Before any mutation, resolve the independent safety prerequisite: an auditable current target-controller/holder handoff and non-conflict boundary despite unknown Appium session state. Existing server startup configuration/local logs/saved request receipts or other supported readonly ownership records may supply evidence under the coordinator's permission. Do not retry the failed GET to reconfirm, declare unsupported enumeration zero, clear a session, or infer exclusive ownership from ready/priority. If those records cannot establish the boundary, retain unknown and request that specific controller handoff/permission, not a generic environment rebuild.
+3. Coordinator supplies a new authorization binding candidate hash, approved review and accepted native-model receipt, exact 5554/8554/adb identity, exclusive/disposable/mutationsAllowed authority, approved stages and a finite resource window covering the actual plan. No invented receipt-age TTL or automatic grant extension. Qualification and each subsequent episode still enforce frozen identities, current safety/readiness and complete B+610 window.
+4. Under that explicit grant only: fresh FSQ qualification, separately authorized single real native smoke, all-116 no-Agent rehearsal, original-12 calibration, then 116-task formal run through the existing single-target interfaces. Use new output roots. Bind every prerequisite to the same candidate/authorization; no old AMKernel acceptance or stale failed receipt reuse. The actual smoke must observe native default kill/internal verification, complete native return, exactly one terminal official evaluation and cleanup; missing/failed/denied kill is reported, not fixed by a new gate/hook.
+5. Report original terminals, invalids, coverage and denominator-labelled rewards; no automatic business retry, silent recovery, source repair or historical rescoring. Any forced/unproven process/device cleanup stops scheduling. On completion or an explicit cannot-continue decision, provide cleanup/remaining-unknown evidence and **explicitly release** the target to w6:p1. Priority alone is not release.
+
+No network/u2 universal isolation, server-returned model identity, global absence of escaped/reparented/remote effects or business/live success is claimed.

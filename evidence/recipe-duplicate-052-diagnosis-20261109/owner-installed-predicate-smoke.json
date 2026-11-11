@@ -1,0 +1,286 @@
+{
+  "scope": "Actual installed pure deletion predicates over exact frozen052 Recipe field values with explicitly SYNTHETIC UNIQUE IDs; no environment/task-init/is_successful/DB/device, no new reward. These candidate states are not observed historical before/after or IDs.",
+  "sourceHashes": {
+    "result.json": {
+      "sha256": "ad96838a4ff5631247bc8d4a36bc59a5f6673c6e83b20654e0b6420172256890",
+      "bytes": 51823
+    },
+    "normalized-agent-events.json": {
+      "sha256": "ee9a5e6b45cfaaf251f3112bdd7b825bb25cee1abd00ed4a5e52a48f18c3050d",
+      "bytes": 14711
+    },
+    "raw-private/agent-events.jsonl": {
+      "sha256": "606de86de517d38042ecd9c3091b750e48c4839ab8fbc337b8da5bcb00d825d9",
+      "bytes": 149647300
+    }
+  },
+  "sources": {
+    ".venv/lib/python3.11/site-packages/android_world/task_evals/single/recipe.py": {
+      "sha256": "f547556b9681267c34a19fa5fc316591060966a138c8f366c4b1e1783c988309",
+      "bytes": 29748,
+      "record": "sha256=9UdVa5aBJnw0oZ-l_DFlkQYJZqE4yPNmxLHheDyYgwk",
+      "matchesInstalledDistributionRECORD": true
+    },
+    ".venv/lib/python3.11/site-packages/android_world/task_evals/common_validators/sqlite_validators.py": {
+      "sha256": "7b932acd2e19f1d4f43cea1badf26ace2ed3363258ae26850d1b09889bfa9d78",
+      "bytes": 14270,
+      "record": "sha256=e5MqzS4Z8dT0POobrfJqzi7TNjJYriaFDRsJiJv6nXg",
+      "matchesInstalledDistributionRECORD": true
+    },
+    ".venv/lib/python3.11/site-packages/android_world/task_evals/utils/sqlite_schema_utils.py": {
+      "sha256": "d3b1d796b1faadbdedc78e7f9197f0ee27e3eebf0edd4597cd59f3d0f6e3095b",
+      "bytes": 15031,
+      "record": "sha256=07HXlrH6rb3tx45_kZfw7ifj7r8O3UWXzVnz0PbjCVs",
+      "matchesInstalledDistributionRECORD": true
+    }
+  },
+  "actualClass": "RecipeDeleteDuplicateRecipes3",
+  "actualScorer": "android_world.task_evals.common_validators.sqlite_validators.DeleteMultipleRows.is_successful",
+  "actualPredicate": "android_world.task_evals.single.recipe.RecipeDeleteDuplicateRecipes.validate_deletion_integrity",
+  "initialized": false,
+  "controlledIdMapping": {
+    "noise": "70000+zeroBasedNoiseIndex",
+    "targets": [
+      71000,
+      71001
+    ],
+    "historicalMeaning": "None; frozen recipeId=-1 is only a placeholder. Actual runtime assigned IDs are unavailable."
+  },
+  "controlledBeforeLogicalRows": 32,
+  "controlledTargetRows": [
+    {
+      "title": "Butternut Squash Soup",
+      "description": "A quick and easy meal, perfect for busy weekdays.",
+      "servings": "3-4 servings",
+      "preparationTime": "30 mins",
+      "source": "",
+      "ingredients": "quantities to taste",
+      "directions": "Saut\u00e9 onions and garlic, add cubed butternut squash and broth. Puree until smooth and season with nutmeg, salt, and pepper. Garnish with fresh herbs for a more vibrant taste.",
+      "favorite": 0,
+      "imageName": "",
+      "recipeId": 71000
+    },
+    {
+      "title": "Butternut Squash Soup",
+      "description": "A quick and easy meal, perfect for busy weekdays.",
+      "servings": "3-4 servings",
+      "preparationTime": "30 mins",
+      "source": "",
+      "ingredients": "quantities to taste",
+      "directions": "Saut\u00e9 onions and garlic, add cubed butternut squash and broth. Puree until smooth and season with nutmeg, salt, and pepper. Garnish with fresh herbs for a more vibrant taste.",
+      "favorite": 0,
+      "imageName": "",
+      "recipeId": 71001
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "No deletion; required target pair remains",
+      "deletedSyntheticIds": [],
+      "changedRow": null,
+      "afterLogicalRowCount": 32,
+      "leftTargetBranch": false,
+      "rightTargetBranch": false,
+      "actualCombinedPredicate": false
+    },
+    {
+      "name": "Remove only target0, preserve every other row",
+      "deletedSyntheticIds": [
+        71000
+      ],
+      "changedRow": null,
+      "afterLogicalRowCount": 31,
+      "leftTargetBranch": true,
+      "rightTargetBranch": false,
+      "actualCombinedPredicate": true
+    },
+    {
+      "name": "Remove only target1, preserve every other row",
+      "deletedSyntheticIds": [
+        71001
+      ],
+      "changedRow": null,
+      "afterLogicalRowCount": 31,
+      "leftTargetBranch": false,
+      "rightTargetBranch": true,
+      "actualCombinedPredicate": true
+    },
+    {
+      "name": "Remove both target copies",
+      "deletedSyntheticIds": [
+        71000,
+        71001
+      ],
+      "changedRow": null,
+      "afterLogicalRowCount": 30,
+      "leftTargetBranch": false,
+      "rightTargetBranch": false,
+      "actualCombinedPredicate": false
+    },
+    {
+      "name": "Remove noise[7] only, leave both target copies",
+      "deletedSyntheticIds": [
+        70007
+      ],
+      "changedRow": null,
+      "afterLogicalRowCount": 31,
+      "leftTargetBranch": false,
+      "rightTargetBranch": false,
+      "actualCombinedPredicate": false
+    },
+    {
+      "name": "Remove valid target0 plus noise[7]",
+      "deletedSyntheticIds": [
+        71000,
+        70007
+      ],
+      "changedRow": null,
+      "afterLogicalRowCount": 30,
+      "leftTargetBranch": false,
+      "rightTargetBranch": false,
+      "actualCombinedPredicate": false
+    },
+    {
+      "name": "Remove noise[13] only, leave both target copies",
+      "deletedSyntheticIds": [
+        70013
+      ],
+      "changedRow": null,
+      "afterLogicalRowCount": 31,
+      "leftTargetBranch": false,
+      "rightTargetBranch": false,
+      "actualCombinedPredicate": false
+    },
+    {
+      "name": "Remove valid target0 plus noise[13]",
+      "deletedSyntheticIds": [
+        71000,
+        70013
+      ],
+      "changedRow": null,
+      "afterLogicalRowCount": 30,
+      "leftTargetBranch": false,
+      "rightTargetBranch": false,
+      "actualCombinedPredicate": false
+    },
+    {
+      "name": "Remove noise[21] only, leave both target copies",
+      "deletedSyntheticIds": [
+        70021
+      ],
+      "changedRow": null,
+      "afterLogicalRowCount": 31,
+      "leftTargetBranch": false,
+      "rightTargetBranch": false,
+      "actualCombinedPredicate": false
+    },
+    {
+      "name": "Remove valid target0 plus noise[21]",
+      "deletedSyntheticIds": [
+        71000,
+        70021
+      ],
+      "changedRow": null,
+      "afterLogicalRowCount": 30,
+      "leftTargetBranch": false,
+      "rightTargetBranch": false,
+      "actualCombinedPredicate": false
+    },
+    {
+      "name": "Remove noise[22] only, leave both target copies",
+      "deletedSyntheticIds": [
+        70022
+      ],
+      "changedRow": null,
+      "afterLogicalRowCount": 31,
+      "leftTargetBranch": false,
+      "rightTargetBranch": false,
+      "actualCombinedPredicate": false
+    },
+    {
+      "name": "Remove valid target0 plus noise[22]",
+      "deletedSyntheticIds": [
+        71000,
+        70022
+      ],
+      "changedRow": null,
+      "afterLogicalRowCount": 30,
+      "leftTargetBranch": false,
+      "rightTargetBranch": false,
+      "actualCombinedPredicate": false
+    },
+    {
+      "name": "Remove noise[23] only, leave both target copies",
+      "deletedSyntheticIds": [
+        70023
+      ],
+      "changedRow": null,
+      "afterLogicalRowCount": 31,
+      "leftTargetBranch": false,
+      "rightTargetBranch": false,
+      "actualCombinedPredicate": false
+    },
+    {
+      "name": "Remove valid target0 plus noise[23]",
+      "deletedSyntheticIds": [
+        71000,
+        70023
+      ],
+      "changedRow": null,
+      "afterLogicalRowCount": 30,
+      "leftTargetBranch": false,
+      "rightTargetBranch": false,
+      "actualCombinedPredicate": false
+    },
+    {
+      "name": "Remove all observed Pan and Avocado logical variants, leave target pair",
+      "deletedSyntheticIds": [
+        70007,
+        70013,
+        70021,
+        70022,
+        70023
+      ],
+      "changedRow": null,
+      "afterLogicalRowCount": 27,
+      "leftTargetBranch": false,
+      "rightTargetBranch": false,
+      "actualCombinedPredicate": false
+    },
+    {
+      "name": "Remove target0 but mutate preserved noise content",
+      "deletedSyntheticIds": [
+        71000
+      ],
+      "changedRow": {
+        "title": "Pan-Seared Salmon with Quinoa",
+        "description": "A quick and easy meal, perfect for busy weekdays.",
+        "servings": "controlled mutation, not original input",
+        "preparationTime": "1 hrs",
+        "source": "",
+        "ingredients": "n/a",
+        "directions": "Pan-sear salmon fillets until crispy. Serve over cooked quinoa with a side of steamed asparagus. Try adding a pinch of your favorite spices for extra flavor.",
+        "favorite": 0,
+        "imageName": "",
+        "recipeId": 70007
+      },
+      "afterLogicalRowCount": 31,
+      "leftTargetBranch": false,
+      "rightTargetBranch": false,
+      "actualCombinedPredicate": false
+    }
+  ],
+  "invariants": {
+    "oneTargetDeletionPassesEitherBranch": true,
+    "bothTargetsRetainedFailsIndependentlyOfNoiseLoss": true,
+    "noiseLossFailsEvenIfOneTargetRemovedCorrectly": true,
+    "bothTargetsRemovedFailsPreservationOfOtherCopy": true,
+    "anyChangedPreservedRowRejected": true,
+    "genericFunctionDoesNotExplicitlyCompareLengths": "Uses ID inclusion and full dataclass membership; usual DB primary-key uniqueness supplies set-like row identity, not a title-only or count-only decision."
+  },
+  "notClaimed": [
+    "Actual historical rows deleted",
+    "Actual historical branch/first failing row",
+    "Actual post-save database state or reward recomputation"
+  ]
+}

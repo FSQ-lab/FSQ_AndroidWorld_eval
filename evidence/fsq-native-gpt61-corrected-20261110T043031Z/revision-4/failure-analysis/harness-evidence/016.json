@@ -1,0 +1,1072 @@
+{
+  "index": 16,
+  "name": "ExpenseDeleteDuplicates",
+  "goal": "Delete all but one of any expenses in pro expense that are exact duplicates, ensuring at least one instance of each unique expense remains.",
+  "reward": 0.0,
+  "classification": "failed",
+  "initialization": {
+    "initializationReferenceTime": {
+      "referenceTime": "2023-10-15T15:34:00+00:00",
+      "timezone": "UTC"
+    },
+    "initializedGoal": "Delete all but one of any expenses in pro expense that are exact duplicates, ensuring at least one instance of each unique expense remains."
+  },
+  "frozenTaskSpec": {
+    "apps": [
+      "pro expense"
+    ],
+    "complexity": 1.2,
+    "difficulty": "medium",
+    "family": "android",
+    "index": 16,
+    "instanceSeed": 3926414058,
+    "maxActions": 12,
+    "maxSteps": 12,
+    "name": "ExpenseDeleteDuplicates",
+    "params": {
+      "noise_row_objects": [
+        {
+          "amount": 35040,
+          "category": 6,
+          "created_date": 1696690800000,
+          "expense_id": -1,
+          "modified_date": 1696690800000,
+          "name": "Books",
+          "note": "Monthly recurring"
+        },
+        {
+          "amount": 16270,
+          "category": 9,
+          "created_date": 1696467600000,
+          "expense_id": -1,
+          "modified_date": 1696467600000,
+          "name": "Health Insurance",
+          "note": "Want to have"
+        },
+        {
+          "amount": 42085,
+          "category": 9,
+          "created_date": 1696791600000,
+          "expense_id": -1,
+          "modified_date": 1696791600000,
+          "name": "Wellness Products",
+          "note": "I may repeat this"
+        },
+        {
+          "amount": 42214,
+          "category": 7,
+          "created_date": 1697241600000,
+          "expense_id": -1,
+          "modified_date": 1697241600000,
+          "name": "Flight Tickets",
+          "note": "Want to have"
+        },
+        {
+          "amount": 10298,
+          "category": 10,
+          "created_date": 1696446000000,
+          "expense_id": -1,
+          "modified_date": 1696446000000,
+          "name": "Seminars",
+          "note": "Monthly recurring"
+        }
+      ],
+      "row_objects": [
+        {
+          "amount": 20441,
+          "category": 7,
+          "created_date": 1696132800000,
+          "expense_id": -1,
+          "modified_date": 1696132800000,
+          "name": "Public Transit",
+          "note": "A need"
+        },
+        {
+          "amount": 20441,
+          "category": 7,
+          "created_date": 1696132800000,
+          "expense_id": -1,
+          "modified_date": 1696132800000,
+          "name": "Public Transit",
+          "note": "A need"
+        }
+      ],
+      "seed": 3926414058
+    },
+    "paramsSha256": "202099d8e56e0ac2d85b2f49e751fa830aced749a2667ce514a58c29db022e53",
+    "paramsTransport": "seed",
+    "tags": [
+      "data_edit",
+      "parameterized"
+    ],
+    "timeBudget": {
+      "businessSeconds": 840,
+      "cleanupWindowSeconds": 180,
+      "episodeSeconds": 1450,
+      "forceSeconds": 1030,
+      "recoveryWindowSeconds": 120,
+      "terminationGraceSeconds": 10
+    }
+  },
+  "mainSteps": [
+    {
+      "stepId": 5,
+      "tool": "agent_runtime.runner",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "Back and its retry failed with NativeActionBudgetExceeded: action_budget.",
+          "kill_app teardown failed with NativeActionBudgetExceeded: action_budget."
+        ],
+        "evidence": [
+          "artifacts/tools/000014-ui_snapshot.json captured the expense-list UI.",
+          "artifacts/tools/000019-ui_snapshot.json and artifacts/tools/000025-ui_snapshot.json captured filter inspection.",
+          "No deletion control was invoked."
+        ],
+        "plan_updates": [
+          "Execution stopped during filter inspection because the harness rejected further actions with NativeActionBudgetExceeded.",
+          "A schema-valid Back retry was also rejected. App teardown was attempted but blocked by the same budget limit."
+        ],
+        "pre_plan": [
+          {
+            "action": "Inspect the complete expense collection and remove restrictive filters.",
+            "status": "adjusted",
+            "step_id": 1,
+            "success_criteria": [
+              "Inventory all expenses across the full collection."
+            ]
+          },
+          {
+            "action": "Compare candidate expenses in detail and designate keepers for exact-match groups.",
+            "status": "skipped",
+            "step_id": 2,
+            "success_criteria": [
+              "Confirm duplicate groups using all expense details."
+            ]
+          },
+          {
+            "action": "Delete confirmed duplicate instances while retaining each designated keeper.",
+            "status": "skipped",
+            "step_id": 3,
+            "success_criteria": [
+              "Delete only confirmed redundant instances."
+            ]
+          },
+          {
+            "action": "Compare the complete remaining collection with the original inventory.",
+            "status": "skipped",
+            "step_id": 4,
+            "success_criteria": [
+              "Verify exactly one instance of every originally distinct expense remains."
+            ]
+          }
+        ],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "inconclusive",
+        "summary": "Opened Pro Expense and its expense list, but the harness action budget was exhausted during filter inspection. No expenses were deleted, and the deduplication goal could not be verified.",
+        "unmet_criteria": [
+          "Could not establish that Pro Expense contains exactly one instance of each originally distinct expense, with no exact duplicates remaining and no unique expense lost."
+        ]
+      }
+    },
+    {
+      "stepId": 6,
+      "tool": "agent_runtime.verifier",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "Both final Back attempts failed with NativeActionBudgetExceeded: action_budget; kill_app failed with the same error.",
+          "A complete original inventory, expense-detail comparisons, and complete final inventory are absent from the supplied evidence."
+        ],
+        "evidence": [
+          "artifacts/tools/000014-ui_snapshot.json shows Expense Logs restricted to October 1–14, 2023; its supplied excerpt is truncated and does not establish the complete collection.",
+          "artifacts/tools/000019-ui_snapshot.json and artifacts/tools/000025-ui_snapshot.json show the same October 1–14 date filter.",
+          "The supplied tool-call sequence contains navigation and filter inspection, but no expense deletion or complete final collection comparison.",
+          "The agent reports an inconclusive outcome, consistent with the execution records. That report alone does not establish the expense collection's final state.",
+          "No supplied evidence confirms an exact duplicate group or proves that duplicates remain; therefore the final goal is neither proven satisfied nor proven false."
+        ],
+        "plan_updates": [
+          "Verification was limited to partial expense-list and filter evidence because execution exhausted its action budget."
+        ],
+        "pre_plan": [
+          {
+            "action": "Verify the final expense collection against the originally distinct expenses using supplied evidence.",
+            "status": "adjusted",
+            "step_id": 1,
+            "success_criteria": [
+              "Exactly one instance of every originally distinct expense remains, with no exact duplicates and no unique expense lost."
+            ]
+          }
+        ],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "inconclusive",
+        "summary": "The evidence does not establish whether Pro Expense contains exactly one instance of every originally distinct expense. Inspection stopped at the date filters, with no recorded deletions or complete before-and-after inventory.",
+        "unmet_criteria": []
+      }
+    }
+  ],
+  "budgetSummary": {
+    "admitted": 12,
+    "attempted": 15,
+    "deadlineExceeded": false,
+    "deadlineMonotonic": 705148.8636055,
+    "denied": 3,
+    "deviceRestoredByClose": false,
+    "exclusions": [
+      "driver_construction",
+      "uiautomator2_service_startup",
+      "observation_and_assertion_side_effects",
+      "external_processes_and_direct_driver_access"
+    ],
+    "exhausted": true,
+    "failed": 2,
+    "inFlight": 0,
+    "inputTextUnit": "composite_click_optional_clear_set_text",
+    "maximum": 12,
+    "securityBoundary": false,
+    "succeeded": 10,
+    "unit": "admitted_android_harness_write_capability_dispatch",
+    "writeCapabilities": [
+      "launch_app",
+      "kill_app",
+      "tap_on",
+      "tap_at",
+      "long_press_on",
+      "input_text",
+      "press_key",
+      "swipe"
+    ]
+  },
+  "actions": [
+    {
+      "ordinal": 0,
+      "stepId": "agent-launch_app-1",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [],
+      "output": {
+        "app_id": "com.arduia.expense"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[0]"
+    },
+    {
+      "ordinal": 1,
+      "stepId": "agent-ui_snapshot-2",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Sun, Oct 15",
+        "Sun, Oct 15",
+        "Gmail",
+        "Gmail",
+        "Photos",
+        "Photos",
+        "YouTube",
+        "YouTube",
+        "Home",
+        "Phone",
+        "Phone",
+        "Messages",
+        "Messages",
+        "Chrome",
+        "Chrome",
+        "Calendar",
+        "Predicted app: Calendar",
+        "Search",
+        "Google app",
+        "Voice search",
+        "Google Lens",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 27981,
+          "retained_characters": 7650
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[1]"
+    },
+    {
+      "ordinal": 2,
+      "stepId": "agent-launch_app-3",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "app_id": "com.arduia.expense"
+      },
+      "uiLabels": [],
+      "output": {
+        "app_id": "com.arduia.expense"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[2]"
+    },
+    {
+      "ordinal": 3,
+      "stepId": "agent-swipe-4",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[3]"
+    },
+    {
+      "ordinal": 4,
+      "stepId": "agent-ui_snapshot-5",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Audio Recorder",
+        "Audio Recorder",
+        "Broccoli",
+        "Broccoli",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Chrome",
+        "Chrome",
+        "Clipper",
+        "Clipper",
+        "Clock",
+        "Clock",
+        "Contacts",
+        "Contacts",
+        "Draw",
+        "Draw",
+        "Drive",
+        "Drive",
+        "Files",
+        "Files",
+        "Gallery",
+        "Gallery",
+        "Gmail",
+        "Gmail",
+        "Google",
+        "Google",
+        "Joplin",
+        "Joplin",
+        "Maps",
+        "Maps",
+        "Markor",
+        "Markor",
+        "Messages",
+        "Messages",
+        "OpenTracks",
+        "OpenTracks",
+        "OsmAnd",
+        "OsmAnd",
+        "Phone",
+        "Phone",
+        "Photos",
+        "Photos",
+        "Pro Expense",
+        "Pro Expense",
+        "Gallery",
+        "Gallery",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Tasks",
+        "Tasks",
+        "Search",
+        "Google app",
+        "Search apps, web and more",
+        "Voice search",
+        "Google Lens",
+        "Home",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 37017,
+          "retained_characters": 12575
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 6,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[4]"
+    },
+    {
+      "ordinal": 5,
+      "stepId": "agent-tap_on-6",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "accessibilityId": "Pro Expense"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[5]"
+    },
+    {
+      "ordinal": 6,
+      "stepId": "agent-ui_snapshot-7",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Home",
+        "Totals",
+        "OCT 15 - 22",
+        "INCOME",
+        "0",
+        "USD",
+        "OUTCOME",
+        "0",
+        "USD",
+        "Expenses in this Week",
+        "OCT 15 - 22",
+        "Recent",
+        "Flight Tickets",
+        "Yesterday 12:00 AM",
+        "422.14",
+        "USD",
+        "Wellness Products",
+        "2023 Oct 8",
+        "420.85",
+        "USD",
+        "Books",
+        "2023 Oct 7",
+        "350.4",
+        "USD",
+        "Health Insurance",
+        "162.7",
+        "USD",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 42964,
+          "retained_characters": 10772
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[6]"
+    },
+    {
+      "ordinal": 7,
+      "stepId": "agent-tap_on-8",
+      "action": "tap_on",
+      "status": "failed",
+      "error": "Target was not found.",
+      "params": {
+        "locator": {
+          "xpath": "//node[@resource-id='com.arduia.expense:id/toolbar']/node[@class='android.widget.ImageButton']"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[7]"
+    },
+    {
+      "ordinal": 8,
+      "stepId": "agent-tap_on-9",
+      "action": "tap_on",
+      "status": "failed",
+      "error": "Target was not found.",
+      "params": {
+        "locator": {
+          "xpath": "//*[@resource-id='com.arduia.expense:id/toolbar']/*[@class='android.widget.ImageButton']"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[8]"
+    },
+    {
+      "ordinal": 9,
+      "stepId": "agent-tap_at-10",
+      "action": "tap_at",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "point": {
+          "x": 74,
+          "y": 200
+        },
+        "reference_screen_size": {
+          "width": 1080,
+          "height": 2400
+        }
+      },
+      "uiLabels": [],
+      "output": {
+        "point": {
+          "x": 74,
+          "y": 200
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[9]"
+    },
+    {
+      "ordinal": 10,
+      "stepId": "agent-ui_snapshot-11",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Home",
+        "Totals",
+        "OCT 15 - 22",
+        "INCOME",
+        "0",
+        "USD",
+        "OUTCOME",
+        "0",
+        "USD",
+        "Expenses in this Week",
+        "OCT 15 - 22",
+        "Recent",
+        "Flight Tickets",
+        "Yesterday 12:00 AM",
+        "422.14",
+        "USD",
+        "Wellness Products",
+        "2023 Oct 8",
+        "420.85",
+        "USD",
+        "Books",
+        "2023 Oct 7",
+        "350.4",
+        "USD",
+        "Health Insurance",
+        "162.7",
+        "USD",
+        "Pro Expense",
+        "BETA",
+        "Home",
+        "Expense Logs",
+        "Statistics",
+        "Backup",
+        "Feedback",
+        "About",
+        "Settings",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 53731,
+          "retained_characters": 14215
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 13,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[10]"
+    },
+    {
+      "ordinal": 11,
+      "stepId": "agent-tap_on-12",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.arduia.expense:id/dest_expense_logs"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[11]"
+    },
+    {
+      "ordinal": 12,
+      "stepId": "agent-ui_snapshot-13",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Expense Logs",
+        "2023 Oct 1 - 14 . DESC",
+        "Filter",
+        "Flight Tickets",
+        "Yesterday 12:00 AM",
+        "422.14",
+        "$",
+        "Delete",
+        "Wellness Products",
+        "2023 Oct 8",
+        "420.85",
+        "$",
+        "Delete",
+        "Books",
+        "2023 Oct 7",
+        "350.4",
+        "$",
+        "Delete",
+        "Health Insurance",
+        "2023 Oct 5",
+        "162.7",
+        "$",
+        "Delete",
+        "Seminars",
+        "2023 Oct 4",
+        "102.98",
+        "$",
+        "Delete",
+        "Public Transit",
+        "2023 Oct 1",
+        "204.41",
+        "$",
+        "Delete",
+        "Public Transit",
+        "2023 Oct 1",
+        "204.41",
+        "$",
+        "Delete",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 69703,
+          "retained_characters": 16957
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 22,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[12]"
+    },
+    {
+      "ordinal": 13,
+      "stepId": "agent-tap_on-14",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.arduia.expense:id/filter"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[13]"
+    },
+    {
+      "ordinal": 14,
+      "stepId": "agent-ui_snapshot-15",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Filter",
+        "From",
+        "To",
+        "Oct",
+        "1",
+        "2023",
+        "Oct",
+        "14",
+        "2023",
+        "Order by Date in",
+        "DESC",
+        "ASC",
+        "APPLY FILTER",
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 25086,
+          "retained_characters": 6378
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 9,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[14]"
+    },
+    {
+      "ordinal": 15,
+      "stepId": "agent-tap_on-16",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.arduia.expense:id/cv_start_date"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[15]"
+    },
+    {
+      "ordinal": 16,
+      "stepId": "agent-ui_snapshot-17",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "2023",
+        "Sun, Oct 1",
+        "1",
+        "01 October 2023",
+        "2",
+        "02 October 2023",
+        "3",
+        "03 October 2023",
+        "4",
+        "04 October 2023",
+        "5",
+        "05 October 2023",
+        "6",
+        "06 October 2023",
+        "7",
+        "07 October 2023",
+        "8",
+        "08 October 2023",
+        "9",
+        "09 October 2023",
+        "10",
+        "10 October 2023",
+        "11",
+        "11 October 2023",
+        "12",
+        "12 October 2023",
+        "13",
+        "13 October 2023",
+        "14",
+        "14 October 2023",
+        "15",
+        "15 October 2023",
+        "16",
+        "16 October 2023",
+        "17",
+        "17 October 2023",
+        "18",
+        "18 October 2023",
+        "19",
+        "19 October 2023",
+        "20",
+        "20 October 2023",
+        "21",
+        "21 October 2023",
+        "22",
+        "22 October 2023",
+        "23",
+        "23 October 2023",
+        "24",
+        "24 October 2023",
+        "25",
+        "25 October 2023",
+        "26",
+        "26 October 2023",
+        "27",
+        "27 October 2023",
+        "28",
+        "28 October 2023",
+        "29",
+        "29 October 2023",
+        "30",
+        "30 October 2023",
+        "31",
+        "31 October 2023",
+        "CANCEL",
+        "OK",
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 35081,
+          "retained_characters": 9375
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[16]"
+    },
+    {
+      "ordinal": 17,
+      "stepId": "agent-tap_on-18",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "android:id/date_picker_header_year"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[17]"
+    },
+    {
+      "ordinal": 18,
+      "stepId": "agent-ui_snapshot-19",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "2023",
+        "Sun, Oct 1",
+        "2023",
+        "CANCEL",
+        "OK",
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 21234,
+          "retained_characters": 5188
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[18]"
+    },
+    {
+      "ordinal": 19,
+      "stepId": "agent-tap_on-20",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "android:id/button2"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[19]"
+    },
+    {
+      "ordinal": 20,
+      "stepId": "agent-ui_snapshot-21",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Filter",
+        "From",
+        "To",
+        "Oct",
+        "1",
+        "2023",
+        "Oct",
+        "14",
+        "2023",
+        "Order by Date in",
+        "DESC",
+        "ASC",
+        "APPLY FILTER",
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 25086,
+          "retained_characters": 6378
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 9,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[20]"
+    },
+    {
+      "ordinal": 21,
+      "stepId": "agent-press_key-22",
+      "action": "press_key",
+      "status": "failed",
+      "error": "NativeActionBudgetExceeded: action_budget",
+      "params": null,
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[21]"
+    },
+    {
+      "ordinal": 22,
+      "stepId": "agent-press_key-23",
+      "action": "press_key",
+      "status": "failed",
+      "error": "NativeActionBudgetExceeded: action_budget",
+      "params": null,
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[22]"
+    },
+    {
+      "ordinal": 23,
+      "stepId": "agent-kill_app-24",
+      "action": "kill_app",
+      "status": "failed",
+      "error": "NativeActionBudgetExceeded: action_budget",
+      "params": null,
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[23]"
+    }
+  ],
+  "originalNativeExecutionPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/016-ExpenseDeleteDuplicates/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-016-20261110T165000Z-725bae/execution-result.json",
+  "originalNativeResultPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/016-ExpenseDeleteDuplicates/raw-private/fsq-native/worker/fsq-task-result.private.json",
+  "originalGoalPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/016-ExpenseDeleteDuplicates/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-016-20261110T165000Z-725bae/sources/000-goal.txt"
+}

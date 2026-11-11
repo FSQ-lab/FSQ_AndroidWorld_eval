@@ -1,0 +1,1807 @@
+{
+  "schemaVersion": 1,
+  "reviewedAtUnix": 1794209983.2603,
+  "acceptance": "PASS_WITH_EXPLICIT_CAUSAL_AND_COVERAGE_LIMITS",
+  "scope": "Independent offline acceptance of completed fixed six-run development diagnostic; no extra experiments, device queries, builds, tests, retries, rescore or historical changes",
+  "formalScore": null,
+  "matrixStatus": {
+    "status": "completed",
+    "error": null,
+    "runCount": 6
+  },
+  "clockReview": "independent-clock-review.json",
+  "clockSummary": [
+    {
+      "label": "ClockOriginalP0",
+      "officialReward": 0.0,
+      "actions": 3,
+      "forestRecvSeq": 773,
+      "forestNodes": 0,
+      "uiElements": 0,
+      "startPresent": false,
+      "stopwatchCount": 0,
+      "predicateReturn": false
+    },
+    {
+      "label": "ClockOriginalP1",
+      "officialReward": 1.0,
+      "actions": 3,
+      "forestRecvSeq": 846,
+      "forestNodes": 25,
+      "uiElements": 15,
+      "startPresent": true,
+      "stopwatchCount": 2,
+      "predicateReturn": true
+    },
+    {
+      "label": "ClockPatchedP0",
+      "officialReward": 1.0,
+      "actions": 3,
+      "forestRecvSeq": 457,
+      "forestNodes": 25,
+      "uiElements": 15,
+      "startPresent": true,
+      "stopwatchCount": 2,
+      "predicateReturn": true
+    },
+    {
+      "label": "ClockPatchedP1",
+      "officialReward": 1.0,
+      "actions": 4,
+      "forestRecvSeq": 1089,
+      "forestNodes": 25,
+      "uiElements": 15,
+      "startPresent": true,
+      "stopwatchCount": 2,
+      "predicateReturn": true
+    }
+  ],
+  "causalFindings": {
+    "originalP0": {
+      "status": "directly_verified",
+      "finding": "Actual original scorer consumed an identified empty received forest and the same empty ui_elements list as its original predicate. DeskClock passes activity gate, Start false/count0 returns false at line63; raw scorer0 equals saved0 despite paused-zero UI. Loss starts at creation before quit; later constructor-worker NPE is a separate failure.",
+      "evidence": [
+        "clock-first-loss-timeline.json",
+        "clock-matrix/ClockOriginalP0/forest-trace.json",
+        "clock-matrix/ClockOriginalP0/clock-probe/evaluator-calls.json"
+      ]
+    },
+    "capabilityProtection": {
+      "status": "observed_supported_intervention_on_original_apk",
+      "finding": "OriginalP1 uses same original APK with actual upstream/returned target capability true; stable bound forwarder/PID and 850 nonempty receives, selected846, original predicate true and reward1. OriginalP0 omits capability, becomes unbound and has 301 empty receives. This supports capability protection/coexistence in these sampled runs, not a population success rate or measured final numeric UiAutomation flags.",
+      "originalApkSha256": "97a56a544e44d79f9b3181fc7dbdd72cffa908efd3d53c82afad1773061a350a"
+    },
+    "patchedRecoveryWithoutCapability": {
+      "status": "direct_stop_and_recovery_path_verified",
+      "samePid": "31266",
+      "oldInstance": "31266:1",
+      "oldGeneration": "1",
+      "oldWorkerStopped": {
+        "deviceEpoch": 1697384085.469,
+        "logLine": 10144
+      },
+      "unbind": {
+        "deviceEpoch": 1697384085.472,
+        "logLine": 10149
+      },
+      "newInstance": "31266:2",
+      "newGeneration": "1",
+      "newConnected": {
+        "deviceEpoch": 1697384129.087,
+        "logLine": 12827
+      },
+      "reusedGrpcEndpoint": "10.0.2.2:61730",
+      "oldReceives": {
+        "first": 1,
+        "last": 427,
+        "count": 427,
+        "empty": 0
+      },
+      "newReceives": {
+        "first": 428,
+        "last": 462,
+        "count": 35,
+        "empty": 0
+      },
+      "receiveGapSeconds": 43.74007296562195,
+      "lastOldReceiveHostUnix": 1794209177.453208,
+      "firstNewReceiveHostUnix": 1794209221.193281,
+      "selectedReceive": 457,
+      "selectedSender": {
+        "fsq-forwarder-instance": "31266:2",
+        "fsq-forwarder-generation": "1",
+        "fsq-forest-sequence": "30"
+      },
+      "finding": "When unbound during session, the current capture worker stops and host receives stop instead of receiving empty forests. At quit a new service instance in same process starts a new worker on retained endpoint, and nonempty trees resume and are actually scored. TID31303 reuse is coroutine dispatcher reuse, not old-worker continuity. This proves an observed stop/reconnect recovery mechanism in this APK, not isolation of lifecycle source changes from build-stack differences."
+    },
+    "patchedProtection": {
+      "status": "verified_single_instance_continuity",
+      "senderInstance": "1868:1",
+      "generation": "1",
+      "receiveCount": 1094,
+      "emptyReceiveCount": 0,
+      "selectedReceive": 1089,
+      "actionDifference": "4 actions: Search click, input Clock, Clock click, Stopwatch tab click; other cells use drawer swipe, Clock click, Stopwatch tab click. No Start/Pause click, but navigation and observation/timing are not identical."
+    }
+  },
+  "regressions": {
+    "BrowserDrawPatchedP1": {
+      "label": "BrowserDrawPatchedP1",
+      "task": {
+        "complexity": 2,
+        "goal": "Open the file task.html in Downloads in the file manager; when prompted open it with Chrome. Then create a drawing using the three colors shown at the top and hit submit.",
+        "name": "BrowserDraw",
+        "params": {
+          "browser_task_seed": 461184702,
+          "seed": 1466251684
+        },
+        "paramsSha256": "899d6f67cdd687dc3d29a6918010a3ba15348ec5e9caa772f4f4f2cdffb03956"
+      },
+      "officialReward": 1.0,
+      "error": null,
+      "invalidReason": null,
+      "actions": 17,
+      "maxSteps": 20,
+      "model": "gpt-5.6-sol",
+      "provider": "github-copilot",
+      "finalText": "{\"evidence\":\"Chrome visibly showed the drawing in all three required colors and displayed \\u201cSuccess!\\u201d after submission.\",\"sessionCleanup\":\"quit returned successfully\",\"taskOutcome\":\"success\"}",
+      "agentAnswer": {
+        "rawSubmission": {
+          "path": "raw-private/business-submission.json",
+          "sha256": "fe70a43db4eae816c9e30a6438f1cb16460c54dccb0dc66e6205cf74a81630ba"
+        },
+        "reason": "valid",
+        "sha256": "aee408847d35e44e99430f0979c3357b85fe8dbb4535a494301198adbee85f27",
+        "taskOutcomeType": "string",
+        "validContract": true
+      },
+      "businessSubmission": {
+        "answer": "success",
+        "parsedValue": {
+          "evidence": "Chrome visibly showed the drawing in all three required colors and displayed “Success!” after submission.",
+          "sessionCleanup": "quit returned successfully",
+          "taskOutcome": "success"
+        },
+        "rawText": "{\"taskOutcome\":\"success\",\"sessionCleanup\":\"quit returned successfully\",\"evidence\":\"Chrome visibly showed the drawing in all three required colors and displayed “Success!” after submission.\"}",
+        "reason": "valid",
+        "sha256": "aee408847d35e44e99430f0979c3357b85fe8dbb4535a494301198adbee85f27",
+        "taskOutcomeType": "string",
+        "validContract": true
+      },
+      "upstreamCapabilityRequest": {
+        "byteCount": 319,
+        "capabilities": {
+          "alwaysMatch": {
+            "appium:autoLaunch": false,
+            "appium:automationName": "UiAutomator2",
+            "appium:disableSuppressAccessibilityService": true,
+            "appium:newCommandTimeout": 300,
+            "appium:noReset": true,
+            "appium:skipUnlock": true,
+            "appium:udid": "emulator-5554",
+            "platformName": "Android"
+          },
+          "firstMatch": [
+            {}
+          ]
+        },
+        "sha256": "949aba83e39cecd4c7a079e64f81694e0b80fa4505b8302bb6155a026d739d42"
+      },
+      "upstreamCapabilityResponse": {
+        "bodySha256": "51d9302d4ab740816e91d3b1943eec5f5e9716134ba5a65478a88c32d0935d47",
+        "capabilities": {
+          "autoLaunch": false,
+          "automationName": "UiAutomator2",
+          "databaseEnabled": false,
+          "desired": {
+            "autoLaunch": false,
+            "automationName": "UiAutomator2",
+            "disableSuppressAccessibilityService": true,
+            "newCommandTimeout": 300,
+            "noReset": true,
+            "platformName": "Android",
+            "skipUnlock": true,
+            "udid": "emulator-5554"
+          },
+          "deviceApiLevel": 33,
+          "deviceManufacturer": "Google",
+          "deviceModel": "sdk_gphone64_arm64",
+          "deviceName": "emulator-5554",
+          "deviceScreenDensity": 420,
+          "deviceScreenSize": "1080x2400",
+          "deviceUDID": "emulator-5554",
+          "disableSuppressAccessibilityService": true,
+          "javascriptEnabled": true,
+          "locationContextEnabled": false,
+          "networkConnectionEnabled": true,
+          "newCommandTimeout": 300,
+          "noReset": true,
+          "pixelRatio": "2.625",
+          "platform": "LINUX",
+          "platformName": "Android",
+          "platformVersion": "13",
+          "skipUnlock": true,
+          "statBarHeight": 128,
+          "takesScreenshot": true,
+          "udid": "emulator-5554",
+          "viewportRect": {
+            "height": 2272,
+            "left": 0,
+            "top": 128,
+            "width": 1080
+          },
+          "warnings": {},
+          "webStorageEnabled": false
+        },
+        "capabilityByteCount": 1009,
+        "confirmed": true,
+        "diagnosticSessionAdmitted": true,
+        "status": 200
+      },
+      "helper": {
+        "packagePath": "/data/app/~~epAc4anAaTAoufMwRYUbog==/com.google.androidenv.accessibilityforwarder-otsYCmUtb9EuSi5NQ0TpZQ==/base.apk",
+        "sha256": "0987ded41c12807d4f75d0789002912de143eec866fa7b389ad8efdb8b0d07bb"
+      },
+      "cleanup": {
+        "agentSession": {
+          "agentQuitReturned": true,
+          "attribution": "agent",
+          "sessionIdSha256": "453663ae7d547cdc57457d5594cdc8f48b50ee99c31462b3c1aad2d8929f4df8",
+          "status": "closed",
+          "verification": {
+            "activeSessionCount": 0,
+            "attemptedSessionCount": 1,
+            "ownedSessionCount": 1,
+            "pendingCreateCount": 0,
+            "pendingRequestCount": 0,
+            "reclaimedSessionCount": 0,
+            "reclaimedSessionHashes": [],
+            "sessions": [
+              {
+                "absentVerified": true,
+                "alreadyAbsent": true,
+                "errors": [],
+                "presentVerified": false,
+                "quitReturned": false,
+                "sessionHash": "453663ae7d547cdc57457d5594cdc8f48b50ee99c31462b3c1aad2d8929f4df8"
+              }
+            ],
+            "status": "unknown",
+            "unknownCreationOutcomeCount": 0
+          },
+          "verificationStatus": "absent"
+        },
+        "environment": "closed",
+        "taskTearDown": "completed"
+      },
+      "auditCounts": {
+        "activeSessionCount": 0,
+        "createdSessionCount": 1,
+        "deletedSessionCount": 1,
+        "deniedCommandCount": 0,
+        "ownedSessionCount": 1,
+        "pendingCreateCount": 0,
+        "pendingRequestCount": 0,
+        "reclaimedSessionCount": 0,
+        "unknownCreationOutcomeCount": 0
+      },
+      "process": {
+        "completedAtUnix": 1794209594.7478871,
+        "pid": 69722,
+        "returnCode": 0,
+        "status": "exited"
+      },
+      "idleAfter": {
+        "activeInstrumentationLines": [],
+        "observedAtUnix": 1794209594.8288739,
+        "sessionHashes": [],
+        "uia2Processes": {
+          "command": [
+            "shell",
+            "pidof",
+            "io.appium.uiautomator2.server",
+            "io.appium.uiautomator2.server.test"
+          ],
+          "returnCode": 1,
+          "stderr": "",
+          "stdout": ""
+        }
+      },
+      "workspacePostExit": {
+        "observedAtUnix": 1794209739.256447,
+        "observedAfterUnitProcessCompletion": true,
+        "unitSummaryCompletedAtUnix": 1794209594.7493482,
+        "workspacePath": "/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-browserdraw-forest-m7blsjzq/agent-workspace",
+        "workspaceExists": false,
+        "temporaryParentPath": "/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-browserdraw-forest-m7blsjzq",
+        "temporaryParentExists": false,
+        "originalCleanupRecordPreserved": true,
+        "scope": "host filesystem absence check only"
+      },
+      "traceErrors": [],
+      "captures": [
+        {
+          "phase": "pre-quit",
+          "requested": {
+            "unix": 1794209585.4577222,
+            "monotonicNs": 584495218956750
+          },
+          "officialEvaluatorInput": false,
+          "proxyConfirmedActiveOwnedSession": true,
+          "sessionHash": "453663ae7d547cdc57457d5594cdc8f48b50ee99c31462b3c1aad2d8929f4df8",
+          "runtimeResult": {
+            "backend": "official-Appium-Client/separate-AMKernel-python_exec",
+            "phase": "pre-quit",
+            "officialEvaluatorInput": false,
+            "startedAtUnix": 1794209585.856242,
+            "observations": [
+              {
+                "name": "source",
+                "startedAtUnix": 1794209585.8564138,
+                "startedAtMonotonicNs": 584495617643375,
+                "file": "source.xml",
+                "completedAtUnix": 1794209585.870137
+              },
+              {
+                "name": "package",
+                "startedAtUnix": 1794209585.870137,
+                "startedAtMonotonicNs": 584495631366583,
+                "value": "com.android.chrome",
+                "completedAtUnix": 1794209585.8877661
+              },
+              {
+                "name": "activity",
+                "startedAtUnix": 1794209585.887767,
+                "startedAtMonotonicNs": 584495648995166,
+                "value": "org.chromium.chrome.browser.ChromeTabbedActivity",
+                "completedAtUnix": 1794209585.904546
+              },
+              {
+                "name": "screenshot",
+                "startedAtUnix": 1794209585.904547,
+                "startedAtMonotonicNs": 584495665775208,
+                "file": "pixels.png",
+                "completedAtUnix": 1794209586.0005288
+              }
+            ],
+            "commands": [
+              {
+                "command": "getPageSource",
+                "startedAtUnix": 1794209585.8564212,
+                "startedAtMonotonicNs": 584495617650291,
+                "routeTemplate": [
+                  "GET",
+                  "/session/$sessionId/source"
+                ],
+                "completedAtUnix": 1794209585.8699331
+              },
+              {
+                "command": "w3cExecuteScript",
+                "startedAtUnix": 1794209585.8701482,
+                "startedAtMonotonicNs": 584495631376750,
+                "routeTemplate": [
+                  "POST",
+                  "/session/$sessionId/execute/sync"
+                ],
+                "completedAtUnix": 1794209585.887765
+              },
+              {
+                "command": "w3cExecuteScript",
+                "startedAtUnix": 1794209585.8877718,
+                "startedAtMonotonicNs": 584495649000583,
+                "routeTemplate": [
+                  "POST",
+                  "/session/$sessionId/execute/sync"
+                ],
+                "completedAtUnix": 1794209585.904545
+              },
+              {
+                "command": "screenshot",
+                "startedAtUnix": 1794209585.904572,
+                "startedAtMonotonicNs": 584495665800250,
+                "routeTemplate": [
+                  "GET",
+                  "/session/$sessionId/screenshot"
+                ],
+                "completedAtUnix": 1794209586.000222
+              }
+            ],
+            "errors": [],
+            "detachedWithoutQuit": true,
+            "noNewSessionCommandObserved": true,
+            "completedAtUnix": 1794209586.000534
+          },
+          "path": "pre-quit-000",
+          "completed": {
+            "unix": 1794209586.073456,
+            "monotonicNs": 584495834681750
+          }
+        },
+        {
+          "phase": "post-quit",
+          "deleteResponseObserved": {
+            "unix": 1794209586.221526,
+            "monotonicNs": 584495982750041
+          },
+          "httpStatus": 200,
+          "backend": "native-adb-read-only-diagnostic",
+          "officialEvaluatorInput": false,
+          "started": {
+            "unix": 1794209586.221598,
+            "monotonicNs": 584495982821416
+          },
+          "observations": [
+            {
+              "file": "pixels.png",
+              "started": {
+                "unix": 1794209586.225844,
+                "monotonicNs": 584495987067875
+              },
+              "args": [
+                "exec-out",
+                "screencap",
+                "-p"
+              ],
+              "returncode": 0,
+              "stderr": "",
+              "completed": {
+                "unix": 1794209586.33456,
+                "monotonicNs": 584496095781958
+              }
+            },
+            {
+              "file": "activity.txt",
+              "started": {
+                "unix": 1794209586.3345652,
+                "monotonicNs": 584496095786833
+              },
+              "args": [
+                "shell",
+                "dumpsys",
+                "activity",
+                "activities"
+              ],
+              "returncode": 0,
+              "stderr": "",
+              "packageActivityObservationLines": [
+                "    topResumedActivity=ActivityRecord{2bcf22c u0 com.android.chrome/org.chromium.chrome.browser.ChromeTabbedActivity} t609}",
+                "  mCurrentFocus=Window{8d17d19 u0 com.android.chrome/org.chromium.chrome.browser.ChromeTabbedActivity}",
+                "  mFocusedApp=ActivityRecord{2bcf22c u0 com.android.chrome/org.chromium.chrome.browser.ChromeTabbedActivity} t609}"
+              ],
+              "completed": {
+                "unix": 1794209586.36531,
+                "monotonicNs": 584496126531583
+              }
+            },
+            {
+              "file": "window.txt",
+              "started": {
+                "unix": 1794209586.365315,
+                "monotonicNs": 584496126536583
+              },
+              "args": [
+                "shell",
+                "dumpsys",
+                "window",
+                "windows"
+              ],
+              "returncode": 0,
+              "stderr": "",
+              "packageActivityObservationLines": [],
+              "completed": {
+                "unix": 1794209586.391097,
+                "monotonicNs": 584496152317708
+              }
+            }
+          ],
+          "path": "post-quit-001",
+          "completed": {
+            "unix": 1794209586.391119,
+            "monotonicNs": 584496152339791
+          }
+        }
+      ],
+      "warnings": [
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/pydub/utils.py:170: RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work",
+        "  warn(\"Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work\", RuntimeWarning)",
+        "WARNING:absl:Could not get a11y tree, retrying."
+      ],
+      "executedIdentity": {
+        "startedAtUnix": 1794209370.740472,
+        "python": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/bin/python",
+        "runner": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/src/fsq_androidworld_eval/runner.py",
+        "browser": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/android_world/task_evals/single/browser.py",
+        "promptSha256": "463118879bbe14a14abfd987920f115fff29f128db4566dc282e75dc0aa906aa",
+        "originalPromptSha256": "463118879bbe14a14abfd987920f115fff29f128db4566dc282e75dc0aa906aa",
+        "model": "github-copilot/gpt-5.6-sol",
+        "diagnosticScope": "fixed frozen tasks and original prompt; within-APK capability contrast; APK intervention includes build-stack confounds",
+        "arm": "B",
+        "taskSpecsSource": "read-only frozen r12v2 manifest; no regeneration",
+        "notFormalCampaign": true,
+        "instrumentation": {
+          "module": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/accessibility-coexistence-repair-20261109T064155Z/forest_trace.py",
+          "sha256": "4a030a3b588e5c3f9d56aeb176171713a2600f261e8f5a4d36e9277b17dfe7e3",
+          "python": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/bin/python",
+          "installedAtUnix": 1794209370.739634,
+          "installedHostUtc": "2026-11-09T07:29:30Z",
+          "a11yServicer": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/android_env/components/a11y/a11y_servicer.py",
+          "a11yGrpcWrapper": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/android_env/wrappers/a11y_grpc_wrapper.py",
+          "androidWorldController": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/android_world/env/android_world_controller.py",
+          "androidWorldInterface": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/android_world/env/interface.py",
+          "policy": "passive observation only; original implementations always called; no new get_state, retry, wait, action or observation backend"
+        },
+        "sourceFiles": {
+          "evidence/accessibility-coexistence-repair-20261109T064155Z/run_diagnostic.py": "12b074fa7a6cae70fde1f889e2947602a6298b90e296d6a4561b73d0b6a1e3f3",
+          "evidence/accessibility-coexistence-repair-20261109T064155Z/matrix_entry.py": "43daf24eb800ceb19c3d4d5b925891b08e0e08efb33086304cb7782d23ba91f8",
+          "evidence/accessibility-coexistence-repair-20261109T064155Z/clock_probe.py": "34f72e6cbac64b48dd997bf654ea5869f70b62a8d31bc86d48c480a182ed99fd",
+          "evidence/accessibility-coexistence-repair-20261109T064155Z/controlled_proxy.py": "5a24fd70061ffc156a8204a11c1c7c6c49b0c7cb51a72c07468f52ebb4502f9d",
+          "evidence/accessibility-coexistence-repair-20261109T064155Z/forest_trace.py": "4a030a3b588e5c3f9d56aeb176171713a2600f261e8f5a4d36e9277b17dfe7e3",
+          "evidence/accessibility-coexistence-repair-20261109T064155Z/run_clock_matrix.py": "78d20d388a3d2474cf0034aacb8f1759b6a4818c5a9747cd65bfc832161c48cf"
+        },
+        "instrumentationFiles": {
+          "forest_trace.py": "4a030a3b588e5c3f9d56aeb176171713a2600f261e8f5a4d36e9277b17dfe7e3",
+          "run_diagnostic.py": "12b074fa7a6cae70fde1f889e2947602a6298b90e296d6a4561b73d0b6a1e3f3",
+          "clock_probe.py": "34f72e6cbac64b48dd997bf654ea5869f70b62a8d31bc86d48c480a182ed99fd",
+          "matrix_entry.py": "43daf24eb800ceb19c3d4d5b925891b08e0e08efb33086304cb7782d23ba91f8",
+          "run_clock_matrix.py": "78d20d388a3d2474cf0034aacb8f1759b6a4818c5a9747cd65bfc832161c48cf",
+          "controlled_proxy.py": "5a24fd70061ffc156a8204a11c1c7c6c49b0c7cb51a72c07468f52ebb4502f9d"
+        },
+        "archivedPromptSource": {
+          "path": "evidence/browserdraw-forest-provenance-20261109T060244Z/source-snapshot/fsq_androidworld_eval/runner.py",
+          "sha256": "11a1a39602904b02d66a9d316686291194bba46d7fb219366d2ad4c4bdac589d",
+          "extraction": "literal constants and exact _agent_prompt AST only"
+        },
+        "matrixLabel": "BrowserDrawPatchedP1",
+        "helperVariant": "patched",
+        "environmentArtifacts": {
+          "schemaVersion": 1,
+          "cacheDirectory": ".cache/androidworld-assets",
+          "artifacts": [
+            {
+              "name": "fsq-accessibility-forwarder-lifecycle-v1.apk",
+              "url": "repo:assets/fsq-accessibility-forwarder-lifecycle-v1.apk",
+              "sha256": "0987ded41c12807d4f75d0789002912de143eec866fa7b389ad8efdb8b0d07bb",
+              "sizeBytes": 14247105
+            },
+            {
+              "name": "com.dimowner.audiorecorder_926.apk",
+              "url": "https://storage.googleapis.com/gresearch/android_world/com.dimowner.audiorecorder_926.apk",
+              "sha256": "ee0bd709021e4069bb1f6fee99e3398f70ba4531dea918840ad4f5156f97b953",
+              "sizeBytes": 778419
+            },
+            {
+              "name": "com.flauschcode.broccoli_1020600.apk",
+              "url": "https://storage.googleapis.com/gresearch/android_world/com.flauschcode.broccoli_1020600.apk",
+              "sha256": "da99d9465c79398c6c25459daa82017c5faf505589ea6e62b9e85ca0dc70e8da",
+              "sizeBytes": 7503922
+            },
+            {
+              "name": "clipper.apk",
+              "url": "https://storage.googleapis.com/gresearch/android_world/clipper.apk",
+              "sha256": "c5f7a1e4fd78d1141164759a099cdcfb0a7b84aaf4c06a63f52e1aa4f1278539",
+              "sizeBytes": 10143
+            },
+            {
+              "name": "net.cozic.joplin_2097740.apk",
+              "url": "https://storage.googleapis.com/gresearch/android_world/net.cozic.joplin_2097740.apk",
+              "sha256": "6f70a460f6bacd777d08b13a06c5ef5d545491f940de0a40ecf44fd2d9eea385",
+              "sizeBytes": 43472265
+            },
+            {
+              "name": "net.gsantner.markor_146.apk",
+              "url": "https://storage.googleapis.com/gresearch/android_world/net.gsantner.markor_146.apk",
+              "sha256": "1a328c5324b3b33d6cb4d55085637707252569d98c0ffe1cb7089aebbd903256",
+              "sizeBytes": 11067299
+            },
+            {
+              "name": "de.dennisguse.opentracks_5705.apk",
+              "url": "https://storage.googleapis.com/gresearch/android_world/de.dennisguse.opentracks_5705.apk",
+              "sha256": "3cd907e57c747b49fac9120defee4c2395c67acc87271c7c591058cb37e7802c",
+              "sizeBytes": 24268012
+            },
+            {
+              "name": "net.osmand-4.6.13.apk",
+              "url": "https://storage.googleapis.com/gresearch/android_world/net.osmand-4.6.13.apk",
+              "sha256": "0ac411942965a431a0a91b19ce990e6948e780a13a1c98bc7e5a9a057af6463c",
+              "sizeBytes": 351679694
+            },
+            {
+              "name": "Liechtenstein_europe.obf",
+              "url": "https://storage.googleapis.com/gresearch/android_world/Liechtenstein_europe.obf",
+              "sha256": "57a1955c6f517a114999fa50480ecc1402ed9b524db602540ac1c08f57ff140e",
+              "sizeBytes": 7241271
+            },
+            {
+              "name": "com.arduia.expense_11.apk",
+              "url": "https://storage.googleapis.com/gresearch/android_world/com.arduia.expense_11.apk",
+              "sha256": "e54dcc8250566ab6421119b48d6c4544066c6697c53d27ab06ee5bdf9bf1ee50",
+              "sizeBytes": 3020823
+            },
+            {
+              "name": "code.name.monkey.retromusic_10603.apk",
+              "url": "https://storage.googleapis.com/gresearch/android_world/code.name.monkey.retromusic_10603.apk",
+              "sha256": "13212d049cb02b861c0358bde5fe5b9cdf99a16a490685f60c28636278e2ed60",
+              "sizeBytes": 9041986
+            },
+            {
+              "name": "com.simplemobiletools.calendar.pro_238.apk",
+              "url": "https://storage.googleapis.com/gresearch/android_world/com.simplemobiletools.calendar.pro_238.apk",
+              "sha256": "fb4d30ce060433fc9283e591eddc58be0ee1d75b079a13939ca7e6cce8a1f4b8",
+              "sizeBytes": 9870704
+            },
+            {
+              "name": "com.simplemobiletools.draw.pro_79.apk",
+              "url": "https://storage.googleapis.com/gresearch/android_world/com.simplemobiletools.draw.pro_79.apk",
+              "sha256": "3c3210590846a30468ab5acb9ef0aaa5d85b49d5930eda86eef0bd991a9f80a1",
+              "sizeBytes": 8320484
+            },
+            {
+              "name": "com.simplemobiletools.gallery.pro_396.apk",
+              "url": "https://storage.googleapis.com/gresearch/android_world/com.simplemobiletools.gallery.pro_396.apk",
+              "sha256": "175f10c9ce4c6d5294ed20d61216d850df2c2b1928a846489a4cb372153d1607",
+              "sizeBytes": 32203025
+            },
+            {
+              "name": "com.simplemobiletools.smsmessenger_85.apk",
+              "url": "https://storage.googleapis.com/gresearch/android_world/com.simplemobiletools.smsmessenger_85.apk",
+              "sha256": "e134a0e330514de3716dbacfa08d39707ebbb2c9ebde8d08854e159b2cd7c2f4",
+              "sizeBytes": 9938539
+            },
+            {
+              "name": "org.tasks_130605.apk",
+              "url": "https://storage.googleapis.com/gresearch/android_world/org.tasks_130605.apk",
+              "sha256": "3e93405882016be0e8f6c45207bdfb9d4b958bf34430256e77b043d68b8ceb00",
+              "sizeBytes": 29656271
+            },
+            {
+              "name": "org.videolan.vlc_13050408.apk",
+              "url": "https://storage.googleapis.com/gresearch/android_world/org.videolan.vlc_13050408.apk",
+              "sha256": "3fe17cbd8b7f507436eccc217f9168846a65cadff2f7d87490f5740b243170dc",
+              "sizeBytes": 38387336
+            },
+            {
+              "name": "org.videolan.vlc_13050407.apk",
+              "url": "https://storage.googleapis.com/gresearch/android_world/org.videolan.vlc_13050407.apk",
+              "sha256": "2cde3fbd8bf240ff66de236a352c68efa40bb267acf3a5cb8d34a5b2850a2666",
+              "sizeBytes": 36167316
+            }
+          ]
+        },
+        "notFormalR14QualificationOrScore": true,
+        "developmentDiagnosticOverrides": {
+          "apkContrastLimitation": "APK intervention includes build-stack confounds; lifecycle mechanism requires direct per-instance generation and worker-stop evidence",
+          "episodeCapabilityP0": "omit target capability after common canonicalization; matching confirmation enforcement relaxed only",
+          "episodeCapabilityP1": "same controlled production proxy path, explicit true capability",
+          "formalScore": null,
+          "helperVariants": "frozen original copy or runtime production pin",
+          "kind": "development_diagnostic",
+          "model": "github-copilot/gpt-5.6-sol",
+          "prompt": "463118879bbe14a14abfd987920f115fff29f128db4566dc282e75dc0aa906aa",
+          "qualificationCapability": "explicit true for every preparation-created session, including original APK",
+          "receiveAgeMeaning": "host arrival age, not device generation age",
+          "scheduling": "six declared episodes once; no task repeats or retries",
+          "taskSpecs": "exact frozen r12v2 rows/indexes, not regenerated"
+        },
+        "receiveAgeMeaning": "host arrival age, not device generation age"
+      },
+      "evidenceRoot": "clock-matrix/BrowserDrawPatchedP1",
+      "originalEvaluator": {
+        "startedAtUnix": 1794209591.65345,
+        "stateGetCalls": [
+          {
+            "event": "call",
+            "unix": 1794209591.653514
+          },
+          {
+            "event": "call",
+            "unix": 1794209591.653535
+          },
+          {
+            "event": "return",
+            "unix": 1794209591.702424
+          },
+          {
+            "event": "return",
+            "unix": 1794209591.702483
+          }
+        ],
+        "activityCalls": [
+          {
+            "event": "call",
+            "unix": 1794209591.7024949,
+            "value": null
+          },
+          {
+            "event": "return",
+            "unix": 1794209591.727139,
+            "value": [
+              "com.android.chrome/org.chromium.chrome.browser.ChromeTabbedActivity",
+              {
+                "status": "OK",
+                "get_current_activity": {
+                  "full_activity": "com.android.chrome/org.chromium.chrome.browser.ChromeTabbedActivity"
+                }
+              }
+            ]
+          }
+        ],
+        "lines": [
+          {
+            "line": 99,
+            "unix": 1794209591.653507
+          },
+          {
+            "line": 100,
+            "unix": 1794209591.702485
+          },
+          {
+            "line": 101,
+            "unix": 1794209591.702488
+          },
+          {
+            "line": 100,
+            "unix": 1794209591.727144
+          },
+          {
+            "line": 103,
+            "unix": 1794209591.7271512
+          },
+          {
+            "line": 106,
+            "unix": 1794209591.7271638
+          },
+          {
+            "line": 107,
+            "unix": 1794209591.727168
+          },
+          {
+            "line": 106,
+            "unix": 1794209591.72717
+          },
+          {
+            "line": 107,
+            "unix": 1794209591.72717
+          },
+          {
+            "line": 106,
+            "unix": 1794209591.72717
+          },
+          {
+            "line": 107,
+            "unix": 1794209591.7271712
+          },
+          {
+            "line": 106,
+            "unix": 1794209591.7271712
+          },
+          {
+            "line": 107,
+            "unix": 1794209591.7271712
+          },
+          {
+            "line": 106,
+            "unix": 1794209591.7271712
+          },
+          {
+            "line": 107,
+            "unix": 1794209591.7271721
+          },
+          {
+            "line": 106,
+            "unix": 1794209591.7271721
+          },
+          {
+            "line": 107,
+            "unix": 1794209591.7271721
+          },
+          {
+            "line": 106,
+            "unix": 1794209591.7271721
+          },
+          {
+            "line": 107,
+            "unix": 1794209591.7271721
+          },
+          {
+            "line": 106,
+            "unix": 1794209591.727173
+          },
+          {
+            "line": 107,
+            "unix": 1794209591.727173
+          },
+          {
+            "line": 106,
+            "unix": 1794209591.7271738
+          },
+          {
+            "line": 107,
+            "unix": 1794209591.7271738
+          },
+          {
+            "line": 106,
+            "unix": 1794209591.7271738
+          },
+          {
+            "line": 107,
+            "unix": 1794209591.7271738
+          },
+          {
+            "line": 106,
+            "unix": 1794209591.727175
+          },
+          {
+            "line": 107,
+            "unix": 1794209591.727175
+          },
+          {
+            "line": 108,
+            "unix": 1794209591.727175
+          }
+        ],
+        "backend": "A11yMethod.A11Y_FORWARDER_APP",
+        "sourceFile": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/android_world/task_evals/single/browser.py",
+        "returnedAtUnix": 1794209591.7271821,
+        "rawReturn": 1.0,
+        "rawReturnType": "float",
+        "returnLine": 108,
+        "wrapperFinishedAtUnix": 1794209591.72719,
+        "stateEvidence": "evaluator-0",
+        "uiElementCount": 43,
+        "successElementIndices": [
+          10
+        ],
+        "packageName": "com.android.chrome",
+        "branch": "exact_success_text_found",
+        "forestTrace": {
+          "present": true,
+          "recvSeq": 1776,
+          "storedIdentityIsActual": true,
+          "receiveObjectIdMatchesRecord": true,
+          "identityMismatch": false,
+          "windowCount": 2,
+          "serializedBytes": 8917,
+          "sha256": "f66beabdd7738c2a9be919f1f7dfe1ed56bec2a3351bd4dbbbad3ec27f4a73ef",
+          "nodeCount": 54,
+          "successTextFound": true,
+          "windows": [
+            {
+              "id": 9846,
+              "title": "",
+              "windowType": 1,
+              "isActive": true,
+              "isFocused": true,
+              "nodeCount": 46,
+              "packageNames": [
+                "com.android.chrome"
+              ]
+            },
+            {
+              "id": 9830,
+              "title": "",
+              "windowType": 3,
+              "isActive": false,
+              "isFocused": false,
+              "nodeCount": 8,
+              "packageNames": [
+                "com.android.systemui"
+              ]
+            }
+          ],
+          "receivedAtUnix": 1794209591.626622,
+          "receivedHostUtc": "2026-11-09T07:33:11Z",
+          "receiveAgeSeconds": 0.28523707389831543,
+          "recvTransport": "unary",
+          "recvAdmitted": true,
+          "recvAdmittedByDrain": true,
+          "recvAdmittedByDrainIndex": 7,
+          "recvAdmittedByPull": null,
+          "recvPaused": false
+        }
+      },
+      "successElementIndices": [
+        10
+      ],
+      "selectedSender": {
+        "fsq-forwarder-instance": "4231:1",
+        "fsq-forwarder-generation": "1",
+        "fsq-forest-sequence": "1776"
+      },
+      "forestHashMatches": true
+    },
+    "SimpleCalendarEventsOnDatePatchedP1": {
+      "label": "SimpleCalendarEventsOnDatePatchedP1",
+      "task": {
+        "complexity": 1,
+        "goal": "What events do I have October 24 in Simple Calendar Pro? Answer with the titles only. If there are multiple titles, format your answer as a comma separated list.",
+        "name": "SimpleCalendarEventsOnDate",
+        "params": {
+          "date": "October 24 2023",
+          "duration": "25 minutes",
+          "seed": 1569884782,
+          "time": "11:00am",
+          "title": "Trivia Night"
+        },
+        "paramsSha256": "35497446bdb86198a6893a5d4f8f62a987bf1f2bf6f4615b00dd405b3cf0bc91"
+      },
+      "officialReward": 1.0,
+      "error": null,
+      "invalidReason": null,
+      "actions": 3,
+      "maxSteps": 10,
+      "model": "gpt-5.6-sol",
+      "provider": "github-copilot",
+      "finalText": "{\"evidence\":\"October 24 (Tue) showed one event titled Trivia Night.\",\"sessionCleanup\":\"completed\",\"taskOutcome\":\"Trivia Night\"}",
+      "agentAnswer": {
+        "rawSubmission": {
+          "path": "raw-private/business-submission.json",
+          "sha256": "7b89b763e5cc9d1402b907bec084650d0cedcc64fddbfa99d9aa0acfdbdc30cf"
+        },
+        "reason": "valid",
+        "sha256": "e79c323e98e8a76f4df787ff423a759ce524302e76d28eeb72087276ccf40b60",
+        "taskOutcomeType": "string",
+        "validContract": true
+      },
+      "businessSubmission": {
+        "answer": "Trivia Night",
+        "parsedValue": {
+          "evidence": "October 24 (Tue) showed one event titled Trivia Night.",
+          "sessionCleanup": "completed",
+          "taskOutcome": "Trivia Night"
+        },
+        "rawText": "{\"taskOutcome\":\"Trivia Night\",\"sessionCleanup\":\"completed\",\"evidence\":\"October 24 (Tue) showed one event titled Trivia Night.\"}",
+        "reason": "valid",
+        "sha256": "e79c323e98e8a76f4df787ff423a759ce524302e76d28eeb72087276ccf40b60",
+        "taskOutcomeType": "string",
+        "validContract": true
+      },
+      "upstreamCapabilityRequest": {
+        "byteCount": 319,
+        "capabilities": {
+          "alwaysMatch": {
+            "appium:autoLaunch": false,
+            "appium:automationName": "UiAutomator2",
+            "appium:disableSuppressAccessibilityService": true,
+            "appium:newCommandTimeout": 300,
+            "appium:noReset": true,
+            "appium:skipUnlock": true,
+            "appium:udid": "emulator-5554",
+            "platformName": "Android"
+          },
+          "firstMatch": [
+            {}
+          ]
+        },
+        "sha256": "949aba83e39cecd4c7a079e64f81694e0b80fa4505b8302bb6155a026d739d42"
+      },
+      "upstreamCapabilityResponse": {
+        "bodySha256": "dce046a1dfe86241102ed78ff268c28327de7125054c71a678cd4b6602b8df1f",
+        "capabilities": {
+          "autoLaunch": false,
+          "automationName": "UiAutomator2",
+          "databaseEnabled": false,
+          "desired": {
+            "autoLaunch": false,
+            "automationName": "UiAutomator2",
+            "disableSuppressAccessibilityService": true,
+            "newCommandTimeout": 300,
+            "noReset": true,
+            "platformName": "Android",
+            "skipUnlock": true,
+            "udid": "emulator-5554"
+          },
+          "deviceApiLevel": 33,
+          "deviceManufacturer": "Google",
+          "deviceModel": "sdk_gphone64_arm64",
+          "deviceName": "emulator-5554",
+          "deviceScreenDensity": 420,
+          "deviceScreenSize": "1080x2400",
+          "deviceUDID": "emulator-5554",
+          "disableSuppressAccessibilityService": true,
+          "javascriptEnabled": true,
+          "locationContextEnabled": false,
+          "networkConnectionEnabled": true,
+          "newCommandTimeout": 300,
+          "noReset": true,
+          "pixelRatio": "2.625",
+          "platform": "LINUX",
+          "platformName": "Android",
+          "platformVersion": "13",
+          "skipUnlock": true,
+          "statBarHeight": 128,
+          "takesScreenshot": true,
+          "udid": "emulator-5554",
+          "viewportRect": {
+            "height": 2272,
+            "left": 0,
+            "top": 128,
+            "width": 1080
+          },
+          "warnings": {},
+          "webStorageEnabled": false
+        },
+        "capabilityByteCount": 1009,
+        "confirmed": true,
+        "diagnosticSessionAdmitted": true,
+        "status": 200
+      },
+      "helper": {
+        "packagePath": "/data/app/~~EX4Y6FNCLPbevTH3DzHhOw==/com.google.androidenv.accessibilityforwarder-HlEl9gB_oib9etjKnLt2HQ==/base.apk",
+        "sha256": "0987ded41c12807d4f75d0789002912de143eec866fa7b389ad8efdb8b0d07bb"
+      },
+      "cleanup": {
+        "agentSession": {
+          "agentQuitReturned": true,
+          "attribution": "agent",
+          "sessionIdSha256": "4d224452373bff7f5ccf6a84b697e6d25cbad86ad3a36ece694a7acb3031e5d0",
+          "status": "closed",
+          "verification": {
+            "activeSessionCount": 0,
+            "attemptedSessionCount": 1,
+            "ownedSessionCount": 1,
+            "pendingCreateCount": 0,
+            "pendingRequestCount": 0,
+            "reclaimedSessionCount": 0,
+            "reclaimedSessionHashes": [],
+            "sessions": [
+              {
+                "absentVerified": true,
+                "alreadyAbsent": true,
+                "errors": [],
+                "presentVerified": false,
+                "quitReturned": false,
+                "sessionHash": "4d224452373bff7f5ccf6a84b697e6d25cbad86ad3a36ece694a7acb3031e5d0"
+              }
+            ],
+            "status": "unknown",
+            "unknownCreationOutcomeCount": 0
+          },
+          "verificationStatus": "absent"
+        },
+        "environment": "closed",
+        "taskTearDown": "completed"
+      },
+      "auditCounts": {
+        "activeSessionCount": 0,
+        "createdSessionCount": 1,
+        "deletedSessionCount": 1,
+        "deniedCommandCount": 0,
+        "ownedSessionCount": 1,
+        "pendingCreateCount": 0,
+        "pendingRequestCount": 0,
+        "reclaimedSessionCount": 0,
+        "unknownCreationOutcomeCount": 0
+      },
+      "process": {
+        "completedAtUnix": 1794209730.9685209,
+        "pid": 70566,
+        "returnCode": 0,
+        "status": "exited"
+      },
+      "idleAfter": {
+        "activeInstrumentationLines": [],
+        "observedAtUnix": 1794209731.113593,
+        "sessionHashes": [],
+        "uia2Processes": {
+          "command": [
+            "shell",
+            "pidof",
+            "io.appium.uiautomator2.server",
+            "io.appium.uiautomator2.server.test"
+          ],
+          "returnCode": 1,
+          "stderr": "",
+          "stdout": ""
+        }
+      },
+      "workspacePostExit": {
+        "observedAtUnix": 1794209843.323335,
+        "observedAfterUnitProcessCompletion": true,
+        "unitSummaryCompletedAtUnix": 1794209730.969894,
+        "workspacePath": "/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-browserdraw-forest-qvqcd_83/agent-workspace",
+        "workspaceExists": false,
+        "temporaryParentPath": "/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-browserdraw-forest-qvqcd_83",
+        "temporaryParentExists": false,
+        "originalCleanupRecordPreserved": true,
+        "scope": "host filesystem absence check only"
+      },
+      "traceErrors": [],
+      "captures": [
+        {
+          "phase": "pre-quit",
+          "requested": {
+            "unix": 1794209724.239447,
+            "monotonicNs": 584633998626458
+          },
+          "officialEvaluatorInput": false,
+          "proxyConfirmedActiveOwnedSession": true,
+          "sessionHash": "4d224452373bff7f5ccf6a84b697e6d25cbad86ad3a36ece694a7acb3031e5d0",
+          "runtimeResult": {
+            "backend": "official-Appium-Client/separate-AMKernel-python_exec",
+            "phase": "pre-quit",
+            "officialEvaluatorInput": false,
+            "startedAtUnix": 1794209724.737928,
+            "observations": [
+              {
+                "name": "source",
+                "startedAtUnix": 1794209724.738107,
+                "startedAtMonotonicNs": 584634497278916,
+                "file": "source.xml",
+                "completedAtUnix": 1794209724.763276
+              },
+              {
+                "name": "package",
+                "startedAtUnix": 1794209724.763277,
+                "startedAtMonotonicNs": 584634522448625,
+                "value": "com.simplemobiletools.calendar.pro",
+                "completedAtUnix": 1794209724.781027
+              },
+              {
+                "name": "activity",
+                "startedAtUnix": 1794209724.781028,
+                "startedAtMonotonicNs": 584634540199041,
+                "value": ".activities.MainActivity",
+                "completedAtUnix": 1794209724.797948
+              },
+              {
+                "name": "screenshot",
+                "startedAtUnix": 1794209724.797948,
+                "startedAtMonotonicNs": 584634557119333,
+                "file": "pixels.png",
+                "completedAtUnix": 1794209724.909626
+              }
+            ],
+            "commands": [
+              {
+                "command": "getPageSource",
+                "startedAtUnix": 1794209724.738114,
+                "startedAtMonotonicNs": 584634497285750,
+                "routeTemplate": [
+                  "GET",
+                  "/session/$sessionId/source"
+                ],
+                "completedAtUnix": 1794209724.763065
+              },
+              {
+                "command": "w3cExecuteScript",
+                "startedAtUnix": 1794209724.763286,
+                "startedAtMonotonicNs": 584634522457625,
+                "routeTemplate": [
+                  "POST",
+                  "/session/$sessionId/execute/sync"
+                ],
+                "completedAtUnix": 1794209724.7810218
+              },
+              {
+                "command": "w3cExecuteScript",
+                "startedAtUnix": 1794209724.7810502,
+                "startedAtMonotonicNs": 584634540220708,
+                "routeTemplate": [
+                  "POST",
+                  "/session/$sessionId/execute/sync"
+                ],
+                "completedAtUnix": 1794209724.7979462
+              },
+              {
+                "command": "screenshot",
+                "startedAtUnix": 1794209724.797968,
+                "startedAtMonotonicNs": 584634557138416,
+                "routeTemplate": [
+                  "GET",
+                  "/session/$sessionId/screenshot"
+                ],
+                "completedAtUnix": 1794209724.9093068
+              }
+            ],
+            "errors": [],
+            "detachedWithoutQuit": true,
+            "noNewSessionCommandObserved": true,
+            "completedAtUnix": 1794209724.9096289
+          },
+          "path": "pre-quit-000",
+          "completed": {
+            "unix": 1794209724.9835699,
+            "monotonicNs": 584634742738666
+          }
+        },
+        {
+          "phase": "post-quit",
+          "deleteResponseObserved": {
+            "unix": 1794209725.129764,
+            "monotonicNs": 584634888930416
+          },
+          "httpStatus": 200,
+          "backend": "native-adb-read-only-diagnostic",
+          "officialEvaluatorInput": false,
+          "started": {
+            "unix": 1794209725.129836,
+            "monotonicNs": 584634889001583
+          },
+          "observations": [
+            {
+              "file": "pixels.png",
+              "started": {
+                "unix": 1794209725.133065,
+                "monotonicNs": 584634892230500
+              },
+              "args": [
+                "exec-out",
+                "screencap",
+                "-p"
+              ],
+              "returncode": 0,
+              "stderr": "",
+              "completed": {
+                "unix": 1794209725.257673,
+                "monotonicNs": 584635016836958
+              }
+            },
+            {
+              "file": "activity.txt",
+              "started": {
+                "unix": 1794209725.257678,
+                "monotonicNs": 584635016841916
+              },
+              "args": [
+                "shell",
+                "dumpsys",
+                "activity",
+                "activities"
+              ],
+              "returncode": 0,
+              "stderr": "",
+              "packageActivityObservationLines": [
+                "    topResumedActivity=ActivityRecord{77b90ee u0 com.simplemobiletools.calendar.pro/.activities.MainActivity} t610}",
+                "  mCurrentFocus=Window{191c923 u0 com.simplemobiletools.calendar.pro/com.simplemobiletools.calendar.pro.activities.MainActivity}",
+                "  mFocusedApp=ActivityRecord{77b90ee u0 com.simplemobiletools.calendar.pro/.activities.MainActivity} t610}"
+              ],
+              "completed": {
+                "unix": 1794209725.278534,
+                "monotonicNs": 584635037700500
+              }
+            },
+            {
+              "file": "window.txt",
+              "started": {
+                "unix": 1794209725.278542,
+                "monotonicNs": 584635037705958
+              },
+              "args": [
+                "shell",
+                "dumpsys",
+                "window",
+                "windows"
+              ],
+              "returncode": 0,
+              "stderr": "",
+              "packageActivityObservationLines": [],
+              "completed": {
+                "unix": 1794209725.302916,
+                "monotonicNs": 584635062079666
+              }
+            }
+          ],
+          "path": "post-quit-001",
+          "completed": {
+            "unix": 1794209725.302921,
+            "monotonicNs": 584635062084583
+          }
+        }
+      ],
+      "warnings": [
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/pydub/utils.py:170: RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work",
+        "  warn(\"Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work\", RuntimeWarning)",
+        "WARNING:absl:Could not get a11y tree, retrying."
+      ],
+      "executedIdentity": {
+        "startedAtUnix": 1794209595.9477031,
+        "python": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/bin/python",
+        "runner": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/src/fsq_androidworld_eval/runner.py",
+        "browser": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/android_world/task_evals/single/browser.py",
+        "promptSha256": "463118879bbe14a14abfd987920f115fff29f128db4566dc282e75dc0aa906aa",
+        "originalPromptSha256": "463118879bbe14a14abfd987920f115fff29f128db4566dc282e75dc0aa906aa",
+        "model": "github-copilot/gpt-5.6-sol",
+        "diagnosticScope": "fixed frozen tasks and original prompt; within-APK capability contrast; APK intervention includes build-stack confounds",
+        "arm": "B",
+        "taskSpecsSource": "read-only frozen r12v2 manifest; no regeneration",
+        "notFormalCampaign": true,
+        "instrumentation": {
+          "module": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/accessibility-coexistence-repair-20261109T064155Z/forest_trace.py",
+          "sha256": "4a030a3b588e5c3f9d56aeb176171713a2600f261e8f5a4d36e9277b17dfe7e3",
+          "python": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/bin/python",
+          "installedAtUnix": 1794209595.9470022,
+          "installedHostUtc": "2026-11-09T07:33:15Z",
+          "a11yServicer": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/android_env/components/a11y/a11y_servicer.py",
+          "a11yGrpcWrapper": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/android_env/wrappers/a11y_grpc_wrapper.py",
+          "androidWorldController": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/android_world/env/android_world_controller.py",
+          "androidWorldInterface": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/android_world/env/interface.py",
+          "policy": "passive observation only; original implementations always called; no new get_state, retry, wait, action or observation backend"
+        },
+        "sourceFiles": {
+          "evidence/accessibility-coexistence-repair-20261109T064155Z/run_diagnostic.py": "12b074fa7a6cae70fde1f889e2947602a6298b90e296d6a4561b73d0b6a1e3f3",
+          "evidence/accessibility-coexistence-repair-20261109T064155Z/matrix_entry.py": "43daf24eb800ceb19c3d4d5b925891b08e0e08efb33086304cb7782d23ba91f8",
+          "evidence/accessibility-coexistence-repair-20261109T064155Z/clock_probe.py": "34f72e6cbac64b48dd997bf654ea5869f70b62a8d31bc86d48c480a182ed99fd",
+          "evidence/accessibility-coexistence-repair-20261109T064155Z/controlled_proxy.py": "5a24fd70061ffc156a8204a11c1c7c6c49b0c7cb51a72c07468f52ebb4502f9d",
+          "evidence/accessibility-coexistence-repair-20261109T064155Z/forest_trace.py": "4a030a3b588e5c3f9d56aeb176171713a2600f261e8f5a4d36e9277b17dfe7e3",
+          "evidence/accessibility-coexistence-repair-20261109T064155Z/run_clock_matrix.py": "78d20d388a3d2474cf0034aacb8f1759b6a4818c5a9747cd65bfc832161c48cf"
+        },
+        "instrumentationFiles": {
+          "forest_trace.py": "4a030a3b588e5c3f9d56aeb176171713a2600f261e8f5a4d36e9277b17dfe7e3",
+          "run_diagnostic.py": "12b074fa7a6cae70fde1f889e2947602a6298b90e296d6a4561b73d0b6a1e3f3",
+          "clock_probe.py": "34f72e6cbac64b48dd997bf654ea5869f70b62a8d31bc86d48c480a182ed99fd",
+          "matrix_entry.py": "43daf24eb800ceb19c3d4d5b925891b08e0e08efb33086304cb7782d23ba91f8",
+          "run_clock_matrix.py": "78d20d388a3d2474cf0034aacb8f1759b6a4818c5a9747cd65bfc832161c48cf",
+          "controlled_proxy.py": "5a24fd70061ffc156a8204a11c1c7c6c49b0c7cb51a72c07468f52ebb4502f9d"
+        },
+        "archivedPromptSource": {
+          "path": "evidence/browserdraw-forest-provenance-20261109T060244Z/source-snapshot/fsq_androidworld_eval/runner.py",
+          "sha256": "11a1a39602904b02d66a9d316686291194bba46d7fb219366d2ad4c4bdac589d",
+          "extraction": "literal constants and exact _agent_prompt AST only"
+        },
+        "matrixLabel": "SimpleCalendarEventsOnDatePatchedP1",
+        "helperVariant": "patched",
+        "environmentArtifacts": {
+          "schemaVersion": 1,
+          "cacheDirectory": ".cache/androidworld-assets",
+          "artifacts": [
+            {
+              "name": "fsq-accessibility-forwarder-lifecycle-v1.apk",
+              "url": "repo:assets/fsq-accessibility-forwarder-lifecycle-v1.apk",
+              "sha256": "0987ded41c12807d4f75d0789002912de143eec866fa7b389ad8efdb8b0d07bb",
+              "sizeBytes": 14247105
+            },
+            {
+              "name": "com.dimowner.audiorecorder_926.apk",
+              "url": "https://storage.googleapis.com/gresearch/android_world/com.dimowner.audiorecorder_926.apk",
+              "sha256": "ee0bd709021e4069bb1f6fee99e3398f70ba4531dea918840ad4f5156f97b953",
+              "sizeBytes": 778419
+            },
+            {
+              "name": "com.flauschcode.broccoli_1020600.apk",
+              "url": "https://storage.googleapis.com/gresearch/android_world/com.flauschcode.broccoli_1020600.apk",
+              "sha256": "da99d9465c79398c6c25459daa82017c5faf505589ea6e62b9e85ca0dc70e8da",
+              "sizeBytes": 7503922
+            },
+            {
+              "name": "clipper.apk",
+              "url": "https://storage.googleapis.com/gresearch/android_world/clipper.apk",
+              "sha256": "c5f7a1e4fd78d1141164759a099cdcfb0a7b84aaf4c06a63f52e1aa4f1278539",
+              "sizeBytes": 10143
+            },
+            {
+              "name": "net.cozic.joplin_2097740.apk",
+              "url": "https://storage.googleapis.com/gresearch/android_world/net.cozic.joplin_2097740.apk",
+              "sha256": "6f70a460f6bacd777d08b13a06c5ef5d545491f940de0a40ecf44fd2d9eea385",
+              "sizeBytes": 43472265
+            },
+            {
+              "name": "net.gsantner.markor_146.apk",
+              "url": "https://storage.googleapis.com/gresearch/android_world/net.gsantner.markor_146.apk",
+              "sha256": "1a328c5324b3b33d6cb4d55085637707252569d98c0ffe1cb7089aebbd903256",
+              "sizeBytes": 11067299
+            },
+            {
+              "name": "de.dennisguse.opentracks_5705.apk",
+              "url": "https://storage.googleapis.com/gresearch/android_world/de.dennisguse.opentracks_5705.apk",
+              "sha256": "3cd907e57c747b49fac9120defee4c2395c67acc87271c7c591058cb37e7802c",
+              "sizeBytes": 24268012
+            },
+            {
+              "name": "net.osmand-4.6.13.apk",
+              "url": "https://storage.googleapis.com/gresearch/android_world/net.osmand-4.6.13.apk",
+              "sha256": "0ac411942965a431a0a91b19ce990e6948e780a13a1c98bc7e5a9a057af6463c",
+              "sizeBytes": 351679694
+            },
+            {
+              "name": "Liechtenstein_europe.obf",
+              "url": "https://storage.googleapis.com/gresearch/android_world/Liechtenstein_europe.obf",
+              "sha256": "57a1955c6f517a114999fa50480ecc1402ed9b524db602540ac1c08f57ff140e",
+              "sizeBytes": 7241271
+            },
+            {
+              "name": "com.arduia.expense_11.apk",
+              "url": "https://storage.googleapis.com/gresearch/android_world/com.arduia.expense_11.apk",
+              "sha256": "e54dcc8250566ab6421119b48d6c4544066c6697c53d27ab06ee5bdf9bf1ee50",
+              "sizeBytes": 3020823
+            },
+            {
+              "name": "code.name.monkey.retromusic_10603.apk",
+              "url": "https://storage.googleapis.com/gresearch/android_world/code.name.monkey.retromusic_10603.apk",
+              "sha256": "13212d049cb02b861c0358bde5fe5b9cdf99a16a490685f60c28636278e2ed60",
+              "sizeBytes": 9041986
+            },
+            {
+              "name": "com.simplemobiletools.calendar.pro_238.apk",
+              "url": "https://storage.googleapis.com/gresearch/android_world/com.simplemobiletools.calendar.pro_238.apk",
+              "sha256": "fb4d30ce060433fc9283e591eddc58be0ee1d75b079a13939ca7e6cce8a1f4b8",
+              "sizeBytes": 9870704
+            },
+            {
+              "name": "com.simplemobiletools.draw.pro_79.apk",
+              "url": "https://storage.googleapis.com/gresearch/android_world/com.simplemobiletools.draw.pro_79.apk",
+              "sha256": "3c3210590846a30468ab5acb9ef0aaa5d85b49d5930eda86eef0bd991a9f80a1",
+              "sizeBytes": 8320484
+            },
+            {
+              "name": "com.simplemobiletools.gallery.pro_396.apk",
+              "url": "https://storage.googleapis.com/gresearch/android_world/com.simplemobiletools.gallery.pro_396.apk",
+              "sha256": "175f10c9ce4c6d5294ed20d61216d850df2c2b1928a846489a4cb372153d1607",
+              "sizeBytes": 32203025
+            },
+            {
+              "name": "com.simplemobiletools.smsmessenger_85.apk",
+              "url": "https://storage.googleapis.com/gresearch/android_world/com.simplemobiletools.smsmessenger_85.apk",
+              "sha256": "e134a0e330514de3716dbacfa08d39707ebbb2c9ebde8d08854e159b2cd7c2f4",
+              "sizeBytes": 9938539
+            },
+            {
+              "name": "org.tasks_130605.apk",
+              "url": "https://storage.googleapis.com/gresearch/android_world/org.tasks_130605.apk",
+              "sha256": "3e93405882016be0e8f6c45207bdfb9d4b958bf34430256e77b043d68b8ceb00",
+              "sizeBytes": 29656271
+            },
+            {
+              "name": "org.videolan.vlc_13050408.apk",
+              "url": "https://storage.googleapis.com/gresearch/android_world/org.videolan.vlc_13050408.apk",
+              "sha256": "3fe17cbd8b7f507436eccc217f9168846a65cadff2f7d87490f5740b243170dc",
+              "sizeBytes": 38387336
+            },
+            {
+              "name": "org.videolan.vlc_13050407.apk",
+              "url": "https://storage.googleapis.com/gresearch/android_world/org.videolan.vlc_13050407.apk",
+              "sha256": "2cde3fbd8bf240ff66de236a352c68efa40bb267acf3a5cb8d34a5b2850a2666",
+              "sizeBytes": 36167316
+            }
+          ]
+        },
+        "notFormalR14QualificationOrScore": true,
+        "developmentDiagnosticOverrides": {
+          "apkContrastLimitation": "APK intervention includes build-stack confounds; lifecycle mechanism requires direct per-instance generation and worker-stop evidence",
+          "episodeCapabilityP0": "omit target capability after common canonicalization; matching confirmation enforcement relaxed only",
+          "episodeCapabilityP1": "same controlled production proxy path, explicit true capability",
+          "formalScore": null,
+          "helperVariants": "frozen original copy or runtime production pin",
+          "kind": "development_diagnostic",
+          "model": "github-copilot/gpt-5.6-sol",
+          "prompt": "463118879bbe14a14abfd987920f115fff29f128db4566dc282e75dc0aa906aa",
+          "qualificationCapability": "explicit true for every preparation-created session, including original APK",
+          "receiveAgeMeaning": "host arrival age, not device generation age",
+          "scheduling": "six declared episodes once; no task repeats or retries",
+          "taskSpecs": "exact frozen r12v2 rows/indexes, not regenerated"
+        },
+        "receiveAgeMeaning": "host arrival age, not device generation age"
+      },
+      "evidenceRoot": "clock-matrix/SimpleCalendarEventsOnDatePatchedP1",
+      "originalEvaluatorEvidenceLimit": "Official result is preserved by runner direct task.is_successful assignment; no separate Calendar raw-return tracer or official state artifact is present. Pre/post images are supplemental observations, not evaluator inputs."
+    }
+  },
+  "sixRunCleanup": [
+    {
+      "label": "ClockOriginalP0",
+      "process": {
+        "completedAtUnix": 1794208951.961777,
+        "pid": 67001,
+        "returnCode": 0,
+        "status": "exited"
+      },
+      "created": 1,
+      "deleted": 1,
+      "active": 0,
+      "pendingCreate": 0,
+      "pendingRequest": 0,
+      "unknownCreate": 0,
+      "quitReturned": true,
+      "verificationStatus": "absent",
+      "perSessionAbsence": [
+        true
+      ],
+      "nestedVerificationStatus": "unknown",
+      "environment": "closed",
+      "taskTearDown": "completed",
+      "workspace": {
+        "observedAtUnix": 1794209243.0263062,
+        "observedAfterUnitProcessCompletion": true,
+        "unitSummaryCompletedAtUnix": 1794208951.963014,
+        "workspacePath": "/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-browserdraw-forest-5e686tr2/agent-workspace",
+        "workspaceExists": false,
+        "temporaryParentPath": "/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-browserdraw-forest-5e686tr2",
+        "temporaryParentExists": false,
+        "originalCleanupRecordPreserved": true,
+        "scope": "host filesystem absence check only; no device/session changes"
+      },
+      "originalError": null,
+      "invalidReason": null
+    },
+    {
+      "label": "ClockOriginalP1",
+      "process": {
+        "completedAtUnix": 1794209067.1634429,
+        "pid": 67561,
+        "returnCode": 0,
+        "status": "exited"
+      },
+      "created": 1,
+      "deleted": 1,
+      "active": 0,
+      "pendingCreate": 0,
+      "pendingRequest": 0,
+      "unknownCreate": 0,
+      "quitReturned": true,
+      "verificationStatus": "absent",
+      "perSessionAbsence": [
+        true
+      ],
+      "nestedVerificationStatus": "unknown",
+      "environment": "closed",
+      "taskTearDown": "completed",
+      "workspace": {
+        "observedAtUnix": 1794209243.033094,
+        "observedAfterUnitProcessCompletion": true,
+        "unitSummaryCompletedAtUnix": 1794209067.165282,
+        "workspacePath": "/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-browserdraw-forest-ew0xje2p/agent-workspace",
+        "workspaceExists": false,
+        "temporaryParentPath": "/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-browserdraw-forest-ew0xje2p",
+        "temporaryParentExists": false,
+        "originalCleanupRecordPreserved": true,
+        "scope": "host filesystem absence check only; no device/session changes"
+      },
+      "originalError": null,
+      "invalidReason": null
+    },
+    {
+      "label": "ClockPatchedP0",
+      "process": {
+        "completedAtUnix": 1794209225.907755,
+        "pid": 68451,
+        "returnCode": 0,
+        "status": "exited"
+      },
+      "created": 1,
+      "deleted": 1,
+      "active": 0,
+      "pendingCreate": 0,
+      "pendingRequest": 0,
+      "unknownCreate": 0,
+      "quitReturned": true,
+      "verificationStatus": "absent",
+      "perSessionAbsence": [
+        true
+      ],
+      "nestedVerificationStatus": "unknown",
+      "environment": "closed",
+      "taskTearDown": "completed",
+      "workspace": {
+        "observedAtUnix": 1794209574.827947,
+        "observedAfterUnitProcessCompletion": true,
+        "unitSummaryCompletedAtUnix": 1794209225.9112089,
+        "workspacePath": "/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-browserdraw-forest-wqzy5cct/agent-workspace",
+        "workspaceExists": false,
+        "temporaryParentPath": "/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-browserdraw-forest-wqzy5cct",
+        "temporaryParentExists": false,
+        "originalCleanupRecordPreserved": true,
+        "scope": "host filesystem absence check only; no device/session changes"
+      },
+      "originalError": null,
+      "invalidReason": null
+    },
+    {
+      "label": "ClockPatchedP1",
+      "process": {
+        "completedAtUnix": 1794209369.3191528,
+        "pid": 69069,
+        "returnCode": 0,
+        "status": "exited"
+      },
+      "created": 1,
+      "deleted": 1,
+      "active": 0,
+      "pendingCreate": 0,
+      "pendingRequest": 0,
+      "unknownCreate": 0,
+      "quitReturned": true,
+      "verificationStatus": "absent",
+      "perSessionAbsence": [
+        true
+      ],
+      "nestedVerificationStatus": "unknown",
+      "environment": "closed",
+      "taskTearDown": "completed",
+      "workspace": {
+        "observedAtUnix": 1794209574.8344488,
+        "observedAfterUnitProcessCompletion": true,
+        "unitSummaryCompletedAtUnix": 1794209369.3227048,
+        "workspacePath": "/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-browserdraw-forest-cq70fpzc/agent-workspace",
+        "workspaceExists": false,
+        "temporaryParentPath": "/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-browserdraw-forest-cq70fpzc",
+        "temporaryParentExists": false,
+        "originalCleanupRecordPreserved": true,
+        "scope": "host filesystem absence check only; no device/session changes"
+      },
+      "originalError": null,
+      "invalidReason": null
+    },
+    {
+      "label": "BrowserDrawPatchedP1",
+      "process": {
+        "completedAtUnix": 1794209594.7478871,
+        "pid": 69722,
+        "returnCode": 0,
+        "status": "exited"
+      },
+      "created": 1,
+      "deleted": 1,
+      "active": 0,
+      "pendingCreate": 0,
+      "pendingRequest": 0,
+      "unknownCreate": 0,
+      "quitReturned": true,
+      "verificationStatus": "absent",
+      "perSessionAbsence": [
+        true
+      ],
+      "nestedVerificationStatus": "unknown",
+      "environment": "closed",
+      "taskTearDown": "completed",
+      "workspace": {
+        "observedAtUnix": 1794209739.256447,
+        "observedAfterUnitProcessCompletion": true,
+        "unitSummaryCompletedAtUnix": 1794209594.7493482,
+        "workspacePath": "/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-browserdraw-forest-m7blsjzq/agent-workspace",
+        "workspaceExists": false,
+        "temporaryParentPath": "/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-browserdraw-forest-m7blsjzq",
+        "temporaryParentExists": false,
+        "originalCleanupRecordPreserved": true,
+        "scope": "host filesystem absence check only"
+      },
+      "originalError": null,
+      "invalidReason": null
+    },
+    {
+      "label": "SimpleCalendarEventsOnDatePatchedP1",
+      "process": {
+        "completedAtUnix": 1794209730.9685209,
+        "pid": 70566,
+        "returnCode": 0,
+        "status": "exited"
+      },
+      "created": 1,
+      "deleted": 1,
+      "active": 0,
+      "pendingCreate": 0,
+      "pendingRequest": 0,
+      "unknownCreate": 0,
+      "quitReturned": true,
+      "verificationStatus": "absent",
+      "perSessionAbsence": [
+        true
+      ],
+      "nestedVerificationStatus": "unknown",
+      "environment": "closed",
+      "taskTearDown": "completed",
+      "workspace": {
+        "observedAtUnix": 1794209843.323335,
+        "observedAfterUnitProcessCompletion": true,
+        "unitSummaryCompletedAtUnix": 1794209730.969894,
+        "workspacePath": "/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-browserdraw-forest-qvqcd_83/agent-workspace",
+        "workspaceExists": false,
+        "temporaryParentPath": "/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-browserdraw-forest-qvqcd_83",
+        "temporaryParentExists": false,
+        "originalCleanupRecordPreserved": true,
+        "scope": "host filesystem absence check only"
+      },
+      "originalError": null,
+      "invalidReason": null
+    }
+  ],
+  "integrity": {
+    "observedAtUnix": 1794209894.9633439,
+    "method": "Independent streaming SHA256 comparison of every baseline-listed file against current bytes; no campaign execution or source mutation",
+    "baselinePath": "historical-integrity-before.json",
+    "baselineSha256": "b2d9b70bca75ada45f8e4f9fd1d7ac0b5f7ec6ae09153d61b42df73bba16be78",
+    "baselineCount": 2186,
+    "checkedFiles": 2186,
+    "changedFiles": [],
+    "missingFiles": [],
+    "unchanged": true,
+    "bytesHashed": 14434241098,
+    "scopeGroups": {
+      "campaigns": 2185,
+      ".cache": 1
+    },
+    "scopeDetails": {
+      "campaigns/amkernel-3388314-r9-calibration-20261106T041548Z": 44,
+      "campaigns/amkernel-0.1.3-calibration-20261105T132602Z": 14,
+      "campaigns/amkernel-0.1.3-reference-r7-calibration-20261105T225531Z": 2,
+      "campaigns/amkernel-3388314-r12-headless-calibration-20261107T004632Z": 163,
+      "campaigns/amkernel-3388314-r12-headless-calibration-r2-20261107T004632Z": 162,
+      "campaigns/amkernel-3388314-r11-timeout300-full-20261106T142607Z": 135,
+      "campaigns/amkernel-0.1.3-reference-calibration-20261105T143942Z": 8,
+      "campaigns/amkernel-3388314-r10-calibration-20261106T053938Z": 45,
+      "campaigns/amkernel-3388314-r9-full-20261106T051140Z": 35,
+      "campaigns/amkernel-0.1.3-reference-r7-full-20261105T233951Z": 155,
+      "campaigns/amkernel-0.1.3-reference-r6-calibration-20261105T145658Z": 42,
+      "campaigns/amkernel-3388314-r11-calibration-20261106T111215Z": 162,
+      "campaigns/amkernel-0.1.3-reference-r6-full-20261105T154519Z": 21,
+      "campaigns/amkernel-0.1.3-reference-r7-calibration-20261105T231003Z": 42,
+      "campaigns/amkernel-3388314-r12-headless-full-20261107T004632Z": 153,
+      "campaigns/amkernel-3388314-r8-calibration-20261106T040307Z": 11,
+      "campaigns/amkernel-3388314-r10-full-20261106T061735Z": 87,
+      "campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z": 577,
+      "campaigns/amkernel-3388314-r11-full-20261106T114639Z": 159,
+      "campaigns/amkernel-3388314-r12v2-headless-calibration-ready-20261107T004632Z": 168,
+      ".cache/androidworld-assets": 1
+    },
+    "scopeLimit": "Only baseline-listed paths; no claim that unlisted files or directories are covered, no detection guarantee for additions outside that list."
+  },
+  "integrityCoverageClarification": {
+    "campaignFiles": 2185,
+    "cachedOriginalApkFiles": 1,
+    "cachedOriginalApkPath": ".cache/androidworld-assets/2024.05.13-accessibility_forwarder.apk",
+    "entireFrozenRuntimeCovered": false,
+    "explanation": "Baseline contains campaign artifacts plus the cached original helper APK only; it is not an exhaustive frozen Python/AMKernel/install-tree manifest. Six run executed-identity artifacts provide run source/version evidence, not proof that all unlisted installed files stayed unchanged."
+  },
+  "restoration": {
+    "source": "final-restoration-verification.json",
+    "sourceSha256": "c7e654c7afc92868362c1a4f24ac90e242f7e65a408b5619d8dd167f007bbcc7",
+    "observedAtUnix": 1794209786.619885,
+    "readOnlyOwnerEvidence": true,
+    "independentReviewerDeviceQueries": 0,
+    "rawBoundLines": [
+      "Bound services:{Service[label=com.google.androidenv.accessibilityforwarder.Acce…, feedbackType[FEEDBACK_GENERIC], capabilities=1, eventTypes=TYPES_ALL_MASK, notificationTimeout=0, requestA11yBtn=false]}"
+    ],
+    "rawBindingLines": [
+      "Binding services:{}"
+    ],
+    "conclusion": "At this later owner-captured snapshot helper is actually Bound and Binding is empty, unlike the earlier binding-in-progress snapshot. This does not claim a new end-to-end SendForest health check.",
+    "helperPid": "9639",
+    "installedHelperSha256": "0987ded41c12807d4f75d0789002912de143eec866fa7b389ad8efdb8b0d07bb",
+    "uia2ServerPidAbsent": true,
+    "uia2TestPidAbsent": true,
+    "adbForwardsEmpty": true,
+    "bootIdMatchesPreflight": true,
+    "sharedEmulatorAndAppiumNotStopped": true
+  },
+  "limits": [
+    "One trial per cell and fixed order; no reward-based rerun; not randomized replicated causal effect estimation.",
+    "New versus original APK includes build-stack/signing/proto/default differences; reward2x2 does not isolate a pure lifecycle patch effect.",
+    "ClockPatchedP1 uses different launcher navigation and 4 actions; no claim of fully matched trajectories.",
+    "Trace/prequit RecoveryRuntime read-only observations/postquit captures add variable delay; not a precise replay of historical timing.",
+    "Only the original official get_state object/list is scoring evidence; Appium XML parsing is supplemental, not substituted official input.",
+    "Original sender metadata is empty: no retroactive per-service-instance/generation or individual payload mapping.",
+    "Host receipt age is not sender generation age. Device time can be reset by official initialization; use sampled device-date bounds, log order and host monotonic timestamps, not raw cross-clock epoch subtraction.",
+    "Native Init flags=0 is preserved. AOSP callback/connect assignment ordering is an explanation possibility, not device measurement of final flags=1.",
+    "The experimental failed-build gRPC default defect is separate and must not be retroactively assigned to original APK/campaign.",
+    "Historical007 lacks the actual official input: no unique historical root-cause claim or historical score rewrite.",
+    "Top cleanup is closed and per-session absence proven; nested verification.status remains raw unknown in saved records, not rewritten. Zero unknownCreationOutcomeCount and completed agent quit separately establish the observed cleanup facts.",
+    "2186-file integrity check does not cover the entire frozen installation or additions outside baseline.",
+    "Calendar is an answer/string-scored task: no selected official forest is recorded or invented. Annotation: the owner-summary submittedOutcome:null was the earlier review-time snapshot and has now been corrected to Trivia Night; it previously read a nonexistent top-level taskOutcome instead of answer / parsedValue.taskOutcome. The original business submission SHA256 and content match the prior review and were not changed; original reviewedAtUnix is preserved. The owner's final-audit.json was also checked: six runs passed, errors=[], six distinct host child PIDs; this annotation does not expand the original acceptance scope.",
+    "All six action totals are observed telemetry, not a normative skill rule or cross-task efficiency estimate.",
+    "Final bound snapshot does not constitute a fresh transport health/reward trial."
+  ],
+  "amkernelFollowup": {
+    "neededToAcceptTheseSixRuns": false,
+    "historicalUniqueRootCauseResolved": false,
+    "unmeasuredFlagsAndUnlistedRuntimeIntegrityResolved": false,
+    "newExperimentStarted": false
+  },
+  "verificationPerformed": [
+    "Read original Clock screenshots, scorer traces and received forest provenance; Clock review preserved separately.",
+    "Read BrowserDraw official/prequit/postquit PNGs, original evaluator frame/return, actual selected forest hash and sender; exact branch and saved reward match.",
+    "Read Calendar prequit/postquit original PNGs and raw business submission; original params, actual event, title answer and saved official result match.",
+    "Checked six original process exits, session creation/deletion and per-session absence; checked post-exit workspace absence records without changing raw nested unknown fields.",
+    "Rehashed 14,434,241,098 bytes across every one of 2,186 baseline-listed paths and compared each digest.",
+    "Parsed owner final restoration raw accessibility stdout; no device query made by independent reviewer."
+  ],
+  "evidenceFiles": [
+    "independent-clock-review.json",
+    "independent-integrity-review.json",
+    "clock-factorial-conclusion.json",
+    "clock-first-loss-timeline.json",
+    "browserdraw-regression-conclusion.json",
+    "calendar-regression-conclusion.json",
+    "historical-integrity-before.json",
+    "historical-integrity-after.json",
+    "final-restoration-verification.json",
+    "clock-matrix/matrix-status.json"
+  ]
+}

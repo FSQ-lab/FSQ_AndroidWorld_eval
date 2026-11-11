@@ -1,0 +1,1908 @@
+{
+  "index": 44,
+  "name": "OsmAndTrack",
+  "goal": "Save a track with waypoints Schönberg, Liechtenstein, Triesen, Liechtenstein, Bendern, Liechtenstein in the OsmAnd maps app in the same order as listed.",
+  "reward": 0.0,
+  "classification": "failed",
+  "initialization": {
+    "initializationReferenceTime": {
+      "referenceTime": "2023-10-15T15:34:00+00:00",
+      "timezone": "UTC"
+    },
+    "initializedGoal": "Save a track with waypoints Schönberg, Liechtenstein, Triesen, Liechtenstein, Bendern, Liechtenstein in the OsmAnd maps app in the same order as listed."
+  },
+  "frozenTaskSpec": {
+    "apps": [
+      "osmand"
+    ],
+    "complexity": 12,
+    "difficulty": "hard",
+    "family": "android",
+    "index": 44,
+    "instanceSeed": 1249745677,
+    "maxActions": 120,
+    "maxSteps": 120,
+    "name": "OsmAndTrack",
+    "params": {
+      "seed": 1249745677,
+      "track_name": "Schönberg, Liechtenstein to Bendern, Liechtenstein",
+      "waypoints": [
+        "Schönberg, Liechtenstein",
+        "Triesen, Liechtenstein",
+        "Bendern, Liechtenstein"
+      ]
+    },
+    "paramsSha256": "06b0d53c16a5650bb32adbde6e6171efca5e919c88fca9a3990d91ef7d6b6700",
+    "paramsTransport": "json",
+    "tags": [
+      "complex_ui_understanding",
+      "search",
+      "data_entry",
+      "repetition",
+      "parameterized"
+    ],
+    "timeBudget": {
+      "businessSeconds": 7320,
+      "cleanupWindowSeconds": 180,
+      "episodeSeconds": 7930,
+      "forceSeconds": 7510,
+      "recoveryWindowSeconds": 120,
+      "terminationGraceSeconds": 10
+    }
+  },
+  "mainSteps": [
+    {
+      "stepId": 7,
+      "tool": "agent_runtime.runner",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "The ordered three-point creation and save flow was not completed within the execution window."
+        ],
+        "evidence": [
+          "Final assert_with_ai returned false: the screen showed “Plan a route” and “points: 1”; only Schönberg was labeled, with no saved status or three-waypoint order.",
+          "Final assertion screenshot: artifacts/screenshots/screenshot-agent-assert-with-ai-43-invoke-assert-with-ai-1-98108de07bf2.png",
+          "OsmAnd teardown completed successfully."
+        ],
+        "plan_updates": [
+          "Search required radius and location recovery before Schönberg could be selected.",
+          "Execution ended with a one-point draft; the app was stopped after final evidence collection."
+        ],
+        "pre_plan": [
+          {
+            "action": "Open Plan a route and create a new track.",
+            "status": "success",
+            "step_id": 1,
+            "success_criteria": [
+              "Route editor is open."
+            ]
+          },
+          {
+            "action": "Find Schönberg, Liechtenstein, and add the first point.",
+            "status": "adjusted",
+            "step_id": 2,
+            "success_criteria": [
+              "Schönberg is added as the first point."
+            ]
+          },
+          {
+            "action": "Append Triesen, Liechtenstein.",
+            "status": "skipped",
+            "step_id": 3,
+            "success_criteria": [
+              "Triesen is the second point."
+            ]
+          },
+          {
+            "action": "Append Bendern, Liechtenstein.",
+            "status": "skipped",
+            "step_id": 4,
+            "success_criteria": [
+              "Bendern is the third point."
+            ]
+          },
+          {
+            "action": "Save the planned track.",
+            "status": "skipped",
+            "step_id": 5,
+            "success_criteria": [
+              "Saving is confirmed."
+            ]
+          },
+          {
+            "action": "Open saved details and verify ordered points.",
+            "status": "skipped",
+            "step_id": 6,
+            "success_criteria": [
+              "Saved status and all three ordered waypoints are visible."
+            ]
+          }
+        ],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "inconclusive",
+        "summary": "Opened Plan a route and added one point near Schönberg, but did not complete or save the three-point track. Final verification did not establish the requested saved track.",
+        "unmet_criteria": [
+          "A saved OsmAnd track contains Schönberg, Liechtenstein → Triesen, Liechtenstein → Bendern, Liechtenstein as its waypoints in that order."
+        ]
+      }
+    },
+    {
+      "stepId": 8,
+      "tool": "agent_runtime.verifier",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "Execution stopped after creating a one-point draft, leaving the required ordered, saved track uncreated."
+        ],
+        "evidence": [
+          "The final UI snapshot, artifacts/tools/000054-ui_snapshot.json, records “Plan a route” and “points: 1”.",
+          "The backend assert_with_ai call call_eLTSCfypQEAH1RbZJPVBAhXP returned status=failed, passed=false, and failure_category=assertion_error. Its explanation identifies a one-point route with only Schönberg labeled.",
+          "The assertion execution includes screenshot reference artifacts/screenshots/screenshot-agent-assert-with-ai-43-prepare-before-action-1-b6af968fb18a.png.",
+          "The supplied action sequence creates a new route and adds only one point; it contains no subsequent addition of Triesen or Bendern and no save action before app teardown.",
+          "The main agent's structured output reports the corresponding negative assertion result and acknowledges that the three-point track was not completed or saved."
+        ],
+        "plan_updates": [],
+        "pre_plan": [
+          {
+            "action": "Verify the saved track and required waypoint order using the supplied execution evidence.",
+            "status": "failed",
+            "step_id": 1,
+            "success_criteria": [
+              "A saved OsmAnd track contains Schönberg, Liechtenstein → Triesen, Liechtenstein → Bendern, Liechtenstein as its waypoints in that order."
+            ]
+          }
+        ],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "failed",
+        "summary": "The run ended with a one-point route draft, not a saved track containing Schönberg → Triesen → Bendern in order.",
+        "unmet_criteria": [
+          "A saved OsmAnd track contains Schönberg, Liechtenstein → Triesen, Liechtenstein → Bendern, Liechtenstein as its waypoints in that order."
+        ]
+      }
+    }
+  ],
+  "budgetSummary": {
+    "admitted": 23,
+    "attempted": 23,
+    "deadlineExceeded": false,
+    "deadlineMonotonic": 717309.3351145,
+    "denied": 0,
+    "deviceRestoredByClose": false,
+    "exclusions": [
+      "driver_construction",
+      "uiautomator2_service_startup",
+      "observation_and_assertion_side_effects",
+      "external_processes_and_direct_driver_access"
+    ],
+    "exhausted": false,
+    "failed": 0,
+    "inFlight": 0,
+    "inputTextUnit": "composite_click_optional_clear_set_text",
+    "maximum": 120,
+    "securityBoundary": false,
+    "succeeded": 23,
+    "unit": "admitted_android_harness_write_capability_dispatch",
+    "writeCapabilities": [
+      "launch_app",
+      "kill_app",
+      "tap_on",
+      "tap_at",
+      "long_press_on",
+      "input_text",
+      "press_key",
+      "swipe"
+    ]
+  },
+  "actions": [
+    {
+      "ordinal": 0,
+      "stepId": "agent-launch_app-1",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [],
+      "output": {
+        "app_id": "net.osmand"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[0]"
+    },
+    {
+      "ordinal": 1,
+      "stepId": "agent-ui_snapshot-2",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Sun, Oct 15",
+        "Sun, Oct 15",
+        "Gmail",
+        "Gmail",
+        "Photos",
+        "Photos",
+        "YouTube",
+        "YouTube",
+        "Home",
+        "Phone",
+        "Phone",
+        "Messages",
+        "Messages",
+        "Chrome",
+        "Chrome",
+        "Calendar",
+        "Predicted app: Calendar",
+        "Search",
+        "Google app",
+        "Voice search",
+        "Google Lens",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 27981,
+          "retained_characters": 7650
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[1]"
+    },
+    {
+      "ordinal": 2,
+      "stepId": "agent-launch_app-3",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "app_id": "net.osmand"
+      },
+      "uiLabels": [],
+      "output": {
+        "app_id": "net.osmand"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[2]"
+    },
+    {
+      "ordinal": 3,
+      "stepId": "agent-swipe-4",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[3]"
+    },
+    {
+      "ordinal": 4,
+      "stepId": "agent-ui_snapshot-5",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Audio Recorder",
+        "Audio Recorder",
+        "Broccoli",
+        "Broccoli",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Chrome",
+        "Chrome",
+        "Clipper",
+        "Clipper",
+        "Clock",
+        "Clock",
+        "Contacts",
+        "Contacts",
+        "Draw",
+        "Draw",
+        "Drive",
+        "Drive",
+        "Files",
+        "Files",
+        "Gallery",
+        "Gallery",
+        "Gmail",
+        "Gmail",
+        "Google",
+        "Google",
+        "Joplin",
+        "Joplin",
+        "Maps",
+        "Maps",
+        "Markor",
+        "Markor",
+        "Messages",
+        "Messages",
+        "OpenTracks",
+        "OpenTracks",
+        "OsmAnd",
+        "OsmAnd",
+        "Phone",
+        "Phone",
+        "Photos",
+        "Photos",
+        "Pro Expense",
+        "Pro Expense",
+        "Gallery",
+        "Gallery",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Tasks",
+        "Tasks",
+        "Search",
+        "Google app",
+        "Search apps, web and more",
+        "Voice search",
+        "Google Lens",
+        "Home",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 37017,
+          "retained_characters": 12575
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 6,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[4]"
+    },
+    {
+      "ordinal": 5,
+      "stepId": "agent-tap_on-6",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "accessibilityId": "OsmAnd"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[5]"
+    },
+    {
+      "ordinal": 6,
+      "stepId": "agent-ui_snapshot-7",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Map",
+        "Configure map",
+        "North is up",
+        "Search",
+        "Back to menu",
+        "Route",
+        "200 mi",
+        "200 mi",
+        "Position not yet known.",
+        "Zoom in",
+        "Zoom out",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 36281,
+          "retained_characters": 8034
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 23,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[6]"
+    },
+    {
+      "ordinal": 7,
+      "stepId": "agent-tap_on-8",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "net.osmand:id/map_menu_button"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[7]"
+    },
+    {
+      "ordinal": 8,
+      "stepId": "agent-ui_snapshot-9",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Map",
+        "Configure map",
+        "Search",
+        "Back to menu",
+        "Route",
+        "200 mi",
+        "200 mi",
+        "Position not yet known.",
+        "Zoom in",
+        "Zoom out",
+        "Browse map",
+        "OsmAnd profile",
+        "Configure profile",
+        "Map markers",
+        "My Places",
+        "Search",
+        "Navigation",
+        "Configure map",
+        "Download maps",
+        "Travel guides (Beta)",
+        "Plan a route",
+        "Configure screen",
+        "Plugins",
+        "Settings",
+        "Help",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 54376,
+          "retained_characters": 11879
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 29,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[8]"
+    },
+    {
+      "ordinal": 9,
+      "stepId": "agent-tap_on-10",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "Plan a route"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[9]"
+    },
+    {
+      "ordinal": 10,
+      "stepId": "agent-ui_snapshot-11",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Close the dialog",
+        "Plan a route",
+        "Create new route",
+        "Open existing track",
+        "Import track",
+        "Last edited",
+        "Cancel",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 26389,
+          "retained_characters": 6381
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 10,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[10]"
+    },
+    {
+      "ordinal": 11,
+      "stepId": "agent-tap_on-12",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "Create new route"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[11]"
+    },
+    {
+      "ordinal": 12,
+      "stepId": "agent-ui_snapshot-13",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Map",
+        "Back to search",
+        "Plan a route",
+        "Done",
+        "Done",
+        "Configure map",
+        "Search",
+        "Snap to road",
+        "200 mi",
+        "200 mi",
+        "Position not yet known.",
+        "Zoom in",
+        "Zoom out",
+        "0 ft,",
+        "points: 0",
+        "0 ft • 0°",
+        "Points",
+        "Graph",
+        "Options",
+        "Undo",
+        "Redo",
+        "Add",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 52440,
+          "retained_characters": 11855
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 30,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[12]"
+    },
+    {
+      "ordinal": 13,
+      "stepId": "agent-tap_on-14",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "net.osmand:id/map_search_button"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[13]"
+    },
+    {
+      "ordinal": 14,
+      "stepId": "agent-ui_snapshot-15",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Navigate up",
+        "Type to search all",
+        "History",
+        "HISTORY",
+        "Categories",
+        "CATEGORIES",
+        "Address",
+        "ADDRESS",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "More features",
+        "Sticker Keyboard",
+        "GIF Keyboard",
+        "Clipboard",
+        "Settings",
+        "Theme settings",
+        "Voice input",
+        "q",
+        "1",
+        "w",
+        "2",
+        "e",
+        "3",
+        "r",
+        "4",
+        "t",
+        "5",
+        "y",
+        "6",
+        "u",
+        "7",
+        "i",
+        "8",
+        "o",
+        "9",
+        "p",
+        "0",
+        "a",
+        "s",
+        "d",
+        "f",
+        "g",
+        "h",
+        "j",
+        "k",
+        "l",
+        "Shift",
+        "z",
+        "x",
+        "c",
+        "v",
+        "b",
+        "n",
+        "m",
+        "Delete",
+        "Symbol keyboard",
+        ",",
+        "Emoji button",
+        "Space",
+        ".",
+        "Search",
+        "Back"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 99829,
+          "retained_characters": 26679
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 35,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[14]"
+    },
+    {
+      "ordinal": 15,
+      "stepId": "agent-input_text-16",
+      "action": "input_text",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "net.osmand:id/searchEditText"
+        },
+        "text": "Schönberg",
+        "textType": "literal"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[15]"
+    },
+    {
+      "ordinal": 16,
+      "stepId": "agent-ui_snapshot-17",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Navigate up",
+        "Schönberg",
+        "Clear",
+        "SHOW ON MAP",
+        "Could not find anything: 5 mi",
+        "Change the search or increase its radius.",
+        "INCREASE SEARCH RADIUS",
+        "No search results?\nProvide feedback",
+        "Send",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "More features",
+        "Sticker Keyboard",
+        "GIF Keyboard",
+        "Clipboard",
+        "Settings",
+        "Theme settings",
+        "Voice input",
+        "q",
+        "1",
+        "w",
+        "2",
+        "e",
+        "3",
+        "r",
+        "4",
+        "t",
+        "5",
+        "y",
+        "6",
+        "u",
+        "7",
+        "i",
+        "8",
+        "o",
+        "9",
+        "p",
+        "0",
+        "a",
+        "s",
+        "d",
+        "f",
+        "g",
+        "h",
+        "j",
+        "k",
+        "l",
+        "Shift",
+        "z",
+        "x",
+        "c",
+        "v",
+        "b",
+        "n",
+        "m",
+        "Delete",
+        "Symbol keyboard",
+        ",",
+        "Emoji button",
+        "Space",
+        ".",
+        "Search",
+        "Back"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 108170,
+          "retained_characters": 28159
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 44,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[16]"
+    },
+    {
+      "ordinal": 17,
+      "stepId": "agent-tap_on-18",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "INCREASE SEARCH RADIUS"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[17]"
+    },
+    {
+      "ordinal": 18,
+      "stepId": "agent-ui_snapshot-19",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Navigate up",
+        "Schönberg",
+        "Clear",
+        "SHOW ON MAP",
+        "Could not find anything: 10 mi",
+        "Change the search or increase its radius.",
+        "INCREASE SEARCH RADIUS",
+        "No search results?\nProvide feedback",
+        "Send",
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "More features",
+        "Sticker Keyboard",
+        "GIF Keyboard",
+        "Clipboard",
+        "Settings",
+        "Theme settings",
+        "Voice input",
+        "q",
+        "1",
+        "w",
+        "2",
+        "e",
+        "3",
+        "r",
+        "4",
+        "t",
+        "5",
+        "y",
+        "6",
+        "u",
+        "7",
+        "i",
+        "8",
+        "o",
+        "9",
+        "p",
+        "0",
+        "a",
+        "s",
+        "d",
+        "f",
+        "g",
+        "h",
+        "j",
+        "k",
+        "l",
+        "Shift",
+        "z",
+        "x",
+        "c",
+        "v",
+        "b",
+        "n",
+        "m",
+        "Delete",
+        "Symbol keyboard",
+        ",",
+        "Emoji button",
+        "Space",
+        ".",
+        "Search",
+        "Back"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 108171,
+          "retained_characters": 28160
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 44,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[18]"
+    },
+    {
+      "ordinal": 19,
+      "stepId": "agent-input_text-20",
+      "action": "input_text",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "net.osmand:id/searchEditText"
+        },
+        "text": "Schönberg, Liechtenstein",
+        "textType": "literal"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[19]"
+    },
+    {
+      "ordinal": 20,
+      "stepId": "agent-ui_snapshot-21",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Navigate up",
+        "Schönberg, Liechtenstein",
+        "Clear",
+        "SHOW ON MAP",
+        "Liechtenstein",
+        "3296 mi",
+        "Country",
+        "INCREASE SEARCH RADIUS",
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "More features",
+        "Liechtenstein",
+        "Liechtensteiner",
+        "Liechtenstein's",
+        "Voice input",
+        "q",
+        "1",
+        "w",
+        "2",
+        "e",
+        "3",
+        "r",
+        "4",
+        "t",
+        "5",
+        "y",
+        "6",
+        "u",
+        "7",
+        "i",
+        "8",
+        "o",
+        "9",
+        "p",
+        "0",
+        "a",
+        "s",
+        "d",
+        "f",
+        "g",
+        "h",
+        "j",
+        "k",
+        "l",
+        "Shift",
+        "z",
+        "x",
+        "c",
+        "v",
+        "b",
+        "n",
+        "m",
+        "Delete",
+        "Symbol keyboard",
+        ",",
+        "Emoji button",
+        "Space",
+        ".",
+        "Search",
+        "Back"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 104404,
+          "retained_characters": 26209
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 49,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[20]"
+    },
+    {
+      "ordinal": 21,
+      "stepId": "agent-tap_on-22",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "net.osmand:id/title",
+          "text": "Liechtenstein"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[21]"
+    },
+    {
+      "ordinal": 22,
+      "stepId": "agent-ui_snapshot-23",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Zoom in",
+        "Zoom out",
+        "Liechtenstein",
+        "Country",
+        "3296 mi",
+        "Add",
+        "Marker",
+        "Share",
+        "Actions",
+        "DETAILS",
+        "NAVIGATION",
+        "Map",
+        "Configure map",
+        "Search",
+        "0 ft,",
+        "points: 0",
+        "0 ft • 0°",
+        "Points",
+        "Graph",
+        "Options",
+        "Undo",
+        "Redo",
+        "Add",
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 58303,
+          "retained_characters": 13676
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 26,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[22]"
+    },
+    {
+      "ordinal": 23,
+      "stepId": "agent-press_key-24",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[23]"
+    },
+    {
+      "ordinal": 24,
+      "stepId": "agent-ui_snapshot-25",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Navigate up",
+        "Schönberg, Liechtenstein",
+        "Clear",
+        "SHOW ON MAP",
+        "Liechtenstein",
+        "3296 mi",
+        "Country",
+        "INCREASE SEARCH RADIUS",
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 30582,
+          "retained_characters": 6672
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 18,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[24]"
+    },
+    {
+      "ordinal": 25,
+      "stepId": "agent-press_key-26",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[25]"
+    },
+    {
+      "ordinal": 26,
+      "stepId": "agent-ui_snapshot-27",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Navigate up",
+        "Type to search all",
+        "History",
+        "HISTORY",
+        "Categories",
+        "CATEGORIES",
+        "Address",
+        "ADDRESS",
+        "Country Liechtenstein",
+        "3296 mi",
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 29682,
+          "retained_characters": 6586
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 16,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[26]"
+    },
+    {
+      "ordinal": 27,
+      "stepId": "agent-press_key-28",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[27]"
+    },
+    {
+      "ordinal": 28,
+      "stepId": "agent-ui_snapshot-29",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Map",
+        "Back to search",
+        "Plan a route",
+        "Done",
+        "Done",
+        "Configure map",
+        "Search",
+        "Snap to road",
+        "200 mi",
+        "200 mi",
+        "Position not yet known.",
+        "Zoom in",
+        "Zoom out",
+        "0 ft,",
+        "points: 0",
+        "0 ft • 0°",
+        "Points",
+        "Graph",
+        "Options",
+        "Undo",
+        "Redo",
+        "Add",
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 52440,
+          "retained_characters": 11855
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 30,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[28]"
+    },
+    {
+      "ordinal": 29,
+      "stepId": "agent-tap_on-30",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "net.osmand:id/map_search_button"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[29]"
+    },
+    {
+      "ordinal": 30,
+      "stepId": "agent-input_text-31",
+      "action": "input_text",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "net.osmand:id/searchEditText"
+        },
+        "text": "Schönberg",
+        "textType": "literal"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[30]"
+    },
+    {
+      "ordinal": 31,
+      "stepId": "agent-ui_snapshot-32",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Navigate up",
+        "Schönberg",
+        "Clear",
+        "SHOW ON MAP",
+        "Schönberg",
+        "1.92 mi",
+        "Mountain peak",
+        "Haus Schönberg",
+        "3.48 mi",
+        "Hotel",
+        "INCREASE SEARCH RADIUS",
+        "15:37",
+        "23:37",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "More features",
+        "Sticker Keyboard",
+        "GIF Keyboard",
+        "Clipboard",
+        "Settings",
+        "Theme settings",
+        "Voice input",
+        "q",
+        "1",
+        "w",
+        "2",
+        "e",
+        "3",
+        "r",
+        "4",
+        "t",
+        "5",
+        "y",
+        "6",
+        "u",
+        "7",
+        "i",
+        "8",
+        "o",
+        "9",
+        "p",
+        "0",
+        "a",
+        "s",
+        "d",
+        "f",
+        "g",
+        "h",
+        "j",
+        "k",
+        "l",
+        "Shift",
+        "z",
+        "x",
+        "c",
+        "v",
+        "b",
+        "n",
+        "m",
+        "Delete",
+        "Symbol keyboard",
+        ",",
+        "Emoji button",
+        "Space",
+        ".",
+        "Search",
+        "Back"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 113023,
+          "retained_characters": 28746
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 48,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[31]"
+    },
+    {
+      "ordinal": 32,
+      "stepId": "agent-tap_on-33",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "net.osmand:id/title",
+          "text": "Schönberg"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[32]"
+    },
+    {
+      "ordinal": 33,
+      "stepId": "agent-ui_snapshot-34",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Zoom in",
+        "Zoom out",
+        "Schönberg",
+        "Mountain peak, Near Mittlervalorsch, Triesenberg",
+        "2 ft",
+        "Add",
+        "Marker",
+        "Share",
+        "Actions",
+        "DETAILS",
+        "NAVIGATION",
+        "Map",
+        "Configure map",
+        "Search",
+        "0 ft,",
+        "points: 0",
+        "0 ft • 0°",
+        "Points",
+        "Graph",
+        "Options",
+        "Undo",
+        "Redo",
+        "Add",
+        "15:37",
+        "23:37",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 58337,
+          "retained_characters": 13710
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 26,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[33]"
+    },
+    {
+      "ordinal": 34,
+      "stepId": "agent-press_key-35",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[34]"
+    },
+    {
+      "ordinal": 35,
+      "stepId": "agent-ui_snapshot-36",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Navigate up",
+        "Schönberg",
+        "Clear",
+        "SHOW ON MAP",
+        "Schönberg",
+        "1.92 mi",
+        "Mountain peak",
+        "Haus Schönberg",
+        "3.48 mi",
+        "Hotel",
+        "INCREASE SEARCH RADIUS",
+        "15:37",
+        "23:37",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 36289,
+          "retained_characters": 7580
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 23,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[35]"
+    },
+    {
+      "ordinal": 36,
+      "stepId": "agent-press_key-37",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[36]"
+    },
+    {
+      "ordinal": 37,
+      "stepId": "agent-ui_snapshot-38",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Navigate up",
+        "Type to search all",
+        "History",
+        "HISTORY",
+        "Categories",
+        "CATEGORIES",
+        "Address",
+        "ADDRESS",
+        "Mountain peak Schönberg",
+        "1.92 mi",
+        "Country Liechtenstein",
+        "0.39 mi",
+        "15:37",
+        "23:37",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 34118,
+          "retained_characters": 7397
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 19,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[37]"
+    },
+    {
+      "ordinal": 38,
+      "stepId": "agent-press_key-39",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[38]"
+    },
+    {
+      "ordinal": 39,
+      "stepId": "agent-ui_snapshot-40",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Map",
+        "Back to search",
+        "Plan a route",
+        "Done",
+        "Done",
+        "Configure map",
+        "Search",
+        "Snap to road",
+        "0.25 mi",
+        "0.25 mi",
+        "Position not yet known.",
+        "Zoom in",
+        "Zoom out",
+        "0 ft,",
+        "points: 0",
+        "0 ft • 0°",
+        "Points",
+        "Graph",
+        "Options",
+        "Undo",
+        "Redo",
+        "Add",
+        "15:38",
+        "23:38",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 52441,
+          "retained_characters": 11856
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 30,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[39]"
+    },
+    {
+      "ordinal": 40,
+      "stepId": "agent-tap_on-41",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "Add"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[40]"
+    },
+    {
+      "ordinal": 41,
+      "stepId": "agent-ui_snapshot-42",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Map",
+        "Back to search",
+        "Plan a route",
+        "Done",
+        "Done",
+        "Configure map",
+        "Search",
+        "Snap to road",
+        "0.25 mi",
+        "0.25 mi",
+        "Position not yet known.",
+        "Zoom in",
+        "Zoom out",
+        "0 ft,",
+        "points: 1",
+        "0 ft • 0°",
+        "Points",
+        "Graph",
+        "Options",
+        "Undo",
+        "Redo",
+        "Add",
+        "15:38",
+        "23:38",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 52439,
+          "retained_characters": 11824
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 30,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[41]"
+    },
+    {
+      "ordinal": 42,
+      "stepId": "agent-assert_with_ai-43",
+      "action": "assert_with_ai",
+      "status": "failed",
+      "error": null,
+      "params": {
+        "prompt": "Does the current OsmAnd screen prove a saved track contains Schönberg, Liechtenstein, then Triesen, Liechtenstein, then Bendern, Liechtenstein as ordered waypoints? Require visible saved status and all three ordered points.",
+        "optional": true
+      },
+      "uiLabels": [],
+      "output": {
+        "status": "failed",
+        "passed": false,
+        "explanation": "The screen shows “Plan a route” with “points: 1,” not a visibly saved track. Only Schönberg is labeled; Triesen and Bendern are not shown, and the required three-waypoint order is not established.",
+        "confidence": 1.0,
+        "provider": "github_copilot",
+        "model": "gpt-6.1-sol",
+        "latency_ms": 5095,
+        "token_usage": {
+          "input_tokens": 3296,
+          "output_tokens": 70,
+          "total_tokens": 3366
+        },
+        "artifact_refs": [
+          {
+            "artifact_id": "screenshot-agent-assert-with-ai-43-invoke-assert-with-ai-1-98108de07bf2",
+            "kind": "screenshot",
+            "path": "artifacts/screenshots/screenshot-agent-assert-with-ai-43-invoke-assert-with-ai-1-98108de07bf2.png",
+            "mime_type": "image/png",
+            "size_bytes": 874645,
+            "sha256": "fc4d323ff549f2b0ce410748a7805d2561604daa4d67759a3d81946dcea25dd3",
+            "availability": "available",
+            "unavailable_reason": null,
+            "capture_occurrence": 1,
+            "created_at": "2026-11-10T18:29:08.019860Z",
+            "metadata": {
+              "capture_reason": "assert-with-ai",
+              "redacted": false
+            }
+          }
+        ],
+        "error": null,
+        "metadata": {
+          "provider_metadata": {
+            "endpoint_family": "github_copilot",
+            "copilot_plan": "enterprise"
+          }
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[42]"
+    },
+    {
+      "ordinal": 43,
+      "stepId": "agent-kill_app-44",
+      "action": "kill_app",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "app_id": "net.osmand"
+      },
+      "uiLabels": [],
+      "output": {
+        "app_id": "net.osmand"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[43]"
+    }
+  ],
+  "originalNativeExecutionPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/044-OsmAndTrack/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-044-20261110T182440Z-f4183b/execution-result.json",
+  "originalNativeResultPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/044-OsmAndTrack/raw-private/fsq-native/worker/fsq-task-result.private.json",
+  "originalGoalPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/044-OsmAndTrack/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-044-20261110T182440Z-f4183b/sources/000-goal.txt"
+}

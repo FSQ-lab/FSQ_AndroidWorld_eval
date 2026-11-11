@@ -1,0 +1,151 @@
+{
+  "scope": "Replay original captured observations, not a new Android run.",
+  "task": "SimpleCalendarEventsInNextWeek",
+  "rawEventFile": "campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/episodes/073-SimpleCalendarEventsInNextWeek/attempt-1/raw-private/agent-events.jsonl",
+  "taskGoalSemantics": {
+    "nowObserved": "2023-10-15 Sunday (week 42 header S\\n15; weekly grid starts Sunday)",
+    "rule": "next week with Monday start",
+    "computedWindow": "2023-10-16 Monday through 2023-10-22 Sunday"
+  },
+  "week42Observation": {
+    "rawLine": 2899,
+    "header": "wk. 42",
+    "dayLabels": ["S\\n15", "M\\n16", "T\\n17", "W\\n18", "T\\n19", "F\\n20", "S\\n21"],
+    "events": [
+      {
+        "title": "Product demo",
+        "bounds": "[536,1419][671,1496]",
+        "column": "W\\n18",
+        "mappedDate": "2023-10-18",
+        "inNextWeek": true
+      }
+    ]
+  },
+  "week43Observation": {
+    "rawLine": 3393,
+    "header": "wk. 43",
+    "dayLabels": ["S\\n22", "M\\n23", "T\\n24", "W\\n25", "T\\n26", "F\\n27", "S\\n28"],
+    "events": [
+      {
+        "title": "Movie night",
+        "bounds": "[125,584][261,644]",
+        "column": "S\\n22",
+        "mappedDate": "2023-10-22",
+        "inNextWeek": true
+      },
+      {
+        "title": "Workshop on Campaign",
+        "mappedDate": "2023-10-25",
+        "inNextWeek": false
+      },
+      {
+        "title": "Meeting with HR",
+        "mappedDate": "2023-10-23",
+        "inNextWeek": false
+      },
+      {
+        "title": "Review session for Campaign",
+        "mappedDate": "2023-10-24",
+        "inNextWeek": false
+      },
+      {
+        "title": "Catch up on Project X",
+        "mappedDate": "2023-10-24",
+        "inNextWeek": false
+      },
+      {
+        "title": "Appointment for Annual Report",
+        "mappedDate": "2023-10-25",
+        "inNextWeek": false
+      },
+      {
+        "title": "Call with Alice",
+        "mappedDate": "2023-10-25",
+        "inNextWeek": false
+      },
+      {
+        "title": "Review session for Project X",
+        "mappedDate": "2023-10-26",
+        "inNextWeek": false
+      },
+      {
+        "title": "Workshop on Budget Planning",
+        "mappedDate": "2023-10-26",
+        "inNextWeek": false
+      },
+      {
+        "title": "Review session for Annual Report",
+        "mappedDate": "2023-10-26",
+        "inNextWeek": false
+      },
+      {
+        "title": "Catch up on Project X",
+        "mappedDate": "2023-10-26",
+        "inNextWeek": false
+      },
+      {
+        "title": "Call with Bob",
+        "mappedDate": "2023-10-27",
+        "inNextWeek": false
+      },
+      {
+        "title": "Appointment for Campaign",
+        "mappedDate": "2023-10-28",
+        "inNextWeek": false
+      },
+      {
+        "title": "Workshop on Project X",
+        "mappedDate": "2023-10-28",
+        "inNextWeek": false
+      },
+      {"title": "Call with Alice", "mappedDate": "2023-10-28", "inNextWeek": false}
+    ]
+  },
+  "simpleEventListObservation": {
+    "rawLine": 3680,
+    "sections": [
+      {"section": "18 Wednesday", "titles": ["Product demo"], "times": ["13:30 - 14:00"], "inNextWeek": true},
+      {"section": "22 Sunday", "titles": ["Movie night"], "times": ["07:45 - 07:55"], "inNextWeek": true},
+      {"section": "23 Monday", "titles": ["Meeting with HR"], "times": ["11:44 - 11:59"], "inNextWeek": false},
+      {"section": "24 Tuesday", "titles": ["Review session for Campaign", "Catch up on Project X", "Catch up on Budget Planning"], "inNextWeek": false},
+      {"section": "25 Wednesday", "titles": ["Meeting with Bob", "Call with Alice", "Appointment for Annual Report", "Review session for Annual Report"], "inNextWeek": false}
+    ],
+    "firstVisibleSection": "18 Wednesday",
+    "sectionsBefore18": [],
+    "inWindowTitles": ["Product demo", "Movie night"]
+  },
+  "predicateReplay": {
+    "week42EventInWindow": true,
+    "movieNightInWindow": true,
+    "eventSections19to21Present": false,
+    "computedTitles": ["Product demo", "Movie night"],
+    "rawFinalTaskOutcome": "Product demo, Movie night",
+    "contentMatchesObservedWindow": true,
+    "result": "PASS: the raw final answer is exactly the two titles observed inside 2023-10-16..2023-10-22"
+  },
+  "swipeWaitPredicate": {
+    "rawLine": 3200,
+    "code": "driver.swipe(900, 1100, 180, 1100, 500); WebDriverWait(..., lambda d: 'S\\n22' in d.page_source)",
+    "envelopeStatus": "failed",
+    "errorType": "selenium.common.exceptions.TimeoutException",
+    "tracebackLine": 2,
+    "postSwipeObservationRawLine": 3393,
+    "postSwipeHeader": "wk. 43",
+    "postSwipeLabel": "S\\n22",
+    "inference": "The swipe advanced the view to week 43, but the exact page_source encoding of the newline-bearing label was not captured; the TimeoutException is not evidence that the swipe failed.",
+    "notProven": "Why the page_source substring predicate did not match"
+  },
+  "finalBoundary": {
+    "rawFinalLine": 3804,
+    "rawFinalText": "{\"taskOutcome\":\"Product demo, Movie night\",\"sessionCleanup\":\"completed\",\"evidence\":\"Simple event list showed events on Wednesday 18 and Sunday 22; owned Appium session quit successfully.\"}",
+    "runnerTaskOutcomeWouldBe": "Product demo, Movie night",
+    "runnerTaskOutcomeIsString": true,
+    "normalizedFinalText": null,
+    "agentCompleted": false,
+    "agentAnswerValidContract": false,
+    "officialReward": 0.0,
+    "interactionCache": "empty because finalText is null",
+    "causeBoundary": "omp_supervisor.py:160-169 captures task_final only when cleanup_requested is false; cleanup_requested became true at/after the 10th gated UI action; omp_supervisor.py:203-208 deliberately excludes cleanup-phase prose"
+  },
+  "newAndroidRuns": 0
+}

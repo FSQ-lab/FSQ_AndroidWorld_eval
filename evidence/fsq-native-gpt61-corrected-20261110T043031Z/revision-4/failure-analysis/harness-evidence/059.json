@@ -1,0 +1,2479 @@
+{
+  "index": 59,
+  "name": "RetroPlayingQueue",
+  "goal": "Add the following songs, in order, Through the Storm, Hidden Paths, Forever Young, Whispers of the Past, Heartbeat Away to my playing queue in Retro music.",
+  "reward": 0,
+  "classification": "failed",
+  "initialization": {
+    "initializationReferenceTime": {
+      "referenceTime": "2023-10-15T15:34:00+00:00",
+      "timezone": "UTC"
+    },
+    "initializedGoal": "Add the following songs, in order, Through the Storm, Hidden Paths, Forever Young, Whispers of the Past, Heartbeat Away to my playing queue in Retro music."
+  },
+  "frozenTaskSpec": {
+    "apps": [
+      "retro music"
+    ],
+    "complexity": 3.2,
+    "difficulty": "easy",
+    "family": "android",
+    "index": 59,
+    "instanceSeed": 145116843,
+    "maxActions": 32,
+    "maxSteps": 32,
+    "name": "RetroPlayingQueue",
+    "params": {
+      "files": [
+        "Through the Storm.mp3",
+        "Hidden Paths.mp3",
+        "Forever Young.mp3",
+        "Whispers of the Past.mp3",
+        "Heartbeat Away.mp3"
+      ],
+      "noise_files": [
+        "Under the Sky.mp3",
+        "Dreamer's Awake.mp3",
+        "Night Drive.mp3",
+        "Golden Days.mp3",
+        "Beyond the Horizon.mp3",
+        "Whispering Wind.mp3",
+        "Silent Dreams.mp3",
+        "Eternal Flame.mp3",
+        "Falling Feathers.mp3",
+        "Chasing Shadows.mp3"
+      ],
+      "playlist_name": "Indie Rock Roadtrip 402",
+      "seed": 145116843
+    },
+    "paramsSha256": "fb91fd617b250762a354bd0328d31b45aed828e83641363d2e9c796ebbaf5873",
+    "paramsTransport": "json",
+    "tags": [
+      "parameterized"
+    ],
+    "timeBudget": {
+      "businessSeconds": 2040,
+      "cleanupWindowSeconds": 180,
+      "episodeSeconds": 2650,
+      "forceSeconds": 2230,
+      "recoveryWindowSeconds": 120,
+      "terminationGraceSeconds": 10
+    }
+  },
+  "mainSteps": [
+    {
+      "stepId": 8,
+      "tool": "agent_runtime.runner",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "Initial Through the Storm menu targeting did not provide sufficient proof that the intended song was newly appended."
+        ],
+        "evidence": [
+          "AI assertion confirmed all five titles in relative order at visible rows 3, 8, 9, 10, and 11.",
+          "Consecutive-order assertion failed: four other songs intervened between Through the Storm and Hidden Paths.",
+          "Hidden Paths, Forever Young, Whispers of the Past, and Heartbeat Away appeared consecutively.",
+          "Final screenshot: artifacts/screenshots/screenshot-agent-assert-with-ai-57-invoke-assert-with-ai-1-a8347c5b9984.png",
+          "Retro Music was stopped after final evidence collection."
+        ],
+        "plan_updates": [
+          "Opened Retro Music through the app drawer after launch did not expose its interface.",
+          "Scrolled and retried Hidden Paths actions when its menu was obscured near the bottom.",
+          "Final verification distinguished relative song order from proof of the newly appended sequence."
+        ],
+        "pre_plan": [
+          {
+            "action": "Open Retro Music's song library.",
+            "status": "success",
+            "step_id": 1,
+            "success_criteria": [
+              "Song library is accessible."
+            ]
+          },
+          {
+            "action": "Append Through the Storm using its song actions.",
+            "status": "adjusted",
+            "step_id": 2,
+            "success_criteria": [
+              "The intended song is appended."
+            ]
+          },
+          {
+            "action": "Append Hidden Paths.",
+            "status": "success",
+            "step_id": 3,
+            "success_criteria": [
+              "Song is appended."
+            ]
+          },
+          {
+            "action": "Append Forever Young.",
+            "status": "success",
+            "step_id": 4,
+            "success_criteria": [
+              "Song is appended."
+            ]
+          },
+          {
+            "action": "Append Whispers of the Past.",
+            "status": "success",
+            "step_id": 5,
+            "success_criteria": [
+              "Song is appended."
+            ]
+          },
+          {
+            "action": "Append Heartbeat Away.",
+            "status": "success",
+            "step_id": 6,
+            "success_criteria": [
+              "Song is appended."
+            ]
+          },
+          {
+            "action": "Open and verify the playing queue.",
+            "status": "adjusted",
+            "step_id": 7,
+            "success_criteria": [
+              "Newly appended songs appear in the requested order."
+            ]
+          }
+        ],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "inconclusive",
+        "summary": "Queue actions were performed and all five songs were visible in the requested relative order, but the evidence does not establish that Through the Storm was newly appended ahead of the other four.",
+        "unmet_criteria": [
+          "Could not conclusively verify the newly appended sequence: Through the Storm, Hidden Paths, Forever Young, Whispers of the Past, Heartbeat Away."
+        ]
+      }
+    },
+    {
+      "stepId": 9,
+      "tool": "agent_runtime.verifier",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "The relative-order assertion verifies title presence and order, not whether the observed Through the Storm occurrence was newly appended. The evidence therefore neither proves nor disproves the complete verification goal."
+        ],
+        "evidence": [
+          "Backend assert_with_ai call_bbz5uepfUiJ5OhrfoUkHYRF4 returned status=passed and passed=true for the five titles in relative order, with screenshot reference artifacts/screenshots/screenshot-agent-assert-with-ai-57-prepare-before-action-1-2e8278f70a8d.png.",
+          "Backend assert_with_ai call_Hyzaopk0yT8Hi3RA1FEeFJsN returned passed=false for a stricter consecutive-order assertion, reporting four intervening songs between Through the Storm and Hidden Paths. This does not independently disprove the goal, which does not explicitly require consecutive positions.",
+          "Execution records show an attempted Through the Storm menu selection followed by a successful Add to playing queue tap, but do not conclusively identify the song appended by that action.",
+          "The main agent's structured output reports both assertion results and explicitly leaves the newly appended status of Through the Storm unresolved."
+        ],
+        "plan_updates": [],
+        "pre_plan": [
+          {
+            "action": "Verify the newly appended songs and their order using supplied execution evidence.",
+            "status": "adjusted",
+            "step_id": 1,
+            "success_criteria": [
+              "The playing queue contains newly appended occurrences of all five songs in the specified order."
+            ]
+          }
+        ],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "inconclusive",
+        "summary": "The queue contains all five songs in the requested relative order, but the supplied evidence does not establish that Through the Storm was newly appended before the other four.",
+        "unmet_criteria": []
+      }
+    }
+  ],
+  "budgetSummary": {
+    "admitted": 30,
+    "attempted": 30,
+    "deadlineExceeded": false,
+    "deadlineMonotonic": 716907.401555,
+    "denied": 0,
+    "deviceRestoredByClose": false,
+    "exclusions": [
+      "driver_construction",
+      "uiautomator2_service_startup",
+      "observation_and_assertion_side_effects",
+      "external_processes_and_direct_driver_access"
+    ],
+    "exhausted": false,
+    "failed": 0,
+    "inFlight": 0,
+    "inputTextUnit": "composite_click_optional_clear_set_text",
+    "maximum": 32,
+    "securityBoundary": false,
+    "succeeded": 30,
+    "unit": "admitted_android_harness_write_capability_dispatch",
+    "writeCapabilities": [
+      "launch_app",
+      "kill_app",
+      "tap_on",
+      "tap_at",
+      "long_press_on",
+      "input_text",
+      "press_key",
+      "swipe"
+    ]
+  },
+  "actions": [
+    {
+      "ordinal": 0,
+      "stepId": "agent-launch_app-1",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [],
+      "output": {
+        "app_id": "code.name.monkey.retromusic"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[0]"
+    },
+    {
+      "ordinal": 1,
+      "stepId": "agent-ui_snapshot-2",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Sun, Oct 15",
+        "Sun, Oct 15",
+        "Gmail",
+        "Gmail",
+        "Photos",
+        "Photos",
+        "YouTube",
+        "YouTube",
+        "Home",
+        "Phone",
+        "Phone",
+        "Messages",
+        "Messages",
+        "Chrome",
+        "Chrome",
+        "Calendar",
+        "Predicted app: Calendar",
+        "Search",
+        "Google app",
+        "Voice search",
+        "Google Lens"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 27981,
+          "retained_characters": 7650
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[1]"
+    },
+    {
+      "ordinal": 2,
+      "stepId": "agent-launch_app-3",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "app_id": "code.name.monkey.retromusic"
+      },
+      "uiLabels": [],
+      "output": {
+        "app_id": "code.name.monkey.retromusic"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[2]"
+    },
+    {
+      "ordinal": 3,
+      "stepId": "agent-swipe-4",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[3]"
+    },
+    {
+      "ordinal": 4,
+      "stepId": "agent-ui_snapshot-5",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Audio Recorder",
+        "Audio Recorder",
+        "Broccoli",
+        "Broccoli",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Chrome",
+        "Chrome",
+        "Clipper",
+        "Clipper",
+        "Clock",
+        "Clock",
+        "Contacts",
+        "Contacts",
+        "Draw",
+        "Draw",
+        "Drive",
+        "Drive",
+        "Files",
+        "Files",
+        "Gallery",
+        "Gallery",
+        "Gmail",
+        "Gmail",
+        "Google",
+        "Google",
+        "Joplin",
+        "Joplin",
+        "Maps",
+        "Maps",
+        "Markor",
+        "Markor",
+        "Messages",
+        "Messages",
+        "OpenTracks",
+        "OpenTracks",
+        "OsmAnd",
+        "OsmAnd",
+        "Phone",
+        "Phone",
+        "Photos",
+        "Photos",
+        "Pro Expense",
+        "Pro Expense",
+        "Gallery",
+        "Gallery",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Tasks",
+        "Tasks",
+        "Search",
+        "Google app",
+        "Search apps, web and more",
+        "Voice search",
+        "Google Lens",
+        "Home"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 37016,
+          "retained_characters": 12574
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 6,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[4]"
+    },
+    {
+      "ordinal": 5,
+      "stepId": "agent-swipe-6",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[5]"
+    },
+    {
+      "ordinal": 6,
+      "stepId": "agent-ui_snapshot-7",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Camera",
+        "Camera",
+        "Chrome",
+        "Chrome",
+        "Clipper",
+        "Clipper",
+        "Clock",
+        "Clock",
+        "Contacts",
+        "Contacts",
+        "Draw",
+        "Draw",
+        "Drive",
+        "Drive",
+        "Files",
+        "Files",
+        "Gallery",
+        "Gallery",
+        "Gmail",
+        "Gmail",
+        "Google",
+        "Google",
+        "Joplin",
+        "Joplin",
+        "Maps",
+        "Maps",
+        "Markor",
+        "Markor",
+        "Messages",
+        "Messages",
+        "OpenTracks",
+        "OpenTracks",
+        "OsmAnd",
+        "OsmAnd",
+        "Phone",
+        "Phone",
+        "Photos",
+        "Photos",
+        "Pro Expense",
+        "Pro Expense",
+        "Retro Music",
+        "Retro Music",
+        "Settings",
+        "Settings",
+        "SMS Messenger",
+        "SMS Messenger",
+        "Tasks",
+        "Tasks",
+        "TMoble",
+        "TMoble",
+        "VLC",
+        "VLC",
+        "YouTube",
+        "YouTube",
+        "YT Music",
+        "YT Music",
+        "Search",
+        "Google app",
+        "Search apps, web and more",
+        "Voice search",
+        "Google Lens",
+        "Home"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 36006,
+          "retained_characters": 12296
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 6,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[6]"
+    },
+    {
+      "ordinal": 7,
+      "stepId": "agent-tap_on-8",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "accessibilityId": "Retro Music"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[7]"
+    },
+    {
+      "ordinal": 8,
+      "stepId": "agent-ui_snapshot-9",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Navigate up",
+        "Retro Music",
+        "Settings",
+        "Welcome,",
+        "User Name",
+        "History",
+        "Last added",
+        "Most played",
+        "Shuffle",
+        "Suggestions",
+        "New Music Mix",
+        "Recent artists",
+        "Jose",
+        "Recent albums",
+        "For you",
+        "For you",
+        "Songs",
+        "Albums",
+        "Artists",
+        "Playlists"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 54481,
+          "retained_characters": 14825
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 13,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[8]"
+    },
+    {
+      "ordinal": 9,
+      "stepId": "agent-tap_on-10",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "code.name.monkey.retromusic:id/action_song"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[9]"
+    },
+    {
+      "ordinal": 10,
+      "stepId": "agent-ui_snapshot-11",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Navigate up",
+        "Songs",
+        "More options",
+        "Beyond the Horizon",
+        "Petar",
+        "Chasing Shadows",
+        "Lucas",
+        "Dreamer's Awake",
+        "William",
+        "Eternal Flame",
+        "Willow",
+        "Falling Feathers",
+        "Emilia",
+        "Forever Young",
+        "David",
+        "Golden Days",
+        "Jose",
+        "Heartbeat Away",
+        "Muhammad",
+        "Hidden Paths",
+        "Freya",
+        "Night Drive",
+        "Aria",
+        "Silent Dreams",
+        "Olivia",
+        "Through the Storm",
+        "Liam",
+        "Shuffle",
+        "For you",
+        "Songs",
+        "Songs",
+        "Albums",
+        "Artists",
+        "Playlists"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 65924,
+          "retained_characters": 18448
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[10]"
+    },
+    {
+      "ordinal": 11,
+      "stepId": "agent-swipe-12",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[11]"
+    },
+    {
+      "ordinal": 12,
+      "stepId": "agent-ui_snapshot-13",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Emilia",
+        "Forever Young",
+        "David",
+        "Golden Days",
+        "Jose",
+        "Heartbeat Away",
+        "Muhammad",
+        "Hidden Paths",
+        "Freya",
+        "Night Drive",
+        "Aria",
+        "Silent Dreams",
+        "Olivia",
+        "Through the Storm",
+        "Liam",
+        "Under the Sky",
+        "Ema",
+        "Whispering Wind",
+        "Thomas",
+        "Whispers of the Past",
+        "Sofija",
+        "For you",
+        "Songs",
+        "Songs",
+        "Albums",
+        "Artists",
+        "Playlists"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 59380,
+          "retained_characters": 16659
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 7,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[12]"
+    },
+    {
+      "ordinal": 13,
+      "stepId": "agent-tap_on-14",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "xpath": "//android.view.ViewGroup[.//android.widget.TextView[@text='Through the Storm']]/*[@resource-id='code.name.monkey.retromusic:id/menu']"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[13]"
+    },
+    {
+      "ordinal": 14,
+      "stepId": "agent-ui_snapshot-15",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Play next",
+        "Add to playing queue",
+        "Add to playlist",
+        "Go to album",
+        "Go to artist",
+        "Share",
+        "Tag editor",
+        "Details",
+        "Set as ringtone"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 29846,
+          "retained_characters": 6677
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 14,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[14]"
+    },
+    {
+      "ordinal": 15,
+      "stepId": "agent-tap_on-16",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "text": "Add to playing queue"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[15]"
+    },
+    {
+      "ordinal": 16,
+      "stepId": "agent-ui_snapshot-17",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Emilia",
+        "Forever Young",
+        "David",
+        "Golden Days",
+        "Jose",
+        "Heartbeat Away",
+        "Muhammad",
+        "Hidden Paths",
+        "Freya",
+        "Night Drive",
+        "Aria",
+        "Silent Dreams",
+        "Olivia",
+        "Through the Storm",
+        "Liam",
+        "Under the Sky",
+        "Ema",
+        "Whispering Wind",
+        "Thomas",
+        "Whispers of the Past",
+        "Sofija",
+        "Through the Storm • Liam",
+        "0.0",
+        "For you",
+        "Songs",
+        "Songs",
+        "Albums",
+        "Artists",
+        "Playlists"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 63195,
+          "retained_characters": 17754
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[16]"
+    },
+    {
+      "ordinal": 17,
+      "stepId": "agent-swipe-18",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "down"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "down"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[17]"
+    },
+    {
+      "ordinal": 18,
+      "stepId": "agent-ui_snapshot-19",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Navigate up",
+        "Songs",
+        "More options",
+        "Beyond the Horizon",
+        "Petar",
+        "Chasing Shadows",
+        "Lucas",
+        "Dreamer's Awake",
+        "William",
+        "Eternal Flame",
+        "Willow",
+        "Falling Feathers",
+        "Emilia",
+        "Forever Young",
+        "David",
+        "Golden Days",
+        "Jose",
+        "Heartbeat Away",
+        "Muhammad",
+        "Hidden Paths",
+        "Freya",
+        "Night Drive",
+        "Aria",
+        "Silent Dreams",
+        "Olivia",
+        "Through the Storm",
+        "Liam",
+        "Shuffle",
+        "Through the Storm • Liam",
+        "0.0",
+        "For you",
+        "Songs",
+        "Songs",
+        "Albums",
+        "Artists",
+        "Playlists"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 69739,
+          "retained_characters": 19543
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 9,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[18]"
+    },
+    {
+      "ordinal": 19,
+      "stepId": "agent-tap_on-20",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "xpath": "//android.view.ViewGroup[.//android.widget.TextView[@text='Hidden Paths']]/*[@resource-id='code.name.monkey.retromusic:id/menu']"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[19]"
+    },
+    {
+      "ordinal": 20,
+      "stepId": "agent-ui_snapshot-21",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Navigate up",
+        "Songs",
+        "More options",
+        "Beyond the Horizon",
+        "Petar",
+        "Chasing Shadows",
+        "Lucas",
+        "Dreamer's Awake",
+        "William",
+        "Eternal Flame",
+        "Willow",
+        "Falling Feathers",
+        "Emilia",
+        "Forever Young",
+        "David",
+        "Golden Days",
+        "Jose",
+        "Heartbeat Away",
+        "Muhammad",
+        "Hidden Paths",
+        "Freya",
+        "Night Drive",
+        "Aria",
+        "Silent Dreams",
+        "Olivia",
+        "Through the Storm",
+        "Liam",
+        "Shuffle",
+        "Through the Storm • Liam",
+        "3503.0",
+        "For you",
+        "Songs",
+        "Songs",
+        "Albums",
+        "Artists",
+        "Playlists"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 69742,
+          "retained_characters": 19546
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 9,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[20]"
+    },
+    {
+      "ordinal": 21,
+      "stepId": "agent-tap_on-22",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "xpath": "//*[@text='Hidden Paths']/../*[@resource-id='code.name.monkey.retromusic:id/menu']"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[21]"
+    },
+    {
+      "ordinal": 22,
+      "stepId": "agent-ui_snapshot-23",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Navigate up",
+        "Songs",
+        "More options",
+        "Beyond the Horizon",
+        "Petar",
+        "Chasing Shadows",
+        "Lucas",
+        "Dreamer's Awake",
+        "William",
+        "Eternal Flame",
+        "Willow",
+        "Falling Feathers",
+        "Emilia",
+        "Forever Young",
+        "David",
+        "Golden Days",
+        "Jose",
+        "Heartbeat Away",
+        "Muhammad",
+        "Hidden Paths",
+        "Freya",
+        "Night Drive",
+        "Aria",
+        "Silent Dreams",
+        "Olivia",
+        "Through the Storm",
+        "Liam",
+        "Shuffle",
+        "Whispers of the Past • Sofija",
+        "4002.0",
+        "For you",
+        "Songs",
+        "Songs",
+        "Albums",
+        "Artists",
+        "Playlists"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 69746,
+          "retained_characters": 19550
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 9,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[22]"
+    },
+    {
+      "ordinal": 23,
+      "stepId": "agent-swipe-24",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[23]"
+    },
+    {
+      "ordinal": 24,
+      "stepId": "agent-ui_snapshot-25",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:37",
+        "23:37",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Emilia",
+        "Forever Young",
+        "David",
+        "Golden Days",
+        "Jose",
+        "Heartbeat Away",
+        "Muhammad",
+        "Hidden Paths",
+        "Freya",
+        "Night Drive",
+        "Aria",
+        "Silent Dreams",
+        "Olivia",
+        "Through the Storm",
+        "Liam",
+        "Under the Sky",
+        "Ema",
+        "Whispering Wind",
+        "Thomas",
+        "Whispers of the Past",
+        "Sofija",
+        "Whispers of the Past • Sofija",
+        "14503.0",
+        "For you",
+        "Songs",
+        "Songs",
+        "Albums",
+        "Artists",
+        "Playlists"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 63203,
+          "retained_characters": 17762
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[24]"
+    },
+    {
+      "ordinal": 25,
+      "stepId": "agent-swipe-26",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "down"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "down"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[25]"
+    },
+    {
+      "ordinal": 26,
+      "stepId": "agent-ui_snapshot-27",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:37",
+        "23:37",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Navigate up",
+        "Songs",
+        "More options",
+        "Beyond the Horizon",
+        "Petar",
+        "Chasing Shadows",
+        "Lucas",
+        "Dreamer's Awake",
+        "William",
+        "Eternal Flame",
+        "Willow",
+        "Falling Feathers",
+        "Emilia",
+        "Forever Young",
+        "David",
+        "Golden Days",
+        "Jose",
+        "Heartbeat Away",
+        "Muhammad",
+        "Hidden Paths",
+        "Freya",
+        "Night Drive",
+        "Aria",
+        "Silent Dreams",
+        "Olivia",
+        "Through the Storm",
+        "Liam",
+        "Shuffle",
+        "Whispers of the Past • Sofija",
+        "23501.0",
+        "For you",
+        "Songs",
+        "Songs",
+        "Albums",
+        "Artists",
+        "Playlists"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 69747,
+          "retained_characters": 19551
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 9,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[26]"
+    },
+    {
+      "ordinal": 27,
+      "stepId": "agent-swipe-28",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "start": {
+          "x": 550,
+          "y": 1600
+        },
+        "end": {
+          "x": 550,
+          "y": 1100
+        },
+        "duration": 400,
+        "reference_screen_size": {
+          "width": 1080,
+          "height": 2400
+        }
+      },
+      "uiLabels": [],
+      "output": {
+        "start": {
+          "x": 550,
+          "y": 1600
+        },
+        "end": {
+          "x": 550,
+          "y": 1100
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[27]"
+    },
+    {
+      "ordinal": 28,
+      "stepId": "agent-ui_snapshot-29",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:37",
+        "23:37",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Lucas",
+        "Dreamer's Awake",
+        "William",
+        "Eternal Flame",
+        "Willow",
+        "Falling Feathers",
+        "Emilia",
+        "Forever Young",
+        "David",
+        "Golden Days",
+        "Jose",
+        "Heartbeat Away",
+        "Muhammad",
+        "Hidden Paths",
+        "Freya",
+        "Night Drive",
+        "Aria",
+        "Silent Dreams",
+        "Olivia",
+        "Through the Storm",
+        "Liam",
+        "Under the Sky",
+        "Ema",
+        "Whispering Wind",
+        "Whispers of the Past • Sofija",
+        "34006.0",
+        "For you",
+        "Songs",
+        "Songs",
+        "Albums",
+        "Artists",
+        "Playlists"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 68400,
+          "retained_characters": 19252
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[28]"
+    },
+    {
+      "ordinal": 29,
+      "stepId": "agent-tap_on-30",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "xpath": "//*[@text='Hidden Paths']/../*[@resource-id='code.name.monkey.retromusic:id/menu']"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[29]"
+    },
+    {
+      "ordinal": 30,
+      "stepId": "agent-ui_snapshot-31",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:37",
+        "23:37",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Play next",
+        "Add to playing queue",
+        "Add to playlist",
+        "Go to album",
+        "Go to artist",
+        "Share",
+        "Tag editor",
+        "Details",
+        "Set as ringtone"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 29846,
+          "retained_characters": 6677
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 14,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[30]"
+    },
+    {
+      "ordinal": 31,
+      "stepId": "agent-tap_on-32",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "text": "Add to playing queue"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[31]"
+    },
+    {
+      "ordinal": 32,
+      "stepId": "agent-ui_snapshot-33",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:37",
+        "23:37",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Lucas",
+        "Dreamer's Awake",
+        "William",
+        "Eternal Flame",
+        "Willow",
+        "Falling Feathers",
+        "Emilia",
+        "Forever Young",
+        "David",
+        "Golden Days",
+        "Jose",
+        "Heartbeat Away",
+        "Muhammad",
+        "Hidden Paths",
+        "Freya",
+        "Night Drive",
+        "Aria",
+        "Silent Dreams",
+        "Olivia",
+        "Through the Storm",
+        "Liam",
+        "Under the Sky",
+        "Ema",
+        "Whispering Wind",
+        "Whispers of the Past • Sofija",
+        "5506.0",
+        "For you",
+        "Songs",
+        "Songs",
+        "Albums",
+        "Artists",
+        "Playlists"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 68399,
+          "retained_characters": 19251
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[32]"
+    },
+    {
+      "ordinal": 33,
+      "stepId": "agent-swipe-34",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "down"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "down"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[33]"
+    },
+    {
+      "ordinal": 34,
+      "stepId": "agent-ui_snapshot-35",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:37",
+        "23:37",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Navigate up",
+        "Songs",
+        "More options",
+        "Beyond the Horizon",
+        "Petar",
+        "Chasing Shadows",
+        "Lucas",
+        "Dreamer's Awake",
+        "William",
+        "Eternal Flame",
+        "Willow",
+        "Falling Feathers",
+        "Emilia",
+        "Forever Young",
+        "David",
+        "Golden Days",
+        "Jose",
+        "Heartbeat Away",
+        "Muhammad",
+        "Hidden Paths",
+        "Freya",
+        "Night Drive",
+        "Aria",
+        "Silent Dreams",
+        "Olivia",
+        "Through the Storm",
+        "Liam",
+        "Shuffle",
+        "Whispers of the Past • Sofija",
+        "15502.0",
+        "For you",
+        "Songs",
+        "Songs",
+        "Albums",
+        "Artists",
+        "Playlists"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 69748,
+          "retained_characters": 19552
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 9,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[34]"
+    },
+    {
+      "ordinal": 35,
+      "stepId": "agent-tap_on-36",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "xpath": "//*[@text='Forever Young']/../*[@resource-id='code.name.monkey.retromusic:id/menu']"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[35]"
+    },
+    {
+      "ordinal": 36,
+      "stepId": "agent-ui_snapshot-37",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Play next",
+        "Add to playing queue",
+        "Add to playlist",
+        "Go to album",
+        "Go to artist",
+        "Share",
+        "Tag editor",
+        "Details",
+        "15:38",
+        "23:38",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 28925,
+          "retained_characters": 6527
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 13,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[36]"
+    },
+    {
+      "ordinal": 37,
+      "stepId": "agent-tap_on-38",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "text": "Add to playing queue"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[37]"
+    },
+    {
+      "ordinal": 38,
+      "stepId": "agent-swipe-39",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[38]"
+    },
+    {
+      "ordinal": 39,
+      "stepId": "agent-ui_snapshot-40",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:38",
+        "23:38",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Emilia",
+        "Forever Young",
+        "David",
+        "Golden Days",
+        "Jose",
+        "Heartbeat Away",
+        "Muhammad",
+        "Hidden Paths",
+        "Freya",
+        "Night Drive",
+        "Aria",
+        "Silent Dreams",
+        "Olivia",
+        "Through the Storm",
+        "Liam",
+        "Under the Sky",
+        "Ema",
+        "Whispering Wind",
+        "Thomas",
+        "Whispers of the Past",
+        "Sofija",
+        "Whispers of the Past • Sofija",
+        "48192.0",
+        "For you",
+        "Songs",
+        "Songs",
+        "Albums",
+        "Artists",
+        "Playlists"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 63204,
+          "retained_characters": 17763
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[39]"
+    },
+    {
+      "ordinal": 40,
+      "stepId": "agent-tap_on-41",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "xpath": "//*[@text='Whispers of the Past']/../*[@resource-id='code.name.monkey.retromusic:id/menu']"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[40]"
+    },
+    {
+      "ordinal": 41,
+      "stepId": "agent-ui_snapshot-42",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:38",
+        "23:38",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Play next",
+        "Add to playing queue",
+        "Add to playlist",
+        "Go to album",
+        "Go to artist",
+        "Share",
+        "Tag editor",
+        "Details",
+        "Set as ringtone",
+        "Add to Blacklist",
+        "Delete from device"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 33472,
+          "retained_characters": 7425
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 16,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[41]"
+    },
+    {
+      "ordinal": 42,
+      "stepId": "agent-tap_on-43",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "text": "Add to playing queue"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[42]"
+    },
+    {
+      "ordinal": 43,
+      "stepId": "agent-swipe-44",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "down"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "down"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[43]"
+    },
+    {
+      "ordinal": 44,
+      "stepId": "agent-ui_snapshot-45",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:38",
+        "23:38",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Navigate up",
+        "Songs",
+        "More options",
+        "Beyond the Horizon",
+        "Petar",
+        "Chasing Shadows",
+        "Lucas",
+        "Dreamer's Awake",
+        "William",
+        "Eternal Flame",
+        "Willow",
+        "Falling Feathers",
+        "Emilia",
+        "Forever Young",
+        "David",
+        "Golden Days",
+        "Jose",
+        "Heartbeat Away",
+        "Muhammad",
+        "Hidden Paths",
+        "Freya",
+        "Night Drive",
+        "Aria",
+        "Silent Dreams",
+        "Olivia",
+        "Through the Storm",
+        "Liam",
+        "Shuffle",
+        "Whispers of the Past • Sofija",
+        "74696.0",
+        "For you",
+        "Songs",
+        "Songs",
+        "Albums",
+        "Artists",
+        "Playlists"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 69748,
+          "retained_characters": 19552
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 9,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[44]"
+    },
+    {
+      "ordinal": 45,
+      "stepId": "agent-tap_on-46",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "xpath": "//*[@text='Heartbeat Away']/../*[@resource-id='code.name.monkey.retromusic:id/menu']"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[45]"
+    },
+    {
+      "ordinal": 46,
+      "stepId": "agent-ui_snapshot-47",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:39",
+        "23:39",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Play next",
+        "Add to playing queue",
+        "Add to playlist",
+        "Go to album",
+        "Go to artist",
+        "Share",
+        "Tag editor",
+        "Details",
+        "Set as ringtone",
+        "Add to Blacklist",
+        "Delete from device"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 33455,
+          "retained_characters": 7412
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 16,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[46]"
+    },
+    {
+      "ordinal": 47,
+      "stepId": "agent-tap_on-48",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "text": "Add to playing queue"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[47]"
+    },
+    {
+      "ordinal": 48,
+      "stepId": "agent-ui_snapshot-49",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:39",
+        "23:39",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Navigate up",
+        "Songs",
+        "More options",
+        "Beyond the Horizon",
+        "Petar",
+        "Chasing Shadows",
+        "Lucas",
+        "Dreamer's Awake",
+        "William",
+        "Eternal Flame",
+        "Willow",
+        "Falling Feathers",
+        "Emilia",
+        "Forever Young",
+        "David",
+        "Golden Days",
+        "Jose",
+        "Heartbeat Away",
+        "Muhammad",
+        "Hidden Paths",
+        "Freya",
+        "Night Drive",
+        "Aria",
+        "Silent Dreams",
+        "Olivia",
+        "Through the Storm",
+        "Liam",
+        "Shuffle",
+        "Whispers of the Past • Sofija",
+        "97005.0",
+        "For you",
+        "Songs",
+        "Songs",
+        "Albums",
+        "Artists",
+        "Playlists"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 69747,
+          "retained_characters": 19551
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 9,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[48]"
+    },
+    {
+      "ordinal": 49,
+      "stepId": "agent-tap_on-50",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "code.name.monkey.retromusic:id/miniPlayerFragment"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[49]"
+    },
+    {
+      "ordinal": 50,
+      "stepId": "agent-ui_snapshot-51",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:39",
+        "23:39",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "01:51",
+        "111694.0",
+        "Value, 111694",
+        "03:59",
+        "Whispers of the Past",
+        "Sofija",
+        "Sleep timer",
+        "Lyrics",
+        "Add to favorites",
+        "Now playing queue",
+        "More options",
+        "Navigate up",
+        "Songs",
+        "More options",
+        "Beyond the Horizon",
+        "Petar",
+        "Chasing Shadows",
+        "Lucas",
+        "Dreamer's Awake",
+        "William",
+        "Eternal Flame",
+        "Willow",
+        "Falling Feathers",
+        "Emilia",
+        "Forever Young",
+        "David",
+        "Golden Days",
+        "Jose",
+        "Heartbeat Away",
+        "Muhammad",
+        "Hidden Paths",
+        "Freya",
+        "Night Drive",
+        "Aria",
+        "Silent Dreams",
+        "Olivia",
+        "Through the Storm",
+        "Liam",
+        "Shuffle"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 68850,
+          "retained_characters": 18901
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 11,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[50]"
+    },
+    {
+      "ordinal": 51,
+      "stepId": "agent-tap_on-52",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "code.name.monkey.retromusic:id/now_playing"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[51]"
+    },
+    {
+      "ordinal": 52,
+      "stepId": "agent-ui_snapshot-53",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:39",
+        "23:39",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Now playing queue",
+        "Up next  •  01:14:41",
+        "Under the Sky",
+        "Ema",
+        "Forever Young",
+        "David",
+        "Falling Feathers",
+        "Emilia",
+        "Dreamer's Awake",
+        "William",
+        "Eternal Flame",
+        "Willow",
+        "Heartbeat Away",
+        "Muhammad",
+        "Golden Days",
+        "Jose",
+        "Night Drive",
+        "Aria",
+        "Hidden Paths",
+        "Freya",
+        "Through the Storm",
+        "Liam",
+        "Silent Dreams",
+        "Olivia",
+        "Chasing Shadows",
+        "Lucas",
+        "Beyond the Horizon",
+        "Clear queue"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 74841,
+          "retained_characters": 18555
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 20,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[52]"
+    },
+    {
+      "ordinal": 53,
+      "stepId": "agent-swipe-54",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[53]"
+    },
+    {
+      "ordinal": 54,
+      "stepId": "agent-ui_snapshot-55",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:39",
+        "23:39",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Now playing queue",
+        "Up next  •  01:14:41",
+        "Night Drive",
+        "Aria",
+        "Hidden Paths",
+        "Freya",
+        "Through the Storm",
+        "Liam",
+        "Silent Dreams",
+        "Olivia",
+        "Chasing Shadows",
+        "Lucas",
+        "Beyond the Horizon",
+        "Petar",
+        "Whispering Wind",
+        "Thomas",
+        "Hidden Paths",
+        "Freya",
+        "Forever Young",
+        "David",
+        "Whispers of the Past",
+        "Sofija",
+        "Heartbeat Away",
+        "Muhammad",
+        "Clear queue"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 66753,
+          "retained_characters": 16548
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 18,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[54]"
+    },
+    {
+      "ordinal": 55,
+      "stepId": "agent-assert_with_ai-56",
+      "action": "assert_with_ai",
+      "status": "failed",
+      "error": null,
+      "params": {
+        "prompt": "Verify the playing queue shows the newly appended songs consecutively in this order: Through the Storm, Hidden Paths, Forever Young, Whispers of the Past, Heartbeat Away.",
+        "optional": false
+      },
+      "uiLabels": [],
+      "output": {
+        "status": "failed",
+        "passed": false,
+        "explanation": "The required five songs are not consecutive. Through the Storm is followed by Silent Dreams, Chasing Shadows, Beyond the Horizon, and Whispering Wind before Hidden Paths. Only Hidden Paths → Forever Young → Whispers of the Past → Heartbeat Away appear consecutively.",
+        "confidence": 0.99,
+        "provider": "github_copilot",
+        "model": "gpt-6.1-sol",
+        "latency_ms": 5107,
+        "token_usage": {
+          "input_tokens": 3285,
+          "output_tokens": 75,
+          "total_tokens": 3360
+        },
+        "artifact_refs": [
+          {
+            "artifact_id": "screenshot-agent-assert-with-ai-56-invoke-assert-with-ai-1-df9a9e8e589f",
+            "kind": "screenshot",
+            "path": "artifacts/screenshots/screenshot-agent-assert-with-ai-56-invoke-assert-with-ai-1-df9a9e8e589f.png",
+            "mime_type": "image/png",
+            "size_bytes": 501819,
+            "sha256": "4b2e695e61599ba713bc1d98a9bdf19066700230fed374df25ac7934417fca6a",
+            "availability": "available",
+            "unavailable_reason": null,
+            "capture_occurrence": 1,
+            "created_at": "2026-11-10T19:51:52.674976Z",
+            "metadata": {
+              "capture_reason": "assert-with-ai",
+              "redacted": false
+            }
+          }
+        ],
+        "error": null,
+        "metadata": {
+          "provider_metadata": {
+            "endpoint_family": "github_copilot",
+            "copilot_plan": "enterprise"
+          }
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[55]"
+    },
+    {
+      "ordinal": 56,
+      "stepId": "agent-assert_with_ai-57",
+      "action": "assert_with_ai",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "prompt": "Verify the playing queue contains these songs in relative order (other existing queue songs may intervene): Through the Storm, Hidden Paths, Forever Young, Whispers of the Past, Heartbeat Away. Report their displayed positions if visible.",
+        "optional": false
+      },
+      "uiLabels": [],
+      "output": {
+        "status": "passed",
+        "passed": true,
+        "explanation": "The requested relative order is visible: Through the Storm → Hidden Paths (the second visible occurrence) → Forever Young → Whispers of the Past → Heartbeat Away. Counting visible rows from the top, their positions are 3, 8, 9, 10, and 11. Absolute queue position numbers are not displayed.",
+        "confidence": 0.99,
+        "provider": "github_copilot",
+        "model": "gpt-6.1-sol",
+        "latency_ms": 5947,
+        "token_usage": {
+          "input_tokens": 3295,
+          "output_tokens": 89,
+          "total_tokens": 3384
+        },
+        "artifact_refs": [
+          {
+            "artifact_id": "screenshot-agent-assert-with-ai-57-invoke-assert-with-ai-1-a8347c5b9984",
+            "kind": "screenshot",
+            "path": "artifacts/screenshots/screenshot-agent-assert-with-ai-57-invoke-assert-with-ai-1-a8347c5b9984.png",
+            "mime_type": "image/png",
+            "size_bytes": 501313,
+            "sha256": "5db0c85935cb891891cb2a57558a0a69273f2400c3566a9547ecc6a4c616671f",
+            "availability": "available",
+            "unavailable_reason": null,
+            "capture_occurrence": 1,
+            "created_at": "2026-11-10T19:52:06.513864Z",
+            "metadata": {
+              "capture_reason": "assert-with-ai",
+              "redacted": false
+            }
+          }
+        ],
+        "error": null,
+        "metadata": {
+          "provider_metadata": {
+            "endpoint_family": "github_copilot",
+            "copilot_plan": "enterprise"
+          }
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[56]"
+    },
+    {
+      "ordinal": 57,
+      "stepId": "agent-kill_app-58",
+      "action": "kill_app",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "app_id": "code.name.monkey.retromusic"
+      },
+      "uiLabels": [],
+      "output": {
+        "app_id": "code.name.monkey.retromusic"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[57]"
+    }
+  ],
+  "originalNativeExecutionPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/059-RetroPlayingQueue/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-059-20261110T194558Z-40f104/execution-result.json",
+  "originalNativeResultPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/059-RetroPlayingQueue/raw-private/fsq-native/worker/fsq-task-result.private.json",
+  "originalGoalPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/059-RetroPlayingQueue/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-059-20261110T194558Z-40f104/sources/000-goal.txt"
+}

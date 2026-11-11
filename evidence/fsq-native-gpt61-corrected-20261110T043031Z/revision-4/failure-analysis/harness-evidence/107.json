@@ -1,0 +1,1008 @@
+{
+  "index": 107,
+  "name": "TasksDueNextWeek",
+  "goal": "How many tasks do I have due next week in Tasks app? Assume the week starts from Monday. Express your answer as a single integer.",
+  "reward": 0.0,
+  "classification": "failed",
+  "initialization": {
+    "initializationReferenceTime": {
+      "referenceTime": "2023-10-15T15:34:00+00:00",
+      "timezone": "UTC"
+    },
+    "initializedGoal": "How many tasks do I have due next week in Tasks app? Assume the week starts from Monday. Express your answer as a single integer."
+  },
+  "frozenTaskSpec": {
+    "apps": [
+      "tasks"
+    ],
+    "complexity": 1,
+    "difficulty": "medium",
+    "family": "information_retrieval",
+    "index": 107,
+    "instanceSeed": 1812551077,
+    "maxActions": 10,
+    "maxSteps": 10,
+    "name": "TasksDueNextWeek",
+    "params": {
+      "due_date": "October 19 2023",
+      "notes": "Remember to review ahead of time.",
+      "seed": 1812551077,
+      "title": "Read book for book club"
+    },
+    "paramsSha256": "abb839ac97922ec08c8c77342efc7d4bfb957dd63bcf9769bd0b68a12d257a29",
+    "paramsTransport": "json",
+    "tags": [
+      "information_retrieval",
+      "parameterized"
+    ],
+    "timeBudget": {
+      "businessSeconds": 720,
+      "cleanupWindowSeconds": 180,
+      "episodeSeconds": 1330,
+      "forceSeconds": 910,
+      "recoveryWindowSeconds": 120,
+      "terminationGraceSeconds": 10
+    }
+  },
+  "mainSteps": [
+    {
+      "stepId": 4,
+      "tool": "agent_runtime.runner",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "NativeActionBudgetExceeded: action_budget blocked further navigation.",
+          "The required kill_app teardown was attempted but was also blocked by the action budget."
+        ],
+        "evidence": [
+          "Tasks displayed the My Tasks list with task titles and due-date labels, but the inspected portion did not establish complete list coverage or the target date range."
+        ],
+        "plan_updates": [
+          "Execution stopped when the harness rejected further actions because its action budget was exhausted."
+        ],
+        "pre_plan": [
+          {
+            "action": "Inspect Tasks and establish the local date and next week's Monday–Sunday range.",
+            "status": "failed",
+            "step_id": 1,
+            "success_criteria": [
+              "Local date and target range established."
+            ]
+          },
+          {
+            "action": "Inspect task due dates across all relevant lists.",
+            "status": "failed",
+            "step_id": 2,
+            "success_criteria": [
+              "All potentially qualifying tasks inspected."
+            ]
+          },
+          {
+            "action": "Count distinct qualifying tasks and return the integer.",
+            "status": "skipped",
+            "step_id": 3,
+            "success_criteria": [
+              "Count verified against the complete target date range."
+            ]
+          }
+        ],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "inconclusive",
+        "summary": "Unable to determine a verified task count before the harness action budget was exhausted.",
+        "unmet_criteria": [
+          "The number of distinct tasks due next Monday through next Sunday, inclusive, could not be verified."
+        ]
+      }
+    },
+    {
+      "stepId": 5,
+      "tool": "agent_runtime.verifier",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "The action budget was exhausted before counting was completed.",
+          "The supplied evidence does not establish the actual number of distinct tasks due within the target week."
+        ],
+        "evidence": [
+          "Execution step 4 records the final output as an inconclusive report stating that a verified task count could not be determined, rather than an integer answer.",
+          "Tasks snapshot artifact 000006-ui_snapshot.json shows only a portion of the scrollable My Tasks list, not a complete qualifying count.",
+          "The final swipe tool result reports status=failed with NativeActionBudgetExceeded: action_budget."
+        ],
+        "plan_updates": [],
+        "pre_plan": [
+          {
+            "action": "Verify that the completed run returned a single integer equal to the distinct task count for next Monday through next Sunday.",
+            "status": "failed",
+            "step_id": 1,
+            "success_criteria": [
+              "The final answer is a single integer matching the qualifying task count in Tasks."
+            ]
+          }
+        ],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "failed",
+        "summary": "The run did not provide a single-integer answer, so the verification goal was not satisfied. The actual qualifying task count remains undetermined.",
+        "unmet_criteria": [
+          "The completed run returned no single-integer task-count answer."
+        ]
+      }
+    }
+  ],
+  "budgetSummary": {
+    "admitted": 10,
+    "attempted": 12,
+    "deadlineExceeded": false,
+    "deadlineMonotonic": 725688.307154083,
+    "denied": 2,
+    "deviceRestoredByClose": false,
+    "exclusions": [
+      "driver_construction",
+      "uiautomator2_service_startup",
+      "observation_and_assertion_side_effects",
+      "external_processes_and_direct_driver_access"
+    ],
+    "exhausted": true,
+    "failed": 0,
+    "inFlight": 0,
+    "inputTextUnit": "composite_click_optional_clear_set_text",
+    "maximum": 10,
+    "securityBoundary": false,
+    "succeeded": 10,
+    "unit": "admitted_android_harness_write_capability_dispatch",
+    "writeCapabilities": [
+      "launch_app",
+      "kill_app",
+      "tap_on",
+      "tap_at",
+      "long_press_on",
+      "input_text",
+      "press_key",
+      "swipe"
+    ]
+  },
+  "actions": [
+    {
+      "ordinal": 0,
+      "stepId": "agent-launch_app-1",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [],
+      "output": {
+        "app_id": "org.tasks"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[0]"
+    },
+    {
+      "ordinal": 1,
+      "stepId": "agent-ui_snapshot-2",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Sun, Oct 15",
+        "Sun, Oct 15",
+        "Gmail",
+        "Gmail",
+        "Photos",
+        "Photos",
+        "YouTube",
+        "YouTube",
+        "Home",
+        "Phone",
+        "Phone",
+        "Messages",
+        "Messages",
+        "Chrome",
+        "Chrome",
+        "Calendar",
+        "Predicted app: Calendar",
+        "Search",
+        "Google app",
+        "Voice search",
+        "Google Lens",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 27981,
+          "retained_characters": 7650
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[1]"
+    },
+    {
+      "ordinal": 2,
+      "stepId": "agent-launch_app-3",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "app_id": "org.tasks"
+      },
+      "uiLabels": [],
+      "output": {
+        "app_id": "org.tasks"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[2]"
+    },
+    {
+      "ordinal": 3,
+      "stepId": "agent-swipe-4",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[3]"
+    },
+    {
+      "ordinal": 4,
+      "stepId": "agent-ui_snapshot-5",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "ATX",
+        "ATX",
+        "Audio Recorder",
+        "Audio Recorder",
+        "Broccoli",
+        "Broccoli",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Chrome",
+        "Chrome",
+        "Clipper",
+        "Clipper",
+        "Clock",
+        "Clock",
+        "Contacts",
+        "Contacts",
+        "Draw",
+        "Draw",
+        "Drive",
+        "Drive",
+        "Files",
+        "Files",
+        "Gallery",
+        "Gallery",
+        "Gmail",
+        "Gmail",
+        "Google",
+        "Google",
+        "Joplin",
+        "Joplin",
+        "Maps",
+        "Maps",
+        "Markor",
+        "Markor",
+        "Messages",
+        "Messages",
+        "OpenTracks",
+        "OpenTracks",
+        "OsmAnd",
+        "OsmAnd",
+        "Phone",
+        "Phone",
+        "Photos",
+        "Photos",
+        "Gallery",
+        "Gallery",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Tasks",
+        "Tasks",
+        "Search",
+        "Google app",
+        "Search apps, web and more",
+        "Voice search",
+        "Google Lens",
+        "Home",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 37001,
+          "retained_characters": 12559
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 6,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[4]"
+    },
+    {
+      "ordinal": 5,
+      "stepId": "agent-tap_on-6",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "accessibilityId": "Tasks"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[5]"
+    },
+    {
+      "ordinal": 6,
+      "stepId": "agent-ui_snapshot-7",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "My Tasks",
+        "Search",
+        "Finish Project Proposal",
+        "Deadline is Friday. Need to finalize budget and ti",
+        "Oct 8",
+        "Finish Project Proposal",
+        "Deadline is Friday. Need to finalize budget and ti",
+        "Oct 8",
+        "Finish Project Proposal",
+        "Fri",
+        "Call Grandma",
+        "Catch up on family news. Ask for her famous cookie",
+        "Wed",
+        "Call Grandma",
+        "Catch up on family news. Ask for her famous cookie",
+        "Thu",
+        "Water Plants",
+        "Thu",
+        "Call Grandma",
+        "Today",
+        "Reply to Emails",
+        "Fri",
+        "Water Plants",
+        "Yest",
+        "Create Budget for Next Month",
+        "Track income and expenses. Set savings goals.",
+        "Fri",
+        "Voice input",
+        "Sort",
+        "More options",
+        "Create new task",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 56954,
+          "retained_characters": 14542
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 20,
+          "clipped_attributes": 5
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[6]"
+    },
+    {
+      "ordinal": 7,
+      "stepId": "agent-swipe-8",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "start": {
+          "x": 500,
+          "y": 30
+        },
+        "end": {
+          "x": 500,
+          "y": 1500
+        },
+        "duration": 500,
+        "reference_screen_size": {
+          "width": 1080,
+          "height": 2400
+        }
+      },
+      "uiLabels": [],
+      "output": {
+        "start": {
+          "x": 500,
+          "y": 30
+        },
+        "end": {
+          "x": 500,
+          "y": 1500
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[7]"
+    },
+    {
+      "ordinal": 8,
+      "stepId": "agent-ui_snapshot-9",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "On",
+        "Internet",
+        "Internet",
+        "On",
+        "Bluetooth.",
+        "Bluetooth",
+        "Off",
+        "Flashlight",
+        "Flashlight",
+        "Off",
+        "Do Not Disturb.",
+        "Do Not Disturb",
+        "Android System",
+        "Alerted",
+        "Collapse",
+        "Data warning",
+        "You've used 4.68 GB of data",
+        "Silent",
+        "Clear all silent notifications",
+        "Need time to focus?",
+        "Use Focus mode to pause distracting apps. Tap to s",
+        "Expand",
+        "Check access settings",
+        "com.google.androidenv.accessibilityforwarder.Acce…",
+        "Expand",
+        "Manage",
+        "Manage",
+        "Clear all",
+        "Clear all notifications.",
+        "15:35",
+        "23:35",
+        "Sun, Oct 15",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "100%"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 54296,
+          "retained_characters": 13721
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 20,
+          "clipped_attributes": 2
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[8]"
+    },
+    {
+      "ordinal": 9,
+      "stepId": "agent-press_key-10",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[9]"
+    },
+    {
+      "ordinal": 10,
+      "stepId": "agent-ui_snapshot-11",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "My Tasks",
+        "Search",
+        "Finish Project Proposal",
+        "Deadline is Friday. Need to finalize budget and ti",
+        "Oct 8",
+        "Finish Project Proposal",
+        "Deadline is Friday. Need to finalize budget and ti",
+        "Oct 8",
+        "Finish Project Proposal",
+        "Fri",
+        "Call Grandma",
+        "Catch up on family news. Ask for her famous cookie",
+        "Wed",
+        "Call Grandma",
+        "Catch up on family news. Ask for her famous cookie",
+        "Thu",
+        "Water Plants",
+        "Thu",
+        "Call Grandma",
+        "Today",
+        "Reply to Emails",
+        "Fri",
+        "Water Plants",
+        "Yest",
+        "Create Budget for Next Month",
+        "Track income and expenses. Set savings goals.",
+        "Fri",
+        "Voice input",
+        "Sort",
+        "More options",
+        "Create new task",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 56954,
+          "retained_characters": 14542
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 20,
+          "clipped_attributes": 5
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[10]"
+    },
+    {
+      "ordinal": 11,
+      "stepId": "agent-swipe-12",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "start": {
+          "x": 500,
+          "y": 0
+        },
+        "end": {
+          "x": 500,
+          "y": 1700
+        },
+        "duration": 600,
+        "reference_screen_size": {
+          "width": 1080,
+          "height": 2400
+        }
+      },
+      "uiLabels": [],
+      "output": {
+        "start": {
+          "x": 500,
+          "y": 0
+        },
+        "end": {
+          "x": 500,
+          "y": 1700
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[11]"
+    },
+    {
+      "ordinal": 12,
+      "stepId": "agent-ui_snapshot-13",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "On",
+        "Internet",
+        "Internet",
+        "On",
+        "Bluetooth.",
+        "Bluetooth",
+        "Off",
+        "Flashlight",
+        "Flashlight",
+        "Off",
+        "Do Not Disturb.",
+        "Do Not Disturb",
+        "Android System",
+        "Alerted",
+        "Collapse",
+        "Data warning",
+        "You've used 4.68 GB of data",
+        "Silent",
+        "Clear all silent notifications",
+        "Need time to focus?",
+        "Use Focus mode to pause distracting apps. Tap to s",
+        "Expand",
+        "Check access settings",
+        "com.google.androidenv.accessibilityforwarder.Acce…",
+        "Expand",
+        "Manage",
+        "Manage",
+        "Clear all",
+        "Clear all notifications.",
+        "15:35",
+        "23:35",
+        "Sun, Oct 15",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "100%"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 54295,
+          "retained_characters": 13720
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 20,
+          "clipped_attributes": 2
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[12]"
+    },
+    {
+      "ordinal": 13,
+      "stepId": "agent-press_key-14",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[13]"
+    },
+    {
+      "ordinal": 14,
+      "stepId": "agent-ui_snapshot-15",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "My Tasks",
+        "Search",
+        "Finish Project Proposal",
+        "Deadline is Friday. Need to finalize budget and ti",
+        "Oct 8",
+        "Finish Project Proposal",
+        "Deadline is Friday. Need to finalize budget and ti",
+        "Oct 8",
+        "Finish Project Proposal",
+        "Fri",
+        "Call Grandma",
+        "Catch up on family news. Ask for her famous cookie",
+        "Wed",
+        "Call Grandma",
+        "Catch up on family news. Ask for her famous cookie",
+        "Thu",
+        "Water Plants",
+        "Thu",
+        "Call Grandma",
+        "Today",
+        "Reply to Emails",
+        "Fri",
+        "Water Plants",
+        "Yest",
+        "Create Budget for Next Month",
+        "Track income and expenses. Set savings goals.",
+        "Fri",
+        "Voice input",
+        "Sort",
+        "More options",
+        "Create new task",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 56954,
+          "retained_characters": 14542
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 20,
+          "clipped_attributes": 5
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[14]"
+    },
+    {
+      "ordinal": 15,
+      "stepId": "agent-swipe-16",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "start": {
+          "x": 500,
+          "y": 0
+        },
+        "end": {
+          "x": 500,
+          "y": 1500
+        },
+        "duration": 600,
+        "reference_screen_size": {
+          "width": 1080,
+          "height": 2400
+        }
+      },
+      "uiLabels": [],
+      "output": {
+        "start": {
+          "x": 500,
+          "y": 0
+        },
+        "end": {
+          "x": 500,
+          "y": 1500
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[15]"
+    },
+    {
+      "ordinal": 16,
+      "stepId": "agent-ui_snapshot-17",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "On",
+        "Internet",
+        "Internet",
+        "On",
+        "Bluetooth.",
+        "Bluetooth",
+        "Off",
+        "Flashlight",
+        "Flashlight",
+        "Off",
+        "Do Not Disturb.",
+        "Do Not Disturb",
+        "Android System",
+        "Alerted",
+        "Collapse",
+        "Data warning",
+        "You've used 4.68 GB of data",
+        "Silent",
+        "Clear all silent notifications",
+        "Need time to focus?",
+        "Use Focus mode to pause distracting apps. Tap to s",
+        "Expand",
+        "Check access settings",
+        "com.google.androidenv.accessibilityforwarder.Acce…",
+        "Expand",
+        "Manage",
+        "Manage",
+        "Clear all",
+        "Clear all notifications.",
+        "15:36",
+        "23:36",
+        "Sun, Oct 15",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "100%"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 54296,
+          "retained_characters": 13721
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 20,
+          "clipped_attributes": 2
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[16]"
+    },
+    {
+      "ordinal": 17,
+      "stepId": "agent-press_key-18",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[17]"
+    },
+    {
+      "ordinal": 18,
+      "stepId": "agent-ui_snapshot-19",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "My Tasks",
+        "Search",
+        "Finish Project Proposal",
+        "Deadline is Friday. Need to finalize budget and ti",
+        "Oct 8",
+        "Finish Project Proposal",
+        "Deadline is Friday. Need to finalize budget and ti",
+        "Oct 8",
+        "Finish Project Proposal",
+        "Fri",
+        "Call Grandma",
+        "Catch up on family news. Ask for her famous cookie",
+        "Wed",
+        "Call Grandma",
+        "Catch up on family news. Ask for her famous cookie",
+        "Thu",
+        "Water Plants",
+        "Thu",
+        "Call Grandma",
+        "Today",
+        "Reply to Emails",
+        "Fri",
+        "Water Plants",
+        "Yest",
+        "Create Budget for Next Month",
+        "Track income and expenses. Set savings goals.",
+        "Fri",
+        "Voice input",
+        "Sort",
+        "More options",
+        "Create new task",
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 56954,
+          "retained_characters": 14542
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 20,
+          "clipped_attributes": 5
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[18]"
+    },
+    {
+      "ordinal": 19,
+      "stepId": "agent-swipe-20",
+      "action": "swipe",
+      "status": "failed",
+      "error": "NativeActionBudgetExceeded: action_budget",
+      "params": null,
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[19]"
+    },
+    {
+      "ordinal": 20,
+      "stepId": "agent-kill_app-21",
+      "action": "kill_app",
+      "status": "failed",
+      "error": "NativeActionBudgetExceeded: action_budget",
+      "params": null,
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[20]"
+    }
+  ],
+  "originalNativeExecutionPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/107-TasksDueNextWeek/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-107-20261110T223419Z-83207a/execution-result.json",
+  "originalNativeResultPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/107-TasksDueNextWeek/raw-private/fsq-native/worker/fsq-task-result.private.json",
+  "originalGoalPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/107-TasksDueNextWeek/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-107-20261110T223419Z-83207a/sources/000-goal.txt"
+}

@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "kind": "fsq_single_target_resource_and_stage_draft_delivery",
+  "createdAtUtc": "2026-11-10T06:37:43.123285+00:00",
+  "status": "reachable_readonly_evidence_complete_awaiting_coordinator_resource_decision",
+  "parallelSlices": [
+    "ResourceHostEvidence",
+    "StageAuthorizationDraft"
+  ],
+  "artifacts": [
+    {
+      "path": "scheduling-and-holder-facts.json",
+      "sha256": "cf174b202d28e82fe8d243a42366a0c6c27ab1258ec065b0a75befcbad65f335"
+    },
+    {
+      "path": "host-resource-evidence.json",
+      "sha256": "b8d7519e3fe8378f5aa6695f559749f1e2b8e91abf65cc00a2c97160d5c6e1d3"
+    },
+    {
+      "path": "supported-session-discovery.json",
+      "sha256": "c82579d50b4effedb4bb357a0250fbd94138fe841dc9761a1ff3d235c0da2535"
+    },
+    {
+      "path": "supported-session-discovery-error-detail.json",
+      "sha256": "e505c16a0d556dbaf217b16b842917cc702834ef3d7c4c1cc875cb080db0649f"
+    },
+    {
+      "path": "authorization-draft.json",
+      "sha256": "e28d101c4f5ff4a75a669cfb5494a283504e8854c00e4d176b869a3737a31bc4"
+    },
+    {
+      "path": "prospective-commands.sh",
+      "sha256": "c074dc3d5ef77ec1f69ec5e2f29eae76dc90a962c890cfba7d9cc70b1fa8dd4a"
+    },
+    {
+      "path": "stage-plan.md",
+      "sha256": "bcc836a9d53e1bca9d85cc87c7f7f990d3b75dfc59f1e3f4263ebeb4e090e7f1"
+    },
+    {
+      "path": "decision-brief.md",
+      "sha256": "d62d1eb2dc0cf10ac973974e44dcbc821a3d53131b08c8a18f675b332785b3a2"
+    },
+    {
+      "path": "draft-validation.json",
+      "sha256": "cf87a1845fc4a5fb7e2aa89540cd697f993f4de7512e669962bd6dd59e174c89"
+    }
+  ],
+  "fixedBindings": {
+    "candidateSha256": "94a33fc3719cb2b289b274a415e78d91aeef5d9c34f8a63fedeac0e638e615f2",
+    "approvedIndependentReviewSha256": "5a941efe9bbe6d66f8a487c2995ea77946d7cccca898c0d422aef5fc02e612f6",
+    "acceptedModelReceiptSha256": "58d96868e5e4ccb139eb16e688178de0f2e9acbad40bc1f0035a293e0dd47323"
+  },
+  "codeAndModelGates": "accepted_complete_not_repeated",
+  "actualSupportedDiscovery": {
+    "attempts": 1,
+    "httpStatus": 500,
+    "webdriverError": "unknown error",
+    "securityFeature": "session_discovery",
+    "serverMessageExcerpt": "Potentially insecure feature 'session_discovery' has not been enabled",
+    "sessionsCount": null,
+    "state": "unknown",
+    "furtherAttempt": false
+  },
+  "controlBoundary": "Actual accountable controller not identified from allowed existing records and 12 known pane PID mappings; historical balanced lifecycle and no-reservation statements are not current exclusive proof. Stop further discovery.",
+  "minimumRemainingDecision": "w6:p2 resolves real target/controller handoff or a real target-authority acknowledged disposable guest-state/non-interference decision, and explicitly issues exact stage/effects/window authorization. No additional code/model/session-API gate is requested.",
+  "proposedInitialStages": [
+    "qualify",
+    "smoke"
+  ],
+  "smoke": {
+    "taskIndex": 102,
+    "taskName": "SystemWifiTurnOff",
+    "attempts": 1,
+    "maxActions": 10,
+    "businessSeconds": 720,
+    "episodeEnvelopeSeconds": 1330
+  },
+  "qualificationEnvelopeSeconds": 1210,
+  "conservativeEnvelopeSumSeconds": 2540,
+  "sumIsMandatoryTTL": false,
+  "stageCommandsExecuted": false,
+  "guestOrDeviceCalled": false,
+  "sessionCreatedOrDeleted": false,
+  "serviceRestartedOrDiscoveryFeatureChanged": false,
+  "originalEvidenceManuallyModified": false,
+  "exclusiveCampaignAuthorized": false,
+  "liveBusinessAuthorized": false,
+  "releaseRecipient": "w6:p1",
+  "releasePolicy": "Explicit truthful cleanup/unknown report and handoff after completed scope or coordinator cannot-continue decision; never implicit from timeout/exit/priority."
+}

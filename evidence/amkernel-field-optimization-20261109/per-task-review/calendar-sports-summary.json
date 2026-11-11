@@ -1,0 +1,145 @@
+{
+  "scope": "Three assigned frozen r12 v2 episodes: 073, 074, 090. Captured-state replay only; no live device, no new Android/Appium session, no rerun.",
+  "campaign": "campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z",
+  "caseCount": 3,
+  "cases": [
+    {
+      "index": 73,
+      "task": "SimpleCalendarEventsInNextWeek",
+      "report": "073-SimpleCalendarEventsInNextWeek/review.md",
+      "evidence": [
+        "073-SimpleCalendarEventsInNextWeek/original-python-executions.json",
+        "073-SimpleCalendarEventsInNextWeek/observation-predicate-replay.json",
+        "073-SimpleCalendarEventsInNextWeek/review-verification.json"
+      ],
+      "officialReward": 0.0,
+      "executedUiActions": 10,
+      "maxSteps": 10,
+      "businessSeconds": 720,
+      "cleanupVerified": true,
+      "pythonCalls": 13,
+      "newAndroidRuns": 0,
+      "proposalChanged": false,
+      "primaryLayer": "Harness or contract",
+      "contributingLayers": ["model planning"],
+      "earliestDivergence": "At L3680 the 10th UI action (Simple event list) closed the step budget after L2899 + L3393 had already shown Product demo (W18) and Movie night (S22); the valid raw final JSON at L3804 was emitted in the cleanup phase, normalized.finalText=null, so no answer reached the IR interaction_cache.",
+      "contentAssessment": "Correct for the observed Monday-start next-week window 2023-10-16..2023-10-22: titles Product demo and Movie night. The raw final taskOutcome matches.",
+      "rewardCause": "no_forwarded_answer",
+      "rawFinalVsNormalized": {
+        "rawLine": 3804,
+        "rawTaskOutcome": "Product demo, Movie night",
+        "rawTaskOutcomeType": "string",
+        "normalizedFinalText": null,
+        "agentCompleted": false,
+        "validContract": false
+      },
+      "unresolved": false,
+      "uncertainty": "Exact page_source encoding of the newline-bearing label 'S\\n22' was not saved; the L3200 TimeoutException cannot be reduced to a specific escaping rule.",
+      "whatProposalHelps": "Batch/persistent-namespace observations, phase-specific waits, and stopping when evidence is sufficient. The L3200 page_source substring wait should have been a direct week-header/label read.",
+      "whatProposalCannotSolve": "The frozen supervisor/runner cleanup-phase answer capture; a correct string answer produced after cleanup is not forwarded.",
+      "sourceHashes": {
+        "rawEventsSha256": "2cb824b1339a4dfbb9053f8893583bbb857fbb26b168bcf3c13c2f991cae0a46",
+        "resultSha256": "4ec4572e869c4a7640577466e6671cfbb9c5450641c32e7447cf8fe36f87fd84"
+      }
+    },
+    {
+      "index": 74,
+      "task": "SimpleCalendarEventsInTimeRange",
+      "report": "074-SimpleCalendarEventsInTimeRange/review.md",
+      "evidence": [
+        "074-SimpleCalendarEventsInTimeRange/original-python-executions.json",
+        "074-SimpleCalendarEventsInTimeRange/observation-predicate-replay.json",
+        "074-SimpleCalendarEventsInTimeRange/review-verification.json"
+      ],
+      "officialReward": 0.0,
+      "executedUiActions": 10,
+      "maxSteps": 10,
+      "businessSeconds": 720,
+      "cleanupVerified": true,
+      "pythonCalls": 14,
+      "newAndroidRuns": 0,
+      "proposalChanged": false,
+      "primaryLayer": "model planning",
+      "contributingLayers": ["Appium or app", "Harness or contract"],
+      "earliestDivergence": "At L2723 clear/send_keys('20')/OK all returned but the date stayed October 15 (Sun); the post-timeout observation at L2963 confirms no change. The earlier L2373 day.set_value('20') raised AttributeError with no UI action and no state effect.",
+      "contentAssessment": "Friday 2023-10-20 events were never read; the final 'unresolved' is truthful but not the required title list. No answer can be enumerated from captured state.",
+      "rewardCause": "navigation_failure",
+      "rawFinalVsNormalized": {
+        "rawLine": 3659,
+        "rawTaskOutcome": "unresolved",
+        "rawTaskOutcomeType": "string",
+        "normalizedFinalText": null,
+        "agentCompleted": false,
+        "validContract": false
+      },
+      "unresolved": true,
+      "unresolvedReason": "No Friday event list or time-range data was captured. The date picker field value after clear/input and the post-Weekly-view element tree are both missing.",
+      "whatProposalHelps": "HTTP 200 is not business evidence; observe the real state after a timeout; use phase-specific business postconditions. These rules exactly describe the L2723/L2963 gap.",
+      "whatProposalCannotSolve": "The correct DatePicker/NumberPicker interaction path and the Weekly view header differences; these are app/Appium-specific. Also cannot recover the cleanup-phase answer text.",
+      "sourceHashes": {
+        "rawEventsSha256": "93b4fc26c2aeb0ec0d6bebcb6ceebdb8ed3a88b4aab1ff263451d4a17a4eaf0a",
+        "resultSha256": "33ff05e7bdef04d1a8bd7f66a3a0751e87ec138dfd24b60fb8f9f97328ebfd4d"
+      }
+    },
+    {
+      "index": 90,
+      "task": "SportsTrackerLongestDistanceActivity",
+      "report": "090-SportsTrackerLongestDistanceActivity/review.md",
+      "evidence": [
+        "090-SportsTrackerLongestDistanceActivity/original-python-executions.json",
+        "090-SportsTrackerLongestDistanceActivity/observation-predicate-replay.json",
+        "090-SportsTrackerLongestDistanceActivity/review-verification.json"
+      ],
+      "officialReward": 0.0,
+      "executedUiActions": 10,
+      "maxSteps": 10,
+      "businessSeconds": 720,
+      "cleanupVerified": true,
+      "pythonCalls": 17,
+      "newAndroidRuns": 0,
+      "proposalChanged": false,
+      "primaryLayer": "Harness or contract",
+      "contributingLayers": ["model planning", "Appium or app"],
+      "earliestDivergence": "At L4545 the agent read Skill work's date and distance but never observed its category, then treated it as mountain biking; content evidence gap. Independently, L4790 used a non-string taskOutcome object and the final text was cleanup-phase, so normalized.finalText=null and _task_outcome rejects the object.",
+      "contentAssessment": "The arithmetic is exact for the observed value: 0.75 mi * 1609.344 = 1207.008 -> 1207. The 'mountain biking' qualification of Skill work is unverified; the track list is only partially observed.",
+      "rewardCause": "no_forwarded_answer_plus_non_string_task_outcome",
+      "rawFinalVsNormalized": {
+        "rawLine": 4790,
+        "rawTaskOutcome": {"answerMeters": 1207},
+        "rawTaskOutcomeType": "object",
+        "normalizedFinalText": null,
+        "agentCompleted": false,
+        "validContract": false
+      },
+      "unresolved": false,
+      "uncertainty": "Skill work's category was never displayed or opened; a longer unobserved mountain-biking activity cannot be excluded from the partial track list.",
+      "whatProposalHelps": "Reading a stats screen is not evidence of the requested category; the observation must distinguish the target state. Batch/persistent-namespace reads are also a strength to preserve.",
+      "whatProposalCannotSolve": "The frozen runner string contract for taskOutcome and the cleanup-phase finalText exclusion. Also cannot supply the missing category observation after the fact.",
+      "sourceHashes": {
+        "rawEventsSha256": "c45324b246e808d11285d54d361bcd820a9f15fa4b55ae0f07667c66531afea4",
+        "resultSha256": "125e775f139b37605dd00a3c50c37a91bbf8f6ad98c37a24a63fb70e21ee14fa"
+      }
+    }
+  ],
+  "aggregate": {
+    "officialRewardSum": 0.0,
+    "casesWithContentAnswer": 2,
+    "casesWithNoContentAnswer": 1,
+    "casesWithForwardedAnswer": 0,
+    "casesWithNonStringTaskOutcome": 1,
+    "casesWithCleanupPhaseFinalText": 3,
+    "primaryLayerCounts": {
+      "Harness or contract": 2,
+      "model planning": 1
+    },
+    "commonHarnessBoundary": "omp_supervisor.py:160-169 captures task_final only before cleanup_requested; 203-208 excludes cleanup prose. runner.py:751-762 forwards _task_outcome(normalized.finalText); runner.py:171-180 requires taskOutcome to be a string. information_retrieval.py:111-112 returns 0 for an empty interaction_cache.",
+    "proposalSource": "skill-optimization-proposal.md (candidate; not yet a formal skill rule)",
+    "proposalSha256": "280570da3e3fc74ccd8464f9e1be53489b49729db35fd6645f430d1fe7af17d9",
+    "proposalImpact": "Existing AMKernel skill proposal helps with business postconditions, phase-specific waits, observed-vs-assumed state, and batch/local computation. It cannot fix frozen answer capture or taskOutcome type, and it does not contain app-specific DatePicker/NumberPicker or OpenTracks category navigation."
+  },
+  "limitations": [
+    "No live device; all predicates were replayed against saved element/field values.",
+    "No external app source, no build/lint/test/formatter, no campaign/app/skill/proposal edits.",
+    "Original source files were hashed and remained unchanged; see per-case review-verification.json."
+  ]
+}

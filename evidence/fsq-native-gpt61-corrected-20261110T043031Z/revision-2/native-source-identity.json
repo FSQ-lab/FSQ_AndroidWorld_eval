@@ -1,0 +1,55 @@
+{
+  "base_commit": "7e3f0793f3962ef2d8cc92f06310326c9077ce0d",
+  "audit_snapshot_commit": "0d56970af525d61f6f079234d2caac5077d84e98",
+  "full_diff_path": "/tmp/fsq-copilot-diagnostics-full-after-repair1-20261110-a41d.patch",
+  "full_diff_sha256": "0c2fe96ab975d2f5a25a79ad72162d05e443138c5826d142e7640ff3e7b01afc",
+  "repair_delta_sha256": "0992d947797aa242cc549cbe7662f0cf7ae8f3e204578cd1645b2cfc9cb1260a",
+  "package_manifest_sha256": "f85de27cec9e3e9949559b120dd3f595e9512c076aa82aef7a25e4a552dd2f68",
+  "package_manifest_path": "/tmp/fsq-copilot-diagnostics-repair1-package-manifest-20261110-a41d.sha256",
+  "package_manifest_scope": "all git-tracked fsq_agent files plus pyproject.toml, measured from current working bytes",
+  "runtime": {
+    "python": "/Users/qunmi/Documents/FSQ_LAB/FSQ/.venv/bin/python",
+    "python_version": "3.11.16",
+    "fsq_import_origin": "/Users/qunmi/Documents/FSQ_LAB/FSQ/fsq_agent/__init__.py",
+    "cli_module": "fsq_agent.adapters.cli._main",
+    "source_package_version": "0.1.2",
+    "installed_distribution_version": "0.1.0a1",
+    "dependencies": {
+      "uiautomator2": "3.5.2",
+      "openai": "2.34.0",
+      "httpx": "0.28.1",
+      "pydantic": "2.13.3"
+    }
+  },
+  "verification_receipt": "/tmp/fsq-copilot-diagnostics-full-gate-receipt-20261110-a41d.json",
+  "verification_counts": {
+    "tests": 3236,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 13,
+    "passed": 3223
+  },
+  "default_skip_reasons": {
+    "Windows PowerShell integration test": 1,
+    "A supported local Chrome or Edge executable is required for real-browser verification.": 1,
+    "Windows CRT file locking": 11
+  },
+  "audit_status": "passed_full_then_one_repair_only_round",
+  "model_status": "native_exact_requested_model_minimal_call_passed",
+  "device_access": false,
+  "independent_full_report": "/tmp/fsq-copilot-diagnostics-independent-full-audit-20261110-a41d.md",
+  "independent_repair_report": "/tmp/fsq-copilot-diagnostics-independent-repair1-audit-20261110-a41d.md",
+  "independent_repair_report_sha256": "14584149f05f748d35b98e14910b285e91f6036e44d2744b8920c71d80282330",
+  "coverage_complete": true,
+  "remaining_blockers": [],
+  "automatic_repair_rounds": 1,
+  "post_audit_identity": {
+    "timestamp_utc": "2026-11-10T05:37:26.125522+00:00",
+    "repair_diff_sha256": "0992d947797aa242cc549cbe7662f0cf7ae8f3e204578cd1645b2cfc9cb1260a",
+    "full_diff_sha256": "0c2fe96ab975d2f5a25a79ad72162d05e443138c5826d142e7640ff3e7b01afc",
+    "path_inventories_match": true,
+    "untracked_project_paths": []
+  },
+  "model_receipt": "/tmp/fsq-copilot-diagnostics-native-model-receipt-20261110-a41d.json",
+  "actual_returned_model": "unknown: not exposed by native ModelResult"
+}

@@ -1,0 +1,74 @@
+{
+  "purpose": "Start a new chat for a fresh 116-task campaign. User wants full coverage; changing the old fail-stop policy requires explicit new-chat authorization and a new protocol. Do not execute in the current chat.",
+  "currentSessionExecutionHeld": true,
+  "newFormalCampaignCreated": false,
+  "formalRunStartedAfterRecovery": false,
+  "formalGateStatusAfterRecovery": "not_revalidated",
+  "requiresUserRunInstructionInNewChat": true,
+  "fullCoverageProposal": {
+    "userGoal": "尽量不中止，取得全部116项的独立终态记录",
+    "authorizationStatus": "Proposed; the user must explicitly authorize the continuation-policy change in the new chat. No harness or frozen protocol changed here.",
+    "policy": "A failed or invalid episode keeps its real terminal classification, evaluator reward/null and cleanup evidence. Restore and verify a safe trustworthy target and absence of unresolved sessions before continuing to the next task; never hide a failure or blindly continue with unknown cleanup.",
+    "protocolBoundary": "Create a distinct new protocol identity and rebuild all gates invalidated by the change. Old frozen r11 results remain immutable. Full116 terminal records are not equivalent to116 valid episodes or a valid old-protocol formal score.",
+    "unchanged": "All116 task specifications and parameters, model, action/tool policy, budgets, per-task retry limits and official evaluator reward semantics.",
+    "hardStop": "Pause if safe/trustworthy execution cannot be restored, and state the concrete blocker; do not promise completeness through fabricated records or altered rewards."
+  },
+  "headlessModePlan": {
+    "requestedModeForNewChat": "Start the same AndroidWorldAvd with -no-window after explicit authorization in the new-chat prompt; do not launch in this chat.",
+    "validated": false,
+    "baseline": "Current restored process is windowed, Vulkan lavapipe plus GLES host/Apple Metal. Only windowed screenshot/video controls have passed.",
+    "changeBoundary": "Closing the host window does not disable guest display rendering or screenshots. Preserve other rendering options; record actual backend selection and qualify the resulting environment rather than claiming a proven fix.",
+    "recoveryBoundary": "Stop the identified existing emulator only after reconciling sessions and preserving required temporary data. Reuse the same AVD, serial, ports, base images and installed dependencies. No wipe-data, snapshot loading/saving or unapproved driver/backend changes."
+  },
+  "frozenTaskSpecificationSource": {
+    "path": "campaigns/amkernel-3388314-r11-timeout300-full-20261106T142607Z/manifest.json",
+    "sha256": "2345c5af27c75f7c1a7c6e263b77963f426864a6486a51e845468430a50ea856",
+    "taskCount": 116,
+    "use": "Read-only source of task specifications and frozen protocol. Never resume or execute into this aborted campaign directory.",
+    "MarkorCreateFolder": {
+      "folder_name": "folder_20261106_170323",
+      "paramsSha256": "63d411885513306c8963fc7a16de1d2257f1a73abafb47042488bff600cdd5f0"
+    }
+  },
+  "evidenceToRead": [
+    "skill://amkernel",
+    "evidence/screenshot-video-controls-20261106T231029Z/report.md",
+    "evidence/screenshot-video-controls-20261106T231029Z/summary.json",
+    "evidence/screenshot-video-controls-20261106T231029Z/independent-audit.json",
+    "evidence/screenshot-video-controls-20261106T231029Z/cleanup.json",
+    "campaigns/amkernel-3388314-r11-timeout300-full-20261106T142607Z/fault-investigation/report.md"
+  ],
+  "currentTarget": {
+    "avd": "AndroidWorldAvd",
+    "serial": "emulator-5554",
+    "consolePort": 5554,
+    "grpcPort": 8554,
+    "appiumUrl": "http://127.0.0.1:4723",
+    "emulatorService": "ScreenshotControlEmulatorReady20261107",
+    "appiumService": "ScreenshotControlAppium20261107",
+    "lastVerifiedBootId": "d7fa5bd9-83b9-446b-bf4f-3b0cddf6657f",
+    "lastVerifiedServices": "activity/settings/window found; system_server PID505 and SurfaceFlinger PID340 unchanged after controls; Appium status ready",
+    "lastVerifiedSessions": "All four diagnostic session identities removed; both actual diagnostic driver.quit calls returned; last session GET returned404. Recheck before next formal launch.",
+    "renderer": "Vulkan lavapipe, GLES host/Apple Metal; no rendering option changed",
+    "headlessModeTested": false,
+    "launchCommand": "/Users/qunmi/Library/Android/sdk/emulator/emulator -avd AndroidWorldAvd -port 5554 -grpc 8554 -read-only -no-snapshot-load -no-snapshot-save -no-audio -crash-report-mode never"
+  },
+  "recoveryCaveats": [
+    "Original emulator host graphics hang triggered Android system_server watchdog/restart loop. Cold restart recovered availability; the specific graphics defect is not proven repaired.",
+    "The exact incident video was used. Static32 screenshots, video with0 screenshots to EOF, and video plus32 screenshots all completed without framework restart. These are diagnostics, not a substitute for all116 rehearsal or calibration gates.",
+    "Cold restart discarded the old read-only runtime layer. Pre-restart copies are retained in evidence/screenshot-video-controls-20261106T231029Z/pre-restart-cow; they are not validated clean backups. Do not assume the previous qualified live state or corrected live snapshots survived into the new overlay.",
+    "VLC first-launch/tutorial state was completed in the new temporary layer. User authorized all-files permission only for the diagnostic; it has been revoked and is currently deny. The pre-diagnostic effective state was also unauthorized. A future formal gate must establish task-required VLC readiness with appropriate authorization; do not silently retain the expired temporary permission approval.",
+    "The original public video present after cold boot was restored byte-for-byte, and the private diagnostic fixture was deleted.",
+    "Current chat MCP transport deadline is30s; the frozen formal harness protocol specifies120000ms. Do not import the diagnostic workaround or this chat's transport limit into the formal Agent configuration. Keep newCommandTimeout at the previously approved300 seconds and verify actual negotiated capabilities."
+  ],
+  "nextSessionRequirements": [
+    "Do not launch until the new chat receives the user's explicit run instruction. This handoff itself is not an autorun trigger.",
+    "Reuse the existing recovered target, Appium server, frozen AMKernel, dependencies and application artifacts. No upgrades/reinstalls or warning-silencing resets.",
+    "Before formal execution, inspect the actual code and read-only validate _load_manifest, _readiness_identity, validate_report, _calibration_gate and live attest_device; reconcile absence of residual Appium sessions.",
+    "Use prior all116 rehearsal and12 calibration evidence only if frozen validation proves they still match. If target evidence is invalid after cold boot, rebuild the required complete gates under the frozen protocol. Do not blindly qualify or reset snapshots before inspecting VLC readiness and snapshot consequences.",
+    "Create a brand-new full116 campaign directory with zero prior episodes, inheriting every frozen task specification and parameter byte-for-byte from the named source. Never run into either aborted formal directory; never resume or splice history.",
+    "Preserve model, target policy, budgets, action allocator, per-task retries and official reward semantics. No unsupported artifact reads; missing reward stays null. The old r11 protocol requires halt on non-retryable invalid or failed/unknown cleanup. Changing that campaign-level stop policy is allowed only after explicit authorization in the new chat, under a distinct new protocol with revalidated gates; unresolved unsafe cleanup still prohibits launching another task.",
+    "The revised new-chat prompt requests -no-window on the same AVD. Do not launch or switch in the current chat. Treat the new-chat authorized headless startup as a new environment condition, record actual Vulkan/GLES backends, and verify video/screenshot/session cleanup before rebuilding required gates. Headless is not a proven remedy and does not authorize a graphics-backend change.",
+    "After the newly authorized run, independently recompute scores and audit each record, Agent termination, session cleanup and provenance. Distinguish a complete116 result from an aborted result and report unstarted tasks."
+  ]
+}

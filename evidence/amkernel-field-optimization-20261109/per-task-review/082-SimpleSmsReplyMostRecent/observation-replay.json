@@ -1,0 +1,91 @@
+{
+  "scope": "Replay of saved 082 tool envelopes, stepBudget snapshot, and captured PNG; no Android/Appium run.",
+  "task": "SimpleSmsReplyMostRecent",
+  "goal": "Reply to most recent SMS using Simple SMS Messenger with message: A quick brown fox.",
+  "targetPackage": "com.simplemobiletools.smsmessenger",
+  "observedPackages": [
+    "com.google.android.apps.messaging",
+    "com.google.android.apps.nexuslauncher"
+  ],
+  "targetAppObserved": false,
+  "googleMessagesObserved": true,
+  "finalObservedLauncher": "com.google.android.apps.nexuslauncher",
+  "searchSurfaceLabelsUnique": [
+    "Simple SMS Messenger0",
+    "Simple SMS Messenger00",
+    "Simple SMS Messenger01",
+    "Simple SMS Messenger02",
+    "Simple SMS Messenger03",
+    "Simple SMS Messenger04",
+    "Simple SMS Messenger05",
+    "Simple SMS Messenger06",
+    "Simple SMS Messenger07",
+    "Simple SMS Messenger08",
+    "Simple SMS Messenger09",
+    "Simple SMS Messenger1",
+    "Simple SMS Messenger2",
+    "Simple SMS Messenger3",
+    "Simple SMS Messenger4",
+    "Simple SMS Messenger5",
+    "Simple SMS Messenger6",
+    "Simple SMS Messenger7",
+    "Simple SMS Messenger8",
+    "Simple SMS Messenger9"
+  ],
+  "allObservedSearchLabelsDuplicateStyled": true,
+  "searchResultNodesClickable": "false",
+  "composerOrSendNodeObserved": false,
+  "sendAttemptInCode": false,
+  "actionKinds": [
+    "click",
+    "mobile: pressKey",
+    "actions",
+    "back",
+    "click",
+    "input",
+    "click",
+    "click",
+    "input",
+    "actions",
+    "click",
+    "back"
+  ],
+  "executedActionCount": 12,
+  "maxSteps": 12,
+  "rejectedActionCount": 0,
+  "pythonCalls": 18,
+  "failedPythonCalls": 4,
+  "kernelStates": [
+    "alive"
+  ],
+  "rawFinalAssistantLine": 3389,
+  "cleanupSteerLine": 3343,
+  "normalizedFinalText": null,
+  "agentIndicatedDone": false,
+  "capturedScreenshot": {
+    "file": "captured-launcher-search-asi-crash.png",
+    "sha256": "43fb1b867cd585762a45aa73a9f34d93ec80547192f4a724c58ad1f4714b4bcd",
+    "width": 1080,
+    "height": 2400,
+    "sourceRawLine": 3054,
+    "visualObservation": "Google Search surface labelled Simple SMS Messenger0; ten duplicate suggestion rows with digit suffixes and no result icons; Android System Intelligence keeps stopping dialog with App info / Close app overlays the rows."
+  },
+  "officialReward": 0.0,
+  "evaluator": "android_world.task_eval.is_successful",
+  "noOutgoingMessageProved": "No target app/composer/send control was observed; all 12 admitted actions were launcher/Google Messages/navigation/search/dialog actions. No SMS send path exists in captured state.",
+  "limitations": [
+    "The exact Android System Intelligence fault is not isolated; visual evidence is a saved PNG, not a new device check.",
+    "A saved observation can show absence only for captured moments; it cannot prove no other surface existed between calls."
+  ],
+  "newAndroidRuns": 0,
+  "homeCustomizationObserved": {
+    "cell": 4,
+    "rawLine": 934,
+    "texts": [
+      "Wallpaper & style",
+      "Widgets",
+      "Home settings"
+    ],
+    "interpretation": "swipe opened home customization, not the app drawer; action4 back exited it"
+  }
+}

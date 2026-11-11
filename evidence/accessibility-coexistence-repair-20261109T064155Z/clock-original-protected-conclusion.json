@@ -1,0 +1,132 @@
+{
+  "label": "ClockOriginalP1",
+  "rawOfficialReward": 1.0,
+  "executedActionCount": 3,
+  "receivedForestCount": 850,
+  "zeroWindowReceiveCount": 0,
+  "selectedOfficialForest": {
+    "present": true,
+    "recvSeq": 846,
+    "storedIdentityIsActual": true,
+    "receiveObjectIdMatchesRecord": true,
+    "identityMismatch": false,
+    "windowCount": 2,
+    "serializedBytes": 5044,
+    "sha256": "78ab30978814acfa910cfe6a8fdfcc27c31911297e7ea672e9b84d58208c876c",
+    "nodeCount": 25,
+    "successTextFound": false,
+    "windows": [
+      {
+        "id": 9762,
+        "title": "",
+        "windowType": 1,
+        "isActive": true,
+        "isFocused": true,
+        "nodeCount": 17,
+        "packageNames": [
+          "com.google.android.deskclock"
+        ]
+      },
+      {
+        "id": 9756,
+        "title": "",
+        "windowType": 3,
+        "isActive": false,
+        "isFocused": false,
+        "nodeCount": 8,
+        "packageNames": [
+          "com.android.systemui"
+        ]
+      }
+    ],
+    "receivedAtUnix": 1794209065.494138,
+    "receivedHostUtc": "2026-11-09T07:24:25Z",
+    "receiveAgeSeconds": 0.07881903648376465,
+    "recvTransport": "unary",
+    "recvAdmitted": true,
+    "recvAdmittedByDrain": true,
+    "recvAdmittedByDrainIndex": 8,
+    "recvAdmittedByPull": null,
+    "recvPaused": false
+  },
+  "traceErrors": [],
+  "bindingPhases": [
+    {
+      "label": "appium-session-request",
+      "boundServices": "     Bound services:{Service[label=com.google.androidenv.accessibilityforwarder.Acce\u2026, feedbackType[FEEDBACK_GENERIC], capabilities=1, eventTypes=TYPES_ALL_MASK, notificationTimeout=0, requestA11yBtn=false]}",
+      "forwarderPid": "26227"
+    },
+    {
+      "label": "appium-session-created",
+      "boundServices": "     Bound services:{Service[label=com.google.androidenv.accessibilityforwarder.Acce\u2026, feedbackType[FEEDBACK_GENERIC], capabilities=1, eventTypes=TYPES_ALL_MASK, notificationTimeout=0, requestA11yBtn=false]}",
+      "forwarderPid": "26227"
+    },
+    {
+      "label": "appium-quit-request",
+      "boundServices": "     Bound services:{Service[label=com.google.androidenv.accessibilityforwarder.Acce\u2026, feedbackType[FEEDBACK_GENERIC], capabilities=1, eventTypes=TYPES_ALL_MASK, notificationTimeout=0, requestA11yBtn=false]}",
+      "forwarderPid": "26227"
+    },
+    {
+      "label": "appium-quit-response",
+      "boundServices": "     Bound services:{Service[label=com.google.androidenv.accessibilityforwarder.Acce\u2026, feedbackType[FEEDBACK_GENERIC], capabilities=1, eventTypes=TYPES_ALL_MASK, notificationTimeout=0, requestA11yBtn=false]}",
+      "forwarderPid": "26227"
+    },
+    {
+      "label": "postrun",
+      "boundServices": "     Bound services:{Service[label=com.google.androidenv.accessibilityforwarder.Acce\u2026, feedbackType[FEEDBACK_GENERIC], capabilities=1, eventTypes=TYPES_ALL_MASK, notificationTimeout=0, requestA11yBtn=false]}",
+      "forwarderPid": "26227"
+    }
+  ],
+  "visualReview": "Three actual PNGs read: stopwatch zero-time, play/Start visible, stopwatch tab selected at prequit/postquit/original evaluator capture.",
+  "nativeLogInterpretation": "Device ring buffer includes previous unit logs. Current forwarder PID26227 stays stable in sampled stages; no FATAL EXCEPTION found for that PID. Current UiAutomation init line prints flags=0 despite actual requested/returned cap=true; do not claim a native flags16 log or use that initial line alone to refute later effective coexistence. Bound service at all sampled stages plus actual nonempty DeskClock stream establish observed coexistence.",
+  "originalPredicateLocals": {
+    "start_present": true,
+    "n_stopwatch": 2,
+    "rawReturn": true,
+    "returnLine": 63
+  },
+  "cleanup": {
+    "agentSession": {
+      "agentQuitReturned": true,
+      "attribution": "agent",
+      "sessionIdSha256": "7d192dc60e463130607ce895671bf34208121528e652621498e91fa099838e7f",
+      "status": "closed",
+      "verification": {
+        "activeSessionCount": 0,
+        "attemptedSessionCount": 1,
+        "ownedSessionCount": 1,
+        "pendingCreateCount": 0,
+        "pendingRequestCount": 0,
+        "reclaimedSessionCount": 0,
+        "reclaimedSessionHashes": [],
+        "sessions": [
+          {
+            "absentVerified": true,
+            "alreadyAbsent": true,
+            "errors": [],
+            "presentVerified": false,
+            "quitReturned": false,
+            "sessionHash": "7d192dc60e463130607ce895671bf34208121528e652621498e91fa099838e7f"
+          }
+        ],
+        "status": "unknown",
+        "unknownCreationOutcomeCount": 0
+      },
+      "verificationStatus": "absent"
+    },
+    "environment": "closed",
+    "taskTearDown": "completed"
+  },
+  "nativeFlagsEvidence": {
+    "initialLog": "Current UiAutomation PID27782/id903 prints flags=0; preserved verbatim",
+    "savedDumpsysNumericEffectiveFlags": null,
+    "savedDumpsysReason": "The complete session-created and pre-quit dumps print Ui Automation eventTypes/notificationTimeout, but no numeric flags",
+    "reconnectionOrFlagSwitchDirectlyObserved": false,
+    "aospSource": "https://raw.githubusercontent.com/aosp-mirror/platform_frameworks_base/android13-release/core/java/android/app/UiAutomation.java",
+    "aospConnectOrdering": "connectWithTimeout calls remote mUiAutomationConnection.connect(mClient, flags) before assigning mFlags = flags; callback init logs UiAutomation.this, whose toString reads mFlags",
+    "interpretation": "[INFERENCE] An Init log may print the default zero field before assignment even when the incoming connect flag is one. The log does not require or prove a subsequent reconnect/flag switch. This source-level possibility is not a measurement of this device's final numeric flags.",
+    "empiricalCoexistence": "Forwarder remains bound alongside Ui Automation in captured session-created/pre-quit dumps; PID26227 stays stable; 850 host receives contain no zero-window forests"
+  },
+  "postExitWorkspaceAbsence": "workspace-post-exit-absence.json",
+  "formalScore": null
+}

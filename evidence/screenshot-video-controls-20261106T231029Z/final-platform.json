@@ -1,0 +1,14 @@
+{
+  "name": "final-platform",
+  "observedAtUnix": 1794011607.282667,
+  "command": [
+    "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+    "-s",
+    "emulator-5554",
+    "shell",
+    "cat /proc/sys/kernel/random/boot_id; pidof system_server surfaceflinger; service check activity; service check settings; service check window; appops get org.videolan.vlc MANAGE_EXTERNAL_STORAGE; sha256sum /sdcard/Download/ZwUN_moment_70_.mp4; test ! -e /sdcard/Android/data/org.videolan.vlc/files/fsq_control_ZwUN_moment_70_.mp4 && echo private_fixture_absent"
+  ],
+  "returnCode": 0,
+  "stdout": "d7fa5bd9-83b9-446b-bf4f-3b0cddf6657f\n340 505\nService activity: found\nService settings: found\nService window: found\nUid mode: MANAGE_EXTERNAL_STORAGE: deny\nMANAGE_EXTERNAL_STORAGE: default; time=+8m2s85ms ago; rejectTime=+1h13m51s912ms ago\n2f077a7d79f7dd987ef5e8667cfaa39139cec3d3f5400471af2d45d70901bc5b  /sdcard/Download/ZwUN_moment_70_.mp4\nprivate_fixture_absent\n",
+  "stderr": ""
+}

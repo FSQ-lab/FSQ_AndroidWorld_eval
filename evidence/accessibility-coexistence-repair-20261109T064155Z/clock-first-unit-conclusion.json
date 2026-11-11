@@ -1,0 +1,195 @@
+{
+  "status": "first-unit-completed-not-final-matrix-causal-verdict",
+  "task": "ClockStopWatchPausedVerify",
+  "variant": "original-APK/omitted-capability",
+  "rawOfficialReward": 0.0,
+  "executedActions": 3,
+  "originalPredicate": {
+    "kind": "predicate",
+    "file": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/android_world/task_evals/single/clock.py",
+    "firstLine": 43,
+    "called": {
+      "unix": 1794208950.431393,
+      "monotonicNs": 583860202034708
+    },
+    "events": [
+      {
+        "event": "line",
+        "line": 48,
+        "unix": 1794208950.431411,
+        "monotonicNs": 583860202052708,
+        "rawBranchLocals": {
+          "current_activity": "com.google.android.deskclock/com.android.deskclock.DeskClock"
+        }
+      },
+      {
+        "event": "line",
+        "line": 50,
+        "unix": 1794208950.4314182,
+        "monotonicNs": 583860202060083,
+        "rawBranchLocals": {
+          "current_activity": "com.google.android.deskclock/com.android.deskclock.DeskClock"
+        }
+      },
+      {
+        "event": "line",
+        "line": 51,
+        "unix": 1794208950.4314198,
+        "monotonicNs": 583860202061833,
+        "rawBranchLocals": {
+          "current_activity": "com.google.android.deskclock/com.android.deskclock.DeskClock",
+          "start_present": false
+        }
+      },
+      {
+        "event": "line",
+        "line": 53,
+        "unix": 1794208950.431423,
+        "monotonicNs": 583860202064666,
+        "rawBranchLocals": {
+          "current_activity": "com.google.android.deskclock/com.android.deskclock.DeskClock",
+          "start_present": false,
+          "n_stopwatch": 0
+        }
+      },
+      {
+        "event": "line",
+        "line": 61,
+        "unix": 1794208950.431427,
+        "monotonicNs": 583860202068875,
+        "rawBranchLocals": {
+          "current_activity": "com.google.android.deskclock/com.android.deskclock.DeskClock",
+          "start_present": false,
+          "n_stopwatch": 0
+        }
+      },
+      {
+        "event": "line",
+        "line": 62,
+        "unix": 1794208950.431438,
+        "monotonicNs": 583860202079291,
+        "rawBranchLocals": {
+          "current_activity": "com.google.android.deskclock/com.android.deskclock.DeskClock",
+          "start_present": false,
+          "n_stopwatch": 0
+        }
+      },
+      {
+        "event": "line",
+        "line": 63,
+        "unix": 1794208950.431444,
+        "monotonicNs": 583860202085791,
+        "rawBranchLocals": {
+          "current_activity": "com.google.android.deskclock/com.android.deskclock.DeskClock",
+          "start_present": false,
+          "n_stopwatch": 0
+        }
+      },
+      {
+        "event": "return",
+        "line": 63,
+        "unix": 1794208950.431447,
+        "monotonicNs": 583860202088750,
+        "rawBranchLocals": {
+          "current_activity": "com.google.android.deskclock/com.android.deskclock.DeskClock",
+          "start_present": false,
+          "n_stopwatch": 0
+        },
+        "rawReturn": false,
+        "rawReturnType": "bool"
+      }
+    ],
+    "actualArguments": {
+      "ui_elements": [],
+      "current_activity": "com.google.android.deskclock/com.android.deskclock.DeskClock"
+    },
+    "uiElementsObjectId": 5027411008
+  },
+  "actualOfficialInput": {
+    "path": "evaluator-000/state-00",
+    "stateObjectId": 5027298192,
+    "forestObjectId": 5028589824,
+    "uiElementsObjectId": 5027411008,
+    "uiElementCount": 0,
+    "isActualPredicateInput": true,
+    "forestTrace": {
+      "present": true,
+      "recvSeq": 773,
+      "storedIdentityIsActual": true,
+      "receiveObjectIdMatchesRecord": true,
+      "identityMismatch": false,
+      "windowCount": 0,
+      "serializedBytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "nodeCount": 0,
+      "successTextFound": false,
+      "windows": [],
+      "receivedAtUnix": 1794208945.9262998,
+      "receivedHostUtc": "2026-11-09T07:22:25Z",
+      "receiveAgeSeconds": 4.683881998062134,
+      "recvTransport": "unary",
+      "recvAdmitted": true,
+      "recvAdmittedByDrain": true,
+      "recvAdmittedByDrainIndex": 8,
+      "recvAdmittedByPull": null,
+      "recvPaused": false
+    },
+    "screenshotBackend": "exact-original-state.pixels",
+    "officialEvaluatorInput": true,
+    "saved": {
+      "unix": 1794208950.610184,
+      "monotonicNs": 583860380823666
+    }
+  },
+  "preQuitAppiumFieldSummary": {
+    "postHocFieldParsingOnly": true,
+    "exactStartContentDescription": true,
+    "stopwatchCountUsingOriginalIfElifPrecedence": 3
+  },
+  "visualReview": {
+    "preQuit": "Stopwatch selected, zero time and play/Start control visible",
+    "postQuit": "Same paused zero stopwatch UI",
+    "originalEvaluatorPixels": "Same paused zero stopwatch UI; no foreground change observed in these three snapshots"
+  },
+  "finding": "This run official evaluator consumed a strongly-identified admitted zero-window/zero-node forest and empty ui_elements, while original current_activity was DeskClock; exact predicate false at line63. UI task failure is not supported by the captured input/snapshots. First upstream loss mechanism still requires stream/binding timeline and fixed comparisons.",
+  "boundaries": [
+    "Not a reconstruction of historical episode007 forest/activity",
+    "Host receiveAgeSeconds is not device generation age",
+    "Two get_state return trace events are nested wrapper returns of the same state object, not two evaluator calls",
+    "Pre/postquit snapshots are diagnostic overhead, not official inputs",
+    "NoRootCauseClaimBeforeRemainingControls"
+  ],
+  "cleanup": {
+    "agentSession": {
+      "agentQuitReturned": true,
+      "attribution": "agent",
+      "sessionIdSha256": "d4a274c858dee900024a3a8c0f4dbea2d01fb39bb23eae1ba294726e6cca4cb3",
+      "status": "closed",
+      "verification": {
+        "activeSessionCount": 0,
+        "attemptedSessionCount": 1,
+        "ownedSessionCount": 1,
+        "pendingCreateCount": 0,
+        "pendingRequestCount": 0,
+        "reclaimedSessionCount": 0,
+        "reclaimedSessionHashes": [],
+        "sessions": [
+          {
+            "absentVerified": true,
+            "alreadyAbsent": true,
+            "errors": [],
+            "presentVerified": false,
+            "quitReturned": false,
+            "sessionHash": "d4a274c858dee900024a3a8c0f4dbea2d01fb39bb23eae1ba294726e6cca4cb3"
+          }
+        ],
+        "status": "unknown",
+        "unknownCreationOutcomeCount": 0
+      },
+      "verificationStatus": "absent"
+    },
+    "environment": "closed",
+    "taskTearDown": "completed"
+  },
+  "evidenceRoot": "evidence/accessibility-coexistence-repair-20261109T064155Z/clock-matrix/ClockOriginalP0"
+}

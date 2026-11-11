@@ -1,0 +1,215 @@
+{
+  "sequence": 62,
+  "label": "clock-running-recover-timeout-evidence",
+  "command": {
+    "op": "exec",
+    "label": "clock-running-recover-timeout-evidence",
+    "code": "{'firstStateAvailable': 'first' in globals(), 'first':globals().get('first'), 'firstTime':globals().get('first_time'), 'sessionIdentity':owned_session_id, 'sessionClosed': driver.session_id is None}"
+  },
+  "startedAtUnix": 1794192184.793853,
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"status\":\"completed\",\"stdout\":\"\",\"stderr\":\"\",\"result\":{\"firstStateAvailable\":true,\"first\":{\"package\":\"com.google.android.deskclock\",\"activity\":\"com.android.deskclock.DeskClock\",\"controls\":[{\"text\":\"Stopwatch\",\"content-desc\":\"\",\"resource-id\":\"com.google.android.deskclock:id/action_bar_title\",\"class\":\"android.widget.TextView\",\"bounds\":\"[63,175][343,248]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"\",\"content-desc\":\"More options\",\"resource-id\":\"com.google.android.deskclock:id/overflow_action_button\",\"class\":\"android.widget.ImageView\",\"bounds\":\"[975,148][1080,274]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"10\",\"content-desc\":\"\",\"resource-id\":\"com.google.android.deskclock:id/stopwatch_time_text\",\"class\":\"android.widget.TextView\",\"bounds\":\"[417,871][663,1119]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"47\",\"content-desc\":\"\",\"resource-id\":\"com.google.android.deskclock:id/stopwatch_hundredths_text\",\"class\":\"android.widget.TextView\",\"bounds\":\"[499,1044][663,1217]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"\",\"content-desc\":\"Reset\",\"resource-id\":\"com.google.android.deskclock:id/left_button\",\"class\":\"android.widget.ImageButton\",\"bounds\":\"[116,1886][263,2033]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"\",\"content-desc\":\"Pause\",\"resource-id\":\"com.google.android.deskclock:id/fab\",\"class\":\"android.widget.Button\",\"bounds\":\"[341,1833][740,2085]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"\",\"content-desc\":\"Lap\",\"resource-id\":\"com.google.android.deskclock:id/right_button\",\"class\":\"android.widget.ImageButton\",\"bounds\":\"[817,1886][964,2033]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"\",\"content-desc\":\"Alarm\",\"resource-id\":\"com.google.android.deskclock:id/tab_menu_alarm\",\"class\":\"android.widget.FrameLayout\",\"bounds\":\"[0,2127][216,2337]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"Alarm\",\"content-desc\":\"\",\"resource-id\":\"com.google.android.deskclock:id/navigation_bar_item_small_label_view\",\"class\":\"android.widget.TextView\",\"bounds\":\"[57,2253][159,2306]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"\",\"content-desc\":\"Clock\",\"resource-id\":\"com.google.android.deskclock:id/tab_menu_clock\",\"class\":\"android.widget.FrameLayout\",\"bounds\":\"[216,2127][432,2337]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"Clock\",\"content-desc\":\"\",\"resource-id\":\"com.google.android.deskclock:id/navigation_bar_item_small_label_view\",\"class\":\"android.widget.TextView\",\"bounds\":\"[274,2253][373,2306]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"\",\"content-desc\":\"Timer\",\"resource-id\":\"com.google.android.deskclock:id/tab_menu_timer\",\"class\":\"android.widget.FrameLayout\",\"bounds\":\"[432,2127][648,2337]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"Timer\",\"content-desc\":\"\",\"resource-id\":\"com.google.android.deskclock:id/navigation_bar_item_small_label_view\",\"class\":\"android.widget.TextView\",\"bounds\":\"[490,2253][589,2306]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"\",\"content-desc\":\"Stopwatch\",\"resource-id\":\"com.google.android.deskclock:id/tab_menu_stopwatch\",\"class\":\"android.widget.FrameLayout\",\"bounds\":\"[648,2127][864,2337]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"Stopwatch\",\"content-desc\":\"\",\"resource-id\":\"com.google.android.deskclock:id/navigation_bar_item_large_label_view\",\"class\":\"android.widget.TextView\",\"bounds\":\"[663,2253][849,2306]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"\",\"content-desc\":\"Bedtime\",\"resource-id\":\"com.google.android.deskclock:id/tab_menu_bedtime\",\"class\":\"android.widget.FrameLayout\",\"bounds\":\"[864,2127][1080,2337]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"Bedtime\",\"content-desc\":\"\",\"resource-id\":\"com.google.android.deskclock:id/navigation_bar_item_small_label_view\",\"class\":\"android.widget.TextView\",\"bounds\":\"[899,2253][1044,2306]\",\"clickable\":\"false\",\"focused\":\"false\"}]},\"firstTime\":\"10\",\"sessionIdentity\":\"f1b5e983-c92d-4f5b-acac-38ec8ceecf96\",\"sessionClosed\":false},\"executionCount\":29,\"durationMs\":2,\"kernelState\":\"alive\",\"runtime\":{\"executable\":\"/Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python\",\"pythonVersion\":\"3.11.16\",\"workingDirectory\":\"/Users/qunmi/Documents/FSQ_LAB/amkernel\",\"environmentKind\":\"project_venv\",\"implementation\":\"CPython\",\"platform\":\"macOS-26.6.2-arm64-arm-64bit\",\"packages\":[]},\"output\":{\"totalBytes\":0,\"totalLines\":0,\"discardedBytes\":0,\"discardedLines\":0,\"truncated\":false,\"limitBytes\":268435456,\"limitExceeded\":false,\"live\":\"unavailable\"},\"displays\":[],\"artifacts\":[]}"
+      }
+    ],
+    "structured_content": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "firstStateAvailable": true,
+        "first": {
+          "package": "com.google.android.deskclock",
+          "activity": "com.android.deskclock.DeskClock",
+          "controls": [
+            {
+              "text": "Stopwatch",
+              "content-desc": "",
+              "resource-id": "com.google.android.deskclock:id/action_bar_title",
+              "class": "android.widget.TextView",
+              "bounds": "[63,175][343,248]",
+              "clickable": "false",
+              "focused": "false"
+            },
+            {
+              "text": "",
+              "content-desc": "More options",
+              "resource-id": "com.google.android.deskclock:id/overflow_action_button",
+              "class": "android.widget.ImageView",
+              "bounds": "[975,148][1080,274]",
+              "clickable": "true",
+              "focused": "false"
+            },
+            {
+              "text": "10",
+              "content-desc": "",
+              "resource-id": "com.google.android.deskclock:id/stopwatch_time_text",
+              "class": "android.widget.TextView",
+              "bounds": "[417,871][663,1119]",
+              "clickable": "false",
+              "focused": "false"
+            },
+            {
+              "text": "47",
+              "content-desc": "",
+              "resource-id": "com.google.android.deskclock:id/stopwatch_hundredths_text",
+              "class": "android.widget.TextView",
+              "bounds": "[499,1044][663,1217]",
+              "clickable": "false",
+              "focused": "false"
+            },
+            {
+              "text": "",
+              "content-desc": "Reset",
+              "resource-id": "com.google.android.deskclock:id/left_button",
+              "class": "android.widget.ImageButton",
+              "bounds": "[116,1886][263,2033]",
+              "clickable": "true",
+              "focused": "false"
+            },
+            {
+              "text": "",
+              "content-desc": "Pause",
+              "resource-id": "com.google.android.deskclock:id/fab",
+              "class": "android.widget.Button",
+              "bounds": "[341,1833][740,2085]",
+              "clickable": "true",
+              "focused": "false"
+            },
+            {
+              "text": "",
+              "content-desc": "Lap",
+              "resource-id": "com.google.android.deskclock:id/right_button",
+              "class": "android.widget.ImageButton",
+              "bounds": "[817,1886][964,2033]",
+              "clickable": "true",
+              "focused": "false"
+            },
+            {
+              "text": "",
+              "content-desc": "Alarm",
+              "resource-id": "com.google.android.deskclock:id/tab_menu_alarm",
+              "class": "android.widget.FrameLayout",
+              "bounds": "[0,2127][216,2337]",
+              "clickable": "true",
+              "focused": "false"
+            },
+            {
+              "text": "Alarm",
+              "content-desc": "",
+              "resource-id": "com.google.android.deskclock:id/navigation_bar_item_small_label_view",
+              "class": "android.widget.TextView",
+              "bounds": "[57,2253][159,2306]",
+              "clickable": "false",
+              "focused": "false"
+            },
+            {
+              "text": "",
+              "content-desc": "Clock",
+              "resource-id": "com.google.android.deskclock:id/tab_menu_clock",
+              "class": "android.widget.FrameLayout",
+              "bounds": "[216,2127][432,2337]",
+              "clickable": "true",
+              "focused": "false"
+            },
+            {
+              "text": "Clock",
+              "content-desc": "",
+              "resource-id": "com.google.android.deskclock:id/navigation_bar_item_small_label_view",
+              "class": "android.widget.TextView",
+              "bounds": "[274,2253][373,2306]",
+              "clickable": "false",
+              "focused": "false"
+            },
+            {
+              "text": "",
+              "content-desc": "Timer",
+              "resource-id": "com.google.android.deskclock:id/tab_menu_timer",
+              "class": "android.widget.FrameLayout",
+              "bounds": "[432,2127][648,2337]",
+              "clickable": "true",
+              "focused": "false"
+            },
+            {
+              "text": "Timer",
+              "content-desc": "",
+              "resource-id": "com.google.android.deskclock:id/navigation_bar_item_small_label_view",
+              "class": "android.widget.TextView",
+              "bounds": "[490,2253][589,2306]",
+              "clickable": "false",
+              "focused": "false"
+            },
+            {
+              "text": "",
+              "content-desc": "Stopwatch",
+              "resource-id": "com.google.android.deskclock:id/tab_menu_stopwatch",
+              "class": "android.widget.FrameLayout",
+              "bounds": "[648,2127][864,2337]",
+              "clickable": "false",
+              "focused": "false"
+            },
+            {
+              "text": "Stopwatch",
+              "content-desc": "",
+              "resource-id": "com.google.android.deskclock:id/navigation_bar_item_large_label_view",
+              "class": "android.widget.TextView",
+              "bounds": "[663,2253][849,2306]",
+              "clickable": "false",
+              "focused": "false"
+            },
+            {
+              "text": "",
+              "content-desc": "Bedtime",
+              "resource-id": "com.google.android.deskclock:id/tab_menu_bedtime",
+              "class": "android.widget.FrameLayout",
+              "bounds": "[864,2127][1080,2337]",
+              "clickable": "true",
+              "focused": "false"
+            },
+            {
+              "text": "Bedtime",
+              "content-desc": "",
+              "resource-id": "com.google.android.deskclock:id/navigation_bar_item_small_label_view",
+              "class": "android.widget.TextView",
+              "bounds": "[899,2253][1044,2306]",
+              "clickable": "false",
+              "focused": "false"
+            }
+          ]
+        },
+        "firstTime": "10",
+        "sessionIdentity": "f1b5e983-c92d-4f5b-acac-38ec8ceecf96",
+        "sessionClosed": false
+      },
+      "executionCount": 29,
+      "durationMs": 2,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/Users/qunmi/Documents/FSQ_LAB/amkernel",
+        "environmentKind": "project_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "unavailable"
+      },
+      "displays": [],
+      "artifacts": []
+    },
+    "is_error": false,
+    "result_type": "complete"
+  },
+  "completedAtUnix": 1794192184.802304
+}

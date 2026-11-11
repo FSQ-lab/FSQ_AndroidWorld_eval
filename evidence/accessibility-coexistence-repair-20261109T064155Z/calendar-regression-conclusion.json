@@ -1,0 +1,88 @@
+{
+  "label": "SimpleCalendarEventsOnDatePatchedP1",
+  "task": {
+    "complexity": 1,
+    "goal": "What events do I have October 24 in Simple Calendar Pro? Answer with the titles only. If there are multiple titles, format your answer as a comma separated list.",
+    "name": "SimpleCalendarEventsOnDate",
+    "params": {
+      "date": "October 24 2023",
+      "duration": "25 minutes",
+      "seed": 1569884782,
+      "time": "11:00am",
+      "title": "Trivia Night"
+    },
+    "paramsSha256": "35497446bdb86198a6893a5d4f8f62a987bf1f2bf6f4615b00dd405b3cf0bc91"
+  },
+  "officialReward": 1.0,
+  "error": null,
+  "invalidReason": null,
+  "executedActionCount": 3,
+  "agentAnswer": {
+    "rawSubmission": {
+      "path": "raw-private/business-submission.json",
+      "sha256": "7b89b763e5cc9d1402b907bec084650d0cedcc64fddbfa99d9aa0acfdbdc30cf"
+    },
+    "reason": "valid",
+    "sha256": "e79c323e98e8a76f4df787ff423a759ce524302e76d28eeb72087276ccf40b60",
+    "taskOutcomeType": "string",
+    "validContract": true
+  },
+  "originalEvaluator": {
+    "durationSeconds": 0.0,
+    "implementation": "android_world.task_eval.is_successful"
+  },
+  "submittedOutcome": "Trivia Night",
+  "answerReceipt": {
+    "eventSequence": 2061,
+    "phase": "business",
+    "receivedAtSeconds": 113.3932869998971
+  },
+  "selectedOfficialForests": [],
+  "traceErrors": [],
+  "visualReview": "Actual prequit and postquit PNGs read: October24 (Tue), Trivia Night, 11:00\u201311:25. No extra device interaction.",
+  "scope": "Answer/string official evaluator, not a forest-scored Clock/Browser predicate; do not manufacture a selected scorer forest if no get_state was called",
+  "cleanup": {
+    "agentSession": {
+      "agentQuitReturned": true,
+      "attribution": "agent",
+      "sessionIdSha256": "4d224452373bff7f5ccf6a84b697e6d25cbad86ad3a36ece694a7acb3031e5d0",
+      "status": "closed",
+      "verification": {
+        "activeSessionCount": 0,
+        "attemptedSessionCount": 1,
+        "ownedSessionCount": 1,
+        "pendingCreateCount": 0,
+        "pendingRequestCount": 0,
+        "reclaimedSessionCount": 0,
+        "reclaimedSessionHashes": [],
+        "sessions": [
+          {
+            "absentVerified": true,
+            "alreadyAbsent": true,
+            "errors": [],
+            "presentVerified": false,
+            "quitReturned": false,
+            "sessionHash": "4d224452373bff7f5ccf6a84b697e6d25cbad86ad3a36ece694a7acb3031e5d0"
+          }
+        ],
+        "status": "unknown",
+        "unknownCreationOutcomeCount": 0
+      },
+      "verificationStatus": "absent"
+    },
+    "environment": "closed",
+    "taskTearDown": "completed"
+  },
+  "postExitWorkspaceAbsence": {
+    "observedAtUnix": 1794209843.323335,
+    "observedAfterUnitProcessCompletion": true,
+    "unitSummaryCompletedAtUnix": 1794209730.969894,
+    "workspacePath": "/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-browserdraw-forest-qvqcd_83/agent-workspace",
+    "workspaceExists": false,
+    "temporaryParentPath": "/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-browserdraw-forest-qvqcd_83",
+    "temporaryParentExists": false,
+    "originalCleanupRecordPreserved": true,
+    "scope": "host filesystem absence check only"
+  },
+  "formalScore": null
+}

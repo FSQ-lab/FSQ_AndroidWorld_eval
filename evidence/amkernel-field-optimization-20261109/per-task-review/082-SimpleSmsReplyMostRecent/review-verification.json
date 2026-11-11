@@ -1,0 +1,127 @@
+{
+  "case": "082-SimpleSmsReplyMostRecent",
+  "checkedAgainst": "frozen campaign attempt-1; read-only",
+  "newAndroidRuns": 0,
+  "newAppiumSessions": 0,
+  "originalHashes": {
+    "raw-private/agent-events.jsonl": "60b1815b79fece1249d48bc3f9d409de0b285ba02682906956166a5342406c4d",
+    "result.json": "b01d06a40f3090a9ae12558da16281b8a95a8fd280cb1fdafbb3c57cb07b2be1",
+    "manifest.json": "dbb6fe354f9a1cf7b87e52feeafd08903596d87b8531c37c9d12a50b6dc6362c"
+  },
+  "afterHashes": {
+    "raw-private/agent-events.jsonl": "60b1815b79fece1249d48bc3f9d409de0b285ba02682906956166a5342406c4d",
+    "result.json": "b01d06a40f3090a9ae12558da16281b8a95a8fd280cb1fdafbb3c57cb07b2be1",
+    "manifest.json": "dbb6fe354f9a1cf7b87e52feeafd08903596d87b8531c37c9d12a50b6dc6362c"
+  },
+  "originalsUnchanged": true,
+  "evidenceFiles": {
+    "review.md": {
+      "sha256": "c98351bbe50c438d39ad0ee674370efbbf9754c3561468ac5d800e1ca6b39edd",
+      "bytes": 8214
+    },
+    "original-python-executions.json": {
+      "sha256": "208994c0b93493c75df6a87e563f9b674ecf399a1212628d15bd7fb8fa150015",
+      "bytes": 49381
+    },
+    "observation-replay.json": {
+      "sha256": "31a0196951a74cab6a8c338ab724d5b7544c3a25dee7854cee98eec6aa5a8c83",
+      "bytes": 3147
+    },
+    "captured-launcher-search-asi-crash.png": {
+      "sha256": "43fb1b867cd585762a45aa73a9f34d93ec80547192f4a724c58ad1f4714b4bcd",
+      "bytes": 164069
+    }
+  },
+  "officialRewardRead": 0.0,
+  "stepBudget": {
+    "actions": [
+      {
+        "kind": "click",
+        "path": "/session/:sessionId/element/:elementId/click",
+        "status": 200
+      },
+      {
+        "kind": "mobile: pressKey",
+        "path": "/session/:sessionId/execute/sync",
+        "status": 200
+      },
+      {
+        "kind": "actions",
+        "path": "/session/:sessionId/actions",
+        "status": 200
+      },
+      {
+        "kind": "back",
+        "path": "/session/:sessionId/back",
+        "status": 200
+      },
+      {
+        "kind": "click",
+        "path": "/session/:sessionId/element/:elementId/click",
+        "status": 200
+      },
+      {
+        "kind": "input",
+        "path": "/session/:sessionId/element/:elementId/value",
+        "status": 200
+      },
+      {
+        "kind": "click",
+        "path": "/session/:sessionId/element/:elementId/click",
+        "status": 200
+      },
+      {
+        "kind": "click",
+        "path": "/session/:sessionId/element/:elementId/click",
+        "status": 200
+      },
+      {
+        "kind": "input",
+        "path": "/session/:sessionId/element/:elementId/value",
+        "status": 200
+      },
+      {
+        "kind": "actions",
+        "path": "/session/:sessionId/actions",
+        "status": 200
+      },
+      {
+        "kind": "click",
+        "path": "/session/:sessionId/element/:elementId/click",
+        "status": 200
+      },
+      {
+        "kind": "back",
+        "path": "/session/:sessionId/back",
+        "status": 200
+      }
+    ],
+    "agentFinished": true,
+    "agentIndicatedDone": false,
+    "closed": true,
+    "closureReason": "step_budget",
+    "executedActionCount": 12,
+    "exhausted": true,
+    "inflightActionCount": 0,
+    "maxSteps": 12,
+    "protocol": {
+      "allocator": "android_world.suite_utils._allocate_step_budget",
+      "runner": "android_world.episode_runner.run_episode",
+      "stepUnit": "one gated Appium UI interaction",
+      "version": 1
+    },
+    "referenceStepsExecuted": 12,
+    "rejectedActionCount": 0
+  },
+  "rawFinalAssistantLine": 3389,
+  "cleanupSteerLine": 3343,
+  "normalizedFinalText": null,
+  "agentCompleted": false,
+  "agentIndicatedDone": false,
+  "predicateReplayExecuted": true,
+  "notes": [
+    "No new Android/Appium session was created.",
+    "Only saved envelopes, stepBudget, and captured PNG were replayed.",
+    "Original campaign, manifest, result, and raw event hashes were unchanged before/after."
+  ]
+}

@@ -1,0 +1,959 @@
+{
+  "scope": "Offline extraction from immutable 008 Agent tool events; no device operations; rawPrivateLine is 1-based JSONL line",
+  "sourceEpisode": "008-ClockStopWatchRunning/attempt-1",
+  "sources": {
+    "result.json": {
+      "sha256": "090e04a2121e3faf250b8a29c781237bcd8e5af324ba90901be100ac2a3c8f3a",
+      "bytes": 19916
+    },
+    "normalized-agent-events.json": {
+      "sha256": "7435b7a357a113c1335c35779e10dc1abe77b59020d1c35d9607935b514c40cd",
+      "bytes": 5452
+    },
+    "raw-private/agent-events.jsonl": {
+      "sha256": "ee2e6cd772509775697d0d69fa1ee530945a2b9066c5710e229509012bb3e9e4",
+      "bytes": 29423591
+    }
+  },
+  "executions": [
+    {
+      "sourceLine": 374,
+      "code": "from appium import webdriver\nfrom appium.options.android import UiAutomator2Options\noptions = UiAutomator2Options().load_capabilities({\n    'platformName': 'Android',\n    'appium:automationName': 'UiAutomator2',\n    'appium:udid': 'emulator-5554',\n    'appium:noReset': True,\n    'appium:autoLaunch': False,\n    'appium:skipUnlock': True,\n    'appium:newCommandTimeout': 300,\n})\ndriver = webdriver.Remote('http://127.0.0.1:57715', options=options)\nsession_id = driver.session_id\n{'ownedSessionId': session_id, 'newCommandTimeout': driver.capabilities.get('newCommandTimeout', driver.capabilities.get('appium:newCommandTimeout'))}",
+      "timeout": 90,
+      "responseSourceLine": 375,
+      "response": {
+        "status": "completed",
+        "stdout": "",
+        "stderr": "",
+        "result": {
+          "ownedSessionId": "c8409c8c-1973-42ab-897e-e8be2cd95535",
+          "newCommandTimeout": 300
+        },
+        "executionCount": 1,
+        "durationMs": 31573,
+        "kernelState": "alive",
+        "runtime": {
+          "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+          "pythonVersion": "3.11.16",
+          "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+          "environmentKind": "active_venv",
+          "implementation": "CPython",
+          "platform": "macOS-26.6.2-arm64-arm-64bit",
+          "packages": []
+        },
+        "output": {
+          "totalBytes": 0,
+          "totalLines": 0,
+          "discardedBytes": 0,
+          "discardedLines": 0,
+          "truncated": false,
+          "limitBytes": 268435456,
+          "limitExceeded": false,
+          "live": "progress"
+        },
+        "displays": [],
+        "artifacts": []
+      }
+    },
+    {
+      "sourceLine": 661,
+      "code": "from appium.webdriver.common.appiumby import AppiumBy\nstate = {'package': driver.current_package, 'activity': driver.current_activity}\nels = driver.find_elements(AppiumBy.XPATH, '//*')\nfacts=[]\nfor e in els:\n    try:\n        t=e.get_attribute('text'); d=e.get_attribute('content-desc'); rid=e.get_attribute('resource-id'); c=e.get_attribute('class'); ck=e.get_attribute('clickable')\n        if t or d or rid:\n            facts.append({'text':t,'desc':d,'id':rid,'class':c,'clickable':ck})\n    except Exception:\n        pass\n{'state':state,'controls':facts[:40]}",
+      "timeout": 30,
+      "responseSourceLine": 662,
+      "response": {
+        "status": "completed",
+        "stdout": "",
+        "stderr": "",
+        "result": {
+          "state": {
+            "package": "com.google.android.apps.nexuslauncher",
+            "activity": ".NexusLauncherActivity"
+          },
+          "controls": [
+            {
+              "text": "",
+              "desc": "null",
+              "id": "null",
+              "class": "android.widget.FrameLayout",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "null",
+              "class": "android.widget.LinearLayout",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "android:id/content",
+              "class": "android.widget.FrameLayout",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "com.google.android.apps.nexuslauncher:id/launcher",
+              "class": "android.widget.FrameLayout",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "com.google.android.apps.nexuslauncher:id/drag_layer",
+              "class": "android.widget.FrameLayout",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "com.google.android.apps.nexuslauncher:id/scrim_view",
+              "class": "android.view.View",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "com.google.android.apps.nexuslauncher:id/workspace",
+              "class": "android.widget.ScrollView",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "null",
+              "class": "android.view.ViewGroup",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "null",
+              "class": "android.view.ViewGroup",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "com.google.android.apps.nexuslauncher:id/search_container_workspace",
+              "class": "android.widget.FrameLayout",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "com.google.android.apps.nexuslauncher:id/bc_smartspace_view",
+              "class": "android.widget.FrameLayout",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "com.google.android.apps.nexuslauncher:id/smartspace_card_pager",
+              "class": "androidx.viewpager.widget.ViewPager",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "null",
+              "class": "android.view.ViewGroup",
+              "clickable": "true"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "null",
+              "class": "android.view.ViewGroup",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "com.google.android.apps.nexuslauncher:id/text_group",
+              "class": "android.view.ViewGroup",
+              "clickable": "false"
+            },
+            {
+              "text": "00:-18",
+              "desc": "00:-17",
+              "id": "com.google.android.apps.nexuslauncher:id/title_text",
+              "class": "android.widget.TextView",
+              "clickable": "true"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "com.google.android.apps.nexuslauncher:id/smartspace_subtitle_group",
+              "class": "android.view.ViewGroup",
+              "clickable": "false"
+            },
+            {
+              "text": "Gmail",
+              "desc": "Gmail",
+              "id": "null",
+              "class": "android.widget.TextView",
+              "clickable": "true"
+            },
+            {
+              "text": "Photos",
+              "desc": "Photos",
+              "id": "null",
+              "class": "android.widget.TextView",
+              "clickable": "true"
+            },
+            {
+              "text": "YouTube",
+              "desc": "YouTube",
+              "id": "null",
+              "class": "android.widget.TextView",
+              "clickable": "true"
+            },
+            {
+              "text": "",
+              "desc": "Home",
+              "id": "null",
+              "class": "android.view.View",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "com.google.android.apps.nexuslauncher:id/page_indicator",
+              "class": "android.view.View",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "com.google.android.apps.nexuslauncher:id/hotseat",
+              "class": "android.view.ViewGroup",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "null",
+              "class": "android.view.ViewGroup",
+              "clickable": "false"
+            },
+            {
+              "text": "Phone",
+              "desc": "Phone",
+              "id": "null",
+              "class": "android.widget.TextView",
+              "clickable": "true"
+            },
+            {
+              "text": "Messages",
+              "desc": "Messages",
+              "id": "null",
+              "class": "android.widget.TextView",
+              "clickable": "true"
+            },
+            {
+              "text": "Chrome",
+              "desc": "Chrome",
+              "id": "null",
+              "class": "android.widget.TextView",
+              "clickable": "true"
+            },
+            {
+              "text": "Gmail",
+              "desc": "Predicted app: Gmail",
+              "id": "null",
+              "class": "android.widget.TextView",
+              "clickable": "true"
+            },
+            {
+              "text": "",
+              "desc": "Search",
+              "id": "com.google.android.apps.nexuslauncher:id/search_container_hotseat",
+              "class": "android.widget.FrameLayout",
+              "clickable": "true"
+            },
+            {
+              "text": "",
+              "desc": "Google app",
+              "id": "com.google.android.apps.nexuslauncher:id/g_icon",
+              "class": "android.widget.ImageView",
+              "clickable": "true"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "com.google.android.apps.nexuslauncher:id/end_part",
+              "class": "android.widget.LinearLayout",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "Voice search",
+              "id": "com.google.android.apps.nexuslauncher:id/mic_icon",
+              "class": "android.widget.ImageView",
+              "clickable": "true"
+            },
+            {
+              "text": "",
+              "desc": "Google Lens",
+              "id": "com.google.android.apps.nexuslauncher:id/lens_icon",
+              "class": "android.widget.ImageButton",
+              "clickable": "true"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "com.google.android.apps.nexuslauncher:id/overview_actions_view",
+              "class": "android.widget.FrameLayout",
+              "clickable": "false"
+            }
+          ]
+        },
+        "executionCount": 2,
+        "durationMs": 1713,
+        "kernelState": "alive",
+        "runtime": {
+          "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+          "pythonVersion": "3.11.16",
+          "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+          "environmentKind": "active_venv",
+          "implementation": "CPython",
+          "platform": "macOS-26.6.2-arm64-arm-64bit",
+          "packages": []
+        },
+        "output": {
+          "totalBytes": 0,
+          "totalLines": 0,
+          "discardedBytes": 0,
+          "discardedLines": 0,
+          "truncated": false,
+          "limitBytes": 268435456,
+          "limitExceeded": false,
+          "live": "progress"
+        },
+        "displays": [],
+        "artifacts": []
+      }
+    },
+    {
+      "sourceLine": 873,
+      "code": "size=driver.get_window_size()\ndriver.swipe(size['width']//2, int(size['height']*0.82), size['width']//2, int(size['height']*0.22), 500)\nfrom selenium.webdriver.support.ui import WebDriverWait\nWebDriverWait(driver, 5).until(lambda d: any((e.text or '') == 'Clock' for e in d.find_elements(AppiumBy.XPATH, '//*')))\nclock = driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text(\"Clock\")')\n{'package':driver.current_package,'clock':{'text':clock.text,'desc':clock.get_attribute('content-desc'),'clickable':clock.get_attribute('clickable')}}",
+      "timeout": 15,
+      "responseSourceLine": 874,
+      "response": {
+        "status": "completed",
+        "stdout": "",
+        "stderr": "",
+        "result": {
+          "package": "com.google.android.apps.nexuslauncher",
+          "clock": {
+            "text": "Clock",
+            "desc": "Clock",
+            "clickable": "true"
+          }
+        },
+        "executionCount": 3,
+        "durationMs": 2753,
+        "kernelState": "alive",
+        "runtime": {
+          "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+          "pythonVersion": "3.11.16",
+          "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+          "environmentKind": "active_venv",
+          "implementation": "CPython",
+          "platform": "macOS-26.6.2-arm64-arm-64bit",
+          "packages": []
+        },
+        "output": {
+          "totalBytes": 0,
+          "totalLines": 0,
+          "discardedBytes": 0,
+          "discardedLines": 0,
+          "truncated": false,
+          "limitBytes": 268435456,
+          "limitExceeded": false,
+          "live": "progress"
+        },
+        "displays": [],
+        "artifacts": []
+      }
+    },
+    {
+      "sourceLine": 1108,
+      "code": "driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text(\"Clock\")').click()\nWebDriverWait(driver, 8).until(lambda d: d.current_package != 'com.google.android.apps.nexuslauncher')\nfacts=[]\nfor e in driver.find_elements(AppiumBy.XPATH, '//*'):\n    try:\n        t=e.get_attribute('text'); d=e.get_attribute('content-desc'); rid=e.get_attribute('resource-id')\n        if t or (d and d!='null') or (rid and rid!='null'):\n            facts.append({'text':t,'desc':d,'id':rid,'clickable':e.get_attribute('clickable')})\n    except Exception: pass\n{'package':driver.current_package,'activity':driver.current_activity,'controls':facts[:40]}",
+      "timeout": 15,
+      "responseSourceLine": 1109,
+      "response": {
+        "status": "completed",
+        "stdout": "",
+        "stderr": "",
+        "result": {
+          "package": "com.google.android.deskclock",
+          "activity": "com.android.deskclock.DeskClock",
+          "controls": [
+            {
+              "text": "",
+              "desc": "null",
+              "id": "com.google.android.deskclock:id/action_bar_root",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "android:id/content",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "com.google.android.deskclock:id/content",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "com.google.android.deskclock:id/app_bar_layout",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "com.google.android.deskclock:id/toolbar",
+              "clickable": "false"
+            },
+            {
+              "text": "Clock",
+              "desc": "null",
+              "id": "com.google.android.deskclock:id/action_bar_title",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "More options",
+              "id": "com.google.android.deskclock:id/overflow_action_button",
+              "clickable": "true"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "com.google.android.deskclock:id/desk_clock_pager_frame",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "com.google.android.deskclock:id/desk_clock_pager",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "com.google.android.deskclock:id/fab_container",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "Add city",
+              "id": "com.google.android.deskclock:id/fab",
+              "clickable": "true"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "com.google.android.deskclock:id/navigation_bar",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "Alarm",
+              "id": "com.google.android.deskclock:id/tab_menu_alarm",
+              "clickable": "true"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "com.google.android.deskclock:id/navigation_bar_item_icon_container",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "com.google.android.deskclock:id/navigation_bar_item_icon_view",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "com.google.android.deskclock:id/navigation_bar_item_labels_group",
+              "clickable": "false"
+            },
+            {
+              "text": "Alarm",
+              "desc": "null",
+              "id": "com.google.android.deskclock:id/navigation_bar_item_small_label_view",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "Clock",
+              "id": "com.google.android.deskclock:id/tab_menu_clock",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "com.google.android.deskclock:id/navigation_bar_item_icon_container",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "com.google.android.deskclock:id/navigation_bar_item_active_indicator_view",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "com.google.android.deskclock:id/navigation_bar_item_icon_view",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "com.google.android.deskclock:id/navigation_bar_item_labels_group",
+              "clickable": "false"
+            },
+            {
+              "text": "Clock",
+              "desc": "null",
+              "id": "com.google.android.deskclock:id/navigation_bar_item_large_label_view",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "Timer",
+              "id": "com.google.android.deskclock:id/tab_menu_timer",
+              "clickable": "true"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "com.google.android.deskclock:id/navigation_bar_item_icon_container",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "com.google.android.deskclock:id/navigation_bar_item_icon_view",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "com.google.android.deskclock:id/navigation_bar_item_labels_group",
+              "clickable": "false"
+            },
+            {
+              "text": "Timer",
+              "desc": "null",
+              "id": "com.google.android.deskclock:id/navigation_bar_item_small_label_view",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "Stopwatch",
+              "id": "com.google.android.deskclock:id/tab_menu_stopwatch",
+              "clickable": "true"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "com.google.android.deskclock:id/navigation_bar_item_icon_container",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "com.google.android.deskclock:id/navigation_bar_item_icon_view",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "com.google.android.deskclock:id/navigation_bar_item_labels_group",
+              "clickable": "false"
+            },
+            {
+              "text": "Stopwatch",
+              "desc": "null",
+              "id": "com.google.android.deskclock:id/navigation_bar_item_small_label_view",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "Bedtime",
+              "id": "com.google.android.deskclock:id/tab_menu_bedtime",
+              "clickable": "true"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "com.google.android.deskclock:id/navigation_bar_item_icon_container",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "com.google.android.deskclock:id/navigation_bar_item_icon_view",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "com.google.android.deskclock:id/navigation_bar_item_labels_group",
+              "clickable": "false"
+            },
+            {
+              "text": "Bedtime",
+              "desc": "null",
+              "id": "com.google.android.deskclock:id/navigation_bar_item_small_label_view",
+              "clickable": "false"
+            }
+          ]
+        },
+        "executionCount": 4,
+        "durationMs": 3104,
+        "kernelState": "alive",
+        "runtime": {
+          "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+          "pythonVersion": "3.11.16",
+          "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+          "environmentKind": "active_venv",
+          "implementation": "CPython",
+          "platform": "macOS-26.6.2-arm64-arm-64bit",
+          "packages": []
+        },
+        "output": {
+          "totalBytes": 0,
+          "totalLines": 0,
+          "discardedBytes": 0,
+          "discardedLines": 0,
+          "truncated": false,
+          "limitBytes": 268435456,
+          "limitExceeded": false,
+          "live": "progress"
+        },
+        "displays": [],
+        "artifacts": []
+      }
+    },
+    {
+      "sourceLine": 1345,
+      "code": "driver.find_element(AppiumBy.ID, 'com.google.android.deskclock:id/tab_menu_stopwatch').click()\nWebDriverWait(driver, 5).until(lambda d: len(d.find_elements(AppiumBy.ID, 'com.google.android.deskclock:id/stopwatch_time_text')) > 0)\nfacts=[]\nfor e in driver.find_elements(AppiumBy.XPATH, '//*'):\n    try:\n        t=e.get_attribute('text'); desc=e.get_attribute('content-desc'); rid=e.get_attribute('resource-id')\n        if t or (desc and desc!='null') or (rid and ('stopwatch' in rid or rid.endswith('/fab'))): facts.append({'text':t,'desc':desc,'id':rid,'clickable':e.get_attribute('clickable')})\n    except Exception: pass\n{'controls':facts[:30]}",
+      "timeout": 10,
+      "responseSourceLine": 1346,
+      "response": {
+        "status": "completed",
+        "stdout": "",
+        "stderr": "",
+        "result": {
+          "controls": [
+            {
+              "text": "Stopwatch",
+              "desc": "null",
+              "id": "com.google.android.deskclock:id/action_bar_title",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "More options",
+              "id": "com.google.android.deskclock:id/overflow_action_button",
+              "clickable": "true"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "com.google.android.deskclock:id/stopwatch_time_wrapper",
+              "clickable": "true"
+            },
+            {
+              "text": "",
+              "desc": "null",
+              "id": "com.google.android.deskclock:id/stopwatch_circle",
+              "clickable": "false"
+            },
+            {
+              "text": "00",
+              "desc": "null",
+              "id": "com.google.android.deskclock:id/stopwatch_time_text",
+              "clickable": "false"
+            },
+            {
+              "text": "00",
+              "desc": "null",
+              "id": "com.google.android.deskclock:id/stopwatch_hundredths_text",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "Start",
+              "id": "com.google.android.deskclock:id/fab",
+              "clickable": "true"
+            },
+            {
+              "text": "",
+              "desc": "Alarm",
+              "id": "com.google.android.deskclock:id/tab_menu_alarm",
+              "clickable": "true"
+            },
+            {
+              "text": "Alarm",
+              "desc": "null",
+              "id": "com.google.android.deskclock:id/navigation_bar_item_small_label_view",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "Clock",
+              "id": "com.google.android.deskclock:id/tab_menu_clock",
+              "clickable": "true"
+            },
+            {
+              "text": "Clock",
+              "desc": "null",
+              "id": "com.google.android.deskclock:id/navigation_bar_item_small_label_view",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "Timer",
+              "id": "com.google.android.deskclock:id/tab_menu_timer",
+              "clickable": "true"
+            },
+            {
+              "text": "Timer",
+              "desc": "null",
+              "id": "com.google.android.deskclock:id/navigation_bar_item_small_label_view",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "Stopwatch",
+              "id": "com.google.android.deskclock:id/tab_menu_stopwatch",
+              "clickable": "false"
+            },
+            {
+              "text": "Stopwatch",
+              "desc": "null",
+              "id": "com.google.android.deskclock:id/navigation_bar_item_large_label_view",
+              "clickable": "false"
+            },
+            {
+              "text": "",
+              "desc": "Bedtime",
+              "id": "com.google.android.deskclock:id/tab_menu_bedtime",
+              "clickable": "true"
+            },
+            {
+              "text": "Bedtime",
+              "desc": "null",
+              "id": "com.google.android.deskclock:id/navigation_bar_item_small_label_view",
+              "clickable": "false"
+            }
+          ]
+        },
+        "executionCount": 5,
+        "durationMs": 2035,
+        "kernelState": "alive",
+        "runtime": {
+          "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+          "pythonVersion": "3.11.16",
+          "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+          "environmentKind": "active_venv",
+          "implementation": "CPython",
+          "platform": "macOS-26.6.2-arm64-arm-64bit",
+          "packages": []
+        },
+        "output": {
+          "totalBytes": 0,
+          "totalLines": 0,
+          "discardedBytes": 0,
+          "discardedLines": 0,
+          "truncated": false,
+          "limitBytes": 268435456,
+          "limitExceeded": false,
+          "live": "progress"
+        },
+        "displays": [],
+        "artifacts": []
+      }
+    },
+    {
+      "sourceLine": 1675,
+      "code": "start=driver.find_element(AppiumBy.ID, 'com.google.android.deskclock:id/fab')\nstart.click()\ndef running(d):\n    fab=d.find_element(AppiumBy.ID, 'com.google.android.deskclock:id/fab')\n    main=d.find_element(AppiumBy.ID, 'com.google.android.deskclock:id/stopwatch_time_text').text\n    hund=d.find_element(AppiumBy.ID, 'com.google.android.deskclock:id/stopwatch_hundredths_text').text\n    return (fab.get_attribute('content-desc') == 'Pause' and (main != '00' or hund != '00'))\nWebDriverWait(driver, 5, poll_frequency=0.2).until(running)\nfab=driver.find_element(AppiumBy.ID, 'com.google.android.deskclock:id/fab')\n{'package':driver.current_package,'title':driver.find_element(AppiumBy.ID,'com.google.android.deskclock:id/action_bar_title').text,'control':fab.get_attribute('content-desc'),'time':driver.find_element(AppiumBy.ID,'com.google.android.deskclock:id/stopwatch_time_text').text,'hundredths':driver.find_element(AppiumBy.ID,'com.google.android.deskclock:id/stopwatch_hundredths_text').text}",
+      "timeout": 10,
+      "responseSourceLine": 1676,
+      "response": {
+        "status": "timed_out",
+        "stdout": "",
+        "stderr": "",
+        "error": {
+          "type": "TimeoutError",
+          "message": "cell interrupted by deadline",
+          "traceback": []
+        },
+        "executionCount": 6,
+        "durationMs": 10009,
+        "kernelState": "alive",
+        "runtime": {
+          "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+          "pythonVersion": "3.11.16",
+          "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+          "environmentKind": "active_venv",
+          "implementation": "CPython",
+          "platform": "macOS-26.6.2-arm64-arm-64bit",
+          "packages": []
+        },
+        "output": {
+          "totalBytes": 0,
+          "totalLines": 0,
+          "discardedBytes": 0,
+          "discardedLines": 0,
+          "truncated": false,
+          "limitBytes": 268435456,
+          "limitExceeded": false,
+          "live": "progress"
+        },
+        "displays": [],
+        "artifacts": []
+      }
+    },
+    {
+      "sourceLine": 1832,
+      "code": "fab=driver.find_element(AppiumBy.ID, 'com.google.android.deskclock:id/fab')\nmain=driver.find_element(AppiumBy.ID,'com.google.android.deskclock:id/stopwatch_time_text').text\nhund=driver.find_element(AppiumBy.ID,'com.google.android.deskclock:id/stopwatch_hundredths_text').text\n{'package':driver.current_package,'control':fab.get_attribute('content-desc'),'time':main,'hundredths':hund}",
+      "timeout": 10,
+      "responseSourceLine": 1833,
+      "response": {
+        "status": "timed_out",
+        "stdout": "",
+        "stderr": "",
+        "error": {
+          "type": "TimeoutError",
+          "message": "cell interrupted by deadline",
+          "traceback": []
+        },
+        "executionCount": 7,
+        "durationMs": 10003,
+        "kernelState": "alive",
+        "runtime": {
+          "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+          "pythonVersion": "3.11.16",
+          "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+          "environmentKind": "active_venv",
+          "implementation": "CPython",
+          "platform": "macOS-26.6.2-arm64-arm-64bit",
+          "packages": []
+        },
+        "output": {
+          "totalBytes": 0,
+          "totalLines": 0,
+          "discardedBytes": 0,
+          "discardedLines": 0,
+          "truncated": false,
+          "limitBytes": 268435456,
+          "limitExceeded": false,
+          "live": "progress"
+        },
+        "displays": [],
+        "artifacts": []
+      }
+    },
+    {
+      "sourceLine": 1968,
+      "code": "pkg=driver.current_package\nsource=driver.page_source\nimport re\n# retain only stopwatch status tokens from current accessibility XML\nvals=re.findall(r'(?:text|content-desc)=\"([^\"]*(?:Pause|Start|Stopwatch|[0-9]{2})[^\"]*)\"', source)\n{'package':pkg,'statusTokens':vals[:12]}",
+      "timeout": 30,
+      "responseSourceLine": 1969,
+      "response": {
+        "status": "completed",
+        "stdout": "",
+        "stderr": "",
+        "result": {
+          "package": "com.google.android.deskclock",
+          "statusTokens": [
+            "Stopwatch",
+            "40",
+            "96",
+            "Pause",
+            "Stopwatch",
+            "Stopwatch",
+            "Stopwatch"
+          ]
+        },
+        "executionCount": 8,
+        "durationMs": 10097,
+        "kernelState": "alive",
+        "runtime": {
+          "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+          "pythonVersion": "3.11.16",
+          "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+          "environmentKind": "active_venv",
+          "implementation": "CPython",
+          "platform": "macOS-26.6.2-arm64-arm-64bit",
+          "packages": []
+        },
+        "output": {
+          "totalBytes": 0,
+          "totalLines": 0,
+          "discardedBytes": 0,
+          "discardedLines": 0,
+          "truncated": false,
+          "limitBytes": 268435456,
+          "limitExceeded": false,
+          "live": "progress"
+        },
+        "displays": [],
+        "artifacts": []
+      }
+    },
+    {
+      "sourceLine": 2037,
+      "code": "driver.quit()\n{'ownedSessionId': session_id, 'quitReturned': True}",
+      "timeout": 30,
+      "responseSourceLine": 2038,
+      "response": {
+        "status": "completed",
+        "stdout": "",
+        "stderr": "",
+        "result": {
+          "ownedSessionId": "c8409c8c-1973-42ab-897e-e8be2cd95535",
+          "quitReturned": true
+        },
+        "executionCount": 9,
+        "durationMs": 228,
+        "kernelState": "alive",
+        "runtime": {
+          "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+          "pythonVersion": "3.11.16",
+          "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+          "environmentKind": "active_venv",
+          "implementation": "CPython",
+          "platform": "macOS-26.6.2-arm64-arm-64bit",
+          "packages": []
+        },
+        "output": {
+          "totalBytes": 0,
+          "totalLines": 0,
+          "discardedBytes": 0,
+          "discardedLines": 0,
+          "truncated": false,
+          "limitBytes": 268435456,
+          "limitExceeded": false,
+          "live": "progress"
+        },
+        "displays": [],
+        "artifacts": []
+      }
+    }
+  ]
+}

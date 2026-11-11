@@ -1,0 +1,212 @@
+{
+  "reviewer": "w4:p2 independent offline contract reviewer",
+  "originalSourceHashes": {
+    "result.json": {
+      "path": "campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/episodes/040-NotesTodoItemCount/attempt-1/result.json",
+      "sha256": "1fb8a4f041ca8a64dd456aa136e6c4f9bb755b49afe9bb66f285994f751c93b2"
+    },
+    "normalized-agent-events.json": {
+      "path": "campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/episodes/040-NotesTodoItemCount/attempt-1/normalized-agent-events.json",
+      "sha256": "f806895f8496c438e28acc05245dfb84e17e78d03e50f99e8f692d63ae266c9e"
+    },
+    "raw-private/agent-events.jsonl": {
+      "path": "campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/episodes/040-NotesTodoItemCount/attempt-1/raw-private/agent-events.jsonl",
+      "sha256": "89b1520e03cb6832fe1b8d15a7ef9ecde5356b2da579fae5bdce6d5d202984b6"
+    }
+  },
+  "parentExtractionSha256": "c0be779ac6a202a0a248c9fbb7bf0e6b3bc90bd8ea1c3ae2271e0412b2de7624",
+  "all12CodeAndResponsePairsMatchedRaw": [
+    {
+      "executionCount": 1,
+      "sourceLine": 381,
+      "responseSourceLine": 382,
+      "status": "completed",
+      "kernelState": "alive",
+      "codeMatches": true,
+      "responseMatches": true
+    },
+    {
+      "executionCount": 2,
+      "sourceLine": 570,
+      "responseSourceLine": 571,
+      "status": "failed",
+      "kernelState": "alive",
+      "codeMatches": true,
+      "responseMatches": true
+    },
+    {
+      "executionCount": 3,
+      "sourceLine": 759,
+      "responseSourceLine": 760,
+      "status": "completed",
+      "kernelState": "alive",
+      "codeMatches": true,
+      "responseMatches": true
+    },
+    {
+      "executionCount": 4,
+      "sourceLine": 1009,
+      "responseSourceLine": 1010,
+      "status": "completed",
+      "kernelState": "alive",
+      "codeMatches": true,
+      "responseMatches": true
+    },
+    {
+      "executionCount": 5,
+      "sourceLine": 1123,
+      "responseSourceLine": 1124,
+      "status": "completed",
+      "kernelState": "alive",
+      "codeMatches": true,
+      "responseMatches": true
+    },
+    {
+      "executionCount": 6,
+      "sourceLine": 1345,
+      "responseSourceLine": 1346,
+      "status": "completed",
+      "kernelState": "alive",
+      "codeMatches": true,
+      "responseMatches": true
+    },
+    {
+      "executionCount": 7,
+      "sourceLine": 1612,
+      "responseSourceLine": 1613,
+      "status": "completed",
+      "kernelState": "alive",
+      "codeMatches": true,
+      "responseMatches": true
+    },
+    {
+      "executionCount": 8,
+      "sourceLine": 1734,
+      "responseSourceLine": 1735,
+      "status": "completed",
+      "kernelState": "alive",
+      "codeMatches": true,
+      "responseMatches": true
+    },
+    {
+      "executionCount": 9,
+      "sourceLine": 2050,
+      "responseSourceLine": 2051,
+      "status": "completed",
+      "kernelState": "alive",
+      "codeMatches": true,
+      "responseMatches": true
+    },
+    {
+      "executionCount": 10,
+      "sourceLine": 2342,
+      "responseSourceLine": 2343,
+      "status": "failed",
+      "kernelState": "alive",
+      "codeMatches": true,
+      "responseMatches": true
+    },
+    {
+      "executionCount": 11,
+      "sourceLine": 2581,
+      "responseSourceLine": 2582,
+      "status": "completed",
+      "kernelState": "alive",
+      "codeMatches": true,
+      "responseMatches": true
+    },
+    {
+      "executionCount": 12,
+      "sourceLine": 2639,
+      "responseSourceLine": 2640,
+      "status": "completed",
+      "kernelState": "alive",
+      "codeMatches": true,
+      "responseMatches": true
+    }
+  ],
+  "promptRawLine": 9,
+  "finalRawLine": 2674,
+  "headerAfterIdeasSelectionExec9": [
+    {
+      "class": "TextView",
+      "text": "Ideas",
+      "desc": "",
+      "bounds": "[163,128][817,264]"
+    },
+    {
+      "class": "TextView",
+      "text": "Ideas",
+      "desc": "",
+      "bounds": "[39,740][614,797]"
+    }
+  ],
+  "exec9HasNotebooksNode": true,
+  "exec9ResultItems": 60,
+  "exec9ReturnSliceLimit": 70,
+  "exec9ToDoControls": [
+    {
+      "class": "CheckBox",
+      "text": "",
+      "desc": "to-do: Recipe Ideas",
+      "bounds": "[0,264][119,374]"
+    },
+    {
+      "class": "CheckBox",
+      "text": "",
+      "desc": "to-do: Financial Plan",
+      "bounds": "[0,377][119,488]"
+    },
+    {
+      "class": "CheckBox",
+      "text": "",
+      "desc": "to-do: Work Tasks",
+      "bounds": "[0,490][119,600]"
+    }
+  ],
+  "exec10": {
+    "code": "driver.find_element(AppiumBy.ACCESSIBILITY_ID,'Sidebar').click()\nWebDriverWait(driver,5).until(lambda d: len(d.find_elements(AppiumBy.ANDROID_UIAUTOMATOR,'new UiSelector().text(\"Notebooks\")'))==0)\nroot=ET.fromstring(driver.page_source)\ntitle=[e.attrib.get('text') for e in root.iter() if e.attrib.get('bounds')=='[163,128][817,264]']\ntodos=[e.attrib.get('content-desc') for e in root.iter() if e.attrib.get('class')=='android.widget.CheckBox' and e.attrib.get('content-desc','').startswith('to-do:')]\n{'title':title,'todoCount':len(todos),'todos':todos}",
+    "status": "failed",
+    "error": {
+      "type": "selenium.common.exceptions.TimeoutException",
+      "message": "",
+      "traceback": [
+        "Traceback (most recent call last):",
+        "  File \"<external-frame>\", line 590, in <frame>",
+        "  File \"<external-frame>\", line 575, in <frame>",
+        "  File \"<amkernel-cell-10>\", line 2, in <frame>",
+        "  File \"<external-frame>\", line 121, in <frame>",
+        "selenium.common.exceptions.TimeoutException"
+      ]
+    },
+    "postWaitTitleAndCountNotExecuted": true
+  },
+  "exec11": {
+    "code": "root=ET.fromstring(driver.page_source)\ntexts=[e.attrib.get('text') for e in root.iter() if e.attrib.get('text')]\ntodos=[e.attrib.get('content-desc') for e in root.iter() if e.attrib.get('class')=='android.widget.CheckBox' and e.attrib.get('content-desc','').startswith('to-do:')]\n{'package':driver.current_package,'activity':driver.current_activity,'hasIdeasTitle':'Ideas' in texts,'hasNotebooks':'Notebooks' in texts,'todoCount':len(todos),'todos':todos}",
+    "result": {
+      "package": "net.cozic.joplin",
+      "activity": ".MainActivity",
+      "hasIdeasTitle": true,
+      "hasNotebooks": true,
+      "todoCount": 3,
+      "todos": [
+        "to-do: Recipe Ideas",
+        "to-do: Financial Plan",
+        "to-do: Work Tasks"
+      ]
+    }
+  },
+  "earliestVerificationDeviation": {
+    "selectionExec9": "Weak wait does not establish toolbar-localized folder/overlay quiescence/whole-list coverage, but its actual returned toolbar Ideas is affirmative evidence of main-context title at that moment; do not call it proven wrong folder.",
+    "unresolvedPostconditionExec10": "Sidebar clicked; disappearance wait failed on line2, so subsequent title/count code did not run.",
+    "completionExec11": "Whole-tree text membership misnamed hasIdeasTitle and checkbox count, despite Notebooks present; no localized toolbar/overlay state or full-list end/coverage proof."
+  },
+  "limits": [
+    "Drawer node presence alone cannot prove visual overlay open or wrong folder.",
+    "Three exposed checkbox labels are not independently verified complete folder count or historical DB count.",
+    "No Joplin content-list scrolling/end proof in original12 calls.",
+    "These UI verification risks are not established sufficient cause of original0; invalid answer contract is a separate earlier scoring-interface mechanism.",
+    "TimeoutException was a failed Python cell with live kernel, not AMKernel timed_out."
+  ],
+  "liveOperations": 0
+}

@@ -1,0 +1,242 @@
+{
+  "scope": "Offline original raw UI/source evidence, not original DB input",
+  "rawSourceCodeMatches": [
+    521,
+    780,
+    1035,
+    1199,
+    1343,
+    1537,
+    1814,
+    2088,
+    2252,
+    2527,
+    2755,
+    2956,
+    3352,
+    3574,
+    3682,
+    3799,
+    4075,
+    4243,
+    4543,
+    4812,
+    4981,
+    5100,
+    5275,
+    5516,
+    5575
+  ],
+  "rawResponsesMatchParentExtraction": [
+    522,
+    781,
+    1036,
+    1200,
+    1344,
+    1538,
+    1815,
+    2089,
+    2253,
+    2528,
+    2756,
+    2957,
+    3353,
+    3575,
+    3683,
+    3800,
+    4076,
+    4244,
+    4544,
+    4813,
+    4982,
+    5101,
+    5276,
+    5517,
+    5576
+  ],
+  "rawSha256": "690dac2ad773a09f3b41f2ded10dd7d6df2486352eccdb9637debf3eb86b79e4",
+  "sourceHashes": {
+    "result.json": {
+      "sha256": "198faa876422efc67531fc1f3b318013a660e2af295fc7dfc2fc8f82b57ef6bd"
+    },
+    "normalized-agent-events.json": {
+      "sha256": "5d5b1de0ef465e8165e33fe73510e601fe4fe60104f29a14efdcd31010e89456"
+    },
+    "raw-private/agent-events.jsonl": {
+      "sha256": "690dac2ad773a09f3b41f2ded10dd7d6df2486352eccdb9637debf3eb86b79e4"
+    }
+  },
+  "markor": {
+    "execution": 8,
+    "rawResponseLine": 2089,
+    "dataRows": 102,
+    "targetRows": [
+      {
+        "textLine": 59,
+        "raw": "Laundry|$96.3|Clothes|Urgent. Reimbursable.",
+        "fields": {
+          "name": "Laundry",
+          "amount_dollars": "$96.3",
+          "category_name": "Clothes",
+          "note": "Urgent. Reimbursable."
+        }
+      },
+      {
+        "textLine": 72,
+        "raw": "Car Insurance|$303.01|Transportation|I may repeat this. Reimbursable.",
+        "fields": {
+          "name": "Car Insurance",
+          "amount_dollars": "$303.01",
+          "category_name": "Transportation",
+          "note": "I may repeat this. Reimbursable."
+        }
+      }
+    ]
+  },
+  "inputAndSaveCalls": [
+    {
+      "execution": 13,
+      "rawCodeLine": 3352,
+      "rawResponseLine": 3353,
+      "code": "name=driver.find_element(AppiumBy.ID,'com.arduia.expense:id/edt_name')\namount=driver.find_element(AppiumBy.ID,'com.arduia.expense:id/edt_amount')\nnote=driver.find_element(AppiumBy.ID,'com.arduia.expense:id/edt_note')\nname.send_keys('Laundry')\namount.send_keys('96.3')\nnote.send_keys('Urgent. Reimbursable.')\n{'name':name.get_attribute('text'),'amount':amount.get_attribute('text'),'note':note.get_attribute('text')}",
+      "actualResponseResult": {
+        "name": "Laundry",
+        "amount": "96.3",
+        "note": "Urgent. Reimbursable."
+      }
+    },
+    {
+      "execution": 17,
+      "rawCodeLine": 4075,
+      "rawResponseLine": 4076,
+      "code": "clothes_card=driver.find_element(AppiumBy.XPATH,\"//android.widget.TextView[@text='Clothes']/..\")\nclothes_card.click()\nroot=ET.fromstring(driver.page_source)\nselected=[]\nfor e in root.iter():\n if e.attrib.get('resource-id')=='com.arduia.expense:id/cd_category' and e.attrib.get('checked')=='true':\n  selected += [c.attrib.get('text') for c in e.iter() if c.attrib.get('resource-id')=='com.arduia.expense:id/tv_name']\n{'selectedCategories':selected}",
+      "actualResponseResult": {
+        "selectedCategories": [
+          "Clothes"
+        ]
+      }
+    },
+    {
+      "execution": 18,
+      "rawCodeLine": 4243,
+      "rawResponseLine": 4244,
+      "code": "save=driver.find_element(AppiumBy.ID,'com.arduia.expense:id/btn_save')\n{'keyboardShown':driver.is_keyboard_shown(),'saveBounds':save.get_attribute('bounds'),'saveDisplayed':save.is_displayed(),'name':driver.find_element(AppiumBy.ID,'com.arduia.expense:id/edt_name').get_attribute('text'),'amount':driver.find_element(AppiumBy.ID,'com.arduia.expense:id/edt_amount').get_attribute('text'),'note':driver.find_element(AppiumBy.ID,'com.arduia.expense:id/edt_note').get_attribute('text')}",
+      "actualResponseResult": {
+        "keyboardShown": false,
+        "saveBounds": "[63,1229][844,1376]",
+        "saveDisplayed": true,
+        "name": "Laundry",
+        "amount": "96.3",
+        "note": "Urgent. Reimbursable."
+      }
+    },
+    {
+      "execution": 19,
+      "rawCodeLine": 4543,
+      "rawResponseLine": 4544,
+      "code": "driver.find_element(AppiumBy.ID,'com.arduia.expense:id/btn_save').click()\nWebDriverWait(driver,8).until(lambda d: 'btn_save' not in d.page_source)\nroot=ET.fromstring(driver.page_source)\nrecent=[]\nfor card in root.iter():\n if card.attrib.get('resource-id')=='com.arduia.expense:id/cd_expense':\n  vals={}\n  for c in card.iter():\n   rid=c.attrib.get('resource-id','')\n   if rid.endswith('/tv_name'): vals['name']=c.attrib.get('text')\n   elif rid.endswith('/tv_amount'): vals['amount']=c.attrib.get('text')\n   elif rid.endswith('/tv_date'): vals['date']=c.attrib.get('text')\n  if vals: recent.append(vals)\n{'activity':driver.current_activity,'recent':recent[:5]}",
+      "actualResponseResult": {
+        "activity": ".ui.MainActivity",
+        "recent": [
+          {
+            "name": "Reimbursements",
+            "date": "Today 10:00 PM",
+            "amount": "385.81"
+          },
+          {
+            "name": "Doctor Visits",
+            "date": "Today 5:00 PM",
+            "amount": "75.54"
+          },
+          {
+            "name": "Laundry",
+            "date": "Today 3:36 PM",
+            "amount": "96.3"
+          },
+          {
+            "name": "Tailoring Services",
+            "amount": "224.09"
+          }
+        ]
+      }
+    },
+    {
+      "execution": 21,
+      "rawCodeLine": 4981,
+      "rawResponseLine": 4982,
+      "code": "name=driver.find_element(AppiumBy.ID,'com.arduia.expense:id/edt_name')\namount=driver.find_element(AppiumBy.ID,'com.arduia.expense:id/edt_amount')\nnote=driver.find_element(AppiumBy.ID,'com.arduia.expense:id/edt_note')\nname.send_keys('Car Insurance')\namount.send_keys('303.01')\nnote.send_keys('I may repeat this. Reimbursable.')\n{'name':name.get_attribute('text'),'amount':amount.get_attribute('text'),'note':note.get_attribute('text')}",
+      "actualResponseResult": {
+        "name": "Car Insurance",
+        "amount": "303.01",
+        "note": "I may repeat this. Reimbursable."
+      }
+    },
+    {
+      "execution": 23,
+      "rawCodeLine": 5275,
+      "rawResponseLine": 5276,
+      "code": "driver.find_element(AppiumBy.XPATH,\"//android.widget.TextView[@text='Transportation']/..\").click()\nroot=ET.fromstring(driver.page_source)\nselected=[]\nfor e in root.iter():\n if e.attrib.get('resource-id')=='com.arduia.expense:id/cd_category' and e.attrib.get('checked')=='true':\n  selected += [c.attrib.get('text') for c in e.iter() if c.attrib.get('resource-id')=='com.arduia.expense:id/tv_name']\n{'selectedCategories':selected,'keyboardShown':driver.is_keyboard_shown()}",
+      "actualResponseResult": {
+        "selectedCategories": [
+          "Transportation"
+        ],
+        "keyboardShown": false
+      }
+    },
+    {
+      "execution": 24,
+      "rawCodeLine": 5516,
+      "rawResponseLine": 5517,
+      "code": "driver.find_element(AppiumBy.ID,'com.arduia.expense:id/btn_save').click()\nWebDriverWait(driver,8).until(lambda d: 'btn_save' not in d.page_source)\nroot=ET.fromstring(driver.page_source)\nrecent=[]\nfor card in root.iter():\n if card.attrib.get('resource-id')=='com.arduia.expense:id/cd_expense':\n  vals={}\n  for c in card.iter():\n   rid=c.attrib.get('resource-id','')\n   if rid.endswith('/tv_name'): vals['name']=c.attrib.get('text')\n   elif rid.endswith('/tv_amount'): vals['amount']=c.attrib.get('text')\n   elif rid.endswith('/tv_date'): vals['date']=c.attrib.get('text')\n  if vals: recent.append(vals)\n{'activity':driver.current_activity,'recent':recent[:6]}",
+      "actualResponseResult": {
+        "activity": ".ui.MainActivity",
+        "recent": [
+          {
+            "name": "Reimbursements",
+            "date": "Today 10:00 PM",
+            "amount": "385.81"
+          },
+          {
+            "name": "Doctor Visits",
+            "date": "Today 5:00 PM",
+            "amount": "75.54"
+          },
+          {
+            "name": "Car Insurance",
+            "date": "Today 3:37 PM",
+            "amount": "303.01"
+          },
+          {
+            "name": "Laundry",
+            "amount": "96.3"
+          }
+        ]
+      }
+    },
+    {
+      "execution": 25,
+      "rawCodeLine": 5575,
+      "rawResponseLine": 5576,
+      "code": "driver.quit()\n{'ownedSessionId': session_id, 'quitReturned': True}",
+      "actualResponseResult": {
+        "ownedSessionId": "87a9cf02-5d47-4910-a9c2-578ac5c29582",
+        "quitReturned": true
+      }
+    }
+  ],
+  "actualStatusCounts": {
+    "completed": 24,
+    "failed": 1,
+    "timed_out": 0
+  },
+  "allKernelsAlive": true,
+  "onlyFailedCell": {
+    "execution": 2,
+    "rawCodeLine": 780,
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'lxml'",
+    "observedRecovery": "Cell3 uses standard-library ElementTree, with no install and no session replacement"
+  },
+  "postSaveDetailOrDBReadClaimed": false,
+  "deviceQueries": 0
+}

@@ -1,0 +1,191 @@
+{
+  "scope": "real Android 13 emulator session lifecycle, no benchmark task or UI mutations",
+  "amkernelCommit": "33883148b4c6c6aff53a3323c9fc14d0d07bd814",
+  "harnessCommit": "ebd0855",
+  "cases": [
+    {
+      "name": "original_runtime_native_read_quit_and_independent_absence",
+      "status": "passed",
+      "observed": {
+        "runtimeIdentity": {
+          "python": "/Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python",
+          "sourceFile": "/Users/qunmi/Documents/FSQ_LAB/amkernel/src/amkernel/__init__.py",
+          "metadataVersion": "0.1.3",
+          "clientVersion": "5.2.5",
+          "seleniumVersion": "4.52.0",
+          "declaredRequirementViolations": []
+        },
+        "nativeRead": {
+          "sessionHash": "23cfbf721f9fa1123130dcd43d3da6f377e72bf8e1c5d8b4f72274eaaaae7a34",
+          "package": "com.google.android.apps.nexuslauncher",
+          "activity": ".NexusLauncherActivity",
+          "platformName": "Android",
+          "platformVersion": "13",
+          "automationName": "UiAutomator2"
+        },
+        "originalRuntimeQuitReturned": true,
+        "cleanup": {
+          "status": "closed",
+          "sessionIdSha256": "23cfbf721f9fa1123130dcd43d3da6f377e72bf8e1c5d8b4f72274eaaaae7a34",
+          "attribution": "agent",
+          "agentQuitReturned": true,
+          "verification": {
+            "status": "unknown",
+            "ownedSessionCount": 1,
+            "attemptedSessionCount": 1,
+            "reclaimedSessionCount": 0,
+            "reclaimedSessionHashes": [],
+            "activeSessionCount": 0,
+            "pendingRequestCount": 0,
+            "pendingCreateCount": 0,
+            "unknownCreationOutcomeCount": 0,
+            "sessions": [
+              {
+                "sessionHash": "23cfbf721f9fa1123130dcd43d3da6f377e72bf8e1c5d8b4f72274eaaaae7a34",
+                "quitReturned": false,
+                "absentVerified": true,
+                "presentVerified": false,
+                "alreadyAbsent": true,
+                "errors": []
+              }
+            ]
+          }
+        },
+        "audit": {
+          "createdSessionCount": 1,
+          "createdSessionHashes": [
+            "23cfbf721f9fa1123130dcd43d3da6f377e72bf8e1c5d8b4f72274eaaaae7a34"
+          ],
+          "deletedSessionCount": 1,
+          "deletedSessionHashes": [
+            "23cfbf721f9fa1123130dcd43d3da6f377e72bf8e1c5d8b4f72274eaaaae7a34"
+          ],
+          "ownedSessionCount": 1,
+          "activeSessionCount": 0,
+          "activeSessionHashes": [],
+          "reclaimedSessionCount": 0,
+          "reclaimedSessionHashes": [],
+          "pendingRequestCount": 0,
+          "pendingCreateCount": 0,
+          "unknownCreationOutcomeCount": 0,
+          "unknownCreationOutcomes": [],
+          "errors": [],
+          "deniedCommandCount": 0,
+          "deniedCommands": []
+        },
+        "uiMutationCount": 0,
+        "remainingSessionsMatchBaseline": true
+      },
+      "durationSeconds": 32.941
+    },
+    {
+      "name": "kernel_death_remote_session_survival_and_owned_recovery",
+      "status": "passed",
+      "observed": {
+        "runtimeIdentity": {
+          "python": "/Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python",
+          "sourceFile": "/Users/qunmi/Documents/FSQ_LAB/amkernel/src/amkernel/__init__.py",
+          "metadataVersion": "0.1.3",
+          "clientVersion": "5.2.5",
+          "seleniumVersion": "4.52.0",
+          "declaredRequirementViolations": []
+        },
+        "nativeRead": {
+          "sessionHash": "06eb5ff66a4202d71512d0f5930c702fb804f75d444ada5db3de71886e78dcf5",
+          "package": "com.google.android.apps.nexuslauncher",
+          "activity": ".NexusLauncherActivity",
+          "platformName": "Android",
+          "platformVersion": "13",
+          "automationName": "UiAutomator2"
+        },
+        "deathStatus": "kernel_killed",
+        "kernelState": "dead",
+        "confirmedRemoteSurvival": {
+          "livePackage": "com.google.android.apps.nexuslauncher"
+        },
+        "cleanup": {
+          "status": "harness_reclaimed",
+          "ownedSessionCount": 1,
+          "attemptedSessionCount": 1,
+          "reclaimedSessionCount": 1,
+          "reclaimedSessionHashes": [
+            "06eb5ff66a4202d71512d0f5930c702fb804f75d444ada5db3de71886e78dcf5"
+          ],
+          "activeSessionCount": 0,
+          "pendingRequestCount": 0,
+          "pendingCreateCount": 0,
+          "unknownCreationOutcomeCount": 0,
+          "sessions": [
+            {
+              "sessionHash": "06eb5ff66a4202d71512d0f5930c702fb804f75d444ada5db3de71886e78dcf5",
+              "quitReturned": true,
+              "absentVerified": true,
+              "presentVerified": false,
+              "alreadyAbsent": false,
+              "errors": []
+            }
+          ]
+        },
+        "agentQuitClaimed": false,
+        "audit": {
+          "createdSessionCount": 1,
+          "createdSessionHashes": [
+            "06eb5ff66a4202d71512d0f5930c702fb804f75d444ada5db3de71886e78dcf5"
+          ],
+          "deletedSessionCount": 0,
+          "deletedSessionHashes": [],
+          "ownedSessionCount": 1,
+          "activeSessionCount": 0,
+          "activeSessionHashes": [],
+          "reclaimedSessionCount": 1,
+          "reclaimedSessionHashes": [
+            "06eb5ff66a4202d71512d0f5930c702fb804f75d444ada5db3de71886e78dcf5"
+          ],
+          "pendingRequestCount": 0,
+          "pendingCreateCount": 0,
+          "unknownCreationOutcomeCount": 0,
+          "unknownCreationOutcomes": [],
+          "errors": [],
+          "deniedCommandCount": 0,
+          "deniedCommands": []
+        },
+        "uiMutationCount": 0,
+        "remainingSessionsMatchBaseline": true
+      },
+      "durationSeconds": 32.938
+    }
+  ],
+  "packageOrConfigChanges": false,
+  "baselineSessionHashes": [],
+  "sourceHashesUnchanged": true,
+  "sourceFileHashes": {
+    "src/amkernel/__init__.py": "359d957cb4993975070cbce470c08010dd3e3bcdef8d2d166398726516f443a8",
+    "src/amkernel/__main__.py": "9089fa5b6964cf0a5cb6fbbbb72e74226b5e3e13359c88fa48b52737882f3c47",
+    "src/amkernel/artifact_store.py": "e9ab9a1e65f4dd42a926f3d58441044a57a339daa1afe6f29e514c737694dfcc",
+    "src/amkernel/cli.py": "636c5543022e843a32f81ddbdb142535737301a6f9d5a7ab4e30eb95401e8cb9",
+    "src/amkernel/distribution.py": "6fb3364d2a40786efeef5574eebe9c6cb3cceaab26f03c51107bdc038250596a",
+    "src/amkernel/output.py": "46fdc7f94f488573138e5c46d173c82f1f4fe432485c98303b5a412b8f45a2fc",
+    "src/amkernel/protocol.py": "a6bbc4e76b2735b569c5ec8b1d7244c5ce9abb44a44679460b45edbf93e5b29f",
+    "src/amkernel/py.typed": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/amkernel/runner.py": "c4467ff3d37f41410d27f439dbd9239076e9334d379c65530d0a6a1c58911638",
+    "src/amkernel/runtime.py": "fd6da51f485af522bba75e360a2525ca37d3d38baaafc67218012041f4f0aaeb",
+    "src/amkernel/server.py": "e7930d9afb2ad46d7932cb1a0faa2017e87118f02136c4ba15566b44becfa299",
+    "src/amkernel/skill/SKILL.md": "520bbbb380a95024d08e7e728ed0c5b92a484a0958fd098454a414ad9a7a0caa",
+    "src/amkernel/skill/references/amkernel-appium.md": "8f4cd560fbd4e67a4f0eb5500eac4a9735843bb896aa41e091127046f2037135",
+    "src/amkernel/skill/references/android-execution.md": "bfb8c99b5d48bcc536b67d3d1119bfd9a5ffb2c039d708d91e4561263356e2fc",
+    "src/amkernel/skill/references/android-setup.md": "dafd16dec10715f1bafcb880c5c82bfc239f9d13e5ff9124719bbefe02ff6d6f",
+    "src/amkernel/skill/references/appium-skills-e907024c210fe024c956ed9c74146fc27b1dd013.tar.gz": "9ce21bc92e94614fd65cf932e7951d07e40b0ce4749403479000b99b7d8b8bd2",
+    "src/amkernel/skill/references/ios-setup.md": "ab4a9236bd9b31204ae34e7bc57a65fcfb24cbee439e29b67376418e6f8b7992",
+    "src/amkernel/skill/references/official-skills.json": "02664d697ddfa6e2dec87fa76710bdd69325d72d448f0263883fed80a88eb678",
+    "src/amkernel/skill/references/official-sources.json": "b5b6c78fe76ecf71500fcec567c1e1a01e60c2c6b6e024d063286603fa903485",
+    "src/amkernel/skill/scripts/verify_official_skills.py": "947c8f5a7d06a60ce39053785bc3162b6145df4d9cc438a48ad91fca08f5bcad",
+    "src/amkernel/structured_output.py": "7236380175a1c624561eb4c86f2c3fb34392e8729efeb3038d08c74851b0a009",
+    "src/amkernel/supervisor.py": "d518856be642324e2cda99a101ca1f9d3d27d0973b9314221dcba487c589789f",
+    "src/amkernel/workspace.py": "1c5321f8543e43a10fdfc61e7866982d2f43e5689abca2f936f6039aaf1640fd"
+  },
+  "finalSessionHashes": [],
+  "passed": 2,
+  "failed": 0,
+  "sessionClosurePassed": true,
+  "qualificationOrTaskEvaluation": "not started"
+}

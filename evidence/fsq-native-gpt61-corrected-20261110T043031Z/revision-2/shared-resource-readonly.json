@@ -1,0 +1,126 @@
+{
+  "runId": "amkernel-0.1.4-reviewed-baseline-20261110T055335Z",
+  "queriedAtUtc": "2026-11-10T06:00:13Z",
+  "authorizationScope": "one_readonly_identity_and_occupancy_check_5554_8554_4723",
+  "exclusiveCampaignAuthorized": false,
+  "liveBusinessStarted": false,
+  "requestedTarget": {
+    "serial": "emulator-5554",
+    "avd": "AndroidWorldAvd",
+    "consolePort": 5554,
+    "grpcPort": 8554,
+    "appiumUrl": "http://127.0.0.1:4723"
+  },
+  "knownHolders": {
+    "environmentOwner": "w4:p1 (user-attested ACK)",
+    "coordination": "w6:p2 (user-attested ACK)",
+    "currentBusinessLeaseHolder": "unknown; no complete campaign window granted"
+  },
+  "queries": [
+    {
+      "kind": "listener_snapshot",
+      "command": [
+        "lsof",
+        "-nP",
+        "-iTCP:5554",
+        "-iTCP:4723",
+        "-iTCP:8554",
+        "-sTCP:LISTEN",
+        "-Fpcn"
+      ],
+      "exitCode": 0
+    },
+    {
+      "kind": "target_argv_identity",
+      "command": [
+        "ps",
+        "-p",
+        "16153,22585",
+        "-o",
+        "pid=,ppid=,command="
+      ],
+      "exitCode": 0,
+      "rawArgvStored": false
+    },
+    {
+      "kind": "http_readonly",
+      "method": "GET",
+      "url": "http://127.0.0.1:4723/status",
+      "status": 200,
+      "response": {
+        "ready": true,
+        "version": "3.7.0"
+      }
+    },
+    {
+      "kind": "http_readonly",
+      "method": "GET",
+      "url": "http://127.0.0.1:4723/sessions",
+      "status": "unknown",
+      "errorType": "HTTPError"
+    }
+  ],
+  "observations": {
+    "listeners": [
+      {
+        "pid": 16153,
+        "commandName": "node",
+        "listener": "127.0.0.1:4723",
+        "port": 4723
+      },
+      {
+        "pid": 22585,
+        "commandName": "qemu-system-aarch64-headless",
+        "listener": "127.0.0.1:5554",
+        "port": 5554
+      },
+      {
+        "pid": 22585,
+        "commandName": "qemu-system-aarch64-headless",
+        "listener": "[::1]:5554",
+        "port": 5554
+      },
+      {
+        "pid": 22585,
+        "commandName": "qemu-system-aarch64-headless",
+        "listener": "*:8554",
+        "port": 8554
+      }
+    ],
+    "processIdentities": [
+      {
+        "pid": 22585,
+        "ppid": 87039,
+        "program": "qemu-system-aarch64-headless",
+        "targetFlags": {
+          "-avd": "AndroidWorldAvd",
+          "-port": "5554",
+          "-grpc": "8554",
+          "-read-only": true,
+          "-no-snapshot-load": true,
+          "-no-snapshot-save": true,
+          "-no-window": true
+        },
+        "appiumEntrypoint": null
+      },
+      {
+        "pid": 16153,
+        "ppid": 87039,
+        "program": "node",
+        "targetFlags": {
+          "--address": "127.0.0.1",
+          "--port": "4723"
+        },
+        "appiumEntrypoint": "/opt/homebrew/bin/appium"
+      }
+    ],
+    "consoleGrpcTargetMatch": "known"
+  },
+  "limitations": [
+    "Read-only instant observation, not a global-free assertion or campaign lease.",
+    "No ADB/u2/device/app queries, no gRPC client or AndroidEnv load.",
+    "Process ownership does not establish full-window availability or permission."
+  ],
+  "stopReason": "HTTP identity/session observation unavailable; no retry or repair.",
+  "completedAtUtc": "2026-11-10T06:00:13Z"
+}

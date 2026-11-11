@@ -1,0 +1,1095 @@
+{
+  "index": 50,
+  "name": "RecipeDeleteDuplicateRecipes",
+  "goal": "Delete all but one of any recipes in the Broccoli app that are exact duplicates, ensuring at least one instance of each unique recipe remains",
+  "reward": 0.0,
+  "classification": "failed",
+  "initialization": {
+    "initializationReferenceTime": {
+      "referenceTime": "2023-10-15T15:34:00+00:00",
+      "timezone": "UTC"
+    },
+    "initializedGoal": "Delete all but one of any recipes in the Broccoli app that are exact duplicates, ensuring at least one instance of each unique recipe remains"
+  },
+  "frozenTaskSpec": {
+    "apps": [
+      "broccoli app"
+    ],
+    "complexity": 1,
+    "difficulty": "easy",
+    "family": "android",
+    "index": 50,
+    "instanceSeed": 536113126,
+    "maxActions": 10,
+    "maxSteps": 10,
+    "name": "RecipeDeleteDuplicateRecipes",
+    "params": {
+      "noise_row_objects": [
+        {
+          "description": "An ideal recipe for experimenting with different flavors and ingredients.",
+          "directions": "Fill pita pockets with lettuce, cucumber, tomato, feta, olives, and Greek dressing. Garnish with fresh herbs for a more vibrant taste.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "to your liking",
+          "preparationTime": "45 mins",
+          "recipeId": -1,
+          "servings": "3-4 servings",
+          "source": "",
+          "title": "Greek Salad Pita Pockets"
+        },
+        {
+          "description": "A quick and easy meal, perfect for busy weekdays.",
+          "directions": "Layer turkey and cheese on bread, grill in a panini press until golden. Feel free to substitute with ingredients you have on hand.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "per individual taste",
+          "preparationTime": "1 hrs",
+          "recipeId": -1,
+          "servings": "2 servings",
+          "source": "",
+          "title": "Turkey and Cheese Panini"
+        },
+        {
+          "description": "A quick and easy meal, perfect for busy weekdays.",
+          "directions": "Stir-fry tofu cubes until golden, add assorted vegetables and a stir-fry sauce. Serve over rice or noodles. Feel free to substitute with ingredients you have on hand.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "subject to change",
+          "preparationTime": "1 hrs",
+          "recipeId": -1,
+          "servings": "8 servings",
+          "source": "",
+          "title": "Vegetable Stir Fry with Tofu"
+        },
+        {
+          "description": "An ideal recipe for experimenting with different flavors and ingredients.",
+          "directions": "Spread pizza dough with tomato sauce, top with slices of mozzarella cheese and fresh basil leaves. Bake until crust is golden. Feel free to substitute with ingredients you have on hand.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "as per recipe",
+          "preparationTime": "4 hrs",
+          "recipeId": -1,
+          "servings": "1 serving",
+          "source": "",
+          "title": "Classic Margherita Pizza"
+        },
+        {
+          "description": "A delicious and healthy choice for any time of the day.",
+          "directions": "Pan-sear salmon fillets until crispy. Serve over cooked quinoa with a side of steamed asparagus. Feel free to substitute with ingredients you have on hand.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "n/a",
+          "preparationTime": "20 mins",
+          "recipeId": -1,
+          "servings": "1 serving",
+          "source": "",
+          "title": "Pan-Seared Salmon with Quinoa"
+        }
+      ],
+      "row_objects": [
+        {
+          "description": "An ideal recipe for experimenting with different flavors and ingredients.",
+          "directions": "Cook fettuccine pasta, toss with Alfredo sauce and grilled chicken strips. Serve with a sprinkle of Parmesan cheese. Try adding a pinch of your favorite spices for extra flavor.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "see directions",
+          "preparationTime": "45 mins",
+          "recipeId": -1,
+          "servings": "6 servings",
+          "source": "",
+          "title": "Chicken Alfredo Pasta"
+        },
+        {
+          "description": "An ideal recipe for experimenting with different flavors and ingredients.",
+          "directions": "Cook fettuccine pasta, toss with Alfredo sauce and grilled chicken strips. Serve with a sprinkle of Parmesan cheese. Try adding a pinch of your favorite spices for extra flavor.",
+          "favorite": 0,
+          "imageName": "",
+          "ingredients": "see directions",
+          "preparationTime": "45 mins",
+          "recipeId": -1,
+          "servings": "6 servings",
+          "source": "",
+          "title": "Chicken Alfredo Pasta"
+        }
+      ],
+      "seed": 536113126
+    },
+    "paramsSha256": "dce0d486877e54dcf20e424a2975e6c18ff9cbe344bca169f4ffa6d185c7f630",
+    "paramsTransport": "seed",
+    "tags": [
+      "search",
+      "data_edit",
+      "screen_reading",
+      "repetition",
+      "parameterized"
+    ],
+    "timeBudget": {
+      "businessSeconds": 720,
+      "cleanupWindowSeconds": 180,
+      "episodeSeconds": 1330,
+      "forceSeconds": 910,
+      "recoveryWindowSeconds": 120,
+      "terminationGraceSeconds": 10
+    }
+  },
+  "mainSteps": [
+    {
+      "stepId": 5,
+      "tool": "agent_runtime.runner",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "Opening More options was blocked by NativeActionBudgetExceeded: action_budget.",
+          "kill_app teardown was blocked by NativeActionBudgetExceeded: action_budget."
+        ],
+        "evidence": [
+          "Library observations were collected before and after scrolling: artifacts/tools/000008-ui_snapshot.json and artifacts/tools/000010-ui_snapshot.json.",
+          "Both Chicken Alfredo Pasta instances were opened: artifacts/tools/000016-ui_snapshot.json and artifacts/tools/000021-ui_snapshot.json.",
+          "The latest UI snapshot still showed Chicken Alfredo Pasta details; no completed deletion or final-library assertion was obtained."
+        ],
+        "plan_updates": [
+          "Execution stopped when the harness reported NativeActionBudgetExceeded: action_budget.",
+          "App teardown was attempted but blocked by the same budget limit."
+        ],
+        "pre_plan": [
+          {
+            "action": "Inventory the complete recipe library.",
+            "status": "success",
+            "step_id": 1,
+            "success_criteria": [
+              "Inspect library entries while scrolling through the collection."
+            ]
+          },
+          {
+            "action": "Compare complete candidate duplicate recipes and select an instance to retain.",
+            "status": "adjusted",
+            "step_id": 2,
+            "success_criteria": [
+              "Compare both Chicken Alfredo Pasta instances."
+            ]
+          },
+          {
+            "action": "Delete confirmed surplus instances using current UI controls.",
+            "status": "failed",
+            "step_id": 3,
+            "success_criteria": [
+              "Complete deletion and any confirmation."
+            ]
+          },
+          {
+            "action": "Revisit the library and retained details.",
+            "status": "skipped",
+            "step_id": 4,
+            "success_criteria": [
+              "Verify the final collection against the original inventory."
+            ]
+          }
+        ],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "inconclusive",
+        "summary": "Inspected the recipe library and opened both Chicken Alfredo Pasta candidates, but the harness action budget was exhausted before deletion. No surplus recipe was confirmed deleted, and the final collection could not be verified.",
+        "unmet_criteria": [
+          "The recipe library contains exactly one instance of each original unique recipe, with all surplus exact duplicates removed."
+        ]
+      }
+    },
+    {
+      "stepId": 6,
+      "tool": "agent_runtime.verifier",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "The initial More options tap failed because the target was not found.",
+          "Action-budget exhaustion permanently blocked further actions in this run before duplicate removal.",
+          "The agent's structured output reports an incomplete comparison and no confirmed deletion rather than explicitly reporting the passed comparison assertion; its inconclusive status does not override the execution evidence of an unremoved duplicate."
+        ],
+        "evidence": [
+          "artifacts/tools/000019-ui_snapshot.json shows two separate Chicken Alfredo Pasta cards after the first recipe inspection.",
+          "Successful tap records opened the first and second Chicken Alfredo Pasta cards separately.",
+          "artifacts/tools/000017-assert_with_ai.json and 000023-assert_with_ai.json contain backend passed=true verdicts, confidence 0.99, and screenshot artifact references. The second assertion confirms that the recipe matches the first instance's specified content.",
+          "The subsequent More options tap failed with target_resolution_error. Its before/after UI artifact hashes are identical.",
+          "The retry failed with NativeActionBudgetExceeded: action_budget, and the remaining teardown attempt encountered the same limit. The supplied tool sequence contains no deletion action or confirmation."
+        ],
+        "plan_updates": [],
+        "pre_plan": [
+          {
+            "action": "Verify the final recipe-library state using the supplied execution evidence.",
+            "status": "failed",
+            "step_id": 1,
+            "success_criteria": [
+              "The recipe library contains exactly one instance of each original unique recipe, with all surplus exact duplicates removed."
+            ]
+          }
+        ],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "failed",
+        "summary": "The verification goal was not met. Two matching Chicken Alfredo Pasta instances were present, and no deletion occurred before the run exhausted its action budget.",
+        "unmet_criteria": [
+          "The recipe library contains exactly one instance of each original unique recipe, with all surplus exact duplicates removed."
+        ]
+      }
+    }
+  ],
+  "budgetSummary": {
+    "admitted": 10,
+    "attempted": 12,
+    "deadlineExceeded": false,
+    "deadlineMonotonic": 713193.998225041,
+    "denied": 2,
+    "deviceRestoredByClose": false,
+    "exclusions": [
+      "driver_construction",
+      "uiautomator2_service_startup",
+      "observation_and_assertion_side_effects",
+      "external_processes_and_direct_driver_access"
+    ],
+    "exhausted": true,
+    "failed": 1,
+    "inFlight": 0,
+    "inputTextUnit": "composite_click_optional_clear_set_text",
+    "maximum": 10,
+    "securityBoundary": false,
+    "succeeded": 9,
+    "unit": "admitted_android_harness_write_capability_dispatch",
+    "writeCapabilities": [
+      "launch_app",
+      "kill_app",
+      "tap_on",
+      "tap_at",
+      "long_press_on",
+      "input_text",
+      "press_key",
+      "swipe"
+    ]
+  },
+  "actions": [
+    {
+      "ordinal": 0,
+      "stepId": "agent-launch_app-1",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [],
+      "output": {
+        "app_id": "com.flauschcode.broccoli"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[0]"
+    },
+    {
+      "ordinal": 1,
+      "stepId": "agent-ui_snapshot-2",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Sun, Oct 15",
+        "Sun, Oct 15",
+        "Gmail",
+        "Gmail",
+        "Photos",
+        "Photos",
+        "YouTube",
+        "YouTube",
+        "Home",
+        "Phone",
+        "Phone",
+        "Messages",
+        "Messages",
+        "Chrome",
+        "Chrome",
+        "Calendar",
+        "Predicted app: Calendar",
+        "Search",
+        "Google app",
+        "Voice search",
+        "Google Lens"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 27981,
+          "retained_characters": 7650
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[1]"
+    },
+    {
+      "ordinal": 2,
+      "stepId": "agent-launch_app-3",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "app_id": "com.flauschcode.broccoli"
+      },
+      "uiLabels": [],
+      "output": {
+        "app_id": "com.flauschcode.broccoli"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[2]"
+    },
+    {
+      "ordinal": 3,
+      "stepId": "agent-swipe-4",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[3]"
+    },
+    {
+      "ordinal": 4,
+      "stepId": "agent-ui_snapshot-5",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Audio Recorder",
+        "Audio Recorder",
+        "Broccoli",
+        "Broccoli",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Chrome",
+        "Chrome",
+        "Clipper",
+        "Clipper",
+        "Clock",
+        "Clock",
+        "Contacts",
+        "Contacts",
+        "Draw",
+        "Draw",
+        "Drive",
+        "Drive",
+        "Files",
+        "Files",
+        "Gallery",
+        "Gallery",
+        "Gmail",
+        "Gmail",
+        "Google",
+        "Google",
+        "Joplin",
+        "Joplin",
+        "Maps",
+        "Maps",
+        "Markor",
+        "Markor",
+        "Messages",
+        "Messages",
+        "OpenTracks",
+        "OpenTracks",
+        "OsmAnd",
+        "OsmAnd",
+        "Phone",
+        "Phone",
+        "Photos",
+        "Photos",
+        "Pro Expense",
+        "Pro Expense",
+        "Gallery",
+        "Gallery",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Tasks",
+        "Tasks",
+        "Search",
+        "Google app",
+        "Search apps, web and more",
+        "Voice search",
+        "Google Lens",
+        "Home"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 37017,
+          "retained_characters": 12575
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 6,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[4]"
+    },
+    {
+      "ordinal": 5,
+      "stepId": "agent-tap_on-6",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "Broccoli"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[5]"
+    },
+    {
+      "ordinal": 6,
+      "stepId": "agent-ui_snapshot-7",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Open navigation drawer",
+        "Recipes",
+        "Categories",
+        "All recipes",
+        "Search",
+        "Recipes",
+        "Recipe photo",
+        "Chicken Alfredo Pasta",
+        "An ideal recipe for experimenting with different f",
+        "Recipe photo",
+        "Chicken Alfredo Pasta",
+        "An ideal recipe for experimenting with different f",
+        "Recipe photo",
+        "Classic Margherita Pizza",
+        "An ideal recipe for experimenting with different f",
+        "Recipe photo",
+        "Greek Salad Pita Pockets",
+        "An ideal recipe for experimenting with different f",
+        "Recipe photo",
+        "Pan-Seared Salmon with Quinoa",
+        "A delicious and healthy choice for any time of the",
+        "Recipe photo",
+        "Turkey and Cheese Panini",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "New Recipe"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 40313,
+          "retained_characters": 9874
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 18,
+          "clipped_attributes": 6
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[6]"
+    },
+    {
+      "ordinal": 7,
+      "stepId": "agent-swipe-8",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[7]"
+    },
+    {
+      "ordinal": 8,
+      "stepId": "agent-ui_snapshot-9",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Open navigation drawer",
+        "Recipes",
+        "Categories",
+        "All recipes",
+        "Search",
+        "Recipes",
+        "Recipe photo",
+        "Classic Margherita Pizza",
+        "An ideal recipe for experimenting with different f",
+        "Recipe photo",
+        "Greek Salad Pita Pockets",
+        "An ideal recipe for experimenting with different f",
+        "Recipe photo",
+        "Pan-Seared Salmon with Quinoa",
+        "A delicious and healthy choice for any time of the",
+        "Recipe photo",
+        "Turkey and Cheese Panini",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "Recipe photo",
+        "Vegetable Stir Fry with Tofu",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "New Recipe"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 37383,
+          "retained_characters": 9114
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 17,
+          "clipped_attributes": 4
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[8]"
+    },
+    {
+      "ordinal": 9,
+      "stepId": "agent-swipe-10",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "down"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "down"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[9]"
+    },
+    {
+      "ordinal": 10,
+      "stepId": "agent-ui_snapshot-11",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Open navigation drawer",
+        "Recipes",
+        "Categories",
+        "All recipes",
+        "Search",
+        "Recipes",
+        "Recipe photo",
+        "Chicken Alfredo Pasta",
+        "An ideal recipe for experimenting with different f",
+        "Recipe photo",
+        "Chicken Alfredo Pasta",
+        "An ideal recipe for experimenting with different f",
+        "Recipe photo",
+        "Classic Margherita Pizza",
+        "An ideal recipe for experimenting with different f",
+        "Recipe photo",
+        "Greek Salad Pita Pockets",
+        "An ideal recipe for experimenting with different f",
+        "Recipe photo",
+        "Pan-Seared Salmon with Quinoa",
+        "A delicious and healthy choice for any time of the",
+        "Recipe photo",
+        "Turkey and Cheese Panini",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "New Recipe"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 40313,
+          "retained_characters": 9874
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 18,
+          "clipped_attributes": 6
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[10]"
+    },
+    {
+      "ordinal": 11,
+      "stepId": "agent-tap_on-12",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "xpath": "(//*[@resource-id='com.flauschcode.broccoli:id/card_text_view_title' and @text='Chicken Alfredo Pasta'])[1]"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[11]"
+    },
+    {
+      "ordinal": 12,
+      "stepId": "agent-ui_snapshot-13",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Chicken Alfredo Pasta",
+        "Recipe photo",
+        "Navigate up",
+        "Mark as favorite",
+        "More options",
+        "Chicken Alfredo Pasta",
+        "Servings",
+        "6 servings",
+        "Time",
+        "45 mins",
+        "An ideal recipe for experimenting with different f",
+        "Ingredients",
+        "see directions",
+        "Directions",
+        "1",
+        "Cook fettuccine pasta, toss with Alfredo sauce and",
+        "Cook"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 30305,
+          "retained_characters": 7031
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 16,
+          "clipped_attributes": 3
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[12]"
+    },
+    {
+      "ordinal": 13,
+      "stepId": "agent-assert_with_ai-14",
+      "action": "assert_with_ai",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "prompt": "Read the complete visible Chicken Alfredo Pasta recipe content, including full description and directions, servings, time, ingredients and photo state. Report the exact text to enable comparison with another instance.",
+        "optional": false
+      },
+      "uiLabels": [],
+      "output": {
+        "status": "passed",
+        "passed": true,
+        "explanation": "Complete visible recipe content:\nTitle: Chicken Alfredo Pasta\nServings: 6 servings\nTime: 45 mins\nDescription: An ideal recipe for experimenting with different flavors and ingredients.\nIngredients: see directions\nDirections:\n1 Cook fettuccine pasta, toss with Alfredo sauce and grilled chicken strips. Serve with a sprinkle of Parmesan cheese. Try adding a pinch of your favorite spices for extra flavor.\nPhoto state: No recipe photo is displayed.",
+        "confidence": 0.99,
+        "provider": "github_copilot",
+        "model": "gpt-6.1-sol",
+        "latency_ms": 5180,
+        "token_usage": {
+          "input_tokens": 3290,
+          "output_tokens": 116,
+          "total_tokens": 3406
+        },
+        "artifact_refs": [
+          {
+            "artifact_id": "screenshot-agent-assert-with-ai-14-invoke-assert-with-ai-1-eb216ff42074",
+            "kind": "screenshot",
+            "path": "artifacts/screenshots/screenshot-agent-assert-with-ai-14-invoke-assert-with-ai-1-eb216ff42074.png",
+            "mime_type": "image/png",
+            "size_bytes": 399659,
+            "sha256": "6dbb58eb38e95f03e2e697ceb93b0773983a83376bb86f303897573f872c1ae0",
+            "availability": "available",
+            "unavailable_reason": null,
+            "capture_occurrence": 1,
+            "created_at": "2026-11-10T19:07:42.757376Z",
+            "metadata": {
+              "capture_reason": "assert-with-ai",
+              "redacted": false
+            }
+          }
+        ],
+        "error": null,
+        "metadata": {
+          "provider_metadata": {
+            "endpoint_family": "github_copilot",
+            "copilot_plan": "enterprise"
+          }
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[13]"
+    },
+    {
+      "ordinal": 14,
+      "stepId": "agent-press_key-15",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[14]"
+    },
+    {
+      "ordinal": 15,
+      "stepId": "agent-ui_snapshot-16",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Open navigation drawer",
+        "Recipes",
+        "Categories",
+        "All recipes",
+        "Search",
+        "Recipes",
+        "Recipe photo",
+        "Chicken Alfredo Pasta",
+        "An ideal recipe for experimenting with different f",
+        "Recipe photo",
+        "Chicken Alfredo Pasta",
+        "An ideal recipe for experimenting with different f",
+        "Recipe photo",
+        "Classic Margherita Pizza",
+        "An ideal recipe for experimenting with different f",
+        "Recipe photo",
+        "Greek Salad Pita Pockets",
+        "An ideal recipe for experimenting with different f",
+        "Recipe photo",
+        "Pan-Seared Salmon with Quinoa",
+        "A delicious and healthy choice for any time of the",
+        "Recipe photo",
+        "Turkey and Cheese Panini",
+        "A quick and easy meal, perfect for busy weekdays.",
+        "New Recipe"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 40312,
+          "retained_characters": 9873
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 18,
+          "clipped_attributes": 6
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[15]"
+    },
+    {
+      "ordinal": 16,
+      "stepId": "agent-tap_on-17",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "xpath": "(//*[@resource-id='com.flauschcode.broccoli:id/card_text_view_title' and @text='Chicken Alfredo Pasta'])[2]"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[16]"
+    },
+    {
+      "ordinal": 17,
+      "stepId": "agent-ui_snapshot-18",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Chicken Alfredo Pasta",
+        "Recipe photo",
+        "Navigate up",
+        "Mark as favorite",
+        "More options",
+        "Chicken Alfredo Pasta",
+        "Servings",
+        "6 servings",
+        "Time",
+        "45 mins",
+        "An ideal recipe for experimenting with different f",
+        "Ingredients",
+        "see directions",
+        "Directions",
+        "1",
+        "Cook fettuccine pasta, toss with Alfredo sauce and",
+        "Cook"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 30306,
+          "retained_characters": 7032
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 16,
+          "clipped_attributes": 3
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[17]"
+    },
+    {
+      "ordinal": 18,
+      "stepId": "agent-assert_with_ai-19",
+      "action": "assert_with_ai",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "prompt": "Verify this second Chicken Alfredo Pasta exactly matches the first instance: title Chicken Alfredo Pasta; 6 servings; 45 mins; description 'An ideal recipe for experimenting with different flavors and ingredients.'; ingredients 'see directions'; one direction 'Cook fettuccine pasta, toss with Alfredo sauce and grilled chicken strips. Serve with a sprinkle of Parmesan cheese. Try adding a pinch of your favorite spices for extra flavor.'; no displayed photo. Confirm there is no additional recipe content below.",
+        "optional": false
+      },
+      "uiLabels": [],
+      "output": {
+        "status": "passed",
+        "passed": true,
+        "explanation": "The displayed recipe matches all specified details: Chicken Alfredo Pasta, 6 servings, 45 mins, the exact description, ingredients “see directions,” and one direction with the exact requested text. No photo is displayed, and the area below the direction is blank with no additional recipe content.",
+        "confidence": 0.99,
+        "provider": "github_copilot",
+        "model": "gpt-6.1-sol",
+        "latency_ms": 5495,
+        "token_usage": {
+          "input_tokens": 3351,
+          "output_tokens": 79,
+          "total_tokens": 3430
+        },
+        "artifact_refs": [
+          {
+            "artifact_id": "screenshot-agent-assert-with-ai-19-invoke-assert-with-ai-1-13c24e28caa0",
+            "kind": "screenshot",
+            "path": "artifacts/screenshots/screenshot-agent-assert-with-ai-19-invoke-assert-with-ai-1-13c24e28caa0.png",
+            "mime_type": "image/png",
+            "size_bytes": 399629,
+            "sha256": "a5268ff8aefd2cd9b89494a578394a18ea87228d1e6a6af638478b55e1ce4c65",
+            "availability": "available",
+            "unavailable_reason": null,
+            "capture_occurrence": 1,
+            "created_at": "2026-11-10T19:08:16.056757Z",
+            "metadata": {
+              "capture_reason": "assert-with-ai",
+              "redacted": false
+            }
+          }
+        ],
+        "error": null,
+        "metadata": {
+          "provider_metadata": {
+            "endpoint_family": "github_copilot",
+            "copilot_plan": "enterprise"
+          }
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[18]"
+    },
+    {
+      "ordinal": 19,
+      "stepId": "agent-tap_on-20",
+      "action": "tap_on",
+      "status": "failed",
+      "error": "Target was not found.",
+      "params": {
+        "target": "More options"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[19]"
+    },
+    {
+      "ordinal": 20,
+      "stepId": "agent-ui_snapshot-21",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Chicken Alfredo Pasta",
+        "Recipe photo",
+        "Navigate up",
+        "Mark as favorite",
+        "More options",
+        "Chicken Alfredo Pasta",
+        "Servings",
+        "6 servings",
+        "Time",
+        "45 mins",
+        "An ideal recipe for experimenting with different f",
+        "Ingredients",
+        "see directions",
+        "Directions",
+        "1",
+        "Cook fettuccine pasta, toss with Alfredo sauce and",
+        "Cook"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 30306,
+          "retained_characters": 7032
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 16,
+          "clipped_attributes": 3
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[20]"
+    },
+    {
+      "ordinal": 21,
+      "stepId": "agent-tap_on-22",
+      "action": "tap_on",
+      "status": "failed",
+      "error": "NativeActionBudgetExceeded: action_budget",
+      "params": null,
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[21]"
+    },
+    {
+      "ordinal": 22,
+      "stepId": "agent-kill_app-23",
+      "action": "kill_app",
+      "status": "failed",
+      "error": "NativeActionBudgetExceeded: action_budget",
+      "params": null,
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[22]"
+    }
+  ],
+  "originalNativeExecutionPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/050-RecipeDeleteDuplicateRecipes/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-050-20261110T190605Z-9e00e8/execution-result.json",
+  "originalNativeResultPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/050-RecipeDeleteDuplicateRecipes/raw-private/fsq-native/worker/fsq-task-result.private.json",
+  "originalGoalPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/050-RecipeDeleteDuplicateRecipes/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-050-20261110T190605Z-9e00e8/sources/000-goal.txt"
+}

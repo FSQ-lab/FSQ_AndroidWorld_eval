@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "kind": "completed_authorized_revision3_qualification_and_unique97",
+  "runId": "fsq-r3-qualify-brightness-097-20261110T130116Z",
+  "candidateSha256": "d9f3237c0d6d26f512bfdd3870fd4563519fc24f6cae160beb93a015a597a057",
+  "reviewSha256": "a693ebb96c2ef044beb33c9358a4dedb250a964c3e692a8c6bfc450c2915c1f6",
+  "nativeModelReceiptSha256": "58d96868e5e4ccb139eb16e688178de0f2e9acbad40bc1f0035a293e0dd47323",
+  "authorizationWindow": {
+    "issuedAtUtc": "2026-11-10T13:06:03.092342+00:00",
+    "expiresAtUtc": "2026-11-10T14:36:03.092342+00:00"
+  },
+  "qualification": "passed",
+  "smoke": "valid scored business failure, reward0, one evaluator call",
+  "artifacts": [
+    {
+      "path": "authorization-approved-r3-qualify-smoke-097.json",
+      "sha256": "4652684352a73ff8447d1f2f59fcb656094e3a9769add7803564e7c0d675ef8c",
+      "bytes": 6202
+    },
+    {
+      "path": "actual-qualification-terminal.json",
+      "sha256": "8190b2af58095ec7541a229614d6e7b7b4b096a063ad8c10d837b67f121a69d8",
+      "bytes": 4238
+    },
+    {
+      "path": "actual-smoke-terminal.json",
+      "sha256": "17aa8549f54502add8b8de358f72d1f79c0493880a570c6a7873973074c9a6dc",
+      "bytes": 5007
+    },
+    {
+      "path": "qualification-output-observation.json",
+      "sha256": "9e7f1a9604e5e0629d5518cef82281a0bc23d59f8f6a92e03d1c1278a6244780",
+      "bytes": 719
+    },
+    {
+      "path": "execution/qualify/readiness.json",
+      "sha256": "046eeae365d696c624fb9a32259f275fc010700eb9c5b06da3c49a63ea4abc5c",
+      "bytes": 15593
+    },
+    {
+      "path": "execution/qualify/process.log",
+      "sha256": "511c08f414e595104a43d5bf5d6a644946693b40b99546d9c0d64ecb60b858f6",
+      "bytes": 342
+    },
+    {
+      "path": "execution/smoke-097-SystemBrightnessMax/result.json",
+      "sha256": "16be3ee031ff49bdd361882af1e00a9c0febd55fd246ef193ee69531af641e19",
+      "bytes": 28589
+    },
+    {
+      "path": "execution/smoke-097-SystemBrightnessMax.outer/outer-process.json",
+      "sha256": "542818c9cf3166842caf0d56cc0614957517c90f883bb866ff05c1b58cd99f71",
+      "bytes": 107
+    },
+    {
+      "path": "execution/smoke-097-SystemBrightnessMax.outer/standalone-result.json",
+      "sha256": "2d12120038cc72b2987709af364c1119291dd255ee7cca3e52c122f172517fd0",
+      "bytes": 486
+    },
+    {
+      "path": "execution/smoke-097-SystemBrightnessMax.outer/process.log",
+      "sha256": "511c08f414e595104a43d5bf5d6a644946693b40b99546d9c0d64ecb60b858f6",
+      "bytes": 342
+    },
+    {
+      "path": "execution/smoke-097-SystemBrightnessMax/raw-private/worker-process.json",
+      "sha256": "105c681c843706d0a8d0ea03c3719022dc9cda8283e8702f2d392b5e10a0e5d4",
+      "bytes": 1164
+    },
+    {
+      "path": "execution/smoke-097-SystemBrightnessMax/raw-private/evaluator-diagnostics.json",
+      "sha256": "35657dad7188096a50818da559c755a7c29d169346e259ce35157d61954ad38e",
+      "bytes": 958
+    }
+  ],
+  "privateNativeOutcome": {
+    "bytes": 13072,
+    "path": "raw-private/fsq-worker-outcome.json",
+    "sha256": "b3f96b1d46b9103743e0fd96d2500ec763900a334a8d512f1d73a1db1ff8ae4c"
+  },
+  "nativeArtifactsRoot": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-3/next-qualify-smoke-097/execution/smoke-097-SystemBrightnessMax/raw-private/fsq-native",
+  "originalEpisodeResult": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-3/next-qualify-smoke-097/execution/smoke-097-SystemBrightnessMax/result.json",
+  "originalDraftOld102ClosureAndCodeUnmodified": true,
+  "hostAdbRecoveryStatus": "No restart-specific diagnostic observed; occurrence not independently established.",
+  "cleanup": "Task teardown/env close completed; owned worker leader reaped and group disappearance observed; native close does not restore guest.",
+  "scheduling": "FSQ-first retained; no116 rehearsal/12 calibration/formal, no AMK release or new task without distinct grant."
+}

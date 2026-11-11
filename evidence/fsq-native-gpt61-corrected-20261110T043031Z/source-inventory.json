@@ -1,0 +1,103 @@
+{
+  "kind": "fsq_native_offline_delivery_source_inventory",
+  "files": [
+    {
+      "path": "src/fsq_androidworld_eval/fsq_campaign.py",
+      "sha256": "39fcd0e027c69426d4f67c6ec106ff7b15e1439aa36b3a4c2a18e486a9a64aac"
+    },
+    {
+      "path": "src/fsq_androidworld_eval/fsq_manifest.py",
+      "sha256": "10f8586f0b3ffde87410f9b88587de7387ed160f1d5bb08d66e642c919de16b9"
+    },
+    {
+      "path": "src/fsq_androidworld_eval/fsq_native.py",
+      "sha256": "0af6d9b3802fcfd5708bc9dcdf2132bf48a9e3da01ae0401fafa6ae9ad468e13"
+    },
+    {
+      "path": "src/fsq_androidworld_eval/fsq_runner.py",
+      "sha256": "98ad6a419e5d41d9a023315e2ee4ae46fc381d4c8bab6144691cc355f4198a04"
+    },
+    {
+      "path": "src/fsq_androidworld_eval/fsq_supervisor.py",
+      "sha256": "4397b0d1bd388bfbc9d154075a9127609934aadec1fec9444a665269eef95932"
+    },
+    {
+      "path": "src/fsq_androidworld_eval/fsq_worker.py",
+      "sha256": "ddd95adc0547ef321564754545efa68182a5a2477456ea5a3336fb9e2c02de95"
+    },
+    {
+      "path": "tests/test_fsq_campaign.py",
+      "sha256": "cc31aecd717394e1dec72533ce0b0d23bb58ad8fb0f84c1ad813b4a4456cfab3"
+    },
+    {
+      "path": "tests/test_fsq_manifest.py",
+      "sha256": "636d0862710c5370eb6afdb50b0cb7de4b668e20553d12aa96fe7765a726828c"
+    },
+    {
+      "path": "tests/test_fsq_native.py",
+      "sha256": "167cc4d333139081f503e3f932027595346b053b867804d5164e06c729a81142"
+    },
+    {
+      "path": "tests/test_fsq_runner.py",
+      "sha256": "da393b6d532f2e828ad5e6fad956953a1ed522c05e9b1d762b00333df30b6cee"
+    },
+    {
+      "path": "tests/test_fsq_supervisor.py",
+      "sha256": "df53f46d8e247144e7fc43fc56a993fae5c589d1e7cdbc228845b1fda6c4f37a"
+    },
+    {
+      "path": "tests/test_fsq_worker.py",
+      "sha256": "84cc90026363f1b884b7b5b705499cac6b7573c27a3ef4e0f7fdb420a6702115"
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "4ec39bd65b1641214f128088a72b980cda278437b1c80e43d620810372e5cc10"
+    },
+    {
+      "path": "uv.lock",
+      "sha256": "d49f1f62895b5e917394957df6085b069a977d37515dd8f3e02d29d7b1ce6a0f"
+    },
+    {
+      "path": "README.md",
+      "sha256": "2995c557d70a6492da6fcd91e63a1f25a3cf2125f1b749c9e3a351599bcd5c38"
+    }
+  ],
+  "fileCount": 15,
+  "changesByThisIntegration": {
+    "newSourceModules": 6,
+    "newTestModules": 6,
+    "modifiedExistingFiles": [
+      "pyproject.toml",
+      "uv.lock",
+      "README.md"
+    ],
+    "READMEHunkScope": "Only added Native FSQ section; unrelated reviewed-fix hunks belong to their owners"
+  },
+  "unchangedByThisIntegration": [
+    "FSQ native source checkout",
+    "shared .venv installed packages",
+    "official AndroidWorld task definitions",
+    "old AMKernel manifests/results/evidence"
+  ],
+  "candidate": "candidate-final-manifest.json",
+  "hashCommand": [
+    "shasum",
+    "-a",
+    "256",
+    "src/fsq_androidworld_eval/fsq_campaign.py",
+    "src/fsq_androidworld_eval/fsq_manifest.py",
+    "src/fsq_androidworld_eval/fsq_native.py",
+    "src/fsq_androidworld_eval/fsq_runner.py",
+    "src/fsq_androidworld_eval/fsq_supervisor.py",
+    "src/fsq_androidworld_eval/fsq_worker.py",
+    "tests/test_fsq_campaign.py",
+    "tests/test_fsq_manifest.py",
+    "tests/test_fsq_native.py",
+    "tests/test_fsq_runner.py",
+    "tests/test_fsq_supervisor.py",
+    "tests/test_fsq_worker.py",
+    "pyproject.toml",
+    "uv.lock",
+    "README.md"
+  ]
+}

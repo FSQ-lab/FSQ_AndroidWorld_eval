@@ -1,0 +1,167 @@
+{
+  "comparisonKind": "controlled configuration comparison, NOT exact action replay; resampled actions",
+  "A": {
+    "evidenceDir": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/browserdraw-forest-provenance-20261109T060244Z",
+    "officialReward": 1.0,
+    "actions": 17,
+    "receiveCounts": {
+      "receiveTotal": 1938,
+      "receiveEmpty": 1417,
+      "receiveNonEmpty": 521,
+      "receiveBeforeSessionRequest": 180,
+      "receiveSessionCreationInFlight": 285,
+      "receiveDuringSession": 1340,
+      "receiveAfterQuit": 133,
+      "drainTotal": 7,
+      "emptyReturningDrains": 0,
+      "pauseCalls": 6,
+      "wrapperCalls": 25,
+      "stepCalls": 1,
+      "stateCalls": 1,
+      "selections": 3,
+      "appiumCommands": 111
+    },
+    "sessionCreatedRelSec": 68.139,
+    "firstEmptyReceive": {
+      "recvSeq": 459,
+      "receiveUnix": 1794204760.69288,
+      "relSec": 67.479,
+      "hostUtc": "2026-11-09T06:12:40Z",
+      "transport": "unary",
+      "windowCount": 0,
+      "serializedBytes": 0,
+      "successTextFound": false,
+      "paused": false,
+      "latestForestOnly": true,
+      "admittedByDrain": null,
+      "admittedByDrainIndex": null,
+      "admittedByPull": null,
+      "pausedAfterSnapshot": false,
+      "candidateReplacedSeqsSnapshot": [
+        458
+      ],
+      "replacementProven": false,
+      "queueKind": "received_forests",
+      "queueDepthSnapshotBefore": 1,
+      "queueSeqsSnapshotBefore": [
+        458
+      ],
+      "queueDepthSnapshotAfter": 1,
+      "queueSeqsSnapshotAfter": [
+        459
+      ],
+      "completionObserved": true,
+      "nodeCount": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "receiveObjectId": 5059443136,
+      "phase": "sessionCreationInFlight"
+    },
+    "boundStateAtSessionCreated": "{}",
+    "chosenSeq": 1901
+  },
+  "B": {
+    "evidenceDir": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/browserdraw-forest-capability-B-20261109T061859Z",
+    "officialReward": 1.0,
+    "actions": 17,
+    "receiveCounts": {
+      "receiveTotal": 2245,
+      "receiveEmpty": 0,
+      "receiveNonEmpty": 2245,
+      "receiveBeforeSessionRequest": 196,
+      "receiveSessionCreationInFlight": 286,
+      "receiveDuringSession": 1703,
+      "receiveAfterQuit": 60,
+      "drainTotal": 9,
+      "emptyReturningDrains": 0,
+      "pauseCalls": 6,
+      "wrapperCalls": 29,
+      "stepCalls": 1,
+      "stateCalls": 1,
+      "selections": 3,
+      "appiumCommands": 129
+    },
+    "sessionCreatedRelSec": 70.845,
+    "firstEmptyReceive": null,
+    "boundStateAtSessionCreated": "{Service[label=com.google.androidenv.accessibilityforwarder.Acce\u2026, feedbackType[FEEDBACK_GENERIC], capabilities=1, eventTypes=TYPES_ALL_MASK, notificationTimeout=0, requestA11yBtn=false]}",
+    "chosenSeq": 2228,
+    "chosenSha256": "d477495809771038fa474828da6b927428db3b64ec562face3cd108bc805b024",
+    "chosenDrainIndex": 8,
+    "chosenPhase": "afterQuitResponse"
+  },
+  "singleVariable": {
+    "injectedKey": "appium:disableSuppressAccessibilityService",
+    "injectedValue": true,
+    "originalRequestedCapabilities": {
+      "firstMatch": [
+        {}
+      ],
+      "alwaysMatch": {
+        "appium:automationName": "UiAutomator2",
+        "platformName": "Android",
+        "appium:udid": "emulator-5554",
+        "appium:noReset": true,
+        "appium:autoLaunch": false,
+        "appium:skipUnlock": true,
+        "appium:newCommandTimeout": 300
+      }
+    },
+    "forwardedCapabilities": {
+      "firstMatch": [
+        {}
+      ],
+      "alwaysMatch": {
+        "appium:automationName": "UiAutomator2",
+        "platformName": "Android",
+        "appium:udid": "emulator-5554",
+        "appium:noReset": true,
+        "appium:autoLaunch": false,
+        "appium:skipUnlock": true,
+        "appium:newCommandTimeout": 300,
+        "appium:disableSuppressAccessibilityService": true
+      }
+    },
+    "returnedDisableSuppressValue": true,
+    "instrumentationArgEvidence": "system-samples.json: app_process ... am instrument ... -e DISABLE_SUPPRESS_ACCESSIBILITY_SERVICES true ...",
+    "originalPromptSha256": "463118879bbe14a14abfd987920f115fff29f128db4566dc282e75dc0aa906aa",
+    "model": "github-copilot/gpt-5.6-sol",
+    "sourceSnapshotPatched": true,
+    "patchFile": "proxy-b.patch"
+  },
+  "observations": {
+    "A_emptyReceives": 1417,
+    "B_emptyReceives": 0,
+    "A_duringSessionEmpty": 1339,
+    "B_duringSessionNonEmpty": 1703,
+    "A_boundAtSessionCreatedEmpty": "{}",
+    "B_boundAtSessionCreatedPresent": true,
+    "B_UiAutomationLogFlags": "0 (constructor log unchanged; driver sends DISABLE_SUPPRESS_ACCESSIBILITY_SERVICES=true instead; capability effect is not attributable to that constructor flags line)",
+    "A_duringSessionSuccess": 1
+  },
+  "preSessionBaseline": {
+    "file": "pre-session-baseline.txt",
+    "note": "A forwarder PID 7959 with tids 7994/10415 survived into B preflight; B official env init force-stopped/reinstalled (PID 11143), and B showed no teardown second thread. Confound/order explicit."
+  },
+  "cleanup": {
+    "stillExistsAfterRun": false,
+    "ownedLiveProcesses": [],
+    "uiautomator2InstrumentationRunning": false,
+    "activeSessionCount": 0,
+    "createdSessionCount": 1,
+    "deletedSessionCount": 1,
+    "forwarderPidAfter": "11143 (shared forwarder app process persists; service state is not restored/reset by this experiment)",
+    "noStateRestorationClaim": "No emulator, Appium, shared-service, or accessibility-state restoration was attempted beyond the experiment's normal session cleanup; the forwarder process/service remains as the frozen environment left it."
+  },
+  "hashes": {
+    "forest-provenance.json": "ac0e76428f7caef3e60a1cfc1bba04aafc4375159c24e4847d13756a55d78840",
+    "episode/result.json": "a9e0b5c23d78b3401ac6da929bdc4710d1c2eee63ddf85ea891e3da940bd6009",
+    "device-logcat.txt": "666b32f076c964062969da64df91a38b369728f8c4702cd13cb89f0b819d5d2c",
+    "capability-injection.json": "d2a39856d2529be0797c5d01d076a635af44e7c2ba7cd26b86c85bf7fa34b208",
+    "appium-session-response-caps.json": "e83d433cad9af1f56cf9b74005edddea73cef4843360b1db38929979e4dc46cf"
+  },
+  "caveats": [
+    "One B cannot prove historical reward-0 causation; it is a single-variable mitigation test.",
+    "Actions were resampled; no exact replay claim.",
+    "A did not reproduce the failure; A success is preserved.",
+    "Empty-race inference from A is offline, not another official score."
+  ]
+}

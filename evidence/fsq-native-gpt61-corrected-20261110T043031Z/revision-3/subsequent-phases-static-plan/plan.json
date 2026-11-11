@@ -1,0 +1,1995 @@
+{
+  "schemaVersion": 1,
+  "kind": "static_frozen_subsequent_phase_plan_not_authorization",
+  "candidateSha256": "d9f3237c0d6d26f512bfdd3870fd4563519fc24f6cae160beb93a015a597a057",
+  "reviewSha256": "a693ebb96c2ef044beb33c9358a4dedb250a964c3e692a8c6bfc450c2915c1f6",
+  "nativeModelReceiptSha256": "58d96868e5e4ccb139eb16e688178de0f2e9acbad40bc1f0035a293e0dd47323",
+  "stageBounds": {
+    "rehearse": {
+      "tasks": 116,
+      "Mrange": [
+        10,
+        120
+      ],
+      "Brange": [
+        720,
+        7320
+      ],
+      "episodeEnvelopeRangeSeconds": [
+        1330,
+        7930
+      ],
+      "sumEpisodeEnvelopesSeconds": 225620,
+      "sumEpisodeEnvelopesHours": 62.672222222222224
+    },
+    "calibrate": {
+      "tasks": 12,
+      "Mrange": [
+        10,
+        34
+      ],
+      "Brange": [
+        720,
+        2160
+      ],
+      "episodeEnvelopeRangeSeconds": [
+        1330,
+        2770
+      ],
+      "sumEpisodeEnvelopesSeconds": 18600,
+      "sumEpisodeEnvelopesHours": 5.166666666666667
+    },
+    "run": {
+      "tasks": 116,
+      "Mrange": [
+        10,
+        120
+      ],
+      "Brange": [
+        720,
+        7320
+      ],
+      "episodeEnvelopeRangeSeconds": [
+        1330,
+        7930
+      ],
+      "sumEpisodeEnvelopesSeconds": 225620,
+      "sumEpisodeEnvelopesHours": 62.672222222222224
+    }
+  },
+  "calibrationOrder": [
+    {
+      "index": 102,
+      "name": "SystemWifiTurnOff",
+      "family": "android",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "ea520e5e870054de010df5f90dd92458decf8153b4798c9974a00186628a4d15"
+    },
+    {
+      "index": 97,
+      "name": "SystemBrightnessMax",
+      "family": "android",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "456814afbb5aa8d07a0c14120c26c55e140a617fa909024b135f7d04d76fd9c1"
+    },
+    {
+      "index": 8,
+      "name": "ClockStopWatchRunning",
+      "family": "android",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "fe15fe1739bca1ce130f387e2e84d273c4a55e5403a5c174c7a2ec65119afaf9"
+    },
+    {
+      "index": 9,
+      "name": "ClockTimerEntry",
+      "family": "android",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "3c6dc22a2339a8e10eab5472bd837b52efb43b0125410cd5522c8ce88a29192b"
+    },
+    {
+      "index": 10,
+      "name": "ContactsAddContact",
+      "family": "android",
+      "maxActions": 12,
+      "timeBudget": {
+        "businessSeconds": 840,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1450,
+        "forceSeconds": 1030,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "e5b9351bf2f295739e1b6989a343445ca029f42a701d675bbd159e65999d6493"
+    },
+    {
+      "index": 26,
+      "name": "MarkorCreateNote",
+      "family": "android",
+      "maxActions": 16,
+      "timeBudget": {
+        "businessSeconds": 1080,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1690,
+        "forceSeconds": 1270,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "709d69da7c8645fc0231d7a771af0195ebffe9039cf52eda5a9b8dbeb8ff013a"
+    },
+    {
+      "index": 32,
+      "name": "MarkorEditNote",
+      "family": "android",
+      "maxActions": 12,
+      "timeBudget": {
+        "businessSeconds": 840,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1450,
+        "forceSeconds": 1030,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "1532056c510b10c9e61a0482cc2743dad7d8e5ed05f3be0cfa2ccbeeff026856"
+    },
+    {
+      "index": 22,
+      "name": "FilesMoveFile",
+      "family": "android",
+      "maxActions": 20,
+      "timeBudget": {
+        "businessSeconds": 1320,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1930,
+        "forceSeconds": 1510,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "d3c3f09db00791f4ca27ac6679c91a07b3022b26cff5790fc1fba837f7c3e8b0"
+    },
+    {
+      "index": 63,
+      "name": "SimpleCalendarAddOneEvent",
+      "family": "android",
+      "maxActions": 34,
+      "timeBudget": {
+        "businessSeconds": 2160,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 2770,
+        "forceSeconds": 2350,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "345e51c0b25fc4251a372028312c3445ddfe00fa3e044ad037e9d02be5e31aae"
+    },
+    {
+      "index": 5,
+      "name": "CameraTakePhoto",
+      "family": "android",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "45aaf450a9603d18f537950d3a4227d0c1525071ac76d8a7b4b1cf7e29eb7b0e"
+    },
+    {
+      "index": 109,
+      "name": "TasksHighPriorityTasks",
+      "family": "information_retrieval",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "9bdec441da8d2a1d30e6517ec5584f848ea292f41205b9b8b286c054f1f0ef95"
+    },
+    {
+      "index": 75,
+      "name": "SimpleCalendarEventsOnDate",
+      "family": "information_retrieval",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "35497446bdb86198a6893a5d4f8f62a987bf1f2bf6f4615b00dd405b3cf0bc91"
+    }
+  ],
+  "all116Order": [
+    {
+      "index": 0,
+      "name": "AudioRecorderRecordAudio",
+      "family": "android",
+      "maxActions": 12,
+      "timeBudget": {
+        "businessSeconds": 840,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1450,
+        "forceSeconds": 1030,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "5ecde330de09f30a9abf920d1819ab5a975ced2b646fa010e61f0f6810c6e805"
+    },
+    {
+      "index": 1,
+      "name": "AudioRecorderRecordAudioWithFileName",
+      "family": "android",
+      "maxActions": 20,
+      "timeBudget": {
+        "businessSeconds": 1320,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1930,
+        "forceSeconds": 1510,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "e0c1d46a956694ff68c4efa1be7cf92abe00764f76c47a61dec422b76dc14543"
+    },
+    {
+      "index": 2,
+      "name": "BrowserDraw",
+      "family": "android",
+      "maxActions": 20,
+      "timeBudget": {
+        "businessSeconds": 1320,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1930,
+        "forceSeconds": 1510,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "899d6f67cdd687dc3d29a6918010a3ba15348ec5e9caa772f4f4f2cdffb03956"
+    },
+    {
+      "index": 3,
+      "name": "BrowserMaze",
+      "family": "android",
+      "maxActions": 20,
+      "timeBudget": {
+        "businessSeconds": 1320,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1930,
+        "forceSeconds": 1510,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "70afdabec18be5d937700f54f4fc854e6bff0c1e8c65a613801a872bc43dd7bc"
+    },
+    {
+      "index": 4,
+      "name": "BrowserMultiply",
+      "family": "android",
+      "maxActions": 22,
+      "timeBudget": {
+        "businessSeconds": 1440,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 2050,
+        "forceSeconds": 1630,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "7a01ed7f0c0fd1d7b7be5f4dadc99bde6a43c9486fba34c09e42234f7d096e3e"
+    },
+    {
+      "index": 5,
+      "name": "CameraTakePhoto",
+      "family": "android",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "45aaf450a9603d18f537950d3a4227d0c1525071ac76d8a7b4b1cf7e29eb7b0e"
+    },
+    {
+      "index": 6,
+      "name": "CameraTakeVideo",
+      "family": "android",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "02737994400ef3e87279e2b418faa0d8686aa7a007e8eb603222708fa170c293"
+    },
+    {
+      "index": 7,
+      "name": "ClockStopWatchPausedVerify",
+      "family": "android",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "6c253b66e8113a2c4691e2dfc14880eeac9dc41455ec7b25c0440a005336104c"
+    },
+    {
+      "index": 8,
+      "name": "ClockStopWatchRunning",
+      "family": "android",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "fe15fe1739bca1ce130f387e2e84d273c4a55e5403a5c174c7a2ec65119afaf9"
+    },
+    {
+      "index": 9,
+      "name": "ClockTimerEntry",
+      "family": "android",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "3c6dc22a2339a8e10eab5472bd837b52efb43b0125410cd5522c8ce88a29192b"
+    },
+    {
+      "index": 10,
+      "name": "ContactsAddContact",
+      "family": "android",
+      "maxActions": 12,
+      "timeBudget": {
+        "businessSeconds": 840,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1450,
+        "forceSeconds": 1030,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "e5b9351bf2f295739e1b6989a343445ca029f42a701d675bbd159e65999d6493"
+    },
+    {
+      "index": 11,
+      "name": "ContactsNewContactDraft",
+      "family": "android",
+      "maxActions": 12,
+      "timeBudget": {
+        "businessSeconds": 840,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1450,
+        "forceSeconds": 1030,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "52dd9551e8baa09f889c549dbc81ac37dc72fd827d5a51ff65ed5036fc518c2d"
+    },
+    {
+      "index": 12,
+      "name": "ExpenseAddMultiple",
+      "family": "android",
+      "maxActions": 60,
+      "timeBudget": {
+        "businessSeconds": 3720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 4330,
+        "forceSeconds": 3910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "401f801a5b6f0ce8b357764b915ebf68162d4b03f1e042b53dd57bde84861c7a"
+    },
+    {
+      "index": 13,
+      "name": "ExpenseAddMultipleFromGallery",
+      "family": "android",
+      "maxActions": 60,
+      "timeBudget": {
+        "businessSeconds": 3720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 4330,
+        "forceSeconds": 3910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "ed427ab66d556bc9f035445cff7f28b882f4603ee51302fce9d9192a571ee14c"
+    },
+    {
+      "index": 14,
+      "name": "ExpenseAddMultipleFromMarkor",
+      "family": "android",
+      "maxActions": 60,
+      "timeBudget": {
+        "businessSeconds": 3720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 4330,
+        "forceSeconds": 3910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "23de427b2cc14ba77e7fc9e4f767e4a6b1e4049661a80c3ce0b957c65120c929"
+    },
+    {
+      "index": 15,
+      "name": "ExpenseAddSingle",
+      "family": "android",
+      "maxActions": 12,
+      "timeBudget": {
+        "businessSeconds": 840,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1450,
+        "forceSeconds": 1030,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "fc683a2079bf51064538ee7cd762420bce89a7e0af3461caf0a84d9f833021ae"
+    },
+    {
+      "index": 16,
+      "name": "ExpenseDeleteDuplicates",
+      "family": "android",
+      "maxActions": 12,
+      "timeBudget": {
+        "businessSeconds": 840,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1450,
+        "forceSeconds": 1030,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "202099d8e56e0ac2d85b2f49e751fa830aced749a2667ce514a58c29db022e53"
+    },
+    {
+      "index": 17,
+      "name": "ExpenseDeleteDuplicates2",
+      "family": "android",
+      "maxActions": 18,
+      "timeBudget": {
+        "businessSeconds": 1200,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1810,
+        "forceSeconds": 1390,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "535bda7e7310916e7016130286315f0b32b4acaae51128a76e8d3b6d7449c8d8"
+    },
+    {
+      "index": 18,
+      "name": "ExpenseDeleteMultiple",
+      "family": "android",
+      "maxActions": 20,
+      "timeBudget": {
+        "businessSeconds": 1320,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1930,
+        "forceSeconds": 1510,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "a9fef55ad910be27a7191f8396053b333c7e47a6841cc1e3778b82a1935703e1"
+    },
+    {
+      "index": 19,
+      "name": "ExpenseDeleteMultiple2",
+      "family": "android",
+      "maxActions": 34,
+      "timeBudget": {
+        "businessSeconds": 2160,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 2770,
+        "forceSeconds": 2350,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "f7a9bb1e63c9e465693555f39fb3b6b27b8ed3508468ffe5402038b37f39400c"
+    },
+    {
+      "index": 20,
+      "name": "ExpenseDeleteSingle",
+      "family": "android",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "dd2bf44d546100951c5025b0a07ff04ca2bc6d55031c80ed6893280c5e36b664"
+    },
+    {
+      "index": 21,
+      "name": "FilesDeleteFile",
+      "family": "android",
+      "maxActions": 22,
+      "timeBudget": {
+        "businessSeconds": 1440,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 2050,
+        "forceSeconds": 1630,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "de012453dacb6deb3a5807f2de3ceee21a8cb31e1366fff3bada086d3342246c"
+    },
+    {
+      "index": 22,
+      "name": "FilesMoveFile",
+      "family": "android",
+      "maxActions": 20,
+      "timeBudget": {
+        "businessSeconds": 1320,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1930,
+        "forceSeconds": 1510,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "d3c3f09db00791f4ca27ac6679c91a07b3022b26cff5790fc1fba837f7c3e8b0"
+    },
+    {
+      "index": 23,
+      "name": "MarkorAddNoteHeader",
+      "family": "android",
+      "maxActions": 12,
+      "timeBudget": {
+        "businessSeconds": 840,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1450,
+        "forceSeconds": 1030,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "2a8c19b568d3a6cea9c7022e2498aadc5c1dbd18f0c87523acea970275aad764"
+    },
+    {
+      "index": 24,
+      "name": "MarkorChangeNoteContent",
+      "family": "android",
+      "maxActions": 12,
+      "timeBudget": {
+        "businessSeconds": 840,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1450,
+        "forceSeconds": 1030,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "8a36e3d1f408e788e5c64ba885b64633aaed87721fcbd77b72166f05afcddcd1"
+    },
+    {
+      "index": 25,
+      "name": "MarkorCreateFolder",
+      "family": "android",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "f51f9735ded8fc5f5e27466c5a69e7b7f508850f823a03441b23801cf72de4f8"
+    },
+    {
+      "index": 26,
+      "name": "MarkorCreateNote",
+      "family": "android",
+      "maxActions": 16,
+      "timeBudget": {
+        "businessSeconds": 1080,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1690,
+        "forceSeconds": 1270,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "709d69da7c8645fc0231d7a771af0195ebffe9039cf52eda5a9b8dbeb8ff013a"
+    },
+    {
+      "index": 27,
+      "name": "MarkorCreateNoteAndSms",
+      "family": "android",
+      "maxActions": 18,
+      "timeBudget": {
+        "businessSeconds": 1200,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1810,
+        "forceSeconds": 1390,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "a19471e7604242cff1ef3cebc76f84a9e983b417122a4dd47a075d11b2cd40dd"
+    },
+    {
+      "index": 28,
+      "name": "MarkorCreateNoteFromClipboard",
+      "family": "android",
+      "maxActions": 14,
+      "timeBudget": {
+        "businessSeconds": 960,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1570,
+        "forceSeconds": 1150,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "1d4f06333353e2c9a9f2259b04232df2c6f08b7965815d806227be7b196d1fbb"
+    },
+    {
+      "index": 29,
+      "name": "MarkorDeleteAllNotes",
+      "family": "android",
+      "maxActions": 14,
+      "timeBudget": {
+        "businessSeconds": 960,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1570,
+        "forceSeconds": 1150,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "c61bcf549af74c7b7e5807887d052ee81f24cace3275ebda03456968cc7676de"
+    },
+    {
+      "index": 30,
+      "name": "MarkorDeleteNewestNote",
+      "family": "android",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "e991337244e4f207f3ac695d311aca50f3c8decb96c51c7fa41378a09209b335"
+    },
+    {
+      "index": 31,
+      "name": "MarkorDeleteNote",
+      "family": "android",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "11769504ef8800cd1659f3f778dc4b523fb0e7b08f022c7129f20ec8cb083bc2"
+    },
+    {
+      "index": 32,
+      "name": "MarkorEditNote",
+      "family": "android",
+      "maxActions": 12,
+      "timeBudget": {
+        "businessSeconds": 840,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1450,
+        "forceSeconds": 1030,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "1532056c510b10c9e61a0482cc2743dad7d8e5ed05f3be0cfa2ccbeeff026856"
+    },
+    {
+      "index": 33,
+      "name": "MarkorMergeNotes",
+      "family": "android",
+      "maxActions": 78,
+      "timeBudget": {
+        "businessSeconds": 4800,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 5410,
+        "forceSeconds": 4990,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "83d348ecd71eee0838de42e16ede8c5725cd63bf2b70490f4149eaf41fce8868"
+    },
+    {
+      "index": 34,
+      "name": "MarkorMoveNote",
+      "family": "android",
+      "maxActions": 14,
+      "timeBudget": {
+        "businessSeconds": 960,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1570,
+        "forceSeconds": 1150,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "a3c82880c933cb0a63095de9d9dcf503caedb63b6f81e97c4a1a1005f41c9351"
+    },
+    {
+      "index": 35,
+      "name": "MarkorTranscribeReceipt",
+      "family": "android",
+      "maxActions": 18,
+      "timeBudget": {
+        "businessSeconds": 1200,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1810,
+        "forceSeconds": 1390,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "fffa34206f82bfaec925ad7935789f0555d88c02234a73631f893ec2e625fedd"
+    },
+    {
+      "index": 36,
+      "name": "MarkorTranscribeVideo",
+      "family": "android",
+      "maxActions": 20,
+      "timeBudget": {
+        "businessSeconds": 1320,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1930,
+        "forceSeconds": 1510,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "34c4f08195442af746e11f97fdd031715936e628f84a00adee823fa1b7a8312a"
+    },
+    {
+      "index": 37,
+      "name": "NotesIsTodo",
+      "family": "information_retrieval",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "c37fcfcf4f516297b48f7e1f3bece07b97a1eb62db64a3d94bd89a9c6511e2b8"
+    },
+    {
+      "index": 38,
+      "name": "NotesMeetingAttendeeCount",
+      "family": "information_retrieval",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "ef2e949c09775eab4f9be7b2721478b08a5e4fc10ad5d75317e1710636da8a5b"
+    },
+    {
+      "index": 39,
+      "name": "NotesRecipeIngredientCount",
+      "family": "information_retrieval",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "6a616dfdbfe376bfd4d3e63ab131186665e6b74069f38eff5376a68432649657"
+    },
+    {
+      "index": 40,
+      "name": "NotesTodoItemCount",
+      "family": "information_retrieval",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "3a13b8c96c83d595c5cf072ad7e423072e50d51731faded1c313a83180c9d99e"
+    },
+    {
+      "index": 41,
+      "name": "OpenAppTaskEval",
+      "family": "android",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "ff14c391e1abc62f661f3164ba0c7e3e8a7beb3dacdf6f9e292f3c0812d9bafc"
+    },
+    {
+      "index": 42,
+      "name": "OsmAndFavorite",
+      "family": "android",
+      "maxActions": 13,
+      "timeBudget": {
+        "businessSeconds": 900,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1510,
+        "forceSeconds": 1090,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "f1768a6e6c6bf3f62028d39654515b5d04da33e2452356540c808d3c7a68b5a9"
+    },
+    {
+      "index": 43,
+      "name": "OsmAndMarker",
+      "family": "android",
+      "maxActions": 20,
+      "timeBudget": {
+        "businessSeconds": 1320,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1930,
+        "forceSeconds": 1510,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "32553d05ef534ad92e0ee2eec9a99e9e7a52d7f10145d3a5665c3f7a74ef917e"
+    },
+    {
+      "index": 44,
+      "name": "OsmAndTrack",
+      "family": "android",
+      "maxActions": 120,
+      "timeBudget": {
+        "businessSeconds": 7320,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 7930,
+        "forceSeconds": 7510,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "06b0d53c16a5650bb32adbde6e6171efca5e919c88fca9a3990d91ef7d6b6700"
+    },
+    {
+      "index": 45,
+      "name": "RecipeAddMultipleRecipes",
+      "family": "android",
+      "maxActions": 60,
+      "timeBudget": {
+        "businessSeconds": 3720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 4330,
+        "forceSeconds": 3910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "d88c61f35600549821fd5bfec98573d5a9f2ef50ba405e0aec97e99809c34cde"
+    },
+    {
+      "index": 46,
+      "name": "RecipeAddMultipleRecipesFromImage",
+      "family": "android",
+      "maxActions": 60,
+      "timeBudget": {
+        "businessSeconds": 3720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 4330,
+        "forceSeconds": 3910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "88a01ea42fc0457ef22e1d70ed12614b9f6a7233012e57e3d1ff9c2a02011213"
+    },
+    {
+      "index": 47,
+      "name": "RecipeAddMultipleRecipesFromMarkor",
+      "family": "android",
+      "maxActions": 60,
+      "timeBudget": {
+        "businessSeconds": 3720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 4330,
+        "forceSeconds": 3910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "ee04d5b5b730cd71ea523e49c012bb826c53f32957a882ab37d91eac53626a15"
+    },
+    {
+      "index": 48,
+      "name": "RecipeAddMultipleRecipesFromMarkor2",
+      "family": "android",
+      "maxActions": 60,
+      "timeBudget": {
+        "businessSeconds": 3720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 4330,
+        "forceSeconds": 3910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "644b3e97955b1abb8d0e075090437cd5c1947818d8fb1b5863fb154435832c63"
+    },
+    {
+      "index": 49,
+      "name": "RecipeAddSingleRecipe",
+      "family": "android",
+      "maxActions": 24,
+      "timeBudget": {
+        "businessSeconds": 1560,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 2170,
+        "forceSeconds": 1750,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "799aa3b4a3af5f7e76a9d0c1faad2d70015e1d47e380c9e296b15e7a9c3fec21"
+    },
+    {
+      "index": 50,
+      "name": "RecipeDeleteDuplicateRecipes",
+      "family": "android",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "dce0d486877e54dcf20e424a2975e6c18ff9cbe344bca169f4ffa6d185c7f630"
+    },
+    {
+      "index": 51,
+      "name": "RecipeDeleteDuplicateRecipes2",
+      "family": "android",
+      "maxActions": 24,
+      "timeBudget": {
+        "businessSeconds": 1560,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 2170,
+        "forceSeconds": 1750,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "2a787dbe74070eea35fcd293f7237d759a86adddd09f73155cf523681396626e"
+    },
+    {
+      "index": 52,
+      "name": "RecipeDeleteDuplicateRecipes3",
+      "family": "android",
+      "maxActions": 34,
+      "timeBudget": {
+        "businessSeconds": 2160,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 2770,
+        "forceSeconds": 2350,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "76a838d9d504ef8cd9ff928b7f30ddc1c11b2674e5ee08e14b797f7baf8ac90a"
+    },
+    {
+      "index": 53,
+      "name": "RecipeDeleteMultipleRecipes",
+      "family": "android",
+      "maxActions": 24,
+      "timeBudget": {
+        "businessSeconds": 1560,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 2170,
+        "forceSeconds": 1750,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "b2217c4ddac7abd8f6f2d9d9791f58ec6071c0c487854de30410e4bfe6c35159"
+    },
+    {
+      "index": 54,
+      "name": "RecipeDeleteMultipleRecipesWithConstraint",
+      "family": "android",
+      "maxActions": 40,
+      "timeBudget": {
+        "businessSeconds": 2520,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 3130,
+        "forceSeconds": 2710,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "c1387494a1bd79aa9e40aeb205f7a4960a7c1c33d189d58718de1ef1a1314dbc"
+    },
+    {
+      "index": 55,
+      "name": "RecipeDeleteMultipleRecipesWithNoise",
+      "family": "android",
+      "maxActions": 34,
+      "timeBudget": {
+        "businessSeconds": 2160,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 2770,
+        "forceSeconds": 2350,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "df2a69471161d524cddd07715af7ee9beae354d4e7cde5ac4c83b7ad303244df"
+    },
+    {
+      "index": 56,
+      "name": "RecipeDeleteSingleRecipe",
+      "family": "android",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "33d2515add823d6e21c5c5be80ea2709c4908fc77b5cbf553caaa7bcd486805d"
+    },
+    {
+      "index": 57,
+      "name": "RecipeDeleteSingleWithRecipeWithNoise",
+      "family": "android",
+      "maxActions": 20,
+      "timeBudget": {
+        "businessSeconds": 1320,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1930,
+        "forceSeconds": 1510,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "f352fa35f7cbedd77ef33606e965efd34afd87f898ff709f4fd87f72fb902134"
+    },
+    {
+      "index": 58,
+      "name": "RetroCreatePlaylist",
+      "family": "android",
+      "maxActions": 24,
+      "timeBudget": {
+        "businessSeconds": 1560,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 2170,
+        "forceSeconds": 1750,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "4e1b437aa31f4013f8d7f68a6b11e8e5d0ed8d33a61a72c2caa35347c270d5f7"
+    },
+    {
+      "index": 59,
+      "name": "RetroPlayingQueue",
+      "family": "android",
+      "maxActions": 32,
+      "timeBudget": {
+        "businessSeconds": 2040,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 2650,
+        "forceSeconds": 2230,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "fb91fd617b250762a354bd0328d31b45aed828e83641363d2e9c796ebbaf5873"
+    },
+    {
+      "index": 60,
+      "name": "RetroPlaylistDuration",
+      "family": "android",
+      "maxActions": 30,
+      "timeBudget": {
+        "businessSeconds": 1920,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 2530,
+        "forceSeconds": 2110,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "dcd892c246b616e950a794dd086315709257ad98fcc14d0242fc94825464b308"
+    },
+    {
+      "index": 61,
+      "name": "RetroSavePlaylist",
+      "family": "android",
+      "maxActions": 50,
+      "timeBudget": {
+        "businessSeconds": 3120,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 3730,
+        "forceSeconds": 3310,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "ea1a25b5aacbb76c75c9033c23c33e5198c8996a11919bf8e7a03e350378a807"
+    },
+    {
+      "index": 62,
+      "name": "SaveCopyOfReceiptTaskEval",
+      "family": "android",
+      "maxActions": 16,
+      "timeBudget": {
+        "businessSeconds": 1080,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1690,
+        "forceSeconds": 1270,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "d81189cdf384a0509c52c9f3f516ba54faec317690626aa3c88dd253e8d966e4"
+    },
+    {
+      "index": 63,
+      "name": "SimpleCalendarAddOneEvent",
+      "family": "android",
+      "maxActions": 34,
+      "timeBudget": {
+        "businessSeconds": 2160,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 2770,
+        "forceSeconds": 2350,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "345e51c0b25fc4251a372028312c3445ddfe00fa3e044ad037e9d02be5e31aae"
+    },
+    {
+      "index": 64,
+      "name": "SimpleCalendarAddOneEventInTwoWeeks",
+      "family": "android",
+      "maxActions": 34,
+      "timeBudget": {
+        "businessSeconds": 2160,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 2770,
+        "forceSeconds": 2350,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "944a0341ae55a07933ef13ef604549206da48dd501de1ee360de0465a709c78d"
+    },
+    {
+      "index": 65,
+      "name": "SimpleCalendarAddOneEventRelativeDay",
+      "family": "android",
+      "maxActions": 34,
+      "timeBudget": {
+        "businessSeconds": 2160,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 2770,
+        "forceSeconds": 2350,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "e3894bf6a5e0bb51b35baaf49a88d866382c38bb7cf73a77c14da99590f8e273"
+    },
+    {
+      "index": 66,
+      "name": "SimpleCalendarAddOneEventTomorrow",
+      "family": "android",
+      "maxActions": 34,
+      "timeBudget": {
+        "businessSeconds": 2160,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 2770,
+        "forceSeconds": 2350,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "7904f7bb7a309d8b74d0ed17bfbdcd8b8f5db72a97db52152f8aa9c648a16fb2"
+    },
+    {
+      "index": 67,
+      "name": "SimpleCalendarAddRepeatingEvent",
+      "family": "android",
+      "maxActions": 34,
+      "timeBudget": {
+        "businessSeconds": 2160,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 2770,
+        "forceSeconds": 2350,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "be1e801fd63cfe8922703c16a71307beb8fcfdee1f8e5e85147d917426ef636b"
+    },
+    {
+      "index": 68,
+      "name": "SimpleCalendarAnyEventsOnDate",
+      "family": "information_retrieval",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "ccd630a28febb59fcebb676467fb2bed851cd25fdbeadb3fa48fc5b75dc2a86c"
+    },
+    {
+      "index": 69,
+      "name": "SimpleCalendarDeleteEvents",
+      "family": "android",
+      "maxActions": 14,
+      "timeBudget": {
+        "businessSeconds": 960,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1570,
+        "forceSeconds": 1150,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "41b82ccffe2909effbdfd5ae32330e547643526bbae2640055c4c682ff45783b"
+    },
+    {
+      "index": 70,
+      "name": "SimpleCalendarDeleteEventsOnRelativeDay",
+      "family": "android",
+      "maxActions": 12,
+      "timeBudget": {
+        "businessSeconds": 840,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1450,
+        "forceSeconds": 1030,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "8df71614f02b1773f581d4a4ba0198540fe3b62cba8d2b48ca85078b7e0c8142"
+    },
+    {
+      "index": 71,
+      "name": "SimpleCalendarDeleteOneEvent",
+      "family": "android",
+      "maxActions": 12,
+      "timeBudget": {
+        "businessSeconds": 840,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1450,
+        "forceSeconds": 1030,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "45be0801a06325e020b739efc3dfe839a71f1efef3e6560234c6478fb24e62b2"
+    },
+    {
+      "index": 72,
+      "name": "SimpleCalendarEventOnDateAtTime",
+      "family": "information_retrieval",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "440bd57181c070013939b6cd3c7cd7678c594a38fe4a5f76db79b38ef623c8fa"
+    },
+    {
+      "index": 73,
+      "name": "SimpleCalendarEventsInNextWeek",
+      "family": "information_retrieval",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "5d96be56f002174d481ece8277c394bca383de5e4407822629fbe374dbc73bb0"
+    },
+    {
+      "index": 74,
+      "name": "SimpleCalendarEventsInTimeRange",
+      "family": "information_retrieval",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "69eb0351e6141421a9f804b5af6d175343852693ee02f9747da8604095cd4208"
+    },
+    {
+      "index": 75,
+      "name": "SimpleCalendarEventsOnDate",
+      "family": "information_retrieval",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "35497446bdb86198a6893a5d4f8f62a987bf1f2bf6f4615b00dd405b3cf0bc91"
+    },
+    {
+      "index": 76,
+      "name": "SimpleCalendarFirstEventAfterStartTime",
+      "family": "information_retrieval",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "67b33ee482c9f6b8ae4951a45f691b31d8f6cb3f26bd562d48b3eb36d28d9a53"
+    },
+    {
+      "index": 77,
+      "name": "SimpleCalendarLocationOfEvent",
+      "family": "information_retrieval",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "2517dba92c7c308cb9ae7e4e1f346941885a56aa10a5c0d97d7f2a62488d14a3"
+    },
+    {
+      "index": 78,
+      "name": "SimpleCalendarNextEvent",
+      "family": "information_retrieval",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "abbf7c18684e72581a94be7d699948ed6270cfbcdc8e2b194b5001c78f90a74d"
+    },
+    {
+      "index": 79,
+      "name": "SimpleCalendarNextMeetingWithPerson",
+      "family": "information_retrieval",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "19198c249d13da1fdde4110cb04b3b5632b5a9dcc35dca6dedf9f364ecb1d559"
+    },
+    {
+      "index": 80,
+      "name": "SimpleDrawProCreateDrawing",
+      "family": "android",
+      "maxActions": 18,
+      "timeBudget": {
+        "businessSeconds": 1200,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1810,
+        "forceSeconds": 1390,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "f528255cd6addda2e491852b6675ff3746daedc5362335fedca6f51c1bc0b16c"
+    },
+    {
+      "index": 81,
+      "name": "SimpleSmsReply",
+      "family": "android",
+      "maxActions": 12,
+      "timeBudget": {
+        "businessSeconds": 840,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1450,
+        "forceSeconds": 1030,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "6bbdc867e4373e6e6e4872d89155a9bd65cca39b38b8f20305febadf7d2b7bee"
+    },
+    {
+      "index": 82,
+      "name": "SimpleSmsReplyMostRecent",
+      "family": "android",
+      "maxActions": 12,
+      "timeBudget": {
+        "businessSeconds": 840,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1450,
+        "forceSeconds": 1030,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "90097a75e1ccd0175cd4140a98846242c7774e9ef02a82c6073d347a69f79317"
+    },
+    {
+      "index": 83,
+      "name": "SimpleSmsResend",
+      "family": "android",
+      "maxActions": 12,
+      "timeBudget": {
+        "businessSeconds": 840,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1450,
+        "forceSeconds": 1030,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "cf2127ca956ac67f115123f144efdd292018dc5cbf1d2bd76d0f54b5acdcb2dd"
+    },
+    {
+      "index": 84,
+      "name": "SimpleSmsSend",
+      "family": "android",
+      "maxActions": 12,
+      "timeBudget": {
+        "businessSeconds": 840,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1450,
+        "forceSeconds": 1030,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "011d90413c3878ecd450127d18a3b3823fc227e17dbde89d1b88c44b0dcdd7c1"
+    },
+    {
+      "index": 85,
+      "name": "SimpleSmsSendClipboardContent",
+      "family": "android",
+      "maxActions": 12,
+      "timeBudget": {
+        "businessSeconds": 840,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1450,
+        "forceSeconds": 1030,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "9b974d92a2d93867b6bf4bf084b00859ac868649a4a578a7fecad19701ba1bc1"
+    },
+    {
+      "index": 86,
+      "name": "SimpleSmsSendReceivedAddress",
+      "family": "android",
+      "maxActions": 18,
+      "timeBudget": {
+        "businessSeconds": 1200,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1810,
+        "forceSeconds": 1390,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "7de6505a54d36b249e642ab96b03c4ced5b19fff273c961d7b6128513ff9b975"
+    },
+    {
+      "index": 87,
+      "name": "SportsTrackerActivitiesCountForWeek",
+      "family": "information_retrieval",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "9c39bb611239761f51aec37a424626c8417f31e421aaeeb937e99df45259d8ea"
+    },
+    {
+      "index": 88,
+      "name": "SportsTrackerActivitiesOnDate",
+      "family": "information_retrieval",
+      "maxActions": 20,
+      "timeBudget": {
+        "businessSeconds": 1320,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1930,
+        "forceSeconds": 1510,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "ab2eadc4c510fb67f57fd03b3a3af8419ebb8393e92b6abf45805f8473fd60c0"
+    },
+    {
+      "index": 89,
+      "name": "SportsTrackerActivityDuration",
+      "family": "information_retrieval",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "a63d617bd4f0027b82451262e8e2c92f402f7504c09e2fd0ed5ebf09967da725"
+    },
+    {
+      "index": 90,
+      "name": "SportsTrackerLongestDistanceActivity",
+      "family": "information_retrieval",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "04790b42735a4396ac1bcaad1dac4648312380fea9f3cb43f16ec405c2be2c1a"
+    },
+    {
+      "index": 91,
+      "name": "SportsTrackerTotalDistanceForCategoryOverInterval",
+      "family": "information_retrieval",
+      "maxActions": 20,
+      "timeBudget": {
+        "businessSeconds": 1320,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1930,
+        "forceSeconds": 1510,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "1fd425f5d1d32687f08975c00e53171667046cbe023eace31d4b7940bc51076f"
+    },
+    {
+      "index": 92,
+      "name": "SportsTrackerTotalDurationForCategoryThisWeek",
+      "family": "information_retrieval",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "3c56f12ab3c1755c31a83aa9f5ab2924a2a08e65580efe1b6bb32ecd1d422798"
+    },
+    {
+      "index": 93,
+      "name": "SystemBluetoothTurnOff",
+      "family": "android",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "49673bcb7ea2cd5ec719a4897b1ed522b210e590d62b438375bb4738cecadfb2"
+    },
+    {
+      "index": 94,
+      "name": "SystemBluetoothTurnOffVerify",
+      "family": "android",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "6b032cbe92782f2e149e8a994e40b1d855578f8e08a5fe31dc46ae7135f47030"
+    },
+    {
+      "index": 95,
+      "name": "SystemBluetoothTurnOn",
+      "family": "android",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "bc2a7b32cdcfd7b17a4c00513df11da2e78f41335d75d821889a8dd35d498324"
+    },
+    {
+      "index": 96,
+      "name": "SystemBluetoothTurnOnVerify",
+      "family": "android",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "0b5d2f8d3b3364bdfd635cff34676f6697f1e79c821b8946e64ec9f10870e3c8"
+    },
+    {
+      "index": 97,
+      "name": "SystemBrightnessMax",
+      "family": "android",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "456814afbb5aa8d07a0c14120c26c55e140a617fa909024b135f7d04d76fd9c1"
+    },
+    {
+      "index": 98,
+      "name": "SystemBrightnessMaxVerify",
+      "family": "android",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "8891b967adfd12573e41c835d74c146608c1f7bb455968d9d09b29a95ed235c6"
+    },
+    {
+      "index": 99,
+      "name": "SystemBrightnessMin",
+      "family": "android",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "411e3003b65814ced9f3303e2730c305b547e522e5c492a009755ef186e16522"
+    },
+    {
+      "index": 100,
+      "name": "SystemBrightnessMinVerify",
+      "family": "android",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "801f95e71ba3828679f42d5af51ac185903adf079ccf4e3fd9cc78e1903161dd"
+    },
+    {
+      "index": 101,
+      "name": "SystemCopyToClipboard",
+      "family": "android",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "483182e9666317c279cbfe9f2814cac742ebb6f8602b043feb879d479bf4a8c1"
+    },
+    {
+      "index": 102,
+      "name": "SystemWifiTurnOff",
+      "family": "android",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "ea520e5e870054de010df5f90dd92458decf8153b4798c9974a00186628a4d15"
+    },
+    {
+      "index": 103,
+      "name": "SystemWifiTurnOffVerify",
+      "family": "android",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "92176a1992cbd2d46d4a244ae431e941a5b53b03d90f0f53fb88c25f818db1c2"
+    },
+    {
+      "index": 104,
+      "name": "SystemWifiTurnOn",
+      "family": "android",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "8945ff561c64baed38bbad4a4356d45353617df8f0bae5dd77503012dc36d2d4"
+    },
+    {
+      "index": 105,
+      "name": "SystemWifiTurnOnVerify",
+      "family": "android",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "2abb5423b5cd10006e3658389b0d6b58674c29dbb77bfb296d4ae36e6eced78e"
+    },
+    {
+      "index": 106,
+      "name": "TasksCompletedTasksForDate",
+      "family": "information_retrieval",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "df891a4e3f8425995e816536a5d18bc350f691b916e548ac2627575065bec157"
+    },
+    {
+      "index": 107,
+      "name": "TasksDueNextWeek",
+      "family": "information_retrieval",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "abb839ac97922ec08c8c77342efc7d4bfb957dd63bcf9769bd0b68a12d257a29"
+    },
+    {
+      "index": 108,
+      "name": "TasksDueOnDate",
+      "family": "information_retrieval",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "eb62a57281fd67ab4cc87fe67c0e01f645846d67022705fce646449693da6c18"
+    },
+    {
+      "index": 109,
+      "name": "TasksHighPriorityTasks",
+      "family": "information_retrieval",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "9bdec441da8d2a1d30e6517ec5584f848ea292f41205b9b8b286c054f1f0ef95"
+    },
+    {
+      "index": 110,
+      "name": "TasksHighPriorityTasksDueOnDate",
+      "family": "information_retrieval",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "687117f6d7a1e265200c70acfcb679feb0b76cbc89fbefc65078747864d716a8"
+    },
+    {
+      "index": 111,
+      "name": "TasksIncompleteTasksOnDate",
+      "family": "information_retrieval",
+      "maxActions": 10,
+      "timeBudget": {
+        "businessSeconds": 720,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1330,
+        "forceSeconds": 910,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "5cf63c5f6ab1118941de0183008cf34c40b8917b843fcb4f4e45a7b1cac4b141"
+    },
+    {
+      "index": 112,
+      "name": "TurnOffWifiAndTurnOnBluetooth",
+      "family": "android",
+      "maxActions": 20,
+      "timeBudget": {
+        "businessSeconds": 1320,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1930,
+        "forceSeconds": 1510,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "6fc34151fcc86fae46ae3dbbb6593c5f12b5d783ab90fd9d804457d61500d4cc"
+    },
+    {
+      "index": 113,
+      "name": "TurnOnWifiAndOpenApp",
+      "family": "android",
+      "maxActions": 20,
+      "timeBudget": {
+        "businessSeconds": 1320,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 1930,
+        "forceSeconds": 1510,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "304ea43706750346e2eb6e93848237d11630f5da2ceb7519e0fbd78d82e4f087"
+    },
+    {
+      "index": 114,
+      "name": "VlcCreatePlaylist",
+      "family": "android",
+      "maxActions": 28,
+      "timeBudget": {
+        "businessSeconds": 1800,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 2410,
+        "forceSeconds": 1990,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "803124e9e90c893ca6218036b727a8e87a2b67663a8cdd6a22154dd880518355"
+    },
+    {
+      "index": 115,
+      "name": "VlcCreateTwoPlaylists",
+      "family": "android",
+      "maxActions": 48,
+      "timeBudget": {
+        "businessSeconds": 3000,
+        "cleanupWindowSeconds": 180,
+        "episodeSeconds": 3610,
+        "forceSeconds": 3190,
+        "recoveryWindowSeconds": 120,
+        "terminationGraceSeconds": 10
+      },
+      "paramsSha256": "9e4e31eeaff1d8241647ab573fd75d1a40ab2a9a31c86e578644db5058c6bafe"
+    }
+  ],
+  "authorizationBindingConstraint": "Readiness and each prerequisite report bind exact whole authorization SHA and started/completed timestamps within that grant; new grant cannot consume old report without violating current source.",
+  "sameGrantRequired": ["qualify", "rehearse", "calibrate", "run"],
+  "selectedAuthorizationStrategy": "Coordinator explicitly chose one immutable total grant for all four tokens; formal execution additionally waits for coordinator receipt read and explicit start after same-grant prerequisite/cleanup pass.",
+  "stageDriverHardGlobalWatchdog": false,
+  "boundCaveat": "Sum is child episode timeout budget, not strict whole-stage wall clock: identity probes, repeated prerequisite/artifact validation and process-stop overhead are outside parent episode waits. Recommended finite windows are conservative operational planning allowances, not measured durations or new per-episode caps.",
+  "newStagesStarted": false,
+  "FSQFirstRetained": true,
+  "qualifyRehearseCalibrateEpisodeBudgetSeconds": 245430,
+  "allStagesEpisodeBudgetSeconds": 471050,
+  "selectedSharedGrantWindowSeconds": 604800,
+  "headroomOutsideSummedEpisodeCapsSeconds": 133750
+}

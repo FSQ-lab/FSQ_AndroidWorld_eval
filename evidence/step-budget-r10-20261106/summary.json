@@ -1,0 +1,108 @@
+{
+  "actionGate": {
+    "actions": [
+      {
+        "kind": "click",
+        "path": "/session/:sessionId/element/:elementId/click",
+        "status": 200
+      }
+    ],
+    "agentFinished": true,
+    "closed": true,
+    "closureReason": "step_budget",
+    "executedActionCount": 1,
+    "inflightActionCount": 0,
+    "rejectedActionCount": 1
+  },
+  "agent": {
+    "agentCompleted": false,
+    "durationSeconds": 29.239,
+    "exitCode": 0,
+    "processExited": true,
+    "termination": {
+      "actionBudgetClosureReason": "step_budget",
+      "businessDeadlineReached": false,
+      "cleanupRequested": true,
+      "deadlines": {
+        "remainingSeconds": {
+          "business": 570.7604122500052,
+          "cleanup": 168.4670002909843,
+          "force": 178.46699999994598
+        },
+        "started": true
+      },
+      "outerTermination": false,
+      "reason": "step_budget",
+      "rpcCommands": [
+        "set_interrupt_mode",
+        "prompt",
+        "steer"
+      ]
+    },
+    "timedOut": false
+  },
+  "androidWorldTaskRuns": 0,
+  "audit": {
+    "activeSessionCount": 0,
+    "activeSessionHashes": [],
+    "createdSessionCount": 1,
+    "createdSessionHashes": [
+      "428ba92ca872495dffd7f20fdcd78adfba68c89d58dd831005d19ced3c552dfc"
+    ],
+    "deletedSessionCount": 1,
+    "deletedSessionHashes": [
+      "428ba92ca872495dffd7f20fdcd78adfba68c89d58dd831005d19ced3c552dfc"
+    ],
+    "deniedCommandCount": 1,
+    "deniedCommands": [
+      {
+        "reason": "step budget exhausted"
+      }
+    ],
+    "errors": [],
+    "ownedSessionCount": 1,
+    "pendingCreateCount": 0,
+    "pendingRequestCount": 0,
+    "reclaimedSessionCount": 0,
+    "reclaimedSessionHashes": [],
+    "unknownCreationOutcomeCount": 0,
+    "unknownCreationOutcomes": []
+  },
+  "cleanup": {
+    "agentQuitReturned": true,
+    "attribution": "agent",
+    "sessionIdSha256": "428ba92ca872495dffd7f20fdcd78adfba68c89d58dd831005d19ced3c552dfc",
+    "status": "closed",
+    "verification": {
+      "activeSessionCount": 0,
+      "attemptedSessionCount": 1,
+      "ownedSessionCount": 1,
+      "pendingCreateCount": 0,
+      "pendingRequestCount": 0,
+      "reclaimedSessionCount": 0,
+      "reclaimedSessionHashes": [],
+      "sessions": [
+        {
+          "absentVerified": true,
+          "alreadyAbsent": true,
+          "errors": [],
+          "presentVerified": false,
+          "quitReturned": false,
+          "sessionHash": "428ba92ca872495dffd7f20fdcd78adfba68c89d58dd831005d19ced3c552dfc"
+        }
+      ],
+      "status": "unknown",
+      "unknownCreationOutcomeCount": 0
+    }
+  },
+  "fixture": {
+    "clicks": 1,
+    "created": 1,
+    "deleted": 1,
+    "remainingSessionCount": 0
+  },
+  "officialReward": null,
+  "referenceEpisodeDone": false,
+  "referenceStepsExecuted": 1,
+  "scope": "Non-task local HTTP fixture with actual sandboxed OMP and frozen AMKernel MCP; no native Android device changes or benchmark evaluator"
+}

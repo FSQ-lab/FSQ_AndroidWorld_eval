@@ -1,0 +1,522 @@
+{
+  "index": 41,
+  "name": "OpenAppTaskEval",
+  "goal": "Open the contacts app. Clear any pop-ups that may appear by granting all permissions that are required.",
+  "reward": 0.0,
+  "classification": "failed",
+  "initialization": {
+    "initializationReferenceTime": {
+      "referenceTime": "2023-10-15T15:34:00+00:00",
+      "timezone": "UTC"
+    },
+    "initializedGoal": "Open the contacts app. Clear any pop-ups that may appear by granting all permissions that are required."
+  },
+  "frozenTaskSpec": {
+    "apps": [
+      "camera",
+      "clock",
+      "contacts",
+      "settings",
+      "dialer"
+    ],
+    "complexity": 1,
+    "difficulty": "easy",
+    "family": "android",
+    "index": 41,
+    "instanceSeed": 3755248659,
+    "maxActions": 10,
+    "maxSteps": 10,
+    "name": "OpenAppTaskEval",
+    "params": {
+      "app_name": "contacts",
+      "seed": 3755248659
+    },
+    "paramsSha256": "ff14c391e1abc62f661f3164ba0c7e3e8a7beb3dacdf6f9e292f3c0812d9bafc",
+    "paramsTransport": "json",
+    "tags": [
+      "parameterized"
+    ],
+    "timeBudget": {
+      "businessSeconds": 720,
+      "cleanupWindowSeconds": 180,
+      "episodeSeconds": 1330,
+      "forceSeconds": 910,
+      "recoveryWindowSeconds": 120,
+      "terminationGraceSeconds": 10
+    }
+  },
+  "mainSteps": [
+    {
+      "stepId": 4,
+      "tool": "agent_runtime.runner",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [],
+        "evidence": [
+          "assert_with_ai passed: Contacts tab selected, Search contacts bar and create-contact plus button visible, with no obstructing prompts or pop-ups.",
+          "Verification screenshot: artifacts/screenshots/screenshot-agent-assert-with-ai-9-invoke-assert-with-ai-1-cedd77d624a5.png",
+          "kill_app completed successfully after verification."
+        ],
+        "plan_updates": [
+          "Used the launcher Contacts icon after launch_app attempts did not bring Contacts to the foreground.",
+          "Dismissed the Contacts startup tooltip; no permission grant was needed in the observed flow."
+        ],
+        "pre_plan": [
+          {
+            "action": "Launch the configured Contacts app using launch_app.",
+            "status": "adjusted",
+            "step_id": 1,
+            "success_criteria": [
+              "Contacts opens."
+            ]
+          },
+          {
+            "action": "Grant required permissions and dismiss remaining startup pop-ups.",
+            "status": "success",
+            "step_id": 2,
+            "success_criteria": [
+              "No permission prompts or startup pop-ups remain."
+            ]
+          },
+          {
+            "action": "Verify the Contacts main screen before teardown.",
+            "status": "success",
+            "step_id": 3,
+            "success_criteria": [
+              "Main screen is visible and usable."
+            ]
+          }
+        ],
+        "satisfied_criteria": [
+          "The Contacts main screen is visible and usable with no permission prompts or startup pop-ups remaining."
+        ],
+        "schema_version": "task_run_v1",
+        "status": "success",
+        "summary": "Opened Contacts, dismissed its startup tooltip, and verified the main screen was usable with no permission prompts or startup pop-ups remaining. Completed teardown afterward.",
+        "unmet_criteria": []
+      }
+    },
+    {
+      "stepId": 5,
+      "tool": "agent_runtime.verifier",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "The passing visual assertion establishes the state before teardown, not the final state after Contacts was killed."
+        ],
+        "evidence": [
+          "assert_with_ai completed at sequence 38 with status=passed and passed=true, reporting the Contacts tab, search bar, create-contact button, and no obstructing prompts or pop-ups.",
+          "The assertion execution references screenshot artifacts/screenshots/screenshot-agent-assert-with-ai-9-prepare-before-action-1-28dce1c9732f.png; the agent's structured output reports the corresponding passing assertion.",
+          "After that verification, kill_app for com.google.android.contacts completed at sequence 40 with status=passed and step_kind=teardown.",
+          "No subsequent Contacts launch or verification is recorded."
+        ],
+        "plan_updates": [],
+        "pre_plan": [
+          {
+            "action": "Verify the supplied Contacts final-screen goal against execution evidence.",
+            "status": "failed",
+            "step_id": 1,
+            "success_criteria": [
+              "The Contacts main screen is visible and usable with no permission prompts or startup pop-ups remaining."
+            ]
+          }
+        ],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "failed",
+        "summary": "Contacts was verified usable and free of pop-ups, but the run then killed Contacts, undoing the required final visible-screen state.",
+        "unmet_criteria": [
+          "The Contacts main screen is visible and usable with no permission prompts or startup pop-ups remaining."
+        ]
+      }
+    }
+  ],
+  "budgetSummary": {
+    "admitted": 6,
+    "attempted": 6,
+    "deadlineExceeded": false,
+    "deadlineMonotonic": 710219.727651666,
+    "denied": 0,
+    "deviceRestoredByClose": false,
+    "exclusions": [
+      "driver_construction",
+      "uiautomator2_service_startup",
+      "observation_and_assertion_side_effects",
+      "external_processes_and_direct_driver_access"
+    ],
+    "exhausted": false,
+    "failed": 0,
+    "inFlight": 0,
+    "inputTextUnit": "composite_click_optional_clear_set_text",
+    "maximum": 10,
+    "securityBoundary": false,
+    "succeeded": 6,
+    "unit": "admitted_android_harness_write_capability_dispatch",
+    "writeCapabilities": [
+      "launch_app",
+      "kill_app",
+      "tap_on",
+      "tap_at",
+      "long_press_on",
+      "input_text",
+      "press_key",
+      "swipe"
+    ]
+  },
+  "actions": [
+    {
+      "ordinal": 0,
+      "stepId": "agent-launch_app-1",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [],
+      "output": {
+        "app_id": "com.android.camera2"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[0]"
+    },
+    {
+      "ordinal": 1,
+      "stepId": "agent-ui_snapshot-2",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Sun, Oct 15",
+        "Sun, Oct 15",
+        "Gmail",
+        "Gmail",
+        "Photos",
+        "Photos",
+        "YouTube",
+        "YouTube",
+        "Home",
+        "Phone",
+        "Phone",
+        "Messages",
+        "Messages",
+        "Chrome",
+        "Chrome",
+        "Calendar",
+        "Predicted app: Calendar",
+        "Search",
+        "Google app",
+        "Voice search",
+        "Google Lens",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 27981,
+          "retained_characters": 7650
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[1]"
+    },
+    {
+      "ordinal": 2,
+      "stepId": "agent-launch_app-3",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "app_id": "com.google.android.contacts"
+      },
+      "uiLabels": [],
+      "output": {
+        "app_id": "com.google.android.contacts"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[2]"
+    },
+    {
+      "ordinal": 3,
+      "stepId": "agent-swipe-4",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[3]"
+    },
+    {
+      "ordinal": 4,
+      "stepId": "agent-ui_snapshot-5",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Audio Recorder",
+        "Audio Recorder",
+        "Broccoli",
+        "Broccoli",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Chrome",
+        "Chrome",
+        "Clipper",
+        "Clipper",
+        "Clock",
+        "Clock",
+        "Contacts",
+        "Contacts",
+        "Draw",
+        "Draw",
+        "Drive",
+        "Drive",
+        "Files",
+        "Files",
+        "Gallery",
+        "Gallery",
+        "Gmail",
+        "Gmail",
+        "Google",
+        "Google",
+        "Joplin",
+        "Joplin",
+        "Maps",
+        "Maps",
+        "Markor",
+        "Markor",
+        "Messages",
+        "Messages",
+        "OpenTracks",
+        "OpenTracks",
+        "OsmAnd",
+        "OsmAnd",
+        "Phone",
+        "Phone",
+        "Photos",
+        "Photos",
+        "Pro Expense",
+        "Pro Expense",
+        "Gallery",
+        "Gallery",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Tasks",
+        "Tasks",
+        "Search",
+        "Google app",
+        "Search apps, web and more",
+        "Voice search",
+        "Google Lens",
+        "Home",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 37017,
+          "retained_characters": 12575
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 6,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[4]"
+    },
+    {
+      "ordinal": 5,
+      "stepId": "agent-tap_on-6",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "accessibilityId": "Contacts"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[5]"
+    },
+    {
+      "ordinal": 6,
+      "stepId": "agent-ui_snapshot-7",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Search contacts",
+        "Open navigation drawer",
+        "Search contacts",
+        "Signed in as Device\nAccount and settings.",
+        "Phone contacts",
+        "Email contacts",
+        "Company",
+        "No contacts yet",
+        "Create contact",
+        "Contacts",
+        "Contacts",
+        "Highlights",
+        "Highlights",
+        "Fix & manage",
+        "Fix & manage",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Now you can find Settings and Help & feedback here",
+        "Now you can find Settings and Help & feedback here"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 42281,
+          "retained_characters": 10754
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 16,
+          "clipped_attributes": 2
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[6]"
+    },
+    {
+      "ordinal": 7,
+      "stepId": "agent-tap_on-8",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.google.android.contacts:id/og_tooltip_scrim_view"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[7]"
+    },
+    {
+      "ordinal": 8,
+      "stepId": "agent-assert_with_ai-9",
+      "action": "assert_with_ai",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "prompt": "Verify that the Contacts main screen is visible and usable, showing its search and create-contact controls, with no permission prompts or startup pop-ups remaining.",
+        "optional": false
+      },
+      "uiLabels": [],
+      "output": {
+        "status": "passed",
+        "passed": true,
+        "explanation": "The Contacts main screen is visible with the Contacts tab selected, a Search contacts bar, and a plus button for creating a contact. The empty state reads “No contacts yet,” and no permission prompts or startup pop-ups obstruct the screen.",
+        "confidence": 0.99,
+        "provider": "github_copilot",
+        "model": "gpt-6.1-sol",
+        "latency_ms": 4762,
+        "token_usage": {
+          "input_tokens": 3280,
+          "output_tokens": 69,
+          "total_tokens": 3349
+        },
+        "artifact_refs": [
+          {
+            "artifact_id": "screenshot-agent-assert-with-ai-9-invoke-assert-with-ai-1-cedd77d624a5",
+            "kind": "screenshot",
+            "path": "artifacts/screenshots/screenshot-agent-assert-with-ai-9-invoke-assert-with-ai-1-cedd77d624a5.png",
+            "mime_type": "image/png",
+            "size_bytes": 339972,
+            "sha256": "38e2440c2d5e0083b445fe63059e7b10e1cd734007a2026e3c2a900a97ea33bc",
+            "availability": "available",
+            "unavailable_reason": null,
+            "capture_occurrence": 1,
+            "created_at": "2026-11-10T18:17:26.811201Z",
+            "metadata": {
+              "capture_reason": "assert-with-ai",
+              "redacted": false
+            }
+          }
+        ],
+        "error": null,
+        "metadata": {
+          "provider_metadata": {
+            "endpoint_family": "github_copilot",
+            "copilot_plan": "enterprise"
+          }
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[8]"
+    },
+    {
+      "ordinal": 9,
+      "stepId": "agent-kill_app-10",
+      "action": "kill_app",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "app_id": "com.google.android.contacts"
+      },
+      "uiLabels": [],
+      "output": {
+        "app_id": "com.google.android.contacts"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[9]"
+    }
+  ],
+  "originalNativeExecutionPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/041-OpenAppTaskEval/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-041-20261110T181630Z-d66df2/execution-result.json",
+  "originalNativeResultPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/041-OpenAppTaskEval/raw-private/fsq-native/worker/fsq-task-result.private.json",
+  "originalGoalPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/041-OpenAppTaskEval/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-041-20261110T181630Z-d66df2/sources/000-goal.txt"
+}

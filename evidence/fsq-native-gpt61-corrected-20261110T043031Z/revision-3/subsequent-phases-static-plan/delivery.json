@@ -1,0 +1,45 @@
+{
+  "kind": "static_subsequent_phase_plan_complete_no_live",
+  "artifacts": [
+    {
+      "path": "plan.md",
+      "sha256": "45d1cc85964c7b0b262810a264ae3387e25892a9a8a85dafd0d63787c59c6299",
+      "bytes": 9650
+    },
+    {
+      "path": "plan.json",
+      "sha256": "92eb2a079c0a05fbba152129b0f1a632b7450cd8c4aa9cb5e3fd8c60bf84dc8c",
+      "bytes": 60723
+    },
+    {
+      "path": "authorization-draft-frozen-stage-plan.json",
+      "sha256": "242a9bb4f3cbba99dd100fb58ac75a4aea6b22b6c80075f54a55258e87e85a5d",
+      "bytes": 5094
+    },
+    {
+      "path": "proposed-commands.sh",
+      "sha256": "20ce65ab77ade71a36b8fa121b32ad78fcfeee51ce7e1693537912ef8455be28",
+      "bytes": 2360
+    }
+  ],
+  "approvedStageTokensDraft": [
+    "qualify",
+    "rehearse",
+    "calibrate",
+    "run"
+  ],
+  "windowAfterActualIssuanceSeconds": 604800,
+  "allChildEpisodeCapBudgetSeconds": 471050,
+  "admissionAndDriverHeadroomSeconds": 133750,
+  "globalStageWatchdogExists": false,
+  "runMustAwaitReceiptReadAndExplicitCoordinatorStart": true,
+  "zeroBusinessRewardDoesNotBlockOperationalQualification": true,
+  "oldSmokesNotRetriedOrScoredAgain": true,
+  "workspaceAndPhaseIdentityIsolation": "existing per campaign/stage/index, fresh worker/workspace",
+  "noNewDeviceHostOrSessionProbe": true,
+  "noModelOrCodeGateReexecution": true,
+  "noGrantIssued": true,
+  "noNewStageStarted": true,
+  "FSQFirstRetained": true,
+  "releasedToAMK": false
+}

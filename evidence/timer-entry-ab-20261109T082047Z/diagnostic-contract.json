@@ -1,0 +1,84 @@
+{
+  "kind": "development_diagnostic_original_r12v2_009_fixed_two_units",
+  "owner": "w4:p1",
+  "parent": "w3:p1",
+  "independentReadOnlyReviewer": "w4:p2",
+  "task": {
+    "complexity": 1,
+    "goal": "Create a timer with 0 hours, 16 minutes, and 35 seconds. Do not start the timer.",
+    "name": "ClockTimerEntry",
+    "params": {
+      "hours": 0,
+      "minutes": 16,
+      "seconds": 35,
+      "seed": 1172248264
+    },
+    "paramsSha256": "3c6dc22a2339a8e10eab5472bd837b52efb43b0125410cd5522c8ce88a29192b"
+  },
+  "originalModel": "github-copilot/gpt-5.6-sol",
+  "originalPromptSha256": "50df765d5359f644d0a8224a4f4048d225684c078932e7dc30225dd156e40081",
+  "allowedPromptNormalization": "dynamic loopback proxy port only",
+  "skillIdentity": {
+    "fileCount": 152,
+    "installedAgentAssetsSha256": "0ff33bb8ee50c160d87842ed11324e557f6fe5fc81c8e4fe06230a4d7bf792b8"
+  },
+  "policy": {
+    "timeBudget": {
+      "businessSeconds": 720,
+      "cleanupWindowSeconds": 180,
+      "episodeSeconds": 1330,
+      "forceSeconds": 910,
+      "recoveryWindowSeconds": 120,
+      "terminationGraceSeconds": 10
+    },
+    "protocolTimeBudget": {
+      "businessFormula": "max(600, 120 + 60 * maxSteps)",
+      "cleanupPolicy": "agent_quit_required; harness_recovery_still_halts_campaign",
+      "cleanupWindowSeconds": 180,
+      "episodeOverheadSeconds": 300,
+      "mcpRequestTimeoutMs": 120000,
+      "minimumBusinessSeconds": 600,
+      "recoveryWindowSeconds": 120,
+      "secondsPerStep": 60,
+      "startupSeconds": 120,
+      "terminationGraceSeconds": 10,
+      "version": 1
+    },
+    "maxSteps": 10,
+    "fullTaskRetryLimit": 0,
+    "invalidRetryLimit": 1,
+    "maxAppiumSessionsPerEpisode": 1
+  },
+  "labels": [
+    "TimerEntryOriginalP0",
+    "TimerEntryPatchedP1"
+  ],
+  "schedule": "A then B exactly once; A pass accepted; no reward-based rerun",
+  "predicate": {
+    "file": ".venv/lib/python3.11/site-packages/android_world/task_evals/single/clock.py",
+    "sha256": "b71344f13576f6b848a6c34dc4286962e94ec228e9643a3bdfc11b299265a65c",
+    "function": "_is_timer_set",
+    "kwargs": {
+      "hours": 0,
+      "minutes": 16,
+      "seconds": 35
+    },
+    "text": "00h 16m 35s",
+    "contentDescription": "0 hours, 16 minutes, 35 seconds",
+    "originalReturnLines": {
+      "notDeskClock": 89,
+      "matchingElement": 98,
+      "noMatchingElement": 100
+    },
+    "trace": "Original frame/list/element identities and line95/96 events, no predicate replay"
+  },
+  "observation": {
+    "preQuit": "Original live Appium source.xml, pixels, package/activity using read-only attachment and official Client through AMKernel",
+    "postQuit": "Two native PNGs plus original official selected state/forest/PB/UIElements/pixels and complete business action ledger",
+    "postQuitXml": "Not available after original session quit; no extra session or uiautomator dump, no derived XML disguised as original",
+    "approval": "Parent and independent reviewer accepted the actual artifact combination before execution",
+    "overhead": "Explicit measured pre/post observation delays; no added UI action/get_state"
+  },
+  "formalScore": null,
+  "historicalInputBackfill": false
+}

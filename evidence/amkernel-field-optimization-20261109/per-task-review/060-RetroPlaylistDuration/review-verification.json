@@ -1,0 +1,66 @@
+{
+  "case": "060-RetroPlaylistDuration",
+  "reviewedAt": "2026-11-09",
+  "sourceCampaign": "amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z",
+  "sourceFiles": {
+    "campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/episodes/060-RetroPlaylistDuration/attempt-1/result.json": {
+      "sha256Before": "86680b468b5ad8acf7579acdde5e9f162da4215d44860789d8d3f1799c05eca9",
+      "sha256After": "86680b468b5ad8acf7579acdde5e9f162da4215d44860789d8d3f1799c05eca9",
+      "unchanged": true
+    },
+    "campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/episodes/060-RetroPlaylistDuration/attempt-1/raw-private/agent-events.jsonl": {
+      "sha256Before": "ea36ded95cc560202ccb49d679d5fe79b87fa67f262fef19dd67d13e44b31314",
+      "sha256After": "ea36ded95cc560202ccb49d679d5fe79b87fa67f262fef19dd67d13e44b31314",
+      "unchanged": true
+    },
+    "campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/manifest.json": {
+      "sha256Before": "dbb6fe354f9a1cf7b87e52feeafd08903596d87b8531c37c9d12a50b6dc6362c",
+      "sha256After": "dbb6fe354f9a1cf7b87e52feeafd08903596d87b8531c37c9d12a50b6dc6362c",
+      "unchanged": true
+    }
+  },
+  "checks": {
+    "playlistSummaryRawLine": 7208,
+    "playlistSummary": "12 Songs  •  01:01:13",
+    "durationSeconds": 3673,
+    "requiredRangeSeconds": [
+      2700,
+      3000
+    ],
+    "withinRange": false,
+    "songListDurationFieldObserved": false,
+    "firstDurationObservationCell": 27,
+    "selectionStatesObserved": [
+      "10 selected",
+      "12 selected"
+    ],
+    "deniedCommandCount": 1,
+    "deniedReason": "step budget exhausted",
+    "deniedAdjustmentCell": 28,
+    "deniedAdjustmentRawLine": 7472,
+    "executedUiActions": 30,
+    "maxSteps": 30,
+    "rejectedActions": 1,
+    "pythonExecsCaptured": 29,
+    "resultBudgetPythonExecCalls": 29
+  },
+  "constraints": {
+    "liveDevice": false,
+    "appiumSession": false,
+    "androidRestart": false,
+    "installOrClear": false,
+    "buildLintTestFormatter": false,
+    "codeOrSkillModified": false,
+    "newOfficialScore": false,
+    "originalCampaignModified": false
+  },
+  "artifacts": {
+    "review": "review.md",
+    "originalPythonExecutions": "original-python-executions.json",
+    "observationReplay": "observation-replay.json"
+  },
+  "result": {
+    "actor": "notes-media-draw review",
+    "verdict": "grounded original-state review; no rerun"
+  }
+}

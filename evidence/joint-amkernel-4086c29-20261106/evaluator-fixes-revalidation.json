@@ -1,0 +1,66 @@
+{
+  "scope": "Read-only evaluator repair revalidation; source functions actually executed; mutations in memory only",
+  "sourceHead": "4086c29f89bd8abfb96155fb1ff296e543410093",
+  "repairProvenance": "Uncommitted working-tree changes; bind evidence to evaluator/test SHA-256 below",
+  "files": {
+    "tests/e2e/skill_behavior.py": "b1ddee00e6d6913fd4c900b8556b15e16b42e9fa93460a417f9954e3bc57b360",
+    "tests/e2e/test_skill_behavior_evaluator.py": "2ba77f8110668604ff64d39eceebf32aeaaa76357dc098e76048533d824b98a1"
+  },
+  "filesUnchangedDuringProbe": true,
+  "runtimeAndPackagedSkillUnchangedFromPriorJointValidation": true,
+  "behavior": {
+    "validReconcileThenDelete": "accepted",
+    "previousDeleteBeforeEmptyListingCounterexample": "rejected",
+    "rejectionCheck": {
+      "id": "create-interruption-reconciled-read-only",
+      "ok": false,
+      "detail": "Read-only session reconciliations after interruption=1, created identities observed=False, DELETE attempts without prior identity observation=1"
+    },
+    "identityPermanentRegression": [
+      {
+        "queryAt": 4,
+        "sessionIds": "",
+        "deleteAt": 3.5,
+        "assertion": "passed"
+      }
+    ],
+    "pendingBoundaryPermanentRegressions": [
+      {
+        "completedAt": 3.5,
+        "expectedPending": true,
+        "assertion": "passed"
+      },
+      {
+        "completedAt": 3.6,
+        "expectedPending": false,
+        "assertion": "passed"
+      },
+      {
+        "completedAt": 4,
+        "expectedPending": false,
+        "assertion": "passed"
+      }
+    ]
+  },
+  "mutationSensitivity": {
+    "oldIdentityPredicateDetectedByActualPermanentTest": true,
+    "pendingGuardRemoval": [
+      {
+        "completedAt": 3.5,
+        "mutantDetected": false
+      },
+      {
+        "completedAt": 3.6,
+        "mutantDetected": true
+      },
+      {
+        "completedAt": 4,
+        "mutantDetected": true
+      }
+    ]
+  },
+  "bothFindingsClosed": true,
+  "nativeDeviceSessionClosure": "not exercised; previous no-device/no-Appium blocker not re-probed",
+  "qualificationOrAndroidWorldEvaluation": "not started",
+  "sourceEditsOrInstallation": "none"
+}

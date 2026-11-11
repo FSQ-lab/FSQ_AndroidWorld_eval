@@ -1,0 +1,81 @@
+{
+  "capturedAtUnix": 1794205645.0592651,
+  "capturedHostUtc": "2026-11-09T06:27:25Z",
+  "sharedServices": {
+    "appiumListener": true,
+    "appiumListeners": [
+      "COMMAND   PID  USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME",
+      "node    16153 qunmi   17u  IPv4 0xf4b1f843cc3cb95d      0t0  TCP 127.0.0.1:4723 (LISTEN)"
+    ],
+    "emulatorProcessCount": 1,
+    "emulatorProcesses": [
+      "22585 87039 Sat Nov  7 08:46:52 2026     /Users/qunmi/Library/Android/sdk/emulator/qemu/darwin-aarch64/qemu-system-aarch64-headless -avd AndroidWorldAvd -port 5554 -grpc 8554 -read-only -no-snapshot-load -no-snapshot-save -no-audio -crash-report-mode never -no-window"
+    ],
+    "appiumProcessCount": 1,
+    "appiumProcesses": [
+      "16153 87039 Sat Nov  7 07:14:12 2026     node /opt/homebrew/bin/appium --address 127.0.0.1 --port 4723 --log evidence/screenshot-video-controls-20261106T231029Z/appium.log --log-timestamp --log-no-colors --log-level info"
+    ]
+  },
+  "ownedSession": {
+    "sessionId": "aa41feda-dc7f-4413-bdd1-a7398cbc37ab",
+    "deleteForOwnedSessionFound": true,
+    "deleteLines": [
+      {
+        "line": 338865,
+        "text": "2026-11-09 06:26:01:331 [aa41feda][HTTP] --> DELETE /session/aa41feda-dc7f-4413-bdd1-a7398cbc37ab "
+      },
+      {
+        "line": 338869,
+        "text": "2026-11-09 06:26:01:523 [HTTP] <-- DELETE /session/aa41feda-dc7f-4413-bdd1-a7398cbc37ab 200 192 ms - 14"
+      }
+    ],
+    "lastSessionOperationInMasterLog": [
+      "DELETE",
+      338869,
+      "2026-11-09 06:26:01:523 [HTTP] <-- DELETE /session/aa41feda-dc7f-4413-bdd1-a7398cbc37ab 200 192 ms - 14"
+    ],
+    "ownedSessionClosedByLog": true,
+    "note": "Unsupported GET /sessions 404 is not treated as an empty session list."
+  },
+  "device": {
+    "bootId": "0f36e370-012a-4423-a1f9-959beae8f90d",
+    "uiautomator2InstrumentationRunning": false,
+    "forwarderPid": "11143",
+    "accessibilityEnabled": "1",
+    "enabledAccessibilityServices": "com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.AccessibilityForwarder",
+    "accessibilityLines": [
+      "     Bound services:{Service[label=com.google.androidenv.accessibilityforwarder.Acce\u2026, feedbackType[FEEDBACK_GENERIC], capabilities=1, eventTypes=TYPES_ALL_MASK, notificationTimeout=0, requestA11yBtn=false]}",
+      "     Enabled services:{{com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.AccessibilityForwarder}}",
+      "     Binding services:{}",
+      "     Crashed services:{}"
+    ],
+    "adbForwards": [
+      ""
+    ]
+  },
+  "workspace": {
+    "recorded": {
+      "observedAtUnix": 1794205569.196645,
+      "path": "/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-browserdraw-forest-8y8zk5md/agent-workspace",
+      "exists": true,
+      "sharedServerStopped": false,
+      "sharedEmulatorStopped": false
+    },
+    "stillExistsAfterRun": false,
+    "ownedEvidenceDir": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/browserdraw-forest-capability-B-20261109T061859Z",
+    "ownedEvidenceDirBytes": 187034697
+  },
+  "processes": {
+    "ownedLiveProcesses": [],
+    "noOwnedDiagnoseProcess": true,
+    "sandboxConfigCopiesPresent": [
+      "workspace-config/.omp/mcp.json",
+      "workspace-config/.sandbox.sb"
+    ]
+  },
+  "appiumLogIdentity": {
+    "path": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/screenshot-video-controls-20261106T231029Z/appium.log",
+    "bytes": 48416879,
+    "sha256": "0a3ec443013c59dbf959785032e9688beb45523cef5aa374d2702228060a6628"
+  }
+}

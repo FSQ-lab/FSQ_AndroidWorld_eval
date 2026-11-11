@@ -1,0 +1,1035 @@
+{
+  "index": 92,
+  "name": "SportsTrackerTotalDurationForCategoryThisWeek",
+  "goal": "What was the total duration of running activities in the OpenTracks app this week? Assume the week starts from Monday. Express your answer in minutes as a single integer.",
+  "reward": 0.0,
+  "classification": "failed",
+  "initialization": {
+    "initializationReferenceTime": {
+      "referenceTime": "2023-10-15T15:34:00+00:00",
+      "timezone": "UTC"
+    },
+    "initializedGoal": "What was the total duration of running activities in the OpenTracks app this week? Assume the week starts from Monday. Express your answer in minutes as a single integer."
+  },
+  "frozenTaskSpec": {
+    "apps": [
+      "open tracks sports tracker"
+    ],
+    "complexity": 1,
+    "difficulty": "hard",
+    "family": "information_retrieval",
+    "index": 92,
+    "instanceSeed": 1164347337,
+    "maxActions": 10,
+    "maxSteps": 10,
+    "name": "SportsTrackerTotalDurationForCategoryThisWeek",
+    "params": {
+      "activity_description": "Tested my limits and grew as a person.",
+      "activity_name": "Laps around the lake",
+      "category": "running",
+      "distance": "1500",
+      "duration": "240",
+      "elevation": "600",
+      "seed": 1164347337,
+      "start_date": "October 9 2023",
+      "start_time": "10:30am"
+    },
+    "paramsSha256": "3c56f12ab3c1755c31a83aa9f5ab2924a2a08e65580efe1b6bb32ecd1d422798",
+    "paramsTransport": "json",
+    "tags": [
+      "math_counting",
+      "search",
+      "parameterized"
+    ],
+    "timeBudget": {
+      "businessSeconds": 720,
+      "cleanupWindowSeconds": 180,
+      "episodeSeconds": 1330,
+      "forceSeconds": 910,
+      "recoveryWindowSeconds": 120,
+      "terminationGraceSeconds": 10
+    }
+  },
+  "mainSteps": [
+    {
+      "stepId": 5,
+      "tool": "agent_runtime.runner",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "Further scrolling failed with NativeActionBudgetExceeded: action_budget.",
+          "Required kill_app teardown was attempted but also failed with NativeActionBudgetExceeded: action_budget."
+        ],
+        "evidence": [
+          "OpenTracks activity list captured in 000022-ui_snapshot.json.",
+          "Notification-shade snapshot showed the local date as Sun, Oct 15.",
+          "Activity detail captured in 000023-ui_snapshot.json; complete weekly coverage was not established."
+        ],
+        "plan_updates": [
+          "Navigated initial setup to reach the activity list.",
+          "Further activity inspection was blocked by the harness action budget."
+        ],
+        "pre_plan": [
+          {
+            "action": "Launch OpenTracks and inspect its activity list.",
+            "status": "success",
+            "step_id": 1,
+            "success_criteria": [
+              "Activity list observed using ui_snapshot."
+            ]
+          },
+          {
+            "action": "Establish the current local date and Monday-to-present interval.",
+            "status": "adjusted",
+            "step_id": 2,
+            "success_criteria": [
+              "Local date and applicable weekly interval established."
+            ]
+          },
+          {
+            "action": "Inspect all activities in the interval and collect running durations.",
+            "status": "failed",
+            "step_id": 3,
+            "success_criteria": [
+              "Every qualifying activity identified and its duration collected."
+            ]
+          },
+          {
+            "action": "Sum running durations and convert to integer minutes.",
+            "status": "skipped",
+            "step_id": 4,
+            "success_criteria": [
+              "Complete total calculated and verified."
+            ]
+          }
+        ],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "inconclusive",
+        "summary": "Unable to determine a verified integer total before the harness action budget was exhausted.",
+        "unmet_criteria": [
+          "The reported single integer equals the total duration in minutes of all running activities recorded from this Monday through now."
+        ]
+      }
+    },
+    {
+      "stepId": 6,
+      "tool": "agent_runtime.verifier",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "The action budget was exhausted before activity inspection and calculation were completed.",
+          "The correct numerical total remains undetermined, but the absence of the required reported integer is directly established by the recorded final output."
+        ],
+        "evidence": [
+          "Execution step 5 records the actual final output, which states that a verified integer could not be determined and contains no integer answer.",
+          "The final swipe tool result reports status=failed with NativeActionBudgetExceeded: action_budget.",
+          "The supplied activity excerpts do not establish a complete total of qualifying running durations."
+        ],
+        "plan_updates": [],
+        "pre_plan": [
+          {
+            "action": "Verify that the reported integer equals the total running duration from Monday through now.",
+            "status": "failed",
+            "step_id": 1,
+            "success_criteria": [
+              "A single integer is reported and supported by the qualifying activities' total duration in minutes."
+            ]
+          }
+        ],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "failed",
+        "summary": "The verification goal was not met: the completed run reported no single-integer answer.",
+        "unmet_criteria": [
+          "The reported single integer equals the total duration in minutes of all running activities recorded from this Monday through now."
+        ]
+      }
+    }
+  ],
+  "budgetSummary": {
+    "admitted": 10,
+    "attempted": 12,
+    "deadlineExceeded": false,
+    "deadlineMonotonic": 723523.656233,
+    "denied": 2,
+    "deviceRestoredByClose": false,
+    "exclusions": [
+      "driver_construction",
+      "uiautomator2_service_startup",
+      "observation_and_assertion_side_effects",
+      "external_processes_and_direct_driver_access"
+    ],
+    "exhausted": true,
+    "failed": 0,
+    "inFlight": 0,
+    "inputTextUnit": "composite_click_optional_clear_set_text",
+    "maximum": 10,
+    "securityBoundary": false,
+    "succeeded": 10,
+    "unit": "admitted_android_harness_write_capability_dispatch",
+    "writeCapabilities": [
+      "launch_app",
+      "kill_app",
+      "tap_on",
+      "tap_at",
+      "long_press_on",
+      "input_text",
+      "press_key",
+      "swipe"
+    ]
+  },
+  "actions": [
+    {
+      "ordinal": 0,
+      "stepId": "agent-launch_app-1",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [],
+      "output": {
+        "app_id": "de.dennisguse.opentracks"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[0]"
+    },
+    {
+      "ordinal": 1,
+      "stepId": "agent-ui_snapshot-2",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Sun, Oct 15",
+        "Sun, Oct 15",
+        "Gmail",
+        "Gmail",
+        "Photos",
+        "Photos",
+        "YouTube",
+        "YouTube",
+        "Home",
+        "Phone",
+        "Phone",
+        "Messages",
+        "Messages",
+        "Chrome",
+        "Chrome",
+        "Calendar",
+        "Predicted app: Calendar",
+        "Search",
+        "Google app",
+        "Voice search",
+        "Google Lens"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 27981,
+          "retained_characters": 7650
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[1]"
+    },
+    {
+      "ordinal": 2,
+      "stepId": "agent-launch_app-3",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "app_id": "de.dennisguse.opentracks"
+      },
+      "uiLabels": [],
+      "output": {
+        "app_id": "de.dennisguse.opentracks"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[2]"
+    },
+    {
+      "ordinal": 3,
+      "stepId": "agent-swipe-4",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[3]"
+    },
+    {
+      "ordinal": 4,
+      "stepId": "agent-ui_snapshot-5",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "ATX",
+        "ATX",
+        "Audio Recorder",
+        "Audio Recorder",
+        "Broccoli",
+        "Broccoli",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Chrome",
+        "Chrome",
+        "Clipper",
+        "Clipper",
+        "Clock",
+        "Clock",
+        "Contacts",
+        "Contacts",
+        "Draw",
+        "Draw",
+        "Drive",
+        "Drive",
+        "Files",
+        "Files",
+        "Gallery",
+        "Gallery",
+        "Gmail",
+        "Gmail",
+        "Google",
+        "Google",
+        "Joplin",
+        "Joplin",
+        "Maps",
+        "Maps",
+        "Markor",
+        "Markor",
+        "Messages",
+        "Messages",
+        "OpenTracks",
+        "OpenTracks",
+        "OsmAnd",
+        "OsmAnd",
+        "Phone",
+        "Phone",
+        "Photos",
+        "Photos",
+        "Gallery",
+        "Gallery",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Tasks",
+        "Tasks",
+        "Search",
+        "Google app",
+        "Search apps, web and more",
+        "Voice search",
+        "Google Lens",
+        "Home"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 37000,
+          "retained_characters": 12558
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 6,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[4]"
+    },
+    {
+      "ordinal": 5,
+      "stepId": "agent-tap_on-6",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "accessibilityId": "OpenTracks"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[5]"
+    },
+    {
+      "ordinal": 6,
+      "stepId": "agent-ui_snapshot-7",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "OpenTracks is a sport tracking application that co"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 18681,
+          "retained_characters": 4181
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 10,
+          "clipped_attributes": 2
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[6]"
+    },
+    {
+      "ordinal": 7,
+      "stepId": "agent-tap_on-8",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "de.dennisguse.opentracks:id/next_button"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[7]"
+    },
+    {
+      "ordinal": 8,
+      "stepId": "agent-ui_snapshot-9",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "OpenTracks itself does not provide a map. Please i"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 18703,
+          "retained_characters": 4181
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 10,
+          "clipped_attributes": 2
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[8]"
+    },
+    {
+      "ordinal": 9,
+      "stepId": "agent-tap_on-10",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "de.dennisguse.opentracks:id/next_button"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[9]"
+    },
+    {
+      "ordinal": 10,
+      "stepId": "agent-ui_snapshot-11",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Navigate up",
+        "OpenTracks",
+        "Search",
+        "Markers",
+        "More options",
+        "Track",
+        "More tired than usual today",
+        "Yesterday",
+        "30:00 (2.80 mi)",
+        "11:00",
+        "Shared laughs and made memories with friends.",
+        "Track",
+        "Quick Sweat",
+        "Friday",
+        "1:15:00 (0.50 mi)",
+        "07:00",
+        "Had a blast with my favorite people.",
+        "Track",
+        "Alpine Skiing",
+        "Friday",
+        "3:48:00 (1.24 mi)",
+        "05:17",
+        "Track",
+        "Mountain Bike Expedition",
+        "Wednesday",
+        "2:33:00 (10.23 mi)",
+        "11:18",
+        "Track",
+        "Skateboard Trek",
+        "Wednesday",
+        "4:17:00 (10.53 mi)",
+        "10:15",
+        "Track",
+        "Crag Climbing",
+        "Wednesday",
+        "1:35:00 (8.08 mi)",
+        "04:16",
+        "Track",
+        "Trail Ride",
+        "Tuesday",
+        "2:36:00 (11.36 mi)",
+        "09:08",
+        "Track",
+        "Yacht Sailing",
+        "Tuesday",
+        "2:23:00 (6.06 mi)",
+        "07:22",
+        "Track",
+        "Crag Climbing",
+        "Tuesday",
+        "4:49:00 (3.55 mi)",
+        "00:08",
+        "Track",
+        "Surf Trek",
+        "Monday",
+        "4:29:00 (3.45 mi)",
+        "18:47",
+        "Track",
+        "Skateboard Challenge",
+        "Monday",
+        "4:13:00 (7.71 mi)",
+        "00:02",
+        "Record"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 59522,
+          "retained_characters": 17252
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 10,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[10]"
+    },
+    {
+      "ordinal": 11,
+      "stepId": "agent-swipe-12",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "start": {
+          "x": 540,
+          "y": 0
+        },
+        "end": {
+          "x": 540,
+          "y": 1300
+        },
+        "duration": 500,
+        "reference_screen_size": {
+          "width": 1080,
+          "height": 2400
+        }
+      },
+      "uiLabels": [],
+      "output": {
+        "start": {
+          "x": 540,
+          "y": 0
+        },
+        "end": {
+          "x": 540,
+          "y": 1300
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[11]"
+    },
+    {
+      "ordinal": 12,
+      "stepId": "agent-ui_snapshot-13",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "On",
+        "Internet",
+        "Internet",
+        "Off",
+        "Bluetooth.",
+        "Bluetooth",
+        "Off",
+        "Flashlight",
+        "Flashlight",
+        "Off",
+        "Do Not Disturb.",
+        "Do Not Disturb",
+        "Android System",
+        "Alerted",
+        "Collapse",
+        "Data warning",
+        "You've used 4.68 GB of data",
+        "Silent",
+        "Clear all silent notifications",
+        "Need time to focus?",
+        "Use Focus mode to pause distracting apps. Tap to s",
+        "Expand",
+        "Check access settings",
+        "com.google.androidenv.accessibilityforwarder.Acce…",
+        "Expand",
+        "Manage",
+        "Manage",
+        "Clear all",
+        "Clear all notifications.",
+        "15:35",
+        "23:35",
+        "Sun, Oct 15",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "100%"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 54298,
+          "retained_characters": 13707
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 20,
+          "clipped_attributes": 2
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[12]"
+    },
+    {
+      "ordinal": 13,
+      "stepId": "agent-press_key-14",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[13]"
+    },
+    {
+      "ordinal": 14,
+      "stepId": "agent-ui_snapshot-15",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Navigate up",
+        "OpenTracks",
+        "Search",
+        "Markers",
+        "More options",
+        "Track",
+        "More tired than usual today",
+        "Yesterday",
+        "30:00 (2.80 mi)",
+        "11:00",
+        "Shared laughs and made memories with friends.",
+        "Track",
+        "Quick Sweat",
+        "Friday",
+        "1:15:00 (0.50 mi)",
+        "07:00",
+        "Had a blast with my favorite people.",
+        "Track",
+        "Alpine Skiing",
+        "Friday",
+        "3:48:00 (1.24 mi)",
+        "05:17",
+        "Track",
+        "Mountain Bike Expedition",
+        "Wednesday",
+        "2:33:00 (10.23 mi)",
+        "11:18",
+        "Track",
+        "Skateboard Trek",
+        "Wednesday",
+        "4:17:00 (10.53 mi)",
+        "10:15",
+        "Track",
+        "Crag Climbing",
+        "Wednesday",
+        "1:35:00 (8.08 mi)",
+        "04:16",
+        "Track",
+        "Trail Ride",
+        "Tuesday",
+        "2:36:00 (11.36 mi)",
+        "09:08",
+        "Track",
+        "Yacht Sailing",
+        "Tuesday",
+        "2:23:00 (6.06 mi)",
+        "07:22",
+        "Track",
+        "Crag Climbing",
+        "Tuesday",
+        "4:49:00 (3.55 mi)",
+        "00:08",
+        "Track",
+        "Surf Trek",
+        "Monday",
+        "4:29:00 (3.45 mi)",
+        "18:47",
+        "Track",
+        "Skateboard Challenge",
+        "Monday",
+        "4:13:00 (7.71 mi)",
+        "00:02",
+        "Record"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 59522,
+          "retained_characters": 17252
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 10,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[14]"
+    },
+    {
+      "ordinal": 15,
+      "stepId": "agent-tap_on-16",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "text": "More tired than usual today"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[15]"
+    },
+    {
+      "ordinal": 16,
+      "stepId": "agent-ui_snapshot-17",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Stats",
+        "Stats",
+        "Intervals",
+        "Intervals",
+        "By time",
+        "By time",
+        "By distance",
+        "By distance",
+        "More tired than usual today",
+        "Shared laughs and made memories with friends.",
+        "Oct 14, 2023, 11:00:00 AM",
+        "DISTANCE",
+        "MOVING TIME",
+        "2.80",
+        "mi",
+        "30:00",
+        "TOTAL TIME",
+        "30:00",
+        "FASTEST PACE",
+        "AVG MOVING PACE",
+        "10:43",
+        "min/mi",
+        "10:43",
+        "min/mi",
+        "AVG PACE",
+        "10:43",
+        "min/mi",
+        "GAIN",
+        "LOSS",
+        "656",
+        "ft",
+        "2,625",
+        "ft",
+        "Navigate up",
+        "Show on map",
+        "Share",
+        "More options"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 40334,
+          "retained_characters": 10500
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[16]"
+    },
+    {
+      "ordinal": 17,
+      "stepId": "agent-press_key-18",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[17]"
+    },
+    {
+      "ordinal": 18,
+      "stepId": "agent-ui_snapshot-19",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Navigate up",
+        "OpenTracks",
+        "Search",
+        "Markers",
+        "More options",
+        "Track",
+        "More tired than usual today",
+        "Yesterday",
+        "30:00 (2.80 mi)",
+        "11:00",
+        "Shared laughs and made memories with friends.",
+        "Track",
+        "Quick Sweat",
+        "Friday",
+        "1:15:00 (0.50 mi)",
+        "07:00",
+        "Had a blast with my favorite people.",
+        "Track",
+        "Alpine Skiing",
+        "Friday",
+        "3:48:00 (1.24 mi)",
+        "05:17",
+        "Track",
+        "Mountain Bike Expedition",
+        "Wednesday",
+        "2:33:00 (10.23 mi)",
+        "11:18",
+        "Track",
+        "Skateboard Trek",
+        "Wednesday",
+        "4:17:00 (10.53 mi)",
+        "10:15",
+        "Track",
+        "Crag Climbing",
+        "Wednesday",
+        "1:35:00 (8.08 mi)",
+        "04:16",
+        "Track",
+        "Trail Ride",
+        "Tuesday",
+        "2:36:00 (11.36 mi)",
+        "09:08",
+        "Track",
+        "Yacht Sailing",
+        "Tuesday",
+        "2:23:00 (6.06 mi)",
+        "07:22",
+        "Track",
+        "Crag Climbing",
+        "Tuesday",
+        "4:49:00 (3.55 mi)",
+        "00:08",
+        "Track",
+        "Surf Trek",
+        "Monday",
+        "4:29:00 (3.45 mi)",
+        "18:47",
+        "Track",
+        "Skateboard Challenge",
+        "Monday",
+        "4:13:00 (7.71 mi)",
+        "00:02",
+        "Record"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 59522,
+          "retained_characters": 17252
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 10,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[18]"
+    },
+    {
+      "ordinal": 19,
+      "stepId": "agent-swipe-20",
+      "action": "swipe",
+      "status": "failed",
+      "error": "NativeActionBudgetExceeded: action_budget",
+      "params": null,
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[19]"
+    },
+    {
+      "ordinal": 20,
+      "stepId": "agent-kill_app-21",
+      "action": "kill_app",
+      "status": "failed",
+      "error": "NativeActionBudgetExceeded: action_budget",
+      "params": null,
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[20]"
+    }
+  ],
+  "originalNativeExecutionPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/092-SportsTrackerTotalDurationForCategoryThisWeek/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-092-20261110T215815Z-5c3801/execution-result.json",
+  "originalNativeResultPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/092-SportsTrackerTotalDurationForCategoryThisWeek/raw-private/fsq-native/worker/fsq-task-result.private.json",
+  "originalGoalPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/092-SportsTrackerTotalDurationForCategoryThisWeek/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-092-20261110T215815Z-5c3801/sources/000-goal.txt"
+}

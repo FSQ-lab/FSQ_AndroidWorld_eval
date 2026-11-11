@@ -1,0 +1,94 @@
+{
+  "scope": "Replay of saved 086 tool envelopes, stepBudget snapshot, and captured PNG; no Android/Appium run.",
+  "task": "SimpleSmsSendReceivedAddress",
+  "goal": "Text the address 789 E Oak St, Phoenix AZ 85006 to Gabriel Ibrahim, as received from Oscar Mohamed, using Simple SMS Messenger.",
+  "targetPackage": "com.simplemobiletools.smsmessenger",
+  "observedPackages": [
+    "com.google.android.apps.messaging",
+    "com.google.android.apps.nexuslauncher",
+    "com.simplemobiletools.smsmessenger"
+  ],
+  "targetAppObserved": true,
+  "targetReachedCell": 15,
+  "activationCode": "driver.activate_app('com.simplemobiletools.smsmessenger')",
+  "threadObservation": {
+    "cell": 23,
+    "package": "com.simplemobiletools.smsmessenger",
+    "threadTitle": "Gabriel Ibrahim",
+    "composer": {
+      "class": "EditText",
+      "text": "Type a message…",
+      "desc": "",
+      "id": "thread_type_message",
+      "clickable": "true",
+      "bounds": "[148,1391][932,1517]"
+    },
+    "sendButtonBeforeInput": {
+      "class": "Button",
+      "text": "SMS",
+      "desc": "OK",
+      "id": "thread_send_message",
+      "clickable": "false",
+      "bounds": "[943,1391][1069,1517]"
+    }
+  },
+  "inputActionIndex": 18,
+  "inputAdmitted": true,
+  "sendButtonClickableBeforeClick": true,
+  "sendClickAttempted": true,
+  "sendClickAdmitted": false,
+  "sendClickRejection": {
+    "type": "selenium.common.exceptions.UnknownMethodException",
+    "message": "<WebDriver message omitted: sensitive or oversized details>",
+    "tracebackLine": "selenium.common.exceptions.UnknownMethodException: <WebDriver message omitted: sensitive or oversized details>"
+  },
+  "postRejectionUiObservation": false,
+  "rejectedActionCount": 1,
+  "actionKinds": [
+    "click",
+    "mobile: pressKey",
+    "actions",
+    "mobile: pressKey",
+    "actions",
+    "click",
+    "input",
+    "click",
+    "actions",
+    "click",
+    "input",
+    "mobile: activateApp",
+    "click",
+    "input",
+    "click",
+    "actions",
+    "click",
+    "input"
+  ],
+  "executedActionCount": 18,
+  "maxSteps": 18,
+  "pythonCalls": 25,
+  "failedPythonCalls": 7,
+  "kernelStates": [
+    "alive"
+  ],
+  "rawFinalAssistantLine": 5223,
+  "cleanupSteerLine": 5001,
+  "normalizedFinalText": null,
+  "agentIndicatedDone": false,
+  "capturedScreenshot": {
+    "file": "captured-sms-main-before-new-conversation.png",
+    "sha256": "b3b831c3fc25f294421e8226938ccfadd8017fff9e9cf238aeb2b9909da19e2e",
+    "width": 1080,
+    "height": 2400,
+    "sourceRawLine": 4186,
+    "visualObservation": "Simple SMS Messenger conversation list showing Oscar Mohamed, 789 E Oak St, Phoenix AZ 85006; compose FAB at lower right."
+  },
+  "officialReward": 0.0,
+  "evaluator": "android_world.task_eval.is_successful",
+  "noOutgoingMessageProved": "The 18th admitted action was text input; the following send click is the single rejected action after step_budget closure. The send was not executed. No captured post-click state exists, so this replay proves rejection, not composer contents.",
+  "limitations": [
+    "The final send click error message is filtered by AMKernel sensitive-detail handling; the type/traceback line and rejectedActionCount=1 identify the gate rejection.",
+    "No post-rejection observation or screenshot; only the admission boundary proves no send."
+  ],
+  "newAndroidRuns": 0
+}

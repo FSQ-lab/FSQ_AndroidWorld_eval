@@ -1,0 +1,523 @@
+{
+  "schema": "recipe-duplicate-051-diagnosis/owner-scorer-proof/v1",
+  "scope": "Offline source/parameter review of original r12 v2 051 attempt; no device, Appium, ADB, env, init, session, full scorer, or live DB access; no production or skill edits.",
+  "evidence_classes": {
+    "direct_records": [
+      "original result.json (officialReward, task params, evaluator, cleanup)",
+      "extracted 23 original python_exec calls",
+      "installed source files"
+    ],
+    "parameter_source_derived": [
+      "initialization order",
+      "duplicate equivalence",
+      "official predicate semantics",
+      "title/description group composition",
+      "insertion-order target rows"
+    ],
+    "synthetic_offline_reproduction": [
+      "Recipe instances built from original params with synthetic sequential recipeId values",
+      "pure validate_deletion_integrity calls"
+    ],
+    "unknown_runtime_db": [
+      "actual runtime recipeId values",
+      "actual row order in SQLite",
+      "exact card-to-row identity for each tap",
+      "actual after-DB and final DB state"
+    ]
+  },
+  "task_identity": {
+    "campaign_episode_attempt": "campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/episodes/051-RecipeDeleteDuplicateRecipes2/attempt-1",
+    "task_name": "RecipeDeleteDuplicateRecipes2",
+    "complexity": 2.4,
+    "goal": "Delete all but one of any recipes in the Broccoli app that are exact duplicates, ensuring at least one instance of each unique recipe remains",
+    "params_canonical_sha256": "2a787dbe74070eea35fcd293f7237d759a86adddd09f73155cf523681396626e",
+    "row_objects_count": 2,
+    "noise_row_objects_count": 10,
+    "n_rows": 1,
+    "n_rows_noise": 10,
+    "result_sha256": "084f42fc87da1955b77ce31bcc2a5da89d97abf6a7f221c000baedd9feaf9691",
+    "normalized_events_sha256": "8a5b95b38a50f8ac9a1048ab663cd1a35261aa38f151506b5f5b7744973a75d6",
+    "raw_events_sha256": "8f1323cdda23ad7ff36d1cf14c31a8d0f3f1c4167b64ae3a1940f2fb43fb27be",
+    "official_reward_observed": 0.0,
+    "official_evaluator": {
+      "durationSeconds": 0.11,
+      "implementation": "android_world.task_eval.is_successful"
+    },
+    "invalid_reason": null,
+    "error": null
+  },
+  "source_identity": {
+    "distribution_name": "android_world",
+    "distribution_version": "0.1.0",
+    "distribution_revision": "55ddaf5edc6f6c25673aed343907d5b9dca66f84",
+    "direct_url": "file:///Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/android_world (editable=false)",
+    "files": [
+      {
+        "path": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/android_world/task_evals/single/recipe.py",
+        "sha256_hex": "f547556b9681267c34a19fa5fc316591060966a138c8f366c4b1e1783c988309",
+        "sha256_record_b64": "sha256=9UdVa5aBJnw0oZ-l_DFlkQYJZqE4yPNmxLHheDyYgwk",
+        "record_hash_match": true,
+        "size_bytes": 29748
+      },
+      {
+        "path": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/android_world/task_evals/common_validators/sqlite_validators.py",
+        "sha256_hex": "7b932acd2e19f1d4f43cea1badf26ace2ed3363258ae26850d1b09889bfa9d78",
+        "sha256_record_b64": "sha256=e5MqzS4Z8dT0POobrfJqzi7TNjJYriaFDRsJiJv6nXg",
+        "record_hash_match": true,
+        "size_bytes": 14270
+      },
+      {
+        "path": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/android_world/task_evals/utils/sqlite_schema_utils.py",
+        "sha256_hex": "d3b1d796b1faadbdedc78e7f9197f0ee27e3eebf0edd4597cd59f3d0f6e3095b",
+        "sha256_record_b64": "sha256=07HXlrH6rb3tx45_kZfw7ifj7r8O3UWXzVnz0PbjCVs",
+        "record_hash_match": true,
+        "size_bytes": 15031
+      }
+    ],
+    "immutability": "Investigation only. Installed files were read, not edited. All three sha256 values match android_world-0.1.0.dist-info/RECORD."
+  },
+  "source_anchors": {
+    "recipe.py": {
+      "RecipeDeleteDuplicateRecipes": "183",
+      "validate_deletion_integrity": "200",
+      "generate_random_params": "214",
+      "RecipeDeleteDuplicateRecipes2": "229",
+      "RecipeDeleteDuplicateRecipes2.generate_random_params": "245"
+    },
+    "sqlite_validators.py": {
+      "validate_rows_removal_integrity": "73",
+      "SQLiteApp.initialize_task": "257",
+      "DeleteMultipleRows.initialize_task": "348",
+      "DeleteMultipleRows.is_successful": "360",
+      "DeleteDuplicateRows": "380",
+      "DeleteDuplicateRows._validate_candidates": "383",
+      "DeleteDuplicateRows._validate_initial_state": "400",
+      "DeleteDuplicateRows.initialize_task": "411"
+    },
+    "sqlite_schema_utils.py": {
+      "Recipe": "198",
+      "get_random_items": "484"
+    }
+  },
+  "initialization_trace": [
+    {
+      "step": 1,
+      "source": "sqlite_validators.py:257 SQLiteApp.initialize_task",
+      "effect": "clears DB, calls base TaskEval initialization, clears DB again, inserts NOISE_ROW_OBJECTS if present"
+    },
+    {
+      "step": 2,
+      "source": "sqlite_validators.py:348 DeleteMultipleRows.initialize_task",
+      "effect": "calls super, inserts ROW_OBJECTS ([target,target]), reads before=list_rows(env), sets rows_to_delete=before[-2:], then validates row count"
+    },
+    {
+      "step": 3,
+      "source": "sqlite_validators.py:400 DeleteDuplicateRows._validate_initial_state",
+      "effect": "requires len(before)==2+n_rows_noise==12; with original params 10 noise + 2 targets"
+    },
+    {
+      "step": 4,
+      "source": "sqlite_validators.py:411 DeleteDuplicateRows.initialize_task",
+      "effect": "calls super, validates candidate pair, sets duplicate_rows=rows_to_delete"
+    },
+    {
+      "step": 5,
+      "source": "sqlite_validators.py:383 DeleteDuplicateRows._validate_candidates",
+      "effect": "compares every dataclass field except db_key recipeId; target pair must be equal on all non-ID fields"
+    }
+  ],
+  "duplicate_equivalence": {
+    "definition_source": "sqlite_validators.py:383-398 (_validate_candidates), db_key=recipeId from recipe.py:31",
+    "exact_duplicate_requires": "All Recipe fields except recipeId equal: title, description, servings, preparationTime, source, ingredients, directions, favorite, imageName.",
+    "target_pair_equal_excluding_id": true,
+    "params_total_rows": 12,
+    "params_unique_contents": 11,
+    "shared_title_description_group": {
+      "title": "Caprese Salad Skewers",
+      "description": "An ideal recipe for experimenting with different flavors and ingredients.",
+      "count": 5,
+      "unique_contents_within_group": 4,
+      "exact_duplicate_rows_in_group": 2,
+      "distinct_variant_rows_in_group": 3,
+      "synthetic_id_note": "Synthetic sequential IDs only; actual runtime IDs unknown.",
+      "members": [
+        {
+          "synthetic_id": 7,
+          "role": "noise-variant",
+          "title": "Caprese Salad Skewers",
+          "description": "An ideal recipe for experimenting with different flavors and ingredients.",
+          "servings": "3-4 servings",
+          "preparationTime": "45 mins",
+          "ingredients": "various amounts",
+          "directions": "Thread cherry tomatoes, basil leaves, and mozzarella balls onto skewers. Drizzle with balsamic glaze. Try adding a pinch of your favorite spices for extra flavor.",
+          "content_sha256": "faa70db976d79e5da4fc91be6929e8fe652527281a05ef3d088958edf042731e"
+        },
+        {
+          "synthetic_id": 8,
+          "role": "noise-variant",
+          "title": "Caprese Salad Skewers",
+          "description": "An ideal recipe for experimenting with different flavors and ingredients.",
+          "servings": "6 servings",
+          "preparationTime": "20 mins",
+          "ingredients": "various amounts",
+          "directions": "Thread cherry tomatoes, basil leaves, and mozzarella balls onto skewers. Drizzle with balsamic glaze. Garnish with fresh herbs for a more vibrant taste.",
+          "content_sha256": "74af414e8d73522d2f0684f3941755f27317b62d243b33e329f99e35e701dfbe"
+        },
+        {
+          "synthetic_id": 9,
+          "role": "noise-variant",
+          "title": "Caprese Salad Skewers",
+          "description": "An ideal recipe for experimenting with different flavors and ingredients.",
+          "servings": "6 servings",
+          "preparationTime": "30 mins",
+          "ingredients": "flexible ingredients",
+          "directions": "Thread cherry tomatoes, basil leaves, and mozzarella balls onto skewers. Drizzle with balsamic glaze. Feel free to substitute with ingredients you have on hand.",
+          "content_sha256": "fac99963b37976a25f6adf20af792bf83dd75164252656228ccc3173271c9fef"
+        },
+        {
+          "synthetic_id": 11,
+          "role": "target-double",
+          "title": "Caprese Salad Skewers",
+          "description": "An ideal recipe for experimenting with different flavors and ingredients.",
+          "servings": "1 serving",
+          "preparationTime": "30 mins",
+          "ingredients": "various amounts",
+          "directions": "Thread cherry tomatoes, basil leaves, and mozzarella balls onto skewers. Drizzle with balsamic glaze. Try adding a pinch of your favorite spices for extra flavor.",
+          "content_sha256": "a3c188a944edf6013086b8a75e9e28efc6e8a01062db22753140651c7957347a"
+        },
+        {
+          "synthetic_id": 12,
+          "role": "target-double",
+          "title": "Caprese Salad Skewers",
+          "description": "An ideal recipe for experimenting with different flavors and ingredients.",
+          "servings": "1 serving",
+          "preparationTime": "30 mins",
+          "ingredients": "various amounts",
+          "directions": "Thread cherry tomatoes, basil leaves, and mozzarella balls onto skewers. Drizzle with balsamic glaze. Try adding a pinch of your favorite spices for extra flavor.",
+          "content_sha256": "a3c188a944edf6013086b8a75e9e28efc6e8a01062db22753140651c7957347a"
+        }
+      ],
+      "all_params_same_description_count": 6,
+      "title_filtered_same_description_candidate_count": 5,
+      "scope_note": "Group counts are for rows matching both title and description. The same description alone occurs 6 times in all params."
+    },
+    "contrast": {
+      "title_match_count_any_description": 6,
+      "title_or_description_not_equivalence": "Title-only or description-only matching identifies non-duplicate unique recipes and is not exact duplicate equivalence.",
+      "description_match_count_all_params": 6,
+      "title_and_description_match_count": 5,
+      "title_filtered_same_description_candidate_count": 5,
+      "scope_note": "All params: 6 rows share the ideal description, including one Pan-Seared Salmon row. Only 5 rows share both the target title and that description; in a title-filtered context a description-only selector has those 5 visible candidates. This does not prove that an arbitrary global description-only XPath matches only 5 rows."
+    }
+  },
+  "official_success_predicate": {
+    "entry": "sqlite_validators.py:360 DeleteMultipleRows.is_successful -> RecipeDeleteDuplicateRecipes.validate_deletion_integrity (recipe.py:200)",
+    "base_call": "TaskEval.is_successful returns 1.0 after initialization check; DeleteMultipleRows then reads after=list_rows(env).",
+    "recipe_override": "Returns true if validate_rows_removal_integrity(before, after, [target1.recipeId], \"recipeId\") OR the same check with [target2.recipeId].",
+    "validate_rows_removal_integrity_effect": "For chosen target id: target row must be absent from after; every other before row must still be present; no new rows may appear.",
+    "implications": [
+      "Exactly one of the two exact-duplicate target rows must be deleted.",
+      "The other target row must remain, because it is a non-deleted before row.",
+      "All 10 noise rows must remain unchanged.",
+      "Deleting both duplicate targets fails even though no noise is touched.",
+      "Deleting any noise variant fails even if one duplicate target is deleted.",
+      "The integrity check uses full Recipe dataclass equality for presence/absence, including recipeId; title/description matching is not part of the predicate."
+    ]
+  },
+  "offline_pure_execution": {
+    "runtime": ".venv/lib/python3.11/site-packages Python 3.11 environment (import succeeded; pydub emitted an unrelated missing-ffmpeg warning).",
+    "imports": [
+      "android_world.task_evals.utils.sqlite_schema_utils.Recipe",
+      "android_world.task_evals.single.recipe.RecipeDeleteDuplicateRecipes"
+    ],
+    "no_env_no_init_no_scorer_no_device": true,
+    "synthetic_mapping": "Noise rows 1..10 in original params order; target rows 11,12 in original params order. IDs are synthetic.",
+    "scenarios": [
+      {
+        "name": "delete_target1_only",
+        "deleted_synthetic_ids": [
+          11
+        ],
+        "official_predicate": true,
+        "remaining_rows": 11,
+        "remaining_unique_contents": 11
+      },
+      {
+        "name": "delete_target2_only",
+        "deleted_synthetic_ids": [
+          12
+        ],
+        "official_predicate": true,
+        "remaining_rows": 11,
+        "remaining_unique_contents": 11
+      },
+      {
+        "name": "delete_both_targets_only",
+        "deleted_synthetic_ids": [
+          11,
+          12
+        ],
+        "official_predicate": false,
+        "remaining_rows": 10,
+        "remaining_unique_contents": 10
+      },
+      {
+        "name": "delete_four_same_title_desc_keep_one_target",
+        "deleted_synthetic_ids": [
+          7,
+          8,
+          9,
+          11
+        ],
+        "official_predicate": false,
+        "remaining_rows": 8,
+        "remaining_unique_contents": 8
+      },
+      {
+        "name": "delete_four_same_title_desc_keep_one_variant",
+        "deleted_synthetic_ids": [
+          11,
+          12,
+          7,
+          8
+        ],
+        "official_predicate": false,
+        "remaining_rows": 8,
+        "remaining_unique_contents": 8
+      },
+      {
+        "name": "delete_one_target_plus_one_noise",
+        "deleted_synthetic_ids": [
+          11,
+          7
+        ],
+        "official_predicate": false,
+        "remaining_rows": 10,
+        "remaining_unique_contents": 10
+      },
+      {
+        "name": "delete_one_noise_only",
+        "deleted_synthetic_ids": [
+          7
+        ],
+        "official_predicate": false,
+        "remaining_rows": 11,
+        "remaining_unique_contents": 10
+      },
+      {
+        "name": "delete_all_five_same_title_desc",
+        "deleted_synthetic_ids": [
+          7,
+          8,
+          9,
+          11,
+          12
+        ],
+        "official_predicate": false,
+        "remaining_rows": 7,
+        "remaining_unique_contents": 7
+      }
+    ],
+    "four_of_five_same_title_description_enumeration": [
+      {
+        "deleted_synthetic_ids": [
+          7,
+          8,
+          9,
+          11
+        ],
+        "official_predicate": false,
+        "remaining_rows": 8,
+        "remaining_unique_contents": 8,
+        "unique_contents_destroyed": 3
+      },
+      {
+        "deleted_synthetic_ids": [
+          7,
+          8,
+          9,
+          12
+        ],
+        "official_predicate": false,
+        "remaining_rows": 8,
+        "remaining_unique_contents": 8,
+        "unique_contents_destroyed": 3
+      },
+      {
+        "deleted_synthetic_ids": [
+          7,
+          8,
+          11,
+          12
+        ],
+        "official_predicate": false,
+        "remaining_rows": 8,
+        "remaining_unique_contents": 8,
+        "unique_contents_destroyed": 3
+      },
+      {
+        "deleted_synthetic_ids": [
+          7,
+          9,
+          11,
+          12
+        ],
+        "official_predicate": false,
+        "remaining_rows": 8,
+        "remaining_unique_contents": 8,
+        "unique_contents_destroyed": 3
+      },
+      {
+        "deleted_synthetic_ids": [
+          8,
+          9,
+          11,
+          12
+        ],
+        "official_predicate": false,
+        "remaining_rows": 8,
+        "remaining_unique_contents": 8,
+        "unique_contents_destroyed": 3
+      }
+    ],
+    "conclusion": "Every one of the five possible 4-row deletions from the 5 same-title+same-description rows returns official predicate false and destroys 3 distinct recipe contents (11 -> 8 unique contents).",
+    "reproduction_command": "cd /Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval && .venv/bin/python -",
+    "reproduction_entrypoint": "import json, types, itertools\nfrom collections import defaultdict\nfrom android_world.task_evals.utils.sqlite_schema_utils import Recipe\nfrom android_world.task_evals.single.recipe import RecipeDeleteDuplicateRecipes\n\nRESULT='campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/episodes/051-RecipeDeleteDuplicateRecipes2/attempt-1/result.json'\nparams=json.load(open(RESULT))['task']['params']\nnoise=params['noise_row_objects']; targets=params['row_objects']\n\ndef mk(r,rid):\n    kw={k:v for k,v in r.items() if k!='recipeId'}\n    return Recipe(**kw, recipeId=rid)\n\nbefore=[mk(r,i) for i,r in enumerate(noise,1)] + [mk(r,len(noise)+j) for j,r in enumerate(targets,1)]\nt1,t2=before[-2],before[-1]\nobj=types.SimpleNamespace(rows_to_delete=[t1,t2], db_key='recipeId')\n\ndef pred(deleted_ids):\n    after=[r for r in before if r.recipeId not in deleted_ids]\n    return bool(RecipeDeleteDuplicateRecipes.validate_deletion_integrity(obj,before,after)), after\n\nfor name,ids in [\n    ('delete_target1_only',[t1.recipeId]),\n    ('delete_target2_only',[t2.recipeId]),\n    ('delete_both_targets_only',[t1.recipeId,t2.recipeId]),\n    ('four_keep_one_target',[7,8,9,t1.recipeId]),\n    ('four_keep_one_variant',[t1.recipeId,t2.recipeId,7,8]),\n]:\n    print(name, pred(ids)[0])\n\nfor sub in itertools.combinations([7,8,9,t1.recipeId,t2.recipeId],4):\n    print(sub, pred(sub)[0])\n"
+  },
+  "original_trajectory": {
+    "first_complete_call_source_line": 404,
+    "first_complete_call_response_end_line": 409,
+    "first_delete_confirmation_call": 19,
+    "earliest_opportunity_to_see_collisions_call": 9,
+    "earliest_opportunity_to_see_collisions_reason": "list view returned 6 Caprese title nodes and 5 ideal-description nodes; this is an opportunity to see repeated summaries, not divergence or unsafe inference by itself",
+    "earliest_visible_duplicate_hypothesis": {
+      "call": 11,
+      "raw_event_line": 1963,
+      "text": "I need to find out if there are exact duplicates, as it seems there might be five among the otherwise unique entries.",
+      "evidence_class": "direct original raw assistant reasoning",
+      "status": "tentative hypothesis; not proof of duplicate identity or count"
+    },
+    "earliest_destructive_selection_risk_call": 16,
+    "earliest_destructive_selection_risk_reason": "card selected by XPath matching only the shared description text; in the title-filtered view 5 parameter rows share that description (2 exact duplicates + 3 distinct variants), and the selector has no full-row discriminator",
+    "first_visible_detail_call": 16,
+    "first_visible_detail_note": "opened card exposed title/description matching target-visible fields, but no full-field candidate-versus-survivor comparison",
+    "first_irreversible_delete_without_retained_comparison_call": 19,
+    "first_irreversible_delete_without_retained_comparison_note": "first DELETE confirmation; may have removed a legitimate duplicate, but no retained full-field comparison proves it",
+    "first_destructive_mutation_reason": "first DELETE confirmation click in the extracted execution stream; it may have deleted a legitimate duplicate, but the exact card-to-row identity is unknown",
+    "deletion_mutation_calls": [
+      19,
+      20,
+      21,
+      22
+    ],
+    "first_destructive_mutation_call": 19,
+    "observed_lists": {
+      "call_15_after_search": {
+        "titles": [
+          "Caprese Salad Skewers",
+          "Caprese Salad Skewers"
+        ],
+        "descriptions": [
+          "A delicious and healthy choice for any time of the day.",
+          "An ideal recipe for experimenting with different flavors and ingredients.",
+          "An ideal recipe for experimenting with different flavors and ingredients."
+        ]
+      },
+      "call_19_after_first_delete": {
+        "titles": [
+          "Caprese Salad Skewers",
+          "Caprese Salad Skewers",
+          "Caprese Salad Skewers",
+          "Caprese Salad Skewers"
+        ],
+        "descriptions": [
+          "An ideal recipe for experimenting with different flavors and ingredients.",
+          "An ideal recipe for experimenting with different flavors and ingredients.",
+          "An ideal recipe for experimenting with different flavors and ingredients."
+        ]
+      },
+      "call_20_after_second_delete": {
+        "remainingVisibleIdeal": 2
+      },
+      "call_21_after_third_delete": {
+        "remainingVisibleIdeal": 2
+      },
+      "call_22_after_fourth_delete": {
+        "titles": [
+          "Caprese Salad Skewers",
+          "Caprese Salad Skewers"
+        ],
+        "descriptions": [
+          "A delicious and healthy choice for any time of the day.",
+          "An ideal recipe for experimenting with different flavors and ingredients."
+        ]
+      },
+      "call_23_quit": {
+        "ownedSessionId": "87bf18c9-1727-408e-bde8-d1b21e56e52f",
+        "quitReturned": true
+      }
+    },
+    "ui_count_note": "Observed titles/descriptions counts are internally inconsistent across calls (call 15: 2 titles/3 descriptions; call 19: 4 titles/3 descriptions); no SQLite read or final DB dump exists in retained evidence.",
+    "agent_final_text": "{\"evidence\":\"Filtered recipe list showed exactly two remaining Caprese Salad Skewers recipes with different descriptions; one instance of the duplicated recipe remained.\",\"sessionCleanup\":\"quit returned successfully\",\"taskOutcome\":\"completed\"}",
+    "official_reward": 0.0,
+    "evaluator": {
+      "durationSeconds": 0.11,
+      "implementation": "android_world.task_eval.is_successful"
+    },
+    "cleanup": {
+      "agentSession": {
+        "agentQuitReturned": true,
+        "attribution": "agent",
+        "sessionIdSha256": "1d34bf11aa4f4bfb842c6abcab60ff235c19510d61d0ae38cb86a84c41e0f0e8",
+        "status": "closed",
+        "verification": {
+          "activeSessionCount": 0,
+          "attemptedSessionCount": 1,
+          "ownedSessionCount": 1,
+          "pendingCreateCount": 0,
+          "pendingRequestCount": 0,
+          "reclaimedSessionCount": 0,
+          "reclaimedSessionHashes": [],
+          "sessions": [
+            {
+              "absentVerified": true,
+              "alreadyAbsent": true,
+              "errors": [],
+              "presentVerified": false,
+              "quitReturned": false,
+              "sessionHash": "1d34bf11aa4f4bfb842c6abcab60ff235c19510d61d0ae38cb86a84c41e0f0e8"
+            }
+          ],
+          "status": "unknown",
+          "unknownCreationOutcomeCount": 0
+        },
+        "verificationStatus": "absent"
+      },
+      "environment": "closed",
+      "taskTearDown": "completed"
+    },
+    "call_9_visible_summary_counts": {
+      "source_line": 1620,
+      "response_end_line": 1625,
+      "caprese_title_nodes": 6,
+      "ideal_description_nodes": 5,
+      "note": "summary nodes only; no detail fields or DB read"
+    }
+  },
+  "conclusions": [
+    "Exact duplicates in this task are full Recipe rows differing only in recipeId; the original params contain 12 rows with 11 distinct contents, and only the two target rows are exact duplicates.",
+    "Six rows in all params share description \"An ideal recipe for experimenting with different flavors and ingredients.\"; only five also share title \"Caprese Salad Skewers\", and only two of those five are exact duplicates.",
+    "Any strategy that deletes four rows from the five title+same-description candidates necessarily destroys three distinct recipe contents and fails the official predicate.",
+    "The official predicate requires exactly one target duplicate deleted, the other target retained, and all 10 noise rows retained.",
+    "Call 9 is the earliest opportunity to see repeated summary collisions, not evidence of unsafe inference by itself; the earliest visible duplicate hypothesis is raw1963 (exec11). The earliest destructive selection risk is call 16, the first visible detail is call 16 but without full equivalence, and the first irreversible delete without a retained candidate-versus-survivor comparison is call 19; calls 19-22 perform four deletions.",
+    "The retained trajectory cannot prove exact runtime row IDs or exact DB after-state; the predicate-failure conclusion is structural over the original params and installed source, not a claim about the historical final DB."
+  ],
+  "limitations": [
+    "No final SQLite dump or after-state row list is retained in result.json; exact deleted IDs and exact final DB contents are unknown.",
+    "Synthetic sequential IDs are an offline mapping of params order; source initialization inserts noise first and targets last, but SQLite allocation/order is runtime-dependent.",
+    "Observed UI node lists during calls 15-22 are inconsistent in count and cannot be used as a DB read.",
+    "No official scorer rerun, device interaction, env initialization, ADB, Appium, or session operation was performed.",
+    "No production/skill fix is proposed or applied; this artifact is diagnosis only.",
+    "A global description-only XPath was not shown to match only 5 rows; the 5-candidate count applies to the title-filtered group."
+  ]
+}

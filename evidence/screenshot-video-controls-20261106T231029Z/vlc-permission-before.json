@@ -1,0 +1,14 @@
+{
+  "name": "vlc-permission-before",
+  "observedAtUnix": 1794007339.874506,
+  "command": [
+    "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+    "-s",
+    "emulator-5554",
+    "shell",
+    "appops get org.videolan.vlc MANAGE_EXTERNAL_STORAGE; service check activity; service check settings; service check window; pidof system_server surfaceflinger"
+  ],
+  "returnCode": 0,
+  "stdout": "MANAGE_EXTERNAL_STORAGE: default; rejectTime=+2m44s590ms ago\nService activity: found\nService settings: found\nService window: found\n340 505\n",
+  "stderr": ""
+}

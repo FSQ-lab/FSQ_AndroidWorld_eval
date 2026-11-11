@@ -1,0 +1,139 @@
+{
+  "label": "BrowserDrawPatchedP1",
+  "officialReward": 1.0,
+  "error": null,
+  "invalidReason": null,
+  "executedActionCount": 17,
+  "maxSteps": 20,
+  "originalEvaluatorReturn": 1.0,
+  "originalReturnLine": 108,
+  "originalBranch": "exact_success_text_found",
+  "selectedOfficialForest": {
+    "present": true,
+    "recvSeq": 1776,
+    "storedIdentityIsActual": true,
+    "receiveObjectIdMatchesRecord": true,
+    "identityMismatch": false,
+    "windowCount": 2,
+    "serializedBytes": 8917,
+    "sha256": "f66beabdd7738c2a9be919f1f7dfe1ed56bec2a3351bd4dbbbad3ec27f4a73ef",
+    "nodeCount": 54,
+    "successTextFound": true,
+    "windows": [
+      {
+        "id": 9846,
+        "title": "",
+        "windowType": 1,
+        "isActive": true,
+        "isFocused": true,
+        "nodeCount": 46,
+        "packageNames": [
+          "com.android.chrome"
+        ]
+      },
+      {
+        "id": 9830,
+        "title": "",
+        "windowType": 3,
+        "isActive": false,
+        "isFocused": false,
+        "nodeCount": 8,
+        "packageNames": [
+          "com.android.systemui"
+        ]
+      }
+    ],
+    "receivedAtUnix": 1794209591.626622,
+    "receivedHostUtc": "2026-11-09T07:33:11Z",
+    "receiveAgeSeconds": 0.28523707389831543,
+    "recvTransport": "unary",
+    "recvAdmitted": true,
+    "recvAdmittedByDrain": true,
+    "recvAdmittedByDrainIndex": 7,
+    "recvAdmittedByPull": null,
+    "recvPaused": false
+  },
+  "selectedSender": {
+    "fsq-forwarder-instance": "4231:1",
+    "fsq-forwarder-generation": "1",
+    "fsq-forest-sequence": "1776"
+  },
+  "originalStateCallCount": 1,
+  "successElements": [
+    {
+      "text": "Success!",
+      "content_description": null,
+      "class_name": "android.widget.TextView",
+      "bbox": null,
+      "bbox_pixels": {
+        "x_min": 21,
+        "x_max": 1063,
+        "y_min": 1936,
+        "y_max": 1981
+      },
+      "hint_text": null,
+      "is_checked": false,
+      "is_checkable": false,
+      "is_clickable": false,
+      "is_editable": false,
+      "is_enabled": true,
+      "is_focused": false,
+      "is_focusable": false,
+      "is_long_clickable": false,
+      "is_scrollable": false,
+      "is_selected": false,
+      "is_visible": true,
+      "package_name": "com.android.chrome",
+      "resource_name": "result",
+      "tooltip": null,
+      "resource_id": null,
+      "metadata": null
+    }
+  ],
+  "traceErrors": [],
+  "visualReview": "Actual original evaluator pixels read: Chrome task page displays three colored strokes and Success!",
+  "cleanup": {
+    "agentSession": {
+      "agentQuitReturned": true,
+      "attribution": "agent",
+      "sessionIdSha256": "453663ae7d547cdc57457d5594cdc8f48b50ee99c31462b3c1aad2d8929f4df8",
+      "status": "closed",
+      "verification": {
+        "activeSessionCount": 0,
+        "attemptedSessionCount": 1,
+        "ownedSessionCount": 1,
+        "pendingCreateCount": 0,
+        "pendingRequestCount": 0,
+        "reclaimedSessionCount": 0,
+        "reclaimedSessionHashes": [],
+        "sessions": [
+          {
+            "absentVerified": true,
+            "alreadyAbsent": true,
+            "errors": [],
+            "presentVerified": false,
+            "quitReturned": false,
+            "sessionHash": "453663ae7d547cdc57457d5594cdc8f48b50ee99c31462b3c1aad2d8929f4df8"
+          }
+        ],
+        "status": "unknown",
+        "unknownCreationOutcomeCount": 0
+      },
+      "verificationStatus": "absent"
+    },
+    "environment": "closed",
+    "taskTearDown": "completed"
+  },
+  "postExitWorkspaceAbsence": {
+    "observedAtUnix": 1794209739.256447,
+    "observedAfterUnitProcessCompletion": true,
+    "unitSummaryCompletedAtUnix": 1794209594.7493482,
+    "workspacePath": "/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-browserdraw-forest-m7blsjzq/agent-workspace",
+    "workspaceExists": false,
+    "temporaryParentPath": "/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-browserdraw-forest-m7blsjzq",
+    "temporaryParentExists": false,
+    "originalCleanupRecordPreserved": true,
+    "scope": "host filesystem absence check only"
+  },
+  "formalScore": null
+}

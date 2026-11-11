@@ -1,0 +1,221 @@
+{
+  "owner": "w4:p1",
+  "scope": "Original060 identity, actually imported installed source and pure-contract/old-review audit only; no DB/device/scorer run",
+  "manifestIdentity": {
+    "index": 60,
+    "name": "RetroPlaylistDuration",
+    "instanceSeed": 217200551,
+    "paramsSha256": "dcd892c246b616e950a794dd086315709257ad98fcc14d0242fc94825464b308",
+    "paramsTransport": "json",
+    "maxSteps": 30,
+    "complexity": 3
+  },
+  "sourceHashes": {
+    "result.json": {
+      "sha256": "86680b468b5ad8acf7579acdde5e9f162da4215d44860789d8d3f1799c05eca9",
+      "bytes": 33545
+    },
+    "normalized-agent-events.json": {
+      "sha256": "e0ad3a096a2861a8b64c766e3d662f824160050ea54aa39b4e30a010068bede8",
+      "bytes": 14008
+    },
+    "raw-private/agent-events.jsonl": {
+      "sha256": "ea36ded95cc560202ccb49d679d5fe79b87fa67f262fef19dd67d13e44b31314",
+      "bytes": 133280401
+    }
+  },
+  "parentExtraction": {
+    "path": "evidence/amkernel-field-optimization-20261109/per-task-review/060-RetroPlaylistDuration/original-python-executions.json",
+    "sha256": "fcbaddbdfd90c61afe9715c814c5e56d66e48d1963bb62a180792f91026dea69",
+    "ownerAll29CodeShaMatchesOriginalResult": true,
+    "rawFullIdResponseReview": "p2 independent scope; owner does not claim their work"
+  },
+  "oldReview": {
+    "path": "evidence/amkernel-field-optimization-20261109/per-task-review/060-RetroPlaylistDuration/review.md",
+    "sha256": "eddb78599a79f553e691b5205f4a39594fa5992583917e1d38af9a91c2cd4caa",
+    "readOnly": true
+  },
+  "installedSources": {
+    ".venv/lib/python3.11/site-packages/android_world/task_evals/single/retro_music.py": {
+      "sha256": "d41a9ec51c80e296523436d884df3fc298f9d394ff55a114f10d425999f0f6e9",
+      "bytes": 12274,
+      "record": "sha256=1BqexRyA4pZSNDbYhN8_wpj505T_VaEU8Q1CWZnw9uk",
+      "matchesInstalledDistributionRECORD": true
+    },
+    ".venv/lib/python3.11/site-packages/android_world/task_evals/common_validators/sqlite_validators.py": {
+      "sha256": "7b932acd2e19f1d4f43cea1badf26ace2ed3363258ae26850d1b09889bfa9d78",
+      "bytes": 14270,
+      "record": "sha256=e5MqzS4Z8dT0POobrfJqzi7TNjJYriaFDRsJiJv6nXg",
+      "matchesInstalledDistributionRECORD": true
+    },
+    ".venv/lib/python3.11/site-packages/android_world/task_evals/utils/sqlite_schema_utils.py": {
+      "sha256": "d3b1d796b1faadbdedc78e7f9197f0ee27e3eebf0edd4597cd59f3d0f6e3095b",
+      "bytes": 15031,
+      "record": "sha256=07HXlrH6rb3tx45_kZfw7ifj7r8O3UWXzVnz0PbjCVs",
+      "matchesInstalledDistributionRECORD": true
+    },
+    ".venv/lib/python3.11/site-packages/android_world/utils/fuzzy_match_lib.py": {
+      "sha256": "e7376554fd9a413ff00d71656e09609c9070d0b384028b89fd931e32fcfb2969",
+      "bytes": 1545,
+      "record": "sha256=5zdlVP2aQT_wDXFlbglgnJBw0LOEAouJ_ZMeMvz7KWk",
+      "matchesInstalledDistributionRECORD": true
+    }
+  },
+  "installedDistributionVersion": "0.1.0",
+  "recordedAndroidWorld": {
+    "packageVersion": "0.1.0",
+    "revision": "55ddaf5edc6f6c25673aed343907d5b9dca66f84"
+  },
+  "actualIdentities": {
+    "initialize": "android_world.task_evals.single.retro_music.RetroPlaylistDuration.initialize_task",
+    "initializeLine": 260,
+    "isSuccessful": "android_world.task_evals.single.retro_music.RetroPlaylistDuration.is_successful",
+    "scoreLine": 286,
+    "baseScoreNotUsed": "RetroCreatePlaylist.is_successful162\u2013170 calls verify_playlist but is overridden by duration subclass",
+    "genericVerifyLine": 30
+  },
+  "durationScoreContract": {
+    "query": "_get_playlist_info_query41\u201359 JOIN PlaylistEntity/SongEntity, noWHERE by target; innerJOIN onlyreturns song-associated rows; partition/order by playlist_name/song_key",
+    "fieldsUsed": [
+      "playlist_name exact equality",
+      "duration_ms summed"
+    ],
+    "fieldsIgnored": [
+      "media_file_name",
+      "order_in_playlist",
+      "files/noise membership",
+      "song count"
+    ],
+    "foreignObjectBoundary": "Every returned row must have exactly the requested playlist_name; any foreignname row returnsFalse rather than being filtered out",
+    "emptyPlaylistBoundary": "Other empty playlists yield noJOINrows; empty overallresult gives0duration andfailslowerbound",
+    "sameNameObjectBoundary": "Query output omits playlist_id; same-name logicalobjects are indistinguishable and combined",
+    "durationBoundsMs": [
+      2700000,
+      3000000
+    ],
+    "inclusive": true
+  },
+  "baseVerifyContract": {
+    "notInvokedBy060": true,
+    "playlistName": "fuzzy ignorecase threshold from actualfuzzyhelper",
+    "rowCount": "Count only fuzzy-matching name rows and require candidatefiles length",
+    "title": "Exact media_file_name",
+    "order": "order_in_playlist equal candidate index",
+    "duration": "Ignored",
+    "foreignRows": "Ignored if playlist name not fuzzy-match"
+  },
+  "hiddenGenerationFacts": {
+    "scope": "Evaluator-only source/params audit; not Agentobservations or recommended songnames",
+    "filesCount": 10,
+    "noiseCount": 5,
+    "fileGroupDurationSumMs": 2850000,
+    "fileGroupGenerator": "Sorted9 randomcuts in0..2850000 plus endpoints ->10 nonnegativeintervals, no3\u20135minute pertrackconstraint",
+    "noiseDurationMsInclusive": [
+      180000,
+      300000
+    ],
+    "writtenTotalSpecifiedFiles": 15,
+    "noSuperclassInitializeCall": true,
+    "noActualMediaOrDbDurationReconstruction": "No initialize/generate_random_params/encoder/device calls; fixedseed is not used to pretend recovering historical per-trackduration. Encoded/scanned metadata need not be byteexact requestedinput duration."
+  },
+  "originalOutcome": {
+    "officialReward": 0.0,
+    "error": null,
+    "invalidReason": null,
+    "businessActions": 30,
+    "maxSteps": 30,
+    "referenceSteps": 30,
+    "pythonCalls": 29,
+    "statuses": {
+      "completed": 25,
+      "failed": 4
+    },
+    "allKernelsAlive": true,
+    "normalizedFinalText": null,
+    "agentCompleted": false,
+    "termination": {
+      "actionBudgetClosureReason": "step_budget",
+      "businessDeadlineReached": false,
+      "cleanupRequested": true,
+      "deadlines": {
+        "remainingSeconds": {
+          "business": 1584.6133676660247,
+          "cleanup": 161.84745920804562,
+          "force": 171.84745737502817
+        },
+        "started": true
+      },
+      "outerTermination": false,
+      "reason": "step_budget",
+      "rpcCommands": [
+        "set_interrupt_mode",
+        "prompt",
+        "steer"
+      ]
+    },
+    "cleanup": {
+      "agentSession": {
+        "agentQuitReturned": true,
+        "attribution": "agent",
+        "sessionIdSha256": "c5a575a4d767ea2c93a0257b232f2178e8c8996db577851cadfe6526d91c9205",
+        "status": "closed",
+        "verification": {
+          "activeSessionCount": 0,
+          "attemptedSessionCount": 1,
+          "ownedSessionCount": 1,
+          "pendingCreateCount": 0,
+          "pendingRequestCount": 0,
+          "reclaimedSessionCount": 0,
+          "reclaimedSessionHashes": [],
+          "sessions": [
+            {
+              "absentVerified": true,
+              "alreadyAbsent": true,
+              "errors": [],
+              "presentVerified": false,
+              "quitReturned": false,
+              "sessionHash": "c5a575a4d767ea2c93a0257b232f2178e8c8996db577851cadfe6526d91c9205"
+            }
+          ],
+          "status": "unknown",
+          "unknownCreationOutcomeCount": 0
+        },
+        "verificationStatus": "absent"
+      },
+      "environment": "closed",
+      "taskTearDown": "completed"
+    }
+  },
+  "directOriginalUi": {
+    "exec19": {
+      "sourceLine": 4762,
+      "responseSourceLine": 4764,
+      "code": "display(driver.get_screenshot_as_png(), mime_type='image/png')",
+      "uiMutationFromThisCell": false,
+      "imageDecodedBy": "p2 independent originalimage verification"
+    },
+    "exec27": {
+      "sourceLine": 7207,
+      "responseSourceLine": 7208,
+      "observedPlaylistSummary": {
+        "package": "code.name.monkey.retromusic",
+        "playlistSummary": [
+          "Reggae Rhythms 51",
+          "12 Songs  \u2022  01:01:13"
+        ]
+      },
+      "durationSeconds": 3673,
+      "aboveUpperSeconds": 673,
+      "meaning": "First nonempty aggregate durationreadback; earlier emptyplaylist0Songs00:00 existed. UI not historical evaluatorDBinput."
+    }
+  },
+  "pureProof": "owner-installed-pure-predicate-smoke.json",
+  "historicalLimits": [
+    "No actual original playlistDB/query rowinput or exact firstscorebranch retained",
+    "Original full finaltracklist not independently readback by owner",
+    "Known wrong UIaggregate is directbusinesspostcondition evidence, not proof of exact DBms or uniqueofficialzero branch",
+    "Hidden files/noise mapping not available to executionAgent; never propose copying it as solution"
+  ],
+  "ownerCurrentDbReads": 0,
+  "ownerCurrentEnvInitOrFullScorerCalls": 0
+}

@@ -1,0 +1,26 @@
+{
+  "kind": "offline_delivery_notifications_sent",
+  "bundle": "delivery.json",
+  "bundleSha256": "70c9cd3659b532314c84e36a6a4fcce8262936e3298f2796c96632f639d9d7a8",
+  "recipients": [
+    {
+      "target": "w4:p2",
+      "purpose": "complete independent targeted review handoff",
+      "transport": "herdr agent prompt",
+      "observedToolResult": "agent_prompted",
+      "reviewAccepted": false
+    },
+    {
+      "target": "w6:p2",
+      "purpose": "coordinator complete offline delivery and blockers",
+      "transport": "herdr agent prompt",
+      "observedToolResult": "agent_prompted"
+    }
+  ],
+  "noIdleCompletionInference": true,
+  "reviewConclusion": "not_yet_received",
+  "implementationCodeFrozenForReview": true,
+  "externalCommitWindowAcknowledged": true,
+  "postWindowProvenanceRefresh": "blocked_until_w6:p1_release",
+  "liveEvaluationStarted": false
+}

@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "kind": "actual_authorized_qualify_terminal_and_withheld_smoke",
+  "recordedAtUtc": "2026-11-10T06:50:45.149963+00:00",
+  "authorization": "authorization-approved-qualify-smoke.json",
+  "authorizationWindow": {
+    "issuedAtUtc": "2026-11-10T06:44:43.285449+00:00",
+    "expiresAtUtc": "2026-11-10T08:14:43.285449+00:00",
+    "seconds": 5400
+  },
+  "inputAdmission": "actual-input-admission.json",
+  "qualification": {
+    "status": "failed",
+    "attempts": 1,
+    "shellExitCode": 2,
+    "elapsedSecondsFromCommand": 5.04,
+    "originalReadinessPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-2/resource-admission-20261110/future-live-qualify-smoke-5554-7f139c2e/qualify/readiness.json",
+    "originalReadinessSha256": "b9827ef2398aa68e3b77e1ba96b48f8f6f5095240c01ac2c0013dc4643ed4018",
+    "originalChildReadinessPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-2/resource-admission-20261110/future-live-qualify-smoke-5554-7f139c2e/qualify/qualification/readiness.json",
+    "checkpoint": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-2/resource-admission-20261110/future-live-qualify-smoke-5554-7f139c2e/qualify/checkpoint.jsonl",
+    "processLog": {
+      "path": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-2/resource-admission-20261110/future-live-qualify-smoke-5554-7f139c2e/qualify/process.log",
+      "sizeBytesObserved": 0
+    },
+    "summary": {
+      "kind": "fsq_androidworld_readiness",
+      "qualified": false,
+      "error": {
+        "message": "Command '['/Users/qunmi/Library/Android/sdk/platform-tools/adb', '-s', 'emulator-5554', 'shell', 'sha256sum', '/storage/emulated/0/Android/data/net.osmand/files/Liechtenstein_europe.obf']' returned non-zero exit status 1.",
+        "type": "CalledProcessError"
+      },
+      "checks": {
+        "assets": true
+      },
+      "cleanup": {
+        "environment": "not_created"
+      },
+      "snapshotRestores": [],
+      "appsRecorded": 22,
+      "device": {
+        "abi": "arm64-v8a",
+        "apiLevel": "33",
+        "bootId": "0f36e370-012a-4423-a1f9-959beae8f90d",
+        "buildFingerprint": "google/sdk_gphone64_arm64/emu64a:13/TE1A.240213.009/12342917:userdebug/dev-keys",
+        "screenSize": "Physical size: 1080x2400",
+        "timezone": "UTC"
+      },
+      "outerProcess": {
+        "exitCode": 2,
+        "forced": false,
+        "spawnCount": 1,
+        "termination": null,
+        "timeoutSeconds": 1210
+      },
+      "startedAtUnix": 1794293124.046189,
+      "completedAtUnix": 1794293127.324617,
+      "binding": {
+        "authorizationSha256": "41a5d46b33215a384879de34296fba1eaa737e4aa146531322f94df08b4268af",
+        "identitiesSha256": "2b7ebc168c8c38e8b9ca81b81e28fbf78acf4d13280c1cef00eec2d8dc678d0f",
+        "manifestSha256": "94a33fc3719cb2b289b274a415e78d91aeef5d9c34f8a63fedeac0e638e615f2",
+        "model": "gpt-6.1-sol",
+        "provider": "github_copilot",
+        "target": {
+          "adbPath": "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+          "authenticationStatus": "pending",
+          "consolePort": 5554,
+          "grpcPort": 8554,
+          "model": "gpt-6.1-sol",
+          "provider": "github_copilot",
+          "readinessStatus": "pending",
+          "resourceStatus": "pending",
+          "serial": "emulator-5554"
+        }
+      }
+    }
+  },
+  "errorEvidenceLimit": {
+    "originalAdbReturnCode": 1,
+    "originalStdoutStderrPersisted": false,
+    "source": "fsq_campaign.py369-371 captures subprocess output; qualification538-539 persists only type and str(error). Existing process.log is empty; retained error contains no missing-file/permission diagnostic.",
+    "missingFileConfirmed": false,
+    "permissionDeniedConfirmed": false,
+    "sameAdbCommandRepeatedToConfirm": false
+  },
+  "expectedOfficialMap": {
+    "name": "Liechtenstein_europe.obf",
+    "guestPath": "/storage/emulated/0/Android/data/net.osmand/files/Liechtenstein_europe.obf",
+    "sha256": "57a1955c6f517a114999fa50480ecc1402ed9b524db602540ac1c08f57ff140e",
+    "sizeBytes": 7241271,
+    "hashChanged": false
+  },
+  "smoke": {
+    "status": "not_started_qualification_not_passed",
+    "attempts": 0,
+    "taskIndex": 102,
+    "taskName": "SystemWifiTurnOff",
+    "businessModelCalls": 0,
+    "nativeWorkerSpawned": false,
+    "officialEvaluatorCalls": 0,
+    "officialReward": null,
+    "retryOrSupplementaryKill": false
+  },
+  "cleanup": {
+    "officialEnvironment": "not_created",
+    "officialSnapshotRestores": 0,
+    "nativeU2OrBusinessHarnessConstructed": false,
+    "ownedQualificationChildExitCode": 2,
+    "ownedQualificationForced": false,
+    "synchronousAdbCommand": "returned_rc1; caller collected failure",
+    "completedGuestOperations": "readonly identity/app/map checks only before load_environment; no snapshot/task/business mutation entered",
+    "sharedAppiumOrEmulatorStoppedOrRestarted": false,
+    "unknownSessionCleared": false,
+    "globalAbsenceOfOtherProcessesOrDeviceEffectsClaimed": false
+  },
+  "targetScheduling": {
+    "serial": "emulator-5554",
+    "avd": "AndroidWorldAvd",
+    "priority": "FSQ first retained",
+    "releasedToAMK": false,
+    "automaticRetry": false
+  },
+  "next": "Host/evidence-only official-bootstrap investigation and separately proposed minimal environment-prepare plus fresh qualification; no new preparation or qualification execution under this terminal."
+}

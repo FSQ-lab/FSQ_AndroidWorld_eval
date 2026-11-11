@@ -1,0 +1,82 @@
+{
+  "scope": "Offline installed contract/validator smoke using exact frozen014 logical rows. Before/after candidate lists are controlled known-data scenarios, not observed historical DB snapshots, no task initialize/is_successful/env or device operations; not a new official reward.",
+  "taskIdentity": {
+    "name": "ExpenseAddMultipleFromMarkor",
+    "index": 14,
+    "instanceSeed": 3053860270,
+    "complexity": 6,
+    "maxSteps": 60,
+    "paramsSha256": "23de427b2cc14ba77e7fc9e4f767e4a6b1e4049661a80c3ce0b957c65120c929",
+    "paramsTransport": "seed"
+  },
+  "sources": {
+    ".venv/lib/python3.11/site-packages/android_world/task_evals/single/expense.py": {
+      "sha256": "cc57bd82831a17b427ea93eb4db559f6886cc1df402c0eac4bcb72064d7f3f81",
+      "bytes": 16523
+    },
+    ".venv/lib/python3.11/site-packages/android_world/task_evals/common_validators/sqlite_validators.py": {
+      "sha256": "7b932acd2e19f1d4f43cea1badf26ace2ed3363258ae26850d1b09889bfa9d78",
+      "bytes": 14270
+    },
+    ".venv/lib/python3.11/site-packages/android_world/task_evals/utils/sqlite_schema_utils.py": {
+      "sha256": "d3b1d796b1faadbdedc78e7f9197f0ee27e3eebf0edd4597cd59f3d0f6e3095b",
+      "bytes": 15031
+    },
+    ".venv/lib/python3.11/site-packages/android_world/utils/fuzzy_match_lib.py": {
+      "sha256": "e7376554fd9a413ff00d71656e09609c9070d0b384028b89fd931e32fcfb2969",
+      "bytes": 1545
+    }
+  },
+  "referenceRows": [
+    {
+      "name": "Laundry",
+      "amount": 9630,
+      "category": 8,
+      "note": "Urgent",
+      "created_date": 1697320800000,
+      "modified_date": 1697320800000,
+      "expense_id": -1
+    },
+    {
+      "name": "Car Insurance",
+      "amount": 30301,
+      "category": 7,
+      "note": "I may repeat this",
+      "created_date": 1696338000000,
+      "modified_date": 1696338000000,
+      "expense_id": -1
+    }
+  ],
+  "knownFrozenNoiseRowCount": 100,
+  "actualMarkorTargetRenderFormat": "csv (pipe-separated), regardless frozen text_representation_type=text_block",
+  "renderedTargetText": "name|amount_dollars|category_name|note\nLaundry|$96.3|Clothes|Urgent. Reimbursable.\nCar Insurance|$303.01|Transportation|I may repeat this. Reimbursable.",
+  "noteComparisons": [
+    {
+      "name": "Laundry",
+      "referenceNote": "Urgent",
+      "renderedNote": "Urgent. Reimbursable.",
+      "ratio": 0.4444444444444444,
+      "actualFuzzyMatch": false,
+      "amountCents": 9630,
+      "renderedAmount": "$96.3",
+      "category": 8,
+      "renderedCategory": "Clothes"
+    },
+    {
+      "name": "Car Insurance",
+      "referenceNote": "I may repeat this",
+      "renderedNote": "I may repeat this. Reimbursable.",
+      "ratio": 0.6938775510204082,
+      "actualFuzzyMatch": false,
+      "amountCents": 30301,
+      "renderedAmount": "$303.01",
+      "category": 7,
+      "renderedCategory": "Transportation"
+    }
+  ],
+  "literalRenderedNoteCandidatePassesInstalledValidator": false,
+  "originalBaseNoteCandidatePassesInstalledValidator": true,
+  "referenceRowsUnchangedByRendering": true,
+  "environmentOrDeviceUsed": false,
+  "historicalRewardRecomputed": false
+}

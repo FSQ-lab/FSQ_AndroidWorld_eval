@@ -1,0 +1,1599 @@
+[
+  {
+    "startLine": 306,
+    "endLine": 307,
+    "request": {
+      "timeout": 90,
+      "code": "from appium import webdriver\nfrom appium.options.android import UiAutomator2Options\noptions = UiAutomator2Options().load_capabilities({\n    'platformName': 'Android',\n    'appium:automationName': 'UiAutomator2',\n    'appium:udid': 'emulator-5554',\n    'appium:noReset': True,\n    'appium:autoLaunch': False,\n    'appium:skipUnlock': True,\n    'appium:newCommandTimeout': 300,\n})\ndriver = webdriver.Remote('http://127.0.0.1:58479', options=options)\nsession_id = driver.session_id\n{'sessionId': session_id, 'newCommandTimeout': driver.capabilities.get('newCommandTimeout')}"
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "sessionId": "df170ada-8edf-4510-9e01-d3d2328effa1",
+        "newCommandTimeout": 300
+      },
+      "executionCount": 1,
+      "durationMs": 31550,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 488,
+    "endLine": 489,
+    "request": {
+      "code": "from appium.webdriver.common.appiumby import AppiumBy\npkg, act = driver.current_package, driver.current_activity\nels = driver.find_elements(AppiumBy.XPATH, '//*')\nfacts=[]\nfor e in els:\n    try:\n        t=e.get_attribute('text'); d=e.get_attribute('content-desc'); rid=e.get_attribute('resource-id'); cls=e.get_attribute('class')\n        if t or d:\n            facts.append({'text':t,'desc':d,'id':rid,'class':cls})\n    except Exception:\n        pass\n{'package':pkg,'activity':act,'elements':facts[:40]}"
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "com.google.android.apps.nexuslauncher",
+        "activity": ".NexusLauncherActivity",
+        "elements": [
+          {
+            "text": "",
+            "desc": "null",
+            "id": "null",
+            "class": "android.widget.FrameLayout"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "null",
+            "class": "android.widget.LinearLayout"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "android:id/content",
+            "class": "android.widget.FrameLayout"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.google.android.apps.nexuslauncher:id/launcher",
+            "class": "android.widget.FrameLayout"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.google.android.apps.nexuslauncher:id/drag_layer",
+            "class": "android.widget.FrameLayout"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.google.android.apps.nexuslauncher:id/scrim_view",
+            "class": "android.view.View"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.google.android.apps.nexuslauncher:id/workspace",
+            "class": "android.widget.ScrollView"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "null",
+            "class": "android.view.ViewGroup"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "null",
+            "class": "android.view.ViewGroup"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.google.android.apps.nexuslauncher:id/search_container_workspace",
+            "class": "android.widget.FrameLayout"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.google.android.apps.nexuslauncher:id/bc_smartspace_view",
+            "class": "android.widget.FrameLayout"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.google.android.apps.nexuslauncher:id/smartspace_card_pager",
+            "class": "androidx.viewpager.widget.ViewPager"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "null",
+            "class": "android.view.ViewGroup"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "null",
+            "class": "android.view.ViewGroup"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.google.android.apps.nexuslauncher:id/text_group",
+            "class": "android.view.ViewGroup"
+          },
+          {
+            "text": "00:-28",
+            "desc": "00:-28",
+            "id": "com.google.android.apps.nexuslauncher:id/title_text",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.google.android.apps.nexuslauncher:id/smartspace_subtitle_group",
+            "class": "android.view.ViewGroup"
+          },
+          {
+            "text": "Gmail",
+            "desc": "Gmail",
+            "id": "null",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "Photos",
+            "desc": "Photos",
+            "id": "null",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "YouTube",
+            "desc": "YouTube",
+            "id": "null",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "",
+            "desc": "Home",
+            "id": "null",
+            "class": "android.view.View"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.google.android.apps.nexuslauncher:id/page_indicator",
+            "class": "android.view.View"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.google.android.apps.nexuslauncher:id/hotseat",
+            "class": "android.view.ViewGroup"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "null",
+            "class": "android.view.ViewGroup"
+          },
+          {
+            "text": "Phone",
+            "desc": "Phone",
+            "id": "null",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "Messages",
+            "desc": "Messages",
+            "id": "null",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "Chrome",
+            "desc": "Chrome",
+            "id": "null",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "Gmail",
+            "desc": "Predicted app: Gmail",
+            "id": "null",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "",
+            "desc": "Search",
+            "id": "com.google.android.apps.nexuslauncher:id/search_container_hotseat",
+            "class": "android.widget.FrameLayout"
+          },
+          {
+            "text": "",
+            "desc": "Google app",
+            "id": "com.google.android.apps.nexuslauncher:id/g_icon",
+            "class": "android.widget.ImageView"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.google.android.apps.nexuslauncher:id/end_part",
+            "class": "android.widget.LinearLayout"
+          },
+          {
+            "text": "",
+            "desc": "Voice search",
+            "id": "com.google.android.apps.nexuslauncher:id/mic_icon",
+            "class": "android.widget.ImageView"
+          },
+          {
+            "text": "",
+            "desc": "Google Lens",
+            "id": "com.google.android.apps.nexuslauncher:id/lens_icon",
+            "class": "android.widget.ImageButton"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.google.android.apps.nexuslauncher:id/overview_actions_view",
+            "class": "android.widget.FrameLayout"
+          }
+        ]
+      },
+      "executionCount": 2,
+      "durationMs": 1394,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 578,
+    "endLine": 579,
+    "request": {
+      "code": "driver.execute_script('mobile: swipeGesture', {'left': 100, 'top': 1500, 'width': 800, 'height': 500, 'direction': 'up', 'percent': 0.8})\nTrue"
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": true,
+      "executionCount": 3,
+      "durationMs": 127,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 734,
+    "endLine": 735,
+    "request": {
+      "code": "matches=[]\nfor e in driver.find_elements(AppiumBy.XPATH, '//*'):\n    try:\n        t=e.get_attribute('text'); d=e.get_attribute('content-desc')\n        if 'markor' in ((t or '')+' '+(d or '')).lower(): matches.append({'text':t,'desc':d,'id':e.get_attribute('resource-id'),'class':e.get_attribute('class')})\n    except: pass\n{'package':driver.current_package,'activity':driver.current_activity,'matches':matches}"
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "com.google.android.apps.nexuslauncher",
+        "activity": ".NexusLauncherActivity",
+        "matches": [
+          {
+            "text": "Markor",
+            "desc": "Markor",
+            "id": "com.google.android.apps.nexuslauncher:id/icon",
+            "class": "android.widget.TextView"
+          }
+        ]
+      },
+      "executionCount": 4,
+      "durationMs": 1076,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 841,
+    "endLine": 842,
+    "request": {
+      "code": "from selenium.webdriver.support.ui import WebDriverWait\ndriver.find_element(AppiumBy.ACCESSIBILITY_ID, 'Markor').click()\nWebDriverWait(driver, 10).until(lambda d: d.current_package != 'com.google.android.apps.nexuslauncher')\n{'package':driver.current_package,'activity':driver.current_activity}"
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "net.gsantner.markor",
+        "activity": ".activity.MainActivity"
+      },
+      "executionCount": 5,
+      "durationMs": 705,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 988,
+    "endLine": 989,
+    "request": {
+      "code": "facts=[]\nfor e in driver.find_elements(AppiumBy.XPATH, '//*'):\n    try:\n        t=e.get_attribute('text'); d=e.get_attribute('content-desc'); rid=e.get_attribute('resource-id')\n        if t or (d and d!='null'): facts.append({'text':t,'desc':d,'id':rid,'class':e.get_attribute('class')})\n    except: pass\n{'activity':driver.current_activity,'elements':facts[:50]}"
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "activity": ".activity.MainActivity",
+        "elements": [
+          {
+            "text": "Markor",
+            "desc": "null",
+            "id": "null",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "",
+            "desc": "Go to",
+            "id": "net.gsantner.markor:id/action_go_to",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "",
+            "desc": "Sort by",
+            "id": "net.gsantner.markor:id/action_sort",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "",
+            "desc": "Search",
+            "id": "net.gsantner.markor:id/action_search",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "",
+            "desc": "More options",
+            "id": "null",
+            "class": "android.widget.ImageView"
+          },
+          {
+            "text": "",
+            "desc": "Folder .. ",
+            "id": "net.gsantner.markor:id/opoc_filesystem_item__root",
+            "class": "android.widget.LinearLayout"
+          },
+          {
+            "text": "..",
+            "desc": "null",
+            "id": "net.gsantner.markor:id/opoc_filesystem_item__title",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "/storage/emulated/0/Documents",
+            "desc": "null",
+            "id": "net.gsantner.markor:id/opoc_filesystem_item__description",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "",
+            "desc": "Folder .app ",
+            "id": "net.gsantner.markor:id/opoc_filesystem_item__root",
+            "class": "android.widget.LinearLayout"
+          },
+          {
+            "text": ".app",
+            "desc": "null",
+            "id": "net.gsantner.markor:id/opoc_filesystem_item__title",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "10/15/2023, 15:35",
+            "desc": "null",
+            "id": "net.gsantner.markor:id/opoc_filesystem_item__description",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "",
+            "desc": "File birthday_gift_ideas_mom_QbQx.md ",
+            "id": "net.gsantner.markor:id/opoc_filesystem_item__root",
+            "class": "android.widget.LinearLayout"
+          },
+          {
+            "text": "birthday_gift_ideas_mom_QbQx.md",
+            "desc": "null",
+            "id": "net.gsantner.markor:id/opoc_filesystem_item__title",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "10/15/2023, 15:34",
+            "desc": "null",
+            "id": "net.gsantner.markor:id/opoc_filesystem_item__description",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "",
+            "desc": "File copy_trip_reflections_recent.md ",
+            "id": "net.gsantner.markor:id/opoc_filesystem_item__root",
+            "class": "android.widget.LinearLayout"
+          },
+          {
+            "text": "copy_trip_reflections_recent.md",
+            "desc": "null",
+            "id": "net.gsantner.markor:id/opoc_filesystem_item__title",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "10/15/2023, 15:34",
+            "desc": "null",
+            "id": "net.gsantner.markor:id/opoc_filesystem_item__description",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "",
+            "desc": "File edited_art_project_sketches.md ",
+            "id": "net.gsantner.markor:id/opoc_filesystem_item__root",
+            "class": "android.widget.LinearLayout"
+          },
+          {
+            "text": "edited_art_project_sketches.md",
+            "desc": "null",
+            "id": "net.gsantner.markor:id/opoc_filesystem_item__title",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "10/15/2023, 15:34",
+            "desc": "null",
+            "id": "net.gsantner.markor:id/opoc_filesystem_item__description",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "",
+            "desc": "File favorite_book_quotes_if2g.md ",
+            "id": "net.gsantner.markor:id/opoc_filesystem_item__root",
+            "class": "android.widget.LinearLayout"
+          },
+          {
+            "text": "favorite_book_quotes_if2g.md",
+            "desc": "null",
+            "id": "net.gsantner.markor:id/opoc_filesystem_item__title",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "10/15/2023, 15:34",
+            "desc": "null",
+            "id": "net.gsantner.markor:id/opoc_filesystem_item__description",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "",
+            "desc": "File strong_jacket_h1hZ.txt ",
+            "id": "net.gsantner.markor:id/opoc_filesystem_item__root",
+            "class": "android.widget.LinearLayout"
+          },
+          {
+            "text": "strong_jacket_h1hZ.txt",
+            "desc": "null",
+            "id": "net.gsantner.markor:id/opoc_filesystem_item__title",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "10/15/2023, 15:34",
+            "desc": "null",
+            "id": "net.gsantner.markor:id/opoc_filesystem_item__description",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "",
+            "desc": "File summer_vacation_plans_M0HK.md ",
+            "id": "net.gsantner.markor:id/opoc_filesystem_item__root",
+            "class": "android.widget.LinearLayout"
+          },
+          {
+            "text": "summer_vacation_plans_M0HK.md",
+            "desc": "null",
+            "id": "net.gsantner.markor:id/opoc_filesystem_item__title",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "10/15/2023, 15:34",
+            "desc": "null",
+            "id": "net.gsantner.markor:id/opoc_filesystem_item__description",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "",
+            "desc": "Create a new file or folder",
+            "id": "net.gsantner.markor:id/fab_add_new_item",
+            "class": "android.widget.ImageButton"
+          },
+          {
+            "text": "",
+            "desc": "Files",
+            "id": "net.gsantner.markor:id/nav_notebook",
+            "class": "android.widget.FrameLayout"
+          },
+          {
+            "text": "Files",
+            "desc": "null",
+            "id": "net.gsantner.markor:id/navigation_bar_item_large_label_view",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "",
+            "desc": "To-Do",
+            "id": "net.gsantner.markor:id/nav_todo",
+            "class": "android.widget.FrameLayout"
+          },
+          {
+            "text": "To-Do",
+            "desc": "null",
+            "id": "net.gsantner.markor:id/navigation_bar_item_small_label_view",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "",
+            "desc": "QuickNote",
+            "id": "net.gsantner.markor:id/nav_quicknote",
+            "class": "android.widget.FrameLayout"
+          },
+          {
+            "text": "QuickNote",
+            "desc": "null",
+            "id": "net.gsantner.markor:id/navigation_bar_item_small_label_view",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "",
+            "desc": "More",
+            "id": "net.gsantner.markor:id/nav_more",
+            "class": "android.widget.FrameLayout"
+          },
+          {
+            "text": "More",
+            "desc": "null",
+            "id": "net.gsantner.markor:id/navigation_bar_item_small_label_view",
+            "class": "android.widget.TextView"
+          }
+        ]
+      },
+      "executionCount": 6,
+      "durationMs": 1082,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 1192,
+    "endLine": 1193,
+    "request": {
+      "code": "driver.find_element(AppiumBy.ACCESSIBILITY_ID, 'File strong_jacket_h1hZ.txt ').click()\nWebDriverWait(driver, 10).until(lambda d: 'strong_jacket_h1hZ.txt' in d.page_source)\n{'activity':driver.current_activity}"
+    },
+    "envelope": {
+      "status": "failed",
+      "stdout": "",
+      "stderr": "",
+      "error": {
+        "type": "selenium.common.exceptions.TimeoutException",
+        "message": "",
+        "traceback": [
+          "Traceback (most recent call last):",
+          "  File \"<external-frame>\", line 590, in <frame>",
+          "  File \"<external-frame>\", line 575, in <frame>",
+          "  File \"<amkernel-cell-7>\", line 2, in <frame>",
+          "  File \"<external-frame>\", line 121, in <frame>",
+          "selenium.common.exceptions.TimeoutException"
+        ]
+      },
+      "executionCount": 7,
+      "durationMs": 11094,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 1356,
+    "endLine": 1357,
+    "request": {
+      "code": "facts=[]\nfor e in driver.find_elements(AppiumBy.XPATH, '//*'):\n    try:\n        t=e.get_attribute('text'); d=e.get_attribute('content-desc'); rid=e.get_attribute('resource-id')\n        if t or (d and d!='null') or 'edit' in (rid or '').lower(): facts.append({'text':t,'desc':d,'id':rid,'class':e.get_attribute('class')})\n    except: pass\n{'package':driver.current_package,'activity':driver.current_activity,'elements':facts[:40]}"
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "net.gsantner.markor",
+        "activity": ".activity.DocumentActivity",
+        "elements": [
+          {
+            "text": "strong_jacket_h1hZ",
+            "desc": "null",
+            "id": "net.gsantner.markor:id/note__activity__text_note_title",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "",
+            "desc": "Undo",
+            "id": "net.gsantner.markor:id/action_undo",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "",
+            "desc": "Redo",
+            "id": "net.gsantner.markor:id/action_redo",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "",
+            "desc": "View mode",
+            "id": "net.gsantner.markor:id/action_preview",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "",
+            "desc": "Save",
+            "id": "net.gsantner.markor:id/action_save",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "",
+            "desc": "Search",
+            "id": "net.gsantner.markor:id/action_search",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "",
+            "desc": "More options",
+            "id": "null",
+            "class": "android.widget.ImageView"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "net.gsantner.markor:id/document__fragment__edit__content_editor__scrolling_parent",
+            "class": "android.widget.ScrollView"
+          },
+          {
+            "text": "pZwh1hZwvmPj5inNqu8U\n",
+            "desc": "null",
+            "id": "net.gsantner.markor:id/document__fragment__edit__highlighting_editor",
+            "class": "android.widget.EditText"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "net.gsantner.markor:id/document__fragment__edit__text_actions_bar__scrolling_parent",
+            "class": "android.widget.HorizontalScrollView"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "net.gsantner.markor:id/document__fragment__edit__text_actions_bar",
+            "class": "android.widget.LinearLayout"
+          },
+          {
+            "text": "",
+            "desc": "Check list",
+            "id": "null",
+            "class": "android.widget.ImageView"
+          },
+          {
+            "text": "",
+            "desc": "Unordered list",
+            "id": "null",
+            "class": "android.widget.ImageView"
+          },
+          {
+            "text": "",
+            "desc": "Ordered list",
+            "id": "null",
+            "class": "android.widget.ImageView"
+          },
+          {
+            "text": "",
+            "desc": "Delete lines",
+            "id": "null",
+            "class": "android.widget.ImageView"
+          },
+          {
+            "text": "",
+            "desc": "Open link",
+            "id": "null",
+            "class": "android.widget.ImageView"
+          },
+          {
+            "text": "",
+            "desc": "Attach",
+            "id": "null",
+            "class": "android.widget.ImageView"
+          },
+          {
+            "text": "",
+            "desc": "Special Key",
+            "id": "null",
+            "class": "android.widget.ImageView"
+          },
+          {
+            "text": "",
+            "desc": "Date and time",
+            "id": "null",
+            "class": "android.widget.ImageView"
+          },
+          {
+            "text": "",
+            "desc": "Indent",
+            "id": "null",
+            "class": "android.widget.ImageView"
+          }
+        ]
+      },
+      "executionCount": 8,
+      "durationMs": 479,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 1565,
+    "endLine": 1566,
+    "request": {
+      "code": "editor=driver.find_element(AppiumBy.ID, 'net.gsantner.markor:id/document__fragment__edit__highlighting_editor')\neditor.clear()\neditor.send_keys('inNqu8UNNtyXBHCZpYp7')\ndriver.find_element(AppiumBy.ACCESSIBILITY_ID, 'Save').click()\nWebDriverWait(driver, 5).until(lambda d: d.find_element(AppiumBy.ID, 'net.gsantner.markor:id/document__fragment__edit__highlighting_editor').get_attribute('text') == 'inNqu8UNNtyXBHCZpYp7')\n{'content':driver.find_element(AppiumBy.ID, 'net.gsantner.markor:id/document__fragment__edit__highlighting_editor').get_attribute('text')}"
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "content": "inNqu8UNNtyXBHCZpYp7"
+      },
+      "executionCount": 9,
+      "durationMs": 2275,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 1753,
+    "endLine": 1754,
+    "request": {
+      "code": "driver.find_element(AppiumBy.ACCESSIBILITY_ID, 'More options').click()\nWebDriverWait(driver, 5).until(lambda d: len(d.find_elements(AppiumBy.XPATH, '//*[@text=\"Rename\"]')) > 0)\nopts=[]\nfor e in driver.find_elements(AppiumBy.XPATH, '//*'):\n    try:\n        t=e.get_attribute('text'); d=e.get_attribute('content-desc')\n        if t or (d and d!='null'): opts.append({'text':t,'desc':d,'id':e.get_attribute('resource-id'),'class':e.get_attribute('class')})\n    except: pass\nopts[-20:]"
+    },
+    "envelope": {
+      "status": "failed",
+      "stdout": "",
+      "stderr": "",
+      "error": {
+        "type": "selenium.common.exceptions.TimeoutException",
+        "message": "",
+        "traceback": [
+          "Traceback (most recent call last):",
+          "  File \"<external-frame>\", line 590, in <frame>",
+          "  File \"<external-frame>\", line 575, in <frame>",
+          "  File \"<amkernel-cell-10>\", line 2, in <frame>",
+          "  File \"<external-frame>\", line 121, in <frame>",
+          "selenium.common.exceptions.TimeoutException"
+        ]
+      },
+      "executionCount": 10,
+      "durationMs": 5264,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 1897,
+    "endLine": 1898,
+    "request": {
+      "code": "facts=[]\nfor e in driver.find_elements(AppiumBy.XPATH, '//*'):\n    try:\n        t=e.get_attribute('text'); d=e.get_attribute('content-desc')\n        if t or (d and d!='null'): facts.append({'text':t,'desc':d,'id':e.get_attribute('resource-id'),'class':e.get_attribute('class')})\n    except: pass\n{'activity':driver.current_activity,'elements':facts[-30:]}"
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "activity": ".activity.DocumentActivity",
+        "elements": [
+          {
+            "text": "File settings",
+            "desc": "null",
+            "id": "net.gsantner.markor:id/title",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "Share",
+            "desc": "null",
+            "id": "net.gsantner.markor:id/title",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "Tools",
+            "desc": "null",
+            "id": "net.gsantner.markor:id/title",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "Info",
+            "desc": "null",
+            "id": "net.gsantner.markor:id/title",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "Reload",
+            "desc": "null",
+            "id": "net.gsantner.markor:id/title",
+            "class": "android.widget.TextView"
+          }
+        ]
+      },
+      "executionCount": 11,
+      "durationMs": 272,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 2076,
+    "endLine": 2077,
+    "request": {
+      "code": "driver.find_element(AppiumBy.XPATH, '//*[@text=\"File settings\"]').click()\nWebDriverWait(driver, 5).until(lambda d: 'File settings' in d.page_source)\nfacts=[]\nfor e in driver.find_elements(AppiumBy.XPATH, '//*'):\n    try:\n        t=e.get_attribute('text'); d=e.get_attribute('content-desc')\n        if t or (d and d!='null'): facts.append({'text':t,'desc':d,'id':e.get_attribute('resource-id'),'class':e.get_attribute('class')})\n    except: pass\nfacts[-30:]"
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": [
+        {
+          "text": "File settings",
+          "desc": "null",
+          "id": "android:id/title",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "Wrap words",
+          "desc": "null",
+          "id": "net.gsantner.markor:id/title",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "Syntax highlighting",
+          "desc": "null",
+          "id": "net.gsantner.markor:id/title",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "Auto-format",
+          "desc": "null",
+          "id": "net.gsantner.markor:id/title",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "Font Size",
+          "desc": "null",
+          "id": "net.gsantner.markor:id/title",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "Format",
+          "desc": "null",
+          "id": "net.gsantner.markor:id/title",
+          "class": "android.widget.TextView"
+        }
+      ],
+      "executionCount": 12,
+      "durationMs": 1342,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 2289,
+    "endLine": 2290,
+    "request": {
+      "code": "driver.back()\ntitle=WebDriverWait(driver,5).until(lambda d: d.find_element(AppiumBy.ID,'net.gsantner.markor:id/note__activity__text_note_title'))\ntitle.click()\nWebDriverWait(driver,5).until(lambda d: len(d.find_elements(AppiumBy.CLASS_NAME,'android.widget.EditText'))>0)\nfacts=[]\nfor e in driver.find_elements(AppiumBy.XPATH,'//*'):\n    try:\n        t=e.get_attribute('text'); d=e.get_attribute('content-desc')\n        if t or (d and d!='null'): facts.append({'text':t,'desc':d,'id':e.get_attribute('resource-id'),'class':e.get_attribute('class')})\n    except: pass\nfacts[-20:]"
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": [
+        {
+          "text": "strong_jacket_h1hZ",
+          "desc": "null",
+          "id": "net.gsantner.markor:id/note__activity__text_note_title",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "",
+          "desc": "Undo",
+          "id": "net.gsantner.markor:id/action_undo",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "",
+          "desc": "Redo",
+          "id": "net.gsantner.markor:id/action_redo",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "",
+          "desc": "View mode",
+          "id": "net.gsantner.markor:id/action_preview",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "",
+          "desc": "Save",
+          "id": "net.gsantner.markor:id/action_save",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "",
+          "desc": "Search",
+          "id": "net.gsantner.markor:id/action_search",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "",
+          "desc": "More options",
+          "id": "null",
+          "class": "android.widget.ImageView"
+        },
+        {
+          "text": "inNqu8UNNtyXBHCZpYp7",
+          "desc": "null",
+          "id": "net.gsantner.markor:id/document__fragment__edit__highlighting_editor",
+          "class": "android.widget.EditText"
+        },
+        {
+          "text": "",
+          "desc": "Check list",
+          "id": "null",
+          "class": "android.widget.ImageView"
+        },
+        {
+          "text": "",
+          "desc": "Unordered list",
+          "id": "null",
+          "class": "android.widget.ImageView"
+        },
+        {
+          "text": "",
+          "desc": "Ordered list",
+          "id": "null",
+          "class": "android.widget.ImageView"
+        },
+        {
+          "text": "",
+          "desc": "Delete lines",
+          "id": "null",
+          "class": "android.widget.ImageView"
+        },
+        {
+          "text": "",
+          "desc": "Open link",
+          "id": "null",
+          "class": "android.widget.ImageView"
+        },
+        {
+          "text": "",
+          "desc": "Attach",
+          "id": "null",
+          "class": "android.widget.ImageView"
+        },
+        {
+          "text": "",
+          "desc": "Special Key",
+          "id": "null",
+          "class": "android.widget.ImageView"
+        },
+        {
+          "text": "",
+          "desc": "Date and time",
+          "id": "null",
+          "class": "android.widget.ImageView"
+        },
+        {
+          "text": "",
+          "desc": "Indent",
+          "id": "null",
+          "class": "android.widget.ImageView"
+        }
+      ],
+      "executionCount": 13,
+      "durationMs": 1543,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 2482,
+    "endLine": 2483,
+    "request": {
+      "code": "title=driver.find_element(AppiumBy.ID,'net.gsantner.markor:id/note__activity__text_note_title')\ndriver.execute_script('mobile: longClickGesture', {'elementId':title.id,'duration':700})\nfacts=[]\nfor e in driver.find_elements(AppiumBy.XPATH,'//*'):\n    try:\n        t=e.get_attribute('text'); d=e.get_attribute('content-desc')\n        if t or (d and d!='null'): facts.append({'text':t,'desc':d,'id':e.get_attribute('resource-id'),'class':e.get_attribute('class')})\n    except: pass\n{'activity':driver.current_activity,'elements':facts[-20:]}"
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "activity": ".activity.DocumentActivity",
+        "elements": [
+          {
+            "text": "strong_jacket_h1hZ",
+            "desc": "null",
+            "id": "net.gsantner.markor:id/note__activity__text_note_title",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "",
+            "desc": "Undo",
+            "id": "net.gsantner.markor:id/action_undo",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "",
+            "desc": "Redo",
+            "id": "net.gsantner.markor:id/action_redo",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "",
+            "desc": "View mode",
+            "id": "net.gsantner.markor:id/action_preview",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "",
+            "desc": "Save",
+            "id": "net.gsantner.markor:id/action_save",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "",
+            "desc": "Search",
+            "id": "net.gsantner.markor:id/action_search",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "",
+            "desc": "More options",
+            "id": "null",
+            "class": "android.widget.ImageView"
+          },
+          {
+            "text": "inNqu8UNNtyXBHCZpYp7",
+            "desc": "null",
+            "id": "net.gsantner.markor:id/document__fragment__edit__highlighting_editor",
+            "class": "android.widget.EditText"
+          },
+          {
+            "text": "",
+            "desc": "Check list",
+            "id": "null",
+            "class": "android.widget.ImageView"
+          },
+          {
+            "text": "",
+            "desc": "Unordered list",
+            "id": "null",
+            "class": "android.widget.ImageView"
+          },
+          {
+            "text": "",
+            "desc": "Ordered list",
+            "id": "null",
+            "class": "android.widget.ImageView"
+          },
+          {
+            "text": "",
+            "desc": "Delete lines",
+            "id": "null",
+            "class": "android.widget.ImageView"
+          },
+          {
+            "text": "",
+            "desc": "Open link",
+            "id": "null",
+            "class": "android.widget.ImageView"
+          },
+          {
+            "text": "",
+            "desc": "Attach",
+            "id": "null",
+            "class": "android.widget.ImageView"
+          },
+          {
+            "text": "",
+            "desc": "Special Key",
+            "id": "null",
+            "class": "android.widget.ImageView"
+          },
+          {
+            "text": "",
+            "desc": "Date and time",
+            "id": "null",
+            "class": "android.widget.ImageView"
+          },
+          {
+            "text": "",
+            "desc": "Indent",
+            "id": "null",
+            "class": "android.widget.ImageView"
+          }
+        ]
+      },
+      "executionCount": 14,
+      "durationMs": 1542,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 2633,
+    "endLine": 2634,
+    "request": {
+      "code": "title=driver.find_element(AppiumBy.ID,'net.gsantner.markor:id/note__activity__text_note_title')\ntitle.set_value('lively_fox_2023_03_22.md')\n{'title':driver.find_element(AppiumBy.ID,'net.gsantner.markor:id/note__activity__text_note_title').get_attribute('text'),'content':driver.find_element(AppiumBy.ID,'net.gsantner.markor:id/document__fragment__edit__highlighting_editor').get_attribute('text')}"
+    },
+    "envelope": {
+      "status": "failed",
+      "stdout": "",
+      "stderr": "",
+      "error": {
+        "type": "AttributeError",
+        "message": "'WebElement' object has no attribute 'set_value'",
+        "traceback": [
+          "Traceback (most recent call last):",
+          "  File \"/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/lib/python3.11/site-packages/amkernel/runner.py\", line 590, in _execute_cell",
+          "    value = _compile_and_execute(code, execution_count, namespace)",
+          "            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+          "  File \"/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/lib/python3.11/site-packages/amkernel/runner.py\", line 575, in _compile_and_execute",
+          "    exec(prefix_code, namespace, namespace)",
+          "  File \"<amkernel-cell-15>\", line 2, in <module>",
+          "AttributeError: 'WebElement' object has no attribute 'set_value'"
+        ]
+      },
+      "executionCount": 15,
+      "durationMs": 15,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 2861,
+    "endLine": 2862,
+    "request": {
+      "code": "title=driver.find_element(AppiumBy.ID,'net.gsantner.markor:id/note__activity__text_note_title')\ntitle.send_keys('lively_fox_2023_03_22.md')\n{'title':driver.find_element(AppiumBy.ID,'net.gsantner.markor:id/note__activity__text_note_title').get_attribute('text'),'content':driver.find_element(AppiumBy.ID,'net.gsantner.markor:id/document__fragment__edit__highlighting_editor').get_attribute('text')}"
+    },
+    "envelope": {
+      "status": "failed",
+      "stdout": "",
+      "stderr": "",
+      "error": {
+        "type": "selenium.common.exceptions.InvalidElementStateException",
+        "message": "<custom __str__ omitted for selenium.common.exceptions.InvalidElementStateException>",
+        "traceback": [
+          "Traceback (most recent call last):",
+          "  File \"/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/lib/python3.11/site-packages/amkernel/runner.py\", line 590, in _execute_cell",
+          "    value = _compile_and_execute(code, execution_count, namespace)",
+          "            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+          "  File \"/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/lib/python3.11/site-packages/amkernel/runner.py\", line 575, in _compile_and_execute",
+          "    exec(prefix_code, namespace, namespace)",
+          "  File \"<amkernel-cell-16>\", line 2, in <module>",
+          "  File \"/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/lib/python3.11/site-packages/appium/webdriver/webelement.py\", line 129, in send_keys",
+          "    self._execute(RemoteCommand.SEND_KEYS_TO_ELEMENT, {'text': ''.join(keys), 'value': keys})",
+          "  File \"/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/lib/python3.11/site-packages/selenium/webdriver/remote/webelement.py\", line 505, in _execute",
+          "    return self._parent.execute(command, params)",
+          "           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+          "  File \"/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/lib/python3.11/site-packages/selenium/webdriver/remote/webdriver.py\", line 566, in execute",
+          "    self.error_handler.check_response(response)",
+          "  File \"/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/lib/python3.11/site-packages/appium/webdriver/errorhandler.py\", line 125, in check_response",
+          "    raise exception_class(msg=message, stacktrace=format_stacktrace(stacktrace))",
+          "selenium.common.exceptions.InvalidElementStateException: <custom __str__ omitted for selenium.common.exceptions.InvalidElementStateException>"
+        ]
+      },
+      "executionCount": 16,
+      "durationMs": 40,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 2980,
+    "endLine": 2981,
+    "request": {
+      "code": "{'package':driver.current_package,'activity':driver.current_activity,'title':driver.find_element(AppiumBy.ID,'net.gsantner.markor:id/note__activity__text_note_title').get_attribute('text'),'content':driver.find_element(AppiumBy.ID,'net.gsantner.markor:id/document__fragment__edit__highlighting_editor').get_attribute('text')}"
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "net.gsantner.markor",
+        "activity": ".activity.DocumentActivity",
+        "title": "strong_jacket_h1hZ",
+        "content": "inNqu8UNNtyXBHCZpYp7"
+      },
+      "executionCount": 17,
+      "durationMs": 87,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 3048,
+    "endLine": 3049,
+    "request": {
+      "code": "session_id=driver.session_id\ndriver.quit()\n{'ownedSessionId':session_id,'quitReturned':True}"
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "ownedSessionId": "df170ada-8edf-4510-9e01-d3d2328effa1",
+        "quitReturned": true
+      },
+      "executionCount": 18,
+      "durationMs": 149,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  }
+]

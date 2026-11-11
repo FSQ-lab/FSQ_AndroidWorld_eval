@@ -1,0 +1,45 @@
+{
+  "task": "014-ExpenseAddMultipleFromMarkor",
+  "verdict": "OFFLINE_BRANCH_AND_CONTRACT_DIAGNOSIS_COMPLETE",
+  "ownerEvidenceDirectory": "evidence/expense-markor-diagnosis-20261109T084853Z",
+  "parentReview": "review.md",
+  "independentFinalAcceptance": {
+    "path": "evidence/expense-markor-diagnosis-20261109T084853Z/independent-014-acceptance.json",
+    "section": "ownerFinalDeliveryAcceptance",
+    "verdictObserved": "ACCEPTED_OWNER_FINAL_OFFLINE_DELIVERABLE_ONLY",
+    "reviewedAtUtc": "2026-11-09T08:58:58Z",
+    "parentReadFinalAcceptance": true,
+    "ownerFinalFilesReviewedByIndependentReviewer": ["offline-report.md", "summary.json", "minimal-contract.json", "immutability.json", "zero-operations.json"],
+    "independentRawCodeMatches": 25,
+    "independentRawResponseMatches": 25
+  },
+  "parentVerification": {
+    "originalCallsAndFieldsRead": true,
+    "originalWarningRead": "v2-ready-run-full.log:302",
+    "actualInstalledValidatorSmokeExecuted": true,
+    "controlledAnnotatedNoteCandidate": false,
+    "controlledBaseNoteCandidate": true,
+    "smokeReceipt": "evidence/expense-markor-diagnosis-20261109T084853Z/parent-installed-validator-smoke.json",
+    "notHistoricalDatabaseOrNewOfficialScore": true
+  },
+  "historicalOutcome": {"businessActions": 20, "maxSteps": 60, "referenceSteps": 21, "pythonExecCalls": 25, "officialReward": 0.0},
+  "established": [
+    "Original first Laundry reference-row matching failure returns false then zero reward",
+    "Second-reference/cardinality/preservation branches not reached",
+    "Rendered note and reference differ before agent input; literal note has a sufficient validator failure mechanism"
+  ],
+  "limits": [
+    "Historical actual before/after database unavailable",
+    "No unique historical failing-field claim",
+    "No task-unsatisfiable claim",
+    "No fix implemented or accepted"
+  ],
+  "fixApplied": false,
+  "newOfficialReward": null,
+  "deviceQueriesInThisSlice": 0,
+  "newSessionsInThisSlice": 0,
+  "productionOrSkillChangesInThisSlice": 0,
+  "liveReplayAuthorizedOrPending": false,
+  "nextTaskStarted": false,
+  "decision": "Close this offline diagnosis only; do not replay, query device, change renderer/reference/fuzzy, or advance another item. Future-version marker semantics require a separate task-contract decision."
+}

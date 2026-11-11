@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "kind": "native_fsq_revision2_delivery",
+  "timestampUtc": "2026-11-10T06:20:00.531122+00:00",
+  "status": "ready_for_independent_targeted_closure",
+  "artifacts": [
+    {
+      "path": "candidate-final-manifest.json",
+      "sha256": "94a33fc3719cb2b289b274a415e78d91aeef5d9c34f8a63fedeac0e638e615f2"
+    },
+    {
+      "path": "candidate-final-manifest.json.sha256",
+      "sha256": "c83322213390fd15f0d4dc1c9a01b21f55637c2b7a76a61f4f2c608a65b7ae0e"
+    },
+    {
+      "path": "source-inventory.json",
+      "sha256": "09207e31f429cbf8c199b231e0c4d03ea61515577e4fc26f2860de392b8622ef"
+    },
+    {
+      "path": "identity-snapshot.json",
+      "sha256": "bc3b507834c04c6fad34966b1a06b50e2f8acc197b6351e50ffe8716828a7211"
+    },
+    {
+      "path": "handoff.md",
+      "sha256": "f8e8545f35581aa8de7ad0230c02fe019515f64da5e2bc6ba1a3e32173e72054"
+    },
+    {
+      "path": "closure.json",
+      "sha256": "8542b62f27d34d407596f0e57513a784e7194d0b663982afa847bf7a29fed9cc"
+    },
+    {
+      "path": "closure-final.xml",
+      "sha256": "90291a40870e257b455580527fd9d77a286dac35577098bed8b30af24613a2e4"
+    },
+    {
+      "path": "native-failure-scheduling-final.xml",
+      "sha256": "447c053022c7d2a13ec4b7edb4d5759aa7c68452cf26a6cd4530bda1772902cd"
+    },
+    {
+      "path": "real-sandbox-native-fileops-atomic-fixed.xml",
+      "sha256": "4542be85c26e4b7d3e2ef850b7def22c77903189935f729b34c9f71d4c74894d"
+    },
+    {
+      "path": "offline-cli-final.json",
+      "sha256": "b936d1c143632fed20a09d9b43897693b553ba8d191949a2d235dfc388f98865"
+    },
+    {
+      "path": "model-gate.json",
+      "sha256": "b95002564fcbb0ca64d9ff116b561fe64c44ec508b11cf7dc7f141e40856869e"
+    },
+    {
+      "path": "native-model-success.json",
+      "sha256": "58d96868e5e4ccb139eb16e688178de0f2e9acbad40bc1f0035a293e0dd47323"
+    },
+    {
+      "path": "native-source-identity.json",
+      "sha256": "93dc171f75024b23901df7db5cbfc7d20684b6a323b36dcf6fa4427f704b4f8b"
+    },
+    {
+      "path": "native-package.sha256",
+      "sha256": "f85de27cec9e3e9949559b120dd3f595e9512c076aa82aef7a25e4a552dd2f68"
+    },
+    {
+      "path": "shared-resource-readonly.json",
+      "sha256": "e11cd157cec7a38c314951f2b6a13e73683a30b888ddd59b4ff98533d0d482bd"
+    },
+    {
+      "path": "shared-evidence-references.json",
+      "sha256": "0b4437a0b8d52f5ba2fecc74ae828ab3161f597e394988b469bcf89afdccad6a"
+    }
+  ],
+  "candidateSha256": "94a33fc3719cb2b289b274a415e78d91aeef5d9c34f8a63fedeac0e638e615f2",
+  "sourceFileCount": 18,
+  "productVerification": {
+    "passed": 309,
+    "junit": "closure-final.xml"
+  },
+  "finalCampaignTests": {
+    "passed": 67,
+    "junit": "native-failure-scheduling-final.xml",
+    "overlapsProductVerification": true
+  },
+  "independentApproved": false,
+  "liveAuthorized": false,
+  "resourceSessions": "unknown",
+  "stageAuthorizationRequired": true
+}

@@ -1,0 +1,137 @@
+{
+  "submit": {
+    "requestAtUnix": 1794202438.340893,
+    "responseAtUnix": 1794202438.735331,
+    "pythonCell": "python-cells/018.py",
+    "rawStartLine": 4952,
+    "rawEndLine": 4954
+  },
+  "appiumAfterSubmitBeforeQuit": {
+    "tree": {
+      "path": "appium-responses/0227.xml",
+      "atUnix": 1794202440.9076679
+    },
+    "screenshot": {
+      "path": "appium-responses/0229.png",
+      "atUnix": 1794202441.01092
+    },
+    "package": {
+      "value": "com.android.chrome",
+      "path": "appium-responses/0231.json",
+      "atUnix": 1794202441.036076
+    },
+    "activity": {
+      "value": "org.chromium.chrome.browser.ChromeTabbedActivity",
+      "path": "appium-responses/0233.json",
+      "atUnix": 1794202441.052447
+    }
+  },
+  "quit": {
+    "wireStartedAtUnix": 1794202445.61051,
+    "wireReturnedAtUnix": 1794202445.823115,
+    "httpStatus": 200,
+    "pythonDurationMs": 213,
+    "pythonStatus": "completed",
+    "kernelState": "alive",
+    "quitReturned": true,
+    "pythonCell": "python-cells/019.py",
+    "rawStartLine": 5016,
+    "rawEndLine": 5017,
+    "timingCaveat": "HTTP request/response boundaries are timestamped, not exact Python function entry/exit. Dedicated cell confirms quit returned."
+  },
+  "evaluator": {
+    "startedAtUnix": 1794202450.770394,
+    "stateGetCalls": [
+      {
+        "event": "call",
+        "unix": 1794202450.7705002
+      },
+      {
+        "event": "return",
+        "unix": 1794202450.8189461
+      }
+    ],
+    "activityCalls": [
+      {
+        "event": "call",
+        "unix": 1794202450.818958,
+        "value": null
+      },
+      {
+        "event": "return",
+        "unix": 1794202450.843734,
+        "value": [
+          "com.android.chrome/org.chromium.chrome.browser.ChromeTabbedActivity",
+          {
+            "status": "OK",
+            "get_current_activity": {
+              "full_activity": "com.android.chrome/org.chromium.chrome.browser.ChromeTabbedActivity"
+            }
+          }
+        ]
+      }
+    ],
+    "lines": [
+      {
+        "line": 99,
+        "unix": 1794202450.770494
+      },
+      {
+        "line": 100,
+        "unix": 1794202450.818951
+      },
+      {
+        "line": 101,
+        "unix": 1794202450.818953
+      },
+      {
+        "line": 100,
+        "unix": 1794202450.843738
+      },
+      {
+        "line": 103,
+        "unix": 1794202450.843743
+      },
+      {
+        "line": 106,
+        "unix": 1794202450.843744
+      },
+      {
+        "line": 109,
+        "unix": 1794202450.843745
+      }
+    ],
+    "backend": "A11yMethod.A11Y_FORWARDER_APP",
+    "sourceFile": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/android_world/task_evals/single/browser.py",
+    "returnedAtUnix": 1794202450.84375,
+    "rawReturn": 0.0,
+    "rawReturnType": "float",
+    "returnLine": 109,
+    "wrapperFinishedAtUnix": 1794202450.843756,
+    "stateEvidence": "evaluator-0",
+    "uiElementCount": 0,
+    "successElementIndices": [],
+    "packageName": "com.android.chrome",
+    "branch": "no_exact_success_text"
+  },
+  "reward": {
+    "raw": 0.0,
+    "saved": 0.0,
+    "savedPath": "episode/result.json",
+    "equal": true
+  },
+  "capturePolicy": {
+    "additionalGetStateCalls": 0,
+    "diagnosticAddedSleeps": 0,
+    "modelGeneratedSleepSecondsAfterSubmit": 2,
+    "historicalModelGeneratedSleepSecondsAfterSubmit": 1,
+    "modelSamplingNotReplay": true
+  },
+  "readOnlyVerification": "protected-input-verification.json",
+  "cleanupEvidence": [
+    "workspace-cleanup.json",
+    "runtime-state-cleanup.json",
+    "postrun-cleanup.json",
+    "episode/result.json"
+  ]
+}

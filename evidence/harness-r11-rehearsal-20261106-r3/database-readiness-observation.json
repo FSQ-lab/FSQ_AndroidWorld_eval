@@ -1,0 +1,17 @@
+{
+  "kind": "frozen_informational_probe_discrepancy",
+  "campaignDir": "campaigns/amkernel-3388314-r11-full-20261106T114639Z",
+  "databasePath": "/data/data/org.videolan.vlc/app_db/vlc_media.db",
+  "legacyReadinessDatabaseProbePresent": false,
+  "directAdbStatReturnCode": 0,
+  "directAdbTestFileReturnCode": 0,
+  "databaseSizeBytesObserved": 540672,
+  "bothFinalTargetVlcLifecycleSmokesQualified": true,
+  "lifecycleCleanup": {"environment": "closed", "sessions": "absent", "taskTearDown": "completed"},
+  "probeImplementation": "src/fsq_androidworld_eval/preparation.py:_database_exists",
+  "rootCause": "not established; legacy informational probe contradicts direct stat/test and successful official task DB access",
+  "frozenProbeCodeChanged": false,
+  "scoringCleanupAndQualificationGatesChanged": false,
+  "originalReadinessEvidenceModified": false,
+  "creationAcceptanceRecordsBothObservations": true
+}

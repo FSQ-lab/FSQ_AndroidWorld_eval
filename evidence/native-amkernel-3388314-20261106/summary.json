@@ -1,0 +1,65 @@
+{
+  "scope": "Authorized Android 13 emulator/Appium non-task session lifecycle acceptance; real device transport, not HTTP fixture",
+  "amkernelCommit": "33883148b4c6c6aff53a3323c9fc14d0d07bd814",
+  "harnessCommit": "ebd0855",
+  "target": {"avd": "AndroidWorldAvd", "serial": "emulator-5554", "apiLevel": 33, "readonlyInstance": true, "snapshotsSaved": false},
+  "readiness": {
+    "verifiedOfficialSkills": true,
+    "uiAutomator2EnvironmentRequiredOk": true,
+    "doctorRequiredFixes": 0,
+    "optionalWarnings": ["bundletool", "ffmpeg", "GStreamer"],
+    "serverSmokeRequiredOk": true,
+    "appiumVersion": "3.7.0",
+    "uiAutomator2Version": "8.7.0"
+  },
+  "runtime": {
+    "interpreter": "/Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python",
+    "importedSource": "/Users/qunmi/Documents/FSQ_LAB/amkernel/src/amkernel/__init__.py",
+    "observedMetadataVersion": "0.1.3",
+    "appiumPythonClient": "5.2.5",
+    "selenium": "4.52.0",
+    "declaredClientRequirementViolations": [],
+    "sourceHashesUnchangedDuringValidation": true,
+    "configuration": "Temporary candidate MCP workspace only; active project MCP not changed"
+  },
+  "nativeScenarios": {
+    "passed": 2,
+    "failed": 0,
+    "normal": "Original Runtime created one owned session, read native launcher package/activity, driver.quit returned, independent attached official Client verified absence; cleanup.status=closed",
+    "kernelDeath": "Observed kernel_killed/dead, confirmed the owned external session remained live through an official Client native query, fresh Runtime quit and independently verified deletion; cleanup.status=harness_reclaimed; no Agent quit claim",
+    "taskUiMutationCount": 0,
+    "initialSessionHashes": [],
+    "finalSessionHashesBeforeServiceShutdown": []
+  },
+  "ownedServiceCleanup": {
+    "appium": {"pid": 49678, "stopped": true, "independentPidProbe": "absent"},
+    "emulator": {"pid": 49344, "stopped": true, "independentPidProbe": "absent"},
+    "ports": {"4723": "closed", "5554": "closed", "5555": "closed"},
+    "adbDeviceInventoryAfterShutdown": [],
+    "adbForwardInventoryAfterShutdown": [],
+    "preexistingAdbService": "not stopped",
+    "disposableProbeScript": "removed"
+  },
+  "gate": {
+    "nativeNonTaskResourceClosure": "passed",
+    "priorNativeEnvironmentBlocker": "cleared for this completed disposable validation",
+    "newRuntimeOrHarnessDefectObserved": false,
+    "formalRuntimeBindingAndConfigurationFreeze": "next step; active MCP entry unchanged",
+    "qualification": "not started",
+    "calibration12": "not started",
+    "campaign116": "not started",
+    "evaluationResumed": false
+  },
+  "instructionFeedback": [
+    {
+      "asset": ".agents/skills/amkernel/SKILL.md, verified official source resolution",
+      "proposedWording": "Read source.generatedLocation from .agents/skills/amkernel/references/official-skills.json; the verification receipt .agents/amkernel-official.json instead records source.path."
+    },
+    {
+      "asset": "tools/appium/setup/scripts/reporting.mjs, custom --report path usage",
+      "proposedWording": "For an explicit report pathname, create its parent directory first; unlike automatic report locations, a missing custom parent is not created by writeReport."
+    }
+  ],
+  "evidence": ["context.json", "uiautomator2-env.json", "server-smoke.json", "native-session.json"],
+  "changes": "No source edits, installs/upgrades, app data resets, persistent environment changes, active MCP edits, old campaign changes, or benchmark tasks. Existing installations reused; task-owned processes stopped."
+}

@@ -1,0 +1,553 @@
+{
+  "kind": "development_diagnostic_original_r12v2_009_fixed_two_units",
+  "status": "completed",
+  "formalScore": null,
+  "notFormalQualificationOrCampaign": true,
+  "task": {
+    "complexity": 1,
+    "goal": "Create a timer with 0 hours, 16 minutes, and 35 seconds. Do not start the timer.",
+    "name": "ClockTimerEntry",
+    "params": {
+      "hours": 0,
+      "minutes": 16,
+      "seconds": 35,
+      "seed": 1172248264
+    },
+    "paramsSha256": "3c6dc22a2339a8e10eab5472bd837b52efb43b0125410cd5522c8ce88a29192b"
+  },
+  "labels": [
+    "TimerEntryOriginalP0",
+    "TimerEntryPatchedP1"
+  ],
+  "unitAuditPaths": {
+    "TimerEntryOriginalP0": "clock-matrix/TimerEntryOriginalP0/unit-audit.json",
+    "TimerEntryPatchedP1": "clock-matrix/TimerEntryPatchedP1/unit-audit.json"
+  },
+  "units": [
+    {
+      "label": "TimerEntryOriginalP0",
+      "officialReward": 0.0,
+      "error": null,
+      "invalidReason": null,
+      "actions": 7,
+      "maxSteps": 10,
+      "predicate": {
+        "kwargs": {
+          "hours": 0,
+          "minutes": 16,
+          "seconds": 35
+        },
+        "uiElementsObjectId": 5019801600,
+        "uiElementObjectIds": [],
+        "elementCount": 0,
+        "returnLine": 100,
+        "rawReturn": false,
+        "rawLocals": {
+          "current_activity": "com.google.android.deskclock/com.android.deskclock.DeskClock",
+          "hours": 0,
+          "minutes": 16,
+          "seconds": 35,
+          "text_format": "00h 16m 35s",
+          "content_desc_format": "0 hours, 16 minutes, 35 seconds"
+        },
+        "matchingIndex": null,
+        "matchingElementObjectId": null
+      },
+      "actualOfficialState": {
+        "path": "evaluator-000/state-00",
+        "stateObjectId": 5019889680,
+        "forestObjectId": 5020793360,
+        "uiElementsObjectId": 5019801600,
+        "uiElementCount": 0,
+        "isActualPredicateInput": true,
+        "forestTrace": {
+          "present": true,
+          "recvSeq": 1132,
+          "storedIdentityIsActual": true,
+          "receiveObjectIdMatchesRecord": true,
+          "identityMismatch": false,
+          "windowCount": 0,
+          "serializedBytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "nodeCount": 0,
+          "successTextFound": false,
+          "windows": [],
+          "receivedAtUnix": 1794212792.913864,
+          "receivedHostUtc": "2026-11-09T08:26:32Z",
+          "receiveAgeSeconds": 0.22423911094665527,
+          "recvTransport": "unary",
+          "recvAdmitted": true,
+          "recvAdmittedByDrain": true,
+          "recvAdmittedByDrainIndex": 8,
+          "recvAdmittedByPull": null,
+          "recvPaused": false
+        },
+        "screenshotBackend": "exact-original-state.pixels",
+        "officialEvaluatorInput": true,
+        "saved": {
+          "unix": 1794212793.1381052,
+          "monotonicNs": 587702920116416
+        }
+      },
+      "helper": {
+        "packagePath": "/data/app/~~zZFmhBQs_mmyT9LnSfAy4g==/com.google.androidenv.accessibilityforwarder-jxN3wFvxTnoAul16r7fGgQ==/base.apk",
+        "sha256": "97a56a544e44d79f9b3181fc7dbdd72cffa908efd3d53c82afad1773061a350a"
+      },
+      "actualCapability": [
+        {
+          "actualForwardedRequestCaptured": true,
+          "present": false,
+          "source": "episode/result.json appiumSessionAudit.sessionAccessibility.creations.request.capabilities",
+          "values": []
+        }
+      ],
+      "auditErrors": [],
+      "observerOverhead": [
+        {
+          "phase": "pre-quit",
+          "seconds": 0.734710791
+        },
+        {
+          "phase": "post-quit",
+          "seconds": 0.914345333
+        }
+      ],
+      "pythonExecCalls": [
+        {
+          "count": 1,
+          "status": "completed",
+          "kernelState": "alive",
+          "durationMs": 31616,
+          "error": null
+        },
+        {
+          "count": 2,
+          "status": "completed",
+          "kernelState": "alive",
+          "durationMs": 1686,
+          "error": null
+        },
+        {
+          "count": 3,
+          "status": "completed",
+          "kernelState": "alive",
+          "durationMs": 2769,
+          "error": null
+        },
+        {
+          "count": 4,
+          "status": "completed",
+          "kernelState": "alive",
+          "durationMs": 3403,
+          "error": null
+        },
+        {
+          "count": 5,
+          "status": "completed",
+          "kernelState": "alive",
+          "durationMs": 2309,
+          "error": null
+        },
+        {
+          "count": 6,
+          "status": "completed",
+          "kernelState": "alive",
+          "durationMs": 3919,
+          "error": null
+        },
+        {
+          "count": 7,
+          "status": "completed",
+          "kernelState": "alive",
+          "durationMs": 72,
+          "error": null
+        },
+        {
+          "count": 8,
+          "status": "completed",
+          "kernelState": "alive",
+          "durationMs": 1801,
+          "error": null
+        }
+      ]
+    },
+    {
+      "label": "TimerEntryPatchedP1",
+      "officialReward": 1.0,
+      "error": null,
+      "invalidReason": null,
+      "actions": 7,
+      "maxSteps": 10,
+      "predicate": {
+        "kwargs": {
+          "hours": 0,
+          "minutes": 16,
+          "seconds": 35
+        },
+        "uiElementsObjectId": 5052825344,
+        "uiElementObjectIds": [
+          5053207952,
+          5053212624,
+          5053206544,
+          5053213584,
+          5048960720,
+          5048953872,
+          5048952784,
+          5050591504,
+          5050594832,
+          5050585936,
+          5048564048,
+          5050549776,
+          5050550224,
+          5050549712,
+          5050492752,
+          5050487824,
+          5050683280,
+          5053017168,
+          5053013200,
+          5053006096,
+          5053010384,
+          5053019664,
+          5053016080,
+          5051814096,
+          5051814800,
+          5051811984,
+          5051818320
+        ],
+        "elementCount": 27,
+        "returnLine": 98,
+        "rawReturn": true,
+        "rawLocals": {
+          "current_activity": "com.google.android.deskclock/com.android.deskclock.DeskClock",
+          "hours": 0,
+          "minutes": 16,
+          "seconds": 35,
+          "text_format": "00h 16m 35s",
+          "content_desc_format": "0 hours, 16 minutes, 35 seconds",
+          "element": {
+            "text": "00h 16m 35s",
+            "content_description": "0 hours, 16 minutes, 35 seconds",
+            "class_name": "android.widget.TextView",
+            "bbox": null,
+            "bbox_pixels": {
+              "x_min": 127,
+              "x_max": 954,
+              "y_min": 296,
+              "y_max": 670
+            },
+            "hint_text": null,
+            "is_checked": false,
+            "is_checkable": false,
+            "is_clickable": false,
+            "is_editable": false,
+            "is_enabled": true,
+            "is_focused": false,
+            "is_focusable": false,
+            "is_long_clickable": false,
+            "is_scrollable": false,
+            "is_selected": false,
+            "is_visible": true,
+            "package_name": "com.google.android.deskclock",
+            "resource_name": "com.google.android.deskclock:id/timer_setup_time",
+            "tooltip": null,
+            "resource_id": null,
+            "metadata": null
+          }
+        },
+        "matchingIndex": 2,
+        "matchingElementObjectId": 5053206544
+      },
+      "actualOfficialState": {
+        "path": "evaluator-000/state-00",
+        "stateObjectId": 5052357008,
+        "forestObjectId": 5053369376,
+        "uiElementsObjectId": 5052825344,
+        "uiElementCount": 27,
+        "isActualPredicateInput": true,
+        "forestTrace": {
+          "present": true,
+          "recvSeq": 998,
+          "storedIdentityIsActual": true,
+          "receiveObjectIdMatchesRecord": true,
+          "identityMismatch": false,
+          "windowCount": 2,
+          "serializedBytes": 7559,
+          "sha256": "f259286df2d17cbe859716c23b962963b5673bbaf9f8e0ae20b8a30e9f9f0c88",
+          "nodeCount": 36,
+          "successTextFound": false,
+          "windows": [
+            {
+              "id": 10030,
+              "title": "",
+              "windowType": 1,
+              "isActive": true,
+              "isFocused": true,
+              "nodeCount": 28,
+              "packageNames": [
+                "com.google.android.deskclock"
+              ]
+            },
+            {
+              "id": 10022,
+              "title": "",
+              "windowType": 3,
+              "isActive": false,
+              "isFocused": false,
+              "nodeCount": 8,
+              "packageNames": [
+                "com.android.systemui"
+              ]
+            }
+          ],
+          "receivedAtUnix": 1794212945.846148,
+          "receivedHostUtc": "2026-11-09T08:29:05Z",
+          "receiveAgeSeconds": 0.29601097106933594,
+          "recvTransport": "unary",
+          "recvAdmitted": true,
+          "recvAdmittedByDrain": true,
+          "recvAdmittedByDrainIndex": 7,
+          "recvAdmittedByPull": null,
+          "recvPaused": false
+        },
+        "screenshotBackend": "exact-original-state.pixels",
+        "officialEvaluatorInput": true,
+        "saved": {
+          "unix": 1794212946.142161,
+          "monotonicNs": 587855923170083
+        }
+      },
+      "helper": {
+        "packagePath": "/data/app/~~wMQUQUYa9LFGdR4802mjaA==/com.google.androidenv.accessibilityforwarder-SpjMyEn0RLQHw8cCEqJLqQ==/base.apk",
+        "sha256": "0987ded41c12807d4f75d0789002912de143eec866fa7b389ad8efdb8b0d07bb"
+      },
+      "actualCapability": [
+        {
+          "actualForwardedRequestCaptured": true,
+          "present": true,
+          "source": "episode/result.json appiumSessionAudit.sessionAccessibility.creations.request.capabilities",
+          "values": [
+            {
+              "key": "appium:disableSuppressAccessibilityService",
+              "location": "alwaysMatch",
+              "value": true
+            }
+          ]
+        }
+      ],
+      "auditErrors": [],
+      "observerOverhead": [
+        {
+          "phase": "pre-quit",
+          "seconds": 0.667044542
+        },
+        {
+          "phase": "post-quit",
+          "seconds": 0.907551667
+        }
+      ],
+      "pythonExecCalls": [
+        {
+          "count": 1,
+          "status": "completed",
+          "kernelState": "alive",
+          "durationMs": 31508,
+          "error": null
+        },
+        {
+          "count": 2,
+          "status": "completed",
+          "kernelState": "alive",
+          "durationMs": 1611,
+          "error": null
+        },
+        {
+          "count": 3,
+          "status": "failed",
+          "kernelState": "alive",
+          "durationMs": 2,
+          "error": {
+            "type": "ModuleNotFoundError",
+            "message": "No module named 'appium.webdriver.common.actions'",
+            "traceback": [
+              "Traceback (most recent call last):",
+              "  File \"/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/lib/python3.11/site-packages/amkernel/runner.py\", line 590, in _execute_cell",
+              "    value = _compile_and_execute(code, execution_count, namespace)",
+              "            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+              "  File \"/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/lib/python3.11/site-packages/amkernel/runner.py\", line 575, in _compile_and_execute",
+              "    exec(prefix_code, namespace, namespace)",
+              "  File \"<amkernel-cell-3>\", line 1, in <module>",
+              "ModuleNotFoundError: No module named 'appium.webdriver.common.actions'"
+            ]
+          }
+        },
+        {
+          "count": 4,
+          "status": "failed",
+          "kernelState": "alive",
+          "durationMs": 1,
+          "error": {
+            "type": "TypeError",
+            "message": "PointerActions.move_to_location() got an unexpected keyword argument 'duration'",
+            "traceback": [
+              "Traceback (most recent call last):",
+              "  File \"/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/lib/python3.11/site-packages/amkernel/runner.py\", line 590, in _execute_cell",
+              "    value = _compile_and_execute(code, execution_count, namespace)",
+              "            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+              "  File \"/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/lib/python3.11/site-packages/amkernel/runner.py\", line 575, in _compile_and_execute",
+              "    exec(prefix_code, namespace, namespace)",
+              "  File \"<amkernel-cell-4>\", line 9, in <module>",
+              "TypeError: PointerActions.move_to_location() got an unexpected keyword argument 'duration'"
+            ]
+          }
+        },
+        {
+          "count": 5,
+          "status": "failed",
+          "kernelState": "alive",
+          "durationMs": 1199,
+          "error": {
+            "type": "NameError",
+            "message": "name 'WebDriverWait' is not defined",
+            "traceback": [
+              "Traceback (most recent call last):",
+              "  File \"/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/lib/python3.11/site-packages/amkernel/runner.py\", line 590, in _execute_cell",
+              "    value = _compile_and_execute(code, execution_count, namespace)",
+              "            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+              "  File \"/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/lib/python3.11/site-packages/amkernel/runner.py\", line 575, in _compile_and_execute",
+              "    exec(prefix_code, namespace, namespace)",
+              "  File \"<amkernel-cell-5>\", line 2, in <module>",
+              "NameError: name 'WebDriverWait' is not defined"
+            ]
+          }
+        },
+        {
+          "count": 6,
+          "status": "completed",
+          "kernelState": "alive",
+          "durationMs": 47,
+          "error": null
+        },
+        {
+          "count": 7,
+          "status": "completed",
+          "kernelState": "alive",
+          "durationMs": 763,
+          "error": null
+        },
+        {
+          "count": 8,
+          "status": "completed",
+          "kernelState": "alive",
+          "durationMs": 1259,
+          "error": null
+        },
+        {
+          "count": 9,
+          "status": "completed",
+          "kernelState": "alive",
+          "durationMs": 2636,
+          "error": null
+        },
+        {
+          "count": 10,
+          "status": "completed",
+          "kernelState": "alive",
+          "durationMs": 1276,
+          "error": null
+        },
+        {
+          "count": 11,
+          "status": "completed",
+          "kernelState": "alive",
+          "durationMs": 2857,
+          "error": null
+        },
+        {
+          "count": 12,
+          "status": "completed",
+          "kernelState": "alive",
+          "durationMs": 1721,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "observedConclusion": {
+    "business": "Both actual Agents entered exactly00h16m35s and did not click Start; raw code/actions, prequit XML and eight original PNGs agree.",
+    "currentARootCause": "Original helper accessibility collection loses binding during Appium creation and its old tree sender survives. Rebinding starts a second concurrent tree sender in the same process, after which nonempty and empty forests interleave. Actual official selection empty1132 yields empty list and original timer line100 false/reward0, despite correct visible timer setup.",
+    "nativeDirectEvidence": "PID17373: old TID17399 and new19213 concurrently send trees; in recorded device4152\u20134156s window, old39tree-sends/0window-processing logs versus new38tree-sends/76window-processing logs.",
+    "perMessageLimit": "Original metadata do not identify per-message device thread. No claim that recv1132 has a proven named TID.",
+    "currentBBusinessAndScore": "Actual original element at index2/object5053206544 in original list5052825344 matches original timer text; original line98 true/reward1 from nonempty998.",
+    "existingGenericFix": "Production proxy forwards and confirms disableSuppressAccessibilityService=true; production helper ties one worker/channel to the connected service lifecycle and stops old workers on unbind/destroy. Those changes already exist; this009 B is their actual regression verification, no new production fix applied here.",
+    "newFixRequiredForThisObservedFailure": false,
+    "notAMKernelFailure": "No timed_out call in either009 unit; A8calls completed. B3 failures are actual model-generated import/API/name errors with alive Kernel, then model recovery, not Runtime death or timer submission errors.",
+    "historicalLimit": "Historical009 official input forest was not saved; fresh A establishes current reproduced cause, not retroactive unique proof or rescore.",
+    "nativeInitFields": "This009 native Init fields are A0/B0, not008 A0/B1. Actual cap confirmation, Bound state and nonempty flow are separate evidence; no claim of final effective flag measurement."
+  },
+  "BReception": {
+    "receives": 1003,
+    "empty": 0,
+    "senderInstances": [
+      "20200:1"
+    ],
+    "receiveAgeAtOriginalStateReturn": 0.08307909965515137,
+    "receiveAgeAtSavedDescribe": 0.29601097106933594,
+    "matchingElementEvents": [
+      {
+        "event": "line",
+        "line": 95,
+        "elementObjectId": 5053206544
+      },
+      {
+        "event": "line",
+        "line": 98,
+        "elementObjectId": 5053206544
+      },
+      {
+        "event": "return",
+        "line": 98,
+        "elementObjectId": 5053206544
+      }
+    ]
+  },
+  "xmlBoundary": {
+    "preQuit": "Original live Appium source.xml, pixels, package/activity using read-only attachment and official Client through AMKernel",
+    "postQuit": "Two native PNGs plus original official selected state/forest/PB/UIElements/pixels and complete business action ledger",
+    "postQuitXml": "Not available after original session quit; no extra session or uiautomator dump, no derived XML disguised as original",
+    "approval": "Parent and independent reviewer accepted the actual artifact combination before execution",
+    "overhead": "Explicit measured pre/post observation delays; no added UI action/get_state"
+  },
+  "restoration": {
+    "record": "final-native-restoration.json",
+    "productionHelperRestored": true,
+    "normalBindingObserved": true,
+    "settingsPreserved": {
+      "bootId": true,
+      "enabledServices": true,
+      "accessibilityEnabled": true
+    },
+    "sessionHashes": [],
+    "ownedWorkspaceAndParentsAbsent": true
+  },
+  "historicalImmutability": {
+    "startedAtUnix": 1794213057.6924958,
+    "completedAtUnix": 1794213064.341978,
+    "scope": "Registered3793 paths: prior2186 (campaign2185 + original cached APK1) plus1607 regular original008 evidence files, excluding symlink caches; not whole installation or all repository paths",
+    "registeredCount": 3793,
+    "rehashedCount": 3793,
+    "rehashedBytes": 14558243765,
+    "changed": [],
+    "missing": [],
+    "unchanged": true,
+    "currentSkills": {
+      "fileCount": 152,
+      "changed": [],
+      "missing": [],
+      "unchanged": true
+    },
+    "officialClockModuleSha256": "b71344f13576f6b848a6c34dc4286962e94ec228e9643a3bdfc11b299265a65c"
+  },
+  "report": "report.md",
+  "independentReview": "w4:p2 separately authored; this owner report does not substitute its verdict",
+  "deviceOwnership": "Released to parent after restoration; no further device operations planned"
+}

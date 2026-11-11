@@ -1,0 +1,98 @@
+{
+  "task": {
+    "complexity": 2,
+    "goal": "Open the file task.html in Downloads in the file manager; when prompted open it with Chrome. Then navigate the X to the bottom-right cell, by using the direction buttons.",
+    "name": "BrowserMaze",
+    "params": {
+      "browser_task_seed": 1364588068,
+      "seed": 3308742614
+    },
+    "paramsSha256": "70afdabec18be5d937700f54f4fc854e6bff0c1e8c65a613801a872bc43dd7bc"
+  },
+  "originalUiActions": 20,
+  "budget": 20,
+  "originalOfficialReward": 0,
+  "calls": 26,
+  "elapsedAgentSeconds": 285.088,
+  "budgetUnit": "gated Appium UI interaction, not python_exec call",
+  "actionDecomposition": {
+    "navigationAndFirstRun": 10,
+    "nativeDirectionElementClicksWithNoNetProgress": 6,
+    "coordinateDirectionTaps": 4
+  },
+  "progressEvidence": [
+    {
+      "sourceRawLine": 3638,
+      "observedPosition": [
+        0,
+        0
+      ],
+      "event": "before six clicks"
+    },
+    {
+      "sourceRawLine": 3944,
+      "observedPosition": [
+        0,
+        0
+      ],
+      "event": "after six direction clicks"
+    },
+    {
+      "sourceRawLine": 4307,
+      "observedPosition": [
+        0,
+        1
+      ],
+      "event": "after one coordinate tap Right"
+    }
+  ],
+  "remainingThreeTaps": "HTTP200/package evidence only; final X position not directly observed",
+  "imageDerivedSimulation": [
+    {
+      "direction": "Right",
+      "expectedPosition": [
+        0,
+        1
+      ]
+    },
+    {
+      "direction": "Down",
+      "expectedPosition": [
+        1,
+        1
+      ]
+    },
+    {
+      "direction": "Right",
+      "expectedPosition": [
+        1,
+        2
+      ]
+    },
+    {
+      "direction": "Down",
+      "expectedPosition": [
+        2,
+        2
+      ]
+    },
+    {
+      "direction": "Down",
+      "expectedPosition": [
+        3,
+        2
+      ]
+    },
+    {
+      "direction": "Right",
+      "expectedPosition": [
+        3,
+        3
+      ]
+    }
+  ],
+  "simulationScope": "Offline diagnostic from visible screenshot, not Agent completion, official evaluator execution, or native-input reproduction",
+  "minimumPathLength": 6,
+  "navigationPlusMinimumPath": 16,
+  "nativeClickMechanism": "Not independently reproduced; no conclusion that AMKernel or Appium has a confirmed bug"
+}

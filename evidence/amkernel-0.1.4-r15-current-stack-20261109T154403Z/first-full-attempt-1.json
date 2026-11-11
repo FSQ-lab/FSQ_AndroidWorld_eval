@@ -1,0 +1,202 @@
+{
+  "campaignId": "amkernel-0.1.4-r15-current-stack-full-20261109T154403Z",
+  "observedRequiredLaunchEvidence": true,
+  "attemptStarted": {
+    "attempt": 1,
+    "event": "attempt_started",
+    "manifestSha256": "5be6bb2a8fd19a2aadfb10888619f5e37febca386c10f1847426a6926c233de7",
+    "readinessIdentitySha256": "e4b7e751da8d428c537d9ead2acd827ab893de10cf32413684eee69a35fd6a53",
+    "result": "episodes/000-AudioRecorderRecordAudio/attempt-1/result.json",
+    "startedAtUnix": 1794244486.35394,
+    "task": "AudioRecorderRecordAudio",
+    "taskIndex": 0,
+    "taskSpecSha256": "c2b96bc310477a7607fec928fecfc412eb8d4b016fe22bbaf961def38f5f318c"
+  },
+  "attemptTerminal": {
+    "attempt": 1,
+    "classification": "passed",
+    "completedAtUnix": 1794244632.0182762,
+    "event": "attempt_terminal",
+    "manifestSha256": "5be6bb2a8fd19a2aadfb10888619f5e37febca386c10f1847426a6926c233de7",
+    "officialReward": 1.0,
+    "readinessIdentitySha256": "e4b7e751da8d428c537d9ead2acd827ab893de10cf32413684eee69a35fd6a53",
+    "result": "episodes/000-AudioRecorderRecordAudio/attempt-1/result.json",
+    "resultSha256": "c10cc1a006b2ff9aafed3a9292925839a84e9a49ba256ebcd3c982201e01198f",
+    "task": "AudioRecorderRecordAudio",
+    "taskIndex": 0,
+    "taskSpecSha256": "c2b96bc310477a7607fec928fecfc412eb8d4b016fe22bbaf961def38f5f318c"
+  },
+  "result": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z/episodes/000-AudioRecorderRecordAudio/attempt-1/result.json",
+  "resultSha256": "c10cc1a006b2ff9aafed3a9292925839a84e9a49ba256ebcd3c982201e01198f",
+  "provider": "github-copilot",
+  "model": "gpt-5.6-sol",
+  "pythonExecToolCallCount": 10,
+  "appiumSessionAudit": {
+    "activeSessionCount": 0,
+    "activeSessionHashes": [],
+    "createdSessionCount": 1,
+    "createdSessionHashes": [
+      "e00a583e009917a949747575e9c5f475ca17d4ffd75d02491763d044e924aba3"
+    ],
+    "deletedSessionCount": 1,
+    "deletedSessionHashes": [
+      "e00a583e009917a949747575e9c5f475ca17d4ffd75d02491763d044e924aba3"
+    ],
+    "deniedCommandCount": 0,
+    "deniedCommands": [],
+    "errors": [],
+    "ownedSessionCount": 1,
+    "pendingCreateCount": 0,
+    "pendingRequestCount": 0,
+    "reclaimedSessionCount": 0,
+    "reclaimedSessionHashes": [],
+    "sessionAccessibility": {
+      "config": {
+        "capability": "appium:disableSuppressAccessibilityService",
+        "forwarderArtifactName": "fsq-accessibility-forwarder-lifecycle-v1.apk",
+        "inheritedEnvironmentPolicy": "replace_named_forwarder_only",
+        "inheritedForwarderArtifactName": "2024.05.13-accessibility_forwarder.apk",
+        "maximumCandidates": 16,
+        "maximumCapabilityBytes": 65536,
+        "requestPolicy": "inject_true_all_w3c_candidates_reject_contradictions",
+        "responsePolicy": "require_explicit_true",
+        "value": true,
+        "version": 1
+      },
+      "creations": [
+        {
+          "request": {
+            "byteCount": 319,
+            "capabilities": {
+              "alwaysMatch": {
+                "appium:autoLaunch": false,
+                "appium:automationName": "UiAutomator2",
+                "appium:disableSuppressAccessibilityService": true,
+                "appium:newCommandTimeout": 300,
+                "appium:noReset": true,
+                "appium:skipUnlock": true,
+                "appium:udid": "emulator-5554",
+                "platformName": "Android"
+              },
+              "firstMatch": [
+                {}
+              ]
+            },
+            "sha256": "949aba83e39cecd4c7a079e64f81694e0b80fa4505b8302bb6155a026d739d42"
+          },
+          "response": {
+            "bodySha256": "eff87b38c87669cc40440e48c09ec077643d88354a777142d9d9ead78dd9194b",
+            "capabilities": {
+              "autoLaunch": false,
+              "automationName": "UiAutomator2",
+              "databaseEnabled": false,
+              "desired": {
+                "autoLaunch": false,
+                "automationName": "UiAutomator2",
+                "disableSuppressAccessibilityService": true,
+                "newCommandTimeout": 300,
+                "noReset": true,
+                "platformName": "Android",
+                "skipUnlock": true,
+                "udid": "emulator-5554"
+              },
+              "deviceApiLevel": 33,
+              "deviceManufacturer": "Google",
+              "deviceModel": "sdk_gphone64_arm64",
+              "deviceName": "emulator-5554",
+              "deviceScreenDensity": 420,
+              "deviceScreenSize": "1080x2400",
+              "deviceUDID": "emulator-5554",
+              "disableSuppressAccessibilityService": true,
+              "javascriptEnabled": true,
+              "locationContextEnabled": false,
+              "networkConnectionEnabled": true,
+              "newCommandTimeout": 300,
+              "noReset": true,
+              "pixelRatio": "2.625",
+              "platform": "LINUX",
+              "platformName": "Android",
+              "platformVersion": "13",
+              "skipUnlock": true,
+              "statBarHeight": 128,
+              "takesScreenshot": true,
+              "udid": "emulator-5554",
+              "viewportRect": {
+                "height": 2272,
+                "left": 0,
+                "top": 128,
+                "width": 1080
+              },
+              "warnings": {},
+              "webStorageEnabled": false
+            },
+            "capabilityByteCount": 1009,
+            "confirmed": true,
+            "status": 200
+          }
+        }
+      ]
+    },
+    "unknownCreationOutcomeCount": 0,
+    "unknownCreationOutcomes": []
+  },
+  "cleanup": {
+    "agentSession": {
+      "agentQuitReturned": true,
+      "attribution": "agent",
+      "sessionIdSha256": "e00a583e009917a949747575e9c5f475ca17d4ffd75d02491763d044e924aba3",
+      "status": "closed",
+      "verification": {
+        "activeSessionCount": 0,
+        "attemptedSessionCount": 1,
+        "ownedSessionCount": 1,
+        "pendingCreateCount": 0,
+        "pendingRequestCount": 0,
+        "reclaimedSessionCount": 0,
+        "reclaimedSessionHashes": [],
+        "sessions": [
+          {
+            "absentVerified": true,
+            "alreadyAbsent": true,
+            "errors": [],
+            "presentVerified": false,
+            "quitReturned": false,
+            "sessionHash": "e00a583e009917a949747575e9c5f475ca17d4ffd75d02491763d044e924aba3"
+          }
+        ],
+        "status": "unknown",
+        "unknownCreationOutcomeCount": 0
+      },
+      "verificationStatus": "absent"
+    },
+    "environment": "closed",
+    "taskTearDown": "completed"
+  },
+  "officialReward": 1.0,
+  "agentTermination": {
+    "actionBudgetClosureReason": "agent_finished",
+    "businessDeadlineReached": false,
+    "cleanupRequested": true,
+    "deadlines": {
+      "remainingSeconds": {
+        "business": 717.3638567079324,
+        "cleanup": 169.71123212494422,
+        "force": 179.7112317919964
+      },
+      "started": true
+    },
+    "outerTermination": false,
+    "reason": "completed",
+    "rpcCommands": [
+      "set_interrupt_mode",
+      "prompt",
+      "prompt"
+    ]
+  },
+  "amkernel": {
+    "tool": "python_exec",
+    "version": "0.1.4"
+  },
+  "pipelinePid": 18842,
+  "pipelineStatus": "running"
+}

@@ -1,0 +1,24 @@
+{
+  "timestampUtc": "2026-11-10T12:35:57.584008+00:00",
+  "kind": "environment_preparation_stage_terminal",
+  "complete": true,
+  "mapStatus": "restored_and_verified",
+  "receipt": "execution/environment-prepare/result.json",
+  "operations": 8,
+  "allReturnCodesZero": true,
+  "guestAdbdRootRequested": false,
+  "bootId": "0f36e370-012a-4423-a1f9-959beae8f90d",
+  "guestEffects": "Official fixed map directory/file/mode/context retained; guest was already root, no root transport restart command issued.",
+  "cleanup": {
+    "businessWorker": "not_spawned",
+    "guestPreparationState": "retained, including any successful adbd/map changes; no rollback or unroot",
+    "officialEnvironment": "not_created",
+    "remoteEffectsAfterClientTimeout": "not claimed absent",
+    "sharedTarget": "retained_FSQ_first_no_release",
+    "subprocesses": "Each issued ADB client waited/reaped; timeout kills and reaps that client only"
+  },
+  "qualification": "one fresh attempt launched bg_86",
+  "smokeAttemptsStarted": 0,
+  "FSQFirstRetained": true,
+  "releasedToAMK": false
+}

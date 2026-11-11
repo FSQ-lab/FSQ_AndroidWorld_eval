@@ -1,0 +1,1019 @@
+{
+  "schemaVersion": 1,
+  "status": "Complete: existing release run succeeded; GitHub and PyPI qualified; pinned public installation passed; prior same-byte stdio evidence reused",
+  "version": "0.1.4",
+  "tag": "v0.1.4",
+  "commit": "4d0a863e6a65288bfdb7ce2756410908fb097416",
+  "ci": {
+    "runId": 42641788174,
+    "attempt": 1,
+    "artifactId": 13684749155
+  },
+  "releaseRun": {
+    "id": 42644889809,
+    "url": "https://github.com/FSQ-lab/amkernel/actions/runs/42644889809",
+    "lastObservedStatus": "completed",
+    "conclusion": "success",
+    "attempt": 1,
+    "allThreeJobsSucceeded": true
+  },
+  "github": {
+    "qualified": true,
+    "captured_at": "2026-11-09T15:31:10.026450+00:00",
+    "release_url": "https://github.com/FSQ-lab/amkernel/releases/tag/v0.1.4",
+    "release_id": 439302848,
+    "immutable": true,
+    "draft": false,
+    "prerelease": false,
+    "asset_count": 3,
+    "commit": "4d0a863e6a65288bfdb7ce2756410908fb097416",
+    "tag_object_sha": "40d81c2eb8bc421dd3b912d5fa17fe3181a52ff0",
+    "tag_signature": {
+      "verified": false,
+      "reason": "unsigned",
+      "signature": null,
+      "payload": null,
+      "verified_at": null
+    },
+    "cryptographic_proof_scope": "GitHub immutable-release attestation binding annotated tag object and three asset SHA-256 digests; not a signed Git tag or separately verified build provenance attestation",
+    "proof_identity": {
+      "certificate": {
+        "certificateIssuer": "CN=Fulcio Intermediate l1,O=GitHub\\, Inc.",
+        "subjectAlternativeName": "https://dotcom.releases.github.com"
+      }
+    },
+    "proof_verified_identity": {
+      "subjectAlternativeName": {
+        "subjectAlternativeName": "",
+        "regexp": "^https://dotcom\\.releases\\.github\\.com$"
+      },
+      "issuer": {
+        "issuer": "",
+        "regexp": ".*"
+      }
+    },
+    "proof_verified_timestamps": [
+      {
+        "type": "TimestampAuthority",
+        "uri": "timestamp.githubapp.com",
+        "timestamp": "2026-11-09T15:28:13Z"
+      }
+    ],
+    "predicate": {
+      "databaseId": "439302848",
+      "ownerId": "274794964",
+      "packageId": "1437208655",
+      "purl": "pkg:github/FSQ-lab/amkernel@v0.1.4",
+      "repository": "FSQ-lab/amkernel",
+      "repositoryId": "1437208655",
+      "tag": "v0.1.4"
+    },
+    "assets": [
+      {
+        "name": "amkernel-0.1.4-py3-none-any.whl",
+        "id": 727969976,
+        "public_url": "https://github.com/FSQ-lab/amkernel/releases/download/v0.1.4/amkernel-0.1.4-py3-none-any.whl",
+        "size_bytes": 237206,
+        "sha256": "6a26fa8469c28c8f125e19e4da15f94476375604da58cf1e89f7ee00ef2788de",
+        "expected_sha256_match": true,
+        "github_digest_match": true,
+        "cryptographic_verification_exit": 0,
+        "proof_receipt": "verify-asset-727969976.stdout.json"
+      },
+      {
+        "name": "amkernel-evidence-0.1.4.manifest.json",
+        "id": 727969982,
+        "public_url": "https://github.com/FSQ-lab/amkernel/releases/download/v0.1.4/amkernel-evidence-0.1.4.manifest.json",
+        "size_bytes": 19958,
+        "sha256": "b0ce8d2044a47ca05b906efb7828fd66ced628e2be0771af53afe1ce7d58157d",
+        "expected_sha256_match": true,
+        "github_digest_match": true,
+        "cryptographic_verification_exit": 0,
+        "proof_receipt": "verify-asset-727969982.stdout.json"
+      },
+      {
+        "name": "amkernel-evidence-0.1.4.tar.gz",
+        "id": 727969973,
+        "public_url": "https://github.com/FSQ-lab/amkernel/releases/download/v0.1.4/amkernel-evidence-0.1.4.tar.gz",
+        "size_bytes": 177749,
+        "sha256": "017f16cb9de98da35f0ef9250d70f5727b3c0ad2c875bd68001b01fd95c6c74c",
+        "expected_sha256_match": true,
+        "github_digest_match": true,
+        "cryptographic_verification_exit": 0,
+        "proof_receipt": "verify-asset-727969973.stdout.json"
+      }
+    ],
+    "wheel_metadata": {
+      "Name": "amkernel",
+      "Version": "0.1.4",
+      "Requires-Python": ">=3.11, <3.14"
+    },
+    "manifest_schema": 1,
+    "manifest_version": "0.1.4",
+    "manifest_commit": "4d0a863e6a65288bfdb7ce2756410908fb097416",
+    "archive_members_verified": 105,
+    "archive_members_candidate_byte_matches": 105,
+    "archive_members_committed_source_byte_matches": 105,
+    "archive_paths_equal_candidate_evidence_files": true,
+    "historical_retained_paths_digest_size_matches": 71,
+    "historical_release_only_paths_absent": 132,
+    "historical_index_source": "candidate/evidence/archive-v0.1.2.json; no older release downloaded",
+    "members": [
+      {
+        "path": "appium-skill/agent-behavior-review-20261103.json",
+        "sha256": "c8111a56d2d0472dc269452f80411376a4fc33c5854751e6875297c336a59aa5",
+        "sizeBytes": 2106,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "appium-skill/android-execution-20261105.json",
+        "sha256": "0b79b27b623a590ce5cd47634cdaed0615f6d65162294c74cbdb3f9009691364",
+        "sizeBytes": 5327,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "appium-skill/compatibility-20261102.json",
+        "sha256": "aea4bb0240192f481dca65c42916a3b59f1c81aa9896517443b3a942ad96607d",
+        "sizeBytes": 16470,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "appium-skill/conversation-review-20261103.json",
+        "sha256": "4375839654f21cd3159e1f79ad9b51a8a79705acb4606bc28ca4e0e468297545",
+        "sizeBytes": 3460,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "appium-skill/copilot-install-20261102.json",
+        "sha256": "3db63aeffa2b0a2880f860236b7dcd9dea5fbf99f098844d49f300a2393badd6",
+        "sizeBytes": 33252,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "appium-skill/environment-20261102.json",
+        "sha256": "d441b3850b13b804c3cbab873272a8cb9bee255fb357d8c64b60aeeec68f177f",
+        "sizeBytes": 5124,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "appium-skill/environment-discovery-review-20261103.json",
+        "sha256": "294722a02b50d86115319579347863307a5ae2f910e06b930f18ef8fbcaf77c3",
+        "sizeBytes": 2411,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "appium-skill/final-android-discovery-20261103.json",
+        "sha256": "b8e7f8b8364cbbd5ff805b44bb44721e024c787be8b93ccdf18875be541b71b2",
+        "sizeBytes": 5616,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "appium-skill/final-install-20261103.json",
+        "sha256": "24e0e3b3240ddbef6e20f65390d98450e3bbf4a43ffe475a3a9a21a900d0bc29",
+        "sizeBytes": 28280,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "appium-skill/final-ios-device-discovery-20261103.json",
+        "sha256": "c5cb4a7a996dd8e6d462439002c0ef138fcb8c030c60a0e55f5cf51987cb060d",
+        "sizeBytes": 5463,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "appium-skill/final-ios-simulator-discovery-20261103.json",
+        "sha256": "843b114e43d8c4b73b60f6c76924abfd653e0d78b3b9bd0e4fe1561e1ecadef7",
+        "sizeBytes": 5305,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "appium-skill/final-mac2-20261103.json",
+        "sha256": "2e3aff4438c8dbce3647f3ab334914c0afa5de49b962d9e3735fc62e3ff7ca8f",
+        "sizeBytes": 10666,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "appium-skill/final-mac2-packages-20261103.json",
+        "sha256": "b05586886545a2f4cdcbf3a70f34600dc2d1a03c5a613afd4261c79520f63df1",
+        "sizeBytes": 1971,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "appium-skill/final-platform-review-20261103.json",
+        "sha256": "96b7fb3d877f97aea0a135f7ec91e2bd416ff3d6c14a1349fdd726889f7fcd69",
+        "sizeBytes": 2466,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "appium-skill/final-provenance-20261103.json",
+        "sha256": "663433f37fb424ad8c5e66cd44b2d088a4721953709ad16980c5c0ebdeb9d596",
+        "sizeBytes": 4093,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "appium-skill/ios-setup-20261105.json",
+        "sha256": "2497236062157bb22b856281a3834e8d6f0b60a138e2ea5677cffb678b35736b",
+        "sizeBytes": 45922,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "appium-skill/mac2-applications-review-20261103.json",
+        "sha256": "aa9880c129eb4aa5bfb8b792014e97e9e2f4e04185be8acfd8cf83ea6213d4f2",
+        "sizeBytes": 4606,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "appium-skill/mac2-desktop-prerequisite-20261103.json",
+        "sha256": "6afa22a1510b0e4c0a07f82fc626f10570b1807edef3e5fc10027ed846f00f9a",
+        "sizeBytes": 1322,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "appium-skill/mac2-m0-20261103.json",
+        "sha256": "9b470b0973cc56ef7da0bb64bb79dfbc28156a57fb5b752a7e7ece755390accb",
+        "sizeBytes": 18013,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "appium-skill/mac2-m1-review-20261103.json",
+        "sha256": "0173bc14fecc879c5efe182f3bbc9708925dcec9208be9da3461de9ed76006be",
+        "sizeBytes": 1685,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "appium-skill/mac2-m1-visible-review-20261103.json",
+        "sha256": "b7c64747aa18c5974704da9e850d641ba7a9922afb10c67993b8710da093b6ef",
+        "sizeBytes": 3072,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "appium-skill/mac2-recovery-review-20261103.json",
+        "sha256": "a17e9ae8ee85a7b75a2fbed1a27087588b8e7399b32d101e625c9a60aafc4e50",
+        "sizeBytes": 2013,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "appium-skill/mac2-retry-20261103.json",
+        "sha256": "30dba273f4071e6c821f82ddf6ccc9409696a653ff689ac541d62834fe9f6f5a",
+        "sizeBytes": 14983,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "appium-skill/mac2-routing-20261102.json",
+        "sha256": "1371eb09da95aa936cc65aeaa89cc51d1a310b836b1ae94d2b6e8fc18a2c812b",
+        "sizeBytes": 3677,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "appium-skill/observation-policy-20261105.json",
+        "sha256": "b433ce7a9e2338f523b1262397a2dae4a80a826c958c943f7c2eb820de78c129",
+        "sizeBytes": 5825,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "appium-skill/published-011-install-20261103.json",
+        "sha256": "702979a018121ef5d24f9df38e9cc4845aab751d817bbb00085804816878496f",
+        "sizeBytes": 1834,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "appium-skill/published-011-mac2-20261103.json",
+        "sha256": "c2495d305822fb3a5a1cc5b759f6b59cba5e49b69f456f535f0667c45bff5831",
+        "sizeBytes": 16927,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "appium-skill/published-011-review-20261103.json",
+        "sha256": "6962d2e0a0578390e5d87cc22a6937a3dfd1b5f62b72e74612a9177da12e47b5",
+        "sizeBytes": 2671,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "appium-skill/published-011-windows-readiness-20261103.json",
+        "sha256": "47cfcd8ce066ae7de3ca2dc21e38a912ea2e6d76b3a7af5eac074ddd3d3c07f4",
+        "sizeBytes": 2844,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "appium-skill/skill-proposal-fixes-20261109.json",
+        "sha256": "86a2cfa91958ba699787426f7bd6af5aec21d5b918994be0836c4227237c4d06",
+        "sizeBytes": 26866,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "appium-skill/skill-proposal-fixes-final-20261109.json",
+        "sha256": "d946b19bb589a49d38a82cc5bb68f04a3e37974cf843cece81a308ba44574f31",
+        "sizeBytes": 26587,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "appium-skill/skill-proposal-fixes-review-20261109.json",
+        "sha256": "78a6415033ffc1bc04ec0795790b187bafab1708ce030991250cef60d9fb7d5c",
+        "sizeBytes": 7757,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "archive-v0.1.2.json",
+        "sha256": "f2842bfd2ec12afa75c437c4804fb99093f5b43c4c1e7dbbd8becdc05655877c",
+        "sizeBytes": 42970,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "skill-ab-20261109/analysis.json",
+        "sha256": "7ced8a89da4219c9fb8dbafc36092304db2167259c2a39589a9f25f7f7029a0d",
+        "sizeBytes": 9361,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "skill-ab-20261109/baseline-provenance.json",
+        "sha256": "79ac948c5e1de3e30062e35a0e672477d02059ca2c5d48059a9b248317fa0680",
+        "sizeBytes": 1327,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "skill-ab-20261109/baseline/SKILL.md",
+        "sha256": "520bbbb380a95024d08e7e728ed0c5b92a484a0958fd098454a414ad9a7a0caa",
+        "sizeBytes": 18768,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "skill-ab-20261109/baseline/references/amkernel-appium.md",
+        "sha256": "4a526440b8d3ef8e7584c3b439a21db718c6c6e5a9c484d9ca84e0898556be9d",
+        "sizeBytes": 15623,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "skill-ab-20261109/baseline/references/android-execution.md",
+        "sha256": "bdb021d7a587f7f63c862c888988c64d908afa498282f2a71e4486b1148f8471",
+        "sizeBytes": 15835,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "skill-ab-20261109/candidate-verification.json",
+        "sha256": "b4c526b91757b6bde992f4324e8a60f6cf055a4af183badeca7a18cc16a9f640",
+        "sizeBytes": 5350,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "skill-ab-20261109/implementation-checks.json",
+        "sha256": "7fbdba437ec9748f2d6d730093c523561aa8e0e0bd57258004d68a14851b649c",
+        "sizeBytes": 3993,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "skill-ab-20261109/independent-review.json",
+        "sha256": "4509bac487f56d9fd83c5521c0e03b8167e5e89df0b83dd15e188f72b2ba04f5",
+        "sizeBytes": 3816,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "skill-ab-20261109/native-query-diagnostic/focus-submit-new.json",
+        "sha256": "f99e5211e31c0ed0a6a8df6799acf227a82d4068b5f17d1f4f7c29c6f9bcb59c",
+        "sizeBytes": 9242,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "skill-ab-20261109/native-query-diagnostic/setup-failure.json",
+        "sha256": "c5f30d6ebf44caca42ce068fcc7d94fa625423a815c2fbd227c36a2ffbe79467",
+        "sizeBytes": 595,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "skill-ab-20261109/native-query-diagnostic/summary.json",
+        "sha256": "4330f2c235f3b80c4453bc2a09c741aad3edb25e6d84327b4d6b26085fd045d8",
+        "sizeBytes": 2129,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "skill-ab-20261109/native-query-optimization.json",
+        "sha256": "962f323e545a97cc1f61c29ba959cea6d2b2c77c07b66ffac7ed9b3491b7bc62",
+        "sizeBytes": 4721,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "skill-ab-20261109/paired-screening/covered-count-new.json",
+        "sha256": "fac23816adaf539ed166dbd4987b2472ff1ed8691785ecc07a752a6c01e7523f",
+        "sizeBytes": 10666,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "skill-ab-20261109/paired-screening/covered-count-old.json",
+        "sha256": "ef7697335d17d63001df7886334e55124a646c357252bead141c88a0eeb00cec",
+        "sizeBytes": 11012,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "skill-ab-20261109/paired-screening/exact-file-new.json",
+        "sha256": "79ca4470d5eef66fa0949570f42378a648eda5cd1fc4de06168fcf4f0793f6c8",
+        "sizeBytes": 10133,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "skill-ab-20261109/paired-screening/exact-file-old.json",
+        "sha256": "b8e7fa5a385421ac2e4e14be15005bff8bba4dcea9f44297dc631057912f2172",
+        "sizeBytes": 10161,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "skill-ab-20261109/paired-screening/focus-submit-new.json",
+        "sha256": "cb3e316383c374443cae0cb05921c5cbcbbe69f52a58823730ffc52b71a29b29",
+        "sizeBytes": 8979,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "skill-ab-20261109/paired-screening/focus-submit-old.json",
+        "sha256": "deea08d53b41fb8abb89cc6eb04553c66ff9e8a6be396bcca3b257bb9c37523b",
+        "sizeBytes": 8439,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "skill-ab-20261109/paired-screening/manifest.json",
+        "sha256": "365b375e8164f05d35dc31e94acdf0ac7b47124bab41dc3fb7bbeae8810f9b06",
+        "sizeBytes": 7830,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "skill-ab-20261109/paired-screening/measured-aggregate-new.json",
+        "sha256": "cedfda11619cb3e35359220e105b8ab8d967caf5e1be76cb306df209fac5d641",
+        "sizeBytes": 10901,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "skill-ab-20261109/paired-screening/measured-aggregate-old.json",
+        "sha256": "953eff8fb86f07c47319f5ef5bfde83979faece1b854a1c50b90faf60b400124",
+        "sizeBytes": 10390,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "skill-ab-20261109/paired-screening/phased-progress-new.json",
+        "sha256": "013a4ef5cb4e9eed3e08e0742c6d3d329f5a29d570881d3823ac4d1a8e27a6d5",
+        "sizeBytes": 9442,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "skill-ab-20261109/paired-screening/phased-progress-old.json",
+        "sha256": "a729cbfd9e4f21b1f7884a008e27db66f191797df5f9f5e0500e2ee95d128177",
+        "sizeBytes": 9617,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "skill-ab-20261109/paired-screening/safe-dedup-new.json",
+        "sha256": "534decf387bc56278296853b89bfcef4e38856b9508aa6e08f8a5dec6082a015",
+        "sizeBytes": 14806,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "skill-ab-20261109/paired-screening/safe-dedup-old.json",
+        "sha256": "25fe9c272f26c712f868b905ba1aff0cfb2f2806b29a6def09ba3cc34c2f86d2",
+        "sizeBytes": 13121,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "skill-ab-20261109/paired-screening/summary.json",
+        "sha256": "2be21ac4cb11b08b13c42d6bf44f00f95c7d3ca49f1a950e9ffb44e1800091be",
+        "sizeBytes": 5375,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "skill-ab-20261109/retention.json",
+        "sha256": "597092e6fb21b6294141de5709ea5d5336600d2921e3c745bdce41e53114165b",
+        "sizeBytes": 31978,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-3/decision-report.md",
+        "sha256": "6970b2c47a5986a1a8004e9860670be39cae3f0f1c3561a08e970829a27ef365",
+        "sizeBytes": 5407,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-3/index.json",
+        "sha256": "69db9b2cbc9c4cb859cc169d2eaec16bf2003a4b9c700a71b33eeb67161d6f52",
+        "sizeBytes": 199008,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-3/lifecycle.json",
+        "sha256": "c208b33279ee46a3b69082a2c61d2545aa56ede8e37dc98a4139b995b53474b2",
+        "sizeBytes": 146468,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-3/occurrences/app-crash-android.json",
+        "sha256": "b8ec9ad73d32588f7910d3842e0f8b38c591b293f85769385d39ee2fbbb5a1a3",
+        "sizeBytes": 3117,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-3/occurrences/app-crash-ios.json",
+        "sha256": "f721d24e1b5080b153c8beaa1b1e19941ec3d248a7e6d07ecc51a88f6edc7207",
+        "sizeBytes": 3107,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-3/occurrences/appium-command-timeout-android.json",
+        "sha256": "e975a2d786e1575f09632f5b0ed8c692e12eafb9a0bfb03e1f31090950723c2a",
+        "sizeBytes": 10036,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-3/occurrences/appium-command-timeout-ios.json",
+        "sha256": "c88bfa80d18c48b6417b81a172b6bdf10e06aa11754447b75dd0377b2ba2cb5e",
+        "sizeBytes": 9953,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-3/occurrences/appium-endpoint-unavailable-android.json",
+        "sha256": "706e4366e2825c5299d74675dd43bf237757a83683c819ae655f1b8933d1edf2",
+        "sizeBytes": 9540,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-3/occurrences/appium-endpoint-unavailable-ios.json",
+        "sha256": "92efd846ac7b1d0b0933d114fdd7ba9093c85fb62868b3c663110b110f37100c",
+        "sizeBytes": 9529,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-3/occurrences/appium-server-restart-android.json",
+        "sha256": "a651b3906d8c6ae2799b462c41a2e67229a6d44a7d5aea6c72b74d84bc9aa0db",
+        "sizeBytes": 5621,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-3/occurrences/appium-server-restart-ios.json",
+        "sha256": "70568b4f48c85aed5f24f354696397c39aa3da9ec1e61584972cc3a36e1ed3d2",
+        "sizeBytes": 5611,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-3/occurrences/artifact-write-failure-android.json",
+        "sha256": "0d415df38832b3fda1285786f181b2b36c28e393ae72a5780205b9f8df9accbe",
+        "sizeBytes": 1758,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-3/occurrences/device-offline-android.json",
+        "sha256": "a3ddb9c405a80a05a8a4bf118520468b1048da1ad8ed4595ce25d8773c740ccb",
+        "sizeBytes": 3391,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-3/occurrences/device-offline-ios.json",
+        "sha256": "1a8635d135766efe1286e679d73b8a9b7efafd1517754f415b847dc4461883df",
+        "sizeBytes": 1238,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-3/occurrences/driver-quit-during-kernel-shutdown-android.json",
+        "sha256": "7ff9f85b76b5c8ce9ec634031ff6e8a4beb1bc2cbaf624ec5a5cc328c41eaf27",
+        "sizeBytes": 1229,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-3/occurrences/driver-quit-during-kernel-shutdown-ios.json",
+        "sha256": "8d5af7ea0ddd028bea4bdbc0a7033ffd5d7a7812811fdbcc362b975cfb2c9fd5",
+        "sizeBytes": 1219,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-3/occurrences/incompatible-client-selenium-android.json",
+        "sha256": "35222a18c7427be853b38762342af9f8e33913ce97f3f8b911034a001014bf6f",
+        "sizeBytes": 2167,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-3/occurrences/invalid-app-target-android.json",
+        "sha256": "27144c267ce69b12aee82d2ac2ca0d92742bbd6fb2fbd3caa29b793445d613f5",
+        "sizeBytes": 4461,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-3/occurrences/invalid-app-target-ios.json",
+        "sha256": "668d1ba8a9de885a73d10e8f30d8a550547085d4ee8749fff3de121c12616d31",
+        "sizeBytes": 5577,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-3/occurrences/kernel-hard-kill-android.json",
+        "sha256": "94d5a867c39e7c0fee3d13f9d6c0a59a5f0235a9d69b2d634b5d4c8eec3382dc",
+        "sizeBytes": 2719,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-3/occurrences/missing-ambiguous-element-android.json",
+        "sha256": "7d80cf9cebc77928bcc080f27f6c7e5c209c3a1820053cf2f5abe2edf0c35731",
+        "sizeBytes": 4033,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-3/occurrences/missing-ambiguous-element-ios.json",
+        "sha256": "ff8ee440a993330e01f765bc025fa4c148b91c4a6ae7b66d819c993b30b08823",
+        "sizeBytes": 4023,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-3/occurrences/missing-appium-driver-android.json",
+        "sha256": "8f650d0df7ca420cdaacac1296021d568451ba020bdb52ea0966e1b79faed8fb",
+        "sizeBytes": 3176,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-3/occurrences/missing-appium-driver-ios.json",
+        "sha256": "4d3ec5d8f4ac4069db6e20190c49e12cd4dfb6ba315e794b5f068508bf0c7aae",
+        "sizeBytes": 3165,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-3/occurrences/module-changed-after-import-android.json",
+        "sha256": "5e734142d6e2d19ff67d7ba736fc0e18faa18427b806bb29a285ac43c7ff28c8",
+        "sizeBytes": 1835,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-3/occurrences/oversized-output-android.json",
+        "sha256": "546a9b7dd7d44db33c83556a4be3a4187fc8fc4278222a2e376f39b14be99156",
+        "sizeBytes": 1965,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-3/occurrences/platform-driver-failure-android.json",
+        "sha256": "07882d1acc517deb64b1eccab11b5f553d151c3de56da20d6c77bc0993d42845",
+        "sizeBytes": 4081,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-3/occurrences/platform-driver-failure-ios.json",
+        "sha256": "cfbc5a2bc6722d9a8d2ff1912da6193c9740384ba202fe1fc6be1a5104f5f73c",
+        "sizeBytes": 4018,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-3/occurrences/python-exception-android.json",
+        "sha256": "deb3cb2716a36071251aee02138fd93b88159179d2d3d9e74da00d3fd51b9e3a",
+        "sizeBytes": 3117,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-3/occurrences/python-exception-ios.json",
+        "sha256": "aed8590c55c1baeb5dcf783bcbb3191a24c8ce029b1a86a8bb8a1ceb80c0712b",
+        "sizeBytes": 3107,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-3/occurrences/python-timeout-surviving-kernel-android.json",
+        "sha256": "56fd86004337c1dbc4cddc915fa6f37764db724d8f7e76c9fceb2751b5f654b7",
+        "sizeBytes": 2550,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-3/occurrences/python-timeout-surviving-kernel-ios.json",
+        "sha256": "fb14f882f16606ffd2fa8db2b35bcee81175159666a1f4f77d839db5a9edeeae",
+        "sizeBytes": 2540,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-3/occurrences/session-creation-failure-android.json",
+        "sha256": "456db075afd406c6df41fdda36d3965569a27df839daf75f8b8b4a0260b4209d",
+        "sizeBytes": 3202,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-3/occurrences/session-creation-failure-ios.json",
+        "sha256": "2ceb0903dde1f425be4b43bf8516aae119cf68598d2666c6135c3eaad26dcd64",
+        "sizeBytes": 3192,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-3/occurrences/stale-element-android.json",
+        "sha256": "b830cfe3eb414f174bec330b32af8904ac5ba334df9d5a75043b3da8aa3ccdf5",
+        "sizeBytes": 4229,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-3/occurrences/stale-element-ios.json",
+        "sha256": "abbae6f87b9ebf10adbce7eee7696b5ddfcf2f3cf34bb001ce89e71b4f1687d8",
+        "sizeBytes": 4219,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-3/references/android-evidence.json",
+        "sha256": "9d0a9b7abba3c27f60d480937467f887170408932dcb372a7c545a318636b732",
+        "sizeBytes": 50454,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-3/references/ios-evidence.json",
+        "sha256": "5777eedf082ca9fa8899c728b34de7bb8c2a3d57f1cf9500b342a44e64135b85",
+        "sizeBytes": 48913,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-4/codex/evidence.json",
+        "sha256": "3707669c9d2efcc46f6f33f900940e248c6f15ccb68813f94d468c030039251b",
+        "sizeBytes": 4823,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-4/codex/validation/artifact-manifest.json",
+        "sha256": "9441fc24f28b94402cabcb4ff380297fb55d31ce4c632e861413103d35c256e8",
+        "sizeBytes": 596,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-4/codex/validation/omitted-parts.json",
+        "sha256": "d042bc91650acb529055c8067ce8d45083be61a8748e839f782b4db5c6a3a9c7",
+        "sizeBytes": 719,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-4/codex/validation/report.json",
+        "sha256": "ac26dcfdd7d072adf67fc2cb6dd90c6698b0c535d7b31816ef51bc77f5e2f282",
+        "sizeBytes": 32058,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-4/codex/validation/validation.json",
+        "sha256": "fcfb23667e3fa4602b1b3e1aaa109c296df450826a6e51cf667d0a23aaf906b2",
+        "sizeBytes": 7243,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-4/process/source-41625606905/index.json",
+        "sha256": "caeb9e3803ee07154e41634b7eb01e2665f41f72d3e11f0de8a530231b9ad095",
+        "sizeBytes": 16881,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      },
+      {
+        "path": "stage-4/process/source-41625606905/review.json",
+        "sha256": "c10835f3b742c6e8d2d9139c401d8b2c72f007cababfac6fc119e00eb591d016",
+        "sizeBytes": 3595,
+        "archive_match": true,
+        "candidate_match": true,
+        "committed_source_match": true
+      }
+    ],
+    "result": "PASS"
+  },
+  "pypi": {
+    "qualified": true,
+    "lastObservedVersionResponse": 200,
+    "projectUrl": "https://pypi.org/project/amkernel/0.1.4/",
+    "metadataUrl": "https://pypi.org/pypi/amkernel/0.1.4/json",
+    "downloadUrl": "https://files.pythonhosted.org/packages/bd/d3/f3585c3eec953a463bb47e66a0e461b2072da10d129ad51e37eb85302703/amkernel-0.1.4-py3-none-any.whl",
+    "sha256": "6a26fa8469c28c8f125e19e4da15f94476375604da58cf1e89f7ee00ef2788de",
+    "matchesApprovedCIWheel": true,
+    "cryptographicAttestationVerified": true,
+    "signedPublisherCommitRunEnvironmentMatched": true,
+    "attestationScope": "PyPI publish attestation; approved build CI linked by exact wheel SHA256, not a separate build attestation",
+    "qualificationReceipt": "pypi-proof/qualification.json",
+    "installExercised": true,
+    "installReceipt": "pypi-proof/public-install-receipt.json",
+    "humanApprovalReportedByUser": true,
+    "assistantApproved": false,
+    "remainingAfterApproval": []
+  },
+  "externalSmoke": {
+    "source": "Official GitHub Release wheel",
+    "receipt": "PublishedExternalSmoke/external-install-receipt.json",
+    "passed": true,
+    "fourRealCalls": true,
+    "exceptionPreservedKernelAndMutation": true,
+    "shutdownObserved": true,
+    "reusedForIdenticalPyPIWheel": true,
+    "rerun": false
+  },
+  "skills": {
+    "source": "amkernel/skill members of byte-identical official GitHub and PyPI 0.1.4 wheels",
+    "resourceCount": 12,
+    "installedResourcesByteIdenticalToWheel": true,
+    "receipt": "PublishedExternalSmoke/packaged-skills-receipt.json",
+    "pypiInstalledResourceReceipt": "pypi-proof/public-install-receipt.json"
+  },
+  "protection": {
+    "headUnchanged": true,
+    "indexUnchanged": true,
+    "gitignoreUnchanged": true,
+    "protected214FileIdentitiesUnchanged": true,
+    "staged71DeletionsPreservedByIdenticalIndex": true
+  },
+  "resources": {
+    "smokeServerAndKernelExited": true,
+    "throwawayEnvironmentAndWorkspaceRemoved": true,
+    "existingHostServicesStopped": false,
+    "realAndroidDeviceUsed": false,
+    "formalEvaluationStarted": false,
+    "finiteLocalWorkComplete": true,
+    "pypiVerifierAndConsumerEnvironmentsRemoved": true,
+    "newServerStartedDuringPyPIVerification": false
+  },
+  "publicationDispatchRepeated": false,
+  "completedChecksRepeated": false
+}

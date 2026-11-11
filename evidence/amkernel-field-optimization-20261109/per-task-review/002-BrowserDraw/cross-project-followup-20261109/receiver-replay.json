@@ -1,0 +1,11 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "-c",
+    "<inline read-only local replay>"
+  ],
+  "code": "import json,pathlib\nfrom android_env.components.a11y import a11y_servicer,a11y_forests\nfrom android_env.proto.a11y import android_accessibility_forest_pb2\np=pathlib.Path('/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/browserdraw-field-diagnosis-20261109T052514Z/evaluator-0/forest.pb')\nf=android_accessibility_forest_pb2.AndroidAccessibilityForest.FromString(p.read_bytes())\ns=a11y_servicer.A11yServicer(latest_forest_only=True)\ns.resume()\ninitial=s.gather_forests()\nack=s.SendForest(f,None)\nreceived=s.gather_forests()\nextras=a11y_forests.package_forests_to_task_extras(received)\nafter_drain=s.gather_forests()\ns.pause_and_clear();s.SendForest(f,None);paused=s.gather_forests()\nprint(json.dumps({'scope':'Local replay of saved protobuf through installed receiver; no gRPC server, emulator or Appium session created','savedForestWindows':len(f.windows),'savedForestBytes':len(f.SerializeToString()),'beforeAnySend':{'receivedMessages':len(initial),'packagedKeys':list(a11y_forests.package_forests_to_task_extras(initial))},'afterUnpausedSend':{'ackType':type(ack).__name__,'receivedMessages':len(received),'packagedKeys':list(extras),'selectedForestWindows':len(extras['accessibility_tree'][-1].windows),'selectedForestBytes':len(extras['accessibility_tree'][-1].SerializeToString())},'afterDrain':{'receivedMessages':len(after_drain),'packagedKeys':list(a11y_forests.package_forests_to_task_extras(after_drain))},'sendWhilePaused':{'receivedMessages':len(paused)},'historicalCausalityProven':False}))\n",
+  "returncode": 0,
+  "stdout": "{\"scope\": \"Local replay of saved protobuf through installed receiver; no gRPC server, emulator or Appium session created\", \"savedForestWindows\": 0, \"savedForestBytes\": 0, \"beforeAnySend\": {\"receivedMessages\": 0, \"packagedKeys\": []}, \"afterUnpausedSend\": {\"ackType\": \"ForestResponse\", \"receivedMessages\": 1, \"packagedKeys\": [\"accessibility_tree\"], \"selectedForestWindows\": 0, \"selectedForestBytes\": 0}, \"afterDrain\": {\"receivedMessages\": 0, \"packagedKeys\": []}, \"sendWhilePaused\": {\"receivedMessages\": 0}, \"historicalCausalityProven\": false}\n",
+  "stderr": ""
+}

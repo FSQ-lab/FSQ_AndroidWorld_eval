@@ -1,0 +1,87 @@
+{
+  "author": "w4:p2 independentbatch reviewer",
+  "scope": "Independent shared-contract investigation; not per-case finalacceptance, not Harness edits or frozenreward replay.",
+  "historicalR12": {
+    "nonStringTaskOutcomeRejected": [
+      87,
+      89,
+      91,
+      92,
+      107
+    ],
+    "noCapturedBusinessFinalIR": [
+      73,
+      74,
+      90,
+      106,
+      110
+    ],
+    "validStringAdmissionsStillZero": [
+      76,
+      111
+    ],
+    "stateTasksNotScoredByTaskOutcome": [
+      80,
+      82,
+      84,
+      85,
+      86,
+      101
+    ],
+    "evidence": "Original result agentAnswer and taskOutcome types; independent-initial-contract-audit.json; r12snapshot runner139-148,753-764."
+  },
+  "alreadyFixedInDevelopment": {
+    "r13": "Explicitstring-only answer + first bounded businessfinal receipt with separatecleanup; read currentrunner146/772-773,submission45-93,supervisor26-46/211-258. Not modified or rerunbyP2.",
+    "r14": "Explicitaccessibility coexistence per existingversion gates; not a new018case rootcause proof."
+  },
+  "newReferenceClockDeliveryGap": {
+    "confirmedInterfaceOmission": true,
+    "original18PromptAudit": "independent-original-prompt-clock-audit.json",
+    "officialClockSource": [
+      "task_eval.py38,137-146",
+      "device_constants.py39-41",
+      "IRdatetime_utils.py47-63"
+    ],
+    "value": "2023-10-15T15:34:00+00:00",
+    "relativeGoalCases": [
+      73,
+      74,
+      87,
+      90,
+      92,
+      107,
+      111
+    ],
+    "individualZeroCausationProven": false,
+    "actualDeviceClockProbed": false,
+    "remedyBoundary": "Only post-initialize task.device_time-aware referenceclock/timezone controlmetadata outside exactgoal; not hosttime/hiddenparams, no changes to task/score/budgets.",
+    "uniqueEditor": "w4:p1",
+    "versionIntegrationWarningDelivered": "If r15, migrate all scorer/campaign revision branches retainingr13 submission/r14coexistence; preserve frozen12/13/14."
+  },
+  "clipboardObservationBoundary": {
+    "case": 101,
+    "observedError": "Appium Settings app is not running after5000ms atgetter",
+    "officialScorer": "SystemCopyToClipboard325-333 uses officialadb_utils/clipper, not Appiumgetter",
+    "ownerSourceFinding": "Endpoint itselftries Settingsstart/foregroundservice wait; not proof Harness owes preliminaryforce-start",
+    "copySuccessOrFailureProvenByGetterError": false,
+    "newPreparationFixJustified": false,
+    "noDriverHelperForceStartOrDependencyChange": true
+  },
+  "evaluatorOrderBoundary": {
+    "developmentOrder": "adapter.finish/ownedquit before task.is_successful; IRanswerinject before score",
+    "IR": "Cache answer only, not UI tree atscore; no hiddenexpectedanswer readsbyAgent.",
+    "SMS": "Sentrecipient/body+deviceclock5min+foregroundpackage gate, sourcesms_validators255-276. Not inferred fromfinaltext.",
+    "Drawing": "Pictures filenameexists, not chosenUIstorage architecture label.",
+    "Clipboard": "Officialclipper reads state; AppiumSettingsgetter notsamebackend.",
+    "blanketObserverBackendOrQuitFixJustified": false
+  },
+  "officialTaskLanguageBoundary076": {
+    "source": "tasks.textproto857-892 inserts exactdate/time event, removesnoise>=time andexpects insertedtitle",
+    "rawFinal": "Agent deliberatelyexcluded equal17:20 asstrictafter; picked nextdate",
+    "classification": "Officialtaskwording vsboundarysemantic ambiguity; do not silentlychangeevaluator or label actionasundocumentedguess.",
+    "separateFromHarnessClockMissing": true
+  },
+  "genericAdviceBoundary": "Only generic skillcandidates in requestedreports; no Runtime/formalskill edit, no app-specificanswers/routes, no scoreguarantee.",
+  "newDeviceServiceDbEnvInitReplayTestsBuildLintFormatterCalls": 0,
+  "next116CampaignStarted": false
+}

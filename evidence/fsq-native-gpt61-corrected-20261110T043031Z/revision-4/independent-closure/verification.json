@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "kind": "clock_delta_independent_binding_verification",
+  "bindings": {
+    "files": [
+      {
+        "path": "src/fsq_androidworld_eval/fsq_campaign.py",
+        "sha256": "fe0b3280562b2801b3faca509e34b4a98db79c247ebfe41bbaaba5bab57e3210",
+        "matchesFrozen": true,
+        "sizeMatches": true
+      },
+      {
+        "path": "tests/test_fsq_campaign.py",
+        "sha256": "177e430895d7a8395be5ec60db583612c648dcae1cc6263752a4c23eb7bdc022",
+        "matchesFrozen": true,
+        "sizeMatches": true
+      },
+      {
+        "path": "README.md",
+        "sha256": "e99d430cf941010e1ae00ace32844841ea031be3998fa007c2fe4dfdeefd9b58",
+        "matchesFrozen": true,
+        "sizeMatches": true
+      }
+    ],
+    "candidateSha256": "a8550aee3e1b9438377d34b5cf48ff4adde732785afe40aae2249f6266773030",
+    "candidateSealMatches": true,
+    "computedSourceTreeSha256": "92b8bc71f0b26b19aacb1b23cd0944c3a3f614dbd46c72ab93076629590e2625",
+    "currentSourceMapMatchesCandidate": true,
+    "runtimeDelta": [
+      "fsq_campaign.py"
+    ],
+    "identityDomainsChanged": [
+      "evaluator"
+    ],
+    "invariants": {
+      "tasks": true,
+      "target": true,
+      "protocol": true,
+      "paths": true,
+      "gates": true,
+      "status": true
+    },
+    "taskCount": 116,
+    "allGatesPending": true,
+    "unexpectedTopChanges": [],
+    "campaignId": "fsq-native-gpt61-r4-clock-lifecycle-20261110"
+  },
+  "inputEvidence": [
+    {
+      "path": "report.md",
+      "sha256": "55db2b1c1d002e0d13fdfce9c288d725b3948755a370292bd8b41363642e5de4"
+    },
+    {
+      "path": "review-handoff.json",
+      "sha256": "03f5d11ac9afac7dd71d36b76884a0b775958a7fcbaf63a3ef1ae8b7a2d9b118"
+    },
+    {
+      "path": "source-closure.json",
+      "sha256": "dfede91a806d9516982ddfa4786b252a12c96fd0a6a8f3fdbdd3611ea46dc993"
+    },
+    {
+      "path": "regression-final.json",
+      "sha256": "705551cd2123232588414f4c297bfdab82705b92097f63a9122808deb25b3346"
+    },
+    {
+      "path": "regression-final.stdout.log",
+      "sha256": "d4544037439b002a5887e972b5637ab99e2b1e74f45c112c50dde1341393ff96"
+    },
+    {
+      "path": "regression-final.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "offline-clock-entry-smoke.json",
+      "sha256": "49d591ffd20c0e3b8a097a56358128bc4c31d7ad5d17250e5cff044307d03e14"
+    },
+    {
+      "path": "cli-help.json",
+      "sha256": "85bf53de63a2ea28814f14047333901dbdb377d1973ffcbce03c5f67f61da293"
+    },
+    {
+      "path": "current-target-property-observation.json",
+      "sha256": "e19a88124ffd1c327fd49d894fcea820321ea98865edece76cdab56387732fb7"
+    }
+  ],
+  "ownerRegression": {
+    "receipt": "../regression-final.json",
+    "reported": "82 passed,1.16s",
+    "rerunAsWholeByReviewer": false,
+    "overlapsReviewerSelected15": true
+  },
+  "reviewerExecution": {
+    "selected15": "clock-smoke.xml and clock-smoke.json",
+    "actualOfflineEntry": "entry-proof.json",
+    "newTargetObservations": 0,
+    "oldCheckOrIndex3Replay": false,
+    "fullR01R08OrSwipeRereview": false,
+    "deviceModelTaskScoringOrSharedServiceCalls": false,
+    "implementationOrGitWrites": false
+  },
+  "officialSemanticStaticEvidence": [
+    {
+      "path": "android_world/android_world/task_evals/single/browser.py:49-54,87-96",
+      "meaning": "Browser initializes automatic time/timezone ON and teardown OFF, with no UTC restoration."
+    },
+    {
+      "path": "src/fsq_androidworld_eval/environment.py:444-493",
+      "meaning": "load_environment forwards the explicit freeze_datetime flag to official env_launcher.setup_env; partial construction/close errors are not transformed into a clean preparation."
+    },
+    {
+      "path": "android_world/android_world/env/env_launcher.py:81-93",
+      "meaning": "Official setup_datetime executes only under freeze_datetime=True; qualification now uses False after strict clock admission."
+    }
+  ],
+  "historicalLimits": {
+    "originalFailureProperties": "API and timezone raw values were not persisted; no reconstruction claimed.",
+    "onlyAuthorizedLaterObservation": "Archived2026-11-10T13:29:24.692241Z API33 / AsiaShanghai. Not historical failure values or a current live observation by reviewer.",
+    "autoTimeCurrentValues": "unknown in the archived two-property observation",
+    "failedChildEnvironment": "Stack is at admission before environment construction; no BrowserMaze environment creation/teardown is claimed.",
+    "guestGlobalCleanup": "unknown remains unknown; outer leader exit is not global process/guest restoration proof.",
+    "oldGrant": "operationally terminated by coordinator, original bytes and historical expiry unchanged; not a current execution permission."
+  },
+  "liveAuthorized": false
+}

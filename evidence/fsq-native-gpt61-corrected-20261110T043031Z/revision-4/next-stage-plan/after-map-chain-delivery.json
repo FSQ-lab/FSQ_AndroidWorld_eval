@@ -1,0 +1,414 @@
+{
+  "schemaVersion": 1,
+  "kind": "same_grant_supplemented_map_qualify_full116_original12_delivery",
+  "recordedAtUtc": "2026-11-10T15:42:27.420546+00:00",
+  "status": "Authorized prerequisite chain completed; formal run NOT RELEASED",
+  "binding": {
+    "authorizationSha256": "b5b15d69a3e41f0687c54d3e003f190f1883e6d43d9581aeb0c59d9f4e973a61",
+    "identitiesSha256": "21a1a5baabc02853a7814fab3054ce49754b1d41c9308577450310b1294cf6cb",
+    "manifestSha256": "a8550aee3e1b9438377d34b5cf48ff4adde732785afe40aae2249f6266773030",
+    "model": "gpt-6.1-sol",
+    "provider": "github_copilot",
+    "target": {
+      "adbPath": "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+      "authenticationStatus": "pending",
+      "consolePort": 5554,
+      "grpcPort": 8554,
+      "model": "gpt-6.1-sol",
+      "provider": "github_copilot",
+      "readinessStatus": "pending",
+      "resourceStatus": "pending",
+      "serial": "emulator-5554"
+    }
+  },
+  "mainGrantByteSha256": "a44e1c48bb5564177cf651037387af11adf671ef75d722d1b6c0cd3c4db57dc6",
+  "mainGrantByteUnchanged": true,
+  "originalClockReceiptUnchanged": true,
+  "oldQualificationAndUnknownCleanupPreserved": true,
+  "sourceSdkTasksHashesModelBudgetsUnchanged": true,
+  "extraModelReadinessCallOrIndependentReviewOrTestsRerun": false,
+  "supplement": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/environment-map-baseline-r4/authorization-supplement.json",
+  "mapBaselineReport": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/environment-map-baseline-r4/report.json",
+  "mapBaselineResult": {
+    "complete": true,
+    "durationSeconds": 5.025365114212036,
+    "originalBytes": 7241271,
+    "writtenSha256": "57a1955c6f517a114999fa50480ecc1402ed9b524db602540ac1c08f57ff140e",
+    "operations": 150,
+    "allCommandReturnCodesZero": true,
+    "guestAdbdRootRequested": false,
+    "environment": "not_created",
+    "outerExitCode": 0,
+    "forced": false
+  },
+  "freshQualification": {
+    "qualified": true,
+    "readiness": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/qualify-after-map-baseline/readiness.json",
+    "reportSha256": "fe413d66d4686e44faa0cf601d29be03057709300916bcc63c048de20d5a7bdf",
+    "checksAllTrue": [
+      "adbIsolation",
+      "apps",
+      "assets",
+      "baseData",
+      "coreEnvironment",
+      "snapshots",
+      "utc"
+    ],
+    "clock": {
+      "autoTime": "0",
+      "autoTimeZone": "0",
+      "timezone": "UTC"
+    },
+    "officialSnapshotRestores": 22,
+    "cleanup": {
+      "environment": "closed"
+    },
+    "error": null
+  },
+  "full116Rehearsal": {
+    "qualified": true,
+    "report": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/rehearse/report.json",
+    "reportSha256": "772008eb4bc3d207d3c9a2ec16e11bf5391bbb87f929b53c6afdd5fd593df8d9",
+    "taskIndices": "0..115 exact ordered, no resume",
+    "actualResultReceipts": 116,
+    "completeLifecycleAndCleanupReceipts": 116,
+    "agentInvoked": false,
+    "officialRewardCount": 0,
+    "leaderboardOrPolicyClaim": false,
+    "allOuterExit0UnforcedAndNoOperationalErrors": true,
+    "newReadinessActuallyReferenced": {
+      "path": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/qualify-after-map-baseline/readiness.json",
+      "sha256": "fe413d66d4686e44faa0cf601d29be03057709300916bcc63c048de20d5a7bdf"
+    },
+    "oldUnknownCleanup": "preserved; not upgraded",
+    "nextAuthorizedStage": "original12 calibration; formal run NOT RELEASED"
+  },
+  "actualPerTaskSharedAssetRestoration": [
+    {
+      "task": {
+        "index": 42,
+        "name": "OsmAndFavorite",
+        "paramsSha256": "f1768a6e6c6bf3f62028d39654515b5d04da33e2452356540c808d3c7a68b5a9"
+      },
+      "sharedAssets": [
+        {
+          "name": "Liechtenstein_europe.obf",
+          "sha256": "57a1955c6f517a114999fa50480ecc1402ed9b524db602540ac1c08f57ff140e",
+          "status": "restored_and_verified"
+        }
+      ],
+      "complete": true,
+      "cleanup": {
+        "environment": "closed",
+        "taskTearDown": "completed"
+      }
+    },
+    {
+      "task": {
+        "index": 43,
+        "name": "OsmAndMarker",
+        "paramsSha256": "32553d05ef534ad92e0ee2eec9a99e9e7a52d7f10145d3a5665c3f7a74ef917e"
+      },
+      "sharedAssets": [
+        {
+          "name": "Liechtenstein_europe.obf",
+          "sha256": "57a1955c6f517a114999fa50480ecc1402ed9b524db602540ac1c08f57ff140e",
+          "status": "restored_and_verified"
+        }
+      ],
+      "complete": true,
+      "cleanup": {
+        "environment": "closed",
+        "taskTearDown": "completed"
+      }
+    },
+    {
+      "task": {
+        "index": 44,
+        "name": "OsmAndTrack",
+        "paramsSha256": "06b0d53c16a5650bb32adbde6e6171efca5e919c88fca9a3990d91ef7d6b6700"
+      },
+      "sharedAssets": [
+        {
+          "name": "Liechtenstein_europe.obf",
+          "sha256": "57a1955c6f517a114999fa50480ecc1402ed9b524db602540ac1c08f57ff140e",
+          "status": "restored_and_verified"
+        }
+      ],
+      "complete": true,
+      "cleanup": {
+        "environment": "closed",
+        "taskTearDown": "completed"
+      }
+    }
+  ],
+  "sharedStorageSemantics": {
+    "sourceEvidence": {
+      "browserCalls": [
+        {
+          "source": "android_world/android_world/task_evals/single/browser.py",
+          "lines": "56-58",
+          "effect": "initialize_task calls clear_device_storage"
+        },
+        {
+          "source": "android_world/android_world/task_evals/single/browser.py",
+          "lines": "87-89",
+          "effect": "tear_down calls clear_device_storage"
+        },
+        {
+          "source": "android_world/android_world/task_evals/single/browser.py",
+          "line": 445,
+          "effect": "BrowserDraw inherits BrowserTask"
+        }
+      ],
+      "clearImplementation": {
+        "source": "android_world/android_world/task_evals/utils/user_data_generation.py",
+        "lines": "458-485",
+        "command": "shell find EMULATOR_DATA -mindepth 1 -type f -delete"
+      },
+      "rootConstant": {
+        "source": "android_world/android_world/env/device_constants.py",
+        "line": 23,
+        "EMULATOR_DATA": "/storage/emulated/0/"
+      },
+      "conclusion": "Official Browser lifecycle legitimately targets ordinary shared-storage files, including this external-map path. The map is a mutable baseline shared asset, not permanent device/app stable identity. This is source-level permitted effect, not proof of the unrecorded original rc1 stderr."
+    },
+    "actualObservation": "After earlier Browser lifecycles, all three OsmAnd rehearsal results record original-pin restored_and_verified, with completed teardown and closed environment. No extra device probes were issued to extract these existing receipts.",
+    "finalMapPresence": "Not separately probed or claimed. The successful baseline write receipt is point-in-time proof; later official lifecycles can legitimately remove shared-storage files."
+  },
+  "original12Calibration": {
+    "report": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/calibrate/report.json",
+    "reportSha256": "c1da81de0ff3922457208593e07b0ca2162f53a46d9ee45d026e9b3681675691",
+    "qualified": true,
+    "haltReason": null,
+    "wallSeconds": 2126.59,
+    "summary": {
+      "attempted": 12,
+      "classifications": {
+        "failed": 5,
+        "passed": 7
+      },
+      "coverage": 1.0,
+      "expected": 12,
+      "officialLeaderboardClaim": false,
+      "policyProven": false,
+      "purpose": "native_operational_protocol",
+      "reward": {
+        "count": 12,
+        "denominator": "valid_official_rewards_only",
+        "diagnosticOnly": true,
+        "mean": 0.5833333333333334,
+        "sum": 7.0
+      }
+    },
+    "prerequisites": {
+      "readiness": {
+        "path": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/qualify-after-map-baseline/readiness.json",
+        "sha256": "fe413d66d4686e44faa0cf601d29be03057709300916bcc63c048de20d5a7bdf"
+      },
+      "rehearsal": {
+        "path": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/rehearse/report.json",
+        "sha256": "772008eb4bc3d207d3c9a2ec16e11bf5391bbb87f929b53c6afdd5fd593df8d9"
+      }
+    },
+    "all12ActualCleanup": {
+      "environment": "closed",
+      "taskTearDown": "completed",
+      "workerProcessGroup": "settled",
+      "cleanupFailure": false,
+      "nativeDeviceRestoration": "not_provided_by_close"
+    },
+    "all12OuterExitCode0AndUnforced": true,
+    "all12OperationalErrorsEmpty": true,
+    "taskResults": [
+      {
+        "task": {
+          "index": 102,
+          "name": "SystemWifiTurnOff",
+          "paramsSha256": "ea520e5e870054de010df5f90dd92458decf8153b4798c9974a00186628a4d15"
+        },
+        "classification": "passed",
+        "officialReward": 1.0,
+        "cleanup": {
+          "environment": "closed",
+          "nativeDeviceRestoration": "not_provided_by_close",
+          "taskTearDown": "completed",
+          "workerProcessGroup": "settled"
+        }
+      },
+      {
+        "task": {
+          "index": 97,
+          "name": "SystemBrightnessMax",
+          "paramsSha256": "456814afbb5aa8d07a0c14120c26c55e140a617fa909024b135f7d04d76fd9c1"
+        },
+        "classification": "failed",
+        "officialReward": 0.0,
+        "cleanup": {
+          "environment": "closed",
+          "nativeDeviceRestoration": "not_provided_by_close",
+          "taskTearDown": "completed",
+          "workerProcessGroup": "settled"
+        }
+      },
+      {
+        "task": {
+          "index": 8,
+          "name": "ClockStopWatchRunning",
+          "paramsSha256": "fe15fe1739bca1ce130f387e2e84d273c4a55e5403a5c174c7a2ec65119afaf9"
+        },
+        "classification": "failed",
+        "officialReward": 0.0,
+        "cleanup": {
+          "environment": "closed",
+          "nativeDeviceRestoration": "not_provided_by_close",
+          "taskTearDown": "completed",
+          "workerProcessGroup": "settled"
+        }
+      },
+      {
+        "task": {
+          "index": 9,
+          "name": "ClockTimerEntry",
+          "paramsSha256": "3c6dc22a2339a8e10eab5472bd837b52efb43b0125410cd5522c8ce88a29192b"
+        },
+        "classification": "failed",
+        "officialReward": 0.0,
+        "cleanup": {
+          "environment": "closed",
+          "nativeDeviceRestoration": "not_provided_by_close",
+          "taskTearDown": "completed",
+          "workerProcessGroup": "settled"
+        }
+      },
+      {
+        "task": {
+          "index": 10,
+          "name": "ContactsAddContact",
+          "paramsSha256": "e5b9351bf2f295739e1b6989a343445ca029f42a701d675bbd159e65999d6493"
+        },
+        "classification": "passed",
+        "officialReward": 1.0,
+        "cleanup": {
+          "environment": "closed",
+          "nativeDeviceRestoration": "not_provided_by_close",
+          "taskTearDown": "completed",
+          "workerProcessGroup": "settled"
+        }
+      },
+      {
+        "task": {
+          "index": 26,
+          "name": "MarkorCreateNote",
+          "paramsSha256": "709d69da7c8645fc0231d7a771af0195ebffe9039cf52eda5a9b8dbeb8ff013a"
+        },
+        "classification": "passed",
+        "officialReward": 1.0,
+        "cleanup": {
+          "environment": "closed",
+          "nativeDeviceRestoration": "not_provided_by_close",
+          "taskTearDown": "completed",
+          "workerProcessGroup": "settled"
+        }
+      },
+      {
+        "task": {
+          "index": 32,
+          "name": "MarkorEditNote",
+          "paramsSha256": "1532056c510b10c9e61a0482cc2743dad7d8e5ed05f3be0cfa2ccbeeff026856"
+        },
+        "classification": "passed",
+        "officialReward": 1.0,
+        "cleanup": {
+          "environment": "closed",
+          "nativeDeviceRestoration": "not_provided_by_close",
+          "taskTearDown": "completed",
+          "workerProcessGroup": "settled"
+        }
+      },
+      {
+        "task": {
+          "index": 22,
+          "name": "FilesMoveFile",
+          "paramsSha256": "d3c3f09db00791f4ca27ac6679c91a07b3022b26cff5790fc1fba837f7c3e8b0"
+        },
+        "classification": "passed",
+        "officialReward": 1.0,
+        "cleanup": {
+          "environment": "closed",
+          "nativeDeviceRestoration": "not_provided_by_close",
+          "taskTearDown": "completed",
+          "workerProcessGroup": "settled"
+        }
+      },
+      {
+        "task": {
+          "index": 63,
+          "name": "SimpleCalendarAddOneEvent",
+          "paramsSha256": "345e51c0b25fc4251a372028312c3445ddfe00fa3e044ad037e9d02be5e31aae"
+        },
+        "classification": "passed",
+        "officialReward": 1.0,
+        "cleanup": {
+          "environment": "closed",
+          "nativeDeviceRestoration": "not_provided_by_close",
+          "taskTearDown": "completed",
+          "workerProcessGroup": "settled"
+        }
+      },
+      {
+        "task": {
+          "index": 5,
+          "name": "CameraTakePhoto",
+          "paramsSha256": "45aaf450a9603d18f537950d3a4227d0c1525071ac76d8a7b4b1cf7e29eb7b0e"
+        },
+        "classification": "passed",
+        "officialReward": 1.0,
+        "cleanup": {
+          "environment": "closed",
+          "nativeDeviceRestoration": "not_provided_by_close",
+          "taskTearDown": "completed",
+          "workerProcessGroup": "settled"
+        }
+      },
+      {
+        "task": {
+          "index": 109,
+          "name": "TasksHighPriorityTasks",
+          "paramsSha256": "9bdec441da8d2a1d30e6517ec5584f848ea292f41205b9b8b286c054f1f0ef95"
+        },
+        "classification": "failed",
+        "officialReward": 0.0,
+        "cleanup": {
+          "environment": "closed",
+          "nativeDeviceRestoration": "not_provided_by_close",
+          "taskTearDown": "completed",
+          "workerProcessGroup": "settled"
+        }
+      },
+      {
+        "task": {
+          "index": 75,
+          "name": "SimpleCalendarEventsOnDate",
+          "paramsSha256": "35497446bdb86198a6893a5d4f8f62a987bf1f2bf6f4615b00dd405b3cf0bc91"
+        },
+        "classification": "failed",
+        "officialReward": 0.0,
+        "cleanup": {
+          "environment": "closed",
+          "nativeDeviceRestoration": "not_provided_by_close",
+          "taskTearDown": "completed",
+          "workerProcessGroup": "settled"
+        }
+      }
+    ]
+  },
+  "limits": {
+    "formalRun": "NOT RELEASED; not started; coordinator run-release flag not set",
+    "FSQFirst": "retained; no AMK release or handoff",
+    "oldUnknownCleanup": "preserved; successful new cleanup does not clear historical unknown",
+    "guestRestoration": "SDK close does not provide whole-device restoration. No unroot/hostADB stop/device rollback or global-clean claim. Normal official baseline/task effects retained.",
+    "scores": "Original12 calibration has valid official rewards only for those12; diagnostic mean7/12, not full116 score, policy proof, leaderboard claim, or failure-root-cause diagnosis.",
+    "nextAction": "Coordinator reads actual receipts and separately releases run if desired; no automatic formal launch or retry."
+  }
+}

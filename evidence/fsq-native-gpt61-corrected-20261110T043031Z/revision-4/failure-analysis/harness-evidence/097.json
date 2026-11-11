@@ -1,0 +1,599 @@
+{
+  "index": 97,
+  "name": "SystemBrightnessMax",
+  "goal": "Turn brightness to the max value.",
+  "reward": 0.0,
+  "classification": "failed",
+  "initialization": {
+    "initializationReferenceTime": {
+      "referenceTime": "2023-10-15T15:34:00+00:00",
+      "timezone": "UTC"
+    },
+    "initializedGoal": "Turn brightness to the max value."
+  },
+  "frozenTaskSpec": {
+    "apps": [
+      "settings"
+    ],
+    "complexity": 1,
+    "difficulty": "easy",
+    "family": "android",
+    "index": 97,
+    "instanceSeed": 3514529162,
+    "maxActions": 10,
+    "maxSteps": 10,
+    "name": "SystemBrightnessMax",
+    "params": {
+      "max_or_min": "max",
+      "seed": 3514529162
+    },
+    "paramsSha256": "456814afbb5aa8d07a0c14120c26c55e140a617fa909024b135f7d04d76fd9c1",
+    "paramsTransport": "json",
+    "tags": [
+      ""
+    ],
+    "timeBudget": {
+      "businessSeconds": 720,
+      "cleanupWindowSeconds": 180,
+      "episodeSeconds": 1330,
+      "forceSeconds": 910,
+      "recoveryWindowSeconds": 120,
+      "terminationGraceSeconds": 10
+    }
+  },
+  "mainSteps": [
+    {
+      "stepId": 3,
+      "tool": "agent_runtime.runner",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [],
+        "evidence": [
+          "assert_with_ai passed: The Quick Settings brightness slider is fully filled to its far-right endpoint, visibly indicating maximum brightness.",
+          "Verification screenshot: artifacts/screenshots/screenshot-agent-assert-with-ai-9-invoke-assert-with-ai-1-f1e19a8e65d1.png"
+        ],
+        "plan_updates": [],
+        "pre_plan": [
+          {
+            "action": "Open and expand Android Quick Settings with downward swipes.",
+            "status": "success",
+            "step_id": 1,
+            "success_criteria": [
+              "Brightness slider is exposed."
+            ]
+          },
+          {
+            "action": "Move the brightness slider to its maximum endpoint and verify.",
+            "status": "success",
+            "step_id": 2,
+            "success_criteria": [
+              "Android brightness control visibly shows its maximum value."
+            ]
+          }
+        ],
+        "satisfied_criteria": [
+          "The Android brightness control visibly shows its maximum value."
+        ],
+        "schema_version": "task_run_v1",
+        "status": "success",
+        "summary": "Set Android brightness to maximum and verified the visible Quick Settings slider reaches its far-right endpoint.",
+        "unmet_criteria": []
+      }
+    },
+    {
+      "stepId": 4,
+      "tool": "agent_runtime.verifier",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [],
+        "evidence": [
+          "assert_with_ai call_3Wvf5TpE9dVN0MfoyXEE1Lee returned status=passed and passed=true, with confidence 0.99.",
+          "The backend explanation states: 'The Quick Settings brightness slider is fully filled to its far-right endpoint, visibly indicating maximum brightness.'",
+          "The assertion execution references screenshot artifact artifacts/screenshots/screenshot-agent-assert-with-ai-9-prepare-before-action-1-6c8da87d7870.png.",
+          "The agent's structured output reports the corresponding passed visual assertion. No supplied evidence contradicts that verdict."
+        ],
+        "plan_updates": [],
+        "pre_plan": [
+          {
+            "action": "Verify the supplied evidence for the brightness control's visible maximum state.",
+            "status": "success",
+            "step_id": 1,
+            "success_criteria": [
+              "Backend visual assertion passes with verdict metadata and a screenshot artifact reference.",
+              "The agent reports the corresponding result and no supplied evidence contradicts it."
+            ]
+          }
+        ],
+        "satisfied_criteria": [
+          "The Android brightness control visibly shows its maximum value."
+        ],
+        "schema_version": "task_run_v1",
+        "status": "success",
+        "summary": "The supplied backend AI assertion confirms that the Android brightness control visibly shows its maximum value.",
+        "unmet_criteria": []
+      }
+    }
+  ],
+  "budgetSummary": {
+    "admitted": 5,
+    "attempted": 5,
+    "deadlineExceeded": false,
+    "deadlineMonotonic": 724174.170820583,
+    "denied": 0,
+    "deviceRestoredByClose": false,
+    "exclusions": [
+      "driver_construction",
+      "uiautomator2_service_startup",
+      "observation_and_assertion_side_effects",
+      "external_processes_and_direct_driver_access"
+    ],
+    "exhausted": false,
+    "failed": 0,
+    "inFlight": 0,
+    "inputTextUnit": "composite_click_optional_clear_set_text",
+    "maximum": 10,
+    "securityBoundary": false,
+    "succeeded": 5,
+    "unit": "admitted_android_harness_write_capability_dispatch",
+    "writeCapabilities": [
+      "launch_app",
+      "kill_app",
+      "tap_on",
+      "tap_at",
+      "long_press_on",
+      "input_text",
+      "press_key",
+      "swipe"
+    ]
+  },
+  "actions": [
+    {
+      "ordinal": 0,
+      "stepId": "agent-launch_app-1",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [],
+      "output": {
+        "app_id": "com.android.settings"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[0]"
+    },
+    {
+      "ordinal": 1,
+      "stepId": "agent-ui_snapshot-2",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Sun, Oct 15",
+        "Sun, Oct 15",
+        "Gmail",
+        "Gmail",
+        "Photos",
+        "Photos",
+        "YouTube",
+        "YouTube",
+        "Home",
+        "Phone",
+        "Phone",
+        "Messages",
+        "Messages",
+        "Chrome",
+        "Chrome",
+        "Calendar",
+        "Predicted app: Calendar",
+        "Search",
+        "Google app",
+        "Voice search",
+        "Google Lens"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 27981,
+          "retained_characters": 7650
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[1]"
+    },
+    {
+      "ordinal": 2,
+      "stepId": "agent-swipe-3",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "start": {
+          "x": 540,
+          "y": 20
+        },
+        "end": {
+          "x": 540,
+          "y": 1600
+        },
+        "reference_screen_size": {
+          "width": 1080,
+          "height": 2400
+        },
+        "duration": 500
+      },
+      "uiLabels": [],
+      "output": {
+        "start": {
+          "x": 540,
+          "y": 20
+        },
+        "end": {
+          "x": 540,
+          "y": 1600
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[2]"
+    },
+    {
+      "ordinal": 3,
+      "stepId": "agent-ui_snapshot-4",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "On",
+        "Internet",
+        "Internet",
+        "On",
+        "Bluetooth.",
+        "Bluetooth",
+        "Off",
+        "Flashlight",
+        "Flashlight",
+        "Off",
+        "Do Not Disturb.",
+        "Do Not Disturb",
+        "Android System",
+        "Alerted",
+        "Collapse",
+        "Data warning",
+        "You've used 4.68 GB of data",
+        "Silent",
+        "Clear all silent notifications",
+        "Need time to focus?",
+        "Use Focus mode to pause distracting apps. Tap to s",
+        "Expand",
+        "Check access settings",
+        "com.google.androidenv.accessibilityforwarder.Acce…",
+        "Expand",
+        "Manage",
+        "Manage",
+        "Clear all",
+        "Clear all notifications.",
+        "15:34",
+        "23:34",
+        "Sun, Oct 15",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "100%"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 54295,
+          "retained_characters": 13720
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 20,
+          "clipped_attributes": 2
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[3]"
+    },
+    {
+      "ordinal": 4,
+      "stepId": "agent-swipe-5",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "start": {
+          "x": 540,
+          "y": 170
+        },
+        "end": {
+          "x": 540,
+          "y": 1700
+        },
+        "reference_screen_size": {
+          "width": 1080,
+          "height": 2400
+        },
+        "duration": 500
+      },
+      "uiLabels": [],
+      "output": {
+        "start": {
+          "x": 540,
+          "y": 170
+        },
+        "end": {
+          "x": 540,
+          "y": 1700
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[4]"
+    },
+    {
+      "ordinal": 5,
+      "stepId": "agent-ui_snapshot-6",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Display brightness",
+        "0.0",
+        "On",
+        "Internet",
+        "Internet",
+        "T-Mobile, 3G",
+        "On",
+        "Bluetooth.",
+        "Bluetooth",
+        "On",
+        "Off",
+        "Flashlight",
+        "Flashlight",
+        "Off",
+        "Off",
+        "Do Not Disturb.",
+        "Do Not Disturb",
+        "Off",
+        "Alarm, No alarm set",
+        "Alarm",
+        "No alarm set",
+        "Off",
+        "Airplane mode",
+        "Airplane mode",
+        "Off",
+        "Device controls",
+        "Device controls",
+        "Unavailable",
+        "On",
+        "Auto-rotate screen",
+        "Auto-rotate",
+        "On",
+        "Page 1 of 3",
+        "Edit order of settings.",
+        "Open settings.",
+        "Power menu",
+        "T-Mobile",
+        "15:34",
+        "23:34",
+        "Sun, Oct 15",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "100%"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 47095,
+          "retained_characters": 12752
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 9,
+          "clipped_attributes": 0
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[5]"
+    },
+    {
+      "ordinal": 6,
+      "stepId": "agent-swipe-7",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "start": {
+          "x": 90,
+          "y": 420
+        },
+        "end": {
+          "x": 1037,
+          "y": 420
+        },
+        "reference_screen_size": {
+          "width": 1080,
+          "height": 2400
+        },
+        "duration": 600
+      },
+      "uiLabels": [],
+      "output": {
+        "start": {
+          "x": 90,
+          "y": 420
+        },
+        "end": {
+          "x": 1037,
+          "y": 420
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[6]"
+    },
+    {
+      "ordinal": 7,
+      "stepId": "agent-ui_snapshot-8",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Display brightness",
+        "65469.0",
+        "On",
+        "Internet",
+        "Internet",
+        "T-Mobile, 3G",
+        "On",
+        "Bluetooth.",
+        "Bluetooth",
+        "On",
+        "Off",
+        "Flashlight",
+        "Flashlight",
+        "Off",
+        "Off",
+        "Do Not Disturb.",
+        "Do Not Disturb",
+        "Off",
+        "Alarm, No alarm set",
+        "Alarm",
+        "No alarm set",
+        "Off",
+        "Airplane mode",
+        "Airplane mode",
+        "Off",
+        "Device controls",
+        "Device controls",
+        "Unavailable",
+        "On",
+        "Auto-rotate screen",
+        "Auto-rotate",
+        "On",
+        "Page 1 of 3",
+        "Edit order of settings.",
+        "Open settings.",
+        "Power menu",
+        "T-Mobile",
+        "15:35",
+        "23:35",
+        "Sun, Oct 15",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "100%"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 47110,
+          "retained_characters": 12774
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 9,
+          "clipped_attributes": 0
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[7]"
+    },
+    {
+      "ordinal": 8,
+      "stepId": "agent-assert_with_ai-9",
+      "action": "assert_with_ai",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "prompt": "Verify that the Android Quick Settings display brightness slider is visibly set to its maximum value, with its filled control reaching the far-right maximum endpoint.",
+        "optional": false
+      },
+      "uiLabels": [],
+      "output": {
+        "status": "passed",
+        "passed": true,
+        "explanation": "The Quick Settings brightness slider is fully filled to its far-right endpoint, visibly indicating maximum brightness.",
+        "confidence": 0.99,
+        "provider": "github_copilot",
+        "model": "gpt-6.1-sol",
+        "latency_ms": 4462,
+        "token_usage": {
+          "input_tokens": 3276,
+          "output_tokens": 41,
+          "total_tokens": 3317
+        },
+        "artifact_refs": [
+          {
+            "artifact_id": "screenshot-agent-assert-with-ai-9-invoke-assert-with-ai-1-f1e19a8e65d1",
+            "kind": "screenshot",
+            "path": "artifacts/screenshots/screenshot-agent-assert-with-ai-9-invoke-assert-with-ai-1-f1e19a8e65d1.png",
+            "mime_type": "image/png",
+            "size_bytes": 393186,
+            "sha256": "d8eb3749642f68426dbcd9c59025b571e484493d83041f9d2d7d874c7124f501",
+            "availability": "available",
+            "unavailable_reason": null,
+            "capture_occurrence": 1,
+            "created_at": "2026-11-10T22:10:23.785627Z",
+            "metadata": {
+              "capture_reason": "assert-with-ai",
+              "redacted": false
+            }
+          }
+        ],
+        "error": null,
+        "metadata": {
+          "provider_metadata": {
+            "endpoint_family": "github_copilot",
+            "copilot_plan": "enterprise"
+          }
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[8]"
+    },
+    {
+      "ordinal": 9,
+      "stepId": "agent-kill_app-10",
+      "action": "kill_app",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [],
+      "output": {
+        "app_id": "com.android.settings"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[9]"
+    }
+  ],
+  "originalNativeExecutionPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/097-SystemBrightnessMax/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-097-20261110T220905Z-8c0e3f/execution-result.json",
+  "originalNativeResultPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/097-SystemBrightnessMax/raw-private/fsq-native/worker/fsq-task-result.private.json",
+  "originalGoalPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/097-SystemBrightnessMax/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-097-20261110T220905Z-8c0e3f/sources/000-goal.txt"
+}

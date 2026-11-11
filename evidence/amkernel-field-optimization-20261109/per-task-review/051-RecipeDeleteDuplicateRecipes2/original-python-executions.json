@@ -1,0 +1,2791 @@
+[
+  {
+    "sourceLine": 404,
+    "code": "from appium import webdriver\nfrom appium.options.android import UiAutomator2Options\noptions = UiAutomator2Options().load_capabilities({\n    'platformName': 'Android',\n    'appium:automationName': 'UiAutomator2',\n    'appium:udid': 'emulator-5554',\n    'appium:noReset': True,\n    'appium:autoLaunch': False,\n    'appium:skipUnlock': True,\n    'appium:newCommandTimeout': 300,\n})\ndriver = webdriver.Remote('http://127.0.0.1:61431', options=options)\nsession_id = driver.session_id\n{'sessionId': session_id, 'newCommandTimeout': driver.capabilities.get('newCommandTimeout'), 'platformName': driver.capabilities.get('platformName'), 'automationName': driver.capabilities.get('automationName')}\n",
+    "arguments": {
+      "code": "from appium import webdriver\nfrom appium.options.android import UiAutomator2Options\noptions = UiAutomator2Options().load_capabilities({\n    'platformName': 'Android',\n    'appium:automationName': 'UiAutomator2',\n    'appium:udid': 'emulator-5554',\n    'appium:noReset': True,\n    'appium:autoLaunch': False,\n    'appium:skipUnlock': True,\n    'appium:newCommandTimeout': 300,\n})\ndriver = webdriver.Remote('http://127.0.0.1:61431', options=options)\nsession_id = driver.session_id\n{'sessionId': session_id, 'newCommandTimeout': driver.capabilities.get('newCommandTimeout'), 'platformName': driver.capabilities.get('platformName'), 'automationName': driver.capabilities.get('automationName')}\n",
+      "timeout": 90
+    },
+    "responseSourceLine": 409,
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "sessionId": "87bf18c9-1727-408e-bde8-d1b21e56e52f",
+        "newCommandTimeout": 300,
+        "platformName": "Android",
+        "automationName": "UiAutomator2"
+      },
+      "executionCount": 1,
+      "durationMs": 31535,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "sourceLine": 585,
+    "code": "from appium.webdriver.common.appiumby import AppiumBy\nstate = {'package': driver.current_package, 'activity': driver.current_activity}\nels = driver.find_elements(AppiumBy.XPATH, '//*')\nfacts=[]\nfor e in els:\n    try:\n        d={k:e.get_attribute(k) for k in ('className','resource-id','text','content-desc','clickable','bounds')}\n        if d['text'] or d['content-desc'] or d['clickable']=='true': facts.append(d)\n    except Exception: pass\n{'state':state,'elements':facts[:80],'count':len(facts)}",
+    "arguments": {
+      "code": "from appium.webdriver.common.appiumby import AppiumBy\nstate = {'package': driver.current_package, 'activity': driver.current_activity}\nels = driver.find_elements(AppiumBy.XPATH, '//*')\nfacts=[]\nfor e in els:\n    try:\n        d={k:e.get_attribute(k) for k in ('className','resource-id','text','content-desc','clickable','bounds')}\n        if d['text'] or d['content-desc'] or d['clickable']=='true': facts.append(d)\n    except Exception: pass\n{'state':state,'elements':facts[:80],'count':len(facts)}"
+    },
+    "responseSourceLine": 590,
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "state": {
+          "package": "com.google.android.apps.nexuslauncher",
+          "activity": ".NexusLauncherActivity"
+        },
+        "elements": [
+          {
+            "className": "android.widget.FrameLayout",
+            "resource-id": "null",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[0,0][1080,2400]"
+          },
+          {
+            "className": "android.widget.LinearLayout",
+            "resource-id": "null",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[0,0][1080,2400]"
+          },
+          {
+            "className": "android.widget.FrameLayout",
+            "resource-id": "android:id/content",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[0,0][1080,2400]"
+          },
+          {
+            "className": "android.widget.FrameLayout",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/launcher",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[0,0][1080,2400]"
+          },
+          {
+            "className": "android.widget.FrameLayout",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/drag_layer",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[0,0][1080,2400]"
+          },
+          {
+            "className": "android.view.View",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/scrim_view",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[0,0][1080,2400]"
+          },
+          {
+            "className": "android.widget.ScrollView",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/workspace",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[0,0][1080,2400]"
+          },
+          {
+            "className": "android.view.ViewGroup",
+            "resource-id": "null",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[29,195][1051,1779]"
+          },
+          {
+            "className": "android.view.ViewGroup",
+            "resource-id": "null",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[57,223][1023,1751]"
+          },
+          {
+            "className": "android.widget.FrameLayout",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/search_container_workspace",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[57,223][1023,495]"
+          },
+          {
+            "className": "android.widget.FrameLayout",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/bc_smartspace_view",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[99,224][1023,495]"
+          },
+          {
+            "className": "androidx.viewpager.widget.ViewPager",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/smartspace_card_pager",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[99,224][1023,495]"
+          },
+          {
+            "className": "android.view.ViewGroup",
+            "resource-id": "null",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "true",
+            "bounds": "[99,224][1023,495]"
+          },
+          {
+            "className": "android.view.ViewGroup",
+            "resource-id": "null",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[99,224][1023,495]"
+          },
+          {
+            "className": "android.view.ViewGroup",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/text_group",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[99,292][1023,428]"
+          },
+          {
+            "className": "android.widget.TextView",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/title_text",
+            "text": "00:-22",
+            "content-desc": "00:-22",
+            "clickable": "true",
+            "bounds": "[99,292][315,355]"
+          },
+          {
+            "className": "android.view.ViewGroup",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/smartspace_subtitle_group",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[99,379][120,428]"
+          },
+          {
+            "className": "android.widget.TextView",
+            "resource-id": "null",
+            "text": "Gmail",
+            "content-desc": "Gmail",
+            "clickable": "true",
+            "bounds": "[309,1479][519,1751]"
+          },
+          {
+            "className": "android.widget.TextView",
+            "resource-id": "null",
+            "text": "Photos",
+            "content-desc": "Photos",
+            "clickable": "true",
+            "bounds": "[561,1479][771,1751]"
+          },
+          {
+            "className": "android.widget.TextView",
+            "resource-id": "null",
+            "text": "YouTube",
+            "content-desc": "YouTube",
+            "clickable": "true",
+            "bounds": "[813,1479][1023,1751]"
+          },
+          {
+            "className": "android.view.View",
+            "resource-id": "null",
+            "text": "",
+            "content-desc": "Home",
+            "clickable": "false",
+            "bounds": "[0,128][1080,2337]"
+          },
+          {
+            "className": "android.view.View",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/page_indicator",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[0,1810][1080,1873]"
+          },
+          {
+            "className": "android.view.ViewGroup",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/hotseat",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[0,1873][1080,2400]"
+          },
+          {
+            "className": "android.view.ViewGroup",
+            "resource-id": "null",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[76,1873][1004,2068]"
+          },
+          {
+            "className": "android.widget.TextView",
+            "resource-id": "null",
+            "text": "Phone",
+            "content-desc": "Phone",
+            "clickable": "true",
+            "bounds": "[76,1873][249,2068]"
+          },
+          {
+            "className": "android.widget.TextView",
+            "resource-id": "null",
+            "text": "Messages",
+            "content-desc": "Messages",
+            "clickable": "true",
+            "bounds": "[328,1873][501,2068]"
+          },
+          {
+            "className": "android.widget.TextView",
+            "resource-id": "null",
+            "text": "Chrome",
+            "content-desc": "Chrome",
+            "clickable": "true",
+            "bounds": "[580,1873][753,2068]"
+          },
+          {
+            "className": "android.widget.TextView",
+            "resource-id": "null",
+            "text": "Gmail",
+            "content-desc": "Predicted app: Gmail",
+            "clickable": "true",
+            "bounds": "[832,1873][1004,2068]"
+          },
+          {
+            "className": "android.widget.FrameLayout",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/search_container_hotseat",
+            "text": "",
+            "content-desc": "Search",
+            "clickable": "true",
+            "bounds": "[75,2125][1004,2290]"
+          },
+          {
+            "className": "android.widget.ImageView",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/g_icon",
+            "text": "",
+            "content-desc": "Google app",
+            "clickable": "true",
+            "bounds": "[86,2144][212,2270]"
+          },
+          {
+            "className": "android.widget.LinearLayout",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/end_part",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[741,2125][993,2290]"
+          },
+          {
+            "className": "android.widget.ImageView",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/mic_icon",
+            "text": "",
+            "content-desc": "Voice search",
+            "clickable": "true",
+            "bounds": "[741,2125][867,2290]"
+          },
+          {
+            "className": "android.widget.ImageButton",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/lens_icon",
+            "text": "",
+            "content-desc": "Google Lens",
+            "clickable": "true",
+            "bounds": "[867,2125][993,2290]"
+          },
+          {
+            "className": "android.widget.FrameLayout",
+            "resource-id": "com.google.android.apps.nexuslauncher:id/overview_actions_view",
+            "text": "",
+            "content-desc": "null",
+            "clickable": "false",
+            "bounds": "[0,2006][1080,2400]"
+          }
+        ],
+        "count": 34
+      },
+      "executionCount": 2,
+      "durationMs": 2242,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "sourceLine": 800,
+    "code": "from selenium.webdriver.support.ui import WebDriverWait\nsearch=WebDriverWait(driver,5).until(lambda d:d.find_element(AppiumBy.ACCESSIBILITY_ID,'Search'))\nsearch.click()\nWebDriverWait(driver,5).until(lambda d: d.current_package=='com.google.android.apps.nexuslauncher')\n{'package':driver.current_package,'activity':driver.current_activity}",
+    "arguments": {
+      "code": "from selenium.webdriver.support.ui import WebDriverWait\nsearch=WebDriverWait(driver,5).until(lambda d:d.find_element(AppiumBy.ACCESSIBILITY_ID,'Search'))\nsearch.click()\nWebDriverWait(driver,5).until(lambda d: d.current_package=='com.google.android.apps.nexuslauncher')\n{'package':driver.current_package,'activity':driver.current_activity}"
+    },
+    "responseSourceLine": 805,
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "com.google.android.apps.nexuslauncher",
+        "activity": ".NexusLauncherActivity"
+      },
+      "executionCount": 3,
+      "durationMs": 434,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "sourceLine": 917,
+    "code": "els=driver.find_elements(AppiumBy.XPATH,'//*')\n[(e.get_attribute('className'),e.get_attribute('resource-id'),e.text,e.get_attribute('content-desc'),e.get_attribute('clickable')) for e in els if e.text or e.get_attribute('content-desc') or e.get_attribute('className')=='android.widget.EditText'][:50]",
+    "arguments": {
+      "code": "els=driver.find_elements(AppiumBy.XPATH,'//*')\n[(e.get_attribute('className'),e.get_attribute('resource-id'),e.text,e.get_attribute('content-desc'),e.get_attribute('clickable')) for e in els if e.text or e.get_attribute('content-desc') or e.get_attribute('className')=='android.widget.EditText'][:50]"
+    },
+    "responseSourceLine": 922,
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "kind": "repr",
+        "typeName": "list",
+        "value": "<list len=50; bounded non-JSON representation>",
+        "truncated": true
+      },
+      "executionCount": 4,
+      "durationMs": 4027,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "sourceLine": 1128,
+    "code": "out=[]\nfor e in driver.find_elements(AppiumBy.XPATH,'//*'):\n t=e.text; c=e.get_attribute('content-desc'); cl=e.get_attribute('className')\n if t or c or cl=='android.widget.EditText': out.append({'class':cl,'id':e.get_attribute('resource-id'),'text':t,'desc':c,'clickable':e.get_attribute('clickable')})\nout[:30]",
+    "arguments": {
+      "code": "out=[]\nfor e in driver.find_elements(AppiumBy.XPATH,'//*'):\n t=e.text; c=e.get_attribute('content-desc'); cl=e.get_attribute('className')\n if t or c or cl=='android.widget.EditText': out.append({'class':cl,'id':e.get_attribute('resource-id'),'text':t,'desc':c,'clickable':e.get_attribute('clickable')})\nout[:30]"
+    },
+    "responseSourceLine": 1133,
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": [
+        {
+          "class": "android.widget.FrameLayout",
+          "id": "null",
+          "text": "",
+          "desc": "null",
+          "clickable": "false"
+        },
+        {
+          "class": "android.widget.LinearLayout",
+          "id": "null",
+          "text": "",
+          "desc": "null",
+          "clickable": "false"
+        },
+        {
+          "class": "android.widget.FrameLayout",
+          "id": "android:id/content",
+          "text": "",
+          "desc": "null",
+          "clickable": "false"
+        },
+        {
+          "class": "android.widget.FrameLayout",
+          "id": "com.google.android.apps.nexuslauncher:id/launcher",
+          "text": "",
+          "desc": "null",
+          "clickable": "false"
+        },
+        {
+          "class": "android.widget.FrameLayout",
+          "id": "com.google.android.apps.nexuslauncher:id/drag_layer",
+          "text": "",
+          "desc": "null",
+          "clickable": "false"
+        },
+        {
+          "class": "android.view.View",
+          "id": "com.google.android.apps.nexuslauncher:id/scrim_view",
+          "text": "",
+          "desc": "null",
+          "clickable": "false"
+        },
+        {
+          "class": "android.widget.RelativeLayout",
+          "id": "com.google.android.apps.nexuslauncher:id/apps_view",
+          "text": "",
+          "desc": "null",
+          "clickable": "false"
+        },
+        {
+          "class": "androidx.recyclerview.widget.RecyclerView",
+          "id": "com.google.android.apps.nexuslauncher:id/search_results_list_view",
+          "text": "",
+          "desc": "null",
+          "clickable": "false"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "null",
+          "text": "YouTube",
+          "desc": "YouTube",
+          "clickable": "true"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "null",
+          "text": "Settings",
+          "desc": "Settings",
+          "clickable": "true"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "null",
+          "text": "Photos",
+          "desc": "Photos",
+          "clickable": "true"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "null",
+          "text": "Clock",
+          "desc": "Clock",
+          "clickable": "true"
+        },
+        {
+          "class": "android.widget.LinearLayout",
+          "id": "null",
+          "text": "",
+          "desc": "null",
+          "clickable": "true"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.google.android.apps.nexuslauncher:id/icon",
+          "text": "0",
+          "desc": "null",
+          "clickable": "false"
+        },
+        {
+          "class": "android.widget.LinearLayout",
+          "id": "com.google.android.apps.nexuslauncher:id/text_rows",
+          "text": "",
+          "desc": "null",
+          "clickable": "false"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.google.android.apps.nexuslauncher:id/title",
+          "text": "0",
+          "desc": "Search null",
+          "clickable": "false"
+        },
+        {
+          "class": "android.widget.LinearLayout",
+          "id": "null",
+          "text": "",
+          "desc": "null",
+          "clickable": "true"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.google.android.apps.nexuslauncher:id/icon",
+          "text": "1",
+          "desc": "null",
+          "clickable": "false"
+        },
+        {
+          "class": "android.widget.LinearLayout",
+          "id": "com.google.android.apps.nexuslauncher:id/text_rows",
+          "text": "",
+          "desc": "null",
+          "clickable": "false"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.google.android.apps.nexuslauncher:id/title",
+          "text": "1",
+          "desc": "Search null",
+          "clickable": "false"
+        },
+        {
+          "class": "android.widget.LinearLayout",
+          "id": "null",
+          "text": "",
+          "desc": "null",
+          "clickable": "true"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.google.android.apps.nexuslauncher:id/icon",
+          "text": "2",
+          "desc": "null",
+          "clickable": "false"
+        },
+        {
+          "class": "android.widget.LinearLayout",
+          "id": "com.google.android.apps.nexuslauncher:id/text_rows",
+          "text": "",
+          "desc": "null",
+          "clickable": "false"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.google.android.apps.nexuslauncher:id/title",
+          "text": "2",
+          "desc": "Search null",
+          "clickable": "false"
+        },
+        {
+          "class": "android.widget.LinearLayout",
+          "id": "null",
+          "text": "",
+          "desc": "null",
+          "clickable": "true"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.google.android.apps.nexuslauncher:id/icon",
+          "text": "3",
+          "desc": "null",
+          "clickable": "false"
+        },
+        {
+          "class": "android.widget.LinearLayout",
+          "id": "com.google.android.apps.nexuslauncher:id/text_rows",
+          "text": "",
+          "desc": "null",
+          "clickable": "false"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.google.android.apps.nexuslauncher:id/title",
+          "text": "3",
+          "desc": "Search null",
+          "clickable": "false"
+        },
+        {
+          "class": "android.widget.LinearLayout",
+          "id": "null",
+          "text": "",
+          "desc": "null",
+          "clickable": "true"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.google.android.apps.nexuslauncher:id/icon",
+          "text": "4",
+          "desc": "null",
+          "clickable": "false"
+        }
+      ],
+      "executionCount": 5,
+      "durationMs": 2948,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "sourceLine": 1218,
+    "code": "field=driver.find_element(AppiumBy.CLASS_NAME,'android.widget.EditText')\n{'id':field.get_attribute('resource-id'),'text':field.text,'desc':field.get_attribute('content-desc'),'bounds':field.get_attribute('bounds')}",
+    "arguments": {
+      "code": "field=driver.find_element(AppiumBy.CLASS_NAME,'android.widget.EditText')\n{'id':field.get_attribute('resource-id'),'text':field.text,'desc':field.get_attribute('content-desc'),'bounds':field.get_attribute('bounds')}"
+    },
+    "responseSourceLine": 1223,
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "id": "com.google.android.apps.nexuslauncher:id/input",
+        "text": "Search apps, web and more",
+        "desc": "null",
+        "bounds": "[214,156][1023,301]"
+      },
+      "executionCount": 6,
+      "durationMs": 166,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "sourceLine": 1360,
+    "code": "field.send_keys('Broccoli')\nimport time; time.sleep(1)\nres=[]\nfor e in driver.find_elements(AppiumBy.XPATH,'//*'):\n t=e.text; c=e.get_attribute('content-desc')\n if t or c: res.append({'class':e.get_attribute('className'),'text':t,'desc':c,'clickable':e.get_attribute('clickable'),'bounds':e.get_attribute('bounds')})\nres[:30]",
+    "arguments": {
+      "code": "field.send_keys('Broccoli')\nimport time; time.sleep(1)\nres=[]\nfor e in driver.find_elements(AppiumBy.XPATH,'//*'):\n t=e.text; c=e.get_attribute('content-desc')\n if t or c: res.append({'class':e.get_attribute('className'),'text':t,'desc':c,'clickable':e.get_attribute('clickable'),'bounds':e.get_attribute('bounds')})\nres[:30]"
+    },
+    "responseSourceLine": 1365,
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": [
+        {
+          "class": "android.widget.FrameLayout",
+          "text": "",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[0,0][1080,2400]"
+        },
+        {
+          "class": "android.widget.LinearLayout",
+          "text": "",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[0,0][1080,2400]"
+        },
+        {
+          "class": "android.widget.FrameLayout",
+          "text": "",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[0,0][1080,2400]"
+        },
+        {
+          "class": "android.widget.FrameLayout",
+          "text": "",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[0,0][1080,2400]"
+        },
+        {
+          "class": "android.widget.FrameLayout",
+          "text": "",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[0,0][1080,2400]"
+        },
+        {
+          "class": "android.view.View",
+          "text": "",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[0,0][1080,2400]"
+        },
+        {
+          "class": "android.widget.RelativeLayout",
+          "text": "",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[0,0][1080,2400]"
+        },
+        {
+          "class": "androidx.recyclerview.widget.RecyclerView",
+          "text": "",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[0,233][1080,2400]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "text": "Broccoli",
+          "desc": "Broccoli",
+          "clickable": "true",
+          "bounds": "[57,328][298,611]"
+        },
+        {
+          "class": "android.widget.LinearLayout",
+          "text": "",
+          "desc": "null",
+          "clickable": "true",
+          "bounds": "[57,653][1023,800]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "text": "Broccoli0",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[78,663][204,789]"
+        },
+        {
+          "class": "android.widget.LinearLayout",
+          "text": "",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[204,698][1023,755]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "text": "Broccoli0",
+          "desc": "Search null",
+          "clickable": "false",
+          "bounds": "[225,698][412,755]"
+        },
+        {
+          "class": "android.widget.LinearLayout",
+          "text": "",
+          "desc": "null",
+          "clickable": "true",
+          "bounds": "[57,800][1023,947]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "text": "Broccoli1",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[78,810][204,936]"
+        },
+        {
+          "class": "android.widget.LinearLayout",
+          "text": "",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[204,845][1023,902]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "text": "Broccoli1",
+          "desc": "Search null",
+          "clickable": "false",
+          "bounds": "[225,845][412,902]"
+        },
+        {
+          "class": "android.widget.LinearLayout",
+          "text": "",
+          "desc": "null",
+          "clickable": "true",
+          "bounds": "[57,947][1023,1094]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "text": "Broccoli2",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[78,957][204,1083]"
+        },
+        {
+          "class": "android.widget.LinearLayout",
+          "text": "",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[204,992][1023,1049]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "text": "Broccoli2",
+          "desc": "Search null",
+          "clickable": "false",
+          "bounds": "[225,992][412,1049]"
+        },
+        {
+          "class": "android.widget.LinearLayout",
+          "text": "",
+          "desc": "null",
+          "clickable": "true",
+          "bounds": "[57,1094][1023,1241]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "text": "Broccoli3",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[78,1104][204,1230]"
+        },
+        {
+          "class": "android.widget.LinearLayout",
+          "text": "",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[204,1139][1023,1196]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "text": "Broccoli3",
+          "desc": "Search null",
+          "clickable": "false",
+          "bounds": "[225,1139][412,1196]"
+        },
+        {
+          "class": "android.widget.LinearLayout",
+          "text": "",
+          "desc": "null",
+          "clickable": "true",
+          "bounds": "[57,1241][1023,1388]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "text": "Broccoli4",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[78,1251][204,1377]"
+        },
+        {
+          "class": "android.widget.LinearLayout",
+          "text": "",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[204,1286][1023,1343]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "text": "Broccoli4",
+          "desc": "Search null",
+          "clickable": "false",
+          "bounds": "[225,1286][412,1343]"
+        },
+        {
+          "class": "android.widget.LinearLayout",
+          "text": "",
+          "desc": "null",
+          "clickable": "true",
+          "bounds": "[57,1388][1023,1535]"
+        }
+      ],
+      "executionCount": 7,
+      "durationMs": 4092,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "sourceLine": 1453,
+    "code": "driver.find_element(AppiumBy.ACCESSIBILITY_ID,'Broccoli').click()\nWebDriverWait(driver,8).until(lambda d:d.current_package!='com.google.android.apps.nexuslauncher')\n{'package':driver.current_package,'activity':driver.current_activity}",
+    "arguments": {
+      "code": "driver.find_element(AppiumBy.ACCESSIBILITY_ID,'Broccoli').click()\nWebDriverWait(driver,8).until(lambda d:d.current_package!='com.google.android.apps.nexuslauncher')\n{'package':driver.current_package,'activity':driver.current_activity}"
+    },
+    "responseSourceLine": 1458,
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "com.flauschcode.broccoli",
+        "activity": ".MainActivity"
+      },
+      "executionCount": 8,
+      "durationMs": 837,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "sourceLine": 1620,
+    "code": "def visible_facts():\n out=[]\n for e in driver.find_elements(AppiumBy.XPATH,'//*'):\n  t=e.text; c=e.get_attribute('content-desc')\n  if t or (c and c!='null') or e.get_attribute('clickable')=='true':\n   out.append({'class':e.get_attribute('className'),'id':e.get_attribute('resource-id'),'text':t,'desc':c,'clickable':e.get_attribute('clickable'),'bounds':e.get_attribute('bounds')})\n return out\nvisible_facts()[:80]",
+    "arguments": {
+      "code": "def visible_facts():\n out=[]\n for e in driver.find_elements(AppiumBy.XPATH,'//*'):\n  t=e.text; c=e.get_attribute('content-desc')\n  if t or (c and c!='null') or e.get_attribute('clickable')=='true':\n   out.append({'class':e.get_attribute('className'),'id':e.get_attribute('resource-id'),'text':t,'desc':c,'clickable':e.get_attribute('clickable'),'bounds':e.get_attribute('bounds')})\n return out\nvisible_facts()[:80]"
+    },
+    "responseSourceLine": 1625,
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": [
+        {
+          "class": "android.widget.ImageButton",
+          "id": "null",
+          "text": "",
+          "desc": "Open navigation drawer",
+          "clickable": "true",
+          "bounds": "[0,128][147,275]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "null",
+          "text": "Recipes",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[189,166][382,237]"
+        },
+        {
+          "class": "android.widget.Spinner",
+          "id": "com.flauschcode.broccoli:id/spinner",
+          "text": "",
+          "desc": "Categories",
+          "clickable": "true",
+          "bounds": "[42,285][953,411]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "android:id/text1",
+          "text": "All recipes",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[42,312][827,383]"
+        },
+        {
+          "class": "android.widget.Button",
+          "id": "com.flauschcode.broccoli:id/action_search",
+          "text": "",
+          "desc": "Search",
+          "clickable": "true",
+          "bounds": "[953,285][1080,411]"
+        },
+        {
+          "class": "androidx.recyclerview.widget.RecyclerView",
+          "id": "com.flauschcode.broccoli:id/recycler_view",
+          "text": "",
+          "desc": "Recipes",
+          "clickable": "false",
+          "bounds": "[0,422][1080,2337]"
+        },
+        {
+          "class": "androidx.cardview.widget.CardView",
+          "id": "null",
+          "text": "",
+          "desc": "null",
+          "clickable": "true",
+          "bounds": "[21,443][1059,758]"
+        },
+        {
+          "class": "android.widget.ImageView",
+          "id": "com.flauschcode.broccoli:id/card_image",
+          "text": "",
+          "desc": "Recipe photo",
+          "clickable": "false",
+          "bounds": "[21,443][336,758]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.flauschcode.broccoli:id/card_text_view_title",
+          "text": "Caprese Salad Skewers",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[336,494][1059,562]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.flauschcode.broccoli:id/card_text_view_description",
+          "text": "An ideal recipe for experimenting with different flavors and ingredients.",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[336,562][1059,656]"
+        },
+        {
+          "class": "androidx.cardview.widget.CardView",
+          "id": "null",
+          "text": "",
+          "desc": "null",
+          "clickable": "true",
+          "bounds": "[21,779][1059,1094]"
+        },
+        {
+          "class": "android.widget.ImageView",
+          "id": "com.flauschcode.broccoli:id/card_image",
+          "text": "",
+          "desc": "Recipe photo",
+          "clickable": "false",
+          "bounds": "[21,779][336,1094]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.flauschcode.broccoli:id/card_text_view_title",
+          "text": "Caprese Salad Skewers",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[336,830][1059,898]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.flauschcode.broccoli:id/card_text_view_description",
+          "text": "An ideal recipe for experimenting with different flavors and ingredients.",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[336,898][1059,992]"
+        },
+        {
+          "class": "androidx.cardview.widget.CardView",
+          "id": "null",
+          "text": "",
+          "desc": "null",
+          "clickable": "true",
+          "bounds": "[21,1115][1059,1430]"
+        },
+        {
+          "class": "android.widget.ImageView",
+          "id": "com.flauschcode.broccoli:id/card_image",
+          "text": "",
+          "desc": "Recipe photo",
+          "clickable": "false",
+          "bounds": "[21,1115][336,1430]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.flauschcode.broccoli:id/card_text_view_title",
+          "text": "Caprese Salad Skewers",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[336,1166][1059,1234]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.flauschcode.broccoli:id/card_text_view_description",
+          "text": "An ideal recipe for experimenting with different flavors and ingredients.",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[336,1234][1059,1328]"
+        },
+        {
+          "class": "androidx.cardview.widget.CardView",
+          "id": "null",
+          "text": "",
+          "desc": "null",
+          "clickable": "true",
+          "bounds": "[21,1451][1059,1766]"
+        },
+        {
+          "class": "android.widget.ImageView",
+          "id": "com.flauschcode.broccoli:id/card_image",
+          "text": "",
+          "desc": "Recipe photo",
+          "clickable": "false",
+          "bounds": "[21,1451][336,1766]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.flauschcode.broccoli:id/card_text_view_title",
+          "text": "Caprese Salad Skewers",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[336,1502][1059,1570]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.flauschcode.broccoli:id/card_text_view_description",
+          "text": "A delicious and healthy choice for any time of the day.",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[336,1570][1059,1664]"
+        },
+        {
+          "class": "androidx.cardview.widget.CardView",
+          "id": "null",
+          "text": "",
+          "desc": "null",
+          "clickable": "true",
+          "bounds": "[21,1787][1059,2102]"
+        },
+        {
+          "class": "android.widget.ImageView",
+          "id": "com.flauschcode.broccoli:id/card_image",
+          "text": "",
+          "desc": "Recipe photo",
+          "clickable": "false",
+          "bounds": "[21,1787][336,2102]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.flauschcode.broccoli:id/card_text_view_title",
+          "text": "Caprese Salad Skewers",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[336,1838][1059,1906]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.flauschcode.broccoli:id/card_text_view_description",
+          "text": "An ideal recipe for experimenting with different flavors and ingredients.",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[336,1906][1059,2000]"
+        },
+        {
+          "class": "androidx.cardview.widget.CardView",
+          "id": "null",
+          "text": "",
+          "desc": "null",
+          "clickable": "true",
+          "bounds": "[21,2123][1059,2337]"
+        },
+        {
+          "class": "android.widget.ImageView",
+          "id": "com.flauschcode.broccoli:id/card_image",
+          "text": "",
+          "desc": "Recipe photo",
+          "clickable": "false",
+          "bounds": "[21,2123][336,2337]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.flauschcode.broccoli:id/card_text_view_title",
+          "text": "Caprese Salad Skewers",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[336,2174][1059,2242]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.flauschcode.broccoli:id/card_text_view_description",
+          "text": "An ideal recipe for experimenting with different flavors and ingredients.",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[336,2242][1059,2336]"
+        },
+        {
+          "class": "android.widget.ImageButton",
+          "id": "com.flauschcode.broccoli:id/fab_recipes",
+          "text": "",
+          "desc": "New Recipe",
+          "clickable": "true",
+          "bounds": "[891,2148][1038,2295]"
+        }
+      ],
+      "executionCount": 9,
+      "durationMs": 945,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "sourceLine": 1717,
+    "code": "driver.execute_script('mobile: scrollGesture', {'left':0,'top':422,'width':1080,'height':1700,'direction':'down','percent':0.9})\nimport time; time.sleep(.5)\nvisible_facts()[:80]",
+    "arguments": {
+      "code": "driver.execute_script('mobile: scrollGesture', {'left':0,'top':422,'width':1080,'height':1700,'direction':'down','percent':0.9})\nimport time; time.sleep(.5)\nvisible_facts()[:80]"
+    },
+    "responseSourceLine": 1722,
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": [
+        {
+          "class": "android.widget.ImageButton",
+          "id": "null",
+          "text": "",
+          "desc": "Open navigation drawer",
+          "clickable": "true",
+          "bounds": "[0,128][147,275]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "null",
+          "text": "Recipes",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[189,166][382,237]"
+        },
+        {
+          "class": "android.widget.Spinner",
+          "id": "com.flauschcode.broccoli:id/spinner",
+          "text": "",
+          "desc": "Categories",
+          "clickable": "true",
+          "bounds": "[42,285][953,411]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "android:id/text1",
+          "text": "All recipes",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[42,312][827,383]"
+        },
+        {
+          "class": "android.widget.Button",
+          "id": "com.flauschcode.broccoli:id/action_search",
+          "text": "",
+          "desc": "Search",
+          "clickable": "true",
+          "bounds": "[953,285][1080,411]"
+        },
+        {
+          "class": "androidx.recyclerview.widget.RecyclerView",
+          "id": "com.flauschcode.broccoli:id/recycler_view",
+          "text": "",
+          "desc": "Recipes",
+          "clickable": "false",
+          "bounds": "[0,422][1080,2337]"
+        },
+        {
+          "class": "androidx.cardview.widget.CardView",
+          "id": "null",
+          "text": "",
+          "desc": "null",
+          "clickable": "true",
+          "bounds": "[21,422][1059,593]"
+        },
+        {
+          "class": "android.widget.ImageView",
+          "id": "com.flauschcode.broccoli:id/card_image",
+          "text": "",
+          "desc": "Recipe photo",
+          "clickable": "false",
+          "bounds": "[21,422][336,593]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.flauschcode.broccoli:id/card_text_view_description",
+          "text": "An ideal recipe for experimenting with different flavors and ingredients.",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[336,422][1059,491]"
+        },
+        {
+          "class": "androidx.cardview.widget.CardView",
+          "id": "null",
+          "text": "",
+          "desc": "null",
+          "clickable": "true",
+          "bounds": "[21,614][1059,929]"
+        },
+        {
+          "class": "android.widget.ImageView",
+          "id": "com.flauschcode.broccoli:id/card_image",
+          "text": "",
+          "desc": "Recipe photo",
+          "clickable": "false",
+          "bounds": "[21,614][336,929]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.flauschcode.broccoli:id/card_text_view_title",
+          "text": "Caprese Salad Skewers",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[336,665][1059,733]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.flauschcode.broccoli:id/card_text_view_description",
+          "text": "An ideal recipe for experimenting with different flavors and ingredients.",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[336,733][1059,827]"
+        },
+        {
+          "class": "androidx.cardview.widget.CardView",
+          "id": "null",
+          "text": "",
+          "desc": "null",
+          "clickable": "true",
+          "bounds": "[21,950][1059,1265]"
+        },
+        {
+          "class": "android.widget.ImageView",
+          "id": "com.flauschcode.broccoli:id/card_image",
+          "text": "",
+          "desc": "Recipe photo",
+          "clickable": "false",
+          "bounds": "[21,950][336,1265]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.flauschcode.broccoli:id/card_text_view_title",
+          "text": "Pan-Seared Salmon with Quinoa",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[336,967][1059,1103]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.flauschcode.broccoli:id/card_text_view_description",
+          "text": "A quick and easy meal, perfect for busy weekdays.",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[336,1103][1059,1197]"
+        },
+        {
+          "class": "androidx.cardview.widget.CardView",
+          "id": "null",
+          "text": "",
+          "desc": "null",
+          "clickable": "true",
+          "bounds": "[21,1286][1059,1601]"
+        },
+        {
+          "class": "android.widget.ImageView",
+          "id": "com.flauschcode.broccoli:id/card_image",
+          "text": "",
+          "desc": "Recipe photo",
+          "clickable": "false",
+          "bounds": "[21,1286][336,1601]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.flauschcode.broccoli:id/card_text_view_title",
+          "text": "Pan-Seared Salmon with Quinoa",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[336,1303][1059,1439]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.flauschcode.broccoli:id/card_text_view_description",
+          "text": "An ideal recipe for experimenting with different flavors and ingredients.",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[336,1439][1059,1533]"
+        },
+        {
+          "class": "androidx.cardview.widget.CardView",
+          "id": "null",
+          "text": "",
+          "desc": "null",
+          "clickable": "true",
+          "bounds": "[21,1622][1059,1937]"
+        },
+        {
+          "class": "android.widget.ImageView",
+          "id": "com.flauschcode.broccoli:id/card_image",
+          "text": "",
+          "desc": "Recipe photo",
+          "clickable": "false",
+          "bounds": "[21,1622][336,1937]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.flauschcode.broccoli:id/card_text_view_title",
+          "text": "Pan-Seared Salmon with Quinoa",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[336,1639][1059,1775]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.flauschcode.broccoli:id/card_text_view_description",
+          "text": "A delicious and healthy choice for any time of the day.",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[336,1775][1059,1869]"
+        },
+        {
+          "class": "androidx.cardview.widget.CardView",
+          "id": "null",
+          "text": "",
+          "desc": "null",
+          "clickable": "true",
+          "bounds": "[21,1958][1059,2273]"
+        },
+        {
+          "class": "android.widget.ImageView",
+          "id": "com.flauschcode.broccoli:id/card_image",
+          "text": "",
+          "desc": "Recipe photo",
+          "clickable": "false",
+          "bounds": "[21,1958][336,2273]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.flauschcode.broccoli:id/card_text_view_title",
+          "text": "Raspberry Almond Smoothie",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[336,1975][1059,2111]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.flauschcode.broccoli:id/card_text_view_description",
+          "text": "A delicious and healthy choice for any time of the day.",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[336,2111][1059,2205]"
+        },
+        {
+          "class": "androidx.cardview.widget.CardView",
+          "id": "null",
+          "text": "",
+          "desc": "null",
+          "clickable": "true",
+          "bounds": "[21,2294][1059,2337]"
+        },
+        {
+          "class": "android.widget.ImageView",
+          "id": "com.flauschcode.broccoli:id/card_image",
+          "text": "",
+          "desc": "Recipe photo",
+          "clickable": "false",
+          "bounds": "[21,2294][336,2337]"
+        },
+        {
+          "class": "android.widget.ImageButton",
+          "id": "com.flauschcode.broccoli:id/fab_recipes",
+          "text": "",
+          "desc": "New Recipe",
+          "clickable": "true",
+          "bounds": "[891,2148][1038,2295]"
+        }
+      ],
+      "executionCount": 10,
+      "durationMs": 4213,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "sourceLine": 1962,
+    "code": "driver.execute_script('mobile: scrollGesture', {'left':0,'top':422,'width':1080,'height':1700,'direction':'down','percent':0.9})\nimport time; time.sleep(.4)\n[(e.text,e.get_attribute('bounds')) for e in driver.find_elements(AppiumBy.ID,'com.flauschcode.broccoli:id/card_text_view_title')] , [(e.text,e.get_attribute('bounds')) for e in driver.find_elements(AppiumBy.ID,'com.flauschcode.broccoli:id/card_text_view_description')]",
+    "arguments": {
+      "code": "driver.execute_script('mobile: scrollGesture', {'left':0,'top':422,'width':1080,'height':1700,'direction':'down','percent':0.9})\nimport time; time.sleep(.4)\n[(e.text,e.get_attribute('bounds')) for e in driver.find_elements(AppiumBy.ID,'com.flauschcode.broccoli:id/card_text_view_title')] , [(e.text,e.get_attribute('bounds')) for e in driver.find_elements(AppiumBy.ID,'com.flauschcode.broccoli:id/card_text_view_description')]"
+    },
+    "responseSourceLine": 1967,
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "kind": "repr",
+        "typeName": "tuple",
+        "value": "<tuple len=2; bounded non-JSON representation>",
+        "truncated": true
+      },
+      "executionCount": 11,
+      "durationMs": 1905,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "sourceLine": 2008,
+    "code": "visible_facts()[:60]",
+    "arguments": {
+      "code": "visible_facts()[:60]"
+    },
+    "responseSourceLine": 2013,
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": [
+        {
+          "class": "android.widget.ImageButton",
+          "id": "null",
+          "text": "",
+          "desc": "Open navigation drawer",
+          "clickable": "true",
+          "bounds": "[0,128][147,275]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "null",
+          "text": "Recipes",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[189,166][382,237]"
+        },
+        {
+          "class": "android.widget.Spinner",
+          "id": "com.flauschcode.broccoli:id/spinner",
+          "text": "",
+          "desc": "Categories",
+          "clickable": "true",
+          "bounds": "[42,285][953,411]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "android:id/text1",
+          "text": "All recipes",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[42,312][827,383]"
+        },
+        {
+          "class": "android.widget.Button",
+          "id": "com.flauschcode.broccoli:id/action_search",
+          "text": "",
+          "desc": "Search",
+          "clickable": "true",
+          "bounds": "[953,285][1080,411]"
+        },
+        {
+          "class": "androidx.recyclerview.widget.RecyclerView",
+          "id": "com.flauschcode.broccoli:id/recycler_view",
+          "text": "",
+          "desc": "Recipes",
+          "clickable": "false",
+          "bounds": "[0,422][1080,2337]"
+        },
+        {
+          "class": "androidx.cardview.widget.CardView",
+          "id": "null",
+          "text": "",
+          "desc": "null",
+          "clickable": "true",
+          "bounds": "[21,442][1059,757]"
+        },
+        {
+          "class": "android.widget.ImageView",
+          "id": "com.flauschcode.broccoli:id/card_image",
+          "text": "",
+          "desc": "Recipe photo",
+          "clickable": "false",
+          "bounds": "[21,442][336,757]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.flauschcode.broccoli:id/card_text_view_title",
+          "text": "Pan-Seared Salmon with Quinoa",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[336,459][1059,595]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.flauschcode.broccoli:id/card_text_view_description",
+          "text": "An ideal recipe for experimenting with different flavors and ingredients.",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[336,595][1059,689]"
+        },
+        {
+          "class": "androidx.cardview.widget.CardView",
+          "id": "null",
+          "text": "",
+          "desc": "null",
+          "clickable": "true",
+          "bounds": "[21,778][1059,1093]"
+        },
+        {
+          "class": "android.widget.ImageView",
+          "id": "com.flauschcode.broccoli:id/card_image",
+          "text": "",
+          "desc": "Recipe photo",
+          "clickable": "false",
+          "bounds": "[21,778][336,1093]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.flauschcode.broccoli:id/card_text_view_title",
+          "text": "Pan-Seared Salmon with Quinoa",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[336,795][1059,931]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.flauschcode.broccoli:id/card_text_view_description",
+          "text": "A delicious and healthy choice for any time of the day.",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[336,931][1059,1025]"
+        },
+        {
+          "class": "androidx.cardview.widget.CardView",
+          "id": "null",
+          "text": "",
+          "desc": "null",
+          "clickable": "true",
+          "bounds": "[21,1114][1059,1429]"
+        },
+        {
+          "class": "android.widget.ImageView",
+          "id": "com.flauschcode.broccoli:id/card_image",
+          "text": "",
+          "desc": "Recipe photo",
+          "clickable": "false",
+          "bounds": "[21,1114][336,1429]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.flauschcode.broccoli:id/card_text_view_title",
+          "text": "Raspberry Almond Smoothie",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[336,1131][1059,1267]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.flauschcode.broccoli:id/card_text_view_description",
+          "text": "A delicious and healthy choice for any time of the day.",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[336,1267][1059,1361]"
+        },
+        {
+          "class": "androidx.cardview.widget.CardView",
+          "id": "null",
+          "text": "",
+          "desc": "null",
+          "clickable": "true",
+          "bounds": "[21,1450][1059,1765]"
+        },
+        {
+          "class": "android.widget.ImageView",
+          "id": "com.flauschcode.broccoli:id/card_image",
+          "text": "",
+          "desc": "Recipe photo",
+          "clickable": "false",
+          "bounds": "[21,1450][336,1765]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.flauschcode.broccoli:id/card_text_view_title",
+          "text": "Tomato Basil Bruschetta",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[336,1501][1059,1569]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.flauschcode.broccoli:id/card_text_view_description",
+          "text": "A delicious and healthy choice for any time of the day.",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[336,1569][1059,1663]"
+        },
+        {
+          "class": "androidx.cardview.widget.CardView",
+          "id": "null",
+          "text": "",
+          "desc": "null",
+          "clickable": "true",
+          "bounds": "[21,1786][1059,2101]"
+        },
+        {
+          "class": "android.widget.ImageView",
+          "id": "com.flauschcode.broccoli:id/card_image",
+          "text": "",
+          "desc": "Recipe photo",
+          "clickable": "false",
+          "bounds": "[21,1786][336,2101]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.flauschcode.broccoli:id/card_text_view_title",
+          "text": "Zucchini Noodles with Pesto",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[336,1803][1059,1939]"
+        },
+        {
+          "class": "android.widget.TextView",
+          "id": "com.flauschcode.broccoli:id/card_text_view_description",
+          "text": "A quick and easy meal, perfect for busy weekdays.",
+          "desc": "null",
+          "clickable": "false",
+          "bounds": "[336,1939][1059,2033]"
+        },
+        {
+          "class": "android.widget.ImageButton",
+          "id": "com.flauschcode.broccoli:id/fab_recipes",
+          "text": "",
+          "desc": "New Recipe",
+          "clickable": "true",
+          "bounds": "[891,2148][1038,2295]"
+        }
+      ],
+      "executionCount": 12,
+      "durationMs": 788,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "sourceLine": 2139,
+    "code": "driver.find_element(AppiumBy.ACCESSIBILITY_ID,'Search').click()\nWebDriverWait(driver,4).until(lambda d: len(d.find_elements(AppiumBy.CLASS_NAME,'android.widget.EditText'))>0)\n{'fields':[{'id':e.get_attribute('resource-id'),'text':e.text,'desc':e.get_attribute('content-desc')} for e in driver.find_elements(AppiumBy.CLASS_NAME,'android.widget.EditText')]}",
+    "arguments": {
+      "code": "driver.find_element(AppiumBy.ACCESSIBILITY_ID,'Search').click()\nWebDriverWait(driver,4).until(lambda d: len(d.find_elements(AppiumBy.CLASS_NAME,'android.widget.EditText'))>0)\n{'fields':[{'id':e.get_attribute('resource-id'),'text':e.text,'desc':e.get_attribute('content-desc')} for e in driver.find_elements(AppiumBy.CLASS_NAME,'android.widget.EditText')]}"
+    },
+    "responseSourceLine": 2144,
+    "response": {
+      "status": "failed",
+      "stdout": "",
+      "stderr": "",
+      "error": {
+        "type": "selenium.common.exceptions.TimeoutException",
+        "message": "",
+        "traceback": [
+          "Traceback (most recent call last):",
+          "  File \"<external-frame>\", line 590, in <frame>",
+          "  File \"<external-frame>\", line 575, in <frame>",
+          "  File \"<amkernel-cell-13>\", line 2, in <frame>",
+          "  File \"<external-frame>\", line 121, in <frame>",
+          "selenium.common.exceptions.TimeoutException"
+        ]
+      },
+      "executionCount": 13,
+      "durationMs": 5336,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "sourceLine": 2202,
+    "code": "{'package':driver.current_package,'activity':driver.current_activity,'facts':visible_facts()[:40]}",
+    "arguments": {
+      "code": "{'package':driver.current_package,'activity':driver.current_activity,'facts':visible_facts()[:40]}"
+    },
+    "responseSourceLine": 2207,
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "com.flauschcode.broccoli",
+        "activity": ".MainActivity",
+        "facts": [
+          {
+            "class": "android.widget.ImageButton",
+            "id": "null",
+            "text": "",
+            "desc": "Open navigation drawer",
+            "clickable": "true",
+            "bounds": "[0,128][147,275]"
+          },
+          {
+            "class": "android.widget.TextView",
+            "id": "null",
+            "text": "Recipes",
+            "desc": "null",
+            "clickable": "false",
+            "bounds": "[189,166][382,237]"
+          },
+          {
+            "class": "android.widget.ImageButton",
+            "id": "null",
+            "text": "",
+            "desc": "Collapse",
+            "clickable": "true",
+            "bounds": "[0,275][147,422]"
+          },
+          {
+            "class": "android.widget.AutoCompleteTextView",
+            "id": "com.flauschcode.broccoli:id/search_src_text",
+            "text": "Search in ALL RECIPES",
+            "desc": "null",
+            "clickable": "true",
+            "bounds": "[168,300][1059,395]"
+          },
+          {
+            "class": "androidx.recyclerview.widget.RecyclerView",
+            "id": "com.flauschcode.broccoli:id/recycler_view",
+            "text": "",
+            "desc": "Recipes",
+            "clickable": "false",
+            "bounds": "[0,422][1080,1517]"
+          },
+          {
+            "class": "androidx.cardview.widget.CardView",
+            "id": "null",
+            "text": "",
+            "desc": "null",
+            "clickable": "true",
+            "bounds": "[21,442][1059,757]"
+          },
+          {
+            "class": "android.widget.ImageView",
+            "id": "com.flauschcode.broccoli:id/card_image",
+            "text": "",
+            "desc": "Recipe photo",
+            "clickable": "false",
+            "bounds": "[21,442][336,757]"
+          },
+          {
+            "class": "android.widget.TextView",
+            "id": "com.flauschcode.broccoli:id/card_text_view_title",
+            "text": "Pan-Seared Salmon with Quinoa",
+            "desc": "null",
+            "clickable": "false",
+            "bounds": "[336,459][1059,595]"
+          },
+          {
+            "class": "android.widget.TextView",
+            "id": "com.flauschcode.broccoli:id/card_text_view_description",
+            "text": "An ideal recipe for experimenting with different flavors and ingredients.",
+            "desc": "null",
+            "clickable": "false",
+            "bounds": "[336,595][1059,689]"
+          },
+          {
+            "class": "androidx.cardview.widget.CardView",
+            "id": "null",
+            "text": "",
+            "desc": "null",
+            "clickable": "true",
+            "bounds": "[21,778][1059,1093]"
+          },
+          {
+            "class": "android.widget.ImageView",
+            "id": "com.flauschcode.broccoli:id/card_image",
+            "text": "",
+            "desc": "Recipe photo",
+            "clickable": "false",
+            "bounds": "[21,778][336,1093]"
+          },
+          {
+            "class": "android.widget.TextView",
+            "id": "com.flauschcode.broccoli:id/card_text_view_title",
+            "text": "Pan-Seared Salmon with Quinoa",
+            "desc": "null",
+            "clickable": "false",
+            "bounds": "[336,795][1059,931]"
+          },
+          {
+            "class": "android.widget.TextView",
+            "id": "com.flauschcode.broccoli:id/card_text_view_description",
+            "text": "A delicious and healthy choice for any time of the day.",
+            "desc": "null",
+            "clickable": "false",
+            "bounds": "[336,931][1059,1025]"
+          },
+          {
+            "class": "androidx.cardview.widget.CardView",
+            "id": "null",
+            "text": "",
+            "desc": "null",
+            "clickable": "true",
+            "bounds": "[21,1114][1059,1429]"
+          },
+          {
+            "class": "android.widget.ImageView",
+            "id": "com.flauschcode.broccoli:id/card_image",
+            "text": "",
+            "desc": "Recipe photo",
+            "clickable": "false",
+            "bounds": "[21,1114][336,1429]"
+          },
+          {
+            "class": "android.widget.TextView",
+            "id": "com.flauschcode.broccoli:id/card_text_view_title",
+            "text": "Raspberry Almond Smoothie",
+            "desc": "null",
+            "clickable": "false",
+            "bounds": "[336,1131][1059,1267]"
+          },
+          {
+            "class": "android.widget.TextView",
+            "id": "com.flauschcode.broccoli:id/card_text_view_description",
+            "text": "A delicious and healthy choice for any time of the day.",
+            "desc": "null",
+            "clickable": "false",
+            "bounds": "[336,1267][1059,1361]"
+          },
+          {
+            "class": "androidx.cardview.widget.CardView",
+            "id": "null",
+            "text": "",
+            "desc": "null",
+            "clickable": "true",
+            "bounds": "[21,1450][1059,1517]"
+          },
+          {
+            "class": "android.widget.ImageView",
+            "id": "com.flauschcode.broccoli:id/card_image",
+            "text": "",
+            "desc": "Recipe photo",
+            "clickable": "false",
+            "bounds": "[21,1450][336,1517]"
+          },
+          {
+            "class": "android.widget.TextView",
+            "id": "com.flauschcode.broccoli:id/card_text_view_title",
+            "text": "Tomato Basil Bruschetta",
+            "desc": "null",
+            "clickable": "false",
+            "bounds": "[336,1501][1059,1517]"
+          },
+          {
+            "class": "android.widget.ImageButton",
+            "id": "com.flauschcode.broccoli:id/fab_recipes",
+            "text": "",
+            "desc": "New Recipe",
+            "clickable": "true",
+            "bounds": "[891,1328][1038,1475]"
+          }
+        ]
+      },
+      "executionCount": 14,
+      "durationMs": 806,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "sourceLine": 2351,
+    "code": "q=driver.find_element(AppiumBy.ID,'com.flauschcode.broccoli:id/search_src_text')\nq.send_keys('Caprese Salad Skewers')\nimport time; time.sleep(.5)\n{'titles':[e.text for e in driver.find_elements(AppiumBy.ID,'com.flauschcode.broccoli:id/card_text_view_title')],'descriptions':[e.text for e in driver.find_elements(AppiumBy.ID,'com.flauschcode.broccoli:id/card_text_view_description')]}",
+    "arguments": {
+      "code": "q=driver.find_element(AppiumBy.ID,'com.flauschcode.broccoli:id/search_src_text')\nq.send_keys('Caprese Salad Skewers')\nimport time; time.sleep(.5)\n{'titles':[e.text for e in driver.find_elements(AppiumBy.ID,'com.flauschcode.broccoli:id/card_text_view_title')],'descriptions':[e.text for e in driver.find_elements(AppiumBy.ID,'com.flauschcode.broccoli:id/card_text_view_description')]}"
+    },
+    "responseSourceLine": 2356,
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "titles": [
+          "Caprese Salad Skewers",
+          "Caprese Salad Skewers"
+        ],
+        "descriptions": [
+          "A delicious and healthy choice for any time of the day.",
+          "An ideal recipe for experimenting with different flavors and ingredients.",
+          "An ideal recipe for experimenting with different flavors and ingredients."
+        ]
+      },
+      "executionCount": 15,
+      "durationMs": 1515,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "sourceLine": 2588,
+    "code": "desc='An ideal recipe for experimenting with different flavors and ingredients.'\ncard=driver.find_element(AppiumBy.XPATH, f\"//*[@resource-id='com.flauschcode.broccoli:id/card_text_view_description' and @text={desc!r}]/ancestor::androidx.cardview.widget.CardView\")\ncard.click()\nWebDriverWait(driver,5).until(lambda d: len(d.find_elements(AppiumBy.ID,'com.flauschcode.broccoli:id/card_text_view_title'))==0)\n{'facts':visible_facts()[:60]}",
+    "arguments": {
+      "code": "desc='An ideal recipe for experimenting with different flavors and ingredients.'\ncard=driver.find_element(AppiumBy.XPATH, f\"//*[@resource-id='com.flauschcode.broccoli:id/card_text_view_description' and @text={desc!r}]/ancestor::androidx.cardview.widget.CardView\")\ncard.click()\nWebDriverWait(driver,5).until(lambda d: len(d.find_elements(AppiumBy.ID,'com.flauschcode.broccoli:id/card_text_view_title'))==0)\n{'facts':visible_facts()[:60]}"
+    },
+    "responseSourceLine": 2593,
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "facts": [
+          {
+            "class": "android.widget.FrameLayout",
+            "id": "com.flauschcode.broccoli:id/toolbar_layout",
+            "text": "",
+            "desc": "Caprese Salad Skewers",
+            "clickable": "false",
+            "bounds": "[0,0][1080,275]"
+          },
+          {
+            "class": "android.widget.ImageView",
+            "id": "com.flauschcode.broccoli:id/backdrop",
+            "text": "",
+            "desc": "Recipe photo",
+            "clickable": "true",
+            "bounds": "[0,0][1080,275]"
+          },
+          {
+            "class": "android.view.ViewGroup",
+            "id": "com.flauschcode.broccoli:id/toolbar",
+            "text": "",
+            "desc": "null",
+            "clickable": "true",
+            "bounds": "[0,128][1080,275]"
+          },
+          {
+            "class": "android.widget.ImageButton",
+            "id": "null",
+            "text": "",
+            "desc": "Navigate up",
+            "clickable": "true",
+            "bounds": "[0,128][147,275]"
+          },
+          {
+            "class": "android.widget.Button",
+            "id": "com.flauschcode.broccoli:id/action_details_like",
+            "text": "",
+            "desc": "Mark as favorite",
+            "clickable": "true",
+            "bounds": "[848,138][975,264]"
+          },
+          {
+            "class": "android.widget.ImageView",
+            "id": "null",
+            "text": "",
+            "desc": "More options",
+            "clickable": "true",
+            "bounds": "[975,138][1080,264]"
+          },
+          {
+            "class": "android.widget.TextView",
+            "id": "com.flauschcode.broccoli:id/details_title",
+            "text": "Caprese Salad Skewers",
+            "desc": "null",
+            "clickable": "false",
+            "bounds": "[42,317][1038,395]"
+          },
+          {
+            "class": "android.widget.ImageView",
+            "id": "com.flauschcode.broccoli:id/details_icon_servings",
+            "text": "",
+            "desc": "Servings",
+            "clickable": "false",
+            "bounds": "[42,437][105,494]"
+          },
+          {
+            "class": "android.widget.TextView",
+            "id": "com.flauschcode.broccoli:id/details_servings",
+            "text": "1 serving",
+            "desc": "null",
+            "clickable": "false",
+            "bounds": "[105,437][400,488]"
+          },
+          {
+            "class": "android.widget.ImageView",
+            "id": "com.flauschcode.broccoli:id/details_icon_preparation_time",
+            "text": "",
+            "desc": "Time",
+            "clickable": "false",
+            "bounds": "[400,437][463,494]"
+          },
+          {
+            "class": "android.widget.TextView",
+            "id": "com.flauschcode.broccoli:id/details_preparation_time",
+            "text": "30 mins",
+            "desc": "null",
+            "clickable": "false",
+            "bounds": "[476,437][607,488]"
+          },
+          {
+            "class": "android.widget.TextView",
+            "id": "com.flauschcode.broccoli:id/details_description",
+            "text": "An ideal recipe for experimenting with different flavors and ingredients.",
+            "desc": "null",
+            "clickable": "false",
+            "bounds": "[42,536][1038,630]"
+          },
+          {
+            "class": "android.widget.TextView",
+            "id": "null",
+            "text": "Ingredients",
+            "desc": "null",
+            "clickable": "false",
+            "bounds": "[42,685][276,748]"
+          },
+          {
+            "class": "android.widget.TextView",
+            "id": "com.flauschcode.broccoli:id/ingredient_text",
+            "text": "various amounts",
+            "desc": "null",
+            "clickable": "false",
+            "bounds": "[42,761][315,812]"
+          },
+          {
+            "class": "android.widget.TextView",
+            "id": "null",
+            "text": "Directions",
+            "desc": "null",
+            "clickable": "false",
+            "bounds": "[42,854][253,917]"
+          },
+          {
+            "class": "android.widget.TextView",
+            "id": "com.flauschcode.broccoli:id/direction_position",
+            "text": "1",
+            "desc": "null",
+            "clickable": "false",
+            "bounds": "[55,943][76,994]"
+          },
+          {
+            "class": "android.widget.TextView",
+            "id": "com.flauschcode.broccoli:id/direction_text",
+            "text": "Thread cherry tomatoes, basil leaves, and mozzarella balls onto skewers. Drizzle with balsamic glaze. Try adding a pinch of your favorite spices for extra flavor.",
+            "desc": "null",
+            "clickable": "false",
+            "bounds": "[102,943][1025,1080]"
+          },
+          {
+            "class": "android.widget.ImageButton",
+            "id": "com.flauschcode.broccoli:id/fab_cooking_assistant",
+            "text": "",
+            "desc": "Cook",
+            "clickable": "true",
+            "bounds": "[891,2148][1038,2295]"
+          }
+        ]
+      },
+      "executionCount": 16,
+      "durationMs": 2452,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "sourceLine": 2690,
+    "code": "driver.find_element(AppiumBy.ACCESSIBILITY_ID,'More options').click()\nWebDriverWait(driver,3).until(lambda d: len(d.find_elements(AppiumBy.XPATH,\"//*[@text='Delete']\"))>0)\n{'facts':visible_facts()[-15:]}",
+    "arguments": {
+      "code": "driver.find_element(AppiumBy.ACCESSIBILITY_ID,'More options').click()\nWebDriverWait(driver,3).until(lambda d: len(d.find_elements(AppiumBy.XPATH,\"//*[@text='Delete']\"))>0)\n{'facts':visible_facts()[-15:]}"
+    },
+    "responseSourceLine": 2695,
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "facts": [
+          {
+            "class": "android.widget.LinearLayout",
+            "id": "null",
+            "text": "",
+            "desc": "null",
+            "clickable": "true",
+            "bounds": "[555,160][1070,286]"
+          },
+          {
+            "class": "android.widget.TextView",
+            "id": "com.flauschcode.broccoli:id/title",
+            "text": "Share",
+            "desc": "null",
+            "clickable": "false",
+            "bounds": "[597,194][1028,251]"
+          },
+          {
+            "class": "android.widget.LinearLayout",
+            "id": "null",
+            "text": "",
+            "desc": "null",
+            "clickable": "true",
+            "bounds": "[555,286][1070,412]"
+          },
+          {
+            "class": "android.widget.TextView",
+            "id": "com.flauschcode.broccoli:id/title",
+            "text": "Share as file",
+            "desc": "null",
+            "clickable": "false",
+            "bounds": "[597,320][1028,377]"
+          },
+          {
+            "class": "android.widget.LinearLayout",
+            "id": "null",
+            "text": "",
+            "desc": "null",
+            "clickable": "true",
+            "bounds": "[555,412][1070,538]"
+          },
+          {
+            "class": "android.widget.TextView",
+            "id": "com.flauschcode.broccoli:id/title",
+            "text": "Edit",
+            "desc": "null",
+            "clickable": "false",
+            "bounds": "[597,446][1028,503]"
+          },
+          {
+            "class": "android.widget.LinearLayout",
+            "id": "null",
+            "text": "",
+            "desc": "null",
+            "clickable": "true",
+            "bounds": "[555,538][1070,664]"
+          },
+          {
+            "class": "android.widget.TextView",
+            "id": "com.flauschcode.broccoli:id/title",
+            "text": "Delete",
+            "desc": "null",
+            "clickable": "false",
+            "bounds": "[597,572][1028,629]"
+          }
+        ]
+      },
+      "executionCount": 17,
+      "durationMs": 1270,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "sourceLine": 2793,
+    "code": "driver.find_element(AppiumBy.XPATH,\"//*[@text='Delete']\").click()\nWebDriverWait(driver,3).until(lambda d: len(d.find_elements(AppiumBy.ID,'android:id/button1'))>0)\n{'facts':visible_facts()[-15:]}",
+    "arguments": {
+      "code": "driver.find_element(AppiumBy.XPATH,\"//*[@text='Delete']\").click()\nWebDriverWait(driver,3).until(lambda d: len(d.find_elements(AppiumBy.ID,'android:id/button1'))>0)\n{'facts':visible_facts()[-15:]}"
+    },
+    "responseSourceLine": 2798,
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "facts": [
+          {
+            "class": "android.widget.TextView",
+            "id": "android:id/message",
+            "text": "Delete this recipe?",
+            "desc": "null",
+            "clickable": "false",
+            "bounds": "[70,1123][1010,1180]"
+          },
+          {
+            "class": "android.widget.Button",
+            "id": "android:id/button2",
+            "text": "CANCEL",
+            "desc": "null",
+            "clickable": "true",
+            "bounds": "[499,1213][743,1378]"
+          },
+          {
+            "class": "android.widget.Button",
+            "id": "android:id/button1",
+            "text": "DELETE",
+            "desc": "null",
+            "clickable": "true",
+            "bounds": "[743,1213][978,1378]"
+          }
+        ]
+      },
+      "executionCount": 18,
+      "durationMs": 1058,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "sourceLine": 3033,
+    "code": "driver.find_element(AppiumBy.ID,'android:id/button1').click()\nWebDriverWait(driver,5).until(lambda d: len(d.find_elements(AppiumBy.ID,'com.flauschcode.broccoli:id/card_text_view_description'))>0)\n{'titles':[e.text for e in driver.find_elements(AppiumBy.ID,'com.flauschcode.broccoli:id/card_text_view_title')],'descriptions':[e.text for e in driver.find_elements(AppiumBy.ID,'com.flauschcode.broccoli:id/card_text_view_description')]}",
+    "arguments": {
+      "code": "driver.find_element(AppiumBy.ID,'android:id/button1').click()\nWebDriverWait(driver,5).until(lambda d: len(d.find_elements(AppiumBy.ID,'com.flauschcode.broccoli:id/card_text_view_description'))>0)\n{'titles':[e.text for e in driver.find_elements(AppiumBy.ID,'com.flauschcode.broccoli:id/card_text_view_title')],'descriptions':[e.text for e in driver.find_elements(AppiumBy.ID,'com.flauschcode.broccoli:id/card_text_view_description')]}"
+    },
+    "responseSourceLine": 3038,
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "titles": [
+          "Caprese Salad Skewers",
+          "Caprese Salad Skewers",
+          "Caprese Salad Skewers",
+          "Caprese Salad Skewers"
+        ],
+        "descriptions": [
+          "An ideal recipe for experimenting with different flavors and ingredients.",
+          "An ideal recipe for experimenting with different flavors and ingredients.",
+          "An ideal recipe for experimenting with different flavors and ingredients."
+        ]
+      },
+      "executionCount": 19,
+      "durationMs": 1437,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "sourceLine": 3380,
+    "code": "desc='An ideal recipe for experimenting with different flavors and ingredients.'\ncard=driver.find_element(AppiumBy.XPATH, f\"//*[@resource-id='com.flauschcode.broccoli:id/card_text_view_description' and @text={desc!r}]/ancestor::androidx.cardview.widget.CardView\")\ncard.click()\nWebDriverWait(driver,4).until(lambda d: len(d.find_elements(AppiumBy.ACCESSIBILITY_ID,'More options'))>0)\ndriver.find_element(AppiumBy.ACCESSIBILITY_ID,'More options').click()\nWebDriverWait(driver,3).until(lambda d: len(d.find_elements(AppiumBy.XPATH,\"//*[@text='Delete']\"))>0)\ndriver.find_element(AppiumBy.XPATH,\"//*[@text='Delete']\").click()\nWebDriverWait(driver,3).until(lambda d: len(d.find_elements(AppiumBy.ID,'android:id/button1'))>0)\ndriver.find_element(AppiumBy.ID,'android:id/button1').click()\nWebDriverWait(driver,5).until(lambda d: len(d.find_elements(AppiumBy.ID,'com.flauschcode.broccoli:id/card_text_view_description'))>0)\n{'remainingVisibleIdeal':len(driver.find_elements(AppiumBy.XPATH,f\"//*[@resource-id='com.flauschcode.broccoli:id/card_text_view_description' and @text={desc!r}]\"))}",
+    "arguments": {
+      "code": "desc='An ideal recipe for experimenting with different flavors and ingredients.'\ncard=driver.find_element(AppiumBy.XPATH, f\"//*[@resource-id='com.flauschcode.broccoli:id/card_text_view_description' and @text={desc!r}]/ancestor::androidx.cardview.widget.CardView\")\ncard.click()\nWebDriverWait(driver,4).until(lambda d: len(d.find_elements(AppiumBy.ACCESSIBILITY_ID,'More options'))>0)\ndriver.find_element(AppiumBy.ACCESSIBILITY_ID,'More options').click()\nWebDriverWait(driver,3).until(lambda d: len(d.find_elements(AppiumBy.XPATH,\"//*[@text='Delete']\"))>0)\ndriver.find_element(AppiumBy.XPATH,\"//*[@text='Delete']\").click()\nWebDriverWait(driver,3).until(lambda d: len(d.find_elements(AppiumBy.ID,'android:id/button1'))>0)\ndriver.find_element(AppiumBy.ID,'android:id/button1').click()\nWebDriverWait(driver,5).until(lambda d: len(d.find_elements(AppiumBy.ID,'com.flauschcode.broccoli:id/card_text_view_description'))>0)\n{'remainingVisibleIdeal':len(driver.find_elements(AppiumBy.XPATH,f\"//*[@resource-id='com.flauschcode.broccoli:id/card_text_view_description' and @text={desc!r}]\"))}"
+    },
+    "responseSourceLine": 3385,
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "remainingVisibleIdeal": 2
+      },
+      "executionCount": 20,
+      "durationMs": 4483,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "sourceLine": 3712,
+    "code": "card=driver.find_element(AppiumBy.XPATH, f\"//*[@resource-id='com.flauschcode.broccoli:id/card_text_view_description' and @text={desc!r}]/ancestor::androidx.cardview.widget.CardView\")\ncard.click()\nWebDriverWait(driver,4).until(lambda d: len(d.find_elements(AppiumBy.ACCESSIBILITY_ID,'More options'))>0)\ndriver.find_element(AppiumBy.ACCESSIBILITY_ID,'More options').click()\nWebDriverWait(driver,3).until(lambda d: len(d.find_elements(AppiumBy.XPATH,\"//*[@text='Delete']\"))>0)\ndriver.find_element(AppiumBy.XPATH,\"//*[@text='Delete']\").click()\nWebDriverWait(driver,3).until(lambda d: len(d.find_elements(AppiumBy.ID,'android:id/button1'))>0)\ndriver.find_element(AppiumBy.ID,'android:id/button1').click()\nWebDriverWait(driver,5).until(lambda d: len(d.find_elements(AppiumBy.ID,'com.flauschcode.broccoli:id/card_text_view_description'))>0)\n{'remainingVisibleIdeal':len(driver.find_elements(AppiumBy.XPATH,f\"//*[@resource-id='com.flauschcode.broccoli:id/card_text_view_description' and @text={desc!r}]\"))}",
+    "arguments": {
+      "code": "card=driver.find_element(AppiumBy.XPATH, f\"//*[@resource-id='com.flauschcode.broccoli:id/card_text_view_description' and @text={desc!r}]/ancestor::androidx.cardview.widget.CardView\")\ncard.click()\nWebDriverWait(driver,4).until(lambda d: len(d.find_elements(AppiumBy.ACCESSIBILITY_ID,'More options'))>0)\ndriver.find_element(AppiumBy.ACCESSIBILITY_ID,'More options').click()\nWebDriverWait(driver,3).until(lambda d: len(d.find_elements(AppiumBy.XPATH,\"//*[@text='Delete']\"))>0)\ndriver.find_element(AppiumBy.XPATH,\"//*[@text='Delete']\").click()\nWebDriverWait(driver,3).until(lambda d: len(d.find_elements(AppiumBy.ID,'android:id/button1'))>0)\ndriver.find_element(AppiumBy.ID,'android:id/button1').click()\nWebDriverWait(driver,5).until(lambda d: len(d.find_elements(AppiumBy.ID,'com.flauschcode.broccoli:id/card_text_view_description'))>0)\n{'remainingVisibleIdeal':len(driver.find_elements(AppiumBy.XPATH,f\"//*[@resource-id='com.flauschcode.broccoli:id/card_text_view_description' and @text={desc!r}]\"))}"
+    },
+    "responseSourceLine": 3717,
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "remainingVisibleIdeal": 2
+      },
+      "executionCount": 21,
+      "durationMs": 5124,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "sourceLine": 4061,
+    "code": "card=driver.find_element(AppiumBy.XPATH, f\"//*[@resource-id='com.flauschcode.broccoli:id/card_text_view_description' and @text={desc!r}]/ancestor::androidx.cardview.widget.CardView\")\ncard.click()\nWebDriverWait(driver,4).until(lambda d: len(d.find_elements(AppiumBy.ACCESSIBILITY_ID,'More options'))>0)\ndriver.find_element(AppiumBy.ACCESSIBILITY_ID,'More options').click()\nWebDriverWait(driver,3).until(lambda d: len(d.find_elements(AppiumBy.XPATH,\"//*[@text='Delete']\"))>0)\ndriver.find_element(AppiumBy.XPATH,\"//*[@text='Delete']\").click()\nWebDriverWait(driver,3).until(lambda d: len(d.find_elements(AppiumBy.ID,'android:id/button1'))>0)\ndriver.find_element(AppiumBy.ID,'android:id/button1').click()\nWebDriverWait(driver,5).until(lambda d: len(d.find_elements(AppiumBy.ID,'com.flauschcode.broccoli:id/card_text_view_description'))>0)\n{'titles':[e.text for e in driver.find_elements(AppiumBy.ID,'com.flauschcode.broccoli:id/card_text_view_title')],'descriptions':[e.text for e in driver.find_elements(AppiumBy.ID,'com.flauschcode.broccoli:id/card_text_view_description')]}",
+    "arguments": {
+      "code": "card=driver.find_element(AppiumBy.XPATH, f\"//*[@resource-id='com.flauschcode.broccoli:id/card_text_view_description' and @text={desc!r}]/ancestor::androidx.cardview.widget.CardView\")\ncard.click()\nWebDriverWait(driver,4).until(lambda d: len(d.find_elements(AppiumBy.ACCESSIBILITY_ID,'More options'))>0)\ndriver.find_element(AppiumBy.ACCESSIBILITY_ID,'More options').click()\nWebDriverWait(driver,3).until(lambda d: len(d.find_elements(AppiumBy.XPATH,\"//*[@text='Delete']\"))>0)\ndriver.find_element(AppiumBy.XPATH,\"//*[@text='Delete']\").click()\nWebDriverWait(driver,3).until(lambda d: len(d.find_elements(AppiumBy.ID,'android:id/button1'))>0)\ndriver.find_element(AppiumBy.ID,'android:id/button1').click()\nWebDriverWait(driver,5).until(lambda d: len(d.find_elements(AppiumBy.ID,'com.flauschcode.broccoli:id/card_text_view_description'))>0)\n{'titles':[e.text for e in driver.find_elements(AppiumBy.ID,'com.flauschcode.broccoli:id/card_text_view_title')],'descriptions':[e.text for e in driver.find_elements(AppiumBy.ID,'com.flauschcode.broccoli:id/card_text_view_description')]}"
+    },
+    "responseSourceLine": 4066,
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "titles": [
+          "Caprese Salad Skewers",
+          "Caprese Salad Skewers"
+        ],
+        "descriptions": [
+          "A delicious and healthy choice for any time of the day.",
+          "An ideal recipe for experimenting with different flavors and ingredients."
+        ]
+      },
+      "executionCount": 22,
+      "durationMs": 4629,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "sourceLine": 4202,
+    "code": "driver.quit()\n{'ownedSessionId': session_id, 'quitReturned': True}",
+    "arguments": {
+      "code": "driver.quit()\n{'ownedSessionId': session_id, 'quitReturned': True}"
+    },
+    "responseSourceLine": 4207,
+    "response": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "ownedSessionId": "87bf18c9-1727-408e-bde8-d1b21e56e52f",
+        "quitReturned": true
+      },
+      "executionCount": 23,
+      "durationMs": 179,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  }
+]

@@ -1,0 +1,97 @@
+{
+  "runtime": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/bin/python",
+  "code": "import json,sys,itertools,dataclasses\nfrom android_world.task_evals.single.recipe import RecipeDeleteDuplicateRecipes2\nfrom android_world.task_evals.utils.sqlite_schema_utils import Recipe\nparams=json.loads(sys.argv[1])\nrows=[Recipe(**{**row,'recipeId':i+1}) for i,row in enumerate(params['noise_row_objects']+params['row_objects'])]\ntask=object.__new__(RecipeDeleteDuplicateRecipes2)\ntargets=rows[-2:]\ntask.rows_to_delete=targets\ndef unique_count(items):\n return len({tuple((field.name,getattr(row,field.name)) for field in dataclasses.fields(row) if field.name!='recipeId') for row in items})\ndef scenario(deleted):\n after=[row for row in rows if row.recipeId not in deleted]\n return {'syntheticDeletedIds':sorted(deleted),'pureInstalledPredicate':task.validate_deletion_integrity(rows,after),'remainingRows':len(after),'remainingUniqueContents':unique_count(after)}\ngroup=[r.recipeId for r in rows if r.title==targets[0].title and r.description==targets[0].description]\nresult={'scope':'Pure installed validation helper only, synthetic IDs from original params; no task init/env/scorer/device/DB access','beforeRows':len(rows),'beforeUniqueContents':unique_count(rows),'deleteFirstTargetOnly':scenario({targets[0].recipeId}),'deleteSecondTargetOnly':scenario({targets[1].recipeId}),'deleteBothTargets':scenario({r.recipeId for r in targets}),'allFourOfFiveCombinations':[scenario(set(ids)) for ids in itertools.combinations(group,4)]}\nassert result['deleteFirstTargetOnly']['pureInstalledPredicate'] is True\nassert result['deleteSecondTargetOnly']['pureInstalledPredicate'] is True\nassert result['deleteBothTargets']['pureInstalledPredicate'] is False\nassert len(result['allFourOfFiveCombinations'])==5\nassert all(r['pureInstalledPredicate'] is False and r['remainingRows']==8 and r['remainingUniqueContents']==8 for r in result['allFourOfFiveCombinations'])\nprint(json.dumps(result,ensure_ascii=False))\n",
+  "exitCode": 0,
+  "stderr": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/pydub/utils.py:170: RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work\n  warn(\"Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work\", RuntimeWarning)\n",
+  "actualOutput": {
+    "scope": "Pure installed validation helper only, synthetic IDs from original params; no task init/env/scorer/device/DB access",
+    "beforeRows": 12,
+    "beforeUniqueContents": 11,
+    "deleteFirstTargetOnly": {
+      "syntheticDeletedIds": [
+        11
+      ],
+      "pureInstalledPredicate": true,
+      "remainingRows": 11,
+      "remainingUniqueContents": 11
+    },
+    "deleteSecondTargetOnly": {
+      "syntheticDeletedIds": [
+        12
+      ],
+      "pureInstalledPredicate": true,
+      "remainingRows": 11,
+      "remainingUniqueContents": 11
+    },
+    "deleteBothTargets": {
+      "syntheticDeletedIds": [
+        11,
+        12
+      ],
+      "pureInstalledPredicate": false,
+      "remainingRows": 10,
+      "remainingUniqueContents": 10
+    },
+    "allFourOfFiveCombinations": [
+      {
+        "syntheticDeletedIds": [
+          7,
+          8,
+          9,
+          11
+        ],
+        "pureInstalledPredicate": false,
+        "remainingRows": 8,
+        "remainingUniqueContents": 8
+      },
+      {
+        "syntheticDeletedIds": [
+          7,
+          8,
+          9,
+          12
+        ],
+        "pureInstalledPredicate": false,
+        "remainingRows": 8,
+        "remainingUniqueContents": 8
+      },
+      {
+        "syntheticDeletedIds": [
+          7,
+          8,
+          11,
+          12
+        ],
+        "pureInstalledPredicate": false,
+        "remainingRows": 8,
+        "remainingUniqueContents": 8
+      },
+      {
+        "syntheticDeletedIds": [
+          7,
+          9,
+          11,
+          12
+        ],
+        "pureInstalledPredicate": false,
+        "remainingRows": 8,
+        "remainingUniqueContents": 8
+      },
+      {
+        "syntheticDeletedIds": [
+          8,
+          9,
+          11,
+          12
+        ],
+        "pureInstalledPredicate": false,
+        "remainingRows": 8,
+        "remainingUniqueContents": 8
+      }
+    ]
+  },
+  "setupFailures": [
+    "First pure invocation supplied duplicate recipeId keyword because original params already contain it; corrected to replace with synthetic IDs.",
+    "Second pure invocation supplied a third argument to the two-argument validator; read actual signature and set rows_to_delete on uninitialized task instance. Both setup failures had no env/device/external operations."
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+    "-s",
+    "emulator-5554",
+    "logcat",
+    "-d",
+    "-v",
+    "threadtime",
+    "-s",
+    "Watchdog",
+    "SystemServer"
+  ],
+  "returnCode": 0,
+  "stdout": "--------- beginning of system\n11-07 08:46:58.723   500   500 I SystemServer: Entered the Android system server!\n11-07 08:46:58.888   500   500 I SystemServer: Reading configuration...\n11-07 08:47:00.027   500   500 I Watchdog: Pausing HandlerChecker: main thread for reason: packagemanagermain. Pause count: 1\n11-07 08:47:00.363   500   500 I Watchdog: Resuming HandlerChecker: main thread for reason: packagemanagermain. Pause count: 0\n11-07 08:47:00.365   500   500 I Watchdog: Pausing HandlerChecker: main thread for reason: moveab. Pause count: 1\n11-07 08:47:00.365   500   500 I Watchdog: Resuming HandlerChecker: main thread for reason: moveab. Pause count: 0\n11-07 08:47:00.623   500   581 I SystemServer: SecondaryZygotePreload\n11-07 08:47:00.644   500   500 I Watchdog: Watchdog timeout updated to 60000 millis\n11-07 08:47:00.764   500   500 I Watchdog: Pausing HandlerChecker: main thread for reason: dexopt. Pause count: 1\n11-07 08:47:00.764   500   500 I Watchdog: Resuming HandlerChecker: main thread for reason: dexopt. Pause count: 0\n11-07 08:47:00.778   500   500 D SystemServer: AttentionService is not configured on this device\n11-07 08:47:00.778   500   500 D SystemServer: RotationResolverService is not configured on this device\n11-07 08:47:01.288   500   500 I SystemServer: Making services ready\n11-07 08:47:01.407   500   581 I SystemServer: WebViewFactoryPreparation\n11-07 08:47:01.868   500   531 I Watchdog: Interesting Java process com.android.phone started. Pid 864\n11-07 08:47:04.717   500   531 I Watchdog: Interesting Java process com.google.android.providers.media.module started. Pid 1444\n",
+  "stderr": "",
+  "observedAtUnix": 1794012731.629021
+}

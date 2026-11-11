@@ -1,0 +1,13 @@
+{
+  "command": [
+    "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+    "-s",
+    "emulator-5554",
+    "shell",
+    "su 0 find /data/data/org.videolan.vlc/shared_prefs -maxdepth 1 -type f"
+  ],
+  "returnCode": 0,
+  "stdout": "/data/data/org.videolan.vlc/shared_prefs/org.videolan.vlc_preferences.xml\n",
+  "stderr": "",
+  "observedAtUnix": 1794012484.417987
+}

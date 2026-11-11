@@ -1,0 +1,25 @@
+{
+  "serviceName": "Aw014CurrentStack20261109",
+  "supervisorPid": 18842,
+  "lifetimeMode": "persist",
+  "launchConfig": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/amkernel-0.1.4-r15-current-stack-20261109T154403Z/launch-config.json",
+  "launchState": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/amkernel-0.1.4-r15-current-stack-20261109T154403Z/launch-state.json",
+  "campaigns": {
+    "rehearsal": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/campaigns/amkernel-0.1.4-r15-current-stack-rehearsal-20261109T154403Z",
+    "calibration": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/campaigns/amkernel-0.1.4-r15-current-stack-calibration-20261109T154403Z",
+    "full": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z"
+  },
+  "existingServices": {
+    "appium": {
+      "serviceName": "ScreenshotControlAppium20261107",
+      "pid": 16153,
+      "log": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/screenshot-video-controls-20261106T231029Z/appium.log"
+    },
+    "emulator": {
+      "serviceName": "FullCoverageHeadlessEmulator20261107",
+      "pid": 22585
+    }
+  },
+  "gatePolicy": "sequential existing CLI; stop on first failed gate; no retry/reconfiguration by launcher",
+  "firstEpisodeMonitor": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/amkernel-0.1.4-r15-current-stack-20261109T154403Z/wait-first-full.py"
+}

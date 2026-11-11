@@ -1,0 +1,41 @@
+{
+  "scope": "Offline installed initialization/source and exact parameter-group analysis only. Hidden evaluator grouping is not Agent-observed knowledge, a suggested track set or an official answer.",
+  "identity": {
+    "index": 60,
+    "seed": 217200551,
+    "paramsSha256": "dcd892c246b616e950a794dd086315709257ad98fcc14d0242fc94825464b308"
+  },
+  "groups": {
+    "filesCount": 10,
+    "noiseFilesCount": 5,
+    "setsDisjoint": true,
+    "exactRequestedGroupSumMs": 2850000,
+    "requestedNoisePerTrackRangeMs": [
+      180000,
+      300000
+    ],
+    "requestedNoiseFiveTrackSumRangeMs": [
+      900000,
+      1500000
+    ]
+  },
+  "source": {
+    "durationInitialize": "retro_music.py260\u2013284 override, no super.initialize_task call",
+    "filesGenerator": "_generate_list_with_sum236\u2013243:9 sortedcuts from0..2850000 with0/end, differences form10 nonnegativeintervals summing exactly2850000. No individual3\u20135minute bound.",
+    "noiseGenerator": "Each noise duration independently requested by random.randint180000..300000 inclusive; artistchoice also consumesRNG.",
+    "mediaHandoff": "write_mp3_file_to_device\u2192_create_test_mp3 uses pydub silent(duration=requestedms) thenMP3export; actualmedia/scanned/DBduration not measured in this slice.",
+    "existingLibraryLimit": "This override itself does not call base clear_internal_storage. Writing15 specifiedfiles does not by itself prove the historical whole music library had exactly15; no extra-library condition is alleged as a historical cause."
+  },
+  "agentKnowledgeBoundary": {
+    "promptOnly": "Useprovided songs to create named playlist45\u201350minutes; no files/noise distinction or pertrack durations disclosed",
+    "cannotInferDurationFromCount": "10 selected\u2260the hidden10filegroup,12 selected is not by itselfinvalid; pure12row inrange fixture passes, not proof this historical library had a feasible12track subset",
+    "cannotRetrofitHiddenSolution": "No proposal to give hidden memberships/durations/reference answer toAgent"
+  },
+  "isolatedHelperCodeExample": "owner-installed-pure-predicate-smoke.json; RNG0 not frozen seed, officialglobalRNGunmodified",
+  "notReconstructed": [
+    "Actual pertrackdurations",
+    "Original encoder padding/media-store values",
+    "Original playlistDB evaluatorinput",
+    "Agent counterfactual successful subset"
+  ]
+}

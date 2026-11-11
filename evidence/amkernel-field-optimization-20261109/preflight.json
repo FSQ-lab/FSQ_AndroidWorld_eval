@@ -1,0 +1,53 @@
+{
+  "observedAtUnix": 1794191374.4177,
+  "processes": [
+    "15894 67664 Sat Nov  7 07:10:11 2026     /Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python -I -u -X utf8 -m amkernel.runner --request-fd 10 --response-fd 13 --diagnostic-fd 15",
+    "22534 67661 Sat Nov  7 08:46:32 2026     /Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/bin/python -u /var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/omp-python-runner-501/runner-20pmlw5lw3wjb.py",
+    "22589     1 Sat Nov  7 08:46:52 2026     /Users/qunmi/Library/Android/sdk/emulator/crashpad_handler --no-rate-limit --monitor-pid=22585 --database=/tmp/android-qunmi/emu-crash-37.2.13.db --url=https://clients2.google.com/cr/report --annotation=prod=AndroidEmulator --annotation=ver=37.2.13-16740729 --handshake-fd=4",
+    "30655 13285 Fri Nov  6 17:58:14 2026     /Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python -I -u -X utf8 -m amkernel.runner --request-fd 10 --response-fd 13 --diagnostic-fd 15",
+    "32624 13280 Fri Nov  6 18:26:02 2026     /Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/bin/python -u /var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/omp-python-runner-501/runner-2y055qoyfok9i.py",
+    "46721 18243 Thu Nov  5 20:43:04 2026     /Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python -u /var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/omp-python-runner-501/runner-2y055qoyfok9i.py",
+    "58744 18243 Thu Nov  5 10:52:45 2026     /Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python -u /var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/omp-python-runner-501/runner-2y055qoyfok9i.py",
+    "67860 67661 Fri Nov  6 21:25:59 2026     /Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/bin/python -u /var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/omp-python-runner-501/runner-20pmlw5lw3wjb.py",
+    "79548 18243 Thu Nov  5 13:02:19 2026     /Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python -u /var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/omp-python-runner-501/runner-2y055qoyfok9i.py",
+    "81210 81209 Thu Nov  5 13:20:31 2026     /Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/ruff server",
+    "67664 67661 Fri Nov  6 21:23:25 2026     /Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python /Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/bin/amkernel",
+    "22585 87039 Sat Nov  7 08:46:52 2026     /Users/qunmi/Library/Android/sdk/emulator/qemu/darwin-aarch64/qemu-system-aarch64-headless -avd AndroidWorldAvd -port 5554 -grpc 8554 -read-only -no-snapshot-load -no-snapshot-save -no-audio -crash-report-mode never -no-window",
+    "16153 87039 Sat Nov  7 07:14:12 2026     node /opt/homebrew/bin/appium --address 127.0.0.1 --port 4723 --log evidence/screenshot-video-controls-20261106T231029Z/appium.log --log-timestamp --log-no-colors --log-level info",
+    "13285 13280 Fri Nov  6 17:15:15 2026     /Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python /Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/bin/amkernel"
+  ],
+  "status": {
+    "value": {
+      "ready": true,
+      "message": "The server is ready to accept new connections",
+      "build": {
+        "version": "3.7.0",
+        "git-sha": "bf464f57275cae0be106b43d190c98564ac59b0e",
+        "built": "2026-11-02 01:56:41 +0000"
+      }
+    }
+  },
+  "sessions": {
+    "error": "HTTP Error 404: Not Found"
+  },
+  "devices -l": {
+    "rc": 0,
+    "stdout": "List of devices attached\nemulator-5554          device product:sdk_gphone64_arm64 model:sdk_gphone64_arm64 device:emu64a transport_id:4\n\n",
+    "stderr": ""
+  },
+  "-s emulator-5554 shell cat /proc/sys/kernel/random/boot_id": {
+    "rc": 0,
+    "stdout": "0f36e370-012a-4423-a1f9-959beae8f90d\n",
+    "stderr": ""
+  },
+  "-s emulator-5554 shell pidof system_server surfaceflinger io.appium.uiautomator2.server io.appium.uiautomator2.server.test": {
+    "rc": 0,
+    "stdout": "333 500\n",
+    "stderr": ""
+  },
+  "-s emulator-5554 shell cmd appops get org.videolan.vlc MANAGE_EXTERNAL_STORAGE": {
+    "rc": 0,
+    "stdout": "Uid mode: MANAGE_EXTERNAL_STORAGE: deny\nMANAGE_EXTERNAL_STORAGE: default; time=-1116d20h11m21s5ms ago; rejectTime=-1116d20h10m0s685ms ago\n",
+    "stderr": ""
+  }
+}

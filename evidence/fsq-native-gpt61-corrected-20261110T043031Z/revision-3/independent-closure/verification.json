@@ -1,0 +1,315 @@
+{
+  "schemaVersion": 1,
+  "kind": "canonical_selfalias_delta_independent_verification",
+  "bindings": {
+    "files": [
+      {
+        "path": "src/fsq_androidworld_eval/fsq_evidence.py",
+        "sha256": "1d448e1ee60b0a1c00814d5ed0b10728172ae29f69078be104d69acafa4f9c03",
+        "matchesFrozen": true,
+        "sizeMatches": true
+      },
+      {
+        "path": "tests/test_fsq_evidence.py",
+        "sha256": "5fbb3b26c0c65a3f9b6bf52b7dd73bfe2fd357fd6280dba485fcaeae19f892a1",
+        "matchesFrozen": true,
+        "sizeMatches": true
+      },
+      {
+        "path": "tests/fixtures/fsq_native_swipe.json",
+        "sha256": "38c84f655fa2deb24e58075fde2d4dd08287e3d3c2cb6792779d0207df8bd866",
+        "matchesFrozen": true,
+        "sizeMatches": true
+      },
+      {
+        "path": "README.md",
+        "sha256": "636dd453a262d0830a6d1b0af9881870a5963a5c33ffe39fec05fb52c198d936",
+        "matchesFrozen": true,
+        "sizeMatches": true
+      }
+    ],
+    "deliveryArtifacts": [
+      {
+        "path": "report.md",
+        "matchesFrozen": true,
+        "sizeMatches": true
+      },
+      {
+        "path": "source-closure.json",
+        "matchesFrozen": true,
+        "sizeMatches": true
+      },
+      {
+        "path": "candidate-final-manifest.json",
+        "matchesFrozen": true,
+        "sizeMatches": true
+      },
+      {
+        "path": "candidate-final-manifest.json.sha256",
+        "matchesFrozen": true,
+        "sizeMatches": true
+      },
+      {
+        "path": "review-handoff.json",
+        "matchesFrozen": true,
+        "sizeMatches": true
+      },
+      {
+        "path": "fixture-provenance.json",
+        "matchesFrozen": true,
+        "sizeMatches": true
+      },
+      {
+        "path": "regression.json",
+        "matchesFrozen": true,
+        "sizeMatches": true
+      },
+      {
+        "path": "regression.stdout.log",
+        "matchesFrozen": true,
+        "sizeMatches": true
+      },
+      {
+        "path": "regression.stderr.log",
+        "matchesFrozen": true,
+        "sizeMatches": true
+      },
+      {
+        "path": "regression-pass.json",
+        "matchesFrozen": true,
+        "sizeMatches": true
+      },
+      {
+        "path": "regression-pass.stdout.log",
+        "matchesFrozen": true,
+        "sizeMatches": true
+      },
+      {
+        "path": "regression-pass.stderr.log",
+        "matchesFrozen": true,
+        "sizeMatches": true
+      },
+      {
+        "path": "offline-consumer-smoke.json",
+        "matchesFrozen": true,
+        "sizeMatches": true
+      }
+    ],
+    "candidateSha256": "d9f3237c0d6d26f512bfdd3870fd4563519fc24f6cae160beb93a015a597a057",
+    "sourceTreeSha256": "69158f28eadbcd1921bd58a4dd9207b7dcbc10d5fd2756507604313d163bf99c",
+    "currentSourceMapMatchesCandidate": true,
+    "runtimeDelta": [
+      "fsq_evidence.py"
+    ],
+    "inverseDeltaReconstructsRevision2Source": true,
+    "inverseDeltaSha256": "7447eed90507a4ca87119f1e42b20a665d92da9c90f4ed806fbe8c25acf9860e",
+    "identityDomainsChanged": [
+      "evaluator"
+    ],
+    "invariants": {
+      "tasks": true,
+      "target": true,
+      "protocol": true,
+      "paths": true,
+      "gates": true,
+      "status": true
+    },
+    "taskCount": 116,
+    "allGatesPending": true,
+    "candidateTopKeysUnchanged": true,
+    "campaignIds": {
+      "base": "fsq-native-gpt61-r2-final-5554-20261110",
+      "new": "fsq-native-gpt61-r3-canonical-swipe-20261110"
+    },
+    "unexpectedCandidateTopChanges": [],
+    "newlyAcceptedAliasSpellings": [
+      "swipe"
+    ],
+    "allOtherProducerAliasSpellingsStillRejected": true,
+    "producerCapabilityMapUnchanged": true,
+    "computedCurrentSourceTreeSha256": "69158f28eadbcd1921bd58a4dd9207b7dcbc10d5fd2756507604313d163bf99c",
+    "candidateSealMatches": true
+  },
+  "producerFixture": {
+    "sourceArtifactHashes": [
+      {
+        "name": "worker-result.json",
+        "sha256": "1271155cf5a262799d1ae0618e07942f8fac8d96e7a1a6de959ce9bd257b76b1",
+        "matchesProvenance": true,
+        "sizeMatches": true
+      },
+      {
+        "name": "fsq-task-result.private.json",
+        "sha256": "a72692b1fa1a46e6edde8a8a3c52fcb305a1a249d6bd91e3f5f9c7e69141d8fb",
+        "matchesProvenance": true,
+        "sizeMatches": true
+      },
+      {
+        "name": "fsq-verification.private.json",
+        "sha256": "3c1736a8a93a9292d1dcc02c2f22461be4e5f3d33ba5cd9aaeec886dab7f26ec",
+        "matchesProvenance": true,
+        "sizeMatches": true
+      },
+      {
+        "name": "native-action-audit.jsonl",
+        "sha256": "f2ea0879d959811348ecfe92793848a25421150d1ed2ebf27c746a2602c55aa5",
+        "matchesProvenance": true,
+        "sizeMatches": true
+      }
+    ],
+    "originalConsumerOrTaskExecuted": false,
+    "fixtureJournalMatchesItsEmbeddedEvents": true,
+    "journalShapeAndNumbersMatchProducer": true,
+    "allChangedJournalPaths": [
+      {
+        "path": "$[22].nativeTaskId",
+        "difference": "string_redaction"
+      },
+      {
+        "path": "$[22].taskId",
+        "difference": "string_redaction"
+      }
+    ],
+    "taskAndVerificationShapeAndNumbersPreserved": true,
+    "taskStringRedactionCount": 41,
+    "verificationStringRedactionCount": 6,
+    "resultStructuralDifferences": [
+      {
+        "path": "$.actionAudit",
+        "difference": "omitted"
+      },
+      {
+        "path": "$.terminationReason",
+        "difference": "omitted"
+      },
+      {
+        "path": "$.fsq.nativeReport",
+        "difference": "omitted"
+      },
+      {
+        "path": "$.fsq.nativeRunsRoot",
+        "difference": "omitted"
+      },
+      {
+        "path": "$.fsq.taskResult",
+        "difference": "omitted"
+      },
+      {
+        "path": "$.fsq.verification",
+        "difference": "omitted"
+      },
+      {
+        "path": "$.nativeTarget.appId",
+        "difference": "omitted"
+      },
+      {
+        "path": "$.nativeTarget.authentication",
+        "difference": "omitted"
+      },
+      {
+        "path": "$.nativeTarget.backend",
+        "difference": "omitted"
+      },
+      {
+        "path": "$.nativeTarget.maxTurns",
+        "difference": "omitted"
+      },
+      {
+        "path": "$.nativeTarget.reasoningEffort",
+        "difference": "omitted"
+      },
+      {
+        "path": "$.nativeTarget.requestedModel",
+        "difference": "omitted"
+      },
+      {
+        "path": "$.nativeTarget.requestedProvider",
+        "difference": "omitted"
+      },
+      {
+        "path": "$.nativeTarget.tracingEnabled",
+        "difference": "omitted"
+      },
+      {
+        "path": "$.cleanup.deviceRestored",
+        "difference": "omitted"
+      },
+      {
+        "path": "$.cleanup.note",
+        "difference": "omitted"
+      },
+      {
+        "path": "$.cleanup.workerProcessExitRequiredBeforeOracle",
+        "difference": "omitted"
+      }
+    ],
+    "resultNonstringChanges": [],
+    "originalIndependentJournalMatchesEmbedded": true,
+    "eventCount": 23,
+    "canonicalSwipeEvents": [
+      {
+        "capability": "swipe",
+        "countedWrite": true,
+        "event": "attempted",
+        "monotonic": 689163.62668325,
+        "phase": "action",
+        "sequence": 5,
+        "stepId": "agent-swipe-3",
+        "ticket": 3
+      },
+      {
+        "capability": "swipe",
+        "countedWrite": true,
+        "errorType": null,
+        "event": "succeeded",
+        "monotonic": 689168.088771083,
+        "phase": "action",
+        "sequence": 6,
+        "ticket": 3
+      }
+    ],
+    "controlVocabularyUnchanged": true,
+    "changedControlPaths": [],
+    "taskIdentityConsistent": true,
+    "targetIdentityPreserved": true
+  },
+  "original102ReadOnlyTerminal": {
+    "path": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-2/resource-admission-20261110/fsq-envprepare-r1-5554-20261110T065520Z/execution/smoke-102-SystemWifiTurnOff/result.json",
+    "sha256": "c1b8870e419f480f3af907fa62dec004265a09c506406ea3006037e8f0a0f414",
+    "classification": "invalid_agent",
+    "invalidReason": "invalid_agent",
+    "evidenceFailure": "native_evidence_invalid",
+    "officialReward": null,
+    "evaluatorCalls": 0,
+    "readOnlyObservation": true,
+    "consumerOrEvaluatorReexecuted": false
+  },
+  "runtimeProof": "Replacing only the new comment/predicate block by the old one reconstructs exactly the revision2 frozen fsq_evidence.py SHA2567447eed90507a4ca87119f1e42b20a665d92da9c90f4ed806fbe8c25acf9860e. This was byte reconstruction/hash comparison only, not old code/check execution. All other evaluator source file rows match revision2.",
+  "consumerProof": "consumer-proof.json",
+  "ownerRegressionAttribution": {
+    "reported": "313 passed, 1 opt-in macOS sandbox proof skipped",
+    "receipt": "../regression-pass.json",
+    "rerunByReviewer": false,
+    "noNewSandboxProofClaimed": true
+  },
+  "reviewerExecution": {
+    "canonicalAccepted": true,
+    "realAliasRejected": true,
+    "swipeWriteDisguiseRejected": true,
+    "cases": 3,
+    "oldCheckOr102Rerun": false,
+    "completeSuiteRerun": false,
+    "modelDeviceEvaluatorOrSharedServiceCalls": false,
+    "temporaryRootRemoved": true
+  },
+  "unchangedSafetyByExactByteDelta": [
+    "artifact path canonicalization/root containment/symlink/regular-file checks",
+    "artifact SHA/size/private visibility",
+    "TaskResult/main-runner summary/businessStatus provenance/no fallback",
+    "task/serial/native-return identity",
+    "event schema/sequence/ticket pairing/deadline/counters/maximum/close settlement",
+    "trusted process-group and oracle admission ordering",
+    "SDK/worker/sandbox/official scorer implementation"
+  ],
+  "liveAuthorized": false
+}

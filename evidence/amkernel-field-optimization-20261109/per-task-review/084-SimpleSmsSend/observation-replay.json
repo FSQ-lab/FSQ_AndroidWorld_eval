@@ -1,0 +1,66 @@
+{
+  "scope": "Replay of saved 084 tool envelopes and stepBudget snapshot; no Android/Appium run.",
+  "task": "SimpleSmsSend",
+  "goal": "Send SMS to +16597910719 with message: Beauty is in the eye of the beholder.",
+  "targetPackage": "com.simplemobiletools.smsmessenger",
+  "observedPackages": [
+    "com.google.android.apps.messaging",
+    "com.google.android.apps.nexuslauncher",
+    "com.simplemobiletools.smsmessenger"
+  ],
+  "targetAppObserved": true,
+  "targetReachedCell": 13,
+  "targetMainActivityObserved": ".activities.MainActivity",
+  "newConversationActivityObserved": ".activities.NewConversationActivity",
+  "recipientField": {
+    "id": "com.simplemobiletools.smsmessenger:id/new_conversation_address",
+    "beforeNewline": {
+      "value": "+16597910719",
+      "activity": ".activities.NewConversationActivity"
+    },
+    "afterNewline": ".activities.NewConversationActivity",
+    "afterNewlineText": " ",
+    "retypedValue": "+16597910719"
+  },
+  "newConversationConfirmInSavedObservation": false,
+  "savedObservationElementCountAfterNewline": 15,
+  "clickableAttributeRequestedByObservation": false,
+  "composerOrSendNodeObserved": false,
+  "messageTextEntered": false,
+  "sendAttemptInCode": false,
+  "actionKinds": [
+    "click",
+    "back",
+    "click",
+    "input",
+    "back",
+    "actions",
+    "actions",
+    "click",
+    "click",
+    "input",
+    "input",
+    "input"
+  ],
+  "executedActionCount": 12,
+  "maxSteps": 12,
+  "rejectedActionCount": 0,
+  "pythonCalls": 21,
+  "failedPythonCalls": 2,
+  "kernelStates": [
+    "alive"
+  ],
+  "rawFinalAssistantLine": 3280,
+  "cleanupSteerLine": 3153,
+  "normalizedFinalText": null,
+  "agentIndicatedDone": false,
+  "officialReward": 0.0,
+  "evaluator": "android_world.task_eval.is_successful",
+  "noOutgoingMessageProved": "Target app and NewConversationActivity were reached, but no message field or send control was ever observed; no send action appears in code or stepBudget. The address field was blank after newline and then re-filled at the last action.",
+  "priorFieldEvidenceNote": "The earlier live field report identified an unlabeled clickable new_conversation_confirm in the full XML. It is absent from this campaign saved observation; that prior observation is cross-check evidence, not replayable here.",
+  "limitations": [
+    "Campaign observations omit clickable/enabled state and the saved fact lists are bounded to 15 elements.",
+    "No screenshot was captured in 084; final app surface after quit is not available."
+  ],
+  "newAndroidRuns": 0
+}

@@ -1,0 +1,43 @@
+{
+  "originalSources": [
+    {
+      "path": "campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/episodes/074-SimpleCalendarEventsInTimeRange/attempt-1/raw-private/agent-events.jsonl",
+      "sha256": "93b4fc26c2aeb0ec0d6bebcb6ceebdb8ed3a88b4aab1ff263451d4a17a4eaf0a",
+      "unchanged": true
+    },
+    {
+      "path": "campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/episodes/074-SimpleCalendarEventsInTimeRange/attempt-1/result.json",
+      "sha256": "33ff05e7bdef04d1a8bd7f66a3a0751e87ec138dfd24b60fb8f9f97328ebfd4d",
+      "unchanged": true
+    },
+    {
+      "path": "campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/manifest.json",
+      "sha256": "dbb6fe354f9a1cf7b87e52feeafd08903596d87b8531c37c9d12a50b6dc6362c",
+      "unchanged": true
+    }
+  ],
+  "evidenceLinksValid": true,
+  "pythonExecCalls": 14,
+  "executedUiActions": 10,
+  "maxSteps": 10,
+  "rejectedActionCount": 0,
+  "predicateReplayExecuted": true,
+  "originalOfficialReward": 0.0,
+  "newAndroidRuns": 0,
+  "newAppiumSessions": 0,
+  "proposalChanged": false,
+  "rawFinalVsNormalized": {
+    "rawFinalLine": 3659,
+    "rawTaskOutcome": "unresolved",
+    "rawTaskOutcomeType": "string",
+    "normalizedFinalText": null,
+    "agentCompleted": false,
+    "agentAnswerValidContract": false,
+    "note": "Raw final self-report is truthful but is not a task answer; normalized finalText is null because the last answer came after cleanup. The primary loss is navigation/input, not answer capture."
+  },
+  "immutableCheckMethod": "sha256 of the original agent-events.jsonl, result.json, and manifest.json; hashes were read before and after the review writes and match.",
+  "missingEvidence": [
+    "No picker field value after clear/send_keys('20') and before OK.",
+    "No post-Weekly-view element tree; the L3526 failure happened before the final observation expression returned."
+  ]
+}

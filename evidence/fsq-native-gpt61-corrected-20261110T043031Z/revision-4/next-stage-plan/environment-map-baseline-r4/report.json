@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "kind": "supplemented_environment_map_baseline_delivery",
+  "recordedAtUtc": "2026-11-10T14:16:45.817082+00:00",
+  "classification": "Environment shared-asset baseline unmet in original qualification; not FSQ agent capability failure",
+  "immutablePriorEvidence": {
+    "mainGrantPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/authorization-approved-frozen-stage-plan.json",
+    "mainGrantByteSha256": "a44e1c48bb5564177cf651037387af11adf671ef75d722d1b6c0cd3c4db57dc6",
+    "mainGrantBindingSha256": "b5b15d69a3e41f0687c54d3e003f190f1883e6d43d9581aeb0c59d9f4e973a61",
+    "originalFailedReadiness": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/qualify/readiness.json",
+    "originalFailedReadinessSha256": "920100b4e656c506de85293e2463c0c832fe448e98d4345e3a81e85b55971692",
+    "originalClockReceipt": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/prepare-clock/clock-preparation.json",
+    "originalClockReceiptSha256": "1f420411b02434bdee8164c844d2c763abb47e67891d7a7223d510786a2e57b5",
+    "sourceChanged": false,
+    "originalUnknownCleanup": "preserved; not upgraded by this operation",
+    "originalRc1Interpretation": "Only sha256sum rc1 observed then; original stdout/stderr were not recorded. No failed SHA confirmation repeated; missing not inferred."
+  },
+  "supplement": {
+    "path": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/environment-map-baseline-r4/authorization-supplement.json",
+    "mainGrantUnchanged": true,
+    "windowUnchanged": true,
+    "newClockPreparation": false,
+    "perEpisodeBudgetsUnchanged": true
+  },
+  "mapBaseline": {
+    "complete": true,
+    "receipt": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/environment-map-baseline-r4/result.json",
+    "receiptByteSha256": "e83aa67e971952053aba6773945a305bbcde38fa96eeb5e1e71a1065bc8463c0",
+    "processReceipt": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/environment-map-baseline-r4/operation-process.json",
+    "capSeconds": 300,
+    "durationSeconds": 5.025365114212036,
+    "operations": 150,
+    "allCommandReturnCodesZero": true,
+    "guestAdbdRootRequested": false,
+    "writtenSha256": "57a1955c6f517a114999fa50480ecc1402ed9b524db602540ac1c08f57ff140e",
+    "sizeBytes": 7241271,
+    "stableIdentityBeforeAfterEqual": true,
+    "completeStdoutStderr": "Retained for every issued adb command in private result.json; no clipped success transcripts",
+    "ownedOuterProcess": {
+      "exitCode": 0,
+      "forced": false,
+      "spawnCount": 1,
+      "termination": null,
+      "timeoutSeconds": 300
+    },
+    "cleanupBoundary": {
+      "FSQFirst": "retained, no AMK release",
+      "adbClients": "each issued client synchronously waited/reaped; timeout kills/reaps only that client",
+      "environment": "not_created",
+      "guestEffects": "actual map/root changes retained; no rollback/unroot or global-clean claim",
+      "taskOrWorker": "not_started"
+    }
+  },
+  "officialSharedStorageLifecycle": {
+    "browserCalls": [
+      {
+        "source": "android_world/android_world/task_evals/single/browser.py",
+        "lines": "56-58",
+        "effect": "initialize_task calls clear_device_storage"
+      },
+      {
+        "source": "android_world/android_world/task_evals/single/browser.py",
+        "lines": "87-89",
+        "effect": "tear_down calls clear_device_storage"
+      },
+      {
+        "source": "android_world/android_world/task_evals/single/browser.py",
+        "line": 445,
+        "effect": "BrowserDraw inherits BrowserTask"
+      }
+    ],
+    "clearImplementation": {
+      "source": "android_world/android_world/task_evals/utils/user_data_generation.py",
+      "lines": "458-485",
+      "command": "shell find EMULATOR_DATA -mindepth 1 -type f -delete"
+    },
+    "rootConstant": {
+      "source": "android_world/android_world/env/device_constants.py",
+      "line": 23,
+      "EMULATOR_DATA": "/storage/emulated/0/"
+    },
+    "conclusion": "Official Browser lifecycle legitimately targets ordinary shared-storage files, including this external-map path. The map is a mutable baseline shared asset, not permanent device/app stable identity. This is source-level permitted effect, not proof of the unrecorded original rc1 stderr."
+  },
+  "freshQualification": {
+    "qualified": true,
+    "readiness": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/qualify-after-map-baseline/readiness.json",
+    "reportSha256": "fe413d66d4686e44faa0cf601d29be03057709300916bcc63c048de20d5a7bdf",
+    "checksAllTrue": [
+      "adbIsolation",
+      "apps",
+      "assets",
+      "baseData",
+      "coreEnvironment",
+      "snapshots",
+      "utc"
+    ],
+    "clock": {
+      "autoTime": "0",
+      "autoTimeZone": "0",
+      "timezone": "UTC"
+    },
+    "officialSnapshotRestores": 22,
+    "cleanup": {
+      "environment": "closed"
+    },
+    "error": null
+  },
+  "downstream": {
+    "commandScript": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/proposed-commands.sh",
+    "actualReadinessArgument": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/qualify-after-map-baseline/readiness.json",
+    "rehearse": {
+      "commandLaunched": true,
+      "terminalPending": true,
+      "output": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/rehearse",
+      "fromIndex": 0,
+      "tasks": 116,
+      "agentCalls": false,
+      "oldFourAttemptsResumed": false
+    },
+    "calibrate": "Only after full116 operations and cleanup actually pass; original12 only",
+    "run": "NOT RELEASED",
+    "FSQFirst": "retained"
+  }
+}

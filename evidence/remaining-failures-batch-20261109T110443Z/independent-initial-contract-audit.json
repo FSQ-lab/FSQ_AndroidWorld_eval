@@ -1,0 +1,297 @@
+{
+  "author": "w4:p2 independentbatch reviewer",
+  "rows": [
+    {
+      "index": 73,
+      "task": "SimpleCalendarEventsInNextWeek",
+      "family": "information_retrieval",
+      "officialResultIdentityVerified": true,
+      "irSubmission": true,
+      "originalAnswerAdmission": {
+        "sha256": null,
+        "validContract": false
+      },
+      "originalOutcomeType": "absent",
+      "relativeDateGoal": true,
+      "explicitTaskClockMissingInOriginalFirstPrompt": true,
+      "historicalCauseLimit": "Admission/source/goal evidence only; correctness and UI deviations reviewed separately, no reward recomputation.",
+      "sourceContract": "InformationRetrieval109-119 reads interaction_cache; r12runner139-148/753-759 admits nonempty stringtaskOutcome only; proto_utils147-180 comma splitting,float numeric parse,fuzzy string andequalanswer count; no DB lookup at IRscore time."
+    },
+    {
+      "index": 74,
+      "task": "SimpleCalendarEventsInTimeRange",
+      "family": "information_retrieval",
+      "officialResultIdentityVerified": true,
+      "irSubmission": true,
+      "originalAnswerAdmission": {
+        "sha256": null,
+        "validContract": false
+      },
+      "originalOutcomeType": "absent",
+      "relativeDateGoal": true,
+      "explicitTaskClockMissingInOriginalFirstPrompt": true,
+      "historicalCauseLimit": "Admission/source/goal evidence only; correctness and UI deviations reviewed separately, no reward recomputation.",
+      "sourceContract": "InformationRetrieval109-119 reads interaction_cache; r12runner139-148/753-759 admits nonempty stringtaskOutcome only; proto_utils147-180 comma splitting,float numeric parse,fuzzy string andequalanswer count; no DB lookup at IRscore time."
+    },
+    {
+      "index": 76,
+      "task": "SimpleCalendarFirstEventAfterStartTime",
+      "family": "information_retrieval",
+      "officialResultIdentityVerified": true,
+      "irSubmission": true,
+      "originalAnswerAdmission": {
+        "sha256": "27868453d9802031674fe420f0ab659de96e06e7280e25f5178d245a2789d44e",
+        "validContract": true
+      },
+      "originalOutcomeType": "str",
+      "relativeDateGoal": false,
+      "explicitTaskClockMissingInOriginalFirstPrompt": true,
+      "historicalCauseLimit": "Admission/source/goal evidence only; correctness and UI deviations reviewed separately, no reward recomputation.",
+      "sourceContract": "InformationRetrieval109-119 reads interaction_cache; r12runner139-148/753-759 admits nonempty stringtaskOutcome only; proto_utils147-180 comma splitting,float numeric parse,fuzzy string andequalanswer count; no DB lookup at IRscore time."
+    },
+    {
+      "index": 80,
+      "task": "SimpleDrawProCreateDrawing",
+      "family": "android",
+      "officialResultIdentityVerified": true,
+      "irSubmission": false,
+      "originalAnswerAdmission": null,
+      "originalOutcomeType": "absent",
+      "relativeDateGoal": false,
+      "explicitTaskClockMissingInOriginalFirstPrompt": true,
+      "historicalCauseLimit": "Admission/source/goal evidence only; correctness and UI deviations reviewed separately, no reward recomputation.",
+      "sourceContract": "SimpleDrawProCreateDrawing38-58 checks namedfile existence in EMULATOR_DATA/Pictures; x86label inprompt notfilesystem architecture predicate."
+    },
+    {
+      "index": 82,
+      "task": "SimpleSmsReplyMostRecent",
+      "family": "android",
+      "officialResultIdentityVerified": true,
+      "irSubmission": false,
+      "originalAnswerAdmission": null,
+      "originalOutcomeType": "absent",
+      "relativeDateGoal": false,
+      "explicitTaskClockMissingInOriginalFirstPrompt": true,
+      "historicalCauseLimit": "Admission/source/goal evidence only; correctness and UI deviations reviewed separately, no reward recomputation.",
+      "sourceContract": "SimpleSMSSendSms255-276 checks sentaddress/body anddevicecurrenttime within5min plusforegroundcom.simplemobiletools.smsmessenger; stucksending mayraise. 85 initializer168-170 setsclipboard, not Appiumgetter scoring."
+    },
+    {
+      "index": 84,
+      "task": "SimpleSmsSend",
+      "family": "android",
+      "officialResultIdentityVerified": true,
+      "irSubmission": false,
+      "originalAnswerAdmission": null,
+      "originalOutcomeType": "absent",
+      "relativeDateGoal": false,
+      "explicitTaskClockMissingInOriginalFirstPrompt": true,
+      "historicalCauseLimit": "Admission/source/goal evidence only; correctness and UI deviations reviewed separately, no reward recomputation.",
+      "sourceContract": "SimpleSMSSendSms255-276 checks sentaddress/body anddevicecurrenttime within5min plusforegroundcom.simplemobiletools.smsmessenger; stucksending mayraise. 85 initializer168-170 setsclipboard, not Appiumgetter scoring."
+    },
+    {
+      "index": 85,
+      "task": "SimpleSmsSendClipboardContent",
+      "family": "android",
+      "officialResultIdentityVerified": true,
+      "irSubmission": false,
+      "originalAnswerAdmission": null,
+      "originalOutcomeType": "str",
+      "relativeDateGoal": false,
+      "explicitTaskClockMissingInOriginalFirstPrompt": true,
+      "historicalCauseLimit": "Admission/source/goal evidence only; correctness and UI deviations reviewed separately, no reward recomputation.",
+      "sourceContract": "SimpleSMSSendSms255-276 checks sentaddress/body anddevicecurrenttime within5min plusforegroundcom.simplemobiletools.smsmessenger; stucksending mayraise. 85 initializer168-170 setsclipboard, not Appiumgetter scoring."
+    },
+    {
+      "index": 86,
+      "task": "SimpleSmsSendReceivedAddress",
+      "family": "android",
+      "officialResultIdentityVerified": true,
+      "irSubmission": false,
+      "originalAnswerAdmission": null,
+      "originalOutcomeType": "absent",
+      "relativeDateGoal": false,
+      "explicitTaskClockMissingInOriginalFirstPrompt": true,
+      "historicalCauseLimit": "Admission/source/goal evidence only; correctness and UI deviations reviewed separately, no reward recomputation.",
+      "sourceContract": "SimpleSMSSendSms255-276 checks sentaddress/body anddevicecurrenttime within5min plusforegroundcom.simplemobiletools.smsmessenger; stucksending mayraise. 85 initializer168-170 setsclipboard, not Appiumgetter scoring."
+    },
+    {
+      "index": 87,
+      "task": "SportsTrackerActivitiesCountForWeek",
+      "family": "information_retrieval",
+      "officialResultIdentityVerified": true,
+      "irSubmission": true,
+      "originalAnswerAdmission": {
+        "sha256": null,
+        "validContract": false
+      },
+      "originalOutcomeType": "int",
+      "relativeDateGoal": true,
+      "explicitTaskClockMissingInOriginalFirstPrompt": true,
+      "historicalCauseLimit": "Admission/source/goal evidence only; correctness and UI deviations reviewed separately, no reward recomputation.",
+      "sourceContract": "InformationRetrieval109-119 reads interaction_cache; r12runner139-148/753-759 admits nonempty stringtaskOutcome only; proto_utils147-180 comma splitting,float numeric parse,fuzzy string andequalanswer count; no DB lookup at IRscore time."
+    },
+    {
+      "index": 89,
+      "task": "SportsTrackerActivityDuration",
+      "family": "information_retrieval",
+      "officialResultIdentityVerified": true,
+      "irSubmission": true,
+      "originalAnswerAdmission": {
+        "sha256": null,
+        "validContract": false
+      },
+      "originalOutcomeType": "int",
+      "relativeDateGoal": false,
+      "explicitTaskClockMissingInOriginalFirstPrompt": true,
+      "historicalCauseLimit": "Admission/source/goal evidence only; correctness and UI deviations reviewed separately, no reward recomputation.",
+      "sourceContract": "InformationRetrieval109-119 reads interaction_cache; r12runner139-148/753-759 admits nonempty stringtaskOutcome only; proto_utils147-180 comma splitting,float numeric parse,fuzzy string andequalanswer count; no DB lookup at IRscore time."
+    },
+    {
+      "index": 90,
+      "task": "SportsTrackerLongestDistanceActivity",
+      "family": "information_retrieval",
+      "officialResultIdentityVerified": true,
+      "irSubmission": true,
+      "originalAnswerAdmission": {
+        "sha256": null,
+        "validContract": false
+      },
+      "originalOutcomeType": "absent",
+      "relativeDateGoal": true,
+      "explicitTaskClockMissingInOriginalFirstPrompt": true,
+      "historicalCauseLimit": "Admission/source/goal evidence only; correctness and UI deviations reviewed separately, no reward recomputation.",
+      "sourceContract": "InformationRetrieval109-119 reads interaction_cache; r12runner139-148/753-759 admits nonempty stringtaskOutcome only; proto_utils147-180 comma splitting,float numeric parse,fuzzy string andequalanswer count; no DB lookup at IRscore time."
+    },
+    {
+      "index": 91,
+      "task": "SportsTrackerTotalDistanceForCategoryOverInterval",
+      "family": "information_retrieval",
+      "officialResultIdentityVerified": true,
+      "irSubmission": true,
+      "originalAnswerAdmission": {
+        "sha256": null,
+        "validContract": false
+      },
+      "originalOutcomeType": "dict",
+      "relativeDateGoal": false,
+      "explicitTaskClockMissingInOriginalFirstPrompt": true,
+      "historicalCauseLimit": "Admission/source/goal evidence only; correctness and UI deviations reviewed separately, no reward recomputation.",
+      "sourceContract": "InformationRetrieval109-119 reads interaction_cache; r12runner139-148/753-759 admits nonempty stringtaskOutcome only; proto_utils147-180 comma splitting,float numeric parse,fuzzy string andequalanswer count; no DB lookup at IRscore time."
+    },
+    {
+      "index": 92,
+      "task": "SportsTrackerTotalDurationForCategoryThisWeek",
+      "family": "information_retrieval",
+      "officialResultIdentityVerified": true,
+      "irSubmission": true,
+      "originalAnswerAdmission": {
+        "sha256": null,
+        "validContract": false
+      },
+      "originalOutcomeType": "dict",
+      "relativeDateGoal": true,
+      "explicitTaskClockMissingInOriginalFirstPrompt": true,
+      "historicalCauseLimit": "Admission/source/goal evidence only; correctness and UI deviations reviewed separately, no reward recomputation.",
+      "sourceContract": "InformationRetrieval109-119 reads interaction_cache; r12runner139-148/753-759 admits nonempty stringtaskOutcome only; proto_utils147-180 comma splitting,float numeric parse,fuzzy string andequalanswer count; no DB lookup at IRscore time."
+    },
+    {
+      "index": 101,
+      "task": "SystemCopyToClipboard",
+      "family": "android",
+      "officialResultIdentityVerified": true,
+      "irSubmission": false,
+      "originalAnswerAdmission": null,
+      "originalOutcomeType": "str",
+      "relativeDateGoal": false,
+      "explicitTaskClockMissingInOriginalFirstPrompt": true,
+      "historicalCauseLimit": "Admission/source/goal evidence only; correctness and UI deviations reviewed separately, no reward recomputation.",
+      "sourceContract": "SystemCopyToClipboard325-333 uses officialadb_utils clipper read+fuzzymatch; not AppiumSettings getter. Actualhistorical clipboardunknown."
+    },
+    {
+      "index": 106,
+      "task": "TasksCompletedTasksForDate",
+      "family": "information_retrieval",
+      "officialResultIdentityVerified": true,
+      "irSubmission": true,
+      "originalAnswerAdmission": {
+        "sha256": null,
+        "validContract": false
+      },
+      "originalOutcomeType": "absent",
+      "relativeDateGoal": false,
+      "explicitTaskClockMissingInOriginalFirstPrompt": true,
+      "historicalCauseLimit": "Admission/source/goal evidence only; correctness and UI deviations reviewed separately, no reward recomputation.",
+      "sourceContract": "InformationRetrieval109-119 reads interaction_cache; r12runner139-148/753-759 admits nonempty stringtaskOutcome only; proto_utils147-180 comma splitting,float numeric parse,fuzzy string andequalanswer count; no DB lookup at IRscore time."
+    },
+    {
+      "index": 107,
+      "task": "TasksDueNextWeek",
+      "family": "information_retrieval",
+      "officialResultIdentityVerified": true,
+      "irSubmission": true,
+      "originalAnswerAdmission": {
+        "sha256": null,
+        "validContract": false
+      },
+      "originalOutcomeType": "int",
+      "relativeDateGoal": true,
+      "explicitTaskClockMissingInOriginalFirstPrompt": true,
+      "historicalCauseLimit": "Admission/source/goal evidence only; correctness and UI deviations reviewed separately, no reward recomputation.",
+      "sourceContract": "InformationRetrieval109-119 reads interaction_cache; r12runner139-148/753-759 admits nonempty stringtaskOutcome only; proto_utils147-180 comma splitting,float numeric parse,fuzzy string andequalanswer count; no DB lookup at IRscore time."
+    },
+    {
+      "index": 110,
+      "task": "TasksHighPriorityTasksDueOnDate",
+      "family": "information_retrieval",
+      "officialResultIdentityVerified": true,
+      "irSubmission": true,
+      "originalAnswerAdmission": {
+        "sha256": null,
+        "validContract": false
+      },
+      "originalOutcomeType": "absent",
+      "relativeDateGoal": false,
+      "explicitTaskClockMissingInOriginalFirstPrompt": true,
+      "historicalCauseLimit": "Admission/source/goal evidence only; correctness and UI deviations reviewed separately, no reward recomputation.",
+      "sourceContract": "InformationRetrieval109-119 reads interaction_cache; r12runner139-148/753-759 admits nonempty stringtaskOutcome only; proto_utils147-180 comma splitting,float numeric parse,fuzzy string andequalanswer count; no DB lookup at IRscore time."
+    },
+    {
+      "index": 111,
+      "task": "TasksIncompleteTasksOnDate",
+      "family": "information_retrieval",
+      "officialResultIdentityVerified": true,
+      "irSubmission": true,
+      "originalAnswerAdmission": {
+        "sha256": "128900aea8850c68e22f1ed89f4e9a00328caee6a4359fadc063e6232982b763",
+        "validContract": true
+      },
+      "originalOutcomeType": "str",
+      "relativeDateGoal": true,
+      "explicitTaskClockMissingInOriginalFirstPrompt": true,
+      "historicalCauseLimit": "Admission/source/goal evidence only; correctness and UI deviations reviewed separately, no reward recomputation.",
+      "sourceContract": "InformationRetrieval109-119 reads interaction_cache; r12runner139-148/753-759 admits nonempty stringtaskOutcome only; proto_utils147-180 comma splitting,float numeric parse,fuzzy string andequalanswer count; no DB lookup at IRscore time."
+    }
+  ],
+  "noNewDeviceOrDbQueries": true,
+  "historicalFiveInvalidTypedSubmissions": [
+    87,
+    89,
+    91,
+    92,
+    107
+  ],
+  "historicalFiveNoBusinessFinalIR": [
+    73,
+    74,
+    90,
+    106,
+    110
+  ],
+  "historicalStringAdmissionIR": [
+    76,
+    111
+  ],
+  "existingR13R14AlreadyAddressesAdmissionAndFinalization": true,
+  "newClockOmissionEvidence": "independent-original-prompt-clock-audit.json",
+  "candidateOnlyNoPerCaseZeroCausalProof": true
+}

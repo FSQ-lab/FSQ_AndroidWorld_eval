@@ -1,0 +1,62 @@
+{
+  "receipt_type": "native_diagnostic_sign_in_and_exact_target_model",
+  "timestamp_utc": "2026-11-10T05:42:06.261616+00:00",
+  "source_identity_receipt": "/tmp/fsq-copilot-diagnostics-implementation-identity-repair1-20261110-a41d.json",
+  "package_manifest_sha256": "f85de27cec9e3e9949559b120dd3f595e9512c076aa82aef7a25e4a552dd2f68",
+  "full_diff_sha256": "0c2fe96ab975d2f5a25a79ad72162d05e443138c5826d142e7640ff3e7b01afc",
+  "audit_status": "passed_full_then_repair_only",
+  "requested_provider": "github_copilot",
+  "requested_model": "gpt-6.1-sol",
+  "native_command": ".venv/bin/fsq providers configure github_copilot --model gpt-6.1-sol",
+  "authentication": {
+    "service_name": "fsq-copilot-auth-diagnostics-20261110-a41d",
+    "pid": 10008,
+    "last_observed_status": "exited successfully",
+    "verification_uri": "https://github.com/login/device",
+    "native_expires_at_utc": "2026-11-10T05:52:30.367876+00:00",
+    "initial_poll_interval_seconds": 5,
+    "underlying_current_http_status": "unknown",
+    "underlying_current_oauth_error_code": "unknown",
+    "fresh_auth_flows_started_in_this_approved_round": 1,
+    "exit_code": 0,
+    "supervisor_reported_uptime": "3m57s",
+    "configured": true,
+    "configured_provider": "github_copilot",
+    "configured_model": "gpt-6.1-sol",
+    "exact_model_membership_validated_by_native_configuration": true,
+    "live_authentication_process_remaining": false
+  },
+  "target_inference": {
+    "timestamp_utc": "2026-11-10T05:41:41.261959+00:00",
+    "requested_provider": "github_copilot",
+    "requested_model": "gpt-6.1-sol",
+    "protocol": "Responses",
+    "actual_returned_model": "unknown: not exposed by native ModelResult",
+    "target_inference_started": true,
+    "business_agent_started": false,
+    "android_access": false,
+    "stage": "target_inference",
+    "status": "success",
+    "response_matches_marker": true,
+    "usage": {
+      "input_tokens": 12,
+      "output_tokens": 7,
+      "total_tokens": 19,
+      "requests": 1,
+      "cached_input_tokens": 0,
+      "reasoning_tokens": 0
+    },
+    "protocol_compatibility_proven": true,
+    "elapsed_seconds": 2.924
+  },
+  "boundaries": {
+    "business_agent_started": false,
+    "android_access": false,
+    "fallback_used": false,
+    "borrowed_credentials": false,
+    "prior_configuration_recoverable": true
+  },
+  "verification_receipt": "/tmp/fsq-copilot-diagnostics-full-gate-receipt-20261110-a41d.json",
+  "model_gate": "native_exact_requested_model_minimal_call_passed",
+  "identity_limit": "Native configuration and session used exactly gpt-6.1-sol. Public ModelResult does not expose server response.model; actual server-returned model identity remains unknown. No Harness, business Agent, Android or official evaluation was exercised."
+}

@@ -1,0 +1,177 @@
+{
+  "scope": "Three assigned budget-exhaustion episodes (038,060,080); original-state evidence replay only.",
+  "sourceCampaign": "amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z",
+  "manifests": {
+    "sha256": "dbb6fe354f9a1cf7b87e52feeafd08903596d87b8531c37c9d12a50b6dc6362c",
+    "unchanged": true
+  },
+  "cases": [
+    {
+      "index": 38,
+      "task": "NotesMeetingAttendeeCount",
+      "actions": 10,
+      "maxSteps": 10,
+      "pythonCalls": 18,
+      "earliestDivergence": "line 4024 cleanup steer fired when the 10-step gate closed, then line 4147 final answer was produced after cleanup; omp_supervisor.py160-169 omits post-cleanup text, so normalized.finalText=null. The numeric goal is compatible with string transport; the agent separately failed the outer string contract because taskOutcome was integer 25, not a proven protocol contradiction. Note body was correctly observed at line 4026.",
+      "primaryLayer": "Harness/contract (answer capture + taskOutcome string type); model observation and planning applicable parts correct",
+      "decisiveEvidence": [
+        {
+          "rawLine": 4026,
+          "fact": "note body observed: 25 individuals were present"
+        },
+        {
+          "rawLine": 4024,
+          "fact": "cleanup steer after 10/10 UI actions"
+        },
+        {
+          "rawLine": 4147,
+          "fact": "final JSON taskOutcome is integer 25 and arrives after cleanup"
+        },
+        {
+          "rawLine": 4147,
+          "fact": "on-disk normalized.finalText=null; agentAnswer.validContract=false"
+        },
+        {
+          "rawLine": 4147,
+          "fact": "runner.py752-756 computes answer only from _task_outcome(normalized.finalText); null finalText yields None and no interaction_cache write"
+        }
+      ],
+      "proposalFit": {
+        "verdict": "partial",
+        "covered": [
+          "business postcondition observed",
+          "read success distinguished from action success"
+        ],
+        "gaps": [
+          "cleanup-phase final text exclusion",
+          "taskOutcome string contract",
+          "answer forwarding"
+        ]
+      },
+      "needsNewRule": false,
+      "unresolved": [
+        "sidebar overlay visual detail not independently decoded",
+        "no device file/system check needed"
+      ],
+      "reportPath": "038-NotesMeetingAttendeeCount/review.md"
+    },
+    {
+      "index": 60,
+      "task": "RetroPlaylistDuration",
+      "actions": 30,
+      "maxSteps": 30,
+      "pythonCalls": 29,
+      "earliestDivergence": "line 5282 cell20 batch-selected 9 visible titles plus the earlier long-press to 10 selected without any duration evidence; line 6401 added two more to 12 selected; first duration observation at line 7208 was 01:01:13 (3673s), outside 45-50min. Adjustment at line 7472 was denied after budget close.",
+      "primaryLayer": "Model planning/observation (aggregate duration not verified before batch selection); secondary step-budget/Appium API friction",
+      "decisiveEvidence": [
+        {
+          "rawLine": 4324,
+          "fact": "song list exposed title/artist only, no duration field"
+        },
+        {
+          "rawLine": 5282,
+          "fact": "cell20 reached 10 selected without duration evidence"
+        },
+        {
+          "rawLine": 6401,
+          "fact": "cell25 added two songs to 12 selected"
+        },
+        {
+          "rawLine": 7208,
+          "fact": "observed 12 Songs • 01:01:13 = 3673s, outside 2700-3000s"
+        },
+        {
+          "rawLine": 7472,
+          "fact": "adjustment attempt denied; audit reason step budget exhausted"
+        }
+      ],
+      "proposalFit": {
+        "verdict": "covered",
+        "covered": [
+          "batch only when state observable",
+          "verify aggregate business postcondition",
+          "stop on deviation and preserve partial evidence"
+        ],
+        "gaps": [
+          "app song list has no duration; proposal cannot create missing data",
+          "hard 30-step cap"
+        ]
+      },
+      "needsNewRule": false,
+      "unresolved": [
+        "full final 12-title set not independently read back",
+        "screenshots not decoded",
+        "the long-pressed first title is not independently confirmed"
+      ],
+      "reportPath": "060-RetroPlaylistDuration/review.md"
+    },
+    {
+      "index": 80,
+      "task": "SimpleDrawProCreateDrawing",
+      "actions": 18,
+      "maxSteps": 18,
+      "pythonCalls": 23,
+      "earliestDivergence": "line 1654 first launch click did not foreground the app and timed out; line 1951 re-ran the whole launcher search instead of observing, then line 2467 showed an Android System Intelligence crash dialog. After 10 pre-draw actions only 8 remained; line 4923 selected Pictures, and line 5040 SAVE was the 19th mutation and was denied at the 18-step limit.",
+      "primaryLayer": "app launch non-foregrounding + concurrent environment anomaly + harness step-budget boundary; secondary model retry/observation and post-cleanup SAVE attempt",
+      "decisiveEvidence": [
+        {
+          "rawLine": 1654,
+          "fact": "first Simple Draw Pro click left package on launcher; wait timed out"
+        },
+        {
+          "rawLine": 1951,
+          "fact": "launcher search retried, consuming three more actions"
+        },
+        {
+          "rawLine": 2467,
+          "fact": "Android System Intelligence crash dialog observed"
+        },
+        {
+          "rawLine": 4923,
+          "fact": "Pictures selected, empty list, target filename ready"
+        },
+        {
+          "rawLine": 4928,
+          "fact": "cleanup steer: no more UI mutations"
+        },
+        {
+          "rawLine": 5040,
+          "fact": "SAVE attempt denied; audit: step budget exhausted; file persistence unconfirmed, evaluator=0 + denied SAVE support non-persistence [INFERENCE]"
+        }
+      ],
+      "proposalFit": {
+        "verdict": "covered",
+        "covered": [
+          "timeout then observe current state",
+          "do not blindly repeat with no progress",
+          "phase-aware wait beyond package/activity",
+          "stop on deviation and preserve completed phases"
+        ],
+        "gaps": [
+          "hard 18-step budget",
+          "app crash dialog/environment",
+          "no guarantee of one-action margin"
+        ]
+      },
+      "needsNewRule": false,
+      "unresolved": [
+        "screenshot payload not decoded",
+        "root cause of first launch failure not established",
+        "file absence inferred from evaluator+denied SAVE, not device read"
+      ],
+      "reportPath": "080-SimpleDrawProCreateDrawing/review.md"
+    }
+  ],
+  "findings": [
+    "038 is not a reasoning miss: the target body was read correctly; the zero comes from frozen answer-capture/type contract boundaries.",
+    "060 is a genuine aggregate-planning miss: selection was committed before total duration was known; the late adjustment was denied.",
+    "080 had a correct save plan but lost the budget to a launch anomaly and retry path; the final SAVE was both post-cleanup and the 19th mutation, so it was denied.",
+    "The three cases must not be normalized into one cause; only 060 is primarily a model planning error."
+  ],
+  "constraints": {
+    "liveDevice": false,
+    "noRerun": true,
+    "noNewScores": true,
+    "originalsUnchanged": true
+  }
+}

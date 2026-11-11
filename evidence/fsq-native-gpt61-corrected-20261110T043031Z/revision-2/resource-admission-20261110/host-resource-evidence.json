@@ -1,0 +1,431 @@
+{
+  "schemaVersion": 1,
+  "kind": "sanitized_host_resource_admission_evidence",
+  "recordedAtUtc": "2026-11-10T06:33:37.753814+00:00",
+  "status": "readonly_investigation_complete_exclusive_boundary_unresolved",
+  "originalReceiptUnchanged": "../shared-resource-readonly.json",
+  "originalFailureSupplement": {
+    "source": "evidence/screenshot-video-controls-20261106T231029Z/appium.log",
+    "lines": "610980-610981",
+    "timeAsLogged": "2026-11-10 06:00:13:505",
+    "method": "GET",
+    "route": "/sessions",
+    "httpStatus": 404,
+    "repeatedRequest": false
+  },
+  "supportedDiscovery": {
+    "receipt": "supported-session-discovery.json",
+    "errorDetail": "supported-session-discovery-error-detail.json",
+    "httpStatus": 500,
+    "webdriverErrorType": "unknown error",
+    "serverMessageExcerpt": "Potentially insecure feature 'session_discovery' has not been enabled",
+    "sessionsState": "unknown",
+    "attemptConsumed": true,
+    "furtherRequestOrBypassPermitted": false
+  },
+  "currentAppiumHostObservation": {
+    "observedAtUtc": "2026-11-10T06:22:32.418011+00:00",
+    "discoveryCommand": [
+      "/usr/sbin/lsof",
+      "-nP",
+      "-a",
+      "-iTCP:4723",
+      "-sTCP:LISTEN",
+      "-Fpcufn"
+    ],
+    "pid": 16153,
+    "uid": 501,
+    "listener": "127.0.0.1:4723",
+    "cwd": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval",
+    "safeArgv": [
+      "node",
+      "/opt/homebrew/bin/appium",
+      "--address",
+      "127.0.0.1",
+      "--port",
+      "4723",
+      "--log",
+      "evidence/screenshot-video-controls-20261106T231029Z/appium.log",
+      "--log-timestamp",
+      "--log-no-colors",
+      "--log-level",
+      "info"
+    ],
+    "explicitConfigOrInsecureFlagsInArgv": false,
+    "immediateParent": {
+      "pid": 87039,
+      "ppid": 1,
+      "user": "qunmi",
+      "comm": "/Users/qunmi/.local/bin/omp",
+      "startAsDisplayed": "Thu Nov 5 13:34:41 2026"
+    },
+    "observationTimesForSubsequentMetadataCommands": "unrecorded; not invented",
+    "subsequentMetadataCommands": [
+      [
+        "/bin/ps",
+        "-p",
+        "16153",
+        "-o",
+        "pid=,ppid=,user=,lstart=,command="
+      ],
+      [
+        "/usr/sbin/lsof",
+        "-nP",
+        "-p",
+        "16153",
+        "-a",
+        "-d",
+        "cwd,txt,0,1,2",
+        "-Fpcftn"
+      ],
+      [
+        "/bin/ps",
+        "-p",
+        "87039",
+        "-o",
+        "pid=,ppid=,user=,lstart=,comm="
+      ],
+      [
+        "/usr/sbin/lsof",
+        "-nP",
+        "-p",
+        "16153",
+        "-Fftn"
+      ]
+    ]
+  },
+  "startupVsInstalled": {
+    "retainedStartupLogLines": "1-8",
+    "retainedVersion": "3.7.0",
+    "retainedRevision": "bf464f57275cae0be106b43d190c98564ac59b0e",
+    "startupNonDefaultArgs": {
+      "address": "127.0.0.1",
+      "loglevel": "info",
+      "logNoColors": true,
+      "logTimestamp": true
+    },
+    "installedVersion": "3.7.0",
+    "installedRevision": "b67de03966155ff052076c11c1c8f20cc2ba9134",
+    "compiledRouteSource": "/opt/homebrew/lib/node_modules/appium/node_modules/@appium/base-driver/build/lib/protocol/routes/appium.js:8-10",
+    "compiledRoute": "GET /appium/sessions -> getAppiumSessions",
+    "featureGateSource": "/opt/homebrew/lib/node_modules/appium/lib/appium.ts:217-226",
+    "localConfiguredButNotProvenLoadedFile": ".venv/appium-androidworld.json",
+    "configuredFeature": "*:session_discovery",
+    "loadedBytesIdentity": "not equated with installed revision"
+  },
+  "retainedLifecycleOnly": {
+    "capturedLineCount": 610981,
+    "startupMarkerCount": 1,
+    "startupTimeAsLogged": "2026-11-06 23:14:12:996",
+    "registeredMasterSessionIds": 322,
+    "removedMasterSessionIds": 322,
+    "unmatchedRetainedRegisteredIds": 0,
+    "latestRemovedSessionIdSha256": "0cbb665b6c3abee5adcfcc4e87a624d098e69f962bfed7465662acb0277482c1",
+    "latestCreation": {
+      "line": 609898,
+      "timeAsLogged": "2026-11-09 23:56:42:640"
+    },
+    "latestRemoval": {
+      "line": 610964,
+      "timeAsLogged": "2026-11-10 00:01:51:046"
+    },
+    "finalCapturedLine": 610981,
+    "finalTimeAsLogged": "2026-11-10 06:00:13:505",
+    "continuousCoverageProven": false,
+    "rotationTruncationAuditPerformed": false,
+    "visibleGap": [
+      "2026-11-10 00:01:59:229",
+      "2026-11-10 06:00:13:505"
+    ],
+    "gapCause": "unknown",
+    "currentZeroSessionsProven": false
+  },
+  "controllerMapping": {
+    "method": "herdr pane process-info --pane <known current registry pane>; only PIDs/pane IDs extracted, no terminal/model content",
+    "paneMetadata": [
+      {
+        "pane": "w4:p1",
+        "fields": [
+          {
+            "field": "result.process_info.foreground_processes.0.pid",
+            "value": 67664
+          },
+          {
+            "field": "result.process_info.foreground_processes.1.pid",
+            "value": 67661
+          },
+          {
+            "field": "result.process_info.pane_id",
+            "value": "w4:p1"
+          },
+          {
+            "field": "result.process_info.shell_pid",
+            "value": 83080
+          }
+        ],
+        "resultKeys": [
+          "process_info",
+          "type"
+        ]
+      },
+      {
+        "pane": "w4:p2",
+        "fields": [
+          {
+            "field": "result.process_info.foreground_processes.0.pid",
+            "value": 13285
+          },
+          {
+            "field": "result.process_info.foreground_processes.1.pid",
+            "value": 13280
+          },
+          {
+            "field": "result.process_info.pane_id",
+            "value": "w4:p2"
+          },
+          {
+            "field": "result.process_info.shell_pid",
+            "value": 13256
+          }
+        ],
+        "resultKeys": [
+          "process_info",
+          "type"
+        ]
+      },
+      {
+        "pane": "w4:p3",
+        "fields": [
+          {
+            "field": "result.process_info.foreground_processes.0.pid",
+            "value": 76956
+          },
+          {
+            "field": "result.process_info.foreground_processes.1.pid",
+            "value": 76953
+          },
+          {
+            "field": "result.process_info.pane_id",
+            "value": "w4:p3"
+          },
+          {
+            "field": "result.process_info.shell_pid",
+            "value": 76907
+          }
+        ],
+        "resultKeys": [
+          "process_info",
+          "type"
+        ]
+      },
+      {
+        "pane": "w1:p1",
+        "fields": [
+          {
+            "field": "result.process_info.foreground_processes.0.pid",
+            "value": 2653
+          },
+          {
+            "field": "result.process_info.pane_id",
+            "value": "w1:p1"
+          },
+          {
+            "field": "result.process_info.shell_pid",
+            "value": 1318
+          }
+        ],
+        "resultKeys": [
+          "process_info",
+          "type"
+        ]
+      },
+      {
+        "pane": "w2:p1",
+        "fields": [
+          {
+            "field": "result.process_info.foreground_processes.0.pid",
+            "value": 2638
+          },
+          {
+            "field": "result.process_info.pane_id",
+            "value": "w2:p1"
+          },
+          {
+            "field": "result.process_info.shell_pid",
+            "value": 1359
+          }
+        ],
+        "resultKeys": [
+          "process_info",
+          "type"
+        ]
+      },
+      {
+        "pane": "w3:p1",
+        "fields": [
+          {
+            "field": "result.process_info.foreground_processes.0.pid",
+            "value": 2766
+          },
+          {
+            "field": "result.process_info.pane_id",
+            "value": "w3:p1"
+          },
+          {
+            "field": "result.process_info.shell_pid",
+            "value": 2667
+          }
+        ],
+        "resultKeys": [
+          "process_info",
+          "type"
+        ]
+      },
+      {
+        "pane": "w3:p2",
+        "fields": [
+          {
+            "field": "result.process_info.foreground_processes.0.pid",
+            "value": 15459
+          },
+          {
+            "field": "result.process_info.pane_id",
+            "value": "w3:p2"
+          },
+          {
+            "field": "result.process_info.shell_pid",
+            "value": 4193
+          }
+        ],
+        "resultKeys": [
+          "process_info",
+          "type"
+        ]
+      },
+      {
+        "pane": "w3:p3",
+        "fields": [
+          {
+            "field": "result.process_info.foreground_processes.0.pid",
+            "value": 18243
+          },
+          {
+            "field": "result.process_info.pane_id",
+            "value": "w3:p3"
+          },
+          {
+            "field": "result.process_info.shell_pid",
+            "value": 18220
+          }
+        ],
+        "resultKeys": [
+          "process_info",
+          "type"
+        ]
+      },
+      {
+        "pane": "w5:p1",
+        "fields": [
+          {
+            "field": "result.process_info.foreground_processes.0.pid",
+            "value": 50371
+          },
+          {
+            "field": "result.process_info.pane_id",
+            "value": "w5:p1"
+          },
+          {
+            "field": "result.process_info.shell_pid",
+            "value": 48863
+          }
+        ],
+        "resultKeys": [
+          "process_info",
+          "type"
+        ]
+      },
+      {
+        "pane": "w6:p1",
+        "fields": [
+          {
+            "field": "result.process_info.foreground_processes.0.pid",
+            "value": 10896
+          },
+          {
+            "field": "result.process_info.pane_id",
+            "value": "w6:p1"
+          },
+          {
+            "field": "result.process_info.shell_pid",
+            "value": 10476
+          }
+        ],
+        "resultKeys": [
+          "process_info",
+          "type"
+        ]
+      },
+      {
+        "pane": "w6:p2",
+        "fields": [
+          {
+            "field": "result.process_info.foreground_processes.0.pid",
+            "value": 1479
+          },
+          {
+            "field": "result.process_info.pane_id",
+            "value": "w6:p2"
+          },
+          {
+            "field": "result.process_info.shell_pid",
+            "value": 1467
+          }
+        ],
+        "resultKeys": [
+          "process_info",
+          "type"
+        ]
+      },
+      {
+        "pane": "w7:p1",
+        "fields": [
+          {
+            "field": "result.process_info.foreground_processes.0.pid",
+            "value": 1202
+          },
+          {
+            "field": "result.process_info.pane_id",
+            "value": "w7:p1"
+          },
+          {
+            "field": "result.process_info.shell_pid",
+            "value": 840
+          }
+        ],
+        "resultKeys": [
+          "process_info",
+          "type"
+        ]
+      }
+    ],
+    "matchesObservedParent87039": [],
+    "scope": "12 known registry panes, not all host processes or unregistered panes",
+    "currentAccountableController": "unresolved",
+    "otherHolderRecordReplies": "requested existing records only from w6:p1,w1:p1,w2:p1; not yet received in this preparation"
+  },
+  "qemu": {
+    "source": "archived C receipt only",
+    "serial": "emulator-5554",
+    "avd": "AndroidWorldAvd",
+    "consolePort": 5554,
+    "grpcPort": 8554,
+    "freshQemuInspectionByThisPreparation": false,
+    "controller": "unresolved"
+  },
+  "stopBoundary": "Supported discovery refused; current accountable controller not established from allowed evidence. No further HTTP, memory inspection, registry bypass, service/config mutation or device call. No unknown active session was positively identified, but absence is unproven.",
+  "minimumRemainingDecision": "w6:p2 obtains or assumes through the real target authority an explicit accountable single-target control/disposable-guest-state handoff with non-interference commitment, acknowledges unknown session count, and signs exact stage/effects/window. If an unknown currently active controller/session is identified, do not proceed; obtain its explicit handoff or decide cannot continue/release with unknowns.",
+  "notRequired": "Do not rerun offline/model gates, require a nonexistent legacy endpoint, enable discovery, restart services, create a second target, or prove global absence from historical statements.",
+  "exclusiveCampaignAuthorized": false,
+  "liveBusinessStarted": false,
+  "privacy": "Only lifecycle/target/ports/times and required controller PID metadata retained; no full capabilities, model/credentials/business contents or raw-response hash."
+}

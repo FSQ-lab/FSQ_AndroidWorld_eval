@@ -1,0 +1,30 @@
+{
+  "discoveredBy": "all-task non-scoring rehearsal",
+  "task": "RetroPlayingQueue",
+  "taskNumber": 60,
+  "observedFailure": "sqlite3.OperationalError: no such table: playing_queue",
+  "failureStage": "evaluator_probe",
+  "originalTaskResult": "run/tasks/059-RetroPlayingQueue/result.json",
+  "taskTeardown": "completed",
+  "environmentClose": "closed",
+  "remainingSessions": "absent",
+  "rootCause": {
+    "module": "android_world.env.android_world_controller.AndroidWorldController.push_file",
+    "source": "android_world/android_world/env/android_world_controller.py:280-287",
+    "behavior": "Clears the entire target database directory before copying one database file back, deleting sibling databases and journals",
+    "affectedCalls": "android_world.task_evals.utils.sqlite_utils.delete_all_rows_from_table and insert_rows_to_remote_db",
+    "queueDatabase": "music_playback_state.db",
+    "databaseBeingWritten": "playlist.db"
+  },
+  "observedSnapshotSchemaBeforeAndAfterAppLaunch": {
+    "music_playback_state.db": {"tables": ["android_metadata", "original_playing_queue", "playing_queue"], "userVersion": 12},
+    "playlist.db": {"tables": ["HistoryEntity", "PlayCountEntity", "PlaylistEntity", "SongEntity", "android_metadata", "room_master_table", "sqlite_sequence"], "userVersion": 24}
+  },
+  "fix": "Harness environment factory replaces only requested database plus its own -wal/-shm files, verifies copy response, preserves sibling databases",
+  "vendorSourcesChanged": false,
+  "schemaManufactured": false,
+  "evaluatorChanged": false,
+  "exceptionConvertedToReward": false,
+  "agentInvoked": false,
+  "officialReward": null
+}

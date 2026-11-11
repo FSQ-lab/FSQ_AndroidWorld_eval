@@ -1,0 +1,209 @@
+{
+  "sequence": 79,
+  "label": "wifi-regression-open-settings",
+  "command": {
+    "op": "exec",
+    "label": "wifi-regression-open-settings",
+    "code": "driver.find_element(AppiumBy.ACCESSIBILITY_ID, 'Settings').click()\nWebDriverWait(driver, 10).until(lambda d: 'com.android.settings' in d.page_source)\nobserve()"
+  },
+  "startedAtUnix": 1794192331.36939,
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"status\":\"completed\",\"stdout\":\"\",\"stderr\":\"\",\"result\":{\"package\":\"com.android.settings\",\"activity\":\".Settings\",\"controls\":[{\"text\":\"\",\"content-desc\":\"Profile picture, double tap to open Google Account\",\"resource-id\":\"com.android.settings:id/account_avatar\",\"class\":\"android.widget.ImageView\",\"bounds\":\"[891,275][1017,401]\",\"clickable\":\"true\",\"focused\":\"false\"},{\"text\":\"Settings\",\"content-desc\":\"\",\"resource-id\":\"com.android.settings:id/homepage_title\",\"class\":\"android.widget.TextView\",\"bounds\":\"[63,401][408,528]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"Search settings\",\"content-desc\":\"\",\"resource-id\":\"com.android.settings:id/search_action_bar_title\",\"class\":\"android.widget.TextView\",\"bounds\":\"[200,624][553,695]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"Network & internet\",\"content-desc\":\"\",\"resource-id\":\"android:id/title\",\"class\":\"android.widget.TextView\",\"bounds\":\"[189,824][625,895]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"Mobile, Wi\u2011Fi, hotspot\",\"content-desc\":\"\",\"resource-id\":\"android:id/summary\",\"class\":\"android.widget.TextView\",\"bounds\":\"[189,895][540,946]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"Connected devices\",\"content-desc\":\"\",\"resource-id\":\"android:id/title\",\"class\":\"android.widget.TextView\",\"bounds\":\"[189,1055][636,1126]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"Bluetooth, pairing\",\"content-desc\":\"\",\"resource-id\":\"android:id/summary\",\"class\":\"android.widget.TextView\",\"bounds\":\"[189,1126][476,1177]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"Apps\",\"content-desc\":\"\",\"resource-id\":\"android:id/title\",\"class\":\"android.widget.TextView\",\"bounds\":\"[189,1286][311,1357]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"Assistant, recent apps, default apps\",\"content-desc\":\"\",\"resource-id\":\"android:id/summary\",\"class\":\"android.widget.TextView\",\"bounds\":\"[189,1357][774,1408]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"Notifications\",\"content-desc\":\"\",\"resource-id\":\"android:id/title\",\"class\":\"android.widget.TextView\",\"bounds\":\"[189,1517][489,1588]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"Notification history, conversations\",\"content-desc\":\"\",\"resource-id\":\"android:id/summary\",\"class\":\"android.widget.TextView\",\"bounds\":\"[189,1588][745,1639]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"Battery\",\"content-desc\":\"\",\"resource-id\":\"android:id/title\",\"class\":\"android.widget.TextView\",\"bounds\":\"[189,1748][357,1819]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"100%\",\"content-desc\":\"\",\"resource-id\":\"android:id/summary\",\"class\":\"android.widget.TextView\",\"bounds\":\"[189,1819][279,1870]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"Storage\",\"content-desc\":\"\",\"resource-id\":\"android:id/title\",\"class\":\"android.widget.TextView\",\"bounds\":\"[189,1979][371,2050]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"46% used - 8.60 GB free\",\"content-desc\":\"\",\"resource-id\":\"android:id/summary\",\"class\":\"android.widget.TextView\",\"bounds\":\"[189,2050][580,2101]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"Sound & vibration\",\"content-desc\":\"\",\"resource-id\":\"android:id/title\",\"class\":\"android.widget.TextView\",\"bounds\":\"[189,2210][601,2281]\",\"clickable\":\"false\",\"focused\":\"false\"},{\"text\":\"Volume, haptics, Do Not Disturb\",\"content-desc\":\"\",\"resource-id\":\"android:id/summary\",\"class\":\"android.widget.TextView\",\"bounds\":\"[189,2281][707,2332]\",\"clickable\":\"false\",\"focused\":\"false\"}]},\"executionCount\":42,\"durationMs\":2334,\"kernelState\":\"alive\",\"runtime\":{\"executable\":\"/Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python\",\"pythonVersion\":\"3.11.16\",\"workingDirectory\":\"/Users/qunmi/Documents/FSQ_LAB/amkernel\",\"environmentKind\":\"project_venv\",\"implementation\":\"CPython\",\"platform\":\"macOS-26.6.2-arm64-arm-64bit\",\"packages\":[]},\"output\":{\"totalBytes\":0,\"totalLines\":0,\"discardedBytes\":0,\"discardedLines\":0,\"truncated\":false,\"limitBytes\":268435456,\"limitExceeded\":false,\"live\":\"unavailable\"},\"displays\":[],\"artifacts\":[]}"
+      }
+    ],
+    "structured_content": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "com.android.settings",
+        "activity": ".Settings",
+        "controls": [
+          {
+            "text": "",
+            "content-desc": "Profile picture, double tap to open Google Account",
+            "resource-id": "com.android.settings:id/account_avatar",
+            "class": "android.widget.ImageView",
+            "bounds": "[891,275][1017,401]",
+            "clickable": "true",
+            "focused": "false"
+          },
+          {
+            "text": "Settings",
+            "content-desc": "",
+            "resource-id": "com.android.settings:id/homepage_title",
+            "class": "android.widget.TextView",
+            "bounds": "[63,401][408,528]",
+            "clickable": "false",
+            "focused": "false"
+          },
+          {
+            "text": "Search settings",
+            "content-desc": "",
+            "resource-id": "com.android.settings:id/search_action_bar_title",
+            "class": "android.widget.TextView",
+            "bounds": "[200,624][553,695]",
+            "clickable": "false",
+            "focused": "false"
+          },
+          {
+            "text": "Network & internet",
+            "content-desc": "",
+            "resource-id": "android:id/title",
+            "class": "android.widget.TextView",
+            "bounds": "[189,824][625,895]",
+            "clickable": "false",
+            "focused": "false"
+          },
+          {
+            "text": "Mobile, Wi\u2011Fi, hotspot",
+            "content-desc": "",
+            "resource-id": "android:id/summary",
+            "class": "android.widget.TextView",
+            "bounds": "[189,895][540,946]",
+            "clickable": "false",
+            "focused": "false"
+          },
+          {
+            "text": "Connected devices",
+            "content-desc": "",
+            "resource-id": "android:id/title",
+            "class": "android.widget.TextView",
+            "bounds": "[189,1055][636,1126]",
+            "clickable": "false",
+            "focused": "false"
+          },
+          {
+            "text": "Bluetooth, pairing",
+            "content-desc": "",
+            "resource-id": "android:id/summary",
+            "class": "android.widget.TextView",
+            "bounds": "[189,1126][476,1177]",
+            "clickable": "false",
+            "focused": "false"
+          },
+          {
+            "text": "Apps",
+            "content-desc": "",
+            "resource-id": "android:id/title",
+            "class": "android.widget.TextView",
+            "bounds": "[189,1286][311,1357]",
+            "clickable": "false",
+            "focused": "false"
+          },
+          {
+            "text": "Assistant, recent apps, default apps",
+            "content-desc": "",
+            "resource-id": "android:id/summary",
+            "class": "android.widget.TextView",
+            "bounds": "[189,1357][774,1408]",
+            "clickable": "false",
+            "focused": "false"
+          },
+          {
+            "text": "Notifications",
+            "content-desc": "",
+            "resource-id": "android:id/title",
+            "class": "android.widget.TextView",
+            "bounds": "[189,1517][489,1588]",
+            "clickable": "false",
+            "focused": "false"
+          },
+          {
+            "text": "Notification history, conversations",
+            "content-desc": "",
+            "resource-id": "android:id/summary",
+            "class": "android.widget.TextView",
+            "bounds": "[189,1588][745,1639]",
+            "clickable": "false",
+            "focused": "false"
+          },
+          {
+            "text": "Battery",
+            "content-desc": "",
+            "resource-id": "android:id/title",
+            "class": "android.widget.TextView",
+            "bounds": "[189,1748][357,1819]",
+            "clickable": "false",
+            "focused": "false"
+          },
+          {
+            "text": "100%",
+            "content-desc": "",
+            "resource-id": "android:id/summary",
+            "class": "android.widget.TextView",
+            "bounds": "[189,1819][279,1870]",
+            "clickable": "false",
+            "focused": "false"
+          },
+          {
+            "text": "Storage",
+            "content-desc": "",
+            "resource-id": "android:id/title",
+            "class": "android.widget.TextView",
+            "bounds": "[189,1979][371,2050]",
+            "clickable": "false",
+            "focused": "false"
+          },
+          {
+            "text": "46% used - 8.60 GB free",
+            "content-desc": "",
+            "resource-id": "android:id/summary",
+            "class": "android.widget.TextView",
+            "bounds": "[189,2050][580,2101]",
+            "clickable": "false",
+            "focused": "false"
+          },
+          {
+            "text": "Sound & vibration",
+            "content-desc": "",
+            "resource-id": "android:id/title",
+            "class": "android.widget.TextView",
+            "bounds": "[189,2210][601,2281]",
+            "clickable": "false",
+            "focused": "false"
+          },
+          {
+            "text": "Volume, haptics, Do Not Disturb",
+            "content-desc": "",
+            "resource-id": "android:id/summary",
+            "class": "android.widget.TextView",
+            "bounds": "[189,2281][707,2332]",
+            "clickable": "false",
+            "focused": "false"
+          }
+        ]
+      },
+      "executionCount": 42,
+      "durationMs": 2334,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/Users/qunmi/Documents/FSQ_LAB/amkernel",
+        "environmentKind": "project_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "unavailable"
+      },
+      "displays": [],
+      "artifacts": []
+    },
+    "is_error": false,
+    "result_type": "complete"
+  },
+  "completedAtUnix": 1794192333.707065
+}

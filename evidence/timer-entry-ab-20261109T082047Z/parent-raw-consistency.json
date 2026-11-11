@@ -1,0 +1,65 @@
+{
+  "scope": "Parent read-only raw consistency check; no new scoring, session, or device operation",
+  "rows": [
+    {
+      "label": "TimerEntryOriginalP0",
+      "rawUiElementsPath": "clock-matrix/TimerEntryOriginalP0/clock-probe/evaluator-000/state-00/ui-elements.json",
+      "rawForestPath": "clock-matrix/TimerEntryOriginalP0/clock-probe/evaluator-000/state-00/forest.pb",
+      "forestSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actualInputIdentityMatched": true,
+      "currentActivity": "com.google.android.deskclock/com.android.deskclock.DeskClock",
+      "hours": 0,
+      "minutes": 16,
+      "seconds": 35,
+      "predicateReturn": false,
+      "scorerReturn": 0.0,
+      "recvSeq": 1132,
+      "nodeCount": 0,
+      "uiElementCount": 0,
+      "stateReturnHostReceiveAgesSeconds": [
+        0.01789999008178711,
+        0.017933130264282227
+      ]
+    },
+    {
+      "label": "TimerEntryPatchedP1",
+      "rawUiElementsPath": "clock-matrix/TimerEntryPatchedP1/clock-probe/evaluator-000/state-00/ui-elements.json",
+      "rawForestPath": "clock-matrix/TimerEntryPatchedP1/clock-probe/evaluator-000/state-00/forest.pb",
+      "forestSha256": "f259286df2d17cbe859716c23b962963b5673bbaf9f8e0ae20b8a30e9f9f0c88",
+      "actualInputIdentityMatched": true,
+      "currentActivity": "com.google.android.deskclock/com.android.deskclock.DeskClock",
+      "hours": 0,
+      "minutes": 16,
+      "seconds": 35,
+      "predicateReturn": true,
+      "scorerReturn": 1.0,
+      "recvSeq": 998,
+      "nodeCount": 36,
+      "uiElementCount": 27,
+      "stateReturnHostReceiveAgesSeconds": [
+        0.08307909965515137,
+        0.08314990997314453
+      ]
+    }
+  ],
+  "offlineReplay": {
+    "scope": "Offline replay of serialized actual official elements for consistency only; no new scoring/device operation",
+    "module": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/android_world/task_evals/single/clock.py",
+    "moduleSha256": "b71344f13576f6b848a6c34dc4286962e94ec228e9643a3bdfc11b299265a65c",
+    "rows": [
+      {
+        "label": "TimerEntryOriginalP0",
+        "elementCount": 0,
+        "offlinePredicateReturn": false,
+        "matchesRecordedOriginalReturn": true
+      },
+      {
+        "label": "TimerEntryPatchedP1",
+        "elementCount": 27,
+        "offlinePredicateReturn": true,
+        "matchesRecordedOriginalReturn": true
+      }
+    ]
+  },
+  "exitCode": 0
+}

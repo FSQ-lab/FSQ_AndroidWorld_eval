@@ -1,0 +1,1736 @@
+[
+  {
+    "startLine": 316,
+    "endLine": 317,
+    "cell": 1,
+    "request": {
+      "timeout": 90,
+      "code": "from appium import webdriver\nfrom appium.options.android import UiAutomator2Options\noptions = UiAutomator2Options().load_capabilities({\n    'platformName': 'Android',\n    'appium:automationName': 'UiAutomator2',\n    'appium:udid': 'emulator-5554',\n    'appium:noReset': True,\n    'appium:autoLaunch': False,\n    'appium:skipUnlock': True,\n    'appium:newCommandTimeout': 300,\n})\ndriver = webdriver.Remote('http://127.0.0.1:57265', options=options)\nsession_id = driver.session_id\n{'sessionId': session_id, 'newCommandTimeout': driver.capabilities.get('newCommandTimeout')} "
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "sessionId": "ef373fc3-0f0e-4fe7-ac65-edcf6ccb89c1",
+        "newCommandTimeout": 300
+      },
+      "executionCount": 1,
+      "durationMs": 31546,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 508,
+    "endLine": 509,
+    "cell": 2,
+    "request": {
+      "timeout": 30,
+      "code": "from appium.webdriver.common.appiumby import AppiumBy\npkg, act = driver.current_package, driver.current_activity\nels = driver.find_elements(AppiumBy.XPATH, '//*')\nfacts=[]\nfor e in els:\n    try:\n        t=e.get_attribute('text'); d=e.get_attribute('content-desc'); rid=e.get_attribute('resource-id'); cls=e.get_attribute('class')\n        if t or d or rid: facts.append({'text':t,'desc':d,'id':rid,'class':cls})\n    except: pass\n{'package':pkg,'activity':act,'elements':facts[:30]} "
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "com.google.android.apps.nexuslauncher",
+        "activity": ".NexusLauncherActivity",
+        "elements": [
+          {
+            "text": "",
+            "desc": "null",
+            "id": "null",
+            "class": "android.widget.FrameLayout"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "null",
+            "class": "android.widget.LinearLayout"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "android:id/content",
+            "class": "android.widget.FrameLayout"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.google.android.apps.nexuslauncher:id/launcher",
+            "class": "android.widget.FrameLayout"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.google.android.apps.nexuslauncher:id/drag_layer",
+            "class": "android.widget.FrameLayout"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.google.android.apps.nexuslauncher:id/scrim_view",
+            "class": "android.view.View"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.google.android.apps.nexuslauncher:id/workspace",
+            "class": "android.widget.ScrollView"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "null",
+            "class": "android.view.ViewGroup"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "null",
+            "class": "android.view.ViewGroup"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.google.android.apps.nexuslauncher:id/search_container_workspace",
+            "class": "android.widget.FrameLayout"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.google.android.apps.nexuslauncher:id/bc_smartspace_view",
+            "class": "android.widget.FrameLayout"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.google.android.apps.nexuslauncher:id/smartspace_card_pager",
+            "class": "androidx.viewpager.widget.ViewPager"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "null",
+            "class": "android.view.ViewGroup"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.google.android.apps.nexuslauncher:id/text_group",
+            "class": "android.widget.RelativeLayout"
+          },
+          {
+            "text": "Sun, Oct 15",
+            "desc": "Sun, Oct 15",
+            "id": "com.google.android.apps.nexuslauncher:id/date",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.google.android.apps.nexuslauncher:id/smartspace_subtitle_group",
+            "class": "android.view.ViewGroup"
+          },
+          {
+            "text": "Gmail",
+            "desc": "Gmail",
+            "id": "null",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "Photos",
+            "desc": "Photos",
+            "id": "null",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "YouTube",
+            "desc": "YouTube",
+            "id": "null",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "",
+            "desc": "Home",
+            "id": "null",
+            "class": "android.view.View"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.google.android.apps.nexuslauncher:id/page_indicator",
+            "class": "android.view.View"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.google.android.apps.nexuslauncher:id/hotseat",
+            "class": "android.view.ViewGroup"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "null",
+            "class": "android.view.ViewGroup"
+          },
+          {
+            "text": "Phone",
+            "desc": "Phone",
+            "id": "null",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "Messages",
+            "desc": "Messages",
+            "id": "null",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "Chrome",
+            "desc": "Chrome",
+            "id": "null",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "Calendar",
+            "desc": "Predicted app: Calendar",
+            "id": "null",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "",
+            "desc": "Search",
+            "id": "com.google.android.apps.nexuslauncher:id/search_container_hotseat",
+            "class": "android.widget.FrameLayout"
+          },
+          {
+            "text": "",
+            "desc": "Google app",
+            "id": "com.google.android.apps.nexuslauncher:id/g_icon",
+            "class": "android.widget.ImageView"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.google.android.apps.nexuslauncher:id/end_part",
+            "class": "android.widget.LinearLayout"
+          }
+        ]
+      },
+      "executionCount": 2,
+      "durationMs": 643,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 711,
+    "endLine": 712,
+    "cell": 3,
+    "request": {
+      "timeout": 20,
+      "code": "from selenium.webdriver.support.ui import WebDriverWait\nmsg = driver.find_element(AppiumBy.ACCESSIBILITY_ID, 'Messages')\nmsg.click()\nWebDriverWait(driver, 10).until(lambda d: d.current_package != 'com.google.android.apps.nexuslauncher')\n{'package':driver.current_package,'activity':driver.current_activity} "
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "com.google.android.apps.messaging",
+        "activity": ".ui.ConversationListActivity"
+      },
+      "executionCount": 3,
+      "durationMs": 825,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 984,
+    "endLine": 985,
+    "cell": 4,
+    "request": {
+      "timeout": 20,
+      "code": "driver.back()\nWebDriverWait(driver, 10).until(lambda d: d.current_package == 'com.google.android.apps.nexuslauncher')\nsearch=driver.find_element(AppiumBy.ACCESSIBILITY_ID,'Search')\nsearch.click()\nWebDriverWait(driver, 10).until(lambda d: len(d.find_elements(AppiumBy.CLASS_NAME,'android.widget.EditText'))>0)\nfield=driver.find_elements(AppiumBy.CLASS_NAME,'android.widget.EditText')[0]\nfield.send_keys('Simple SMS')\n{'package':driver.current_package,'activity':driver.current_activity} "
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "com.google.android.apps.nexuslauncher",
+        "activity": ".NexusLauncherActivity"
+      },
+      "executionCount": 4,
+      "durationMs": 3072,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 1241,
+    "endLine": 1242,
+    "cell": 5,
+    "request": {
+      "timeout": 20,
+      "code": "els=driver.find_elements(AppiumBy.XPATH,'//*')\nf=[]\nfor e in els:\n    try:\n        t=e.get_attribute('text'); d=e.get_attribute('content-desc'); rid=e.get_attribute('resource-id'); cls=e.get_attribute('class')\n        if t or (d and d!='null'): f.append({'text':t,'desc':d,'id':rid,'class':cls})\n    except: pass\nf[:25] "
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": [
+        {
+          "text": "Simple SMS0",
+          "desc": "null",
+          "id": "com.google.android.apps.nexuslauncher:id/icon",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "Simple SMS0",
+          "desc": "Search null",
+          "id": "com.google.android.apps.nexuslauncher:id/title",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "Simple SMS1",
+          "desc": "null",
+          "id": "com.google.android.apps.nexuslauncher:id/icon",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "Simple SMS1",
+          "desc": "Search null",
+          "id": "com.google.android.apps.nexuslauncher:id/title",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "Simple SMS2",
+          "desc": "null",
+          "id": "com.google.android.apps.nexuslauncher:id/icon",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "Simple SMS2",
+          "desc": "Search null",
+          "id": "com.google.android.apps.nexuslauncher:id/title",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "Simple SMS3",
+          "desc": "null",
+          "id": "com.google.android.apps.nexuslauncher:id/icon",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "Simple SMS3",
+          "desc": "Search null",
+          "id": "com.google.android.apps.nexuslauncher:id/title",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "Simple SMS4",
+          "desc": "null",
+          "id": "com.google.android.apps.nexuslauncher:id/icon",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "Simple SMS4",
+          "desc": "Search null",
+          "id": "com.google.android.apps.nexuslauncher:id/title",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "Simple SMS5",
+          "desc": "null",
+          "id": "com.google.android.apps.nexuslauncher:id/icon",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "Simple SMS5",
+          "desc": "Search null",
+          "id": "com.google.android.apps.nexuslauncher:id/title",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "Simple SMS6",
+          "desc": "null",
+          "id": "com.google.android.apps.nexuslauncher:id/icon",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "Simple SMS6",
+          "desc": "Search null",
+          "id": "com.google.android.apps.nexuslauncher:id/title",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "Simple SMS7",
+          "desc": "null",
+          "id": "com.google.android.apps.nexuslauncher:id/icon",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "Simple SMS7",
+          "desc": "Search null",
+          "id": "com.google.android.apps.nexuslauncher:id/title",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "Simple SMS8",
+          "desc": "null",
+          "id": "com.google.android.apps.nexuslauncher:id/icon",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "Simple SMS8",
+          "desc": "Search null",
+          "id": "com.google.android.apps.nexuslauncher:id/title",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "Simple SMS9",
+          "desc": "null",
+          "id": "com.google.android.apps.nexuslauncher:id/icon",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "Simple SMS9",
+          "desc": "Search null",
+          "id": "com.google.android.apps.nexuslauncher:id/title",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "",
+          "desc": "Search",
+          "id": "com.google.android.apps.nexuslauncher:id/search_container_all_apps",
+          "class": "android.widget.FrameLayout"
+        },
+        {
+          "text": "",
+          "desc": "Google app",
+          "id": "com.google.android.apps.nexuslauncher:id/g_icon",
+          "class": "android.widget.ImageView"
+        },
+        {
+          "text": "Simple SMS",
+          "desc": "null",
+          "id": "com.google.android.apps.nexuslauncher:id/input",
+          "class": "android.widget.EditText"
+        },
+        {
+          "text": "",
+          "desc": "Clear search box",
+          "id": "com.google.android.apps.nexuslauncher:id/clear_btn",
+          "class": "android.widget.ImageButton"
+        },
+        {
+          "text": "",
+          "desc": "Home",
+          "id": "null",
+          "class": "android.view.View"
+        }
+      ],
+      "executionCount": 5,
+      "durationMs": 923,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 1401,
+    "endLine": 1402,
+    "cell": 6,
+    "request": {
+      "timeout": 20,
+      "code": "driver.back()\nels=driver.find_elements(AppiumBy.XPATH,'//*')\nf=[]\nfor e in els:\n    try:\n        t=e.get_attribute('text'); d=e.get_attribute('content-desc'); rid=e.get_attribute('resource-id'); cls=e.get_attribute('class')\n        if t or (d and d!='null'): f.append({'text':t,'desc':d,'id':rid,'class':cls})\n    except: pass\nf[:25] "
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": [
+        {
+          "text": "Sun, Oct 15",
+          "desc": "Sun, Oct 15",
+          "id": "com.google.android.apps.nexuslauncher:id/date",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "Gmail",
+          "desc": "Gmail",
+          "id": "null",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "Photos",
+          "desc": "Photos",
+          "id": "null",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "YouTube",
+          "desc": "YouTube",
+          "id": "null",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "",
+          "desc": "Home",
+          "id": "null",
+          "class": "android.view.View"
+        },
+        {
+          "text": "Phone",
+          "desc": "Phone",
+          "id": "null",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "Messages",
+          "desc": "Messages",
+          "id": "null",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "Chrome",
+          "desc": "Chrome",
+          "id": "null",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "Calendar",
+          "desc": "Predicted app: Calendar",
+          "id": "null",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "",
+          "desc": "Search",
+          "id": "com.google.android.apps.nexuslauncher:id/search_container_hotseat",
+          "class": "android.widget.FrameLayout"
+        },
+        {
+          "text": "",
+          "desc": "Google app",
+          "id": "com.google.android.apps.nexuslauncher:id/g_icon",
+          "class": "android.widget.ImageView"
+        },
+        {
+          "text": "",
+          "desc": "Voice search",
+          "id": "com.google.android.apps.nexuslauncher:id/mic_icon",
+          "class": "android.widget.ImageView"
+        },
+        {
+          "text": "",
+          "desc": "Google Lens",
+          "id": "com.google.android.apps.nexuslauncher:id/lens_icon",
+          "class": "android.widget.ImageButton"
+        }
+      ],
+      "executionCount": 6,
+      "durationMs": 2033,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 1542,
+    "endLine": 1543,
+    "cell": 7,
+    "request": {
+      "timeout": 20,
+      "code": "size=driver.get_window_size()\ndriver.swipe(size['width']//2, int(size['height']*.8), size['width']//2, int(size['height']*.2), 500)\nWebDriverWait(driver,10).until(lambda d: len(d.find_elements(AppiumBy.ID,'com.google.android.apps.nexuslauncher:id/apps_list_view'))>0)\n{'activity':driver.current_activity} "
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "activity": ".NexusLauncherActivity"
+      },
+      "executionCount": 7,
+      "durationMs": 1940,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 1692,
+    "endLine": 1693,
+    "cell": 8,
+    "request": {
+      "timeout": 20,
+      "code": "els=driver.find_elements(AppiumBy.XPATH,'//*')\n[(e.get_attribute('text'),e.get_attribute('content-desc'),e.get_attribute('resource-id'),e.get_attribute('class')) for e in els if ('sms' in (e.get_attribute('text') or '').lower() or 'sms' in (e.get_attribute('content-desc') or '').lower() or 'message' in (e.get_attribute('text') or '').lower())][:20] "
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "kind": "repr",
+        "typeName": "list",
+        "value": "<list len=1; bounded non-JSON representation>",
+        "truncated": true
+      },
+      "executionCount": 8,
+      "durationMs": 565,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 1844,
+    "endLine": 1845,
+    "cell": 9,
+    "request": {
+      "timeout": 20,
+      "code": "matches=[]\nfor e in driver.find_elements(AppiumBy.XPATH,'//*'):\n t=e.get_attribute('text') or ''; d=e.get_attribute('content-desc') or ''\n if 'sms' in t.lower() or 'sms' in d.lower() or 'message' in t.lower(): matches.append({'text':t,'desc':d,'id':e.get_attribute('resource-id'),'class':e.get_attribute('class')})\nmatches[:20] "
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": [
+        {
+          "text": "Messages",
+          "desc": "Messages",
+          "id": "com.google.android.apps.nexuslauncher:id/icon",
+          "class": "android.widget.TextView"
+        }
+      ],
+      "executionCount": 9,
+      "durationMs": 376,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 1988,
+    "endLine": 1989,
+    "cell": 10,
+    "request": {
+      "timeout": 20,
+      "code": "target=driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, 'new UiScrollable(new UiSelector().resourceId(\"com.google.android.apps.nexuslauncher:id/apps_list_view\")).scrollIntoView(new UiSelector().textContains(\"SMS\"))')\n{'text':target.get_attribute('text'),'desc':target.get_attribute('content-desc'),'id':target.get_attribute('resource-id')} "
+    },
+    "envelope": {
+      "status": "failed",
+      "stdout": "",
+      "stderr": "",
+      "error": {
+        "type": "selenium.common.exceptions.UnknownMethodException",
+        "message": "Only pure UiSelector observations are supported; scrolling searches consume multiple interactions",
+        "traceback": [
+          "Traceback (most recent call last):",
+          "  File \"<external-frame>\", line 590, in <frame>",
+          "  File \"<external-frame>\", line 575, in <frame>",
+          "  File \"<amkernel-cell-10>\", line 1, in <frame>",
+          "  File \"<external-frame>\", line 974, in <frame>",
+          "  File \"<external-frame>\", line 566, in <frame>",
+          "  File \"<external-frame>\", line 125, in <frame>",
+          "selenium.common.exceptions.UnknownMethodException: Only pure UiSelector observations are supported; scrolling searches consume multiple interactions"
+        ]
+      },
+      "executionCount": 10,
+      "durationMs": 3,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 2088,
+    "endLine": 2089,
+    "cell": 11,
+    "request": {
+      "timeout": 20,
+      "code": "size=driver.get_window_size(); driver.swipe(size['width']//2,int(size['height']*.8),size['width']//2,int(size['height']*.2),500)\n{'package':driver.current_package} "
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "com.google.android.apps.nexuslauncher"
+      },
+      "executionCount": 11,
+      "durationMs": 1024,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 2183,
+    "endLine": 2184,
+    "cell": 12,
+    "request": {
+      "timeout": 20,
+      "code": "[{'text':e.get_attribute('text'),'desc':e.get_attribute('content-desc')} for e in driver.find_elements(AppiumBy.ID,'com.google.android.apps.nexuslauncher:id/icon')] "
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": [
+        {
+          "text": "Camera",
+          "desc": "Camera"
+        },
+        {
+          "text": "Chrome",
+          "desc": "Chrome"
+        },
+        {
+          "text": "Clipper",
+          "desc": "Clipper"
+        },
+        {
+          "text": "Clock",
+          "desc": "Clock"
+        },
+        {
+          "text": "Contacts",
+          "desc": "Contacts"
+        },
+        {
+          "text": "Draw",
+          "desc": "Draw"
+        },
+        {
+          "text": "Drive",
+          "desc": "Drive"
+        },
+        {
+          "text": "Files",
+          "desc": "Files"
+        },
+        {
+          "text": "Gallery",
+          "desc": "Gallery"
+        },
+        {
+          "text": "Gmail",
+          "desc": "Gmail"
+        },
+        {
+          "text": "Google",
+          "desc": "Google"
+        },
+        {
+          "text": "Joplin",
+          "desc": "Joplin"
+        },
+        {
+          "text": "Maps",
+          "desc": "Maps"
+        },
+        {
+          "text": "Markor",
+          "desc": "Markor"
+        },
+        {
+          "text": "Messages",
+          "desc": "Messages"
+        },
+        {
+          "text": "OpenTracks",
+          "desc": "OpenTracks"
+        },
+        {
+          "text": "OsmAnd",
+          "desc": "OsmAnd"
+        },
+        {
+          "text": "Phone",
+          "desc": "Phone"
+        },
+        {
+          "text": "Photos",
+          "desc": "Photos"
+        },
+        {
+          "text": "Pro Expense",
+          "desc": "Pro Expense"
+        },
+        {
+          "text": "Retro Music",
+          "desc": "Retro Music"
+        },
+        {
+          "text": "Settings",
+          "desc": "Settings"
+        },
+        {
+          "text": "SMS Messenger",
+          "desc": "SMS Messenger"
+        },
+        {
+          "text": "Tasks",
+          "desc": "Tasks"
+        },
+        {
+          "text": "TMoble",
+          "desc": "TMoble"
+        },
+        {
+          "text": "VLC",
+          "desc": "VLC"
+        },
+        {
+          "text": "YouTube",
+          "desc": "YouTube"
+        },
+        {
+          "text": "YT Music",
+          "desc": "YT Music"
+        }
+      ],
+      "executionCount": 12,
+      "durationMs": 205,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 2290,
+    "endLine": 2291,
+    "cell": 13,
+    "request": {
+      "timeout": 20,
+      "code": "driver.find_element(AppiumBy.ACCESSIBILITY_ID,'SMS Messenger').click()\nWebDriverWait(driver,10).until(lambda d: d.current_package != 'com.google.android.apps.nexuslauncher')\n{'package':driver.current_package,'activity':driver.current_activity} "
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "com.simplemobiletools.smsmessenger",
+        "activity": ".activities.MainActivity"
+      },
+      "executionCount": 13,
+      "durationMs": 759,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 2433,
+    "endLine": 2434,
+    "cell": 14,
+    "request": {
+      "timeout": 20,
+      "code": "facts=[]\nfor e in driver.find_elements(AppiumBy.XPATH,'//*'):\n t=e.get_attribute('text'); d=e.get_attribute('content-desc'); rid=e.get_attribute('resource-id'); cls=e.get_attribute('class')\n if t or (d and d!='null') or rid: facts.append({'text':t,'desc':d,'id':rid,'class':cls})\nfacts[:35] "
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": [
+        {
+          "text": "",
+          "desc": "null",
+          "id": "null",
+          "class": "android.widget.FrameLayout"
+        },
+        {
+          "text": "",
+          "desc": "null",
+          "id": "null",
+          "class": "android.widget.LinearLayout"
+        },
+        {
+          "text": "",
+          "desc": "null",
+          "id": "null",
+          "class": "android.widget.FrameLayout"
+        },
+        {
+          "text": "",
+          "desc": "null",
+          "id": "com.simplemobiletools.smsmessenger:id/action_bar_root",
+          "class": "android.widget.FrameLayout"
+        },
+        {
+          "text": "",
+          "desc": "null",
+          "id": "android:id/content",
+          "class": "android.widget.FrameLayout"
+        },
+        {
+          "text": "",
+          "desc": "null",
+          "id": "com.simplemobiletools.smsmessenger:id/main_coordinator",
+          "class": "android.widget.ScrollView"
+        },
+        {
+          "text": "",
+          "desc": "null",
+          "id": "com.simplemobiletools.smsmessenger:id/main_menu",
+          "class": "android.widget.LinearLayout"
+        },
+        {
+          "text": "",
+          "desc": "null",
+          "id": "com.simplemobiletools.smsmessenger:id/top_app_bar_layout",
+          "class": "android.widget.LinearLayout"
+        },
+        {
+          "text": "",
+          "desc": "null",
+          "id": "com.simplemobiletools.smsmessenger:id/top_toolbar_holder",
+          "class": "android.widget.RelativeLayout"
+        },
+        {
+          "text": "",
+          "desc": "Search",
+          "id": "com.simplemobiletools.smsmessenger:id/top_toolbar_search_icon",
+          "class": "android.widget.ImageView"
+        },
+        {
+          "text": "Search",
+          "desc": "null",
+          "id": "com.simplemobiletools.smsmessenger:id/top_toolbar_search",
+          "class": "android.widget.EditText"
+        },
+        {
+          "text": "",
+          "desc": "null",
+          "id": "com.simplemobiletools.smsmessenger:id/top_toolbar",
+          "class": "android.view.ViewGroup"
+        },
+        {
+          "text": "",
+          "desc": "null",
+          "id": "null",
+          "class": "androidx.appcompat.widget.LinearLayoutCompat"
+        },
+        {
+          "text": "",
+          "desc": "Settings",
+          "id": "com.simplemobiletools.smsmessenger:id/settings",
+          "class": "android.widget.Button"
+        },
+        {
+          "text": "",
+          "desc": "About",
+          "id": "com.simplemobiletools.smsmessenger:id/about",
+          "class": "android.widget.Button"
+        },
+        {
+          "text": "",
+          "desc": "More options",
+          "id": "null",
+          "class": "android.widget.ImageView"
+        },
+        {
+          "text": "",
+          "desc": "null",
+          "id": "com.simplemobiletools.smsmessenger:id/main_nested_scrollview",
+          "class": "android.widget.RelativeLayout"
+        },
+        {
+          "text": "",
+          "desc": "null",
+          "id": "com.simplemobiletools.smsmessenger:id/main_coordinator_wrapper",
+          "class": "android.view.ViewGroup"
+        },
+        {
+          "text": "",
+          "desc": "null",
+          "id": "com.simplemobiletools.smsmessenger:id/main_holder",
+          "class": "android.widget.RelativeLayout"
+        },
+        {
+          "text": "No stored conversations have been found",
+          "desc": "null",
+          "id": "com.simplemobiletools.smsmessenger:id/no_conversations_placeholder",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "Start a conversation",
+          "desc": "null",
+          "id": "com.simplemobiletools.smsmessenger:id/no_conversations_placeholder_2",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "",
+          "desc": "null",
+          "id": "com.simplemobiletools.smsmessenger:id/conversations_fab",
+          "class": "android.widget.ImageButton"
+        },
+        {
+          "text": "",
+          "desc": "null",
+          "id": "android:id/navigationBarBackground",
+          "class": "android.view.View"
+        }
+      ],
+      "executionCount": 14,
+      "durationMs": 343,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 2548,
+    "endLine": 2549,
+    "cell": 15,
+    "request": {
+      "timeout": 20,
+      "code": "driver.find_element(AppiumBy.ID,'com.simplemobiletools.smsmessenger:id/conversations_fab').click()\nWebDriverWait(driver,10).until(lambda d: len(d.find_elements(AppiumBy.CLASS_NAME,'android.widget.EditText'))>0)\n{'activity':driver.current_activity} "
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "activity": ".activities.NewConversationActivity"
+      },
+      "executionCount": 15,
+      "durationMs": 1551,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 2691,
+    "endLine": 2692,
+    "cell": 16,
+    "request": {
+      "timeout": 20,
+      "code": "facts=[]\nfor e in driver.find_elements(AppiumBy.XPATH,'//*'):\n t=e.get_attribute('text'); d=e.get_attribute('content-desc'); rid=e.get_attribute('resource-id'); cls=e.get_attribute('class')\n if t or (d and d!='null') or rid: facts.append({'text':t,'desc':d,'id':rid,'class':cls})\nfacts[:30] "
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": [
+        {
+          "text": "",
+          "desc": "null",
+          "id": "null",
+          "class": "android.widget.FrameLayout"
+        },
+        {
+          "text": "",
+          "desc": "null",
+          "id": "null",
+          "class": "android.widget.LinearLayout"
+        },
+        {
+          "text": "",
+          "desc": "null",
+          "id": "null",
+          "class": "android.widget.FrameLayout"
+        },
+        {
+          "text": "",
+          "desc": "null",
+          "id": "com.simplemobiletools.smsmessenger:id/action_bar_root",
+          "class": "android.widget.FrameLayout"
+        },
+        {
+          "text": "",
+          "desc": "null",
+          "id": "android:id/content",
+          "class": "android.widget.FrameLayout"
+        },
+        {
+          "text": "",
+          "desc": "null",
+          "id": "com.simplemobiletools.smsmessenger:id/new_conversation_coordinator",
+          "class": "android.view.ViewGroup"
+        },
+        {
+          "text": "",
+          "desc": "null",
+          "id": "com.simplemobiletools.smsmessenger:id/new_conversation_toolbar",
+          "class": "android.view.ViewGroup"
+        },
+        {
+          "text": "",
+          "desc": "Back",
+          "id": "null",
+          "class": "android.widget.ImageButton"
+        },
+        {
+          "text": "New conversation",
+          "desc": "null",
+          "id": "null",
+          "class": "android.widget.TextView"
+        },
+        {
+          "text": "",
+          "desc": "null",
+          "id": "com.simplemobiletools.smsmessenger:id/new_conversation_holder",
+          "class": "android.widget.RelativeLayout"
+        },
+        {
+          "text": "Add Contact or Number…",
+          "desc": "null",
+          "id": "com.simplemobiletools.smsmessenger:id/new_conversation_address",
+          "class": "android.widget.EditText"
+        },
+        {
+          "text": "",
+          "desc": "null",
+          "id": "com.simplemobiletools.smsmessenger:id/contacts_letter_fastscroller_thumb",
+          "class": "android.view.ViewGroup"
+        },
+        {
+          "text": "",
+          "desc": "null",
+          "id": "com.simplemobiletools.smsmessenger:id/contacts_letter_fastscroller",
+          "class": "android.widget.LinearLayout"
+        },
+        {
+          "text": "",
+          "desc": "null",
+          "id": "com.simplemobiletools.smsmessenger:id/add_contact_divider",
+          "class": "android.widget.ImageView"
+        },
+        {
+          "text": "No contacts found",
+          "desc": "null",
+          "id": "com.simplemobiletools.smsmessenger:id/no_contacts_placeholder",
+          "class": "android.widget.TextView"
+        }
+      ],
+      "executionCount": 16,
+      "durationMs": 257,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 2793,
+    "endLine": 2794,
+    "cell": 17,
+    "request": {
+      "timeout": 20,
+      "code": "addr=driver.find_element(AppiumBy.ID,'com.simplemobiletools.smsmessenger:id/new_conversation_address')\naddr.send_keys('+16597910719')\n{'value':addr.get_attribute('text'),'activity':driver.current_activity} "
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "value": "+16597910719",
+        "activity": ".activities.NewConversationActivity"
+      },
+      "executionCount": 17,
+      "durationMs": 1362,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 2885,
+    "endLine": 2886,
+    "cell": 18,
+    "request": {
+      "timeout": 20,
+      "code": "addr.send_keys('\\n')\nWebDriverWait(driver,10).until(lambda d: d.current_activity != '.activities.NewConversationActivity')\n{'activity':driver.current_activity} "
+    },
+    "envelope": {
+      "status": "failed",
+      "stdout": "",
+      "stderr": "",
+      "error": {
+        "type": "selenium.common.exceptions.TimeoutException",
+        "message": "",
+        "traceback": [
+          "Traceback (most recent call last):",
+          "  File \"<external-frame>\", line 590, in <frame>",
+          "  File \"<external-frame>\", line 575, in <frame>",
+          "  File \"<amkernel-cell-18>\", line 2, in <frame>",
+          "  File \"<external-frame>\", line 121, in <frame>",
+          "selenium.common.exceptions.TimeoutException"
+        ]
+      },
+      "executionCount": 18,
+      "durationMs": 10897,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 3045,
+    "endLine": 3046,
+    "cell": 19,
+    "request": {
+      "timeout": 20,
+      "code": "facts=[]\nfor e in driver.find_elements(AppiumBy.XPATH,'//*'):\n t=e.get_attribute('text'); d=e.get_attribute('content-desc'); rid=e.get_attribute('resource-id'); cls=e.get_attribute('class')\n if t or (d and d!='null') or rid: facts.append({'text':t,'desc':d,'id':rid,'class':cls})\n{'package':driver.current_package,'activity':driver.current_activity,'elements':facts[:30]} "
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "package": "com.simplemobiletools.smsmessenger",
+        "activity": ".activities.NewConversationActivity",
+        "elements": [
+          {
+            "text": "",
+            "desc": "null",
+            "id": "null",
+            "class": "android.widget.FrameLayout"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "null",
+            "class": "android.widget.LinearLayout"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "null",
+            "class": "android.widget.FrameLayout"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.simplemobiletools.smsmessenger:id/action_bar_root",
+            "class": "android.widget.FrameLayout"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "android:id/content",
+            "class": "android.widget.FrameLayout"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.simplemobiletools.smsmessenger:id/new_conversation_coordinator",
+            "class": "android.view.ViewGroup"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.simplemobiletools.smsmessenger:id/new_conversation_toolbar",
+            "class": "android.view.ViewGroup"
+          },
+          {
+            "text": "",
+            "desc": "Back",
+            "id": "null",
+            "class": "android.widget.ImageButton"
+          },
+          {
+            "text": "New conversation",
+            "desc": "null",
+            "id": "null",
+            "class": "android.widget.TextView"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.simplemobiletools.smsmessenger:id/new_conversation_holder",
+            "class": "android.widget.RelativeLayout"
+          },
+          {
+            "text": " ",
+            "desc": "null",
+            "id": "com.simplemobiletools.smsmessenger:id/new_conversation_address",
+            "class": "android.widget.EditText"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.simplemobiletools.smsmessenger:id/contacts_letter_fastscroller_thumb",
+            "class": "android.view.ViewGroup"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.simplemobiletools.smsmessenger:id/contacts_letter_fastscroller",
+            "class": "android.widget.LinearLayout"
+          },
+          {
+            "text": "",
+            "desc": "null",
+            "id": "com.simplemobiletools.smsmessenger:id/add_contact_divider",
+            "class": "android.widget.ImageView"
+          },
+          {
+            "text": "No contacts found",
+            "desc": "null",
+            "id": "com.simplemobiletools.smsmessenger:id/no_contacts_placeholder",
+            "class": "android.widget.TextView"
+          }
+        ]
+      },
+      "executionCount": 19,
+      "durationMs": 279,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 3143,
+    "endLine": 3146,
+    "cell": 20,
+    "request": {
+      "timeout": 20,
+      "code": "addr=driver.find_element(AppiumBy.ID,'com.simplemobiletools.smsmessenger:id/new_conversation_address')\naddr.send_keys('+16597910719')\n{'value':addr.get_attribute('text')} "
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "value": "+16597910719"
+      },
+      "executionCount": 20,
+      "durationMs": 673,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  },
+  {
+    "startLine": 3229,
+    "endLine": 3230,
+    "cell": 21,
+    "request": {
+      "timeout": 30,
+      "code": "session_id=driver.session_id\ndriver.quit()\n{'ownedSessionId':session_id,'quitReturned':True}"
+    },
+    "envelope": {
+      "status": "completed",
+      "stdout": "",
+      "stderr": "",
+      "result": {
+        "ownedSessionId": "ef373fc3-0f0e-4fe7-ac65-edcf6ccb89c1",
+        "quitReturned": true
+      },
+      "executionCount": 21,
+      "durationMs": 180,
+      "kernelState": "alive",
+      "runtime": {
+        "executable": "/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/bin/python",
+        "pythonVersion": "3.11.16",
+        "workingDirectory": "/private/var/folders/xg/5v7ktvdx04vct4g1cjpcb9880000gn/T/fsq-aw-amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z-mqtw3jk6/agent-workspace",
+        "environmentKind": "active_venv",
+        "implementation": "CPython",
+        "platform": "macOS-26.6.2-arm64-arm-64bit",
+        "packages": []
+      },
+      "output": {
+        "totalBytes": 0,
+        "totalLines": 0,
+        "discardedBytes": 0,
+        "discardedLines": 0,
+        "truncated": false,
+        "limitBytes": 268435456,
+        "limitExceeded": false,
+        "live": "progress"
+      },
+      "displays": [],
+      "artifacts": []
+    }
+  }
+]

@@ -1,0 +1,140 @@
+{
+  "observedAtUnix": 1794211857.24952,
+  "readOnly": true,
+  "checks": {
+    "bootId": {
+      "command": [
+        "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+        "-s",
+        "emulator-5554",
+        "shell",
+        "cat",
+        "/proc/sys/kernel/random/boot_id"
+      ],
+      "startedAtUnix": 1794211857.249526,
+      "completedAtUnix": 1794211857.277983,
+      "returnCode": 0,
+      "stdout": "0f36e370-012a-4423-a1f9-959beae8f90d\n",
+      "stderr": ""
+    },
+    "accessibility": {
+      "command": [
+        "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+        "-s",
+        "emulator-5554",
+        "shell",
+        "dumpsys",
+        "accessibility"
+      ],
+      "startedAtUnix": 1794211857.278031,
+      "completedAtUnix": 1794211857.301514,
+      "returnCode": 0,
+      "stdout": "ACCESSIBILITY MANAGER (dumpsys accessibility)\n\ncurrentUserId=0\nhasWindowMagnificationConnection=false\nMagnifier on display#0\n    MagnificationConfig[mode: 1, scale: 1.0, centerX: 540.0, centerY: 1200.0] \n    Magnification region=SkRegion((5,5,1075,2395))\n    IdOfLastServiceToMagnify=-1\n    SupportWindowMagnification=false\n    WindowMagnificationConnectionState=DISCONNECTED\nUser state[\n     attributes:{id=0, touchExplorationEnabled=false, serviceHandlesDoubleTap=false, requestMultiFingerGestures=false, requestTwoFingerPassthrough=false, sendMotionEventsEnabledfalse, displayMagnificationEnabled=false, autoclickEnabled=false, nonInteractiveUiTimeout=0, interactiveUiTimeout=0, installedServiceCount=4, magnificationModes={0=1}, magnificationCapabilities=3, audioDescriptionByDefaultEnabled=false, magnificationFollowTypingEnabled=true}\n     shortcut key:{}\n     button:{}\n     button target:{null}\n     Bound services:{Service[label=com.google.androidenv.accessibilityforwarder.Acce\u2026, feedbackType[FEEDBACK_GENERIC], capabilities=1, eventTypes=TYPES_ALL_MASK, notificationTimeout=0, requestA11yBtn=false]}\n     Enabled services:{{com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.AccessibilityForwarder}}\n     Binding services:{}\n     Crashed services:{}\n     Client list info:{\n          Client list callbacks: 10\n          Client list killed: false\n          Client list broadcasts count: -1\n          Registered clients:{\n[com.google.android.apps.wellbeing][com.google.android.googlequicksearchbox][com.google.androidenv.accessibilityforwarder][com.google.android.googlequicksearchbox][com.google.android.calendar][com.google.android.contacts][com.google.android.as][com.google.android.youtube][com.google.android.inputmethod.latin][com.google.android.apps.nexuslauncher]}]\nGlobal Info [ Top focused display Id = 0\n     Active Window Id = 9955\n     Top Focused Window Id = 9955\n     Accessibility Focused Window Id = 9846 ]\n\nDisplay[0] : \nA11yWindow[AccessibilityWindowInfo[title=null, displayId=0, id=9959, taskId=-1, type=TYPE_SYSTEM, layer=1, region=SkRegion((0,0,1080,128)), bounds=Rect(0, 0 - 1080, 128), focused=false, active=false, pictureInPicture=false, hasParent=false, isAnchored=false, hasChildren=false]]\nWindowInfo[WindowInfo[title=null, displayId=0, taskId=-1, type=2000, layer=0, token=android.os.BinderProxy@baaa4b1, region=SkRegion((0,0,1080,128)), bounds=Rect(0, 0 - 1080, 128), parent=null, focused=false, children=null, accessibility anchor=9223372034707292159, pictureInPicture=false, watchOutsideTouch=false, mTransformMatrix=Matrix{[1.0, 0.0, 0.0][0.0, 1.0, 0.0][0.0, 0.0, 1.0]}, mMagnificationSpec=<scale:1.0,offsetX:0.0,offsetY:0.0>]]\n,\nA11yWindow[AccessibilityWindowInfo[title=Home, displayId=0, id=9955, taskId=525, type=TYPE_APPLICATION, layer=0, region=SkRegion((0,0,1080,2400)), bounds=Rect(0, 0 - 1080, 2400), focused=true, active=true, pictureInPicture=false, hasParent=false, isAnchored=false, hasChildren=false]]\nWindowInfo[WindowInfo[title=Home, displayId=0, taskId=525, type=1, layer=1, token=android.os.BinderProxy@612bc3e, region=SkRegion((0,0,1080,2400)), bounds=Rect(0, 0 - 1080, 2400), parent=null, focused=true, children=null, accessibility anchor=9223372034707292159, pictureInPicture=false, watchOutsideTouch=false, mTransformMatrix=Matrix{[1.0, 0.0, 0.0][0.0, 1.0, 0.0][0.0, 0.0, 1.0]}, mMagnificationSpec=<scale:1.0,offsetX:0.0,offsetY:0.0>]]\n\nGlobal client list info:{\n    Client list callbacks: 4\n    Client list killed: false\n    Client list broadcasts count: -1\n    Registered clients:{\n[com.android.keychain, com.android.providers.settings, android, com.android.settings, com.android.wallpaperbackup, com.android.localtransport, com.android.inputdevices, com.android.emulator.multidisplay, com.android.server.telecom, com.android.dynsystem, com.android.location.fused][com.android.systemui][com.google.android.documentsui][com.google.android.permissioncontroller]",
+      "stderr": ""
+    },
+    "forwarderPid": {
+      "command": [
+        "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+        "-s",
+        "emulator-5554",
+        "shell",
+        "pidof",
+        "com.google.androidenv.accessibilityforwarder"
+      ],
+      "startedAtUnix": 1794211857.301566,
+      "completedAtUnix": 1794211857.330873,
+      "returnCode": 0,
+      "stdout": "16128\n",
+      "stderr": ""
+    },
+    "enabledServices": {
+      "command": [
+        "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+        "-s",
+        "emulator-5554",
+        "shell",
+        "settings",
+        "get",
+        "secure",
+        "enabled_accessibility_services"
+      ],
+      "startedAtUnix": 1794211857.3309388,
+      "completedAtUnix": 1794211857.352044,
+      "returnCode": 0,
+      "stdout": "com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.AccessibilityForwarder\n",
+      "stderr": ""
+    },
+    "accessibilityEnabled": {
+      "command": [
+        "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+        "-s",
+        "emulator-5554",
+        "shell",
+        "settings",
+        "get",
+        "secure",
+        "accessibility_enabled"
+      ],
+      "startedAtUnix": 1794211857.352108,
+      "completedAtUnix": 1794211857.373256,
+      "returnCode": 0,
+      "stdout": "1\n",
+      "stderr": ""
+    },
+    "uia2Processes": {
+      "command": [
+        "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+        "-s",
+        "emulator-5554",
+        "shell",
+        "pidof",
+        "io.appium.uiautomator2.server",
+        "io.appium.uiautomator2.server.test"
+      ],
+      "startedAtUnix": 1794211857.373323,
+      "completedAtUnix": 1794211857.3918269,
+      "returnCode": 1,
+      "stdout": "",
+      "stderr": ""
+    },
+    "helperPath": {
+      "command": [
+        "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+        "-s",
+        "emulator-5554",
+        "shell",
+        "pm",
+        "path",
+        "com.google.androidenv.accessibilityforwarder"
+      ],
+      "startedAtUnix": 1794211857.391891,
+      "completedAtUnix": 1794211857.411515,
+      "returnCode": 0,
+      "stdout": "package:/data/app/~~D1G-fGLcS0-1EP3HfJcNZQ==/com.google.androidenv.accessibilityforwarder-qi_rgeUd27NMVLQwy42dEA==/base.apk\n",
+      "stderr": ""
+    }
+  },
+  "installedHelperHash": {
+    "returnCode": 0,
+    "stdout": "0987ded41c12807d4f75d0789002912de143eec866fa7b389ad8efdb8b0d07bb  /data/app/~~D1G-fGLcS0-1EP3HfJcNZQ==/com.google.androidenv.accessibilityforwarder-qi_rgeUd27NMVLQwy42dEA==/base.apk\n",
+    "stderr": ""
+  },
+  "unsupportedDirectSessionsInspection": {
+    "route": "GET /sessions",
+    "httpStatus": 404,
+    "meaning": "Unsupported Appium route; not evidence of zero sessions. Use established runner authority below."
+  },
+  "sessionHashes": [],
+  "bindingSummary": [
+    "     Bound services:{Service[label=com.google.androidenv.accessibilityforwarder.Acce\u2026, feedbackType[FEEDBACK_GENERIC], capabilities=1, eventTypes=TYPES_ALL_MASK, notificationTimeout=0, requestA11yBtn=false]}",
+    "     Enabled services:{{com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.AccessibilityForwarder}}",
+    "     Binding services:{}",
+    "     Crashed services:{}"
+  ],
+  "sameBootId": true,
+  "enabledServicesPreserved": true,
+  "accessibilityEnabledPreserved": true,
+  "productionHelperRestored": true,
+  "normalBindingObserved": true,
+  "completedAtUnix": 1794211891.9272661
+}

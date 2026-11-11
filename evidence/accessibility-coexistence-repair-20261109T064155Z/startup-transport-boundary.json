@@ -1,0 +1,9 @@
+{
+  "scope": "new-build experimental prerequisite defect, not historical campaign root cause",
+  "failedBuildSha256": "f1a24f6405827c84cccc26bbf815c7bff7ac292743dab235bdb44a83fdd64fcb",
+  "failedQualification": "qualification/device-readiness.json",
+  "signal": "Bound, healthy capture worker produced internal files but no SendForest; stale source default logUsingGRPC=false while official initialization sends only SET_GRPC/ENABLE_ACCESSIBILITY_TREE_LOGS",
+  "frozenApkEvidence": "original-LogFlags.dexdump.txt; frozen LogFlags has no transport-mode flags, SendForest was unconditional",
+  "correction": "gRPC true/internal storage false by default; lifecycle cancellation unchanged; no evaluator/retry/filter modifications",
+  "correctedBuildSha256": "0987ded41c12807d4f75d0789002912de143eec866fa7b389ad8efdb8b0d07bb"
+}

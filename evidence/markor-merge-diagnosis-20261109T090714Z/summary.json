@@ -1,0 +1,160 @@
+{
+  "kind": "original_r12v2_033_offline_file_contract_diagnosis",
+  "owner": "w4:p1",
+  "parent": "w3:p1",
+  "independentReviewer": "w4:p2",
+  "status": "completed_for_offline_scope",
+  "task": {
+    "complexity": 7.8,
+    "goal": "Merge the contents of Markor notes tough_frog_2023_08_05.txt, proud_cat_edited.txt and 2023_08_21_friendly_koala.md (in the same order) into a new Markor note named mIObBbo4 and save it. Add a new line between the content of each note.",
+    "name": "MarkorMergeNotes",
+    "params": {
+      "file1_content": "m4kMyOGWaENoPj6FqLjd",
+      "file1_name": "tough_frog_2023_08_05.txt",
+      "file2_content": "fxHXZsqrmnwYjXvte9pg",
+      "file2_name": "proud_cat_edited.txt",
+      "file3_content": "f42GOjFWb2aKHogAFQSY",
+      "file3_name": "2023_08_21_friendly_koala.md",
+      "new_file_name": "mIObBbo4",
+      "seed": 2594989658
+    },
+    "paramsSha256": "83d348ecd71eee0838de42e16ede8c5725cd63bf2b70490f4149eaf41fce8868"
+  },
+  "manifestIdentity": {
+    "index": 33,
+    "name": "MarkorMergeNotes",
+    "paramsTransport": "json",
+    "instanceSeed": 2594989658,
+    "paramsSha256": "83d348ecd71eee0838de42e16ede8c5725cd63bf2b70490f4149eaf41fce8868",
+    "maxSteps": 78
+  },
+  "originalOutcome": {
+    "officialReward": 0.0,
+    "error": null,
+    "invalidReason": null,
+    "businessActions": 17,
+    "maxSteps": 78,
+    "referenceSteps": 18,
+    "pythonExecCalls": 18,
+    "completedCalls": 17,
+    "failedCalls": 1,
+    "timedOutCalls": 0,
+    "allKernelsAlive": true,
+    "agentFinished": true,
+    "cleanup": {
+      "agentSession": {
+        "agentQuitReturned": true,
+        "attribution": "agent",
+        "sessionIdSha256": "8fd2c646e3e3131a2659e0f71c02e5a77a76d0f5da1e08e47a6d01f2330865b0",
+        "status": "closed",
+        "verification": {
+          "activeSessionCount": 0,
+          "attemptedSessionCount": 1,
+          "ownedSessionCount": 1,
+          "pendingCreateCount": 0,
+          "pendingRequestCount": 0,
+          "reclaimedSessionCount": 0,
+          "reclaimedSessionHashes": [],
+          "sessions": [
+            {
+              "absentVerified": true,
+              "alreadyAbsent": true,
+              "errors": [],
+              "presentVerified": false,
+              "quitReturned": false,
+              "sessionHash": "8fd2c646e3e3131a2659e0f71c02e5a77a76d0f5da1e08e47a6d01f2330865b0"
+            }
+          ],
+          "status": "unknown",
+          "unknownCreationOutcomeCount": 0
+        },
+        "verificationStatus": "absent"
+      },
+      "environment": "closed",
+      "taskTearDown": "completed"
+    }
+  },
+  "actualInstalledScorer": {
+    "identity": "MarkorMergeNotes.is_successful",
+    "delegate": "CreateFile.is_successful",
+    "directSourceFilesMatchedToRECORD": 7,
+    "literalTargetPath": "/storage/emulated/0/Documents/Markor/mIObBbo4",
+    "mdOrTxtAliasesAccepted": false,
+    "checkOrder": [
+      "exact full-path existence",
+      "CreateFile fuzzy text on exact path",
+      "Merge five-line layout with empty lines1/3 on exact path"
+    ]
+  },
+  "establishedOriginalObservations": {
+    "creationDialog": "exec13/raw2561\u20132562: separate ext field defaults.md, typeMarkdown",
+    "sourceNotes": "exec11/12 raw2086\u20132087/2275\u20132276: all three source UI strings have finalLF",
+    "successfulInput": "exec15/raw3338\u20133339: edits base name only, rstrips sourceCRLF then joins with oneLF",
+    "reopened": "exec17/raw3807\u20133808: File mIObBbo4.md, base titlemIObBbo4, three nonempty lines, no blank lines",
+    "selfCheck": "Only base title and own merged string compared; not exact filesystem target name or blank-line contract",
+    "sourceRequestHashes": "All18 original codeSHA verified against original result",
+    "recoveredSyntaxError": "exec14 raw2875\u20132876 invalid quoted LF source fails parse before execution; exec15 recovers withchr(10)"
+  },
+  "pureChecks": {
+    "artifact": "owner-pure-contract-smoke.json",
+    "actualFuzzyOriginalUiVsReference": true,
+    "fuzzyRatio": 0.9763779527559056,
+    "originalUiFiveLinePredicate": false,
+    "referenceFiveLinePredicate": true,
+    "actualFilenamePathsDistinct": true,
+    "parentReceipt": "parent-installed-pure-predicate-smoke.json",
+    "independentReceipt": "independent-033-contract-smoke.json",
+    "scope": "Known original UI strings and explicitly controlled candidates; no env/init/is_successful/filesystem read or official reward"
+  },
+  "historicalEvidenceBoundary": {
+    "runLog": "evidence/headless-fullcoverage-20261107T004632Z/v2-ready-run-full.log",
+    "ordinallyMappedOriginalSegment": "583\u2013601; first34 step-count sequence matches original results",
+    "targetScorerInfoMessageRetained": false,
+    "originalFindCatInputsRetained": false,
+    "exactFirstZeroReturnBranch": "UNOBSERVED; do not mark existence or strict layout as actually reached without original inputs",
+    "actualHistoricalFullPathAndBytes": "Not dumped; UI listing/title/content not interchangeable with filesystem evidence",
+    "originalNamedNoteFileFoundInInspectedRoots": false,
+    "searchScope": "Originalattempt entries plus matching note filenames in campaign/evidence, not all archives/external paths",
+    "conditionalMechanisms": [
+      "Only.md and no exact target -> existence0 before content/layout",
+      "Exact target containing original three-line string -> fuzzy passes, strict layout0"
+    ],
+    "uniqueHistoricalCauseProven": false
+  },
+  "differenceFrom014": "No renderer-appended marker/reference field divergence is observed. Model request actively strips source finalLFs and keeps default extension; output differs from current exact-name/blank-line contract. Implicit goal wording may be clarified in a future separately authorized version but is not by itself proof of a task contract bug.",
+  "fixStatus": {
+    "productionChangeApplied": false,
+    "newAmkernelOrSkillDefectDemonstrated": false,
+    "newTaskContractBugEstablished": false,
+    "taskUnsolvabilityEstablished": false,
+    "historicalRewardChanged": false
+  },
+  "executionDecision": {
+    "offlineScopeComplete": true,
+    "liveQueryOrReplayRequired": false,
+    "liveQueryOrReplayAuthorized": false,
+    "newReward": null,
+    "nextTaskStarted": false
+  },
+  "immutability": {
+    "historicalPaths": 2186,
+    "skillFiles": 152,
+    "installedSources": 7,
+    "changed": 0,
+    "missing": 0,
+    "boundedNotWholeHostAudit": true
+  },
+  "evidence": {
+    "report": "offline-report.md",
+    "summary": "summary.json",
+    "contract": "minimal-contract.json",
+    "sourceAndLog": "owner-scorer-source-proof.json",
+    "rawCalls": "owner-original-calls.json",
+    "originalFields": "owner-raw-field-proof.json",
+    "pureSmoke": "owner-pure-contract-smoke.json",
+    "parentOriginalFields": "parent-original-field-evidence.json",
+    "immutability": "immutability.json",
+    "zeroOperations": "zero-operations.json"
+  },
+  "independentFinalDeliveryAcceptance": "Requested fromw4:p2 after final five owner files; must be separately signed, not assumed by owner"
+}

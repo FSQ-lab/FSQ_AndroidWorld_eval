@@ -1,0 +1,65 @@
+{
+  "timestampUtc": "2026-11-10T06:14:38.272320+00:00",
+  "environmentOverrides": {
+    "PYTHONPATH": "/Users/qunmi/.local/share/fsq-androidworld-eval/fsq-native-gpt61-corrected-20261110T043031Z/evaluator-dependencies",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "receipts": [
+    {
+      "command": [
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/bin/python",
+        "-B",
+        "-m",
+        "fsq_androidworld_eval.fsq_manifest",
+        "prepare",
+        "--project",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval",
+        "--evaluator-site",
+        "/Users/qunmi/.local/share/fsq-androidworld-eval/fsq-native-gpt61-corrected-20261110T043031Z/evaluator-site",
+        "--fsq-source",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ",
+        "--fsq-python",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ/.venv/bin/python",
+        "--settings-path",
+        "/Users/qunmi/.local/share/fsq-androidworld-eval/fsq-native-gpt61-corrected-20261110T043031Z/workspace-template/.fsq/config/config.android.yaml",
+        "--output",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-2/candidate-final-manifest.json",
+        "--campaign-id",
+        "fsq-native-gpt61-r2-final-5554-20261110",
+        "--serial",
+        "emulator-5554",
+        "--console-port",
+        "5554",
+        "--grpc-port",
+        "8554",
+        "--adb-path",
+        "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+        "--oracle-source-root",
+        "/Users/qunmi/.local/share/fsq-androidworld-eval/fsq-native-gpt61-corrected-20261110T043031Z/corrected-androidworld-source"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"campaignId\": \"fsq-native-gpt61-r2-final-5554-20261110\", \"gates\": {\"campaignAuthorization\": \"pending\", \"deviceReadiness\": \"pending\", \"independentReview\": \"pending\", \"nativeProviderModelAuthentication\": \"pending\", \"qualification\": \"pending\", \"smoke\": \"pending\", \"targetResourceOwnership\": \"pending\"}, \"kind\": \"fsq_androidworld\", \"observedNativeProvider\": {\"model\": \"gpt-6.1-sol\", \"path\": \"/Users/qunmi/.fsq/config.yaml\", \"provider\": \"github_copilot\", \"status\": \"metadata_observed_not_authenticated\"}, \"status\": \"candidate_pending_independent_review\", \"target\": {\"adbPath\": \"/Users/qunmi/Library/Android/sdk/platform-tools/adb\", \"authenticationStatus\": \"pending\", \"consolePort\": 5554, \"grpcPort\": 8554, \"model\": \"gpt-6.1-sol\", \"provider\": \"github_copilot\", \"readinessStatus\": \"pending\", \"resourceStatus\": \"pending\", \"serial\": \"emulator-5554\"}, \"taskCount\": 116}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/bin/python",
+        "-B",
+        "-m",
+        "fsq_androidworld_eval.fsq_manifest",
+        "inspect",
+        "--project",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval",
+        "--manifest",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-2/candidate-final-manifest.json"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"campaignId\": \"fsq-native-gpt61-r2-final-5554-20261110\", \"gates\": {\"campaignAuthorization\": \"pending\", \"deviceReadiness\": \"pending\", \"independentReview\": \"pending\", \"nativeProviderModelAuthentication\": \"pending\", \"qualification\": \"pending\", \"smoke\": \"pending\", \"targetResourceOwnership\": \"pending\"}, \"kind\": \"fsq_androidworld\", \"observedNativeProvider\": {\"model\": \"gpt-6.1-sol\", \"path\": \"/Users/qunmi/.fsq/config.yaml\", \"provider\": \"github_copilot\", \"status\": \"metadata_observed_not_authenticated\"}, \"status\": \"candidate_pending_independent_review\", \"target\": {\"adbPath\": \"/Users/qunmi/Library/Android/sdk/platform-tools/adb\", \"authenticationStatus\": \"pending\", \"consolePort\": 5554, \"grpcPort\": 8554, \"model\": \"gpt-6.1-sol\", \"provider\": \"github_copilot\", \"readinessStatus\": \"pending\", \"resourceStatus\": \"pending\", \"serial\": \"emulator-5554\"}, \"taskCount\": 116}\n",
+      "stderr": ""
+    }
+  ],
+  "deviceAccessed": false,
+  "modelCalled": false,
+  "liveAuthorized": false,
+  "intermediateCandidate": "candidate-manifest.json is retained pre-sandbox-repair evidence, not execution candidate"
+}

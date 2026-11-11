@@ -1,0 +1,138 @@
+{
+  "scope": "Offline application of installed official predicate to original Appium fields. Not the historical official forwarder state, not a rescore, no device access.",
+  "sourceEpisode": "007-ClockStopWatchPausedVerify/attempt-1",
+  "pythonExecutable": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/bin/python",
+  "code": "import json,sys\nfrom android_world.task_evals.single import clock\nfrom android_world.env.representation_utils import UIElement\nobs=json.loads(sys.argv[1])\nelements=[UIElement(text=e.get('text') or None,content_description=e.get('content-desc') or None) for e in obs['elements']]\nprint(json.dumps({'mode':'offline predicate on recorded Appium fields; NOT original official forwarder state or rescore','activity':obs['activity'],'officialPausedPredicateOnAppiumFields':clock._is_stopwatch_paused(elements,obs['activity']),'stopwatchMatches':sum(e.content_description=='Stopwatch' or e.text=='Stopwatch' for e in elements),'hasStart':any(e.content_description=='Start' for e in elements),'appiumStabilityCheck':obs['stability']}))\n",
+  "input": {
+    "activity": "com.android.deskclock.DeskClock",
+    "elements": [
+      {
+        "resource-id": "com.google.android.deskclock:id/action_bar_title",
+        "content-desc": "null",
+        "text": "Stopwatch",
+        "class": "android.widget.TextView",
+        "clickable": "false",
+        "enabled": "true",
+        "selected": "false"
+      },
+      {
+        "resource-id": "com.google.android.deskclock:id/stopwatch_time_wrapper",
+        "content-desc": "null",
+        "text": "",
+        "class": "android.view.ViewGroup",
+        "clickable": "true",
+        "enabled": "true",
+        "selected": "false"
+      },
+      {
+        "resource-id": "com.google.android.deskclock:id/stopwatch_circle",
+        "content-desc": "null",
+        "text": "",
+        "class": "android.view.View",
+        "clickable": "false",
+        "enabled": "true",
+        "selected": "false"
+      },
+      {
+        "resource-id": "com.google.android.deskclock:id/stopwatch_time_text",
+        "content-desc": "null",
+        "text": "00",
+        "class": "android.widget.TextView",
+        "clickable": "false",
+        "enabled": "true",
+        "selected": "false"
+      },
+      {
+        "resource-id": "com.google.android.deskclock:id/stopwatch_hundredths_text",
+        "content-desc": "null",
+        "text": "00",
+        "class": "android.widget.TextView",
+        "clickable": "false",
+        "enabled": "true",
+        "selected": "false"
+      },
+      {
+        "resource-id": "com.google.android.deskclock:id/fab",
+        "content-desc": "Start",
+        "text": "",
+        "class": "android.widget.Button",
+        "clickable": "true",
+        "enabled": "true",
+        "selected": "false"
+      },
+      {
+        "resource-id": "com.google.android.deskclock:id/tab_menu_timer",
+        "content-desc": "Timer",
+        "text": "",
+        "class": "android.widget.FrameLayout",
+        "clickable": "true",
+        "enabled": "true",
+        "selected": "false"
+      },
+      {
+        "resource-id": "com.google.android.deskclock:id/navigation_bar_item_small_label_view",
+        "content-desc": "null",
+        "text": "Timer",
+        "class": "android.widget.TextView",
+        "clickable": "false",
+        "enabled": "true",
+        "selected": "false"
+      },
+      {
+        "resource-id": "com.google.android.deskclock:id/tab_menu_stopwatch",
+        "content-desc": "Stopwatch",
+        "text": "",
+        "class": "android.widget.FrameLayout",
+        "clickable": "false",
+        "enabled": "true",
+        "selected": "true"
+      },
+      {
+        "resource-id": "com.google.android.deskclock:id/navigation_bar_item_large_label_view",
+        "content-desc": "null",
+        "text": "Stopwatch",
+        "class": "android.widget.TextView",
+        "clickable": "false",
+        "enabled": "true",
+        "selected": "true"
+      },
+      {
+        "resource-id": "com.google.android.deskclock:id/tab_menu_bedtime",
+        "content-desc": "Bedtime",
+        "text": "",
+        "class": "android.widget.FrameLayout",
+        "clickable": "true",
+        "enabled": "true",
+        "selected": "false"
+      },
+      {
+        "resource-id": "com.google.android.deskclock:id/navigation_bar_item_small_label_view",
+        "content-desc": "null",
+        "text": "Bedtime",
+        "class": "android.widget.TextView",
+        "clickable": "false",
+        "enabled": "true",
+        "selected": "false"
+      }
+    ],
+    "stability": {
+      "before": {
+        "control": "Start",
+        "time": "00",
+        "hundredths": "00",
+        "tabSelected": "true"
+      },
+      "after": {
+        "control": "Start",
+        "time": "00",
+        "hundredths": "00",
+        "tabSelected": "true"
+      },
+      "stable": true,
+      "paused": true
+    }
+  },
+  "exitCode": 0,
+  "stdout": "{\"mode\": \"offline predicate on recorded Appium fields; NOT original official forwarder state or rescore\", \"activity\": \"com.android.deskclock.DeskClock\", \"officialPausedPredicateOnAppiumFields\": true, \"stopwatchMatches\": 3, \"hasStart\": true, \"appiumStabilityCheck\": {\"before\": {\"control\": \"Start\", \"time\": \"00\", \"hundredths\": \"00\", \"tabSelected\": \"true\"}, \"after\": {\"control\": \"Start\", \"time\": \"00\", \"hundredths\": \"00\", \"tabSelected\": \"true\"}, \"stable\": true, \"paused\": true}}\n",
+  "stderr": ""
+}

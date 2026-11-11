@@ -1,0 +1,515 @@
+{
+  "schemaVersion": 1,
+  "campaignId": "amkernel-0.1.4-r15-current-stack-full-20261109T154403Z",
+  "status": "initial_evaluation_side_documentation_verification",
+  "observedAtUtc8": "2026-11-10T08:35:39.496519+08:00",
+  "reproduciblePython": "import collections, hashlib, json, pathlib, re\nroot = pathlib.Path.cwd()\nC = root / \"campaigns/amkernel-0.1.4-r15-current-stack-full-20261109T154403Z\"\nE = root / \"evidence/amkernel-0.1.4-r15-current-stack-20261109T154403Z\"\nAN = E / \"failure-analysis\"\nreport = json.loads((AN / \"cases.json\").read_text())\nexpected = json.loads((E / \"startup-handoff.json\").read_text())[\"finalResult\"][\"failures\"]\nexpected_by_index = {x[\"index\"]: x for x in expected}\nchecks = {}\nchecks[\"uniqueExact20FailureCoverage\"] = len(report[\"cases\"]) == 20 and len({x[\"index\"] for x in report[\"cases\"]}) == 20 and {x[\"index\"] for x in report[\"cases\"]} == set(expected_by_index)\nrows = []\nfix_required = {\"status\", \"target\", \"change\", \"invariants\", \"alternatives/tradeoffs\", \"risks\", \"expectedImpact\", \"falsification\"}\nfor x in report[\"cases\"]:\n    original = json.loads((C / expected_by_index[x[\"index\"]][\"result\"]).read_text())\n    outcome = x[\"recordedOutcome\"]\n    rows.append({\"index\": x[\"index\"], \"goalExact\": x[\"goal\"] == original[\"task\"][\"goal\"], \"paramsExact\": x[\"params\"] == original[\"task\"][\"params\"], \"nameExact\": x[\"task\"] == original[\"task\"][\"name\"], \"rewardExact\": outcome[\"officialReward\"] == original[\"officialReward\"], \"terminationExact\": outcome[\"terminationReason\"] == original[\"agent\"][\"termination\"][\"reason\"], \"budgetExact\": x[\"actionBudget\"][\"allocated\"] == original[\"stepBudget\"][\"maxSteps\"] and x[\"actionBudget\"][\"consumed\"] == original[\"stepBudget\"][\"executedActionCount\"], \"allCaseSections\": all(bool(x.get(k)) for k in (\"goal\", \"params\", \"oracle\", \"timeline\", \"evidence\", \"actionBudget\", \"finalOutcome\", \"causal\", \"responsibility\", \"fixes\", \"unknowns\")), \"allFixPlansComplete\": all(fix_required <= set(f) and all(f[k] for k in fix_required) for f in x[\"fixes\"])})\nchecks[\"all20ExactOriginalDataAndRequiredSections\"] = all(all(v for k, v in row.items() if k != \"index\") for row in rows)\nchecks[\"partialRewardPreserved\"] = next(x for x in report[\"cases\"] if x[\"index\"] == 115)[\"recordedOutcome\"][\"officialReward\"] == 0.5\nmd = (AN / \"cases.md\").read_text()\nanchors = re.findall(r'<a id=\"case-(\\d{3})\"></a>', md)\nchecks[\"unique20NavigableCaseAnchors\"] = len(anchors) == 20 and set(anchors) == {f\"{i:03d}\" for i in expected_by_index}\nlink_issues = []\nfor filename in (\"README.md\", \"cases.md\", \"module-map.md\"):\n    fenced = None\n    for number, line in enumerate((AN / filename).read_text().splitlines(), 1):\n        stripped = line.lstrip()\n        if stripped.startswith((\"```\", \"~~~\")):\n            marker = stripped[:3]\n            fenced = None if fenced == marker else marker if fenced is None else fenced\n            continue\n        if fenced:\n            continue\n        for target in re.findall(r'(?<!!)\\[[^\\]\\n]*\\]\\(([^)]+)\\)', line):\n            if target.startswith((\"http://\", \"https://\", \"skill://\", \"xd://\", \"#\")):\n                continue\n            relative = target.split(\"#\", 1)[0]\n            if not (AN / relative).exists():\n                link_issues.append({\"file\": filename, \"line\": number, \"target\": target})\nchecks[\"localMarkdownLinksResolve\"] = not link_issues\nfor domain in report[\"domainReports\"]:\n    for key in (\"json\", \"markdown\", \"queries\"):\n        if not (AN / domain[key]).is_file():\n            link_issues.append({\"domain\": domain[\"domain\"], \"missing\": domain[key]})\nchecks[\"domainEvidenceFilesResolve\"] = not link_issues\noutput = {\"checks\": checks, \"allPassed\": all(checks.values()), \"caseCount\": len(rows), \"caseChecks\": rows, \"linkIssues\": link_issues, \"actualAcceptedActions\": sum(x[\"recordedOutcome\"][\"executedActionCount\"] for x in report[\"cases\"]), \"terminationCounts\": dict(collections.Counter(x[\"recordedOutcome\"][\"terminationReason\"] for x in report[\"cases\"])), \"fourReportFiles\": [{\"path\": f, \"bytes\": (AN / f).stat().st_size, \"sha256\": hashlib.sha256((AN / f).read_bytes()).hexdigest()} for f in (\"README.md\", \"cases.json\", \"cases.md\", \"module-map.md\")]}\n",
+  "initialActualOutput": {
+    "checks": {
+      "uniqueExact20FailureCoverage": true,
+      "all20ExactOriginalDataAndRequiredSections": false,
+      "partialRewardPreserved": true,
+      "unique20NavigableCaseAnchors": false,
+      "localMarkdownLinksResolve": true,
+      "domainEvidenceFilesResolve": true
+    },
+    "allPassed": false,
+    "caseCount": 20,
+    "caseChecks": [
+      {
+        "index": 1,
+        "goalExact": true,
+        "paramsExact": true,
+        "nameExact": true,
+        "rewardExact": true,
+        "terminationExact": true,
+        "budgetExact": true,
+        "allCaseSections": true,
+        "allFixPlansComplete": true
+      },
+      {
+        "index": 3,
+        "goalExact": true,
+        "paramsExact": true,
+        "nameExact": true,
+        "rewardExact": true,
+        "terminationExact": true,
+        "budgetExact": true,
+        "allCaseSections": true,
+        "allFixPlansComplete": true
+      },
+      {
+        "index": 4,
+        "goalExact": true,
+        "paramsExact": true,
+        "nameExact": true,
+        "rewardExact": true,
+        "terminationExact": true,
+        "budgetExact": true,
+        "allCaseSections": true,
+        "allFixPlansComplete": true
+      },
+      {
+        "index": 14,
+        "goalExact": true,
+        "paramsExact": true,
+        "nameExact": true,
+        "rewardExact": true,
+        "terminationExact": true,
+        "budgetExact": true,
+        "allCaseSections": true,
+        "allFixPlansComplete": false
+      },
+      {
+        "index": 23,
+        "goalExact": true,
+        "paramsExact": true,
+        "nameExact": true,
+        "rewardExact": true,
+        "terminationExact": true,
+        "budgetExact": true,
+        "allCaseSections": true,
+        "allFixPlansComplete": false
+      },
+      {
+        "index": 24,
+        "goalExact": true,
+        "paramsExact": true,
+        "nameExact": true,
+        "rewardExact": true,
+        "terminationExact": true,
+        "budgetExact": true,
+        "allCaseSections": true,
+        "allFixPlansComplete": false
+      },
+      {
+        "index": 30,
+        "goalExact": true,
+        "paramsExact": true,
+        "nameExact": true,
+        "rewardExact": true,
+        "terminationExact": true,
+        "budgetExact": true,
+        "allCaseSections": true,
+        "allFixPlansComplete": true
+      },
+      {
+        "index": 33,
+        "goalExact": true,
+        "paramsExact": true,
+        "nameExact": true,
+        "rewardExact": true,
+        "terminationExact": true,
+        "budgetExact": true,
+        "allCaseSections": true,
+        "allFixPlansComplete": true
+      },
+      {
+        "index": 36,
+        "goalExact": true,
+        "paramsExact": true,
+        "nameExact": true,
+        "rewardExact": true,
+        "terminationExact": true,
+        "budgetExact": true,
+        "allCaseSections": true,
+        "allFixPlansComplete": true
+      },
+      {
+        "index": 49,
+        "goalExact": true,
+        "paramsExact": true,
+        "nameExact": true,
+        "rewardExact": true,
+        "terminationExact": true,
+        "budgetExact": true,
+        "allCaseSections": true,
+        "allFixPlansComplete": true
+      },
+      {
+        "index": 52,
+        "goalExact": true,
+        "paramsExact": true,
+        "nameExact": true,
+        "rewardExact": true,
+        "terminationExact": true,
+        "budgetExact": true,
+        "allCaseSections": true,
+        "allFixPlansComplete": true
+      },
+      {
+        "index": 58,
+        "goalExact": true,
+        "paramsExact": true,
+        "nameExact": true,
+        "rewardExact": true,
+        "terminationExact": true,
+        "budgetExact": true,
+        "allCaseSections": true,
+        "allFixPlansComplete": true
+      },
+      {
+        "index": 60,
+        "goalExact": true,
+        "paramsExact": true,
+        "nameExact": true,
+        "rewardExact": true,
+        "terminationExact": true,
+        "budgetExact": true,
+        "allCaseSections": true,
+        "allFixPlansComplete": true
+      },
+      {
+        "index": 76,
+        "goalExact": true,
+        "paramsExact": true,
+        "nameExact": true,
+        "rewardExact": true,
+        "terminationExact": true,
+        "budgetExact": true,
+        "allCaseSections": true,
+        "allFixPlansComplete": true
+      },
+      {
+        "index": 85,
+        "goalExact": true,
+        "paramsExact": true,
+        "nameExact": true,
+        "rewardExact": true,
+        "terminationExact": true,
+        "budgetExact": true,
+        "allCaseSections": true,
+        "allFixPlansComplete": true
+      },
+      {
+        "index": 91,
+        "goalExact": true,
+        "paramsExact": true,
+        "nameExact": true,
+        "rewardExact": true,
+        "terminationExact": true,
+        "budgetExact": true,
+        "allCaseSections": true,
+        "allFixPlansComplete": true
+      },
+      {
+        "index": 98,
+        "goalExact": true,
+        "paramsExact": true,
+        "nameExact": true,
+        "rewardExact": true,
+        "terminationExact": true,
+        "budgetExact": true,
+        "allCaseSections": true,
+        "allFixPlansComplete": true
+      },
+      {
+        "index": 106,
+        "goalExact": true,
+        "paramsExact": true,
+        "nameExact": true,
+        "rewardExact": true,
+        "terminationExact": true,
+        "budgetExact": true,
+        "allCaseSections": true,
+        "allFixPlansComplete": true
+      },
+      {
+        "index": 107,
+        "goalExact": true,
+        "paramsExact": true,
+        "nameExact": true,
+        "rewardExact": true,
+        "terminationExact": true,
+        "budgetExact": true,
+        "allCaseSections": true,
+        "allFixPlansComplete": true
+      },
+      {
+        "index": 115,
+        "goalExact": true,
+        "paramsExact": true,
+        "nameExact": true,
+        "rewardExact": true,
+        "terminationExact": true,
+        "budgetExact": true,
+        "allCaseSections": true,
+        "allFixPlansComplete": true
+      }
+    ],
+    "linkIssues": [],
+    "actualAcceptedActions": 352,
+    "terminationCounts": {
+      "completed": 11,
+      "step_budget": 9
+    }
+  },
+  "corrections": [
+    "Canonical recipe params wrappers were separated into exact params plus paramsAnalysis before this check.",
+    "Initial navigation check found four missing end-of-heading case anchors; added explicit049/052/085/098anchors.",
+    "Filled five empty optional metadata arrays across three proposed fixes with explicit alternatives/risks; no product/evidence behavior changed."
+  ],
+  "finalActualOutput": {
+    "checks": {
+      "uniqueExact20FailureCoverage": true,
+      "all20ExactOriginalDataAndRequiredSections": true,
+      "partialRewardPreserved": true,
+      "unique20NavigableCaseAnchors": true,
+      "localMarkdownLinksResolve": true,
+      "domainEvidenceFilesResolve": true
+    },
+    "allPassed": true,
+    "caseCount": 20,
+    "caseChecks": [
+      {
+        "index": 1,
+        "goalExact": true,
+        "paramsExact": true,
+        "nameExact": true,
+        "rewardExact": true,
+        "terminationExact": true,
+        "budgetExact": true,
+        "allCaseSections": true,
+        "allFixPlansComplete": true
+      },
+      {
+        "index": 3,
+        "goalExact": true,
+        "paramsExact": true,
+        "nameExact": true,
+        "rewardExact": true,
+        "terminationExact": true,
+        "budgetExact": true,
+        "allCaseSections": true,
+        "allFixPlansComplete": true
+      },
+      {
+        "index": 4,
+        "goalExact": true,
+        "paramsExact": true,
+        "nameExact": true,
+        "rewardExact": true,
+        "terminationExact": true,
+        "budgetExact": true,
+        "allCaseSections": true,
+        "allFixPlansComplete": true
+      },
+      {
+        "index": 14,
+        "goalExact": true,
+        "paramsExact": true,
+        "nameExact": true,
+        "rewardExact": true,
+        "terminationExact": true,
+        "budgetExact": true,
+        "allCaseSections": true,
+        "allFixPlansComplete": true
+      },
+      {
+        "index": 23,
+        "goalExact": true,
+        "paramsExact": true,
+        "nameExact": true,
+        "rewardExact": true,
+        "terminationExact": true,
+        "budgetExact": true,
+        "allCaseSections": true,
+        "allFixPlansComplete": true
+      },
+      {
+        "index": 24,
+        "goalExact": true,
+        "paramsExact": true,
+        "nameExact": true,
+        "rewardExact": true,
+        "terminationExact": true,
+        "budgetExact": true,
+        "allCaseSections": true,
+        "allFixPlansComplete": true
+      },
+      {
+        "index": 30,
+        "goalExact": true,
+        "paramsExact": true,
+        "nameExact": true,
+        "rewardExact": true,
+        "terminationExact": true,
+        "budgetExact": true,
+        "allCaseSections": true,
+        "allFixPlansComplete": true
+      },
+      {
+        "index": 33,
+        "goalExact": true,
+        "paramsExact": true,
+        "nameExact": true,
+        "rewardExact": true,
+        "terminationExact": true,
+        "budgetExact": true,
+        "allCaseSections": true,
+        "allFixPlansComplete": true
+      },
+      {
+        "index": 36,
+        "goalExact": true,
+        "paramsExact": true,
+        "nameExact": true,
+        "rewardExact": true,
+        "terminationExact": true,
+        "budgetExact": true,
+        "allCaseSections": true,
+        "allFixPlansComplete": true
+      },
+      {
+        "index": 49,
+        "goalExact": true,
+        "paramsExact": true,
+        "nameExact": true,
+        "rewardExact": true,
+        "terminationExact": true,
+        "budgetExact": true,
+        "allCaseSections": true,
+        "allFixPlansComplete": true
+      },
+      {
+        "index": 52,
+        "goalExact": true,
+        "paramsExact": true,
+        "nameExact": true,
+        "rewardExact": true,
+        "terminationExact": true,
+        "budgetExact": true,
+        "allCaseSections": true,
+        "allFixPlansComplete": true
+      },
+      {
+        "index": 58,
+        "goalExact": true,
+        "paramsExact": true,
+        "nameExact": true,
+        "rewardExact": true,
+        "terminationExact": true,
+        "budgetExact": true,
+        "allCaseSections": true,
+        "allFixPlansComplete": true
+      },
+      {
+        "index": 60,
+        "goalExact": true,
+        "paramsExact": true,
+        "nameExact": true,
+        "rewardExact": true,
+        "terminationExact": true,
+        "budgetExact": true,
+        "allCaseSections": true,
+        "allFixPlansComplete": true
+      },
+      {
+        "index": 76,
+        "goalExact": true,
+        "paramsExact": true,
+        "nameExact": true,
+        "rewardExact": true,
+        "terminationExact": true,
+        "budgetExact": true,
+        "allCaseSections": true,
+        "allFixPlansComplete": true
+      },
+      {
+        "index": 85,
+        "goalExact": true,
+        "paramsExact": true,
+        "nameExact": true,
+        "rewardExact": true,
+        "terminationExact": true,
+        "budgetExact": true,
+        "allCaseSections": true,
+        "allFixPlansComplete": true
+      },
+      {
+        "index": 91,
+        "goalExact": true,
+        "paramsExact": true,
+        "nameExact": true,
+        "rewardExact": true,
+        "terminationExact": true,
+        "budgetExact": true,
+        "allCaseSections": true,
+        "allFixPlansComplete": true
+      },
+      {
+        "index": 98,
+        "goalExact": true,
+        "paramsExact": true,
+        "nameExact": true,
+        "rewardExact": true,
+        "terminationExact": true,
+        "budgetExact": true,
+        "allCaseSections": true,
+        "allFixPlansComplete": true
+      },
+      {
+        "index": 106,
+        "goalExact": true,
+        "paramsExact": true,
+        "nameExact": true,
+        "rewardExact": true,
+        "terminationExact": true,
+        "budgetExact": true,
+        "allCaseSections": true,
+        "allFixPlansComplete": true
+      },
+      {
+        "index": 107,
+        "goalExact": true,
+        "paramsExact": true,
+        "nameExact": true,
+        "rewardExact": true,
+        "terminationExact": true,
+        "budgetExact": true,
+        "allCaseSections": true,
+        "allFixPlansComplete": true
+      },
+      {
+        "index": 115,
+        "goalExact": true,
+        "paramsExact": true,
+        "nameExact": true,
+        "rewardExact": true,
+        "terminationExact": true,
+        "budgetExact": true,
+        "allCaseSections": true,
+        "allFixPlansComplete": true
+      }
+    ],
+    "linkIssues": [],
+    "actualAcceptedActions": 352,
+    "terminationCounts": {
+      "completed": 11,
+      "step_budget": 9
+    },
+    "fourReportFiles": [
+      {
+        "path": "README.md",
+        "bytes": 10303,
+        "sha256": "2a8361cf272d82ceb4d3eaacb0935d9ea37b9bfc44277221888a6095ac5d69be"
+      },
+      {
+        "path": "cases.json",
+        "bytes": 2308750,
+        "sha256": "123be729fbccd5fccbd3892deaecaa77d9b66c7cb500e9af29b8d54dd3e4770a"
+      },
+      {
+        "path": "cases.md",
+        "bytes": 235730,
+        "sha256": "c49cea3981b3fee7172f66e272c57856ca34de5915215617ed46e81c5dbfcc38"
+      },
+      {
+        "path": "module-map.md",
+        "bytes": 20128,
+        "sha256": "65721a76ac427f0ca04d6a4d67248e8c8cc76704d3e143957a5ac2ceaccd891b"
+      }
+    ]
+  },
+  "scope": "Report consumption/field/link checks only, no tests/score/task/initialization/device execution. Artifact digests identify this initial handoff snapshot, not future integration versions."
+}

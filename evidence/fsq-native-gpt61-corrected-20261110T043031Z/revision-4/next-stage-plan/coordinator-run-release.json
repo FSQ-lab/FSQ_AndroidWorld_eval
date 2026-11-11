@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "kind": "actual_coordinator_formal_run_release",
+  "issuedAtUtc": "2026-11-10T15:44:15.666597+00:00",
+  "coordinatorActuallyRead": [
+    "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/after-map-chain-delivery.json",
+    "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/calibrate/report.json",
+    "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/proposed-commands.sh"
+  ],
+  "manifestSha256": "a8550aee3e1b9438377d34b5cf48ff4adde732785afe40aae2249f6266773030",
+  "reviewSha256": "dd74fddaeaccf5e9a86484fb7ff6603ce92ccedef3ca13683562c35b895f9990",
+  "nativeModelReceiptSha256": "58d96868e5e4ccb139eb16e688178de0f2e9acbad40bc1f0035a293e0dd47323",
+  "authorizationBindingSha256": "b5b15d69a3e41f0687c54d3e003f190f1883e6d43d9581aeb0c59d9f4e973a61",
+  "authorizationByteSha256": "a44e1c48bb5564177cf651037387af11adf671ef75d722d1b6c0cd3c4db57dc6",
+  "serial": "emulator-5554",
+  "readinessSha256": "fe413d66d4686e44faa0cf601d29be03057709300916bcc63c048de20d5a7bdf",
+  "rehearsalSha256": "772008eb4bc3d207d3c9a2ec16e11bf5391bbb87f929b53c6afdd5fd593df8d9",
+  "calibrationSha256": "c1da81de0ff3922457208593e07b0ca2162f53a46d9ee45d026e9b3681675691",
+  "releasedStage": "run",
+  "taskIndices": "0..115 original order; 91 Android +25 IR; each once",
+  "approvedCommand": "FSQ_RUN_RELEASED_BY_COORDINATOR=yes bash evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/proposed-commands.sh run",
+  "constraints": "No source/SDK/model/Skill/seed/params/budget/prerequisite changes. Original per-episode caps1330..7930 and authorization entry-window checks. Fresh per-episode workspace/process and oracle isolation. Standard passed/failed/partial scores retained without optimization/retry; invalid/forced/unknowncleanup/drift failclosed with no automatic recovery. Official scoring once after native/internal verify. No smoke/calibration reward mixing. No extra telemetry or hourly watcher. Cleanup owned processes/temp only; preserve shared services and historical unknowns. FSQFirst remains until coordinator releases target.",
+  "coordinatorInstruction": "正式启动令：总管已实际读取samegrant after-map-chain-delivery.json、calibrate/report.json及proposed-commands.sh，接受为操作门禁通过，现明确释放run。记录实际当前时间后立即执行已批命令。首次启动同步总管和w6:p1；终态/真实阻断立即交原始证据及清理边界。"
+}

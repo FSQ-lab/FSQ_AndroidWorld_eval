@@ -1,0 +1,981 @@
+{
+  "index": 24,
+  "name": "MarkorChangeNoteContent",
+  "goal": "Update the content of strong_jacket_h1hZ.txt to \"inNqu8UNNtyXBHCZpYp7\" in Markor and change its name to lively_fox_2023_03_22.md.",
+  "reward": 0.0,
+  "classification": "failed",
+  "initialization": {
+    "initializationReferenceTime": {
+      "referenceTime": "2023-10-15T15:34:00+00:00",
+      "timezone": "UTC"
+    },
+    "initializedGoal": "Update the content of strong_jacket_h1hZ.txt to \"inNqu8UNNtyXBHCZpYp7\" in Markor and change its name to lively_fox_2023_03_22.md."
+  },
+  "frozenTaskSpec": {
+    "apps": [
+      "markor"
+    ],
+    "complexity": 1.2,
+    "difficulty": "medium",
+    "family": "android",
+    "index": 24,
+    "instanceSeed": 1984626982,
+    "maxActions": 12,
+    "maxSteps": 12,
+    "name": "MarkorChangeNoteContent",
+    "params": {
+      "new_name": "lively_fox_2023_03_22.md",
+      "original_name": "strong_jacket_h1hZ.txt",
+      "seed": 1984626982,
+      "updated_content": "inNqu8UNNtyXBHCZpYp7"
+    },
+    "paramsSha256": "8a36e3d1f408e788e5c64ba885b64633aaed87721fcbd77b72166f05afcddcd1",
+    "paramsTransport": "json",
+    "tags": [
+      "data_entry",
+      "requires_setup",
+      "parameterized"
+    ],
+    "timeBudget": {
+      "businessSeconds": 840,
+      "cleanupWindowSeconds": 180,
+      "episodeSeconds": 1450,
+      "forceSeconds": 1030,
+      "recoveryWindowSeconds": 120,
+      "terminationGraceSeconds": 10
+    }
+  },
+  "mainSteps": [
+    {
+      "stepId": 6,
+      "tool": "agent_runtime.runner",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "Harness action budget prevented rename confirmation and completion of verification.",
+          "Required kill_app teardown was attempted but also blocked by NativeActionBudgetExceeded: action_budget."
+        ],
+        "evidence": [
+          "Document editing and Save actions were executed before returning to the file browser.",
+          "Rename dialog was opened and lively_fox_2023_03_22.md was entered.",
+          "Rename confirmation returned NativeActionBudgetExceeded: action_budget twice; no final saved-file assertion was collected."
+        ],
+        "plan_updates": [
+          "Opened Markor through its launcher icon after launch attempts did not expose the app.",
+          "Stopped after rename confirmation and its retry were blocked by the harness action budget."
+        ],
+        "pre_plan": [
+          {
+            "action": "Locate and open strong_jacket_h1hZ.txt.",
+            "status": "success",
+            "step_id": 1,
+            "success_criteria": [
+              "Original document opened in Markor."
+            ]
+          },
+          {
+            "action": "Replace the document content and save.",
+            "status": "success",
+            "step_id": 2,
+            "success_criteria": [
+              "Enter inNqu8UNNtyXBHCZpYp7 and invoke Save."
+            ]
+          },
+          {
+            "action": "Return to the file browser and open Rename.",
+            "status": "success",
+            "step_id": 3,
+            "success_criteria": [
+              "Rename dialog opened for the original file."
+            ]
+          },
+          {
+            "action": "Set lively_fox_2023_03_22.md and confirm.",
+            "status": "failed",
+            "step_id": 4,
+            "success_criteria": [
+              "Rename confirmed."
+            ]
+          },
+          {
+            "action": "Open the renamed file and verify saved content.",
+            "status": "skipped",
+            "step_id": 5,
+            "success_criteria": [
+              "Requested filename and exact saved content verified."
+            ]
+          }
+        ],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "inconclusive",
+        "summary": "Edited the original document and entered the requested new filename, but the harness action budget blocked rename confirmation and final verification.",
+        "unmet_criteria": [
+          "Markor shows the saved file lively_fox_2023_03_22.md containing exactly inNqu8UNNtyXBHCZpYp7."
+        ]
+      }
+    },
+    {
+      "stepId": 7,
+      "tool": "agent_runtime.verifier",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "The exhausted native action budget permanently blocked completion within this run, including both rename-confirmation attempts."
+        ],
+        "evidence": [
+          "000014-ui_snapshot.json shows the editor containing exactly inNqu8UNNtyXBHCZpYp7 while the document title remains strong_jacket_h1hZ.",
+          "The Save action returned passed.",
+          "Input of lively_fox_2023_03_22.md into the rename field returned passed; entering a dialog value does not commit the rename.",
+          "Both subsequent rename-confirmation taps on android:id/button1 returned failed with NativeActionBudgetExceeded: action_budget. No successful confirmation or later opening of the target file occurred in the supplied execution records."
+        ],
+        "plan_updates": [],
+        "pre_plan": [
+          {
+            "action": "Verify the single requested final state using supplied execution evidence.",
+            "status": "failed",
+            "step_id": 1,
+            "success_criteria": [
+              "Markor shows the saved file lively_fox_2023_03_22.md containing exactly inNqu8UNNtyXBHCZpYp7."
+            ]
+          }
+        ],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "failed",
+        "summary": "The verification goal was not met: the requested content was entered, but the harness action budget prevented confirmation of the filename change and completion of the required final display.",
+        "unmet_criteria": [
+          "Markor shows the saved file lively_fox_2023_03_22.md containing exactly inNqu8UNNtyXBHCZpYp7."
+        ]
+      }
+    }
+  ],
+  "budgetSummary": {
+    "admitted": 12,
+    "attempted": 15,
+    "deadlineExceeded": false,
+    "deadlineMonotonic": 706981.566501083,
+    "denied": 3,
+    "deviceRestoredByClose": false,
+    "exclusions": [
+      "driver_construction",
+      "uiautomator2_service_startup",
+      "observation_and_assertion_side_effects",
+      "external_processes_and_direct_driver_access"
+    ],
+    "exhausted": true,
+    "failed": 0,
+    "inFlight": 0,
+    "inputTextUnit": "composite_click_optional_clear_set_text",
+    "maximum": 12,
+    "securityBoundary": false,
+    "succeeded": 12,
+    "unit": "admitted_android_harness_write_capability_dispatch",
+    "writeCapabilities": [
+      "launch_app",
+      "kill_app",
+      "tap_on",
+      "tap_at",
+      "long_press_on",
+      "input_text",
+      "press_key",
+      "swipe"
+    ]
+  },
+  "actions": [
+    {
+      "ordinal": 0,
+      "stepId": "agent-launch_app-1",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [],
+      "output": {
+        "app_id": "net.gsantner.markor"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[0]"
+    },
+    {
+      "ordinal": 1,
+      "stepId": "agent-ui_snapshot-2",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Sun, Oct 15",
+        "Sun, Oct 15",
+        "Gmail",
+        "Gmail",
+        "Photos",
+        "Photos",
+        "YouTube",
+        "YouTube",
+        "Home",
+        "Phone",
+        "Phone",
+        "Messages",
+        "Messages",
+        "Chrome",
+        "Chrome",
+        "Calendar",
+        "Predicted app: Calendar",
+        "Search",
+        "Google app",
+        "Voice search",
+        "Google Lens"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 27981,
+          "retained_characters": 7650
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[1]"
+    },
+    {
+      "ordinal": 2,
+      "stepId": "agent-launch_app-3",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "app_id": "net.gsantner.markor"
+      },
+      "uiLabels": [],
+      "output": {
+        "app_id": "net.gsantner.markor"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[2]"
+    },
+    {
+      "ordinal": 3,
+      "stepId": "agent-swipe-4",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[3]"
+    },
+    {
+      "ordinal": 4,
+      "stepId": "agent-ui_snapshot-5",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Audio Recorder",
+        "Audio Recorder",
+        "Broccoli",
+        "Broccoli",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Chrome",
+        "Chrome",
+        "Clipper",
+        "Clipper",
+        "Clock",
+        "Clock",
+        "Contacts",
+        "Contacts",
+        "Draw",
+        "Draw",
+        "Drive",
+        "Drive",
+        "Files",
+        "Files",
+        "Gallery",
+        "Gallery",
+        "Gmail",
+        "Gmail",
+        "Google",
+        "Google",
+        "Joplin",
+        "Joplin",
+        "Maps",
+        "Maps",
+        "Markor",
+        "Markor",
+        "Messages",
+        "Messages",
+        "OpenTracks",
+        "OpenTracks",
+        "OsmAnd",
+        "OsmAnd",
+        "Phone",
+        "Phone",
+        "Photos",
+        "Photos",
+        "Pro Expense",
+        "Pro Expense",
+        "Gallery",
+        "Gallery",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Tasks",
+        "Tasks",
+        "Search",
+        "Google app",
+        "Search apps, web and more",
+        "Voice search",
+        "Google Lens",
+        "Home"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 37017,
+          "retained_characters": 12575
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 6,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[4]"
+    },
+    {
+      "ordinal": 5,
+      "stepId": "agent-tap_on-6",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "accessibilityId": "Markor"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[5]"
+    },
+    {
+      "ordinal": 6,
+      "stepId": "agent-ui_snapshot-7",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Markor",
+        "Go to",
+        "Sort by",
+        "Search",
+        "More options",
+        "Folder .. ",
+        "..",
+        "/storage/emulated/0/Documents",
+        "Folder .app ",
+        ".app",
+        "10/15/2023, 15:35",
+        "File birthday_gift_ideas_mom_QbQx.md ",
+        "birthday_gift_ideas_mom_QbQx.md",
+        "10/15/2023, 15:34",
+        "File copy_trip_reflections_recent.md ",
+        "copy_trip_reflections_recent.md",
+        "10/15/2023, 15:34",
+        "File edited_art_project_sketches.md ",
+        "edited_art_project_sketches.md",
+        "10/15/2023, 15:34",
+        "File favorite_book_quotes_if2g.md ",
+        "favorite_book_quotes_if2g.md",
+        "10/15/2023, 15:34",
+        "File strong_jacket_h1hZ.txt ",
+        "strong_jacket_h1hZ.txt",
+        "10/15/2023, 15:34",
+        "File summer_vacation_plans_M0HK.md ",
+        "summer_vacation_plans_M0HK.md",
+        "10/15/2023, 15:34",
+        "Create a new file or folder",
+        "Files",
+        "Files",
+        "To-Do",
+        "To-Do",
+        "QuickNote",
+        "QuickNote",
+        "More",
+        "More"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 52407,
+          "retained_characters": 14888
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 17,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[6]"
+    },
+    {
+      "ordinal": 7,
+      "stepId": "agent-tap_on-8",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "text": "strong_jacket_h1hZ.txt"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[7]"
+    },
+    {
+      "ordinal": 8,
+      "stepId": "agent-ui_snapshot-9",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "strong_jacket_h1hZ",
+        "Undo",
+        "Redo",
+        "View mode",
+        "Save",
+        "Search",
+        "More options",
+        "pZwh1hZwvmPj5inNqu8U\n",
+        "Check list",
+        "Unordered list",
+        "Ordered list",
+        "Delete lines",
+        "Open link",
+        "Attach",
+        "Special Key",
+        "Date and time",
+        "Indent"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 26674,
+          "retained_characters": 7452
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 9,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[8]"
+    },
+    {
+      "ordinal": 9,
+      "stepId": "agent-input_text-10",
+      "action": "input_text",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "net.gsantner.markor:id/document__fragment__edit__highlighting_editor"
+        },
+        "text": "inNqu8UNNtyXBHCZpYp7",
+        "textType": "literal"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[9]"
+    },
+    {
+      "ordinal": 10,
+      "stepId": "agent-press_key-11",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[10]"
+    },
+    {
+      "ordinal": 11,
+      "stepId": "agent-ui_snapshot-12",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "strong_jacket_h1hZ",
+        "Undo",
+        "Redo",
+        "View mode",
+        "Save",
+        "Search",
+        "More options",
+        "inNqu8UNNtyXBHCZpYp7",
+        "Check list",
+        "Unordered list",
+        "Ordered list",
+        "Delete lines",
+        "Open link",
+        "Attach",
+        "Special Key",
+        "Date and time",
+        "Indent"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 26668,
+          "retained_characters": 7416
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 9,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[11]"
+    },
+    {
+      "ordinal": 12,
+      "stepId": "agent-tap_on-13",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "net.gsantner.markor:id/action_save"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[12]"
+    },
+    {
+      "ordinal": 13,
+      "stepId": "agent-press_key-14",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[13]"
+    },
+    {
+      "ordinal": 14,
+      "stepId": "agent-ui_snapshot-15",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Markor",
+        "Go to",
+        "Sort by",
+        "Search",
+        "More options",
+        "Folder .. ",
+        "..",
+        "/storage/emulated/0/Documents",
+        "Folder .app ",
+        ".app",
+        "10/15/2023, 15:35",
+        "File birthday_gift_ideas_mom_QbQx.md ",
+        "birthday_gift_ideas_mom_QbQx.md",
+        "10/15/2023, 15:34",
+        "File copy_trip_reflections_recent.md ",
+        "copy_trip_reflections_recent.md",
+        "10/15/2023, 15:34",
+        "File edited_art_project_sketches.md ",
+        "edited_art_project_sketches.md",
+        "10/15/2023, 15:34",
+        "File favorite_book_quotes_if2g.md ",
+        "favorite_book_quotes_if2g.md",
+        "10/15/2023, 15:34",
+        "File strong_jacket_h1hZ.txt ",
+        "strong_jacket_h1hZ.txt",
+        "10/15/2023, 15:34",
+        "File summer_vacation_plans_M0HK.md ",
+        "summer_vacation_plans_M0HK.md",
+        "10/15/2023, 15:34",
+        "Create a new file or folder",
+        "Files",
+        "Files",
+        "To-Do",
+        "To-Do",
+        "QuickNote",
+        "QuickNote",
+        "More",
+        "More"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 52408,
+          "retained_characters": 14889
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 17,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[14]"
+    },
+    {
+      "ordinal": 15,
+      "stepId": "agent-long_press_on-16",
+      "action": "long_press_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "text": "strong_jacket_h1hZ.txt"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[15]"
+    },
+    {
+      "ordinal": 16,
+      "stepId": "agent-ui_snapshot-17",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Favourite",
+        "Rename",
+        "Details",
+        "Delete",
+        "More options",
+        "Folder .. ",
+        "..",
+        "/storage/emulated/0/Documents",
+        "Folder .app ",
+        ".app",
+        "10/15/2023, 15:35",
+        "File birthday_gift_ideas_mom_QbQx.md ",
+        "birthday_gift_ideas_mom_QbQx.md",
+        "10/15/2023, 15:34",
+        "File copy_trip_reflections_recent.md ",
+        "copy_trip_reflections_recent.md",
+        "10/15/2023, 15:34",
+        "File edited_art_project_sketches.md ",
+        "edited_art_project_sketches.md",
+        "10/15/2023, 15:34",
+        "File favorite_book_quotes_if2g.md ",
+        "favorite_book_quotes_if2g.md",
+        "10/15/2023, 15:34",
+        "Selected strong_jacket_h1hZ.txt ",
+        "strong_jacket_h1hZ.txt",
+        "10/15/2023, 15:35",
+        "File summer_vacation_plans_M0HK.md ",
+        "summer_vacation_plans_M0HK.md",
+        "10/15/2023, 15:34",
+        "Create a new file or folder",
+        "Files",
+        "Files",
+        "To-Do",
+        "To-Do",
+        "QuickNote",
+        "QuickNote",
+        "More",
+        "More"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 52499,
+          "retained_characters": 15060
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 17,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[16]"
+    },
+    {
+      "ordinal": 17,
+      "stepId": "agent-tap_on-18",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "net.gsantner.markor:id/action_rename_selected_item"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[17]"
+    },
+    {
+      "ordinal": 18,
+      "stepId": "agent-ui_snapshot-19",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "More features",
+        "Sticker Keyboard",
+        "GIF Keyboard",
+        "Clipboard",
+        "Settings",
+        "Theme settings",
+        "Voice input",
+        "q",
+        "1",
+        "w",
+        "2",
+        "e",
+        "3",
+        "r",
+        "4",
+        "t",
+        "5",
+        "y",
+        "6",
+        "u",
+        "7",
+        "i",
+        "8",
+        "o",
+        "9",
+        "p",
+        "0",
+        "a",
+        "s",
+        "d",
+        "f",
+        "g",
+        "h",
+        "j",
+        "k",
+        "l",
+        "Shift",
+        "z",
+        "x",
+        "c",
+        "v",
+        "b",
+        "n",
+        "m",
+        "Delete",
+        "Symbol keyboard",
+        ",",
+        "Emoji button",
+        "Space",
+        ".",
+        "Enter",
+        "Back",
+        "Rename",
+        "strong_jacket_h1hZ.txt",
+        "CANCEL",
+        "OK"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 97639,
+          "retained_characters": 26341
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 33,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[18]"
+    },
+    {
+      "ordinal": 19,
+      "stepId": "agent-input_text-20",
+      "action": "input_text",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "net.gsantner.markor:id/new_name"
+        },
+        "text": "lively_fox_2023_03_22.md",
+        "textType": "literal"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[19]"
+    },
+    {
+      "ordinal": 20,
+      "stepId": "agent-tap_on-21",
+      "action": "tap_on",
+      "status": "failed",
+      "error": "NativeActionBudgetExceeded: action_budget",
+      "params": null,
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[20]"
+    },
+    {
+      "ordinal": 21,
+      "stepId": "agent-tap_on-22",
+      "action": "tap_on",
+      "status": "failed",
+      "error": "NativeActionBudgetExceeded: action_budget",
+      "params": null,
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[21]"
+    },
+    {
+      "ordinal": 22,
+      "stepId": "agent-kill_app-23",
+      "action": "kill_app",
+      "status": "failed",
+      "error": "NativeActionBudgetExceeded: action_budget",
+      "params": null,
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[22]"
+    }
+  ],
+  "originalNativeExecutionPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/024-MarkorChangeNoteContent/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-024-20261110T172032Z-0d04e0/execution-result.json",
+  "originalNativeResultPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/024-MarkorChangeNoteContent/raw-private/fsq-native/worker/fsq-task-result.private.json",
+  "originalGoalPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/024-MarkorChangeNoteContent/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-024-20261110T172032Z-0d04e0/sources/000-goal.txt"
+}

@@ -1,0 +1,13 @@
+{
+  "command": [
+    "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+    "-s",
+    "emulator-5554",
+    "shell",
+    "su 0 cat /data/data/org.videolan.vlc/shared_prefs/org.videolan.vlc_preferences.xml"
+  ],
+  "returnCode": 0,
+  "stdout": "<?xml version='1.0' encoding='utf-8' standalone='yes' ?>\n<map>\n    <string name=\"app_theme\">-1</string>\n    <int name=\"video_hud_timeout_in_s\" value=\"4\" />\n    <boolean name=\"initial_permission_asked\" value=\"true\" />\n    <boolean name=\"widget_migration_key\" value=\"true\" />\n    <int name=\"fragment_id\" value=\"2131362715\" />\n    <boolean name=\"app_onboarding_done\" value=\"true\" />\n    <int name=\"current_settings_version\" value=\"10\" />\n    <int name=\"first_run\" value=\"3050400\" />\n    <int name=\"ml_scan\" value=\"0\" />\n</map>\n",
+  "stderr": "",
+  "observedAtUnix": 1794012557.130408
+}

@@ -1,0 +1,84 @@
+{
+  "campaignId": "fsq-native-gpt61-r2-final-5554-20261110",
+  "target": {
+    "adbPath": "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+    "authenticationStatus": "pending",
+    "consolePort": 5554,
+    "grpcPort": 8554,
+    "model": "gpt-6.1-sol",
+    "provider": "github_copilot",
+    "readinessStatus": "pending",
+    "resourceStatus": "pending",
+    "serial": "emulator-5554"
+  },
+  "gates": {
+    "campaignAuthorization": "pending",
+    "deviceReadiness": "pending",
+    "independentReview": "pending",
+    "nativeProviderModelAuthentication": "pending",
+    "qualification": "pending",
+    "smoke": "pending",
+    "targetResourceOwnership": "pending"
+  },
+  "paths": {
+    "evaluatorSite": "/Users/qunmi/.local/share/fsq-androidworld-eval/fsq-native-gpt61-corrected-20261110T043031Z/evaluator-site",
+    "fsqPython": "/Users/qunmi/Documents/FSQ_LAB/FSQ/.venv/bin/python",
+    "fsqSource": "/Users/qunmi/Documents/FSQ_LAB/FSQ",
+    "project": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval",
+    "settingsPath": "/Users/qunmi/.local/share/fsq-androidworld-eval/fsq-native-gpt61-corrected-20261110T043031Z/workspace-template/.fsq/config/config.android.yaml"
+  },
+  "taskCount": 116,
+  "evaluator": {
+    "sourceRevisionObserved": "9b9736abf98ea2e0a047b546109b8a3c77075d09",
+    "sourceWorktree": {
+      "dirty": true,
+      "status": "observed",
+      "statusSha256": "45f61cb172e240605fbcad72cd01d53a934010177dd6478fd7fcafc7ece0a213"
+    },
+    "sourceHash": "593cb591a5e8e040f305272c1f8837d69d05d41c5f27ebbaf3597eb94ca05180",
+    "pythonPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/bin/python",
+    "pythonVersion": "3.11.16 (main, Aug 25 2026, 13:50:51) [Clang 22.1.3 ]"
+  },
+  "fsq": {
+    "sourceRevisionObserved": "7e3f0793f3962ef2d8cc92f06310326c9077ce0d",
+    "sourceWorktree": {
+      "dirty": true,
+      "status": "observed",
+      "statusSha256": "0d356bf2c9c31ae3770f188f9d8cff5092f29d945634be32b78c05b6823cf1f0"
+    },
+    "sourceHash": "5ae6f139056ce10164f47fa2f91ec068fbdcdfe0235b2fcea821ad9ddc2c648d",
+    "importHash": "5ae6f139056ce10164f47fa2f91ec068fbdcdfe0235b2fcea821ad9ddc2c648d",
+    "importedPackageRoot": "/Users/qunmi/Documents/FSQ_LAB/FSQ/fsq_agent",
+    "sourceCodeVersion": "0.1.2",
+    "prefix": "/Users/qunmi/Documents/FSQ_LAB/FSQ/.venv",
+    "basePrefix": "/Users/qunmi/.local/share/uv/python/cpython-3.11.16-macos-aarch64-none"
+  },
+  "androidWorld": {
+    "sourceHash": "0ac9428da2e9d78d0303c44c682184268e708a3116134646401d5c8425671b94",
+    "importHash": "0ac9428da2e9d78d0303c44c682184268e708a3116134646401d5c8425671b94",
+    "sourceRevisionObserved": "09a579126c2a4d33902b33bbcf5cb80b3eb521a7",
+    "sourceWorktree": {
+      "dirty": true,
+      "status": "observed",
+      "statusSha256": "e521e54b42b7851bbf8a955af792fafb4219291a93602e2119febd9419368023"
+    },
+    "oracleSourceRoots": [
+      "/Users/qunmi/.local/share/fsq-androidworld-eval/fsq-native-gpt61-corrected-20261110T043031Z/corrected-androidworld-source",
+      "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/android_world"
+    ]
+  },
+  "nativeProviderMetadata": {
+    "model": "gpt-6.1-sol",
+    "path": "/Users/qunmi/.fsq/config.yaml",
+    "provider": "github_copilot",
+    "status": "metadata_observed_not_authenticated"
+  },
+  "nativeDiagnosticAnchor": {
+    "packageManifestSha256": "f85de27cec9e3e9949559b120dd3f595e9512c076aa82aef7a25e4a552dd2f68",
+    "fullDiffSha256": "0c2fe96ab975d2f5a25a79ad72162d05e443138c5826d142e7640ff3e7b01afc",
+    "packageManifestVerifiedAgainstCurrentWorkingBytes": true,
+    "noNewModelCall": true
+  },
+  "actualReturnedModel": "unknown: native ModelResult does not expose server response.model",
+  "liveAuthorized": false
+}

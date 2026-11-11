@@ -1,0 +1,14 @@
+{
+  "name": "recovered-boot",
+  "observedAtUnix": 1794006909.431125,
+  "command": [
+    "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+    "-s",
+    "emulator-5554",
+    "shell",
+    "getprop sys.boot_completed; cat /proc/sys/kernel/random/boot_id; pidof system_server surfaceflinger; service check activity; service check settings; service check window; ls -l /sdcard/Download/ZwUN_moment_70_.mp4; pm path org.videolan.vlc"
+  ],
+  "returnCode": 0,
+  "stdout": "1\nd7fa5bd9-83b9-446b-bf4f-3b0cddf6657f\n340 505\nService activity: found\nService settings: found\nService window: found\n-rw-rw---- 1 u0_a168 media_rw 13952914 2026-11-06 09:37 /sdcard/Download/ZwUN_moment_70_.mp4\npackage:/data/app/~~SlG6wB8USRuAMKYF1USGxA==/org.videolan.vlc--0EMGujn4rEznUb_UY8qbA==/base.apk\n",
+  "stderr": ""
+}

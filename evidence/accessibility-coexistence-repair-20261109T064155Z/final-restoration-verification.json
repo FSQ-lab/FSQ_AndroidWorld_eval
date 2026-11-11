@@ -1,0 +1,133 @@
+{
+  "observedAtUnix": 1794209786.619885,
+  "scope": "One read-only post-matrix restoration check; no Appium session created or UI mutation",
+  "checks": {
+    "bootId": {
+      "startedAtUnix": 1794209786.4505222,
+      "completedAtUnix": 1794209786.4799402,
+      "command": [
+        "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+        "-s",
+        "emulator-5554",
+        "shell",
+        "cat",
+        "/proc/sys/kernel/random/boot_id"
+      ],
+      "returnCode": 0,
+      "stdout": "0f36e370-012a-4423-a1f9-959beae8f90d\n",
+      "stderr": ""
+    },
+    "accessibility": {
+      "startedAtUnix": 1794209786.479983,
+      "completedAtUnix": 1794209786.503042,
+      "command": [
+        "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+        "-s",
+        "emulator-5554",
+        "shell",
+        "dumpsys",
+        "accessibility"
+      ],
+      "returnCode": 0,
+      "stdout": "ACCESSIBILITY MANAGER (dumpsys accessibility)\n\ncurrentUserId=0\nhasWindowMagnificationConnection=false\nMagnifier on display#0\n    MagnificationConfig[mode: 1, scale: 1.0, centerX: 540.0, centerY: 1200.0] \n    Magnification region=SkRegion((5,5,1075,2395))\n    IdOfLastServiceToMagnify=-1\n    SupportWindowMagnification=false\n    WindowMagnificationConnectionState=DISCONNECTED\nUser state[\n     attributes:{id=0, touchExplorationEnabled=false, serviceHandlesDoubleTap=false, requestMultiFingerGestures=false, requestTwoFingerPassthrough=false, sendMotionEventsEnabledfalse, displayMagnificationEnabled=false, autoclickEnabled=false, nonInteractiveUiTimeout=0, interactiveUiTimeout=0, installedServiceCount=4, magnificationModes={0=1}, magnificationCapabilities=3, audioDescriptionByDefaultEnabled=false, magnificationFollowTypingEnabled=true}\n     shortcut key:{}\n     button:{}\n     button target:{null}\n     Bound services:{Service[label=com.google.androidenv.accessibilityforwarder.Acce\u2026, feedbackType[FEEDBACK_GENERIC], capabilities=1, eventTypes=TYPES_ALL_MASK, notificationTimeout=0, requestA11yBtn=false]}\n     Enabled services:{{com.google.androidenv.accessibilityforwarder/com.google.androidenv.accessibilityforwarder.AccessibilityForwarder}}\n     Binding services:{}\n     Crashed services:{}\n     Client list info:{\n          Client list callbacks: 12\n          Client list killed: false\n          Client list broadcasts count: -1\n          Registered clients:{\n[com.google.android.googlequicksearchbox][com.google.android.calendar][com.google.androidenv.accessibilityforwarder][com.google.android.apps.maps][com.google.android.contacts][com.google.android.googlequicksearchbox][com.google.android.apps.wellbeing][com.google.android.youtube][com.google.android.as][com.google.android.inputmethod.latin][com.google.android.deskclock][com.google.android.apps.nexuslauncher]}]\nGlobal Info [ Top focused display Id = 0\n     Active Window Id = 9869\n     Top Focused Window Id = 9869\n     Accessibility Focused Window Id = 9846 ]\n\nDisplay[0] : \nA11yWindow[AccessibilityWindowInfo[title=null, displayId=0, id=9864, taskId=-1, type=TYPE_SYSTEM, layer=1, region=SkRegion((0,0,1080,128)), bounds=Rect(0, 0 - 1080, 128), focused=false, active=false, pictureInPicture=false, hasParent=false, isAnchored=false, hasChildren=false]]\nWindowInfo[WindowInfo[title=null, displayId=0, taskId=-1, type=2000, layer=0, token=android.os.BinderProxy@baaa4b1, region=SkRegion((0,0,1080,128)), bounds=Rect(0, 0 - 1080, 128), parent=null, focused=false, children=null, accessibility anchor=9223372034707292159, pictureInPicture=false, watchOutsideTouch=false, mTransformMatrix=Matrix{[1.0, 0.0, 0.0][0.0, 1.0, 0.0][0.0, 0.0, 1.0]}, mMagnificationSpec=<scale:1.0,offsetX:0.0,offsetY:0.0>]]\n,\nA11yWindow[AccessibilityWindowInfo[title=Home, displayId=0, id=9869, taskId=525, type=TYPE_APPLICATION, layer=0, region=SkRegion((0,0,1080,2400)), bounds=Rect(0, 0 - 1080, 2400), focused=true, active=true, pictureInPicture=false, hasParent=false, isAnchored=false, hasChildren=false]]\nWindowInfo[WindowInfo[title=Home, displayId=0, taskId=525, type=1, layer=1, token=android.os.BinderProxy@612bc3e, region=SkRegion((0,0,1080,2400)), bounds=Rect(0, 0 - 1080, 2400), parent=null, focused=true, children=null, accessibility anchor=9223372034707292159, pictureInPicture=false, watchOutsideTouch=false, mTransformMatrix=Matrix{[1.0, 0.0, 0.0][0.0, 1.0, 0.0][0.0, 0.0, 1.0]}, mMagnificationSpec=<scale:1.0,offsetX:0.0,offsetY:0.0>]]\n\nGlobal client list info:{\n    Client list callbacks: 3\n    Client list killed: false\n    Client list broadcasts count: -1\n    Registered clients:{\n[com.android.keychain, com.android.providers.settings, android, com.android.settings, com.android.wallpaperbackup, com.android.localtransport, com.android.inputdevices, com.android.emulator.multidisplay, com.android.server.telecom, com.android.dynsystem, com.android.location.fused][com.android.systemui][com.google.android.permissioncontroller]",
+      "stderr": ""
+    },
+    "forwarderPid": {
+      "startedAtUnix": 1794209786.5030699,
+      "completedAtUnix": 1794209786.532861,
+      "command": [
+        "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+        "-s",
+        "emulator-5554",
+        "shell",
+        "pidof",
+        "com.google.androidenv.accessibilityforwarder"
+      ],
+      "returnCode": 0,
+      "stdout": "9639\n",
+      "stderr": ""
+    },
+    "uia2ServerPid": {
+      "startedAtUnix": 1794209786.5328882,
+      "completedAtUnix": 1794209786.550019,
+      "command": [
+        "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+        "-s",
+        "emulator-5554",
+        "shell",
+        "pidof",
+        "io.appium.uiautomator2.server"
+      ],
+      "returnCode": 1,
+      "stdout": "",
+      "stderr": ""
+    },
+    "uia2TestPid": {
+      "startedAtUnix": 1794209786.5500438,
+      "completedAtUnix": 1794209786.566912,
+      "command": [
+        "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+        "-s",
+        "emulator-5554",
+        "shell",
+        "pidof",
+        "io.appium.uiautomator2.server.test"
+      ],
+      "returnCode": 1,
+      "stdout": "",
+      "stderr": ""
+    },
+    "helperPackagePath": {
+      "startedAtUnix": 1794209786.566932,
+      "completedAtUnix": 1794209786.585619,
+      "command": [
+        "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+        "-s",
+        "emulator-5554",
+        "shell",
+        "pm",
+        "path",
+        "com.google.androidenv.accessibilityforwarder"
+      ],
+      "returnCode": 0,
+      "stdout": "package:/data/app/~~erkzO1LYShwS477OTG6xfg==/com.google.androidenv.accessibilityforwarder-x7raFI-Ozlmxk_Uvkawfkw==/base.apk\n",
+      "stderr": ""
+    },
+    "adbForwards": {
+      "startedAtUnix": 1794209786.585648,
+      "completedAtUnix": 1794209786.595913,
+      "command": [
+        "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+        "-s",
+        "emulator-5554",
+        "forward",
+        "--list"
+      ],
+      "returnCode": 0,
+      "stdout": "\n",
+      "stderr": ""
+    },
+    "installedHelperSha256": {
+      "command": [
+        "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+        "-s",
+        "emulator-5554",
+        "shell",
+        "sha256sum",
+        "/data/app/~~erkzO1LYShwS477OTG6xfg==/com.google.androidenv.accessibilityforwarder-x7raFI-Ozlmxk_Uvkawfkw==/base.apk"
+      ],
+      "returnCode": 0,
+      "stdout": "0987ded41c12807d4f75d0789002912de143eec866fa7b389ad8efdb8b0d07bb  /data/app/~~erkzO1LYShwS477OTG6xfg==/com.google.androidenv.accessibilityforwarder-x7raFI-Ozlmxk_Uvkawfkw==/base.apk\n",
+      "stderr": ""
+    }
+  },
+  "boundServicesLines": [
+    "Bound services:{Service[label=com.google.androidenv.accessibilityforwarder.Acce\u2026, feedbackType[FEEDBACK_GENERIC], capabilities=1, eventTypes=TYPES_ALL_MASK, notificationTimeout=0, requestA11yBtn=false]}"
+  ],
+  "helperBound": true,
+  "installedHelperMatchesProduction": true,
+  "bootIdMatchesPreflight": true,
+  "uia2InstrumentationAbsent": true,
+  "sharedEmulatorAndAppiumNotStopped": true,
+  "ownedEmulatorOrAppiumRestarted": false
+}

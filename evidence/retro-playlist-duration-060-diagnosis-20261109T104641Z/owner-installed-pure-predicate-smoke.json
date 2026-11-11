@@ -1,0 +1,383 @@
+{
+  "scope": "Actual installed verify_playlist plus AST-extracted actual duration core with only database read removed and name argument substituted. No env/init/is_successful/DB/device; synthetic PlaylistInfo rows, not historical evaluator inputs or new official score.",
+  "sources": {
+    ".venv/lib/python3.11/site-packages/android_world/task_evals/single/retro_music.py": {
+      "sha256": "d41a9ec51c80e296523436d884df3fc298f9d394ff55a114f10d425999f0f6e9",
+      "bytes": 12274,
+      "record": "sha256=1BqexRyA4pZSNDbYhN8_wpj505T_VaEU8Q1CWZnw9uk",
+      "matchesInstalledDistributionRECORD": true
+    },
+    ".venv/lib/python3.11/site-packages/android_world/task_evals/common_validators/sqlite_validators.py": {
+      "sha256": "7b932acd2e19f1d4f43cea1badf26ace2ed3363258ae26850d1b09889bfa9d78",
+      "bytes": 14270,
+      "record": "sha256=e5MqzS4Z8dT0POobrfJqzi7TNjJYriaFDRsJiJv6nXg",
+      "matchesInstalledDistributionRECORD": true
+    },
+    ".venv/lib/python3.11/site-packages/android_world/task_evals/utils/sqlite_schema_utils.py": {
+      "sha256": "d3b1d796b1faadbdedc78e7f9197f0ee27e3eebf0edd4597cd59f3d0f6e3095b",
+      "bytes": 15031,
+      "record": "sha256=07HXlrH6rb3tx45_kZfw7ifj7r8O3UWXzVnz0PbjCVs",
+      "matchesInstalledDistributionRECORD": true
+    },
+    ".venv/lib/python3.11/site-packages/android_world/utils/fuzzy_match_lib.py": {
+      "sha256": "e7376554fd9a413ff00d71656e09609c9070d0b384028b89fd931e32fcfb2969",
+      "bytes": 1545,
+      "record": "sha256=5zdlVP2aQT_wDXFlbglgnJBw0LOEAouJ_ZMeMvz7KWk",
+      "matchesInstalledDistributionRECORD": true
+    }
+  },
+  "durationCoreSource": "def duration_rows_only(songs, playlist_name):\n    total_ms = 0\n    for song in songs:\n        if song.playlist_name != playlist_name:\n            return False\n        total_ms += song.duration_ms\n    return float(45 * 60 * 1000 <= total_ms <= 50 * 60 * 1000)",
+  "durationMethodIdentity": "RetroPlaylistDuration.is_successful",
+  "durationScenarios": [
+    {
+      "name": "Empty join rows",
+      "rows": [],
+      "pureReturn": 0.0,
+      "returnType": "float"
+    },
+    {
+      "name": "Lower inclusive boundary",
+      "rows": [
+        {
+          "playlist_name": "Reggae Rhythms 51",
+          "media_file_name": "controlled title",
+          "order_in_playlist": 0,
+          "duration_ms": 2700000
+        }
+      ],
+      "pureReturn": 1.0,
+      "returnType": "float"
+    },
+    {
+      "name": "Below lower by1ms",
+      "rows": [
+        {
+          "playlist_name": "Reggae Rhythms 51",
+          "media_file_name": "controlled title",
+          "order_in_playlist": 0,
+          "duration_ms": 2699999
+        }
+      ],
+      "pureReturn": 0.0,
+      "returnType": "float"
+    },
+    {
+      "name": "Upper inclusive boundary",
+      "rows": [
+        {
+          "playlist_name": "Reggae Rhythms 51",
+          "media_file_name": "controlled title",
+          "order_in_playlist": 0,
+          "duration_ms": 3000000
+        }
+      ],
+      "pureReturn": 1.0,
+      "returnType": "float"
+    },
+    {
+      "name": "Above upper by1ms",
+      "rows": [
+        {
+          "playlist_name": "Reggae Rhythms 51",
+          "media_file_name": "controlled title",
+          "order_in_playlist": 0,
+          "duration_ms": 3000001
+        }
+      ],
+      "pureReturn": 0.0,
+      "returnType": "float"
+    },
+    {
+      "name": "One arbitrary title and arbitrary order at47.5min",
+      "rows": [
+        {
+          "playlist_name": "Reggae Rhythms 51",
+          "media_file_name": "not from hidden files",
+          "order_in_playlist": 999,
+          "duration_ms": 2850000
+        }
+      ],
+      "pureReturn": 1.0,
+      "returnType": "float"
+    },
+    {
+      "name": "12 controlled rows total47.5min",
+      "rows": [
+        {
+          "playlist_name": "Reggae Rhythms 51",
+          "media_file_name": "controlled0",
+          "order_in_playlist": 0,
+          "duration_ms": 237500
+        },
+        {
+          "playlist_name": "Reggae Rhythms 51",
+          "media_file_name": "controlled1",
+          "order_in_playlist": 1,
+          "duration_ms": 237500
+        },
+        {
+          "playlist_name": "Reggae Rhythms 51",
+          "media_file_name": "controlled2",
+          "order_in_playlist": 2,
+          "duration_ms": 237500
+        },
+        {
+          "playlist_name": "Reggae Rhythms 51",
+          "media_file_name": "controlled3",
+          "order_in_playlist": 3,
+          "duration_ms": 237500
+        },
+        {
+          "playlist_name": "Reggae Rhythms 51",
+          "media_file_name": "controlled4",
+          "order_in_playlist": 4,
+          "duration_ms": 237500
+        },
+        {
+          "playlist_name": "Reggae Rhythms 51",
+          "media_file_name": "controlled5",
+          "order_in_playlist": 5,
+          "duration_ms": 237500
+        },
+        {
+          "playlist_name": "Reggae Rhythms 51",
+          "media_file_name": "controlled6",
+          "order_in_playlist": 6,
+          "duration_ms": 237500
+        },
+        {
+          "playlist_name": "Reggae Rhythms 51",
+          "media_file_name": "controlled7",
+          "order_in_playlist": 7,
+          "duration_ms": 237500
+        },
+        {
+          "playlist_name": "Reggae Rhythms 51",
+          "media_file_name": "controlled8",
+          "order_in_playlist": 8,
+          "duration_ms": 237500
+        },
+        {
+          "playlist_name": "Reggae Rhythms 51",
+          "media_file_name": "controlled9",
+          "order_in_playlist": 9,
+          "duration_ms": 237500
+        },
+        {
+          "playlist_name": "Reggae Rhythms 51",
+          "media_file_name": "controlled10",
+          "order_in_playlist": 10,
+          "duration_ms": 237500
+        },
+        {
+          "playlist_name": "Reggae Rhythms 51",
+          "media_file_name": "controlled11",
+          "order_in_playlist": 11,
+          "duration_ms": 237500
+        }
+      ],
+      "pureReturn": 1.0,
+      "returnType": "float"
+    },
+    {
+      "name": "Observed UI61m13 as conditional same-name aggregate",
+      "rows": [
+        {
+          "playlist_name": "Reggae Rhythms 51",
+          "media_file_name": "controlled title",
+          "order_in_playlist": 0,
+          "duration_ms": 3673000
+        }
+      ],
+      "pureReturn": 0.0,
+      "returnType": "float"
+    },
+    {
+      "name": "Valid target plus unrelatedplaylist zero-duration row",
+      "rows": [
+        {
+          "playlist_name": "Reggae Rhythms 51",
+          "media_file_name": "controlled title",
+          "order_in_playlist": 0,
+          "duration_ms": 2850000
+        },
+        {
+          "playlist_name": "Unrelated playlist",
+          "media_file_name": "controlled title",
+          "order_in_playlist": 0,
+          "duration_ms": 0
+        }
+      ],
+      "pureReturn": false,
+      "returnType": "bool"
+    },
+    {
+      "name": "Case-only name variation",
+      "rows": [
+        {
+          "playlist_name": "reggae rhythms 51",
+          "media_file_name": "controlled title",
+          "order_in_playlist": 0,
+          "duration_ms": 2850000
+        }
+      ],
+      "pureReturn": false,
+      "returnType": "bool"
+    },
+    {
+      "name": "Two same-name conceptual objects combined to47.5min",
+      "rows": [
+        {
+          "playlist_name": "Reggae Rhythms 51",
+          "media_file_name": "objectA",
+          "order_in_playlist": 0,
+          "duration_ms": 1500000
+        },
+        {
+          "playlist_name": "Reggae Rhythms 51",
+          "media_file_name": "objectB",
+          "order_in_playlist": 0,
+          "duration_ms": 1350000
+        }
+      ],
+      "pureReturn": 1.0,
+      "returnType": "float"
+    },
+    {
+      "name": "Row order reversed does not affect duration score",
+      "rows": [
+        {
+          "playlist_name": "Reggae Rhythms 51",
+          "media_file_name": "second",
+          "order_in_playlist": 1,
+          "duration_ms": 1350000
+        },
+        {
+          "playlist_name": "Reggae Rhythms 51",
+          "media_file_name": "first",
+          "order_in_playlist": 0,
+          "duration_ms": 1500000
+        }
+      ],
+      "pureReturn": 1.0,
+      "returnType": "float"
+    }
+  ],
+  "verifyPlaylistIdentity": "verify_playlist",
+  "verifyPlaylistScenarios": [
+    {
+      "name": "Exact name,title,order; duration ignored",
+      "rows": [
+        {
+          "playlist_name": "Reggae Rhythms 51",
+          "media_file_name": "A",
+          "order_in_playlist": 0,
+          "duration_ms": 0
+        }
+      ],
+      "candidateFiles": [
+        "A"
+      ],
+      "actualPureReturn": true
+    },
+    {
+      "name": "Foreign playlist ignored by verify but rejected by duration",
+      "rows": [
+        {
+          "playlist_name": "Reggae Rhythms 51",
+          "media_file_name": "A",
+          "order_in_playlist": 0,
+          "duration_ms": 0
+        },
+        {
+          "playlist_name": "Unrelated playlist",
+          "media_file_name": "B",
+          "order_in_playlist": 0,
+          "duration_ms": 0
+        }
+      ],
+      "candidateFiles": [
+        "A"
+      ],
+      "actualPureReturn": true
+    },
+    {
+      "name": "Case-insensitive playlist fuzzy match",
+      "rows": [
+        {
+          "playlist_name": "reggae rhythms 51",
+          "media_file_name": "A",
+          "order_in_playlist": 0,
+          "duration_ms": 0
+        }
+      ],
+      "candidateFiles": [
+        "A"
+      ],
+      "actualPureReturn": true
+    },
+    {
+      "name": "Media title requires exact equality",
+      "rows": [
+        {
+          "playlist_name": "Reggae Rhythms 51",
+          "media_file_name": "a",
+          "order_in_playlist": 0,
+          "duration_ms": 0
+        }
+      ],
+      "candidateFiles": [
+        "A"
+      ],
+      "actualPureReturn": false
+    },
+    {
+      "name": "Order must match index",
+      "rows": [
+        {
+          "playlist_name": "Reggae Rhythms 51",
+          "media_file_name": "A",
+          "order_in_playlist": 1,
+          "duration_ms": 0
+        }
+      ],
+      "candidateFiles": [
+        "A"
+      ],
+      "actualPureReturn": false
+    },
+    {
+      "name": "Matching playlist row count must equal candidate file count",
+      "rows": [
+        {
+          "playlist_name": "Reggae Rhythms 51",
+          "media_file_name": "A",
+          "order_in_playlist": 0,
+          "duration_ms": 0
+        },
+        {
+          "playlist_name": "Reggae Rhythms 51",
+          "media_file_name": "B",
+          "order_in_playlist": 1,
+          "duration_ms": 0
+        }
+      ],
+      "candidateFiles": [
+        "A"
+      ],
+      "actualPureReturn": false
+    }
+  ],
+  "objectIsolationConclusion": "Duration rejects any returned foreign-name row instead of filtering target rows. SQL innerJOIN omits empty playlists; row schema omits playlist IDs, so conceptual same-name objects cannot be distinguished and are summed. verify_playlist has different candidate-name-filtered semantics and is not called by this task scorer.",
+  "generationExample": {
+    "scope": "Actual helper code executed with a new isolated RNG(0), not frozen seed217200551 and not a reconstruction of actual per-track durations. Official module/global random state untouched; only aggregate properties returned.",
+    "count": 10,
+    "sumMs": 2850000,
+    "minimumMs": 39136,
+    "maximumMs": 916172,
+    "allIndividualDurationsWithin3to5Minutes": false
+  },
+  "hiddenParameterPolicy": "Files/noise grouping and generated aggregate are evaluator-only offline audit facts, not Agent-available observations or a recommended answer/track list.",
+  "historicalInputsRecovered": false,
+  "newReward": null
+}

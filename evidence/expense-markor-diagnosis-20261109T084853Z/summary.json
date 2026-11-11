@@ -1,0 +1,84 @@
+{
+  "kind": "original_r12v2_014_offline_diagnosis",
+  "status": "completed_offline_scope",
+  "owner": "w4:p1",
+  "parent": "w3:p1",
+  "independentReadOnlyReviewer": "w4:p2",
+  "task": {
+    "index": 14,
+    "name": "ExpenseAddMultipleFromMarkor",
+    "goal": "Go through the transactions in my_expenses.txt in Markor. Log the reimbursable transactions in the pro expense.",
+    "complexity": 6,
+    "paramsSha256": "23de427b2cc14ba77e7fc9e4f767e4a6b1e4049661a80c3ce0b957c65120c929",
+    "seed": 3053860270,
+    "paramsTransport": "seed",
+    "maxSteps": 60
+  },
+  "originalOutcome": {
+    "officialReward": 0.0,
+    "error": null,
+    "invalidReason": null,
+    "businessActions": 20,
+    "referenceSteps": 21,
+    "pythonExecCalls": 25,
+    "completed": 24,
+    "failedAlive": 1,
+    "timedOut": 0,
+    "model": "github-copilot/gpt-5.6-sol"
+  },
+  "established": {
+    "actualOriginalFailureBranch": "sqlite_validators.validate_rows_addition_integrity:166\u2013171; first reference Laundry not matched in actual after state, immediateFalse -> original reward0",
+    "actualWarningEvidence": "historical-scorer-warning.json, original v2-ready-run-full.log:302",
+    "laterChecks": "Cardinality/before-row-preservation and second-reference matching are not reached; do not mark passed",
+    "earliestConfirmedDifference": "Task initialize renderer appends . Reimbursable. to copied target note in Markor while reference note remains unannotated; original UI source and exact original pre-save input reflect the annotated value",
+    "pureInstalledFunctionEvidence": "Actual fuzzy returnsFalse for both annotated-vs-reference notes; ratios0.4444444444444444 and0.6938775510204082 below0.9. Controlled candidate validator results match this sufficient failure mechanism but are not historical DB/scoring inputs.",
+    "layer": "Task input/reference semantics boundary, not a demonstrated AMKernel runtime mutation or tool transport failure",
+    "lxmlError": "Original exec2 ModuleNotFoundError recovered in exec3 with standard ElementTree; no dependency install needed"
+  },
+  "notEstablished": {
+    "historicalActualBeforeAfterDbAvailable": false,
+    "historicalDbNoteValues": "Unobserved; UI/pre-save fields cannot substitute for after DB",
+    "uniqueHistoricalFailingFieldCause": false,
+    "taskUnsolvable": false,
+    "issue145StatusCheckedOnline": false
+  },
+  "fixStatus": {
+    "productionChangesApplied": false,
+    "rendererReferenceDifferenceStillInInstalledSource": true,
+    "newAmkernelOrSkillFixRequiredByEvidence": false,
+    "oldLxmlFailureRecoveredInOriginalRun": true,
+    "nextVersionPrerequisite": "Explicit marker meaning and coherent task input/reference contract, separately authorized; do not strip/relax/reference-edit frozen benchmark"
+  },
+  "executionDecision": {
+    "liveReplayNecessaryForCurrentScope": false,
+    "liveReplayAuthorized": false,
+    "deviceQueriesAuthorized": false,
+    "newTaskOrExperimentPlanned": false,
+    "reason": "Offline direct original branch and contract mechanism are sufficient for this scope; new execution cannot recover missing historical DB"
+  },
+  "proofFiles": {
+    "raw": "owner-raw-field-proof.json",
+    "sourceAndBranch": "owner-scorer-source-proof.json",
+    "warning": "historical-scorer-warning.json",
+    "parentFieldEvidence": "parent-original-field-evidence.json",
+    "parentControlledSmoke": "parent-installed-validator-smoke.json",
+    "independentControlledSmoke": "independent-014-contract-smoke.json",
+    "minimalContract": "minimal-contract.json",
+    "immutability": "immutability.json",
+    "zeroOperations": "zero-operations.json",
+    "report": "offline-report.md"
+  },
+  "immutability": {
+    "registeredHistoricalPaths": 2186,
+    "changed": 0,
+    "missing": 0,
+    "skillFiles": 152,
+    "installedDependencySources": 7,
+    "boundedScopeNotWholeInstall": true
+  },
+  "deviceQueries": 0,
+  "sessionsCreated": 0,
+  "newOfficialRewards": 0,
+  "formalScore": null,
+  "independentAcceptance": "Separately authored by w4:p2; not substituted by owner report"
+}

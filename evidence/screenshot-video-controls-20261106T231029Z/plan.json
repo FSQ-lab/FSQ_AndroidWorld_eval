@@ -1,0 +1,26 @@
+{
+  "purpose": "Independent causal isolation, not a scored campaign or campaign resume",
+  "originalVideoSha256": "8b01c2da29a1926302172bca43c6f7600e5d1b143a7870f4b5ddc7601b4e87cc",
+  "recoveredBootId": "d7fa5bd9-83b9-446b-bf4f-3b0cddf6657f",
+  "renderer": "Vulkan lavapipe + GLES host (unchanged); cold-boot logs explicitly identify both",
+  "arms": [
+    {
+      "name": "static_screenshots",
+      "requestedFrames": 32,
+      "targetIntervalSeconds": 0.75
+    },
+    {
+      "name": "video_without_screenshots",
+      "durationSeconds": 30
+    },
+    {
+      "name": "video_with_screenshots",
+      "requestedFrames": 32,
+      "targetIntervalSeconds": 0.75
+    }
+  ],
+  "stopPolicy": "Stop experiment on system-level failure; preserve evidence; no task replay after failure",
+  "coldBootCaveat": "Old read-only overlay discarded by restart; pre-restart copies of all 3 qcow2 overlays retained. No base image or official snapshot modified. Fresh read-only overlay has a different preexisting file with the same video name; exact original incident video retained on host for controlled use.",
+  "crashDialog": "First cold start was blocked by old crash-report consent dialog, before guest transport existed; stopped owned startup and relaunched with task-local -crash-report-mode never. Emulator reports deletion of unsubmitted crash reports; original sample and console evidence had already been preserved.",
+  "sessionCreation": "15-second diagnostic transport timeout expired during first cold initialization; no replacement session started; reconciling known server-side session identity."
+}

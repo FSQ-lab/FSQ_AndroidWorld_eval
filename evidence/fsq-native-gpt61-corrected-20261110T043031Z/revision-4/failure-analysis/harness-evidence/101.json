@@ -1,0 +1,1265 @@
+{
+  "index": 101,
+  "name": "SystemCopyToClipboard",
+  "goal": "Copy the following text to the clipboard: Tracking #: 5K672F4C",
+  "reward": null,
+  "classification": "invalid_evaluator",
+  "initialization": {
+    "initializationReferenceTime": {
+      "referenceTime": "2023-10-15T15:34:00+00:00",
+      "timezone": "UTC"
+    },
+    "initializedGoal": "Copy the following text to the clipboard: Tracking #: 5K672F4C"
+  },
+  "frozenTaskSpec": {
+    "apps": [
+      "clipper"
+    ],
+    "complexity": 1,
+    "difficulty": "easy",
+    "family": "android",
+    "index": 101,
+    "instanceSeed": 148786894,
+    "maxActions": 10,
+    "maxSteps": 10,
+    "name": "SystemCopyToClipboard",
+    "params": {
+      "clipboard_content": "Tracking #: 5K672F4C",
+      "seed": 148786894
+    },
+    "paramsSha256": "483182e9666317c279cbfe9f2814cac742ebb6f8602b043feb879d479bf4a8c1",
+    "paramsTransport": "json",
+    "tags": [
+      "data_entry",
+      "parameterized"
+    ],
+    "timeBudget": {
+      "businessSeconds": 720,
+      "cleanupWindowSeconds": 180,
+      "episodeSeconds": 1330,
+      "forceSeconds": 910,
+      "recoveryWindowSeconds": 120,
+      "terminationGraceSeconds": 10
+    }
+  },
+  "mainSteps": [
+    {
+      "stepId": 4,
+      "tool": "agent_runtime.runner",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "Paste target was not found.",
+          "Harness action budget exhausted.",
+          "Teardown could not complete."
+        ],
+        "evidence": [
+          "Paste action artifact 000027-tap_on.json reports target_resolution_error: Target was not found.",
+          "The final long-press recovery attempt was blocked by NativeActionBudgetExceeded: action_budget.",
+          "kill_app teardown was attempted but blocked by the same action-budget error."
+        ],
+        "plan_updates": [
+          "Attempted the flow using the launcher search field.",
+          "Recovery stopped when the harness reported NativeActionBudgetExceeded."
+        ],
+        "pre_plan": [
+          {
+            "action": "Enter the exact string in an editable field.",
+            "status": "adjusted",
+            "step_id": 1,
+            "success_criteria": [
+              "Editable field contains Tracking #: 5K672F4C."
+            ]
+          },
+          {
+            "action": "Long-press, select the entire string, and copy it.",
+            "status": "adjusted",
+            "step_id": 2,
+            "success_criteria": [
+              "Entire string is copied through the text-selection menu."
+            ]
+          },
+          {
+            "action": "Paste into an empty editable field and verify the exact result.",
+            "status": "failed",
+            "step_id": 3,
+            "success_criteria": [
+              "Pasted editable-field text equals Tracking #: 5K672F4C."
+            ]
+          }
+        ],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "inconclusive",
+        "summary": "Clipboard contents could not be verified. Paste was unavailable, and the harness action budget blocked further recovery and teardown.",
+        "unmet_criteria": [
+          "Pasting from the clipboard produces exactly \"Tracking #: 5K672F4C\" in an editable field."
+        ]
+      }
+    },
+    {
+      "stepId": 5,
+      "tool": "agent_runtime.verifier",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "The Paste target could not be resolved.",
+          "The action budget was exhausted before a successful paste could occur."
+        ],
+        "evidence": [
+          "000027-tap_on.json records the attempted Paste action as failed with target_resolution_error: Target was not found.",
+          "000029-search_artifact.json, 000035-search_artifact.json, and 000044-search_artifact.json show the editable search field displaying its placeholder rather than the required text after the failed paste.",
+          "Searches of subsequent UI snapshots found no Paste menu item.",
+          "The final recovery long_press_on call failed with harness_error: NativeActionBudgetExceeded: action_budget, preventing further execution."
+        ],
+        "plan_updates": [],
+        "pre_plan": [
+          {
+            "action": "Verify that pasting from the clipboard produces exactly \"Tracking #: 5K672F4C\" in an editable field.",
+            "status": "failed",
+            "step_id": 1,
+            "success_criteria": [
+              "A clipboard paste occurs and the resulting editable-field text equals \"Tracking #: 5K672F4C\"."
+            ]
+          }
+        ],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "failed",
+        "summary": "The run did not produce the required pasted text. The Paste action failed, subsequent UI evidence still showed an empty editable field, and the exhausted action budget blocked recovery.",
+        "unmet_criteria": [
+          "Pasting from the clipboard produces exactly \"Tracking #: 5K672F4C\" in an editable field."
+        ]
+      }
+    }
+  ],
+  "budgetSummary": {
+    "admitted": 10,
+    "attempted": 12,
+    "deadlineExceeded": false,
+    "deadlineMonotonic": 724850.277651041,
+    "denied": 2,
+    "deviceRestoredByClose": false,
+    "exclusions": [
+      "driver_construction",
+      "uiautomator2_service_startup",
+      "observation_and_assertion_side_effects",
+      "external_processes_and_direct_driver_access"
+    ],
+    "exhausted": true,
+    "failed": 1,
+    "inFlight": 0,
+    "inputTextUnit": "composite_click_optional_clear_set_text",
+    "maximum": 10,
+    "securityBoundary": false,
+    "succeeded": 9,
+    "unit": "admitted_android_harness_write_capability_dispatch",
+    "writeCapabilities": [
+      "launch_app",
+      "kill_app",
+      "tap_on",
+      "tap_at",
+      "long_press_on",
+      "input_text",
+      "press_key",
+      "swipe"
+    ]
+  },
+  "actions": [
+    {
+      "ordinal": 0,
+      "stepId": "agent-launch_app-1",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [],
+      "output": {
+        "app_id": "ca.zgrs.clipper"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[0]"
+    },
+    {
+      "ordinal": 1,
+      "stepId": "agent-ui_snapshot-2",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Sun, Oct 15",
+        "Sun, Oct 15",
+        "Gmail",
+        "Gmail",
+        "Photos",
+        "Photos",
+        "YouTube",
+        "YouTube",
+        "Home",
+        "Phone",
+        "Phone",
+        "Messages",
+        "Messages",
+        "Chrome",
+        "Chrome",
+        "Calendar",
+        "Predicted app: Calendar",
+        "Search",
+        "Google app",
+        "Voice search",
+        "Google Lens"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 27980,
+          "retained_characters": 7649
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[1]"
+    },
+    {
+      "ordinal": 2,
+      "stepId": "agent-tap_on-3",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.google.android.apps.nexuslauncher:id/search_container_hotseat"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[2]"
+    },
+    {
+      "ordinal": 3,
+      "stepId": "agent-ui_snapshot-4",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Gallery",
+        "Gallery",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Tasks",
+        "Tasks",
+        "0",
+        "0",
+        "Search null",
+        "1",
+        "1",
+        "Search null",
+        "2",
+        "2",
+        "Search null",
+        "3",
+        "3",
+        "Search null",
+        "4",
+        "4",
+        "Search null",
+        "5",
+        "5",
+        "Search null",
+        "6",
+        "6",
+        "Search null",
+        "7",
+        "7",
+        "Search null",
+        "8",
+        "8",
+        "Search null",
+        "9",
+        "9",
+        "Search null",
+        "Search",
+        "Google app",
+        "Search apps, web and more",
+        "Home"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 41006,
+          "retained_characters": 11690
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 6,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[3]"
+    },
+    {
+      "ordinal": 4,
+      "stepId": "agent-input_text-5",
+      "action": "input_text",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.google.android.apps.nexuslauncher:id/input"
+        },
+        "text": "Tracking #: 5K672F4C",
+        "textType": "literal"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[4]"
+    },
+    {
+      "ordinal": 5,
+      "stepId": "agent-ui_snapshot-6",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Tracking #: 5K672F4C0",
+        "Tracking #: 5K672F4C0",
+        "Search null",
+        "Tracking #: 5K672F4C1",
+        "Tracking #: 5K672F4C1",
+        "Search null",
+        "Tracking #: 5K672F4C2",
+        "Tracking #: 5K672F4C2",
+        "Search null",
+        "Tracking #: 5K672F4C3",
+        "Tracking #: 5K672F4C3",
+        "Search null",
+        "Tracking #: 5K672F4C4",
+        "Tracking #: 5K672F4C4",
+        "Search null",
+        "Tracking #: 5K672F4C5",
+        "Tracking #: 5K672F4C5",
+        "Search null",
+        "Tracking #: 5K672F4C6",
+        "Tracking #: 5K672F4C6",
+        "Search null",
+        "Tracking #: 5K672F4C7",
+        "Tracking #: 5K672F4C7",
+        "Search null",
+        "Tracking #: 5K672F4C8",
+        "Tracking #: 5K672F4C8",
+        "Search null",
+        "Tracking #: 5K672F4C9",
+        "Tracking #: 5K672F4C9",
+        "Search null",
+        "Search",
+        "Google app",
+        "Tracking #: 5K672F4C",
+        "Clear search box",
+        "Home",
+        "Back",
+        "Switch input method"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 48137,
+          "retained_characters": 13386
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 11,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[5]"
+    },
+    {
+      "ordinal": 6,
+      "stepId": "agent-long_press_on-7",
+      "action": "long_press_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.google.android.apps.nexuslauncher:id/input"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[6]"
+    },
+    {
+      "ordinal": 7,
+      "stepId": "agent-ui_snapshot-8",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Cut",
+        "Cut",
+        "Copy",
+        "Copy",
+        "Paste",
+        "Paste",
+        "Share",
+        "Share",
+        "Select all",
+        "Select all",
+        "More options",
+        "Tracking #: 5K672F4C0",
+        "Tracking #: 5K672F4C0",
+        "Search null",
+        "Tracking #: 5K672F4C1",
+        "Tracking #: 5K672F4C1",
+        "Search null",
+        "Tracking #: 5K672F4C2",
+        "Tracking #: 5K672F4C2",
+        "Search null",
+        "Tracking #: 5K672F4C3",
+        "Tracking #: 5K672F4C3",
+        "Search null",
+        "Tracking #: 5K672F4C4",
+        "Tracking #: 5K672F4C4",
+        "Search null",
+        "Tracking #: 5K672F4C5",
+        "Tracking #: 5K672F4C5",
+        "Search null",
+        "Tracking #: 5K672F4C6",
+        "Tracking #: 5K672F4C6",
+        "Search null",
+        "Tracking #: 5K672F4C7",
+        "Tracking #: 5K672F4C7",
+        "Search null",
+        "Tracking #: 5K672F4C8",
+        "Tracking #: 5K672F4C8",
+        "Search null",
+        "Tracking #: 5K672F4C9",
+        "Tracking #: 5K672F4C9",
+        "Search null",
+        "Search",
+        "Google app",
+        "Tracking #: 5K672F4C",
+        "Clear search box",
+        "Home",
+        "Back",
+        "Switch input method"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 57081,
+          "retained_characters": 15273
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 17,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[7]"
+    },
+    {
+      "ordinal": 8,
+      "stepId": "agent-tap_on-9",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "accessibilityId": "Select all"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[8]"
+    },
+    {
+      "ordinal": 9,
+      "stepId": "agent-ui_snapshot-10",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Cut",
+        "Cut",
+        "Copy",
+        "Copy",
+        "Paste",
+        "Paste",
+        "Share",
+        "Share",
+        "More options",
+        "Tracking #: 5K672F4C0",
+        "Tracking #: 5K672F4C0",
+        "Search null",
+        "Tracking #: 5K672F4C1",
+        "Tracking #: 5K672F4C1",
+        "Search null",
+        "Tracking #: 5K672F4C2",
+        "Tracking #: 5K672F4C2",
+        "Search null",
+        "Tracking #: 5K672F4C3",
+        "Tracking #: 5K672F4C3",
+        "Search null",
+        "Tracking #: 5K672F4C4",
+        "Tracking #: 5K672F4C4",
+        "Search null",
+        "Tracking #: 5K672F4C5",
+        "Tracking #: 5K672F4C5",
+        "Search null",
+        "Tracking #: 5K672F4C6",
+        "Tracking #: 5K672F4C6",
+        "Search null",
+        "Tracking #: 5K672F4C7",
+        "Tracking #: 5K672F4C7",
+        "Search null",
+        "Tracking #: 5K672F4C8",
+        "Tracking #: 5K672F4C8",
+        "Search null",
+        "Tracking #: 5K672F4C9",
+        "Tracking #: 5K672F4C9",
+        "Search null",
+        "Search",
+        "Google app",
+        "Tracking #: 5K672F4C",
+        "Clear search box",
+        "Home",
+        "Back",
+        "Switch input method"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 56150,
+          "retained_characters": 14991
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 17,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[9]"
+    },
+    {
+      "ordinal": 10,
+      "stepId": "agent-tap_on-11",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "accessibilityId": "Copy"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[10]"
+    },
+    {
+      "ordinal": 11,
+      "stepId": "agent-ui_snapshot-12",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Tracking #: 5K672F4C0",
+        "Tracking #: 5K672F4C0",
+        "Search null",
+        "Tracking #: 5K672F4C1",
+        "Tracking #: 5K672F4C1",
+        "Search null",
+        "Tracking #: 5K672F4C2",
+        "Tracking #: 5K672F4C2",
+        "Search null",
+        "Tracking #: 5K672F4C3",
+        "Tracking #: 5K672F4C3",
+        "Search null",
+        "Tracking #: 5K672F4C4",
+        "Tracking #: 5K672F4C4",
+        "Search null",
+        "Tracking #: 5K672F4C5",
+        "Tracking #: 5K672F4C5",
+        "Search null",
+        "Tracking #: 5K672F4C6",
+        "Tracking #: 5K672F4C6",
+        "Search null",
+        "Tracking #: 5K672F4C7",
+        "Tracking #: 5K672F4C7",
+        "Search null",
+        "Tracking #: 5K672F4C8",
+        "Tracking #: 5K672F4C8",
+        "Search null",
+        "Tracking #: 5K672F4C9",
+        "Tracking #: 5K672F4C9",
+        "Search null",
+        "Search",
+        "Google app",
+        "Tracking #: 5K672F4C",
+        "Clear search box",
+        "Home",
+        "Back",
+        "Switch input method"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 48137,
+          "retained_characters": 13386
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 11,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[11]"
+    },
+    {
+      "ordinal": 12,
+      "stepId": "agent-tap_on-13",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.google.android.apps.nexuslauncher:id/clear_btn"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[12]"
+    },
+    {
+      "ordinal": 13,
+      "stepId": "agent-ui_snapshot-14",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Gallery",
+        "Gallery",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Tasks",
+        "Tasks",
+        "0",
+        "0",
+        "Search null",
+        "1",
+        "1",
+        "Search null",
+        "2",
+        "2",
+        "Search null",
+        "3",
+        "3",
+        "Search null",
+        "4",
+        "4",
+        "Search null",
+        "5",
+        "5",
+        "Search null",
+        "6",
+        "6",
+        "Search null",
+        "7",
+        "7",
+        "Search null",
+        "8",
+        "8",
+        "Search null",
+        "9",
+        "9",
+        "Search null",
+        "Search",
+        "Google app",
+        "Search apps, web and more",
+        "Home",
+        "Back",
+        "Switch input method"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 48984,
+          "retained_characters": 13445
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 11,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[13]"
+    },
+    {
+      "ordinal": 14,
+      "stepId": "agent-assert_state-15",
+      "action": "assert_state",
+      "status": "failed",
+      "error": "Target was not found.",
+      "params": {
+        "element": {
+          "resourceId": "com.google.android.apps.nexuslauncher:id/input",
+          "text": "",
+          "className": "android.widget.EditText",
+          "enabled": true
+        },
+        "optional": false
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[14]"
+    },
+    {
+      "ordinal": 15,
+      "stepId": "agent-assert_with_ai-16",
+      "action": "assert_with_ai",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "prompt": "Verify the focused editable search field is empty (showing the placeholder 'Search apps, web and more'), with no entered text.",
+        "optional": false
+      },
+      "uiLabels": [],
+      "output": {
+        "status": "passed",
+        "passed": true,
+        "explanation": "The search field shows the placeholder 'Search apps, web and more' with a visible caret at the start, indicating focus, and no entered text.",
+        "confidence": 0.99,
+        "provider": "github_copilot",
+        "model": "gpt-6.1-sol",
+        "latency_ms": 4369,
+        "token_usage": {
+          "input_tokens": 3277,
+          "output_tokens": 52,
+          "total_tokens": 3329
+        },
+        "artifact_refs": [
+          {
+            "artifact_id": "screenshot-agent-assert-with-ai-16-invoke-assert-with-ai-1-2c02275496ba",
+            "kind": "screenshot",
+            "path": "artifacts/screenshots/screenshot-agent-assert-with-ai-16-invoke-assert-with-ai-1-2c02275496ba.png",
+            "mime_type": "image/png",
+            "size_bytes": 381467,
+            "sha256": "11611121eb7cdeca6fd475a6469ac7d1071b3d24b9f6d6024adebdf7e162a350",
+            "availability": "available",
+            "unavailable_reason": null,
+            "capture_occurrence": 1,
+            "created_at": "2026-11-10T22:22:21.166173Z",
+            "metadata": {
+              "capture_reason": "assert-with-ai",
+              "redacted": false
+            }
+          }
+        ],
+        "error": null,
+        "metadata": {
+          "provider_metadata": {
+            "endpoint_family": "github_copilot",
+            "copilot_plan": "enterprise"
+          }
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[15]"
+    },
+    {
+      "ordinal": 16,
+      "stepId": "agent-long_press_on-17",
+      "action": "long_press_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.google.android.apps.nexuslauncher:id/input"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[16]"
+    },
+    {
+      "ordinal": 17,
+      "stepId": "agent-ui_snapshot-18",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Autofill",
+        "Autofill",
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Gallery",
+        "Gallery",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Tasks",
+        "Tasks",
+        "0",
+        "0",
+        "Search null",
+        "1",
+        "1",
+        "Search null",
+        "2",
+        "2",
+        "Search null",
+        "3",
+        "3",
+        "Search null",
+        "4",
+        "4",
+        "Search null",
+        "5",
+        "5",
+        "Search null",
+        "6",
+        "6",
+        "Search null",
+        "7",
+        "7",
+        "Search null",
+        "8",
+        "8",
+        "Search null",
+        "9",
+        "9",
+        "Search null",
+        "Search",
+        "Google app",
+        "Search apps, web and more",
+        "Home",
+        "Back",
+        "Switch input method"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 52094,
+          "retained_characters": 13867
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 15,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[17]"
+    },
+    {
+      "ordinal": 18,
+      "stepId": "agent-tap_on-19",
+      "action": "tap_on",
+      "status": "failed",
+      "error": "Target was not found.",
+      "params": {
+        "locator": {
+          "text": "Paste"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[18]"
+    },
+    {
+      "ordinal": 19,
+      "stepId": "agent-ui_snapshot-20",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Autofill",
+        "Autofill",
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Gallery",
+        "Gallery",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Tasks",
+        "Tasks",
+        "0",
+        "0",
+        "Search null",
+        "1",
+        "1",
+        "Search null",
+        "2",
+        "2",
+        "Search null",
+        "3",
+        "3",
+        "Search null",
+        "4",
+        "4",
+        "Search null",
+        "5",
+        "5",
+        "Search null",
+        "6",
+        "6",
+        "Search null",
+        "7",
+        "7",
+        "Search null",
+        "8",
+        "8",
+        "Search null",
+        "9",
+        "9",
+        "Search null",
+        "Search",
+        "Google app",
+        "Search apps, web and more",
+        "Home",
+        "Back",
+        "Switch input method"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 52093,
+          "retained_characters": 13866
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 15,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[19]"
+    },
+    {
+      "ordinal": 20,
+      "stepId": "agent-long_press_on-21",
+      "action": "long_press_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.google.android.apps.nexuslauncher:id/input"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[20]"
+    },
+    {
+      "ordinal": 21,
+      "stepId": "agent-ui_snapshot-22",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Autofill",
+        "Autofill",
+        "Gallery",
+        "Gallery",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Tasks",
+        "Tasks",
+        "0",
+        "0",
+        "Search null",
+        "1",
+        "1",
+        "Search null",
+        "2",
+        "2",
+        "Search null",
+        "3",
+        "3",
+        "Search null",
+        "4",
+        "4",
+        "Search null",
+        "5",
+        "5",
+        "Search null",
+        "6",
+        "6",
+        "Search null",
+        "7",
+        "7",
+        "Search null",
+        "8",
+        "8",
+        "Search null",
+        "9",
+        "9",
+        "Search null",
+        "Search",
+        "Google app",
+        "Search apps, web and more",
+        "Home",
+        "Back",
+        "Switch input method"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 52949,
+          "retained_characters": 13971
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 16,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[21]"
+    },
+    {
+      "ordinal": 22,
+      "stepId": "agent-ui_snapshot-23",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:37",
+        "23:37",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Autofill",
+        "Autofill",
+        "Gallery",
+        "Gallery",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Tasks",
+        "Tasks",
+        "0",
+        "0",
+        "Search null",
+        "1",
+        "1",
+        "Search null",
+        "2",
+        "2",
+        "Search null",
+        "3",
+        "3",
+        "Search null",
+        "4",
+        "4",
+        "Search null",
+        "5",
+        "5",
+        "Search null",
+        "6",
+        "6",
+        "Search null",
+        "7",
+        "7",
+        "Search null",
+        "8",
+        "8",
+        "Search null",
+        "9",
+        "9",
+        "Search null",
+        "Search",
+        "Google app",
+        "Search apps, web and more",
+        "Home",
+        "Back",
+        "Switch input method"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 52094,
+          "retained_characters": 13867
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 15,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[22]"
+    },
+    {
+      "ordinal": 23,
+      "stepId": "agent-long_press_on-24",
+      "action": "long_press_on",
+      "status": "failed",
+      "error": "NativeActionBudgetExceeded: action_budget",
+      "params": null,
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[23]"
+    },
+    {
+      "ordinal": 24,
+      "stepId": "agent-kill_app-25",
+      "action": "kill_app",
+      "status": "failed",
+      "error": "NativeActionBudgetExceeded: action_budget",
+      "params": null,
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[24]"
+    }
+  ],
+  "originalNativeExecutionPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/101-SystemCopyToClipboard/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-101-20261110T222021Z-1d7fe0/execution-result.json",
+  "originalNativeResultPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/101-SystemCopyToClipboard/raw-private/fsq-native/worker/fsq-task-result.private.json",
+  "originalGoalPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/101-SystemCopyToClipboard/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-101-20261110T222021Z-1d7fe0/sources/000-goal.txt"
+}

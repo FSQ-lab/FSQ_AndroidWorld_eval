@@ -1,0 +1,1828 @@
+{
+  "index": 91,
+  "name": "SportsTrackerTotalDistanceForCategoryOverInterval",
+  "goal": "What was the total distance covered for kayaking activities in the OpenTracks app from October 09 2023 to October 10 2023? Express your answer as a single number in meters rounded to the nearest integer.",
+  "reward": 0.0,
+  "classification": "failed",
+  "initialization": {
+    "initializationReferenceTime": {
+      "referenceTime": "2023-10-15T15:34:00+00:00",
+      "timezone": "UTC"
+    },
+    "initializedGoal": "What was the total distance covered for kayaking activities in the OpenTracks app from October 09 2023 to October 10 2023? Express your answer as a single number in meters rounded to the nearest integer."
+  },
+  "frozenTaskSpec": {
+    "apps": [
+      "open tracks sports tracker"
+    ],
+    "complexity": 2,
+    "difficulty": "hard",
+    "family": "information_retrieval",
+    "index": 91,
+    "instanceSeed": 547216539,
+    "maxActions": 20,
+    "maxSteps": 20,
+    "name": "SportsTrackerTotalDistanceForCategoryOverInterval",
+    "params": {
+      "activity_description": "Embraced the rain and got soaked.",
+      "activity_name": "More tired than usual today",
+      "category": "kayaking",
+      "distance": "4000",
+      "duration": "240",
+      "elevation": "600",
+      "end_date": "October 10 2023",
+      "seed": 547216539,
+      "start_date": "October 9 2023",
+      "start_time": "5:00pm"
+    },
+    "paramsSha256": "1fd425f5d1d32687f08975c00e53171667046cbe023eace31d4b7940bc51076f",
+    "paramsTransport": "json",
+    "tags": [
+      "search",
+      "parameterized",
+      "math_counting"
+    ],
+    "timeBudget": {
+      "businessSeconds": 1320,
+      "cleanupWindowSeconds": 180,
+      "episodeSeconds": 1930,
+      "forceSeconds": 1510,
+      "recoveryWindowSeconds": 120,
+      "terminationGraceSeconds": 10
+    }
+  },
+  "mainSteps": [
+    {
+      "stepId": 5,
+      "tool": "agent_runtime.runner",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "NativeActionBudgetExceeded: action_budget blocked further navigation.",
+          "Required kill_app teardown was attempted but also blocked by NativeActionBudgetExceeded."
+        ],
+        "evidence": [
+          "Recorded activity list and kayaking search results were collected in UI snapshots.",
+          "Activity detail snapshots were collected, but precise metric distances and final verification were not obtained."
+        ],
+        "plan_updates": [
+          "Searched for kayaking and inspected activity details.",
+          "Attempted to access settings to obtain metric distances; further navigation was blocked by the harness action budget."
+        ],
+        "pre_plan": [
+          {
+            "action": "Open OpenTracks and locate recorded activities.",
+            "status": "success",
+            "step_id": 1,
+            "success_criteria": [
+              "Recorded activity list is available."
+            ]
+          },
+          {
+            "action": "Identify kayaking activities dated October 09–10, 2023.",
+            "status": "adjusted",
+            "step_id": 2,
+            "success_criteria": [
+              "All matching activities are identified."
+            ]
+          },
+          {
+            "action": "Read each matching distance and unit.",
+            "status": "failed",
+            "step_id": 3,
+            "success_criteria": [
+              "Distances have sufficient precision for nearest-meter rounding."
+            ]
+          },
+          {
+            "action": "Convert to meters, sum, and round once.",
+            "status": "skipped",
+            "step_id": 4,
+            "success_criteria": [
+              "An exact rounded total is supported by verified distances."
+            ]
+          }
+        ],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "inconclusive",
+        "summary": "Unable to verify an exact total in meters before the harness action budget was exhausted.",
+        "unmet_criteria": [
+          "The reported single integer equals the total distance in meters of all kayaking activities dated October 09–10, 2023 inclusive, rounded to the nearest integer."
+        ]
+      }
+    },
+    {
+      "stepId": 6,
+      "tool": "agent_runtime.verifier",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "No integer answer was reported. The actual rounded total remains undetermined from the supplied evidence; this does not change the demonstrated failure to report the required answer."
+        ],
+        "evidence": [
+          "Execution step 5 records the final response as 'Unable to verify an exact total in meters before the harness action budget was exhausted.' It contains no single-integer distance answer.",
+          "Artifact excerpts 000030-ui_snapshot.json and 000034-ui_snapshot.json show October 9 activities with displayed distances of 1.24 mi and 2.80 mi, but do not establish an exact nearest-meter total.",
+          "The final tap_on tool result reports harness_error: NativeActionBudgetExceeded: action_budget."
+        ],
+        "plan_updates": [],
+        "pre_plan": [
+          {
+            "action": "Check the recorded final answer against the verification goal.",
+            "status": "failed",
+            "step_id": 1,
+            "success_criteria": [
+              "The run reports a single integer equal to the rounded total kayaking distance for October 09–10, 2023."
+            ]
+          }
+        ],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "failed",
+        "summary": "The run did not report a single integer answer, so the verification goal was not met.",
+        "unmet_criteria": [
+          "The reported single integer equals the total distance in meters of all kayaking activities dated October 09–10, 2023 inclusive, rounded to the nearest integer."
+        ]
+      }
+    }
+  ],
+  "budgetSummary": {
+    "admitted": 20,
+    "attempted": 22,
+    "deadlineExceeded": false,
+    "deadlineMonotonic": 723853.261024375,
+    "denied": 2,
+    "deviceRestoredByClose": false,
+    "exclusions": [
+      "driver_construction",
+      "uiautomator2_service_startup",
+      "observation_and_assertion_side_effects",
+      "external_processes_and_direct_driver_access"
+    ],
+    "exhausted": true,
+    "failed": 1,
+    "inFlight": 0,
+    "inputTextUnit": "composite_click_optional_clear_set_text",
+    "maximum": 20,
+    "securityBoundary": false,
+    "succeeded": 19,
+    "unit": "admitted_android_harness_write_capability_dispatch",
+    "writeCapabilities": [
+      "launch_app",
+      "kill_app",
+      "tap_on",
+      "tap_at",
+      "long_press_on",
+      "input_text",
+      "press_key",
+      "swipe"
+    ]
+  },
+  "actions": [
+    {
+      "ordinal": 0,
+      "stepId": "agent-launch_app-1",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [],
+      "output": {
+        "app_id": "de.dennisguse.opentracks"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[0]"
+    },
+    {
+      "ordinal": 1,
+      "stepId": "agent-ui_snapshot-2",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Sun, Oct 15",
+        "Sun, Oct 15",
+        "Gmail",
+        "Gmail",
+        "Photos",
+        "Photos",
+        "YouTube",
+        "YouTube",
+        "Home",
+        "Phone",
+        "Phone",
+        "Messages",
+        "Messages",
+        "Chrome",
+        "Chrome",
+        "Calendar",
+        "Predicted app: Calendar",
+        "Search",
+        "Google app",
+        "Voice search",
+        "Google Lens"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 27981,
+          "retained_characters": 7650
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[1]"
+    },
+    {
+      "ordinal": 2,
+      "stepId": "agent-launch_app-3",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "app_id": "de.dennisguse.opentracks"
+      },
+      "uiLabels": [],
+      "output": {
+        "app_id": "de.dennisguse.opentracks"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[2]"
+    },
+    {
+      "ordinal": 3,
+      "stepId": "agent-swipe-4",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[3]"
+    },
+    {
+      "ordinal": 4,
+      "stepId": "agent-ui_snapshot-5",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "ATX",
+        "ATX",
+        "Audio Recorder",
+        "Audio Recorder",
+        "Broccoli",
+        "Broccoli",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Chrome",
+        "Chrome",
+        "Clipper",
+        "Clipper",
+        "Clock",
+        "Clock",
+        "Contacts",
+        "Contacts",
+        "Draw",
+        "Draw",
+        "Drive",
+        "Drive",
+        "Files",
+        "Files",
+        "Gallery",
+        "Gallery",
+        "Gmail",
+        "Gmail",
+        "Google",
+        "Google",
+        "Joplin",
+        "Joplin",
+        "Maps",
+        "Maps",
+        "Markor",
+        "Markor",
+        "Messages",
+        "Messages",
+        "OpenTracks",
+        "OpenTracks",
+        "OsmAnd",
+        "OsmAnd",
+        "Phone",
+        "Phone",
+        "Photos",
+        "Photos",
+        "Gallery",
+        "Gallery",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Tasks",
+        "Tasks",
+        "Search",
+        "Google app",
+        "Search apps, web and more",
+        "Voice search",
+        "Google Lens",
+        "Home"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 37001,
+          "retained_characters": 12559
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 6,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[4]"
+    },
+    {
+      "ordinal": 5,
+      "stepId": "agent-tap_on-6",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "accessibilityId": "OpenTracks"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[5]"
+    },
+    {
+      "ordinal": 6,
+      "stepId": "agent-ui_snapshot-7",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "OpenTracks is a sport tracking application that co",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 18681,
+          "retained_characters": 4181
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 10,
+          "clipped_attributes": 2
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[6]"
+    },
+    {
+      "ordinal": 7,
+      "stepId": "agent-tap_on-8",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "de.dennisguse.opentracks:id/next_button"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[7]"
+    },
+    {
+      "ordinal": 8,
+      "stepId": "agent-ui_snapshot-9",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "OpenTracks itself does not provide a map. Please i",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 18703,
+          "retained_characters": 4181
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 10,
+          "clipped_attributes": 2
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[8]"
+    },
+    {
+      "ordinal": 9,
+      "stepId": "agent-tap_on-10",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "de.dennisguse.opentracks:id/next_button"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[9]"
+    },
+    {
+      "ordinal": 10,
+      "stepId": "agent-ui_snapshot-11",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Navigate up",
+        "OpenTracks",
+        "Search",
+        "Markers",
+        "More options",
+        "Track",
+        "Sculling Session",
+        "Today",
+        "2:52:00 (6.50 mi)",
+        "01:33",
+        "Track",
+        "Waterway Paddle",
+        "Yesterday",
+        "2:44:00 (1.76 mi)",
+        "14:22",
+        "Track",
+        "Morning Run",
+        "Yesterday",
+        "3:19:00 (7.85 mi)",
+        "05:33",
+        "Track",
+        "Surfing Expedition",
+        "Friday",
+        "1:02:00 (7.75 mi)",
+        "08:32",
+        "Track",
+        "Nature Walk",
+        "Wednesday",
+        "1:33:00 (8.23 mi)",
+        "20:51",
+        "Track",
+        "Paddle Outing",
+        "Wednesday",
+        "1:20:00 (6.16 mi)",
+        "13:59",
+        "Track",
+        "Hiking Adventure",
+        "Wednesday",
+        "4:18:00 (12.09 mi)",
+        "02:06",
+        "Track",
+        "Road Riding",
+        "Tuesday",
+        "4:04:00 (1,266.40 ft)",
+        "23:20",
+        "Track",
+        "City Stroll",
+        "Tuesday",
+        "2:00:00 (10.11 mi)",
+        "13:19",
+        "Track",
+        "Morning Walk",
+        "Tuesday",
+        "18:00 (8.87 mi)",
+        "06:12",
+        "Track",
+        "Brisk Walk",
+        "Monday",
+        "3:59:00 (12.14 mi)",
+        "19:19",
+        "Track",
+        "Sailing Excursion",
+        "Monday",
+        "Record",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 60781,
+          "retained_characters": 17554
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 10,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[10]"
+    },
+    {
+      "ordinal": 11,
+      "stepId": "agent-tap_on-12",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "de.dennisguse.opentracks:id/search_button"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[11]"
+    },
+    {
+      "ordinal": 12,
+      "stepId": "agent-ui_snapshot-13",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Navigate up",
+        "   Search",
+        "Clear query",
+        "Submit query",
+        "Markers",
+        "Track",
+        "Sculling Session",
+        "Today",
+        "2:52:00 (6.50 mi)",
+        "01:33",
+        "Track",
+        "Waterway Paddle",
+        "Yesterday",
+        "2:44:00 (1.76 mi)",
+        "14:22",
+        "Track",
+        "Morning Run",
+        "Yesterday",
+        "3:19:00 (7.85 mi)",
+        "05:33",
+        "Track",
+        "Surfing Expedition",
+        "Friday",
+        "1:02:00 (7.75 mi)",
+        "08:32",
+        "Track",
+        "Nature Walk",
+        "Wednesday",
+        "1:33:00 (8.23 mi)",
+        "20:51",
+        "Track",
+        "Paddle Outing",
+        "Wednesday",
+        "1:20:00 (6.16 mi)",
+        "13:59",
+        "Track",
+        "Hiking Adventure",
+        "Wednesday",
+        "4:18:00 (12.09 mi)",
+        "02:06",
+        "Track",
+        "Road Riding",
+        "Tuesday",
+        "4:04:00 (1,266.40 ft)",
+        "23:20",
+        "Track",
+        "City Stroll",
+        "Tuesday",
+        "2:00:00 (10.11 mi)",
+        "13:19",
+        "Track",
+        "Morning Walk",
+        "Tuesday",
+        "18:00 (8.87 mi)",
+        "06:12",
+        "Track",
+        "Brisk Walk",
+        "Monday",
+        "Record",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Back",
+        "Switch input method"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 66666,
+          "retained_characters": 18759
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 15,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[12]"
+    },
+    {
+      "ordinal": 13,
+      "stepId": "agent-input_text-14",
+      "action": "input_text",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "de.dennisguse.opentracks:id/search_src_text"
+        },
+        "text": "kayaking",
+        "textType": "literal"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[13]"
+    },
+    {
+      "ordinal": 14,
+      "stepId": "agent-press_key-15",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Enter"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Enter"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[14]"
+    },
+    {
+      "ordinal": 15,
+      "stepId": "agent-ui_snapshot-16",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Navigate up",
+        "kayaking",
+        "Search",
+        "Markers",
+        "More options",
+        "Track",
+        "Waterway Paddle",
+        "Yesterday",
+        "2:44:00 (1.76 mi)",
+        "14:22",
+        "Track",
+        "Need more strength and conditioning",
+        "Monday",
+        "1:15:00 (1.24 mi)",
+        "08:00",
+        "Faced the weather head-on and conquered it.",
+        "Track",
+        "Mindful Movement",
+        "Monday",
+        "4:30:00 (2.80 mi)",
+        "06:15",
+        "Had a blast with my favorite people.",
+        "Track",
+        "Kayak Expedition",
+        "3 Oct",
+        "35:00 (8.73 mi)",
+        "15:21",
+        "Record",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 36984,
+          "retained_characters": 10138
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 10,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[15]"
+    },
+    {
+      "ordinal": 16,
+      "stepId": "agent-tap_on-17",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "text": "Waterway Paddle"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[16]"
+    },
+    {
+      "ordinal": 17,
+      "stepId": "agent-ui_snapshot-18",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Stats",
+        "Stats",
+        "Intervals",
+        "Intervals",
+        "By time",
+        "By time",
+        "By distance",
+        "By distance",
+        "Waterway Paddle",
+        "Oct 14, 2023, 2:22:00 PM",
+        "DISTANCE",
+        "MOVING TIME",
+        "1.76",
+        "mi",
+        "2:44:00",
+        "TOTAL TIME",
+        "2:44:00",
+        "MAX SPEED",
+        "AVG MOVING SPEED",
+        "0.6",
+        "mph",
+        "0.6",
+        "mph",
+        "AVG SPEED",
+        "0.6",
+        "mph",
+        "GAIN",
+        "LOSS",
+        "1,601",
+        "ft",
+        "436",
+        "ft",
+        "Navigate up",
+        "Show on map",
+        "Share",
+        "More options",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 40261,
+          "retained_characters": 10419
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[17]"
+    },
+    {
+      "ordinal": 18,
+      "stepId": "agent-press_key-19",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[18]"
+    },
+    {
+      "ordinal": 19,
+      "stepId": "agent-ui_snapshot-20",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Navigate up",
+        "kayaking",
+        "Search",
+        "Markers",
+        "More options",
+        "Track",
+        "Waterway Paddle",
+        "Yesterday",
+        "2:44:00 (1.76 mi)",
+        "14:22",
+        "Track",
+        "Need more strength and conditioning",
+        "Monday",
+        "1:15:00 (1.24 mi)",
+        "08:00",
+        "Faced the weather head-on and conquered it.",
+        "Track",
+        "Mindful Movement",
+        "Monday",
+        "4:30:00 (2.80 mi)",
+        "06:15",
+        "Had a blast with my favorite people.",
+        "Track",
+        "Kayak Expedition",
+        "3 Oct",
+        "35:00 (8.73 mi)",
+        "15:21",
+        "Record",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 36984,
+          "retained_characters": 10138
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 10,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[19]"
+    },
+    {
+      "ordinal": 20,
+      "stepId": "agent-tap_on-21",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "text": "Waterway Paddle"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[20]"
+    },
+    {
+      "ordinal": 21,
+      "stepId": "agent-ui_snapshot-22",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Stats",
+        "Stats",
+        "Intervals",
+        "Intervals",
+        "By time",
+        "By time",
+        "By distance",
+        "By distance",
+        "Waterway Paddle",
+        "Oct 14, 2023, 2:22:00 PM",
+        "DISTANCE",
+        "MOVING TIME",
+        "1.76",
+        "mi",
+        "2:44:00",
+        "TOTAL TIME",
+        "2:44:00",
+        "MAX SPEED",
+        "AVG MOVING SPEED",
+        "0.6",
+        "mph",
+        "0.6",
+        "mph",
+        "AVG SPEED",
+        "0.6",
+        "mph",
+        "GAIN",
+        "LOSS",
+        "1,601",
+        "ft",
+        "436",
+        "ft",
+        "Navigate up",
+        "Show on map",
+        "Share",
+        "More options",
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 40261,
+          "retained_characters": 10419
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[21]"
+    },
+    {
+      "ordinal": 22,
+      "stepId": "agent-press_key-23",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[22]"
+    },
+    {
+      "ordinal": 23,
+      "stepId": "agent-ui_snapshot-24",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Navigate up",
+        "kayaking",
+        "Search",
+        "Markers",
+        "More options",
+        "Track",
+        "Waterway Paddle",
+        "Yesterday",
+        "2:44:00 (1.76 mi)",
+        "14:22",
+        "Track",
+        "Need more strength and conditioning",
+        "Monday",
+        "1:15:00 (1.24 mi)",
+        "08:00",
+        "Faced the weather head-on and conquered it.",
+        "Track",
+        "Mindful Movement",
+        "Monday",
+        "4:30:00 (2.80 mi)",
+        "06:15",
+        "Had a blast with my favorite people.",
+        "Track",
+        "Kayak Expedition",
+        "3 Oct",
+        "35:00 (8.73 mi)",
+        "15:21",
+        "Record",
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 36984,
+          "retained_characters": 10138
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 10,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[23]"
+    },
+    {
+      "ordinal": 24,
+      "stepId": "agent-tap_on-25",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "text": "Need more strength and conditioning"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[24]"
+    },
+    {
+      "ordinal": 25,
+      "stepId": "agent-ui_snapshot-26",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Stats",
+        "Stats",
+        "Intervals",
+        "Intervals",
+        "By time",
+        "By time",
+        "By distance",
+        "By distance",
+        "Need more strength and conditioning",
+        "Faced the weather head-on and conquered it.",
+        "Oct 9, 2023, 8:00:00 AM",
+        "DISTANCE",
+        "MOVING TIME",
+        "1.24",
+        "mi",
+        "1:15:00",
+        "TOTAL TIME",
+        "1:15:00",
+        "MAX SPEED",
+        "AVG MOVING SPEED",
+        "1.0",
+        "mph",
+        "1.0",
+        "mph",
+        "AVG SPEED",
+        "1.0",
+        "mph",
+        "GAIN",
+        "LOSS",
+        "2,133",
+        "ft",
+        "492",
+        "ft",
+        "Navigate up",
+        "Show on map",
+        "Share",
+        "More options"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 40326,
+          "retained_characters": 10492
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[25]"
+    },
+    {
+      "ordinal": 26,
+      "stepId": "agent-press_key-27",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[26]"
+    },
+    {
+      "ordinal": 27,
+      "stepId": "agent-ui_snapshot-28",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Navigate up",
+        "kayaking",
+        "Search",
+        "Markers",
+        "More options",
+        "Track",
+        "Waterway Paddle",
+        "Yesterday",
+        "2:44:00 (1.76 mi)",
+        "14:22",
+        "Track",
+        "Need more strength and conditioning",
+        "Monday",
+        "1:15:00 (1.24 mi)",
+        "08:00",
+        "Faced the weather head-on and conquered it.",
+        "Track",
+        "Mindful Movement",
+        "Monday",
+        "4:30:00 (2.80 mi)",
+        "06:15",
+        "Had a blast with my favorite people.",
+        "Track",
+        "Kayak Expedition",
+        "3 Oct",
+        "35:00 (8.73 mi)",
+        "15:21",
+        "Record",
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 36984,
+          "retained_characters": 10138
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 10,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[27]"
+    },
+    {
+      "ordinal": 28,
+      "stepId": "agent-tap_on-29",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "text": "Mindful Movement"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[28]"
+    },
+    {
+      "ordinal": 29,
+      "stepId": "agent-ui_snapshot-30",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Stats",
+        "Stats",
+        "Intervals",
+        "Intervals",
+        "By time",
+        "By time",
+        "By distance",
+        "By distance",
+        "Mindful Movement",
+        "Had a blast with my favorite people.",
+        "Oct 9, 2023, 6:15:00 AM",
+        "DISTANCE",
+        "MOVING TIME",
+        "2.80",
+        "mi",
+        "4:30:00",
+        "TOTAL TIME",
+        "4:30:00",
+        "MAX SPEED",
+        "AVG MOVING SPEED",
+        "0.6",
+        "mph",
+        "0.6",
+        "mph",
+        "AVG SPEED",
+        "0.6",
+        "mph",
+        "GAIN",
+        "LOSS",
+        "820",
+        "ft",
+        "2,297",
+        "ft",
+        "Navigate up",
+        "Show on map",
+        "Share",
+        "More options"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 40297,
+          "retained_characters": 10463
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 12,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[29]"
+    },
+    {
+      "ordinal": 30,
+      "stepId": "agent-press_key-31",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[30]"
+    },
+    {
+      "ordinal": 31,
+      "stepId": "agent-ui_snapshot-32",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Navigate up",
+        "kayaking",
+        "Search",
+        "Markers",
+        "More options",
+        "Track",
+        "Waterway Paddle",
+        "Yesterday",
+        "2:44:00 (1.76 mi)",
+        "14:22",
+        "Track",
+        "Need more strength and conditioning",
+        "Monday",
+        "1:15:00 (1.24 mi)",
+        "08:00",
+        "Faced the weather head-on and conquered it.",
+        "Track",
+        "Mindful Movement",
+        "Monday",
+        "4:30:00 (2.80 mi)",
+        "06:15",
+        "Had a blast with my favorite people.",
+        "Track",
+        "Kayak Expedition",
+        "3 Oct",
+        "35:00 (8.73 mi)",
+        "15:21",
+        "Record",
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 36984,
+          "retained_characters": 10138
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 10,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[31]"
+    },
+    {
+      "ordinal": 32,
+      "stepId": "agent-press_key-33",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[32]"
+    },
+    {
+      "ordinal": 33,
+      "stepId": "agent-ui_snapshot-34",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:37",
+        "23:37",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "ATX",
+        "ATX",
+        "Audio Recorder",
+        "Audio Recorder",
+        "Broccoli",
+        "Broccoli",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Chrome",
+        "Chrome",
+        "Clipper",
+        "Clipper",
+        "Clock",
+        "Clock",
+        "Contacts",
+        "Contacts",
+        "Draw",
+        "Draw",
+        "Drive",
+        "Drive",
+        "Files",
+        "Files",
+        "Gallery",
+        "Gallery",
+        "Gmail",
+        "Gmail",
+        "Google",
+        "Google",
+        "Joplin",
+        "Joplin",
+        "Maps",
+        "Maps",
+        "Markor",
+        "Markor",
+        "Messages",
+        "Messages",
+        "OpenTracks",
+        "OpenTracks",
+        "OsmAnd",
+        "OsmAnd",
+        "Phone",
+        "Phone",
+        "Photos",
+        "Photos",
+        "Gallery",
+        "Gallery",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Tasks",
+        "Tasks",
+        "Search",
+        "Google app",
+        "Search apps, web and more",
+        "Voice search",
+        "Google Lens",
+        "Home"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 37000,
+          "retained_characters": 12558
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 6,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[33]"
+    },
+    {
+      "ordinal": 34,
+      "stepId": "agent-tap_on-35",
+      "action": "tap_on",
+      "status": "failed",
+      "error": "Target was not found.",
+      "params": {
+        "locator": {
+          "accessibilityId": "More options"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[34]"
+    },
+    {
+      "ordinal": 35,
+      "stepId": "agent-ui_snapshot-36",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:37",
+        "23:37",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "ATX",
+        "ATX",
+        "Audio Recorder",
+        "Audio Recorder",
+        "Broccoli",
+        "Broccoli",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Chrome",
+        "Chrome",
+        "Clipper",
+        "Clipper",
+        "Clock",
+        "Clock",
+        "Contacts",
+        "Contacts",
+        "Draw",
+        "Draw",
+        "Drive",
+        "Drive",
+        "Files",
+        "Files",
+        "Gallery",
+        "Gallery",
+        "Gmail",
+        "Gmail",
+        "Google",
+        "Google",
+        "Joplin",
+        "Joplin",
+        "Maps",
+        "Maps",
+        "Markor",
+        "Markor",
+        "Messages",
+        "Messages",
+        "OpenTracks",
+        "OpenTracks",
+        "OsmAnd",
+        "OsmAnd",
+        "Phone",
+        "Phone",
+        "Photos",
+        "Photos",
+        "Gallery",
+        "Gallery",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Tasks",
+        "Tasks",
+        "Search",
+        "Google app",
+        "Search apps, web and more",
+        "Voice search",
+        "Google Lens",
+        "Home"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 37001,
+          "retained_characters": 12559
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 6,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[35]"
+    },
+    {
+      "ordinal": 36,
+      "stepId": "agent-tap_on-37",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "accessibilityId": "OpenTracks"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[36]"
+    },
+    {
+      "ordinal": 37,
+      "stepId": "agent-ui_snapshot-38",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:37",
+        "23:37",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Navigate up",
+        "OpenTracks",
+        "Search",
+        "Markers",
+        "More options",
+        "Track",
+        "Sculling Session",
+        "Today",
+        "2:52:00 (6.50 mi)",
+        "01:33",
+        "Track",
+        "Waterway Paddle",
+        "Yesterday",
+        "2:44:00 (1.76 mi)",
+        "14:22",
+        "Track",
+        "Morning Run",
+        "Yesterday",
+        "3:19:00 (7.85 mi)",
+        "05:33",
+        "Track",
+        "Surfing Expedition",
+        "Friday",
+        "1:02:00 (7.75 mi)",
+        "08:32",
+        "Track",
+        "Nature Walk",
+        "Wednesday",
+        "1:33:00 (8.23 mi)",
+        "20:51",
+        "Track",
+        "Paddle Outing",
+        "Wednesday",
+        "1:20:00 (6.16 mi)",
+        "13:59",
+        "Track",
+        "Hiking Adventure",
+        "Wednesday",
+        "4:18:00 (12.09 mi)",
+        "02:06",
+        "Track",
+        "Road Riding",
+        "Tuesday",
+        "4:04:00 (1,266.40 ft)",
+        "23:20",
+        "Track",
+        "City Stroll",
+        "Tuesday",
+        "2:00:00 (10.11 mi)",
+        "13:19",
+        "Track",
+        "Morning Walk",
+        "Tuesday",
+        "18:00 (8.87 mi)",
+        "06:12",
+        "Track",
+        "Brisk Walk",
+        "Monday",
+        "3:59:00 (12.14 mi)",
+        "19:19",
+        "Track",
+        "Sailing Excursion",
+        "Monday",
+        "Record"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 60782,
+          "retained_characters": 17555
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 10,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[37]"
+    },
+    {
+      "ordinal": 38,
+      "stepId": "agent-tap_on-39",
+      "action": "tap_on",
+      "status": "failed",
+      "error": "NativeActionBudgetExceeded: action_budget",
+      "params": null,
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[38]"
+    },
+    {
+      "ordinal": 39,
+      "stepId": "agent-kill_app-40",
+      "action": "kill_app",
+      "status": "failed",
+      "error": "NativeActionBudgetExceeded: action_budget",
+      "params": null,
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[39]"
+    }
+  ],
+  "originalNativeExecutionPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/091-SportsTrackerTotalDistanceForCategoryOverInterval/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-091-20261110T215344Z-372744/execution-result.json",
+  "originalNativeResultPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/091-SportsTrackerTotalDistanceForCategoryOverInterval/raw-private/fsq-native/worker/fsq-task-result.private.json",
+  "originalGoalPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/091-SportsTrackerTotalDistanceForCategoryOverInterval/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-091-20261110T215344Z-372744/sources/000-goal.txt"
+}

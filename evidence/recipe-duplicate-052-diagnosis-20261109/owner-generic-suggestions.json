@@ -1,0 +1,43 @@
+{
+  "status": "Generic candidates only; parent proposal and official skills not edited",
+  "scope": "052 observed behaviors and logical/pure contract, not task-specific target/ID hints",
+  "candidates": [
+    {
+      "topic": "Verify exact duplicates before destructive action",
+      "suggestion": "Use repeated titles/descriptions only to select candidates. Associate records with their own card/detail and compare sufficient complete business fields; any observed field difference disqualifies exact equality.",
+      "evidence": "Pan and Avocado original logical candidates differ in servings, ingredients, directions and/or time/description despite repeated names."
+    },
+    {
+      "topic": "Keep record identity and coverage explicit",
+      "suggestion": "Do not zip independently queried title/description arrays when lengths or membership differ. Bind fields within each record container and distinguish visible candidates from complete task coverage.",
+      "evidence": "Original exec21 and25 title/description lengths differ; late Butternut detail checks cover only four visible variants."
+    },
+    {
+      "topic": "Reconcile post-action observation failure",
+      "suggestion": "A cell failing after a confirmation action is not transactional rollback. Inspect resulting state before any new destructive action and do not replay solely because a later observation failed.",
+      "evidence": "Original exec15 clicks delete confirmation before line3 observation throws."
+    },
+    {
+      "topic": "Respect explicit action policy",
+      "suggestion": "Treat explicit policy refusal as a constraint; use only permitted bounded interactions, not an equivalent batch/search bypass or an expanded retry budget.",
+      "evidence": "Original exec17 UiScrollable scrolling search is explicitly rejected by Harness policy."
+    },
+    {
+      "topic": "Stop compounding confirmed destructive mistakes",
+      "suggestion": "Once actual observations establish mistaken deletion or unreliable record identity, stop further destructive changes. Restore only through an identified authorized normal recovery path and verify it; otherwise report partial/failed and unknown effects honestly.",
+      "evidence": "Original final honestly acknowledges failed preservation; an Undo lookup returns empty and does not prove successful recovery.",
+      "limit": "This is a future generic rule, not evidence that the original model subjectively knew of the mistake before exec24."
+    },
+    {
+      "topic": "Keep outcome and evidence equally honest",
+      "suggestion": "Retain a truthful failed outcome; do not promote unverified same-name records to true duplicates in the supporting narrative or claim persistent per-ID deletion without supporting data.",
+      "evidence": "Original final says failed but still labels Pan/Avocado as duplicate, inconsistent with the exact frozen fields."
+    }
+  ],
+  "notProposed": [
+    "AMKernel/driver/installation repair",
+    "Task-specific Butternut reference hints or synthetic IDs sent to Agent",
+    "Automatic database restoration, retries or noise-deletion exemptions",
+    "New live run or a promise of score improvement"
+  ]
+}

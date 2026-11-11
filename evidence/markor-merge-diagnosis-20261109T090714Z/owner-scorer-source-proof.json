@@ -1,0 +1,223 @@
+{
+  "scope": "Current actually imported installed source identity and original033 evidence; no task init/evaluator/env/device calls",
+  "androidWorld": {
+    "packageVersion": "0.1.0",
+    "revision": "55ddaf5edc6f6c25673aed343907d5b9dca66f84"
+  },
+  "installedDistributionVersion": "0.1.0",
+  "sources": {
+    ".venv/lib/python3.11/site-packages/android_world/task_evals/single/markor.py": {
+      "sha256": "183d3763e34ede196c0df795235ab3aa79d434d744da54aefb82bfd753a93340",
+      "bytes": 30926,
+      "record": "sha256=GD03Y-NO3hlsDfeVI1qzqnnUNNdE2lSu-4K_11OpM0A",
+      "matchesInstalledDistributionRECORD": true
+    },
+    ".venv/lib/python3.11/site-packages/android_world/task_evals/common_validators/file_validators.py": {
+      "sha256": "ce7137e22fe94d25a6ebdf1fdd8bf0cf327ed20907af48a2f2ee34ca6b13bf20",
+      "bytes": 7522,
+      "record": "sha256=znE34i_pTSWm698f3YvwzzJ-0gkHr0ii8u40ymsTvyA",
+      "matchesInstalledDistributionRECORD": true
+    },
+    ".venv/lib/python3.11/site-packages/android_world/utils/file_utils.py": {
+      "sha256": "5bd04ccdafba65f4b909c8bb9fca166e5eba92dc2e64c83f80729941dfab2d1d",
+      "bytes": 17373,
+      "record": "sha256=W9BMza-6ZfS5Cci7n8oWbl66ktwuZMg_gHKZQd-rLR0",
+      "matchesInstalledDistributionRECORD": true
+    },
+    ".venv/lib/python3.11/site-packages/android_world/utils/fuzzy_match_lib.py": {
+      "sha256": "e7376554fd9a413ff00d71656e09609c9070d0b384028b89fd931e32fcfb2969",
+      "bytes": 1545,
+      "record": "sha256=5zdlVP2aQT_wDXFlbglgnJBw0LOEAouJ_ZMeMvz7KWk",
+      "matchesInstalledDistributionRECORD": true
+    },
+    ".venv/lib/python3.11/site-packages/android_world/env/device_constants.py": {
+      "sha256": "259b41e545a2887e734991c389b0c85db8ff4824149a9e2458e93ec7741a731c",
+      "bytes": 1588,
+      "record": "sha256=JZtB5UWiiH5zSZHDibDIXbj_SCQUmp4kWOk-x3Qacxw",
+      "matchesInstalledDistributionRECORD": true
+    },
+    ".venv/lib/python3.11/site-packages/android_world/env/adb_utils.py": {
+      "sha256": "60af1da9432e5cb14103f44dfa9ec7cdc1d87d1d25b87db378856d335ca65b31",
+      "bytes": 53708,
+      "record": "sha256=YK8dqUMuXLFBA_RN-p7HzcHYfR0luH2zeIVtM1ymWzE",
+      "matchesInstalledDistributionRECORD": true
+    },
+    ".venv/lib/python3.11/site-packages/android_world/task_evals/task_eval.py": {
+      "sha256": "096d6f4e0a58343c472e58d68dc4effc4589976bc3c2a8853e745c9b7b3cbb96",
+      "bytes": 6149,
+      "record": "sha256=CW1vTgpYNDxHLljWjcTv_EWJl2vDwqiFPnRcm3s8u5Y",
+      "matchesInstalledDistributionRECORD": true
+    }
+  },
+  "actualScorer": {
+    "module": "android_world.task_evals.single.markor",
+    "qualname": "MarkorMergeNotes.is_successful",
+    "file": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/android_world/task_evals/single/markor.py",
+    "startLine": 603,
+    "delegateModule": "android_world.task_evals.common_validators.file_validators",
+    "delegateQualname": "CreateFile.is_successful",
+    "delegateStartLine": 199
+  },
+  "literalPath": "/storage/emulated/0/Documents/Markor/mIObBbo4",
+  "acceptedExtensionAliases": false,
+  "contract": {
+    "constructorReference": "m4kMyOGWaENoPj6FqLjd\n\nfxHXZsqrmnwYjXvte9pg\n\nf42GOjFWb2aKHogAFQSY\n",
+    "initialization": "Markor clears MARKOR_DATA, CreateFile clears shared storage, three exact source files are written using echo with trailing LF. No target is created by initializer.",
+    "firstGate": "CreateFile199\u2013226, exact full path existence207\u2013209; if missing returns0 before any cat/fuzzy",
+    "secondGate": "If exact path exists, cat that same path and fuzzy compare; mismatch222\u2013224 returns0",
+    "thirdGate": "Merge603\u2013638: CreateFileFalse -> return0; otherwise second cat of same exact path, normalizeCR+strip, require five splitlines with empty index1/index3",
+    "baseGuard": "TaskEval166\u2013180 only verifies initialized flag; it is not the concrete file scorer"
+  },
+  "originalRunLog": {
+    "path": "evidence/headless-fullcoverage-20261107T004632Z/v2-ready-run-full.log",
+    "sha256": "aaf22814e141d2054eb29484de952b0fafdc74b1ad4ecbb11d6d119d1a6b12cf",
+    "taskSegment": {
+      "startLine": 583,
+      "steps": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "endLine": 601,
+      "terminal": "Agent indicates task is done."
+    },
+    "segmentAttribution": "Zero-based manifest order; first34 completed-step block lengths independently match original result referenceStepsExecuted, including index33 with18. This is ordinal provenance, not a task-labelled log entry.",
+    "lines": [
+      {
+        "line": 580,
+        "text": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/pydub/utils.py:170: RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work"
+      },
+      {
+        "line": 581,
+        "text": "  warn(\"Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work\", RuntimeWarning)"
+      },
+      {
+        "line": 582,
+        "text": "WARNING:absl:Could not get a11y tree, retrying."
+      },
+      {
+        "line": 583,
+        "text": "Completed step 1."
+      },
+      {
+        "line": 584,
+        "text": "Completed step 2."
+      },
+      {
+        "line": 585,
+        "text": "Completed step 3."
+      },
+      {
+        "line": 586,
+        "text": "Completed step 4."
+      },
+      {
+        "line": 587,
+        "text": "Completed step 5."
+      },
+      {
+        "line": 588,
+        "text": "Completed step 6."
+      },
+      {
+        "line": 589,
+        "text": "Completed step 7."
+      },
+      {
+        "line": 590,
+        "text": "Completed step 8."
+      },
+      {
+        "line": 591,
+        "text": "Completed step 9."
+      },
+      {
+        "line": 592,
+        "text": "Completed step 10."
+      },
+      {
+        "line": 593,
+        "text": "Completed step 11."
+      },
+      {
+        "line": 594,
+        "text": "Completed step 12."
+      },
+      {
+        "line": 595,
+        "text": "Completed step 13."
+      },
+      {
+        "line": 596,
+        "text": "Completed step 14."
+      },
+      {
+        "line": 597,
+        "text": "Completed step 15."
+      },
+      {
+        "line": 598,
+        "text": "Completed step 16."
+      },
+      {
+        "line": 599,
+        "text": "Completed step 17."
+      },
+      {
+        "line": 600,
+        "text": "Completed step 18."
+      },
+      {
+        "line": 601,
+        "text": "Agent indicates task is done."
+      },
+      {
+        "line": 602,
+        "text": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/pydub/utils.py:170: RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work"
+      },
+      {
+        "line": 603,
+        "text": "  warn(\"Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work\", RuntimeWarning)"
+      },
+      {
+        "line": 604,
+        "text": "WARNING:absl:Could not get a11y tree, retrying."
+      }
+    ],
+    "targetNameOccursInLog": false,
+    "directScorerBranchMessageObserved": false,
+    "limitation": "No original find result/cat bytes or target-labelled INFO branch message was retained in the inspected log. Do not equate step18/done or original0 with an observed specific first return branch."
+  },
+  "historicalFileAvailability": {
+    "originalAttemptEntries": [
+      "result.json",
+      "normalized-agent-events.json",
+      "raw-private/agent-events.jsonl",
+      "raw-private/agent-stderr.txt"
+    ],
+    "actualNoteDumpPresentInAttempt": false,
+    "namedNoteSearchRoots": [
+      "campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z",
+      "evidence"
+    ],
+    "retainedFilesMatchingMIOBName": [],
+    "scopeLimit": "This named-path search is not an exhaustive scan of arbitrary archive contents or unregistered external host temp paths.",
+    "teardown": "Original completed teardown clears Markor directory and shared task storage. Current device is not original pre-teardown filesystem; no device query was made."
+  },
+  "conclusionBoundary": "Two original UI/contract divergences are proven; exact original filesystem and first failing return branch are not directly retained. Conditional filename/blankline mechanisms are not fabricated historical evaluator traces."
+}

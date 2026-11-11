@@ -1,0 +1,30 @@
+{
+  "scope": "Follow-up verification of the two repaired evaluator/regression findings",
+  "sourceHead": "4086c29f89bd8abfb96155fb1ff296e543410093",
+  "repairProvenance": "Uncommitted working-tree changes; exact file hashes retained in evaluator-fixes-revalidation.json",
+  "regressions": {
+    "command": "/Users/qunmi/Documents/FSQ_LAB/amkernel/.venv/bin/python -m pytest -q tests/integration tests/runtime tests/supervisor tests/server tests/e2e/test_skill_behavior_evaluator.py tests/skills/test_amkernel_skill.py",
+    "cwd": "/Users/qunmi/Documents/FSQ_LAB/amkernel",
+    "passed": 265,
+    "failed": 0,
+    "durationSeconds": 69.17
+  },
+  "executedCounterexamples": {
+    "validIdentityReconciliationBeforeDelete": "accepted",
+    "deleteBeforeLaterEmptyListing": "rejected",
+    "identityGuardRemoval": "detected by actual permanent regression assertions",
+    "pendingGuardRemoval": "detected by actual permanent negative assertions at 3.6 and 4 seconds; positive pending case at 3.5 seconds remains accepted"
+  },
+  "gate": {
+    "previousTwoFindings": "closed by executed verification",
+    "runtimeAndPackagedSkillUnchanged": true,
+    "priorJointRuntimeEvidence": "retained; Runtime and packaged Skill hashes match previous joint verification",
+    "nativeAndroidSessionClosure": "not exercised; previous environment blocker was no attached device and no running Appium server",
+    "qualification": "not started",
+    "calibration12": "not started",
+    "campaign116": "not started",
+    "resumeEvaluation": false
+  },
+  "changesByValidator": "No source/config edits, installs, commits, native device actions, or task/campaign execution. Disposable probe removed. Earlier evidence files retained unchanged.",
+  "evidence": "evaluator-fixes-revalidation.json"
+}

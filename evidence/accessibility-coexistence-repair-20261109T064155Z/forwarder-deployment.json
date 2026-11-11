@@ -1,0 +1,46 @@
+{
+  "newApkSha256": "f1a24f6405827c84cccc26bbf815c7bff7ac292743dab235bdb44a83fdd64fcb",
+  "newApkSize": 13880896,
+  "originalApkPreserved": ".cache/androidworld-assets/2024.05.13-accessibility_forwarder.apk",
+  "commands": [
+    {
+      "command": [
+        "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+        "-s",
+        "emulator-5554",
+        "shell",
+        "pm",
+        "path",
+        "com.google.androidenv.accessibilityforwarder"
+      ],
+      "returnCode": 0,
+      "stdout": "package:/data/app/~~_tcO1O8YT-r6-XwO2OTjcQ==/com.google.androidenv.accessibilityforwarder-FZgJPvDv1P1UK4-ZRmlApg==/base.apk\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+        "-s",
+        "emulator-5554",
+        "uninstall",
+        "com.google.androidenv.accessibilityforwarder"
+      ],
+      "returnCode": 0,
+      "stdout": "Success\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+        "-s",
+        "emulator-5554",
+        "install",
+        "-t",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/assets/fsq-accessibility-forwarder-lifecycle-v1.apk"
+      ],
+      "returnCode": 0,
+      "stdout": "Performing Streamed Install\nSuccess\n",
+      "stderr": ""
+    }
+  ]
+}

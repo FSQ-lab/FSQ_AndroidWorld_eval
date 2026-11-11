@@ -1,0 +1,41 @@
+{
+  "exitCode": 0,
+  "result": {
+    "scope": "Offline original UI text through actual installed fuzzy function and source-extracted pure terminal layout block; not full is_successful, file I/O, historical filesystem state or official reward",
+    "modules": {
+      "android_world.task_evals.single.markor": {
+        "path": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/android_world/task_evals/single/markor.py",
+        "sha256": "183d3763e34ede196c0df795235ab3aa79d434d744da54aefb82bfd753a93340"
+      },
+      "android_world.task_evals.common_validators.file_validators": {
+        "path": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/android_world/task_evals/common_validators/file_validators.py",
+        "sha256": "ce7137e22fe94d25a6ebdf1fdd8bf0cf327ed20907af48a2f2ee34ca6b13bf20"
+      },
+      "android_world.utils.fuzzy_match_lib": {
+        "path": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/android_world/utils/fuzzy_match_lib.py",
+        "sha256": "e7376554fd9a413ff00d71656e09609c9070d0b384028b89fd931e32fcfb2969"
+      }
+    },
+    "actualReopenedContent": "m4kMyOGWaENoPj6FqLjd\nfxHXZsqrmnwYjXvte9pg\nf42GOjFWb2aKHogAFQSY",
+    "expectedReferenceText": "m4kMyOGWaENoPj6FqLjd\n\nfxHXZsqrmnwYjXvte9pg\n\nf42GOjFWb2aKHogAFQSY\n",
+    "actualFuzzyTextMatch": true,
+    "actualTerminalLayoutResult": 0.0,
+    "doubleLFControlledTerminalLayoutResult": 1.0,
+    "actualSplitLines": [
+      "m4kMyOGWaENoPj6FqLjd",
+      "fxHXZsqrmnwYjXvte9pg",
+      "f42GOjFWb2aKHogAFQSY"
+    ],
+    "expectedSplitLines": [
+      "m4kMyOGWaENoPj6FqLjd",
+      "",
+      "fxHXZsqrmnwYjXvte9pg",
+      "",
+      "f42GOjFWb2aKHogAFQSY"
+    ],
+    "pureTerminalSource": "content_split = merged_file.split('\\n')\nare_notes_merged = len(content_split) == 5 and (not content_split[1]) and (not content_split[3])\nreturn 1.0 if are_notes_merged else 0.0"
+  },
+  "stderr": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/pydub/utils.py:170: RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work\n  warn(\"Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work\", RuntimeWarning)\n",
+  "code": "import ast,copy,hashlib,inspect,json,sys,textwrap\nfrom pathlib import Path\nfrom android_world.task_evals.single import markor\nfrom android_world.task_evals.common_validators import file_validators\nfrom android_world.utils import fuzzy_match_lib\npayload=json.loads(sys.argv[1]);params=payload['params'];actual=payload['observed']\nsource=textwrap.dedent(inspect.getsource(markor.MarkorMergeNotes.is_successful))\nmethod=ast.parse(source).body[0]\nterminal=method.body[-3:]\nassert isinstance(terminal[0],ast.Assign) and terminal[0].targets[0].id=='content_split'\nassert isinstance(terminal[1],ast.Assign) and terminal[1].targets[0].id=='are_notes_merged'\nassert isinstance(terminal[2],ast.Return)\nfn=ast.FunctionDef(name='layout_only',args=ast.arguments(posonlyargs=[],args=[ast.arg(arg='merged_file')],kwonlyargs=[],kw_defaults=[],defaults=[]),body=copy.deepcopy(terminal),decorator_list=[])\nns={};exec(compile(ast.fix_missing_locations(ast.Module(body=[fn],type_ignores=[])),'<actual-installed-MarkorMergeNotes-terminal-layout>','exec'),ns)\nexpected='\\n\\n'.join(params[f'file{i}_content'] for i in (1,2,3))+'\\n'\nnormalized=lambda s:s.replace('\\r','').strip()\nlayout_actual=ns['layout_only'](normalized(actual));layout_expected=ns['layout_only'](normalized(expected))\nfuzzy_actual=fuzzy_match_lib.fuzzy_match(normalized(actual),expected)\nassert layout_actual==0.0 and layout_expected==1.0\nprint(json.dumps({'scope':'Offline original UI text through actual installed fuzzy function and source-extracted pure terminal layout block; not full is_successful, file I/O, historical filesystem state or official reward','modules':{m.__name__:{'path':m.__file__,'sha256':hashlib.sha256(Path(m.__file__).read_bytes()).hexdigest()} for m in (markor,file_validators,fuzzy_match_lib)},'actualReopenedContent':actual,'expectedReferenceText':expected,'actualFuzzyTextMatch':fuzzy_actual,'actualTerminalLayoutResult':layout_actual,'doubleLFControlledTerminalLayoutResult':layout_expected,'actualSplitLines':normalized(actual).split('\\n'),'expectedSplitLines':normalized(expected).split('\\n'),'pureTerminalSource':ast.unparse(ast.Module(body=terminal,type_ignores=[]))}))",
+  "inputSource": "parent-original-field-evidence.json"
+}

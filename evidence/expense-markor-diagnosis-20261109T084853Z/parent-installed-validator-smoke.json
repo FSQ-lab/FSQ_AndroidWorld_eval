@@ -1,0 +1,29 @@
+{
+  "exitCode": 0,
+  "result": {
+    "scope": "Offline controlled logical candidates from historical pre-save fields, not observed historical after DB; no environment/session/device/new official reward",
+    "module": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/android_world/task_evals/single/expense.py",
+    "moduleSha256": "cc57bd82831a17b427ea93eb4db559f6886cc1df402c0eac4bcb72064d7f3f81",
+    "beforeLogicalRows": 100,
+    "referenceRows": 2,
+    "literalObservedPreSaveNoteCandidatePasses": false,
+    "baseNoteCounterfactualPasses": true,
+    "noteMatches": [
+      {
+        "name": "Laundry",
+        "referenceNote": "Urgent",
+        "preSaveNote": "Urgent. Reimbursable.",
+        "actualFuzzyMatch": false
+      },
+      {
+        "name": "Car Insurance",
+        "referenceNote": "I may repeat this",
+        "preSaveNote": "I may repeat this. Reimbursable.",
+        "actualFuzzyMatch": false
+      }
+    ]
+  },
+  "stderr": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.venv/lib/python3.11/site-packages/pydub/utils.py:170: RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work\n  warn(\"Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work\", RuntimeWarning)\nWARNING:absl:Expected row Expense(name='Laundry', amount=9630, category=8, note='Urgent', created_date=1697320800000, modified_date=1697320800000, expense_id=-1) not found in the 'after' state.\n",
+  "code": "import dataclasses,hashlib,json,sys\nfrom pathlib import Path\nfrom android_world.task_evals.single import expense\nfrom android_world.task_evals.utils.sqlite_schema_utils import Expense\nfrom android_world.utils import fuzzy_match_lib\npayload=json.loads(sys.argv[1]); params=payload['params']; observations=payload['observedRows']\nrefs=[Expense(**r) for r in params['row_objects']]\nbefore=[Expense(**r) for r in params['noise_row_objects']]\nobserved_notes={r['name']:r['preSaveAppiumFields']['note'] for r in observations}\nliteral=[dataclasses.replace(r,note=observed_notes[r.name]) for r in refs]\nvalidate=expense.ExpenseAddMultipleFromMarkor.validate_addition_integrity\nliteral_result=validate(None,before,before+literal,refs)\nbase_note_counterfactual=validate(None,before,before+refs,refs)\nassert literal_result is False and base_note_counterfactual is True\nprint(json.dumps({'scope':'Offline controlled logical candidates from historical pre-save fields, not observed historical after DB; no environment/session/device/new official reward','module':expense.__file__,'moduleSha256':hashlib.sha256(Path(expense.__file__).read_bytes()).hexdigest(),'beforeLogicalRows':len(before),'referenceRows':len(refs),'literalObservedPreSaveNoteCandidatePasses':literal_result,'baseNoteCounterfactualPasses':base_note_counterfactual,'noteMatches':[{'name':r.name,'referenceNote':r.note,'preSaveNote':observed_notes[r.name],'actualFuzzyMatch':fuzzy_match_lib.fuzzy_match(r.note,observed_notes[r.name])} for r in refs]}))",
+  "inputSource": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/expense-markor-diagnosis-20261109T084853Z/parent-original-field-evidence.json"
+}

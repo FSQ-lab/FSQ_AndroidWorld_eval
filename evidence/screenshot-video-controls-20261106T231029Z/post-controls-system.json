@@ -1,0 +1,14 @@
+{
+  "name": "post-controls-system",
+  "observedAtUnix": 1794011440.8356879,
+  "command": [
+    "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+    "-s",
+    "emulator-5554",
+    "shell",
+    "cat /proc/sys/kernel/random/boot_id; pidof system_server surfaceflinger; service check activity; service check settings; service check window; ls /data/anr; appops get org.videolan.vlc MANAGE_EXTERNAL_STORAGE"
+  ],
+  "returnCode": 0,
+  "stdout": "d7fa5bd9-83b9-446b-bf4f-3b0cddf6657f\n340 505\nService activity: found\nService settings: found\nService window: found\nUid mode: MANAGE_EXTERNAL_STORAGE: allow\nMANAGE_EXTERNAL_STORAGE: default; time=+5m15s651ms ago; rejectTime=+1h11m5s478ms ago\n",
+  "stderr": ""
+}

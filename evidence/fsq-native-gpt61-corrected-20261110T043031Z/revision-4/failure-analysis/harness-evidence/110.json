@@ -1,0 +1,879 @@
+{
+  "index": 110,
+  "name": "TasksHighPriorityTasksDueOnDate",
+  "goal": "Which tasks with high priority are due October 18 2023 in the Tasks app? Answer with the title only. If there are multiples titles, format your answer in a comma separated list.",
+  "reward": 0.0,
+  "classification": "failed",
+  "initialization": {
+    "initializationReferenceTime": {
+      "referenceTime": "2023-10-15T15:34:00+00:00",
+      "timezone": "UTC"
+    },
+    "initializedGoal": "Which tasks with high priority are due October 18 2023 in the Tasks app? Answer with the title only. If there are multiples titles, format your answer in a comma separated list."
+  },
+  "frozenTaskSpec": {
+    "apps": [
+      "tasks"
+    ],
+    "complexity": 1,
+    "difficulty": "medium",
+    "family": "information_retrieval",
+    "index": 110,
+    "instanceSeed": 2278904713,
+    "maxActions": 10,
+    "maxSteps": 10,
+    "name": "TasksHighPriorityTasksDueOnDate",
+    "params": {
+      "date": "October 18 2023",
+      "seed": 2278904713,
+      "time": "12:00pm",
+      "title": "Marketing Campaign Launch"
+    },
+    "paramsSha256": "687117f6d7a1e265200c70acfcb679feb0b76cbc89fbefc65078747864d716a8",
+    "paramsTransport": "json",
+    "tags": [
+      "information_retrieval",
+      "screen_reading",
+      "parameterized"
+    ],
+    "timeBudget": {
+      "businessSeconds": 720,
+      "cleanupWindowSeconds": 180,
+      "episodeSeconds": 1330,
+      "forceSeconds": 910,
+      "recoveryWindowSeconds": 120,
+      "terminationGraceSeconds": 10
+    }
+  },
+  "mainSteps": [
+    {
+      "stepId": 4,
+      "tool": "agent_runtime.runner",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "NativeActionBudgetExceeded: action_budget blocked task-detail inspection.",
+          "The required kill_app teardown was attempted but blocked by the same action-budget error."
+        ],
+        "evidence": [
+          "The My Tasks snapshot showed Renew Driver's License, Attend Team Meeting, and Marketing Campaign Launch under High priority, followed by Medium priority.",
+          "Due dates in the list were relative weekday labels, insufficient to establish the required calendar date.",
+          "Opening Marketing Campaign Launch failed with NativeActionBudgetExceeded: action_budget."
+        ],
+        "plan_updates": [
+          "Grouped My Tasks by priority to narrow the review.",
+          "The harness blocked opening task details because its native action budget was exhausted."
+        ],
+        "pre_plan": [
+          {
+            "action": "Inspect Tasks and open available task lists.",
+            "status": "success",
+            "step_id": 1,
+            "success_criteria": [
+              "Task-list navigation is inspected."
+            ]
+          },
+          {
+            "action": "Review high-priority tasks and inspect exact due dates.",
+            "status": "failed",
+            "step_id": 2,
+            "success_criteria": [
+              "All candidate tasks are checked for October 18, 2023."
+            ]
+          },
+          {
+            "action": "Prepare the complete comma-separated titles-only answer.",
+            "status": "skipped",
+            "step_id": 3,
+            "success_criteria": [
+              "Exact titles of all matching tasks are verified."
+            ]
+          }
+        ],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "inconclusive",
+        "summary": "Unable to verify all matching task titles before the harness action budget was exhausted.",
+        "unmet_criteria": [
+          "The complete set of exact titles for high-priority tasks due October 18, 2023 was not verified."
+        ]
+      }
+    },
+    {
+      "stepId": 5,
+      "tool": "agent_runtime.verifier",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "The matching task set remains unverified, but the recorded final response directly proves that the required answer format and delivery were not satisfied."
+        ],
+        "evidence": [
+          "Execution step 4 records the final returned output with the summary: \"Unable to verify all matching task titles before the harness action budget was exhausted.\" This is not a titles-only answer.",
+          "Artifact 000020-ui_snapshot.json shows high-priority tasks with relative due-date labels, but does not establish their exact calendar dates.",
+          "The attempt to open Marketing Campaign Launch returned status=failed with NativeActionBudgetExceeded: action_budget."
+        ],
+        "plan_updates": [],
+        "pre_plan": [
+          {
+            "action": "Check the recorded final answer against the verification goal.",
+            "status": "failed",
+            "step_id": 1,
+            "success_criteria": [
+              "The answer contains only all matching exact task titles, comma-separated when multiple tasks match."
+            ]
+          }
+        ],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "failed",
+        "summary": "The run did not provide the required titles-only answer; its recorded final output reports an inability to complete verification.",
+        "unmet_criteria": [
+          "The required titles-only answer was not delivered."
+        ]
+      }
+    }
+  ],
+  "budgetSummary": {
+    "admitted": 10,
+    "attempted": 12,
+    "deadlineExceeded": false,
+    "deadlineMonotonic": 726229.598678416,
+    "denied": 2,
+    "deviceRestoredByClose": false,
+    "exclusions": [
+      "driver_construction",
+      "uiautomator2_service_startup",
+      "observation_and_assertion_side_effects",
+      "external_processes_and_direct_driver_access"
+    ],
+    "exhausted": true,
+    "failed": 0,
+    "inFlight": 0,
+    "inputTextUnit": "composite_click_optional_clear_set_text",
+    "maximum": 10,
+    "securityBoundary": false,
+    "succeeded": 10,
+    "unit": "admitted_android_harness_write_capability_dispatch",
+    "writeCapabilities": [
+      "launch_app",
+      "kill_app",
+      "tap_on",
+      "tap_at",
+      "long_press_on",
+      "input_text",
+      "press_key",
+      "swipe"
+    ]
+  },
+  "actions": [
+    {
+      "ordinal": 0,
+      "stepId": "agent-launch_app-1",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [],
+      "output": {
+        "app_id": "org.tasks"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[0]"
+    },
+    {
+      "ordinal": 1,
+      "stepId": "agent-ui_snapshot-2",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Sun, Oct 15",
+        "Sun, Oct 15",
+        "Gmail",
+        "Gmail",
+        "Photos",
+        "Photos",
+        "YouTube",
+        "YouTube",
+        "Home",
+        "Phone",
+        "Phone",
+        "Messages",
+        "Messages",
+        "Chrome",
+        "Chrome",
+        "Calendar",
+        "Predicted app: Calendar",
+        "Search",
+        "Google app",
+        "Voice search",
+        "Google Lens",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 27981,
+          "retained_characters": 7650
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[1]"
+    },
+    {
+      "ordinal": 2,
+      "stepId": "agent-launch_app-3",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "app_id": "org.tasks"
+      },
+      "uiLabels": [],
+      "output": {
+        "app_id": "org.tasks"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[2]"
+    },
+    {
+      "ordinal": 3,
+      "stepId": "agent-swipe-4",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[3]"
+    },
+    {
+      "ordinal": 4,
+      "stepId": "agent-ui_snapshot-5",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "ATX",
+        "ATX",
+        "Audio Recorder",
+        "Audio Recorder",
+        "Broccoli",
+        "Broccoli",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Chrome",
+        "Chrome",
+        "Clipper",
+        "Clipper",
+        "Clock",
+        "Clock",
+        "Contacts",
+        "Contacts",
+        "Draw",
+        "Draw",
+        "Drive",
+        "Drive",
+        "Files",
+        "Files",
+        "Gallery",
+        "Gallery",
+        "Gmail",
+        "Gmail",
+        "Google",
+        "Google",
+        "Joplin",
+        "Joplin",
+        "Maps",
+        "Maps",
+        "Markor",
+        "Markor",
+        "Messages",
+        "Messages",
+        "OpenTracks",
+        "OpenTracks",
+        "OsmAnd",
+        "OsmAnd",
+        "Phone",
+        "Phone",
+        "Photos",
+        "Photos",
+        "Gallery",
+        "Gallery",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Tasks",
+        "Tasks",
+        "Search",
+        "Google app",
+        "Search apps, web and more",
+        "Voice search",
+        "Google Lens",
+        "Home",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 37001,
+          "retained_characters": 12559
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 6,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[4]"
+    },
+    {
+      "ordinal": 5,
+      "stepId": "agent-tap_on-6",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "accessibilityId": "Tasks"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[5]"
+    },
+    {
+      "ordinal": 6,
+      "stepId": "agent-ui_snapshot-7",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "My Tasks",
+        "Search",
+        "Renew Driver's License",
+        "Expires next month. Check DMV website for requirem",
+        "Fri",
+        "Learn to Play Guitar",
+        "Practice chords for 30 minutes every day. Find onl",
+        "Wed",
+        "Renew Driver's License",
+        "Expires next month. Check DMV website for requirem",
+        "Thu",
+        "Attend Team Meeting",
+        "Today",
+        "Finish Project Proposal",
+        "Deadline is Friday. Need to finalize budget and ti",
+        "Yest",
+        "Research Vacation Destinations",
+        "Yest",
+        "Back Up Computer Files",
+        "Today",
+        "Renew Driver's License",
+        "Expires next month. Check DMV website for requirem",
+        "Wed",
+        "Create Budget for Next Month",
+        "Yest",
+        "Marketing Campaign Launch",
+        "Wed",
+        "Voice input",
+        "Sort",
+        "More options",
+        "Create new task",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 57027,
+          "retained_characters": 14616
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 20,
+          "clipped_attributes": 6
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[6]"
+    },
+    {
+      "ordinal": 7,
+      "stepId": "agent-tap_on-8",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "xpath": "//android.view.ViewGroup[@resource-id='org.tasks:id/bottomAppBar']/android.widget.ImageButton"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[7]"
+    },
+    {
+      "ordinal": 8,
+      "stepId": "agent-ui_snapshot-9",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "My Tasks",
+        "11",
+        "Filters",
+        "Today",
+        "9",
+        "Recently modified",
+        "9",
+        "Tags",
+        "Places",
+        "Local lists",
+        "Default list",
+        "Donate",
+        "Manage drawer",
+        "Settings",
+        "Help & feedback",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 38344,
+          "retained_characters": 10140
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 7,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[8]"
+    },
+    {
+      "ordinal": 9,
+      "stepId": "agent-tap_on-10",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "My Tasks"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[9]"
+    },
+    {
+      "ordinal": 10,
+      "stepId": "agent-ui_snapshot-11",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "My Tasks",
+        "Search",
+        "Renew Driver's License",
+        "Expires next month. Check DMV website for requirem",
+        "Fri",
+        "Learn to Play Guitar",
+        "Practice chords for 30 minutes every day. Find onl",
+        "Wed",
+        "Renew Driver's License",
+        "Expires next month. Check DMV website for requirem",
+        "Thu",
+        "Attend Team Meeting",
+        "Today",
+        "Finish Project Proposal",
+        "Deadline is Friday. Need to finalize budget and ti",
+        "Yest",
+        "Research Vacation Destinations",
+        "Yest",
+        "Back Up Computer Files",
+        "Today",
+        "Renew Driver's License",
+        "Expires next month. Check DMV website for requirem",
+        "Wed",
+        "Create Budget for Next Month",
+        "Yest",
+        "Marketing Campaign Launch",
+        "Wed",
+        "Voice input",
+        "Sort",
+        "More options",
+        "Create new task",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 57026,
+          "retained_characters": 14615
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 20,
+          "clipped_attributes": 6
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[10]"
+    },
+    {
+      "ordinal": 11,
+      "stepId": "agent-tap_on-12",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "org.tasks:id/menu_sort"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[11]"
+    },
+    {
+      "ordinal": 12,
+      "stepId": "agent-ui_snapshot-13",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Drag handle",
+        "Grouping",
+        "None",
+        "Sorting",
+        "Smart sort",
+        "Descending",
+        "Subtasks",
+        "My order",
+        "Move completed tasks to bottom",
+        "Completed",
+        "By completion time",
+        "Descending",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 22906,
+          "retained_characters": 5286
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[12]"
+    },
+    {
+      "ordinal": 13,
+      "stepId": "agent-tap_on-14",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "Grouping"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[13]"
+    },
+    {
+      "ordinal": 14,
+      "stepId": "agent-ui_snapshot-15",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Drag handle",
+        "None",
+        "By due date",
+        "By start date",
+        "By priority",
+        "By last modified",
+        "By creation time",
+        "By list",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 21317,
+          "retained_characters": 4786
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 9,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[14]"
+    },
+    {
+      "ordinal": 15,
+      "stepId": "agent-tap_on-16",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "By priority"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[15]"
+    },
+    {
+      "ordinal": 16,
+      "stepId": "agent-ui_snapshot-17",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Drag handle",
+        "Grouping",
+        "By priority",
+        "Descending",
+        "Sorting",
+        "Smart sort",
+        "Descending",
+        "Subtasks",
+        "My order",
+        "Move completed tasks to bottom",
+        "Completed",
+        "By completion time",
+        "Descending",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 23727,
+          "retained_characters": 5487
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[16]"
+    },
+    {
+      "ordinal": 17,
+      "stepId": "agent-press_key-18",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[17]"
+    },
+    {
+      "ordinal": 18,
+      "stepId": "agent-ui_snapshot-19",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "My Tasks",
+        "Search",
+        "High priority",
+        "Renew Driver's License",
+        "Expires next month. Check DMV website for requirem",
+        "Fri",
+        "Attend Team Meeting",
+        "Today",
+        "Marketing Campaign Launch",
+        "Wed",
+        "Medium priority",
+        "Learn to Play Guitar",
+        "Practice chords for 30 minutes every day. Find onl",
+        "Wed",
+        "Renew Driver's License",
+        "Expires next month. Check DMV website for requirem",
+        "Thu",
+        "Finish Project Proposal",
+        "Deadline is Friday. Need to finalize budget and ti",
+        "Yest",
+        "Research Vacation Destinations",
+        "Yest",
+        "Back Up Computer Files",
+        "Today",
+        "Low priority",
+        "Voice input",
+        "Sort",
+        "More options",
+        "Create new task",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 55113,
+          "retained_characters": 14042
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 19,
+          "clipped_attributes": 5
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[18]"
+    },
+    {
+      "ordinal": 19,
+      "stepId": "agent-tap_on-20",
+      "action": "tap_on",
+      "status": "failed",
+      "error": "NativeActionBudgetExceeded: action_budget",
+      "params": null,
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[19]"
+    },
+    {
+      "ordinal": 20,
+      "stepId": "agent-kill_app-21",
+      "action": "kill_app",
+      "status": "failed",
+      "error": "NativeActionBudgetExceeded: action_budget",
+      "params": null,
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[20]"
+    }
+  ],
+  "originalNativeExecutionPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/110-TasksHighPriorityTasksDueOnDate/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-110-20261110T224320Z-b7af07/execution-result.json",
+  "originalNativeResultPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/110-TasksHighPriorityTasksDueOnDate/raw-private/fsq-native/worker/fsq-task-result.private.json",
+  "originalGoalPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/110-TasksHighPriorityTasksDueOnDate/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-110-20261110T224320Z-b7af07/sources/000-goal.txt"
+}

@@ -1,0 +1,906 @@
+{
+  "index": 11,
+  "name": "ContactsNewContactDraft",
+  "goal": "Go to the new contact screen and enter the following details: First Name: Grace, Last Name: Taylor, Phone: 799-802-1530, Phone Label: Work. Do NOT hit save.",
+  "reward": 0.0,
+  "classification": "failed",
+  "initialization": {
+    "initializationReferenceTime": {
+      "referenceTime": "2023-10-15T15:34:00+00:00",
+      "timezone": "UTC"
+    },
+    "initializedGoal": "Go to the new contact screen and enter the following details: First Name: Grace, Last Name: Taylor, Phone: 799-802-1530, Phone Label: Work. Do NOT hit save."
+  },
+  "frozenTaskSpec": {
+    "apps": [
+      "contacts"
+    ],
+    "complexity": 1.2,
+    "difficulty": "easy",
+    "family": "android",
+    "index": 11,
+    "instanceSeed": 3954285476,
+    "maxActions": 12,
+    "maxSteps": 12,
+    "name": "ContactsNewContactDraft",
+    "params": {
+      "first": "Grace",
+      "last": "Taylor",
+      "phone": "799-802-1530",
+      "phone_label": "Work",
+      "seed": 3954285476
+    },
+    "paramsSha256": "52dd9551e8baa09f889c549dbc81ac37dc72fd827d5a51ff65ed5036fc518c2d",
+    "paramsTransport": "json",
+    "tags": [
+      "screen_reading",
+      "data_entry"
+    ],
+    "timeBudget": {
+      "businessSeconds": 840,
+      "cleanupWindowSeconds": 180,
+      "episodeSeconds": 1450,
+      "forceSeconds": 1030,
+      "recoveryWindowSeconds": 120,
+      "terminationGraceSeconds": 10
+    }
+  },
+  "mainSteps": [
+    {
+      "stepId": 5,
+      "tool": "agent_runtime.runner",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "Final full-goal assertion did not pass because Work was not visible.",
+          "App teardown was attempted but blocked by NativeActionBudgetExceeded: action_budget."
+        ],
+        "evidence": [
+          "Final assert_with_ai confirmed Grace, Taylor, and 799-802-1530 on the unsaved Create contact form, but could not verify Work because the keyboard obscured the label area.",
+          "Assertion screenshot: artifacts/screenshots/screenshot-agent-assert-with-ai-22-invoke-assert-with-ai-1-3974f125bb56.png"
+        ],
+        "plan_updates": [
+          "Navigation required opening Contacts and dismissing an introductory overlay.",
+          "The keyboard obscured the phone-label area; the action budget prevented completing label selection."
+        ],
+        "pre_plan": [
+          {
+            "action": "Open the new-contact form using the create-contact control.",
+            "status": "success",
+            "step_id": 1,
+            "success_criteria": [
+              "New-contact form is open."
+            ]
+          },
+          {
+            "action": "Enter Grace and Taylor in the name fields.",
+            "status": "success",
+            "step_id": 2,
+            "success_criteria": [
+              "Name fields display Grace and Taylor."
+            ]
+          },
+          {
+            "action": "Enter 799-802-1530 in Phone.",
+            "status": "success",
+            "step_id": 3,
+            "success_criteria": [
+              "Phone field displays 799-802-1530."
+            ]
+          },
+          {
+            "action": "Select Work as the phone label without saving.",
+            "status": "skipped",
+            "step_id": 4,
+            "success_criteria": [
+              "Phone label displays Work and form remains unsaved."
+            ]
+          }
+        ],
+        "satisfied_criteria": [
+          "The unsaved new-contact form displays First Name Grace, Last Name Taylor, and phone 799-802-1530."
+        ],
+        "schema_version": "task_run_v1",
+        "status": "inconclusive",
+        "summary": "Entered Grace Taylor and 799-802-1530 in the unsaved new-contact form. Work was not selected or verified before the harness action budget was exhausted. Save was not pressed.",
+        "unmet_criteria": [
+          "The unsaved new-contact form displays phone label Work."
+        ]
+      }
+    },
+    {
+      "stepId": 6,
+      "tool": "agent_runtime.verifier",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "Final phone label Work remains unverified; occlusion does not conclusively establish its underlying value.",
+          "Two attempts to dismiss the keyboard failed with NativeActionBudgetExceeded: action_budget, preventing further label interaction."
+        ],
+        "evidence": [
+          "assert_with_ai call call_yd3UeNBDffwYHFLl2Pl50ywW returned status=failed, passed=false, and failure_category=assertion_error. Its explanation confirms the names and phone number but states that Work is not visible because the keyboard obscures the label area.",
+          "The assertion execution references screenshot artifacts/screenshots/screenshot-agent-assert-with-ai-22-prepare-before-action-1-b53a50d1ba75.png.",
+          "The main agent's structured output correspondingly reports an inconclusive result and acknowledges that Work was not verified.",
+          "An earlier UI snapshot displays Mobile as the phone label; no supplied tool call selects Work. However, the final assertion does not establish the final label value."
+        ],
+        "plan_updates": [
+          "The backend assertion returned an unsuccessful verdict due to an obscured phone label, rather than a confirmed final label mismatch."
+        ],
+        "pre_plan": [
+          {
+            "action": "Verify the supplied final form state against the verification goal.",
+            "status": "adjusted",
+            "step_id": 1,
+            "success_criteria": [
+              "Evidence confirms an unsaved new-contact form displaying Grace, Taylor, 799-802-1530, and phone label Work."
+            ]
+          }
+        ],
+        "satisfied_criteria": [
+          "The backend AI assertion confirms the unsaved Create contact form displays First Name Grace, Last Name Taylor, and phone 799-802-1530."
+        ],
+        "schema_version": "task_run_v1",
+        "status": "inconclusive",
+        "summary": "The unsaved form is confirmed to display Grace, Taylor, and 799-802-1530. The complete goal cannot be verified because the keyboard obscured the phone label, and the backend assertion could not confirm Work.",
+        "unmet_criteria": []
+      }
+    }
+  ],
+  "budgetSummary": {
+    "admitted": 12,
+    "attempted": 15,
+    "deadlineExceeded": false,
+    "deadlineMonotonic": 703268.2383865,
+    "denied": 3,
+    "deviceRestoredByClose": false,
+    "exclusions": [
+      "driver_construction",
+      "uiautomator2_service_startup",
+      "observation_and_assertion_side_effects",
+      "external_processes_and_direct_driver_access"
+    ],
+    "exhausted": true,
+    "failed": 0,
+    "inFlight": 0,
+    "inputTextUnit": "composite_click_optional_clear_set_text",
+    "maximum": 12,
+    "securityBoundary": false,
+    "succeeded": 12,
+    "unit": "admitted_android_harness_write_capability_dispatch",
+    "writeCapabilities": [
+      "launch_app",
+      "kill_app",
+      "tap_on",
+      "tap_at",
+      "long_press_on",
+      "input_text",
+      "press_key",
+      "swipe"
+    ]
+  },
+  "actions": [
+    {
+      "ordinal": 0,
+      "stepId": "agent-launch_app-1",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [],
+      "output": {
+        "app_id": "com.google.android.contacts"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[0]"
+    },
+    {
+      "ordinal": 1,
+      "stepId": "agent-ui_snapshot-2",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Sun, Oct 15",
+        "Sun, Oct 15",
+        "Gmail",
+        "Gmail",
+        "Photos",
+        "Photos",
+        "YouTube",
+        "YouTube",
+        "Home",
+        "Phone",
+        "Phone",
+        "Messages",
+        "Messages",
+        "Chrome",
+        "Chrome",
+        "Calendar",
+        "Predicted app: Calendar",
+        "Search",
+        "Google app",
+        "Voice search",
+        "Google Lens",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 27981,
+          "retained_characters": 7650
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[1]"
+    },
+    {
+      "ordinal": 2,
+      "stepId": "agent-launch_app-3",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "app_id": "com.google.android.contacts"
+      },
+      "uiLabels": [],
+      "output": {
+        "app_id": "com.google.android.contacts"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[2]"
+    },
+    {
+      "ordinal": 3,
+      "stepId": "agent-swipe-4",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "up"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "up"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[3]"
+    },
+    {
+      "ordinal": 4,
+      "stepId": "agent-ui_snapshot-5",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Audio Recorder",
+        "Audio Recorder",
+        "Broccoli",
+        "Broccoli",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Chrome",
+        "Chrome",
+        "Clipper",
+        "Clipper",
+        "Clock",
+        "Clock",
+        "Contacts",
+        "Contacts",
+        "Draw",
+        "Draw",
+        "Drive",
+        "Drive",
+        "Files",
+        "Files",
+        "Gallery",
+        "Gallery",
+        "Gmail",
+        "Gmail",
+        "Google",
+        "Google",
+        "Joplin",
+        "Joplin",
+        "Maps",
+        "Maps",
+        "Markor",
+        "Markor",
+        "Messages",
+        "Messages",
+        "OpenTracks",
+        "OpenTracks",
+        "OsmAnd",
+        "OsmAnd",
+        "Phone",
+        "Phone",
+        "Photos",
+        "Photos",
+        "Pro Expense",
+        "Pro Expense",
+        "Gallery",
+        "Gallery",
+        "Calendar",
+        "Calendar",
+        "Camera",
+        "Camera",
+        "Tasks",
+        "Tasks",
+        "Search",
+        "Google app",
+        "Search apps, web and more",
+        "Voice search",
+        "Google Lens",
+        "Home",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 37017,
+          "retained_characters": 12575
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 6,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[4]"
+    },
+    {
+      "ordinal": 5,
+      "stepId": "agent-tap_on-6",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "accessibilityId": "Contacts"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[5]"
+    },
+    {
+      "ordinal": 6,
+      "stepId": "agent-ui_snapshot-7",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Now you can find Settings and Help & feedback here",
+        "Now you can find Settings and Help & feedback here",
+        "Search contacts",
+        "Open navigation drawer",
+        "Search contacts",
+        "Signed in as Device\nAccount and settings.",
+        "Phone contacts",
+        "Email contacts",
+        "Company",
+        "No contacts yet",
+        "Create contact",
+        "Contacts",
+        "Contacts",
+        "Highlights",
+        "Highlights",
+        "Fix & manage",
+        "Fix & manage",
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 42281,
+          "retained_characters": 10754
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 16,
+          "clipped_attributes": 2
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[6]"
+    },
+    {
+      "ordinal": 7,
+      "stepId": "agent-press_key-8",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[7]"
+    },
+    {
+      "ordinal": 8,
+      "stepId": "agent-tap_on-9",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "accessibilityId": "Contacts"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[8]"
+    },
+    {
+      "ordinal": 9,
+      "stepId": "agent-tap_on-10",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.google.android.contacts:id/og_tooltip_scrim_view"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[9]"
+    },
+    {
+      "ordinal": 10,
+      "stepId": "agent-ui_snapshot-11",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Search contacts",
+        "Open navigation drawer",
+        "Search contacts",
+        "Signed in as Device\nAccount and settings.",
+        "Phone contacts",
+        "Email contacts",
+        "Company",
+        "No contacts yet",
+        "Create contact",
+        "Contacts",
+        "Contacts",
+        "Highlights",
+        "Highlights",
+        "Fix & manage",
+        "Fix & manage",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 40025,
+          "retained_characters": 10248
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 14,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[10]"
+    },
+    {
+      "ordinal": 11,
+      "stepId": "agent-tap_on-12",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.google.android.contacts:id/floating_action_button"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[11]"
+    },
+    {
+      "ordinal": 12,
+      "stepId": "agent-ui_snapshot-13",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Cancel",
+        "Create contact",
+        "Save",
+        "More options",
+        "Add contact photo",
+        "Add picture",
+        "First name",
+        "Last name",
+        "Show more name fields",
+        "Company",
+        "Phone",
+        "Mobile",
+        "Mobile Phone",
+        "Show dropdown menu",
+        "Email",
+        "Home",
+        "Home Email",
+        "Show dropdown menu",
+        "Significant date",
+        "Show date picker",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 54777,
+          "retained_characters": 10411
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 44,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[12]"
+    },
+    {
+      "ordinal": 13,
+      "stepId": "agent-input_text-14",
+      "action": "input_text",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "text": "First name"
+        },
+        "text": "Grace",
+        "textType": "literal"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[13]"
+    },
+    {
+      "ordinal": 14,
+      "stepId": "agent-input_text-15",
+      "action": "input_text",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "text": "Last name"
+        },
+        "text": "Taylor",
+        "textType": "literal"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[14]"
+    },
+    {
+      "ordinal": 15,
+      "stepId": "agent-press_key-16",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[15]"
+    },
+    {
+      "ordinal": 16,
+      "stepId": "agent-ui_snapshot-17",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "Cancel",
+        "Create contact",
+        "Save",
+        "More options",
+        "Add contact photo",
+        "Add picture",
+        "Grace",
+        "Taylor",
+        "Show more name fields",
+        "Company",
+        "Phone",
+        "Mobile",
+        "Mobile Phone",
+        "Show dropdown menu",
+        "Email",
+        "Home",
+        "Home Email",
+        "Show dropdown menu",
+        "Significant date",
+        "Show date picker",
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 54768,
+          "retained_characters": 10418
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 44,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[16]"
+    },
+    {
+      "ordinal": 17,
+      "stepId": "agent-input_text-18",
+      "action": "input_text",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "text": "Phone"
+        },
+        "text": "799-802-1530",
+        "textType": "literal"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[17]"
+    },
+    {
+      "ordinal": 18,
+      "stepId": "agent-press_key-19",
+      "action": "press_key",
+      "status": "failed",
+      "error": "NativeActionBudgetExceeded: action_budget",
+      "params": null,
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[18]"
+    },
+    {
+      "ordinal": 19,
+      "stepId": "agent-press_key-20",
+      "action": "press_key",
+      "status": "failed",
+      "error": "NativeActionBudgetExceeded: action_budget",
+      "params": null,
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[19]"
+    },
+    {
+      "ordinal": 20,
+      "stepId": "agent-ui_snapshot-21",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "1",
+        " ",
+        "2",
+        "ABC",
+        "3",
+        "DEF",
+        "Dash",
+        "4",
+        "GHI",
+        "5",
+        "JKL",
+        "6",
+        "MNO",
+        "Space",
+        "7",
+        "PQRS",
+        "8",
+        "TUV",
+        "9",
+        "WXYZ",
+        "Delete",
+        "Symbol keyboard",
+        "0",
+        "+",
+        ".",
+        "Next",
+        "Back",
+        "Cancel",
+        "Create contact",
+        "Save",
+        "More options",
+        "Add contact photo",
+        "Add picture",
+        "Grace",
+        "Taylor",
+        "Show more name fields",
+        "Company",
+        "799-802-1530",
+        "Delete Mobile Phone",
+        "delete",
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent."
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 87344,
+          "retained_characters": 18167
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 63,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[20]"
+    },
+    {
+      "ordinal": 21,
+      "stepId": "agent-assert_with_ai-22",
+      "action": "assert_with_ai",
+      "status": "failed",
+      "error": null,
+      "params": {
+        "prompt": "Verify whether the unsaved new-contact form displays First Name Grace, Last Name Taylor, phone 799-802-1530, and phone label Work. Report any missing or mismatched values.",
+        "optional": false
+      },
+      "uiLabels": [],
+      "output": {
+        "status": "failed",
+        "passed": false,
+        "explanation": "The unsaved Create contact form shows First Name Grace, Last Name Taylor, and phone 799-802-1530 correctly. The phone label Work is not visible because the keyboard obscures the area below the phone field, so it cannot be verified.",
+        "confidence": 0.99,
+        "provider": "github_copilot",
+        "model": "gpt-6.1-sol",
+        "latency_ms": 5922,
+        "token_usage": {
+          "input_tokens": 3292,
+          "output_tokens": 73,
+          "total_tokens": 3365
+        },
+        "artifact_refs": [
+          {
+            "artifact_id": "screenshot-agent-assert-with-ai-22-invoke-assert-with-ai-1-3974f125bb56",
+            "kind": "screenshot",
+            "path": "artifacts/screenshots/screenshot-agent-assert-with-ai-22-invoke-assert-with-ai-1-3974f125bb56.png",
+            "mime_type": "image/png",
+            "size_bytes": 438042,
+            "sha256": "0991da0d1c4048b985681074abff1f03d8f0faf47728e9c21fbaab4b729bf328",
+            "availability": "available",
+            "unavailable_reason": null,
+            "capture_occurrence": 1,
+            "created_at": "2026-11-10T16:20:49.114114Z",
+            "metadata": {
+              "capture_reason": "assert-with-ai",
+              "redacted": false
+            }
+          }
+        ],
+        "error": null,
+        "metadata": {
+          "provider_metadata": {
+            "endpoint_family": "github_copilot",
+            "copilot_plan": "enterprise"
+          }
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[21]"
+    },
+    {
+      "ordinal": 22,
+      "stepId": "agent-kill_app-23",
+      "action": "kill_app",
+      "status": "failed",
+      "error": "NativeActionBudgetExceeded: action_budget",
+      "params": null,
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[22]"
+    }
+  ],
+  "originalNativeExecutionPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/011-ContactsNewContactDraft/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-011-20261110T161839Z-806998/execution-result.json",
+  "originalNativeResultPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/011-ContactsNewContactDraft/raw-private/fsq-native/worker/fsq-task-result.private.json",
+  "originalGoalPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/011-ContactsNewContactDraft/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-011-20261110T161839Z-806998/sources/000-goal.txt"
+}

@@ -1,0 +1,85 @@
+{
+  "status": "COMPLETE_18_CASE_OFFLINE_DIAGNOSIS_AND_DEVELOPMENT_HARNESS_FIX",
+  "report": "report.md",
+  "reportSha256": "d8d3c6598a95379ae0230d2268d83fe68f71cfe7d3d5153df6f8161a42281500",
+  "independentDelivery": "independent-final-delivery.json",
+  "independentDeliverySha256": "de46a1a74393c092b52c26addf907075d31fd5383b8e88672769bf37cd283a26",
+  "caseCount": 18,
+  "signedCaseArtifactsVerified": 36,
+  "independentDeliveryArtifactsVerified": 6,
+  "independentCaseAndProposalSignatureMismatches": [],
+  "sharedProposal": {
+    "path": "evidence/amkernel-field-optimization-20261109/per-task-review/skill-optimization-proposal.md",
+    "wholeFileSha256": "ed63e488e8363528612f3301866b1694311cb26fc3bd1b80c65f83c6f5add214",
+    "reviewedLines": "165-189",
+    "reviewedSectionSha256": "9ef6ed18bb1de879d39c5b95c82411b59f09de411fd8bf9cd3174d95e7a8f57c",
+    "status": "CANDIDATES_ONLY"
+  },
+  "originalEvidenceTotals": {
+    "caseCount": 18,
+    "originalRewards": {
+      "0.0": 18
+    },
+    "originalTerminationCounts": {
+      "step_budget": 9,
+      "completed": 9
+    },
+    "acceptedActions": 185,
+    "pythonResponses": 308,
+    "pythonResponseStatusCounts": {
+      "completed": 261,
+      "failed": 47
+    },
+    "kernelStateCounts": {
+      "alive": 308
+    },
+    "allHistoricalOwnedSessionsClosedAndAbsentWithOfficialTeardownAndEnvironmentClosed": true,
+    "newOfficialEvaluations": 0,
+    "newDeviceOrServiceOperations": 0,
+    "newFull116Campaigns": 0,
+    "interpretation": "All counts are original frozen evidence. Historical cleanup is not an assertion of current shared-service state; no current device/session resource was acquired by this batch."
+  },
+  "originalCallIdentityProof": "parent-final-original-call-proof-audit.json",
+  "immutability": {
+    "historicalFrozenBaseline": "evidence/amkernel-field-optimization-20261109/frozen-before-sha256.json",
+    "checkedHistoricalFrozenFiles": 696,
+    "frozenMismatches": [],
+    "checkedFormalSkillFiles": 9,
+    "formalSkillMismatches": [],
+    "newDeviceOrSessionResourcesAcquired": 0,
+    "newOfficialRewards": 0,
+    "new116Campaigns": 0,
+    "scope": "696 original campaign/report files and nine declared formal-skill files only; not a current device or shared-service health assertion."
+  },
+  "harnessFix": {
+    "repository": "FSQ_AndroidWorld_eval",
+    "revision": 15,
+    "contract": "Initialized TaskEval.device_time aware reference+offset delivered outside byte-exact goal; explicitly not live device time",
+    "independentAcceptance": "independent-harness-acceptance.json",
+    "parentSourceEvidenceHashes": "parent-harness-delivery-hash-acceptance.json",
+    "runtimeSmoke": "18/18 actual helper payload paths offline; no env/task initialization",
+    "focusedRun": "569 passed/2 failed; tests-only corrections followed by only 2 targeted passed",
+    "notClaimed": "No one-shot571-green, current device readiness, task replay, new official reward or per-case sole cause"
+  },
+  "cleanup": {
+    "newDeviceOrSessionResourcesAcquired": 0,
+    "originalManagedCleanupRecordedCompleteForAll18": true,
+    "currentSharedServiceHealthClaim": false,
+    "reviewerZeroOperationReceipt": "independent-zero-operations.json"
+  },
+  "scopeComplete": [
+    "All18 frozen failures after060 individually diagnosed",
+    "Earliest supported deviation and evaluator boundaries recorded",
+    "Independent36 artifact plus shared proposal signature binding",
+    "Confirmed new Harness reference-clock gap repaired and independently accepted",
+    "Generic skill candidates consolidated without formal skill or Runtime changes"
+  ],
+  "notExecutedByThisBatch": [
+    "Live device/ADB/Appium operations",
+    "Actual env/task initialization or original task replay",
+    "Official evaluator/new reward",
+    "Independent Agent rerun or former-success live regressions",
+    "Full116 campaign"
+  ],
+  "futureQualification": "Any formal r15 run requires fresh environment qualification, full no-Agent rehearsal and calibration; formal skill benefit still requires separately authorized real-Agent representative failures and former successes, unchanged model/params/budgets/retries/evaluator."
+}

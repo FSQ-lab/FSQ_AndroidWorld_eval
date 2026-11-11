@@ -1,0 +1,239 @@
+{
+  "schemaVersion": 1,
+  "kind": "native_fsq_independent_targeted_closure",
+  "status": "approved_offline_targeted_closure",
+  "approved": true,
+  "liveAuthorized": false,
+  "createdAtUtc": "2026-11-10T06:28:37.380074+00:00",
+  "reviewOwner": "w4:p2",
+  "implementationOwner": "w4:p1",
+  "coordinator": "w6:p2",
+  "scope": "Only FSQ-R01..FSQ-R08 against the exact revision-2 frozen source and candidate. Not old AMKernel acceptance, a resource lease, device readiness, native business success, or live authorization.",
+  "candidate": {
+    "path": "evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-2/candidate-final-manifest.json",
+    "sha256": "94a33fc3719cb2b289b274a415e78d91aeef5d9c34f8a63fedeac0e638e615f2"
+  },
+  "sourceInventory": {
+    "path": "evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-2/source-inventory.json",
+    "sha256": "09207e31f429cbf8c199b231e0c4d03ea61515577e4fc26f2860de392b8622ef",
+    "ownedFileCount": 18,
+    "allCurrentBytesMatched": true
+  },
+  "implementationDelivery": {
+    "path": "evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-2/delivery.json",
+    "sha256": "b38146609ad738ea74c74fbc2473018c5ae6664764ac6db504a32030a13a5174",
+    "all16ReferencedArtifactsMatched": true
+  },
+  "r03Authority": {
+    "path": "evidence/fsq-native-gpt61-corrected-20261110T043031Z/independent-review/r03-scope-clarification.json",
+    "sha256": "da0f157d091f8925af2f70e4e0053ebe9a50da5aeff493c1b030e9ce94cbcf0f",
+    "successfulKillGateAuthorized": false,
+    "mainFinalOrderingGateAuthorized": false,
+    "supplementalKillAuthorized": false
+  },
+  "findings": [
+    {
+      "id": "FSQ-R01",
+      "status": "closed_offline",
+      "conclusion": "Retained/direct-URL oracle roots are frozen; actual result roots are passed to default-deny canonical policy. Unlisted copies, external results, shared tmp and oracle aliases are denied without broad HOME/tmp grants. Native dependency imports and named-file atomic provider updates remain usable.",
+      "source": [
+        "fsq_manifest.py:373-386,418-424",
+        "fsq_supervisor.py:49-156,318-380",
+        "fsq_runner.py:225-233,300-310"
+      ],
+      "reviewerEvidence": [
+        "directed-smoke.xml::test_real_sandbox_native_fileops_allowlist"
+      ],
+      "limit": "Real native imports/FileOps and fake-HOME provider-file updates only; no provider construction, inference, device or universal network/u2 security claim."
+    },
+    {
+      "id": "FSQ-R02",
+      "status": "closed_offline",
+      "conclusion": "Trusted parent-owned process receipt survives result parse/archive failures. Unknown group settlement prevents oracle and task teardown; forced/unknown state independently halts scheduling. Direct combined smoke observed actual parser/archive runner branches reaching the scheduler with one of twelve tasks and no next task.",
+      "source": [
+        "fsq_supervisor.py:377-413",
+        "fsq_runner.py:296-338,393-423",
+        "fsq_campaign.py:201-217,793-822"
+      ],
+      "reviewerEvidence": [
+        "forced-transition-smoke.json::native_result_parse",
+        "forced-transition-smoke.json::native_archive",
+        "directed-smoke.xml::test_process_table_uncertainty_never_claims_group_cleanup"
+      ],
+      "evidenceQualification": "Owner final two campaign tests alone construct terminal records; their 67-pass receipt is not misrepresented as actual parser/archive-to-runner integration. Parent additional smoke resolves that integration-evidence gap with controlled offline environment/admission and actual owned throwaway worker subprocesses."
+    },
+    {
+      "id": "FSQ-R03",
+      "status": "closed_offline_under_clarified_contract",
+      "conclusion": "Kill status is evidence-derived absent/failed/denied/succeeded/mixed, including observed sequence relative to full native return. Main-final timing stays unknown. No successful-kill eligibility gate, supplemental kill, forced output, or Skill change. Otherwise-admissible complete native execution scores once for all four required kill cases, after returned native verification.",
+      "source": [
+        "fsq_worker.py:197-225",
+        "fsq_evidence.py:155-187,201-227,273-327",
+        "fsq_runner.py:328-373"
+      ],
+      "reviewerEvidence": [
+        "directed-smoke.xml::test_complete_native_return_scores_once_without_kill_eligibility_gate[absent-0]",
+        "directed-smoke.xml::test_complete_native_return_scores_once_without_kill_eligibility_gate[failed-1]",
+        "directed-smoke.xml::test_complete_native_return_scores_once_without_kill_eligibility_gate[denied-0]",
+        "directed-smoke.xml::test_complete_native_return_scores_once_without_kill_eligibility_gate[succeeded-1]"
+      ],
+      "ownerEvidence": [
+        "closure-final.xml::test_full_worker_reports_real_kill_outcomes_without_supplement_or_gate"
+      ],
+      "scopeClarification": "../independent-review/r03-scope-clarification.json",
+      "limit": "Controlled native collaborators establish adapter/consumer behavior, not a new real native business execution. Successful native kill is never a review-imposed admission condition."
+    },
+    {
+      "id": "FSQ-R04",
+      "status": "closed_offline",
+      "conclusion": "Owned process-group settlement is observed independently of leader exit; remaining owned children are terminated/escalated. Unknown membership cannot claim settlement. Signals remain restricted to the newly owned group and known ownership.",
+      "source": [
+        "fsq_supervisor.py:159-315"
+      ],
+      "reviewerEvidence": [
+        "directed-smoke.xml::test_same_owned_group_child_is_settled_after_leader_exit_or_term[False]",
+        "directed-smoke.xml::test_same_owned_group_child_is_settled_after_leader_exit_or_term[True]",
+        "directed-smoke.xml::test_process_table_uncertainty_never_claims_group_cleanup",
+        "forced-transition-smoke.json"
+      ],
+      "limit": "Owned local group/tree only; no claim about escaped, reparented, remote or device effects."
+    },
+    {
+      "id": "FSQ-R05",
+      "status": "closed_offline",
+      "conclusion": "Public standalone main routes the entire internal episode through the bounded outer supervisor. Forced/missing terminal evidence is invalid with unknown cleanup, not a clean result. Original allocator and resource-window admission remain in force.",
+      "source": [
+        "fsq_runner.py:433-484",
+        "fsq_campaign.py:_spawn,_episode,run_stage"
+      ],
+      "reviewerEvidence": [
+        "directed-smoke.xml::test_public_standalone_bounds_initialization_and_reports_forced_unknown"
+      ],
+      "limit": "Actual public main and owned blocked child under controlled offline admission/environment and shortened test envelope; not an authorized live smoke."
+    },
+    {
+      "id": "FSQ-R06",
+      "status": "closed_offline",
+      "conclusion": "Shared before-oracle/report validator independently hashes and reloads native TaskResult and verification, selects the unique successful task_run_v1 runner, validates fields, and compares summary/business status exactly. Invalid answers cannot acquire verifier/cache fallback; complete native business failures remain separately represented.",
+      "source": [
+        "fsq_evidence.py:75-93,234-270,295-311",
+        "fsq_runner.py:330-373",
+        "fsq_campaign.py:272-282"
+      ],
+      "reviewerEvidence": [
+        "directed-smoke.xml::test_rehashed_consumer_answer_contradictions_are_rejected",
+        "directed-smoke.xml::test_failed_runner_answer_never_reuses_cache_or_verifier"
+      ],
+      "ownerEvidence": [
+        "closure-final.xml::test_exact_summary_and_business_failure_are_preserved",
+        "closure-final.xml::test_visually_equivalent_unicode_is_not_normalized_during_summary_comparison"
+      ]
+    },
+    {
+      "id": "FSQ-R07",
+      "status": "closed_offline",
+      "conclusion": "Replay reconciles exact embedded/journal events, sequence and clock, canonical capabilities, read/write tickets, admission/completion/denial transitions, maximum, every counter, outstanding operations and close/return settlement. Eleven admitted writes cannot be hidden behind maximum ten and zero counters.",
+      "source": [
+        "fsq_evidence.py:96-227,312-327",
+        "fsq_native.py:85-142"
+      ],
+      "reviewerEvidence": [
+        "directed-smoke.xml::test_complete_consumer_rejects_rehashed_eleven_writes_hidden_behind_ten_limit"
+      ],
+      "ownerEvidence": [
+        "closure-final.xml::test_failure_consumes_admission_and_denial_has_no_ticket_or_forward",
+        "closure-final.xml::test_replay_handles_interleaved_read_and_write_completion_tickets"
+      ],
+      "limit": "Audits prove native Harness-dispatch accounting under the documented exclusions, not device restoration or primitive u2 equivalence."
+    },
+    {
+      "id": "FSQ-R08",
+      "status": "closed_offline",
+      "conclusion": "Consumer binds stage, campaign, task/parameters, episode/native task IDs, serial, target, manifest, readiness and authorization; process/native/evaluator references must agree. Coherently resealed smoke-as-calibration replay is rejected.",
+      "source": [
+        "fsq_runner.py:165-171,225-245,289-310",
+        "fsq_campaign.py:233-297,validate_stage_report",
+        "fsq_evidence.py:282-324"
+      ],
+      "reviewerEvidence": [
+        "directed-smoke.xml::test_coherent_smoke_episode_cannot_be_resealed_as_calibration"
+      ],
+      "ownerEvidence": [
+        "closure-final.xml::test_rehashed_wrong_native_or_episode_identity_is_rejected"
+      ],
+      "limit": "Trusted coordinator authorization remains an independent requirement; correct receipt bindings do not grant exclusive ownership."
+    }
+  ],
+  "newBlockingFindings": [],
+  "resolvedEvidenceGap": {
+    "finding": "FSQ-R02",
+    "ownerCampaignEvidenceLimit": "Final two campaign tests exercise scheduler consumption of constructed terminals, not actual parser/archive runner propagation.",
+    "independentResolution": "Additional direct smoke calls actual run_fsq_worker parser, run_episode and campaign.run_stage using controlled offline collaborators and actual forced/reaped owned subprocesses. Both paths halt after one of twelve with no oracle, no next task, and original terminal bytes preserved.",
+    "evidence": "forced-transition-smoke.json"
+  },
+  "evidence": [
+    {
+      "path": "verification.json",
+      "sha256": "8a5c5ccb406d8d06363fc2a7a0f7f06ebbacb5bc95757148a7d3faddcd4b7312"
+    },
+    {
+      "path": "directed-smoke.json",
+      "sha256": "d0b67963cf16c30d03429d34c3b6f6a9d4fcd3902043b2d2311dab1665271c01"
+    },
+    {
+      "path": "directed-smoke.xml",
+      "sha256": "9b605a503a36c3ea3be6807f5090dfa4eb0e7a466f6e00619b5147f7a88e8d9b"
+    },
+    {
+      "path": "forced-transition-smoke.json",
+      "sha256": "65c3704f6771ef4d699fbc9ec802312bd4593337a8ad539093c5ca11d173b192"
+    }
+  ],
+  "verificationSummary": {
+    "reviewerSelectedRegressions": "16 passed, 0 skipped",
+    "reviewerDirectFunctionSmokes": "2 passed (parse/archive propagation)",
+    "ownerProductTests": "309 passed",
+    "ownerFinalCampaignFile": "67 passed, overlapping; not added",
+    "sdkCurrentWorkingByteEntriesMatched": 285,
+    "newModelCalls": 0,
+    "deviceOrSharedServiceCalls": 0
+  },
+  "modelGate": {
+    "status": "coordinator_accepted_genuine_minimal_native_responses",
+    "provider": "github_copilot",
+    "requestedConfiguredModel": "gpt-6.1-sol",
+    "inputOutputTokens": [
+      12,
+      7
+    ],
+    "actualResponseModel": "unknown: not exposed by native ModelResult",
+    "newModelCallByReviewer": false,
+    "notAnIndependentModelIdentityAttestation": true
+  },
+  "remainingSafetyAndAuthorization": [
+    {
+      "status": "blocked_pending_coordinator_resource_decision",
+      "requirement": "Auditable current target controller/holder handoff and non-conflict boundary. Human FSQ-first priority is not an exclusive grant.",
+      "target": "emulator-5554 / console5554 / grpc8554 / exact manifest adb identity"
+    },
+    {
+      "status": "unknown_preserved",
+      "requirement": "Archived C receipt GET/sessions HTTPError has no retained status code. Session inventory/exclusive control remain unknown; no retry of the same GET, cleanup, restart, u2 connection, or inferred zero sessions."
+    },
+    {
+      "status": "pending",
+      "requirement": "w6:p2 must separately authorize exact candidate/review/model receipts, approved stage, exclusive disposable mutationsAllowed target and finite window covering the actual unchanged full envelope."
+    },
+    {
+      "status": "pending_after_grant_only",
+      "requirement": "Fresh qualification/readiness, separately authorized actual native smoke, all116 non-Agent rehearsal, original12 calibration and formal116. No old AMKernel receipt substitution, automatic business retry, silent recovery, source repair or historical rescoring."
+    },
+    {
+      "status": "required_at_end_or_cancel",
+      "requirement": "Report cleanup and remaining unknowns, then explicitly release target to w6:p1. This closure itself neither acquires nor releases a target."
+    }
+  ],
+  "invalidation": "Any source/import/configuration/target/HEAD or bound receipt change requires corresponding new identity and explicit review/coordinator handling; this approval does not silently transfer to a different candidate.",
+  "preservation": "Original delivery/candidate/review, R03 clarification, revision-2 delivery/candidate and retained failed evidence were not modified. Independent closure files only were added.",
+  "cleanup": "Owned temporary probe directories removed; actual smoke worker groups settled and leaders reaped. Existing independent hourly timer was not touched."
+}

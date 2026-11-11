@@ -1,0 +1,186 @@
+{
+  "schemaVersion": 1,
+  "kind": "completed_minimal_offline_adapter_repair_pending_independent_delta_review",
+  "timestampUtc": "2026-11-10T12:57:36.878169+00:00",
+  "sourceSha256": "69158f28eadbcd1921bd58a4dd9207b7dcbc10d5fd2756507604313d163bf99c",
+  "candidateSha256": "d9f3237c0d6d26f512bfdd3870fd4563519fc24f6cae160beb93a015a597a057",
+  "runtimeDelta": [
+    "fsq_evidence.py canonical self-alias predicate"
+  ],
+  "files": [
+    {
+      "path": "src/fsq_androidworld_eval/fsq_evidence.py",
+      "sha256": "1d448e1ee60b0a1c00814d5ed0b10728172ae29f69078be104d69acafa4f9c03",
+      "bytes": 20471
+    },
+    {
+      "path": "tests/test_fsq_evidence.py",
+      "sha256": "5fbb3b26c0c65a3f9b6bf52b7dd73bfe2fd357fd6280dba485fcaeae19f892a1",
+      "bytes": 26267
+    },
+    {
+      "path": "tests/fixtures/fsq_native_swipe.json",
+      "sha256": "38c84f655fa2deb24e58075fde2d4dd08287e3d3c2cb6792779d0207df8bd866",
+      "bytes": 18950
+    },
+    {
+      "path": "README.md",
+      "sha256": "636dd453a262d0830a6d1b0af9881870a5963a5c33ffe39fec05fb52c198d936",
+      "bytes": 41812
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "report.md",
+      "sha256": "54c795282f0bf925ff38d16f20aaf7efac5c1bc71dbadcd0138c0998246f9112",
+      "bytes": 9212
+    },
+    {
+      "path": "source-closure.json",
+      "sha256": "91a04d8a3a45fd9091e62bf36079c8d523a741f3093b01ad56516edd38a5d7b8",
+      "bytes": 1200
+    },
+    {
+      "path": "candidate-final-manifest.json",
+      "sha256": "d9f3237c0d6d26f512bfdd3870fd4563519fc24f6cae160beb93a015a597a057",
+      "bytes": 428226
+    },
+    {
+      "path": "candidate-final-manifest.json.sha256",
+      "sha256": "7e095a96a6e5652e1f3115b18882f2e432b2ff8d4906087567b8200142f36225",
+      "bytes": 65
+    },
+    {
+      "path": "review-handoff.json",
+      "sha256": "ea7a1ab81ad04a2a3f2b0d996fa2c549bd4d4eb27c707b152eed6d813b299c60",
+      "bytes": 2880
+    },
+    {
+      "path": "fixture-provenance.json",
+      "sha256": "314449673ed99ae93a33c3838dd94da36b7724d63e93d55bd400fe0b84b1900b",
+      "bytes": 1352
+    },
+    {
+      "path": "regression.json",
+      "sha256": "300ecdaf55488f84d121e4057a0bf3ba4869ce93dfcb7404a96123463e0df609",
+      "bytes": 696
+    },
+    {
+      "path": "regression.stdout.log",
+      "sha256": "a9f16001abc16f49361e7a8268b75770972bf68c9e380c2c452b08c6064e0920",
+      "bytes": 1731
+    },
+    {
+      "path": "regression.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "regression-pass.json",
+      "sha256": "a1377f69943647e06225341ca6c6dda4f81f5911514eef7ce0f70451bc8ec629",
+      "bytes": 866
+    },
+    {
+      "path": "regression-pass.stdout.log",
+      "sha256": "5ee33cd74aa10ed371ea32b437d0c3779d030da284bd123352ecfcd4485d87b2",
+      "bytes": 623
+    },
+    {
+      "path": "regression-pass.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "offline-consumer-smoke.json",
+      "sha256": "1a31990a3f54267b61a5da51093b3a6e4246a0f65f7eb73a501f98140afc0b25",
+      "bytes": 463
+    }
+  ],
+  "original102": {
+    "classification": "invalid_agent",
+    "officialReward": null,
+    "evaluatorCalls": 0,
+    "cleanup": {
+      "environment": "closed",
+      "nativeDeviceRestoration": "not_provided_by_close",
+      "taskTearDown": "completed",
+      "workerProcessGroup": "settled"
+    },
+    "workerProcess": {
+      "businessDeadlineReached": false,
+      "elapsedSeconds": 87.510626,
+      "exitCode": 0,
+      "groupCleanup": "settled",
+      "groupDisappearanceObserved": true,
+      "groupObservation": {
+        "members": [],
+        "observed": true,
+        "runningPids": [],
+        "sameOwner": true
+      },
+      "groupObservations": [
+        {
+          "elapsedSeconds": 0.02368,
+          "observation": {
+            "members": [
+              {
+                "pgid": 21369,
+                "pid": 21369,
+                "ppid": 21224,
+                "started": "Tue Nov 10 20:37:04 2026    ",
+                "state": "Rs",
+                "uid": 501
+              }
+            ],
+            "observed": true,
+            "runningPids": [
+              21369
+            ],
+            "sameOwner": true
+          }
+        },
+        {
+          "elapsedSeconds": 87.510611,
+          "observation": {
+            "members": [],
+            "observed": true,
+            "runningPids": [],
+            "sameOwner": true
+          }
+        }
+      ],
+      "groupOwnership": "new_session_same_uid_observed",
+      "killed": false,
+      "leaderCleanup": "reaped",
+      "pgid": 21369,
+      "phase": "terminal",
+      "pid": 21369,
+      "signals": [],
+      "spawnCount": 1,
+      "terminated": false,
+      "uid": 501,
+      "workerExitObserved": true
+    },
+    "resultPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-2/resource-admission-20261110/fsq-envprepare-r1-5554-20261110T065520Z/execution/smoke-102-SystemWifiTurnOff/result.json",
+    "unchanged": true
+  },
+  "verification": {
+    "offlineTests": "313 passed, 1 opt-in macOS sandbox proof skipped",
+    "standaloneDesensitizedConsumerSmokeReturnCode": 0,
+    "noOriginalCheckerReexecution": true,
+    "noOriginalTaskRerun": true,
+    "noNewDeviceModelQualificationOrScoringCommands": true
+  },
+  "review": {
+    "status": "pending independent change-only review",
+    "handoff": "review-handoff.json",
+    "coordinator": "w6:p2",
+    "delivery": "agent_prompted",
+    "notAnApproval": true
+  },
+  "newCandidateAllGatesPending": true,
+  "oldQualificationBelongsOnlyToRevision2": true,
+  "next": "Independent delta review and coordinator-selected different-task live scope; consumed102 cannot be retried.",
+  "FSQFirstRetained": true,
+  "releasedToAMK": false
+}

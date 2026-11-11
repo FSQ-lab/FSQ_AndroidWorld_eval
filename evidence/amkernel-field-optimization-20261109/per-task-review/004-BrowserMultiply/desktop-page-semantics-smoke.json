@@ -1,0 +1,58 @@
+{
+  "scope": "Desktop browser running current repository task HTML and original seed; page-state semantics only. Not Android/Appium reproduction, not an official task rerun, not evidence that updated skill works.",
+  "trace": [
+    {
+      "click": 0,
+      "number": 9,
+      "numberVisible": true,
+      "formVisible": false
+    },
+    {
+      "click": 1,
+      "number": 10,
+      "numberVisible": true,
+      "formVisible": false
+    },
+    {
+      "click": 2,
+      "number": 9,
+      "numberVisible": true,
+      "formVisible": false
+    },
+    {
+      "click": 3,
+      "number": 5,
+      "numberVisible": true,
+      "formVisible": false
+    },
+    {
+      "click": 4,
+      "number": 5,
+      "numberVisible": true,
+      "formVisible": false
+    },
+    {
+      "click": 5,
+      "number": null,
+      "numberVisible": false,
+      "formVisible": true
+    }
+  ],
+  "visibleNumbers": [
+    9,
+    10,
+    9,
+    5,
+    5
+  ],
+  "productFromVisibleUi": 20250,
+  "pageResult": "Success!",
+  "proofs": {
+    "initialNumberExistsBeforeClick": true,
+    "equalAdjacentValuesCanFollowEffectiveClicks": true,
+    "fifthClickHidesNumberAndShowsForm": true
+  },
+  "officialReward": null,
+  "newAndroidSessions": 0,
+  "diagnosticCorrection": "A preliminary assertion expecting later 9s failed. Actual visible values were 9,10,9,5,5; retained observations and corrected the assertion, without rerunning the successful click sequence."
+}

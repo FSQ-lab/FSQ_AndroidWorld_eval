@@ -1,0 +1,290 @@
+{
+  "reviewer": "w4:p2 independent052 offline reviewer",
+  "taskName": "RecipeDeleteDuplicateRecipes3",
+  "seed": 2676632063,
+  "paramsSha256": "76a838d9d504ef8cd9ff928b7f30ddc1c11b2674e5ee08e14b797f7baf8ac90a",
+  "scope": "Installed pure validate_deletion_integrity on exact frozen business fields with explicitly assigned synthetic recipeId; uninitialized local task object only. No env/init/is_successful/DB/device/replay/official reward.",
+  "logicalParameters": {
+    "rows": 32,
+    "fullBusinessDistinct": 31,
+    "fields": [
+      "title",
+      "description",
+      "servings",
+      "preparationTime",
+      "source",
+      "ingredients",
+      "directions",
+      "favorite",
+      "imageName"
+    ],
+    "duplicateGroupsInTargetsThenNoiseIndexing": [
+      [
+        0,
+        1
+      ]
+    ],
+    "trueDuplicateTargetTitle": "Butternut Squash Soup",
+    "panNoiseIndices": [
+      7,
+      13
+    ],
+    "panDifferingFields": [
+      "servings",
+      "ingredients",
+      "directions"
+    ],
+    "avocadoNoisePairwiseDifferences": [
+      {
+        "noiseIndices": [
+          21,
+          22
+        ],
+        "differingFields": [
+          "description",
+          "preparationTime",
+          "ingredients",
+          "directions"
+        ]
+      },
+      {
+        "noiseIndices": [
+          21,
+          23
+        ],
+        "differingFields": [
+          "servings",
+          "preparationTime",
+          "ingredients"
+        ]
+      },
+      {
+        "noiseIndices": [
+          22,
+          23
+        ],
+        "differingFields": [
+          "description",
+          "servings",
+          "preparationTime",
+          "ingredients",
+          "directions"
+        ]
+      }
+    ],
+    "butternutLogicalRows": 10,
+    "butternutDistinctBusinessContents": 9,
+    "fullParameterSummaryProjectionCount": 21,
+    "observedScanSignatureCount": 18,
+    "comparisonLimit": "Summary cardinalities are not counts of original scanned or missing objects: windows overlap, clipping can yield empty descriptions, and summary projection is not identity."
+  },
+  "syntheticIdDeclaration": {
+    "noise": "820000 + local noise index",
+    "targets": "830000 + local target index",
+    "notHistoricalDbIds": true
+  },
+  "actualInheritedScorer": "DeleteMultipleRows.is_successful (identity checked, never called)",
+  "actualPredicate": "RecipeDeleteDuplicateRecipes.validate_deletion_integrity",
+  "sourceHashes": {
+    ".venv/lib/python3.11/site-packages/android_world/task_evals/single/recipe.py": {
+      "sha256": "f547556b9681267c34a19fa5fc316591060966a138c8f366c4b1e1783c988309",
+      "matchesInstalledDistributionRECORD": true
+    },
+    ".venv/lib/python3.11/site-packages/android_world/task_evals/common_validators/sqlite_validators.py": {
+      "sha256": "7b932acd2e19f1d4f43cea1badf26ace2ed3363258ae26850d1b09889bfa9d78",
+      "matchesInstalledDistributionRECORD": true
+    },
+    ".venv/lib/python3.11/site-packages/android_world/task_evals/utils/sqlite_schema_utils.py": {
+      "sha256": "d3b1d796b1faadbdedc78e7f9197f0ee27e3eebf0edd4597cd59f3d0f6e3095b",
+      "matchesInstalledDistributionRECORD": true
+    }
+  },
+  "cases": [
+    {
+      "case": "no_delete",
+      "explicitlySyntheticRemovedIds": [],
+      "actualInstalledPredicate": false,
+      "expectedContractResult": false
+    },
+    {
+      "case": "only_target_0",
+      "explicitlySyntheticRemovedIds": [
+        830000
+      ],
+      "actualInstalledPredicate": true,
+      "expectedContractResult": true
+    },
+    {
+      "case": "only_target_1",
+      "explicitlySyntheticRemovedIds": [
+        830001
+      ],
+      "actualInstalledPredicate": true,
+      "expectedContractResult": true
+    },
+    {
+      "case": "both_targets",
+      "explicitlySyntheticRemovedIds": [
+        830000,
+        830001
+      ],
+      "actualInstalledPredicate": false,
+      "expectedContractResult": false
+    },
+    {
+      "case": "only_noise_7",
+      "explicitlySyntheticRemovedIds": [
+        820007
+      ],
+      "actualInstalledPredicate": false,
+      "expectedContractResult": false
+    },
+    {
+      "case": "right_target_plus_noise_7",
+      "explicitlySyntheticRemovedIds": [
+        820007,
+        830000
+      ],
+      "actualInstalledPredicate": false,
+      "expectedContractResult": false
+    },
+    {
+      "case": "only_noise_13",
+      "explicitlySyntheticRemovedIds": [
+        820013
+      ],
+      "actualInstalledPredicate": false,
+      "expectedContractResult": false
+    },
+    {
+      "case": "right_target_plus_noise_13",
+      "explicitlySyntheticRemovedIds": [
+        820013,
+        830000
+      ],
+      "actualInstalledPredicate": false,
+      "expectedContractResult": false
+    },
+    {
+      "case": "only_noise_21",
+      "explicitlySyntheticRemovedIds": [
+        820021
+      ],
+      "actualInstalledPredicate": false,
+      "expectedContractResult": false
+    },
+    {
+      "case": "right_target_plus_noise_21",
+      "explicitlySyntheticRemovedIds": [
+        820021,
+        830000
+      ],
+      "actualInstalledPredicate": false,
+      "expectedContractResult": false
+    },
+    {
+      "case": "only_noise_22",
+      "explicitlySyntheticRemovedIds": [
+        820022
+      ],
+      "actualInstalledPredicate": false,
+      "expectedContractResult": false
+    },
+    {
+      "case": "right_target_plus_noise_22",
+      "explicitlySyntheticRemovedIds": [
+        820022,
+        830000
+      ],
+      "actualInstalledPredicate": false,
+      "expectedContractResult": false
+    },
+    {
+      "case": "only_noise_23",
+      "explicitlySyntheticRemovedIds": [
+        820023
+      ],
+      "actualInstalledPredicate": false,
+      "expectedContractResult": false
+    },
+    {
+      "case": "right_target_plus_noise_23",
+      "explicitlySyntheticRemovedIds": [
+        820023,
+        830000
+      ],
+      "actualInstalledPredicate": false,
+      "expectedContractResult": false
+    },
+    {
+      "case": "one_pan_7_two_avocado_(21, 22)",
+      "explicitlySyntheticRemovedIds": [
+        820007,
+        820021,
+        820022
+      ],
+      "actualInstalledPredicate": false,
+      "expectedContractResult": false
+    },
+    {
+      "case": "one_pan_7_two_avocado_(21, 23)",
+      "explicitlySyntheticRemovedIds": [
+        820007,
+        820021,
+        820023
+      ],
+      "actualInstalledPredicate": false,
+      "expectedContractResult": false
+    },
+    {
+      "case": "one_pan_7_two_avocado_(22, 23)",
+      "explicitlySyntheticRemovedIds": [
+        820007,
+        820022,
+        820023
+      ],
+      "actualInstalledPredicate": false,
+      "expectedContractResult": false
+    },
+    {
+      "case": "one_pan_13_two_avocado_(21, 22)",
+      "explicitlySyntheticRemovedIds": [
+        820013,
+        820021,
+        820022
+      ],
+      "actualInstalledPredicate": false,
+      "expectedContractResult": false
+    },
+    {
+      "case": "one_pan_13_two_avocado_(21, 23)",
+      "explicitlySyntheticRemovedIds": [
+        820013,
+        820021,
+        820023
+      ],
+      "actualInstalledPredicate": false,
+      "expectedContractResult": false
+    },
+    {
+      "case": "one_pan_13_two_avocado_(22, 23)",
+      "explicitlySyntheticRemovedIds": [
+        820013,
+        820022,
+        820023
+      ],
+      "actualInstalledPredicate": false,
+      "expectedContractResult": false
+    }
+  ],
+  "twoIndependentConditionalFailureMechanisms": [
+    "If original targetpair remains unchanged, intended target removal predicate fails even without other damage.",
+    "If any original noise row is removed, preservation fails even if one correct target was also removed."
+  ],
+  "historicalLimits": [
+    "No actual historicalbefore/after DB/IDs or first false branch inferred.",
+    "Six pan+twoavocado cases are exhaustive only over these controlled logical removed-row sets, not evidence that these exact historical IDs were deleted.",
+    "Agent failed final is honest but its word duplicate does not establish true duplicate business content."
+  ],
+  "newOfficialReward": null
+}

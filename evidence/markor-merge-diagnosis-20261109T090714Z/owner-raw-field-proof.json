@@ -1,0 +1,992 @@
+{
+  "scope": "Historical original UI observations only, not a filesystem dump, filesystem absence proof or a fresh evaluator run",
+  "task": {
+    "complexity": 7.8,
+    "goal": "Merge the contents of Markor notes tough_frog_2023_08_05.txt, proud_cat_edited.txt and 2023_08_21_friendly_koala.md (in the same order) into a new Markor note named mIObBbo4 and save it. Add a new line between the content of each note.",
+    "name": "MarkorMergeNotes",
+    "params": {
+      "file1_content": "m4kMyOGWaENoPj6FqLjd",
+      "file1_name": "tough_frog_2023_08_05.txt",
+      "file2_content": "fxHXZsqrmnwYjXvte9pg",
+      "file2_name": "proud_cat_edited.txt",
+      "file3_content": "f42GOjFWb2aKHogAFQSY",
+      "file3_name": "2023_08_21_friendly_koala.md",
+      "new_file_name": "mIObBbo4",
+      "seed": 2594989658
+    },
+    "paramsSha256": "83d348ecd71eee0838de42e16ede8c5725cd63bf2b70490f4149eaf41fce8868"
+  },
+  "manifestIdentity": {
+    "index": 33,
+    "name": "MarkorMergeNotes",
+    "paramsTransport": "json",
+    "instanceSeed": 2594989658,
+    "paramsSha256": "83d348ecd71eee0838de42e16ede8c5725cd63bf2b70490f4149eaf41fce8868",
+    "maxSteps": 78
+  },
+  "sourceHashes": {
+    "result.json": {
+      "sha256": "e563c89d457aa19ce08b8c4bd0473c8a3e8f0e20317fa427dcb253f7b5bd7ca0",
+      "bytes": 26487
+    },
+    "normalized-agent-events.json": {
+      "sha256": "a695eab6128571af8ed0d37612b3337f9e00167f5f3bdd7839dfeb81a1736512",
+      "bytes": 9436
+    },
+    "raw-private/agent-events.jsonl": {
+      "sha256": "2d62d4adb8a73459945dba97a5cc8db14b6eac61127eb0ac516d759ccd56db4b",
+      "bytes": 59740693
+    }
+  },
+  "all18CodeHashesMatchOriginalResult": [
+    {
+      "execution": 1,
+      "sourceLine": 360,
+      "responseSourceLine": 361,
+      "codeSha256": "226719dc89393e4ace69685ecc786295cc366dfc93aa4859c1ccd31722e66886",
+      "matchesOriginalResultCodeHash": true
+    },
+    {
+      "execution": 2,
+      "sourceLine": 573,
+      "responseSourceLine": 574,
+      "codeSha256": "42170c257112f2414f0c5b522c9bef99776cd0d6ff1e5a7c9f5fbe557e9a0720",
+      "matchesOriginalResultCodeHash": true
+    },
+    {
+      "execution": 3,
+      "sourceLine": 777,
+      "responseSourceLine": 778,
+      "codeSha256": "3129a61666cee2aa2a3b69400775492fde6d896f5d0d474c1e3c1705cf0e159d",
+      "matchesOriginalResultCodeHash": true
+    },
+    {
+      "execution": 4,
+      "sourceLine": 986,
+      "responseSourceLine": 987,
+      "codeSha256": "2cd3b044f0d15a7e89d060cd996a4a6e11ad80fad41f2d9ad84041ebaf51cac4",
+      "matchesOriginalResultCodeHash": true
+    },
+    {
+      "execution": 5,
+      "sourceLine": 1199,
+      "responseSourceLine": 1200,
+      "codeSha256": "89c9f3db33ce7dfd54ea25bdb182a5e7f20462b2f2cd166bcc01aee274635f16",
+      "matchesOriginalResultCodeHash": true
+    },
+    {
+      "execution": 6,
+      "sourceLine": 1313,
+      "responseSourceLine": 1314,
+      "codeSha256": "e7f587931c45f024489046e0f37c77053704667abc101cf04212554d3fac8428",
+      "matchesOriginalResultCodeHash": true
+    },
+    {
+      "execution": 7,
+      "sourceLine": 1406,
+      "responseSourceLine": 1407,
+      "codeSha256": "046dfe0d01f23eda699edb0818cd8408edc36dd24c25c5b8c9f7a0dac13c3a53",
+      "matchesOriginalResultCodeHash": true
+    },
+    {
+      "execution": 8,
+      "sourceLine": 1530,
+      "responseSourceLine": 1531,
+      "codeSha256": "2e00e445ee2b41c60a58a8dd6cedb49bef7e0b63b8919ef3c168d47d8cab5408",
+      "matchesOriginalResultCodeHash": true
+    },
+    {
+      "execution": 9,
+      "sourceLine": 1731,
+      "responseSourceLine": 1732,
+      "codeSha256": "1e98e84fe8fb28449543658e20f0a1032144ed3cd0b1582546c27a50d44fd655",
+      "matchesOriginalResultCodeHash": true
+    },
+    {
+      "execution": 10,
+      "sourceLine": 1856,
+      "responseSourceLine": 1857,
+      "codeSha256": "452fb34ea9971a429aeb0f3a8b548a152f22b8d133e54cab2b018a0866a9f662",
+      "matchesOriginalResultCodeHash": true
+    },
+    {
+      "execution": 11,
+      "sourceLine": 2086,
+      "responseSourceLine": 2087,
+      "codeSha256": "14ea579a99a72bfaed4b9034c7a8c841a9832cecc3593d7e76c577cd71955311",
+      "matchesOriginalResultCodeHash": true
+    },
+    {
+      "execution": 12,
+      "sourceLine": 2275,
+      "responseSourceLine": 2276,
+      "codeSha256": "d586d2e44d6477403e7b34cc06fe91b8c5db37f58598f145655f639f25466627",
+      "matchesOriginalResultCodeHash": true
+    },
+    {
+      "execution": 13,
+      "sourceLine": 2561,
+      "responseSourceLine": 2562,
+      "codeSha256": "069f2ca3eb0030793518c20ddfaee1e907878dba877b838d4eef4138d4e98e9d",
+      "matchesOriginalResultCodeHash": true
+    },
+    {
+      "execution": 14,
+      "sourceLine": 2875,
+      "responseSourceLine": 2876,
+      "codeSha256": "98c2cad6147d3c732347b5021fe6d7a0313a5105f95a4415aba4aded9017f2a8",
+      "matchesOriginalResultCodeHash": true
+    },
+    {
+      "execution": 15,
+      "sourceLine": 3338,
+      "responseSourceLine": 3339,
+      "codeSha256": "1398ffad835ca0afe55ef503f184c74c8265e0bfa9c0cddf310bf8b3d3b92d6d",
+      "matchesOriginalResultCodeHash": true
+    },
+    {
+      "execution": 16,
+      "sourceLine": 3446,
+      "responseSourceLine": 3447,
+      "codeSha256": "704c1e7d519a8eba1b39af0dc1780015dea8942036a73a272e45ef85e1c368c0",
+      "matchesOriginalResultCodeHash": true
+    },
+    {
+      "execution": 17,
+      "sourceLine": 3807,
+      "responseSourceLine": 3808,
+      "codeSha256": "71c2f11f5f5d1cc416fc757e4797ee332357e94e8ef8cedfcbcfd031286e399c",
+      "matchesOriginalResultCodeHash": true
+    },
+    {
+      "execution": 18,
+      "sourceLine": 3867,
+      "responseSourceLine": 3868,
+      "codeSha256": "0e4440c933463117347aa7fb74e7f3546502965bba0f42fa18054139051bf9b9",
+      "matchesOriginalResultCodeHash": true
+    }
+  ],
+  "statusCounts": {
+    "completed": 17,
+    "failed": 1,
+    "timed_out": 0
+  },
+  "allKernelsAlive": true,
+  "historicalStages": [
+    {
+      "completedAtUnix": 1794039124.439101,
+      "durationSeconds": 0.383,
+      "name": "infrastructure",
+      "startedAtUnix": 1794039124.055965,
+      "status": "completed"
+    },
+    {
+      "completedAtUnix": 1794039124.440027,
+      "durationSeconds": 0.001,
+      "name": "protocol",
+      "startedAtUnix": 1794039124.439101,
+      "status": "completed"
+    },
+    {
+      "completedAtUnix": 1794039141.808148,
+      "durationSeconds": 17.368,
+      "name": "infrastructure",
+      "startedAtUnix": 1794039124.440027,
+      "status": "completed"
+    },
+    {
+      "completedAtUnix": 1794039143.912647,
+      "durationSeconds": 2.104,
+      "name": "task_initialization",
+      "startedAtUnix": 1794039141.808148,
+      "status": "completed"
+    },
+    {
+      "completedAtUnix": 1794039320.386237,
+      "durationSeconds": 176.474,
+      "name": "agent",
+      "startedAtUnix": 1794039143.912647,
+      "status": "completed"
+    },
+    {
+      "completedAtUnix": 1794039320.3864052,
+      "durationSeconds": 0.0,
+      "name": "agent_protocol",
+      "startedAtUnix": 1794039320.386237,
+      "status": "completed"
+    },
+    {
+      "completedAtUnix": 1794039320.426084,
+      "durationSeconds": 0.04,
+      "name": "evaluator",
+      "startedAtUnix": 1794039320.3864052,
+      "status": "completed"
+    },
+    {
+      "completedAtUnix": 1794039322.596176,
+      "durationSeconds": 2.17,
+      "name": "task_teardown",
+      "startedAtUnix": 1794039320.426084,
+      "status": "completed"
+    },
+    {
+      "completedAtUnix": 1794039322.655415,
+      "durationSeconds": 0.059,
+      "name": "environment_close",
+      "startedAtUnix": 1794039322.596176,
+      "status": "completed"
+    },
+    {
+      "completedAtUnix": 1794039322.655425,
+      "durationSeconds": 0.0,
+      "name": "result_write",
+      "startedAtUnix": 1794039322.655415,
+      "status": "completed"
+    }
+  ],
+  "originalCleanup": {
+    "agentSession": {
+      "agentQuitReturned": true,
+      "attribution": "agent",
+      "sessionIdSha256": "8fd2c646e3e3131a2659e0f71c02e5a77a76d0f5da1e08e47a6d01f2330865b0",
+      "status": "closed",
+      "verification": {
+        "activeSessionCount": 0,
+        "attemptedSessionCount": 1,
+        "ownedSessionCount": 1,
+        "pendingCreateCount": 0,
+        "pendingRequestCount": 0,
+        "reclaimedSessionCount": 0,
+        "reclaimedSessionHashes": [],
+        "sessions": [
+          {
+            "absentVerified": true,
+            "alreadyAbsent": true,
+            "errors": [],
+            "presentVerified": false,
+            "quitReturned": false,
+            "sessionHash": "8fd2c646e3e3131a2659e0f71c02e5a77a76d0f5da1e08e47a6d01f2330865b0"
+          }
+        ],
+        "status": "unknown",
+        "unknownCreationOutcomeCount": 0
+      },
+      "verificationStatus": "absent"
+    },
+    "environment": "closed",
+    "taskTearDown": "completed"
+  },
+  "observations": [
+    {
+      "execution": 8,
+      "sourceLine": 1530,
+      "responseSourceLine": 1531,
+      "actualResponseResult": [
+        {
+          "resource-id": "null",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.widget.FrameLayout",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "null",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.widget.FrameLayout",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "null",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.widget.FrameLayout",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/action_bar_root",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.widget.FrameLayout",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "android:id/content",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.widget.FrameLayout",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/main_content",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.widget.FrameLayout",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/appbar",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.widget.LinearLayout",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/toolbar",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.view.ViewGroup",
+          "clickable": "true"
+        },
+        {
+          "resource-id": "null",
+          "content-desc": "null",
+          "text": "Markor",
+          "className": "android.widget.TextView",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "null",
+          "content-desc": "null",
+          "text": "",
+          "className": "androidx.appcompat.widget.LinearLayoutCompat",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/action_go_to",
+          "content-desc": "Go to",
+          "text": "",
+          "className": "android.widget.TextView",
+          "clickable": "true"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/action_sort",
+          "content-desc": "Sort by",
+          "text": "",
+          "className": "android.widget.TextView",
+          "clickable": "true"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/action_search",
+          "content-desc": "Search",
+          "text": "",
+          "className": "android.widget.TextView",
+          "clickable": "true"
+        },
+        {
+          "resource-id": "null",
+          "content-desc": "More options",
+          "text": "",
+          "className": "android.widget.ImageView",
+          "clickable": "true"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/main__view_pager_container",
+          "content-desc": "null",
+          "text": "",
+          "className": "androidx.viewpager.widget.ViewPager",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "null",
+          "content-desc": "null",
+          "text": "",
+          "className": "androidx.recyclerview.widget.RecyclerView",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "null",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.widget.FrameLayout",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/ui__filesystem_dialog__root",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.widget.FrameLayout",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/pull_to_refresh",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.view.ViewGroup",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/ui__filesystem_dialog__list",
+          "content-desc": "null",
+          "text": "",
+          "className": "androidx.recyclerview.widget.RecyclerView",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/opoc_filesystem_item__root",
+          "content-desc": "Folder .. ",
+          "text": "",
+          "className": "android.widget.LinearLayout",
+          "clickable": "true"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/opoc_filesystem_item__image",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.widget.ImageView",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "null",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.widget.LinearLayout",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/opoc_filesystem_item__title",
+          "content-desc": "null",
+          "text": "..",
+          "className": "android.widget.TextView",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/opoc_filesystem_item__description",
+          "content-desc": "null",
+          "text": "/storage/emulated/0/Documents",
+          "className": "android.widget.TextView",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/opoc_filesystem_item__root",
+          "content-desc": "Folder .app ",
+          "text": "",
+          "className": "android.widget.LinearLayout",
+          "clickable": "true"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/opoc_filesystem_item__image",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.widget.ImageView",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "null",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.widget.LinearLayout",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/opoc_filesystem_item__title",
+          "content-desc": "null",
+          "text": ".app",
+          "className": "android.widget.TextView",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/opoc_filesystem_item__description",
+          "content-desc": "null",
+          "text": "10/15/2023, 15:35",
+          "className": "android.widget.TextView",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/opoc_filesystem_item__root",
+          "content-desc": "File 2023_08_21_friendly_koala.md ",
+          "text": "",
+          "className": "android.widget.LinearLayout",
+          "clickable": "true"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/opoc_filesystem_item__image",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.widget.ImageView",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "null",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.widget.LinearLayout",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/opoc_filesystem_item__title",
+          "content-desc": "null",
+          "text": "2023_08_21_friendly_koala.md",
+          "className": "android.widget.TextView",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/opoc_filesystem_item__description",
+          "content-desc": "null",
+          "text": "10/15/2023, 15:34",
+          "className": "android.widget.TextView",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/opoc_filesystem_item__root",
+          "content-desc": "File proud_cat_edited.txt ",
+          "text": "",
+          "className": "android.widget.LinearLayout",
+          "clickable": "true"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/opoc_filesystem_item__image",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.widget.ImageView",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "null",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.widget.LinearLayout",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/opoc_filesystem_item__title",
+          "content-desc": "null",
+          "text": "proud_cat_edited.txt",
+          "className": "android.widget.TextView",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/opoc_filesystem_item__description",
+          "content-desc": "null",
+          "text": "10/15/2023, 15:34",
+          "className": "android.widget.TextView",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/opoc_filesystem_item__root",
+          "content-desc": "File tough_frog_2023_08_05.txt ",
+          "text": "",
+          "className": "android.widget.LinearLayout",
+          "clickable": "true"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/opoc_filesystem_item__image",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.widget.ImageView",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "null",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.widget.LinearLayout",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/opoc_filesystem_item__title",
+          "content-desc": "null",
+          "text": "tough_frog_2023_08_05.txt",
+          "className": "android.widget.TextView",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/opoc_filesystem_item__description",
+          "content-desc": "null",
+          "text": "10/15/2023, 15:34",
+          "className": "android.widget.TextView",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/fab_add_new_item",
+          "content-desc": "Create a new file or folder",
+          "text": "",
+          "className": "android.widget.ImageButton",
+          "clickable": "true"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/bottom_navigation_bar",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.widget.FrameLayout",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "null",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.view.ViewGroup",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/nav_notebook",
+          "content-desc": "Files",
+          "text": "",
+          "className": "android.widget.FrameLayout",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/navigation_bar_item_icon_container",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.widget.FrameLayout",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/navigation_bar_item_icon_view",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.widget.ImageView",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/navigation_bar_item_labels_group",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.view.ViewGroup",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/navigation_bar_item_large_label_view",
+          "content-desc": "null",
+          "text": "Files",
+          "className": "android.widget.TextView",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/nav_todo",
+          "content-desc": "To-Do",
+          "text": "",
+          "className": "android.widget.FrameLayout",
+          "clickable": "true"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/navigation_bar_item_labels_group",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.view.ViewGroup",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/navigation_bar_item_small_label_view",
+          "content-desc": "null",
+          "text": "To-Do",
+          "className": "android.widget.TextView",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/navigation_bar_item_icon_container",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.widget.FrameLayout",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/navigation_bar_item_icon_view",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.widget.ImageView",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/nav_quicknote",
+          "content-desc": "QuickNote",
+          "text": "",
+          "className": "android.widget.FrameLayout",
+          "clickable": "true"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/navigation_bar_item_labels_group",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.view.ViewGroup",
+          "clickable": "false"
+        }
+      ],
+      "error": null
+    },
+    {
+      "execution": 11,
+      "sourceLine": 2086,
+      "responseSourceLine": 2087,
+      "actualResponseResult": {
+        "first": "'m4kMyOGWaENoPj6FqLjd\\n'",
+        "second": "'fxHXZsqrmnwYjXvte9pg\\n'",
+        "title": "proud_cat_edited"
+      },
+      "error": null
+    },
+    {
+      "execution": 12,
+      "sourceLine": 2275,
+      "responseSourceLine": 2276,
+      "actualResponseResult": {
+        "third": "'f42GOjFWb2aKHogAFQSY\\n'",
+        "title": "2023_08_21_friendly_koala"
+      },
+      "error": null
+    },
+    {
+      "execution": 13,
+      "sourceLine": 2561,
+      "responseSourceLine": 2562,
+      "actualResponseResult": [
+        {
+          "resource-id": "null",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.widget.FrameLayout",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/action_bar_root",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.widget.FrameLayout",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "android:id/content",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.widget.FrameLayout",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/parentPanel",
+          "content-desc": "null",
+          "text": "",
+          "className": "androidx.appcompat.widget.LinearLayoutCompat",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/customPanel",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.widget.FrameLayout",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/custom",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.widget.FrameLayout",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/new_file_dialog__root",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.widget.ScrollView",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "null",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.widget.LinearLayout",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "null",
+          "content-desc": "null",
+          "text": "Name",
+          "className": "android.widget.TextView",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "null",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.widget.LinearLayout",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/new_file_dialog__name",
+          "content-desc": "null",
+          "text": "my_note",
+          "className": "android.widget.EditText",
+          "clickable": "true"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/new_file_dialog__ext",
+          "content-desc": "null",
+          "text": ".md",
+          "className": "android.widget.EditText",
+          "clickable": "true"
+        },
+        {
+          "resource-id": "null",
+          "content-desc": "null",
+          "text": "Type",
+          "className": "android.widget.TextView",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/new_file_dialog__type",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.widget.Spinner",
+          "clickable": "true"
+        },
+        {
+          "resource-id": "android:id/text1",
+          "content-desc": "null",
+          "text": "Markdown",
+          "className": "android.widget.TextView",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "null",
+          "content-desc": "null",
+          "text": "Template",
+          "className": "android.widget.TextView",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/new_file_dialog__template",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.widget.Spinner",
+          "clickable": "true"
+        },
+        {
+          "resource-id": "android:id/text1",
+          "content-desc": "null",
+          "text": "Empty file",
+          "className": "android.widget.TextView",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "null",
+          "content-desc": "null",
+          "text": "- Folder is created without file extension",
+          "className": "android.widget.TextView",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "null",
+          "content-desc": "null",
+          "text": "- Files and folders are not overwritten",
+          "className": "android.widget.TextView",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "net.gsantner.markor:id/buttonPanel",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.widget.ScrollView",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "null",
+          "content-desc": "null",
+          "text": "",
+          "className": "android.widget.LinearLayout",
+          "clickable": "false"
+        },
+        {
+          "resource-id": "android:id/button3",
+          "content-desc": "null",
+          "text": "FOLDER",
+          "className": "android.widget.Button",
+          "clickable": "true"
+        },
+        {
+          "resource-id": "android:id/button2",
+          "content-desc": "null",
+          "text": "CANCEL",
+          "className": "android.widget.Button",
+          "clickable": "true"
+        },
+        {
+          "resource-id": "android:id/button1",
+          "content-desc": "null",
+          "text": "OK",
+          "className": "android.widget.Button",
+          "clickable": "true"
+        }
+      ],
+      "error": null
+    },
+    {
+      "execution": 14,
+      "sourceLine": 2875,
+      "responseSourceLine": 2876,
+      "actualResponseResult": null,
+      "error": {
+        "type": "SyntaxError",
+        "message": "unterminated string literal (detected at line 9)",
+        "traceback": [
+          "Traceback (most recent call last):",
+          "  File \"/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/lib/python3.11/site-packages/amkernel/runner.py\", line 590, in _execute_cell",
+          "    value = _compile_and_execute(code, execution_count, namespace)",
+          "            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+          "  File \"/Users/qunmi/.local/share/fsq-androidworld-eval/amkernel-3388314/uv-tools/amkernel/lib/python3.11/site-packages/amkernel/runner.py\", line 547, in _compile_and_execute",
+          "    module = ast.parse(code, filename=filename, mode=\"exec\")",
+          "             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+          "  File \"/Users/qunmi/.local/share/uv/python/cpython-3.11.16-macos-aarch64-none/lib/python3.11/ast.py\", line 50, in parse",
+          "    return compile(source, filename, mode, flags,",
+          "           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+          "  File \"<amkernel-cell-14>\", line 9",
+          "    merged='",
+          "           ^",
+          "SyntaxError: unterminated string literal (detected at line 9)"
+        ]
+      }
+    },
+    {
+      "execution": 15,
+      "sourceLine": 3338,
+      "responseSourceLine": 3339,
+      "actualResponseResult": {
+        "title": "mIObBbo4",
+        "content": "m4kMyOGWaENoPj6FqLjd\nfxHXZsqrmnwYjXvte9pg\nf42GOjFWb2aKHogAFQSY",
+        "activity": ".activity.DocumentActivity"
+      },
+      "error": null
+    },
+    {
+      "execution": 16,
+      "sourceLine": 3446,
+      "responseSourceLine": 3447,
+      "actualResponseResult": {
+        "package": "net.gsantner.markor",
+        "activity": ".activity.DocumentActivity",
+        "keyboardShown": true,
+        "title": "mIObBbo4",
+        "content": "m4kMyOGWaENoPj6FqLjd\nfxHXZsqrmnwYjXvte9pg\nf42GOjFWb2aKHogAFQSY"
+      },
+      "error": null
+    },
+    {
+      "execution": 17,
+      "sourceLine": 3807,
+      "responseSourceLine": 3808,
+      "actualResponseResult": {
+        "listed": "File mIObBbo4.md 10/15/2023, 15:34",
+        "title": "mIObBbo4",
+        "content": "m4kMyOGWaENoPj6FqLjd\nfxHXZsqrmnwYjXvte9pg\nf42GOjFWb2aKHogAFQSY",
+        "matches": true
+      },
+      "error": null
+    },
+    {
+      "execution": 18,
+      "sourceLine": 3867,
+      "responseSourceLine": 3868,
+      "actualResponseResult": {
+        "ownedSessionId": "717d061e-2ecc-450f-bf96-5b61eff56af1",
+        "quitReturned": true
+      },
+      "error": null
+    }
+  ],
+  "earliestObservedDivergences": {
+    "fileNaming": "exec13 dialog extension .md; successful exec15 edits name only; exec17 lists/reopens mIObBbo4.md while base title omits suffix",
+    "contentAssembly": "exec11/12 source strings have trailing LF; exec15 rstrips each source and joins with one LF, producing three nonempty lines; original reference expects five split lines with empty index1/index3",
+    "verification": "exec17 matches condition compares base title and original self-built single-LF merged string, not exact literal filesystem name or blank-line contract"
+  },
+  "locationEvidence": "Initial Files UI contains the three initialized notes with parent item /storage/emulated/0/Documents. No subsequent directory-change action is present in18 calls. Expected MARKOR_DATA is known from installed constant; actual saved absolute path not directly dumped.",
+  "deviceQueries": 0
+}

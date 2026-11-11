@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "kind": "native_fsq_androidworld_offline_delivery",
+  "status": "offline_implementation_complete_ready_for_independent_review",
+  "campaignId": "fsq-native-gpt61-corrected-20261110T043031Z",
+  "candidate": {
+    "path": "evidence/fsq-native-gpt61-corrected-20261110T043031Z/candidate-final-manifest.json",
+    "sha256": "0c135fad4250aed48afed72bd5e2b48f6708d5718245a475b55c885ed4578d4c",
+    "kind": "fsq_androidworld",
+    "taskCount": 116,
+    "pendingGates": true
+  },
+  "sourceTreeSha256": "eb007df8f2d05326486b888021e1b050bbfc5cd04cf58a751d1beb42b92108de",
+  "sourceInventory": "evidence/fsq-native-gpt61-corrected-20261110T043031Z/source-inventory.json",
+  "handoff": "evidence/fsq-native-gpt61-corrected-20261110T043031Z/handoff.md",
+  "artifacts": [
+    {
+      "path": "evidence/fsq-native-gpt61-corrected-20261110T043031Z/candidate-final-manifest.json",
+      "sha256": "0c135fad4250aed48afed72bd5e2b48f6708d5718245a475b55c885ed4578d4c"
+    },
+    {
+      "path": "evidence/fsq-native-gpt61-corrected-20261110T043031Z/candidate-final-manifest.json.sha256",
+      "sha256": "732ce9620d95616dd61aec3fcf0226f6b4f22f8a3745e4fafc4948db55095c00"
+    },
+    {
+      "path": "evidence/fsq-native-gpt61-corrected-20261110T043031Z/source-inventory.json",
+      "sha256": "61d8c6ce5c1549da3359a5b48ddc60b479c940b03f966698cb84660648e264ec"
+    },
+    {
+      "path": "evidence/fsq-native-gpt61-corrected-20261110T043031Z/identity-snapshot.json",
+      "sha256": "48e142a10eb6fe64377a20872f9573b00ee3b7fc35a9ad01f4957f3323dc5d8a"
+    },
+    {
+      "path": "evidence/fsq-native-gpt61-corrected-20261110T043031Z/handoff.md",
+      "sha256": "89f654c6452a4b146cab28824f11a853f1290bb1bf4fc71097efae937dde07c1"
+    },
+    {
+      "path": "evidence/fsq-native-gpt61-corrected-20261110T043031Z/verification-source-bindings.json",
+      "sha256": "6367a5608beffddaf2ef5250fe973a67be996a7924a20411d98587bc864efe11"
+    },
+    {
+      "path": "evidence/fsq-native-gpt61-corrected-20261110T043031Z/offline-native-provenance.xml",
+      "sha256": "d1e4640704bce20e75d7aec549d5925bb1a5e686dfc1354d015301bd0b04158f"
+    },
+    {
+      "path": "evidence/fsq-native-gpt61-corrected-20261110T043031Z/offline-pytest.xml",
+      "sha256": "81373176c6f0f89602222f35147bd154a09a4a5f320be963f0d8efb96cd73013"
+    },
+    {
+      "path": "evidence/fsq-native-gpt61-corrected-20261110T043031Z/offline-cli-provenance.json",
+      "sha256": "9bafe0cab474cf5bd175e19e7039de3151d311258fa3b19a8cbc6a5702760e74"
+    },
+    {
+      "path": "evidence/fsq-native-gpt61-corrected-20261110T043031Z/native-schema-smoke.json",
+      "sha256": "589055ad4076f4f3231da16a97fcd35b362caa2eb36a1de273cc1df7f77a487d"
+    },
+    {
+      "path": "evidence/fsq-native-gpt61-corrected-20261110T043031Z/native-model-failure.json",
+      "sha256": "54efcb52eea06dfb3d0eff7bd7b94ec3757da8416fb0d32cdf9f3f87454d60b2"
+    },
+    {
+      "path": "evidence/fsq-native-gpt61-corrected-20261110T043031Z/native-model-second-failure.json",
+      "sha256": "7f61d2296512639afe34fe3d42a30c216da8ab022ce4b1cbdbe180968848f024"
+    },
+    {
+      "path": "evidence/fsq-native-gpt61-corrected-20261110T043031Z/native-interface-receipt.md",
+      "sha256": "a044953bcd0a62bd0b6a6549cd0280b7c9251b8095d96ab73de982c9659a7a0f"
+    }
+  ],
+  "verification": {
+    "finalNativeTestsPassed": 199,
+    "fullSuitePassedBeforeFinalManifestFixes": 894,
+    "finalRealPrepareExitCode": 0,
+    "finalRealInspectExitCode": 0,
+    "nativeSchemaSmokeExitCode": 0
+  },
+  "model": {
+    "requestedProvider": "github_copilot",
+    "requestedModel": "gpt-6.1-sol",
+    "nativeAuthenticationFailures": 2,
+    "targetInferenceOccurred": false,
+    "actualModel": "unknown",
+    "usage": "unknown",
+    "ResponsesSupportProven": false,
+    "fallbackOccurred": false,
+    "newDiagnosticAuthorizationOwnedBy": "w7:p1",
+    "snapshotSourceDirty": true
+  },
+  "resources": {
+    "proposedSerial": "emulator-5556",
+    "proposedConsolePort": 5556,
+    "proposedGrpcPort": 8556,
+    "ownershipGranted": false,
+    "devicesAccessed": false,
+    "businessAgentStarted": false,
+    "liveEvaluationAuthorized": false
+  },
+  "sourceAndCommitCoordination": {
+    "sourceSnapshot": {
+      "evaluator": {
+        "head": "977020aa4306bc7f5628ec69f65ea998af3013a1",
+        "worktree": {
+          "dirty": true,
+          "status": "observed",
+          "statusSha256": "cbf26a83d79d12e422ddc0d8dd1e383b360a1a8f2813f95e959701f8bf70b606"
+        },
+        "sourceSha256": "eb007df8f2d05326486b888021e1b050bbfc5cd04cf58a751d1beb42b92108de"
+      },
+      "androidWorld": {
+        "head": "55ddaf5edc6f6c25673aed343907d5b9dca66f84",
+        "worktree": {
+          "dirty": true,
+          "status": "observed",
+          "statusSha256": "a5521018da3b835a654e4f66ba4ac560525bcb3d7cd5deb54b40b2004b89666b"
+        },
+        "sourceSha256": "0ac9428da2e9d78d0303c44c682184268e708a3116134646401d5c8425671b94",
+        "importSha256": "0ac9428da2e9d78d0303c44c682184268e708a3116134646401d5c8425671b94"
+      },
+      "fsq": {
+        "head": "7e3f0793f3962ef2d8cc92f06310326c9077ce0d",
+        "worktree": {
+          "dirty": true,
+          "status": "observed",
+          "statusSha256": "02b5cb7e16091ff7c103ccc2af6e4dd4e5a5eba0f6deee6ac240b985c14a93a3"
+        },
+        "sourceSha256": "269c82d12cf3414c0a56b02fc169aa44cf76bec8fe44c0456c370f1e7aa7eb1a",
+        "importSha256": "269c82d12cf3414c0a56b02fc169aa44cf76bec8fe44c0456c370f1e7aa7eb1a"
+      },
+      "nativeProviderMetadata": {
+        "model": "deepseek-flash",
+        "path": "/Users/qunmi/.fsq/config.yaml",
+        "provider": "deepseek",
+        "status": "metadata_observed_not_authenticated"
+      }
+    },
+    "oldHeadIsNotCleanCode": true,
+    "reviewedFixCommitWindowAcked": true,
+    "sharedWritesPaused": true,
+    "implementationOwnerGitWrites": false,
+    "postExternalCommitOrFSQSourceChangeRequiresFreshIdentity": true
+  },
+  "independentReview": {
+    "owner": "w4:p2",
+    "status": "ready_for_review_not_accepted",
+    "newEvidenceRoot": "evidence/fsq-native-gpt61-corrected-20261110T043031Z",
+    "oldAMKernelAcceptanceReused": false
+  },
+  "formalExecutionStarted": false
+}

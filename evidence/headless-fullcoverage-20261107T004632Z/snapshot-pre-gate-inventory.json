@@ -1,0 +1,13 @@
+{
+  "command": [
+    "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+    "-s",
+    "emulator-5554",
+    "shell",
+    "su 0 find /data/data/android_world/snapshots -maxdepth 1 -type d"
+  ],
+  "returnCode": 1,
+  "stdout": "",
+  "stderr": "find: '/data/data/android_world/snapshots': No such file or directory\n",
+  "observedAtUnix": 1794012763.995709
+}

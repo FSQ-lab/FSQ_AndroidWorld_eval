@@ -1,0 +1,14 @@
+{
+  "name": "control-baseline",
+  "observedAtUnix": 1794007088.3890371,
+  "command": [
+    "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+    "-s",
+    "emulator-5554",
+    "shell",
+    "cat /proc/sys/kernel/random/boot_id; pidof system_server surfaceflinger; service check activity; service check settings; service check window; cat /proc/uptime; ls /data/anr; getprop ro.build.fingerprint"
+  ],
+  "returnCode": 0,
+  "stdout": "d7fa5bd9-83b9-446b-bf4f-3b0cddf6657f\n340 505\nService activity: found\nService settings: found\nService window: found\n210.22 720.71\ngoogle/sdk_gphone64_arm64/emu64a:13/TE1A.240213.009/12342917:userdebug/dev-keys\n",
+  "stderr": ""
+}

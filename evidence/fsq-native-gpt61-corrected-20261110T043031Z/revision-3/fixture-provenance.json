@@ -1,0 +1,27 @@
+{
+  "kind": "desensitized_retained_native_fixture",
+  "sourceEpisodeId": "fsq-native-gpt61-r2-final-5554-20261110-smoke-102",
+  "sourceFiles": {
+    "worker-result.json": {
+      "sha256": "1271155cf5a262799d1ae0618e07942f8fac8d96e7a1a6de959ce9bd257b76b1",
+      "bytes": 10264
+    },
+    "fsq-task-result.private.json": {
+      "sha256": "a72692b1fa1a46e6edde8a8a3c52fcb305a1a249d6bd91e3f5f9c7e69141d8fb",
+      "bytes": 9038
+    },
+    "fsq-verification.private.json": {
+      "sha256": "3c1736a8a93a9292d1dcc02c2f22461be4e5f3d33ba5cd9aaeec886dab7f26ec",
+      "bytes": 822
+    },
+    "native-action-audit.jsonl": {
+      "sha256": "f2ea0879d959811348ecfe92793848a25421150d1ed2ebf27c746a2602c55aa5",
+      "bytes": 4140
+    }
+  },
+  "fixture": "tests/fixtures/fsq_native_swipe.json",
+  "redaction": "Preserve native JSON shape/control vocabulary, all numerical accounting/events/ordering and independent journal; replace free text by stable opaque digests, replace task identity consistently; omit live artifact paths/authentication metadata. Runtime test generates references only inside its own temp root.",
+  "reexecutedOriginalConsumerCheck": false,
+  "originalOutcomeUnmodified": true,
+  "exactStaticPredicate": "capability not in WRITE_ALIASES rejects swipe because WRITE_ALIASES[swipe] == swipe; first actual rejection at journal sequence5"
+}

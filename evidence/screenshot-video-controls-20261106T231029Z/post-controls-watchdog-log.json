@@ -1,0 +1,21 @@
+{
+  "name": "post-controls-watchdog-log",
+  "observedAtUnix": 1794011440.862408,
+  "command": [
+    "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+    "-s",
+    "emulator-5554",
+    "logcat",
+    "-d",
+    "-b",
+    "system",
+    "-v",
+    "threadtime",
+    "Watchdog:V",
+    "SystemServer:V",
+    "*:S"
+  ],
+  "returnCode": 0,
+  "stdout": "--------- beginning of system\n11-07 07:14:43.326   505   505 I SystemServer: Entered the Android system server!\n11-07 07:14:43.477   505   505 I SystemServer: Reading configuration...\n11-07 07:14:43.583   505   505 I Watchdog: Pausing HandlerChecker: main thread for reason: packagemanagermain. Pause count: 1\n11-07 07:14:43.794   505   505 I Watchdog: Resuming HandlerChecker: main thread for reason: packagemanagermain. Pause count: 0\n11-07 07:14:43.794   505   505 I Watchdog: Pausing HandlerChecker: main thread for reason: moveab. Pause count: 1\n11-07 07:14:43.794   505   505 I Watchdog: Resuming HandlerChecker: main thread for reason: moveab. Pause count: 0\n11-07 07:14:43.934   505   585 I SystemServer: SecondaryZygotePreload\n11-07 07:14:43.948   505   505 I Watchdog: Watchdog timeout updated to 60000 millis\n11-07 07:14:44.032   505   505 I Watchdog: Pausing HandlerChecker: main thread for reason: dexopt. Pause count: 1\n11-07 07:14:44.032   505   505 I Watchdog: Resuming HandlerChecker: main thread for reason: dexopt. Pause count: 0\n11-07 07:14:44.040   505   505 D SystemServer: AttentionService is not configured on this device\n11-07 07:14:44.040   505   505 D SystemServer: RotationResolverService is not configured on this device\n11-07 07:14:44.377   505   505 I SystemServer: Making services ready\n11-07 07:14:44.473   505   573 I SystemServer: WebViewFactoryPreparation\n11-07 07:14:44.685   505   536 I Watchdog: Interesting Java process com.android.phone started. Pid 844\n11-07 07:14:49.027   505   536 I Watchdog: Interesting Java process com.google.android.providers.media.module started. Pid 1528\n",
+  "stderr": ""
+}

@@ -1,0 +1,131 @@
+{
+  "appPrivateDataOrSnapshotsReplaced": false,
+  "authorizationDigest": "d90d242579782e1f3e7677ca5539698b3d69f6a4b71e2be3b71fa24e35b69d64",
+  "bootId": "0f36e370-012a-4423-a1f9-959beae8f90d",
+  "businessAgentInvoked": false,
+  "cleanup": {
+    "businessWorker": "not_spawned",
+    "guestPreparationState": "retained, including any successful adbd/map changes; no rollback or unroot",
+    "officialEnvironment": "not_created",
+    "remoteEffectsAfterClientTimeout": "not claimed absent",
+    "sharedTarget": "retained_FSQ_first_no_release",
+    "subprocesses": "Each issued ADB client waited/reaped; timeout kills and reaps that client only"
+  },
+  "complete": true,
+  "completedAtUnix": 1794314064.3730571,
+  "error": null,
+  "expectedMapSha256": "57a1955c6f517a114999fa50480ecc1402ed9b524db602540ac1c08f57ff140e",
+  "guestAdbdRootRequested": false,
+  "hostAdbServerRestartCommandIssued": false,
+  "kind": "official_fixed_map_environment_preparation",
+  "mapStatus": "restored_and_verified",
+  "modelCalled": false,
+  "officialEnvironmentCreated": false,
+  "operations": [
+    {
+      "arguments": [
+        "get-state"
+      ],
+      "completedAtUnix": 1794314064.2430751,
+      "returnCode": 0,
+      "startedAtUnix": 1794314064.233259,
+      "stderr": "",
+      "stdout": "device\n"
+    },
+    {
+      "arguments": [
+        "shell",
+        "cat",
+        "/proc/sys/kernel/random/boot_id"
+      ],
+      "completedAtUnix": 1794314064.259292,
+      "returnCode": 0,
+      "startedAtUnix": 1794314064.2434628,
+      "stderr": "",
+      "stdout": "0f36e370-012a-4423-a1f9-959beae8f90d\n"
+    },
+    {
+      "arguments": [
+        "shell",
+        "whoami"
+      ],
+      "completedAtUnix": 1794314064.275441,
+      "returnCode": 0,
+      "startedAtUnix": 1794314064.2598689,
+      "stderr": "",
+      "stdout": "root\n"
+    },
+    {
+      "arguments": [
+        "shell",
+        "mkdir",
+        "-p",
+        "/storage/emulated/0/Android/data/net.osmand/files"
+      ],
+      "completedAtUnix": 1794314064.290911,
+      "returnCode": 0,
+      "startedAtUnix": 1794314064.275897,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "arguments": [
+        "push",
+        "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.cache/androidworld-assets/Liechtenstein_europe.obf",
+        "/storage/emulated/0/Android/data/net.osmand/files/Liechtenstein_europe.obf"
+      ],
+      "completedAtUnix": 1794314064.322339,
+      "returnCode": 0,
+      "startedAtUnix": 1794314064.291384,
+      "stderr": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/.cache/androidworld-assets/Liechtenstein_europe.obf: 1 file pushed, 0 skipped. 435.1 MB/s (7241271 bytes in 0.016s)\n",
+      "stdout": ""
+    },
+    {
+      "arguments": [
+        "shell",
+        "chmod",
+        "777",
+        "/storage/emulated/0/Android/data/net.osmand/files/Liechtenstein_europe.obf"
+      ],
+      "completedAtUnix": 1794314064.337825,
+      "returnCode": 0,
+      "startedAtUnix": 1794314064.3229299,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "arguments": [
+        "shell",
+        "chcon",
+        "u:object_r:media_rw_data_file:s0",
+        "/storage/emulated/0/Android/data/net.osmand/files/Liechtenstein_europe.obf"
+      ],
+      "completedAtUnix": 1794314064.353121,
+      "returnCode": 0,
+      "startedAtUnix": 1794314064.33833,
+      "stderr": "",
+      "stdout": ""
+    },
+    {
+      "arguments": [
+        "shell",
+        "sha256sum",
+        "/storage/emulated/0/Android/data/net.osmand/files/Liechtenstein_europe.obf"
+      ],
+      "completedAtUnix": 1794314064.3724952,
+      "returnCode": 0,
+      "startedAtUnix": 1794314064.353634,
+      "stderr": "",
+      "stdout": "57a1955c6f517a114999fa50480ecc1402ed9b524db602540ac1c08f57ff140e  /storage/emulated/0/Android/data/net.osmand/files/Liechtenstein_europe.obf\n"
+    }
+  ],
+  "sharedAppiumOrEmulatorRestarted": false,
+  "startedAtUnix": 1794314064.232944,
+  "target": {
+    "adbPath": "/Users/qunmi/Library/Android/sdk/platform-tools/adb",
+    "consolePort": 5554,
+    "grpcPort": 8554,
+    "serial": "emulator-5554"
+  },
+  "targetReleased": false
+}

@@ -1,0 +1,1064 @@
+{
+  "index": 78,
+  "name": "SimpleCalendarNextEvent",
+  "goal": "What is my next upcoming event in Simple Calendar Pro? Answer with the title only. If there are multiples titles, format your answer in a comma separated list.",
+  "reward": 0.0,
+  "classification": "failed",
+  "initialization": {
+    "initializationReferenceTime": {
+      "referenceTime": "2023-10-15T15:34:00+00:00",
+      "timezone": "UTC"
+    },
+    "initializedGoal": "What is my next upcoming event in Simple Calendar Pro? Answer with the title only. If there are multiples titles, format your answer in a comma separated list."
+  },
+  "frozenTaskSpec": {
+    "apps": [
+      "simple calendar pro"
+    ],
+    "complexity": 1,
+    "difficulty": "easy",
+    "family": "information_retrieval",
+    "index": 78,
+    "instanceSeed": 20352009,
+    "maxActions": 10,
+    "maxSteps": 10,
+    "name": "SimpleCalendarNextEvent",
+    "params": {
+      "duration": "10 min",
+      "seed": 20352009,
+      "time": "22:35",
+      "title": "Board meeting"
+    },
+    "paramsSha256": "abbf7c18684e72581a94be7d699948ed6270cfbcdc8e2b194b5001c78f90a74d",
+    "paramsTransport": "json",
+    "tags": [
+      "complex_ui_understanding",
+      "screen_reading",
+      "information_retrieval",
+      "parameterized"
+    ],
+    "timeBudget": {
+      "businessSeconds": 720,
+      "cleanupWindowSeconds": 180,
+      "episodeSeconds": 1330,
+      "forceSeconds": 910,
+      "recoveryWindowSeconds": 120,
+      "terminationGraceSeconds": 10
+    }
+  },
+  "mainSteps": [
+    {
+      "stepId": 4,
+      "tool": "agent_runtime.runner",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "NativeActionBudgetExceeded: action_budget blocked further navigation.",
+          "Required kill_app teardown was attempted but blocked by the same action-budget error."
+        ],
+        "evidence": [
+          "assert_state passed for event_title with exact text Board meeting; this confirms its title, not its earliest-upcoming status."
+        ],
+        "plan_updates": [
+          "Inspected the event list and opened Board meeting details, but could not conclusively establish that it was the earliest upcoming event before the harness action budget was exhausted."
+        ],
+        "pre_plan": [
+          {
+            "action": "Launch Simple Calendar Pro and inspect its current screen.",
+            "status": "success",
+            "step_id": 1,
+            "success_criteria": [
+              "Calendar screen inspected."
+            ]
+          },
+          {
+            "action": "Navigate the agenda to locate the earliest future start time.",
+            "status": "adjusted",
+            "step_id": 2,
+            "success_criteria": [
+              "Earliest start time established relative to the current date and time."
+            ]
+          },
+          {
+            "action": "Read complete event titles in event details.",
+            "status": "adjusted",
+            "step_id": 3,
+            "success_criteria": [
+              "Complete titles verified for all events at the earliest upcoming time."
+            ]
+          }
+        ],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "inconclusive",
+        "summary": "Could not conclusively determine the earliest upcoming event.",
+        "unmet_criteria": [
+          "The complete title or titles of the earliest upcoming event or events could not be conclusively verified."
+        ]
+      }
+    },
+    {
+      "stepId": 5,
+      "tool": "agent_runtime.verifier",
+      "status": "success",
+      "error": null,
+      "output": {
+        "errors": [
+          "NativeActionBudgetExceeded blocked further navigation. The earliest-upcoming identity remains uncertain, but the recorded answer itself definitively fails the title-only requirement."
+        ],
+        "evidence": [
+          "Execution step 4 records the final output with summary: \"Could not conclusively determine the earliest upcoming event.\" It includes explanatory planning and error information rather than a title-only answer.",
+          "assert_state call_7A9zHyLOZxRcAsWN67euzNRI passed for event_title text \"Board meeting\", but this establishes the inspected title, not that the required answer was delivered."
+        ],
+        "plan_updates": [],
+        "pre_plan": [
+          {
+            "action": "Compare the recorded final answer with the verification goal.",
+            "status": "failed",
+            "step_id": 1,
+            "success_criteria": [
+              "The answer contains only the complete title or comma-separated titles of the earliest upcoming events."
+            ]
+          }
+        ],
+        "satisfied_criteria": [],
+        "schema_version": "task_run_v1",
+        "status": "failed",
+        "summary": "The recorded final answer reports inability to determine the event instead of containing only the required event title or comma-separated titles.",
+        "unmet_criteria": [
+          "The final answer does not provide only the complete title or titles of the earliest upcoming event or events."
+        ]
+      }
+    }
+  ],
+  "budgetSummary": {
+    "admitted": 10,
+    "attempted": 14,
+    "deadlineExceeded": false,
+    "deadlineMonotonic": 720613.359470583,
+    "denied": 4,
+    "deviceRestoredByClose": false,
+    "exclusions": [
+      "driver_construction",
+      "uiautomator2_service_startup",
+      "observation_and_assertion_side_effects",
+      "external_processes_and_direct_driver_access"
+    ],
+    "exhausted": true,
+    "failed": 0,
+    "inFlight": 0,
+    "inputTextUnit": "composite_click_optional_clear_set_text",
+    "maximum": 10,
+    "securityBoundary": false,
+    "succeeded": 10,
+    "unit": "admitted_android_harness_write_capability_dispatch",
+    "writeCapabilities": [
+      "launch_app",
+      "kill_app",
+      "tap_on",
+      "tap_at",
+      "long_press_on",
+      "input_text",
+      "press_key",
+      "swipe"
+    ]
+  },
+  "actions": [
+    {
+      "ordinal": 0,
+      "stepId": "agent-launch_app-1",
+      "action": "launch_app",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [],
+      "output": {
+        "app_id": "com.simplemobiletools.calendar.pro"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[0]"
+    },
+    {
+      "ordinal": 1,
+      "stepId": "agent-ui_snapshot-2",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Sun, Oct 15",
+        "Sun, Oct 15",
+        "Gmail",
+        "Gmail",
+        "Photos",
+        "Photos",
+        "YouTube",
+        "YouTube",
+        "Home",
+        "Phone",
+        "Phone",
+        "Messages",
+        "Messages",
+        "Chrome",
+        "Chrome",
+        "Calendar",
+        "Predicted app: Calendar",
+        "Search",
+        "Google app",
+        "Voice search",
+        "Google Lens"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 27981,
+          "retained_characters": 7650
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 8,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[1]"
+    },
+    {
+      "ordinal": 2,
+      "stepId": "agent-tap_on-3",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "accessibilityId": "Predicted app: Calendar"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[2]"
+    },
+    {
+      "ordinal": 3,
+      "stepId": "agent-ui_snapshot-4",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Search",
+        "Change view",
+        "Settings",
+        "More options",
+        "October",
+        "October",
+        "New Event"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 47332,
+          "retained_characters": 14367
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 7,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[3]"
+    },
+    {
+      "ordinal": 4,
+      "stepId": "agent-tap_on-5",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "resourceId": "com.simplemobiletools.calendar.pro:id/change_view"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[4]"
+    },
+    {
+      "ordinal": 5,
+      "stepId": "agent-ui_snapshot-6",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Daily view",
+        "Weekly view",
+        "Monthly view",
+        "Monthly and daily view",
+        "Yearly view",
+        "Simple event list"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 19839,
+          "retained_characters": 5147
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 6,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[5]"
+    },
+    {
+      "ordinal": 6,
+      "stepId": "agent-tap_on-7",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "Simple event list"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[6]"
+    },
+    {
+      "ordinal": 7,
+      "stepId": "agent-ui_snapshot-8",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:34",
+        "23:34",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Search",
+        "Change view",
+        "Settings",
+        "More options",
+        "15 Sunday",
+        "Call with Marketing",
+        "02:28 - 02:58",
+        "We will organize client feedback. Please bring rel",
+        "Review session for Project X",
+        "04:01 - 04:31",
+        "We will explore product launch.",
+        "Meeting with Dr. Smith",
+        "08:32 - 09:17",
+        "We will understand product launch.",
+        "Board meeting",
+        "22:35 - 22:45",
+        "Appointment for Annual Report",
+        "22:57 - 23:57",
+        "We will organize marketing strategies. Looking for",
+        "16 Monday",
+        "Meeting with Bob",
+        "07:13 - 08:13",
+        "We will understand product launch.",
+        "17 Tuesday",
+        "Appointment for Project X",
+        "15:30 - 16:00",
+        "We will finalize product launch.",
+        "Meeting with Dr. Smith",
+        "16:00 - 17:00",
+        "We will understand contract details. Remember to c",
+        "Review session for Project X",
+        "16:32 - 16:47",
+        "We will organize marketing strategies. Snacks will",
+        "18 Wednesday",
+        "Review session for Project X",
+        "New Event"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 54789,
+          "retained_characters": 15158
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 18,
+          "clipped_attributes": 5
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[7]"
+    },
+    {
+      "ordinal": 8,
+      "stepId": "agent-swipe-9",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "direction": "down"
+      },
+      "uiLabels": [],
+      "output": {
+        "direction": "down"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[8]"
+    },
+    {
+      "ordinal": 9,
+      "stepId": "agent-swipe-10",
+      "action": "swipe",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "start": {
+          "x": 530,
+          "y": 1
+        },
+        "end": {
+          "x": 530,
+          "y": 1100
+        },
+        "reference_screen_size": {
+          "width": 1080,
+          "height": 2400
+        },
+        "duration": 500
+      },
+      "uiLabels": [],
+      "output": {
+        "start": {
+          "x": 530,
+          "y": 1
+        },
+        "end": {
+          "x": 530,
+          "y": 1100
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[9]"
+    },
+    {
+      "ordinal": 10,
+      "stepId": "agent-ui_snapshot-11",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "On",
+        "Internet",
+        "Internet",
+        "Off",
+        "Bluetooth.",
+        "Bluetooth",
+        "Off",
+        "Flashlight",
+        "Flashlight",
+        "Off",
+        "Do Not Disturb.",
+        "Do Not Disturb",
+        "Android System",
+        "Alerted",
+        "Collapse",
+        "Data warning",
+        "You've used 4.68 GB of data",
+        "Silent",
+        "Clear all silent notifications",
+        "Need time to focus?",
+        "Use Focus mode to pause distracting apps. Tap to s",
+        "Expand",
+        "Check access settings",
+        "com.google.androidenv.accessibilityforwarder.Acce…",
+        "Expand",
+        "Manage",
+        "Manage",
+        "Clear all",
+        "Clear all notifications.",
+        "15:35",
+        "23:35",
+        "Sun, Oct 15",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "100%"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 54297,
+          "retained_characters": 13706
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 20,
+          "clipped_attributes": 2
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[10]"
+    },
+    {
+      "ordinal": 11,
+      "stepId": "agent-press_key-12",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[11]"
+    },
+    {
+      "ordinal": 12,
+      "stepId": "agent-ui_snapshot-13",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone three bars.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Search",
+        "Go to today",
+        "Change view",
+        "More options",
+        "02:03 - 02:33",
+        "We will understand team roles.",
+        "Review session for Campaign",
+        "15:24 - 16:24",
+        "We will discuss marketing strategies.",
+        "Workshop on Project X",
+        "20:25 - 21:25",
+        "We will review contract details. Let's be punctual",
+        "15 Sunday",
+        "Call with Marketing",
+        "02:28 - 02:58",
+        "We will organize client feedback. Please bring rel",
+        "Review session for Project X",
+        "04:01 - 04:31",
+        "We will explore product launch.",
+        "Meeting with Dr. Smith",
+        "08:32 - 09:17",
+        "We will understand product launch.",
+        "Board meeting",
+        "22:35 - 22:45",
+        "Appointment for Annual Report",
+        "22:57 - 23:57",
+        "We will organize marketing strategies. Looking for",
+        "16 Monday",
+        "Meeting with Bob",
+        "07:13 - 08:13",
+        "We will understand product launch.",
+        "17 Tuesday",
+        "Appointment for Project X",
+        "15:30 - 16:00",
+        "We will finalize product launch.",
+        "New Event"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 54756,
+          "retained_characters": 15114
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 18,
+          "clipped_attributes": 4
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[12]"
+    },
+    {
+      "ordinal": 13,
+      "stepId": "agent-ui_snapshot-14",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:35",
+        "23:35",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Search",
+        "Go to today",
+        "Change view",
+        "More options",
+        "02:03 - 02:33",
+        "We will understand team roles.",
+        "Review session for Campaign",
+        "15:24 - 16:24",
+        "We will discuss marketing strategies.",
+        "Workshop on Project X",
+        "20:25 - 21:25",
+        "We will review contract details. Let's be punctual",
+        "15 Sunday",
+        "Call with Marketing",
+        "02:28 - 02:58",
+        "We will organize client feedback. Please bring rel",
+        "Review session for Project X",
+        "04:01 - 04:31",
+        "We will explore product launch.",
+        "Meeting with Dr. Smith",
+        "08:32 - 09:17",
+        "We will understand product launch.",
+        "Board meeting",
+        "22:35 - 22:45",
+        "Appointment for Annual Report",
+        "22:57 - 23:57",
+        "We will organize marketing strategies. Looking for",
+        "16 Monday",
+        "Meeting with Bob",
+        "07:13 - 08:13",
+        "We will understand product launch.",
+        "17 Tuesday",
+        "Appointment for Project X",
+        "15:30 - 16:00",
+        "We will finalize product launch.",
+        "New Event"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 54757,
+          "retained_characters": 15115
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 18,
+          "clipped_attributes": 4
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[13]"
+    },
+    {
+      "ordinal": 14,
+      "stepId": "agent-tap_on-15",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "target": "Board meeting"
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[14]"
+    },
+    {
+      "ordinal": 15,
+      "stepId": "agent-ui_snapshot-16",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Edit Event",
+        "Save",
+        "Delete",
+        "Duplicate event",
+        "More options",
+        "Board meeting",
+        "Location",
+        "Description",
+        "All-day",
+        "October 15 (Sun)",
+        "22:35",
+        "October 15 (Sun)",
+        "22:45",
+        "No reminder",
+        "No repetition",
+        "Regular event",
+        "Event color"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 34461,
+          "retained_characters": 10028
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 7,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[15]"
+    },
+    {
+      "ordinal": 16,
+      "stepId": "agent-press_key-17",
+      "action": "press_key",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "key": "Back"
+      },
+      "uiLabels": [],
+      "output": {
+        "key": "Back"
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[16]"
+    },
+    {
+      "ordinal": 17,
+      "stepId": "agent-ui_snapshot-18",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Search",
+        "Go to today",
+        "Change view",
+        "More options",
+        "02:03 - 02:33",
+        "We will understand team roles.",
+        "Review session for Campaign",
+        "15:24 - 16:24",
+        "We will discuss marketing strategies.",
+        "Workshop on Project X",
+        "20:25 - 21:25",
+        "We will review contract details. Let's be punctual",
+        "15 Sunday",
+        "Call with Marketing",
+        "02:28 - 02:58",
+        "We will organize client feedback. Please bring rel",
+        "Review session for Project X",
+        "04:01 - 04:31",
+        "We will explore product launch.",
+        "Meeting with Dr. Smith",
+        "08:32 - 09:17",
+        "We will understand product launch.",
+        "Board meeting",
+        "22:35 - 22:45",
+        "Appointment for Annual Report",
+        "22:57 - 23:57",
+        "We will organize marketing strategies. Looking for",
+        "16 Monday",
+        "Meeting with Bob",
+        "07:13 - 08:13",
+        "We will understand product launch.",
+        "17 Tuesday",
+        "Appointment for Project X",
+        "15:30 - 16:00",
+        "We will finalize product launch.",
+        "New Event"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 54757,
+          "retained_characters": 15115
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 18,
+          "clipped_attributes": 4
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[17]"
+    },
+    {
+      "ordinal": 18,
+      "stepId": "agent-tap_on-19",
+      "action": "tap_on",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "locator": {
+          "text": "Board meeting"
+        }
+      },
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[18]"
+    },
+    {
+      "ordinal": 19,
+      "stepId": "agent-ui_snapshot-20",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:36",
+        "23:36",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Edit Event",
+        "Save",
+        "Delete",
+        "Duplicate event",
+        "More options",
+        "Board meeting",
+        "Location",
+        "Description",
+        "All-day",
+        "October 15 (Sun)",
+        "22:35",
+        "October 15 (Sun)",
+        "22:45",
+        "No reminder",
+        "No repetition",
+        "Regular event",
+        "Event color"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 34461,
+          "retained_characters": 10028
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 7,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[19]"
+    },
+    {
+      "ordinal": 20,
+      "stepId": "agent-assert_state-21",
+      "action": "assert_state",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "element": {
+          "resourceId": "com.simplemobiletools.calendar.pro:id/event_title",
+          "text": "Board meeting"
+        },
+        "optional": false
+      },
+      "uiLabels": [],
+      "output": {
+        "exists": true
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[20]"
+    },
+    {
+      "ordinal": 21,
+      "stepId": "agent-press_key-22",
+      "action": "press_key",
+      "status": "failed",
+      "error": "NativeActionBudgetExceeded: action_budget",
+      "params": null,
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[21]"
+    },
+    {
+      "ordinal": 22,
+      "stepId": "agent-press_key-23",
+      "action": "press_key",
+      "status": "failed",
+      "error": "NativeActionBudgetExceeded: action_budget",
+      "params": null,
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[22]"
+    },
+    {
+      "ordinal": 23,
+      "stepId": "agent-ui_snapshot-24",
+      "action": "ui_snapshot",
+      "status": "passed",
+      "error": null,
+      "params": {},
+      "uiLabels": [
+        "15:37",
+        "23:37",
+        "Android System notification: Data warning",
+        "Digital Wellbeing notification: Need time to focus",
+        "Android System notification: Check access settings",
+        "Phone signal full.",
+        "No internet",
+        "Battery charging, 100 percent.",
+        "Edit Event",
+        "Save",
+        "Delete",
+        "Duplicate event",
+        "More options",
+        "Board meeting",
+        "Location",
+        "Description",
+        "All-day",
+        "October 15 (Sun)",
+        "22:35",
+        "October 15 (Sun)",
+        "22:45",
+        "No reminder",
+        "No repetition",
+        "Regular event",
+        "Event color"
+      ],
+      "output": {
+        "coverage": {
+          "status": "partial",
+          "reason": "semantic_compaction",
+          "source_characters": 34461,
+          "retained_characters": 10028
+        },
+        "compaction": {
+          "applied": true,
+          "text_attribute_limit": 50,
+          "layout_nodes_removed": 7,
+          "clipped_attributes": 1
+        }
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[23]"
+    },
+    {
+      "ordinal": 24,
+      "stepId": "agent-tap_on-25",
+      "action": "tap_on",
+      "status": "failed",
+      "error": "NativeActionBudgetExceeded: action_budget",
+      "params": null,
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[24]"
+    },
+    {
+      "ordinal": 25,
+      "stepId": "agent-assert_state-26",
+      "action": "assert_state",
+      "status": "passed",
+      "error": null,
+      "params": {
+        "element": {
+          "resourceId": "com.simplemobiletools.calendar.pro:id/event_title",
+          "text": "Board meeting"
+        },
+        "optional": false
+      },
+      "uiLabels": [],
+      "output": {
+        "exists": true
+      },
+      "evidenceRefs": [],
+      "sourcePointer": "steps[25]"
+    },
+    {
+      "ordinal": 26,
+      "stepId": "agent-kill_app-27",
+      "action": "kill_app",
+      "status": "failed",
+      "error": "NativeActionBudgetExceeded: action_budget",
+      "params": null,
+      "uiLabels": [],
+      "output": null,
+      "evidenceRefs": [],
+      "sourcePointer": "steps[26]"
+    }
+  ],
+  "originalNativeExecutionPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/078-SimpleCalendarNextEvent/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-078-20261110T210944Z-e9ef93/execution-result.json",
+  "originalNativeResultPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/078-SimpleCalendarNextEvent/raw-private/fsq-native/worker/fsq-task-result.private.json",
+  "originalGoalPath": "/Users/qunmi/Documents/FSQ_LAB/FSQ_AndroidWorld_eval/evidence/fsq-native-gpt61-corrected-20261110T043031Z/revision-4/next-stage-plan/execution/run/episodes/078-SimpleCalendarNextEvent/raw-private/fsq-native/workspace/.fsq/runs/android/fsq-native-gpt61-r4-clock-lifecycle-20261110-run-078-20261110T210944Z-e9ef93/sources/000-goal.txt"
+}

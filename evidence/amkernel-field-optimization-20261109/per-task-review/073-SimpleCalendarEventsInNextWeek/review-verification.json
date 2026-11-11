@@ -1,0 +1,42 @@
+{
+  "originalSources": [
+    {
+      "path": "campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/episodes/073-SimpleCalendarEventsInNextWeek/attempt-1/raw-private/agent-events.jsonl",
+      "sha256": "2cb824b1339a4dfbb9053f8893583bbb857fbb26b168bcf3c13c2f991cae0a46",
+      "unchanged": true
+    },
+    {
+      "path": "campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/episodes/073-SimpleCalendarEventsInNextWeek/attempt-1/result.json",
+      "sha256": "4ec4572e869c4a7640577466e6671cfbb9c5450641c32e7447cf8fe36f87fd84",
+      "unchanged": true
+    },
+    {
+      "path": "campaigns/amkernel-3388314-r12v2-headless-full-ready-20261107T004632Z/manifest.json",
+      "sha256": "dbb6fe354f9a1cf7b87e52feeafd08903596d87b8531c37c9d12a50b6dc6362c",
+      "unchanged": true
+    }
+  ],
+  "evidenceLinksValid": true,
+  "pythonExecCalls": 13,
+  "executedUiActions": 10,
+  "maxSteps": 10,
+  "rejectedActionCount": 0,
+  "predicateReplayExecuted": true,
+  "originalOfficialReward": 0.0,
+  "newAndroidRuns": 0,
+  "newAppiumSessions": 0,
+  "proposalChanged": false,
+  "rawFinalVsNormalized": {
+    "rawFinalLine": 3804,
+    "rawTaskOutcome": "Product demo, Movie night",
+    "rawTaskOutcomeType": "string",
+    "normalizedFinalText": null,
+    "agentCompleted": false,
+    "agentAnswerValidContract": false,
+    "note": "Raw answer is a valid runner contract value but was emitted after cleanup was requested; normalized finalText is null and no answer is forwarded to the interaction cache."
+  },
+  "immutableCheckMethod": "sha256 of the original agent-events.jsonl, result.json, and manifest.json; hashes were read before and after the review writes and match.",
+  "missingEvidence": [
+    "The exact page_source encoding of the week-day label 'S\\n22' was not saved, so the L3200 predicate failure cannot be reduced to a specific escaping rule."
+  ]
+}
