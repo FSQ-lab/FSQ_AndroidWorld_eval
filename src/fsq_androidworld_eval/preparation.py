@@ -21,13 +21,11 @@ and explicitly requests/validates coexistence for preparation-created sessions.
 
 from __future__ import annotations
 
-from contextlib import contextmanager
 import argparse
 import hashlib
 import json
 from pathlib import Path
 import re
-import subprocess
 import time
 import xml.etree.ElementTree as ET
 from typing import Any
@@ -37,6 +35,7 @@ from android_world.env.setup_device import setup as device_setup
 from android_world.utils import app_snapshot
 
 from fsq_androidworld_eval.appium_proxy import SESSION_ACCESSIBILITY_CONFIG, _accessibility_confirmed
+from fsq_androidworld_eval.android_transport import launch_package, scoped_adb_output
 from fsq_androidworld_eval.environment import (
     artifact_identity, close_environment, load_environment, local_app_data, strict_snapshot_restores,
 )
@@ -66,18 +65,8 @@ _DIRECTORY_READINESS = {
 }
 
 
-def _adb(adb_path: str, serial: str, *args: str, check: bool = True) -> str:
-    completed = subprocess.run(
-        [adb_path, "-s", serial, *args],
-        check=False,
-        capture_output=True,
-        text=True,
-        timeout=30,
-    )
-    if check and completed.returncode != 0:
-        message = (completed.stderr or completed.stdout).strip()[-2048:]
-        raise RuntimeError(f"adb {' '.join(args)} failed: {message}")
-    return completed.stdout.strip()
+def _adb(adb_path: str, serial: str, *args: str) -> str:
+    return scoped_adb_output(adb_path, serial, *args)
 
 
 def _package_version(adb_path: str, serial: str, package: str) -> dict[str, str | None]:
@@ -109,16 +98,17 @@ def _database_exists(adb_path: str, serial: str, path: str) -> bool:
 
 
 def _directory_readiness(
-    adb_path: str, serial: str, app_names: set[str]
+    adb_path: str, serial: str, app_names: set[str], *, transport: Any = None,
 ) -> list[dict[str, Any]]:
     rows = []
     for app_name, path in _DIRECTORY_READINESS.items():
         if app_name not in app_names:
             continue
-        output = _adb(
-            adb_path, serial, "shell",
-            f"test -d {path} && echo present || echo missing",
-        )
+        command = ["shell", f"test -d {path} && echo present || echo missing"]
+        if transport is None:
+            output = _adb(adb_path, serial, *command)
+        else:
+            output = transport.execute_command(command, timeout=30).decode("utf-8", "replace").strip()
         rows.append({
             "app": app_name,
             "pathSha256": hashlib.sha256(path.encode()).hexdigest(),
@@ -129,24 +119,43 @@ def _directory_readiness(
 
 def _complete_audio_recorder_setup(env: Any, adb_path: str, serial: str) -> None:
     # Official AppSetup clears data. Complete its real UI before replacing the
-    # snapshot, so later official restores do not return to the welcome screen.
-    try:
-        adb_utils.launch_app("audio recorder", env.controller)
-        controller = tools.AndroidToolController(env=env.controller)
-        controller.click_element("Get started")
-        controller.click_element("Apply")
-        deadline = time.monotonic() + 10
-        while True:
-            directory_ready = _directory_readiness(adb_path, serial, {"audio recorder"})[0]["present"]
-            main_ready = any(element.text == "00:00" for element in env.controller.get_ui_elements())
-            if directory_ready and main_ready:
-                break
-            if time.monotonic() >= deadline:
-                raise RuntimeError("Audio Recorder did not finish its first-launch setup")
-            time.sleep(0.2)
-    finally:
-        adb_utils.close_app("audio recorder", env.controller)
+    # snapshot. A failure propagates directly to owned environment cleanup;
+    # do not issue another device command after an onboarding failure.
+    launch_package(env.controller, "com.dimowner.audiorecorder")
+    controller = tools.AndroidToolController(env=env.controller)
+    controller.click_element("Get started")
+    controller.click_element("Apply")
+    deadline = time.monotonic() + 10
+    while True:
+        directory_ready = _directory_readiness(
+            adb_path, serial, {"audio recorder"}, transport=env.controller.transport,
+        )[0]["present"]
+        main_ready = any(element.text == "00:00" for element in env.controller.get_ui_elements())
+        if directory_ready and main_ready:
+            break
+        if time.monotonic() >= deadline:
+            raise RuntimeError("Audio Recorder did not finish its first-launch setup")
+        time.sleep(0.2)
+    adb_utils.close_app("audio recorder", env.controller)
     app_snapshot.save_snapshot("audio recorder", env.controller)
+
+
+def _show_audio_recorder_ready(env: Any, *, timeout: float = 10) -> None:
+    """Restore the real foreground after the official close-and-snapshot flow."""
+    package = "com.dimowner.audiorecorder"
+    launch_package(env.controller, package)
+    deadline = time.monotonic() + timeout
+    while True:
+        elements = [element for element in env.controller.get_ui_elements() if element.is_visible]
+        packages = {element.package_name for element in elements if element.package_name}
+        main_ready = any(element.package_name == package and element.text == "00:00" for element in elements)
+        onboarding = any(element.text in {"Get started", "Apply"} for element in elements)
+        if main_ready and not onboarding and packages <= {package, "com.android.systemui"}:
+            return
+        remaining = deadline - time.monotonic()
+        if remaining <= 0:
+            raise RuntimeError("Audio Recorder is not foreground-ready after its single post-snapshot launch")
+        time.sleep(min(0.2, remaining))
 
 
 def _vlc_startup_state(adb_path: str, serial: str) -> dict[str, bool]:
@@ -182,10 +191,17 @@ def _complete_vlc_setup(env: Any, project: Path, target: dict[str, Any], adb_pat
                 or not _accessibility_confirmed(creation.get("accessibilityCapabilities"))):
             runtime.execute("driver.quit()\n{'quitReturned':True}", timeout_seconds=30)
             raise RuntimeError("VLC preparation session did not confirm accessibility coexistence")
+        try:
+            launch_package(env.controller, "org.videolan.vlc")
+        except BaseException as error:
+            try:
+                runtime.execute("driver.quit()\n{'quitReturned':True}", timeout_seconds=30)
+            except BaseException as cleanup_error:
+                raise BaseExceptionGroup("VLC launch and owned session cleanup failed", [error, cleanup_error]) from None
+            raise
         proof = runtime.execute('''
 proof = {'sessionId': driver.session_id, 'mainActivityObserved': False, 'quitReturned': False}
 try:
-    driver.activate_app('org.videolan.vlc')
     wait = WebDriverWait(driver, 10)
     wait.until(lambda d: d.current_activity in {'.gui.MainActivity', '.gui.onboarding.OnboardingActivity'})
     if driver.current_activity == '.gui.onboarding.OnboardingActivity':
@@ -206,11 +222,8 @@ try:
 except Exception as exc:
     proof['error'] = {'type': type(exc).__name__, 'message': str(exc)[:1000]}
 finally:
-    try:
-        driver.terminate_app('org.videolan.vlc')
-    finally:
-        driver.quit()
-        proof['quitReturned'] = True
+    driver.quit()
+    proof['quitReturned'] = True
 proof
 ''', timeout_seconds=60)
     if creation.get("newCommandTimeout") != 300 or proof.get("sessionId") != creation.get("sessionId"):
@@ -219,6 +232,7 @@ proof
         raise RuntimeError(f"VLC first-launch UI qualification failed: {proof}")
     if _appium_session_hashes(target["appiumUrl"], adb_path, target["serial"]):
         raise RuntimeError("VLC qualification session absence is unproven")
+    adb_utils.close_app("vlc", env.controller)
     state = _vlc_startup_state(adb_path, target["serial"])
     if not all(state.values()):
         raise RuntimeError(f"VLC first-launch or file access is not ready: {state}")
@@ -234,35 +248,6 @@ def _required_app_names(manifest: dict[str, Any]) -> list[str]:
     )
 
 
-@contextmanager
-def _launcher_compatible_setup(activities: dict[str, str]):
-    original = adb_utils.issue_generic_request
-    replacements: list[str] = []
-
-    def issue(args, env, timeout_sec=10):
-        command = list(args) if not isinstance(args, str) else args.split()
-        if command[:2] == ["shell", "monkey"] and "-p" in command:
-            package = command[command.index("-p") + 1]
-            replacements.append(package)
-            command = [
-                "shell",
-                "am",
-                "start",
-                "-W",
-                "-a",
-                "android.intent.action.MAIN",
-                "-c",
-                "android.intent.category.LAUNCHER",
-                "-n",
-                activities[package],
-            ]
-        return original(command, env, timeout_sec)
-
-    adb_utils.issue_generic_request = issue
-    try:
-        yield replacements
-    finally:
-        adb_utils.issue_generic_request = original
 
 
 def attest_device(readiness: dict[str, Any], adb_path: str) -> dict[str, Any]:
@@ -418,11 +403,6 @@ def prepare_device(
             if app_class is None:
                 raise RuntimeError(f"no AndroidWorld setup mapping for {app_name!r}")
             app_classes.append(app_class)
-        launcher_activities = {
-            adb_utils.extract_package_name(activity): activity
-            for app_name in app_names
-            if (activity := adb_utils.get_adb_activity(app_name))
-        }
 
         environment_creation_started = True
         env = load_environment(
@@ -439,28 +419,30 @@ def prepare_device(
         if captured != marker:
             raise RuntimeError(f"ADB capture contains non-command output: {captured[:1024]!r}")
         report["adbOutputIsolated"] = True
-        with _launcher_compatible_setup(launcher_activities) as launcher_replacements:
-            with local_app_data((project or Path.cwd()).resolve()):
-                # Qualification resets official app state in the disposable
-                # layer, but never reinstalls the frozen application artifacts.
-                installed = device_setup.get_installed_packages(env)
-                missing = [app.package_name() for app in app_classes if app.package_name() not in installed]
-                if missing:
-                    raise RuntimeError(f"Frozen installed apps are missing; installation is not authorized: {missing}")
-                adb_utils.press_home_button(env.controller)
-                adb_utils.set_root_if_needed(env.controller)
-                for app in app_classes:
-                    device_setup.setup_app(app, env)
-                report["applicationInstallation"] = "preserved_existing_no_reinstall"
-            if "audio recorder" in app_names:
-                _complete_audio_recorder_setup(env, adb_path, serial)
-            if "vlc" in app_names:
-                report["vlcStartup"] = _complete_vlc_setup(
-                    env, (project or Path.cwd()).resolve(), target, adb_path,
-                )
+        with local_app_data((project or Path.cwd()).resolve()):
+            # Preserve frozen installed applications; only official setup state
+            # is reset on the explicitly authorized disposable target.
+            installed = device_setup.get_installed_packages(env)
+            missing = [app.package_name() for app in app_classes if app.package_name() not in installed]
+            if missing:
+                raise RuntimeError(f"Frozen installed apps are missing; installation is not authorized: {missing}")
+            adb_utils.press_home_button(env.controller)
+            adb_utils.set_root_if_needed(env.controller)
+            for app in app_classes:
+                # setup_app suppresses ValueError and still snapshots. Invoke
+                # the same official setup directly; snapshot only on success.
+                app.setup(env)
+                app_snapshot.save_snapshot(app.app_name, env.controller)
+            report["applicationInstallation"] = "preserved_existing_no_reinstall"
+        if "audio recorder" in app_names:
+            _complete_audio_recorder_setup(env, adb_path, serial)
+        if "vlc" in app_names:
+            report["vlcStartup"] = _complete_vlc_setup(
+                env, (project or Path.cwd()).resolve(), target, adb_path,
+            )
         report["launcherCompatibility"] = {
-            "mode": "main_launcher_intent_replaces_monkey",
-            "packages": sorted(set(launcher_replacements)),
+            "mode": "resolved_current_user_main_launcher_checked",
+            "launches": list(env.controller.transport.launches),
         }
         env_launcher.setup_env(env, emulator_setup=False, freeze_datetime=True)
         report["device"]["timezone"] = _adb(
@@ -477,11 +459,7 @@ def prepare_device(
             if not activity:
                 raise RuntimeError(f"no deterministic launcher activity for {app_name!r}")
             package = adb_utils.extract_package_name(activity)
-            launch_output = _adb(
-                adb_path, serial, "shell", "am", "start", "-W", "-n", activity
-            )
-            if "Error:" in launch_output:
-                raise RuntimeError(f"failed to launch {app_name}: {launch_output[-1024:]}")
+            activity, launch_output = launch_package(env.controller, package)
             report["apps"].append(
                 {
                     "name": app_name,

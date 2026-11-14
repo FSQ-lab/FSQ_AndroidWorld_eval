@@ -2,8 +2,8 @@
 
 Only ``prepare_artifacts`` may access the network. Repository-local release APKs
 are copied and verified under a distinct pin, never over the frozen upstream APK.
-The helper adapter remains active until controller cleanup, including refreshes.
-Runtime construction does not patch AndroidWorld or AndroidEnv Python sources.
+Each environment owns its pinned helper bytes and injected single-attempt transport,
+including refreshes. Construction never patches modules or installed SDK sources.
 Database writes replace only the requested file and its WAL/SHM sidecars; the
 upstream directory-wide deletion would destroy other databases in the same app.
 """
@@ -22,16 +22,16 @@ import shlex
 import tempfile
 import threading
 import time
-from typing import Any, Callable, Iterator
+from typing import Any, Iterator
 from urllib import request as url_request
 import zipfile
 
-from android_env.wrappers import a11y_grpc_wrapper
-from android_world.env import adb_utils, android_world_controller, env_launcher, interface
+from android_world.env import adb_utils, env_launcher, interface
 from android_world.env.setup_device import apps
 from android_world.utils import app_snapshot, file_utils
 
 from fsq_androidworld_eval.host_prerequisites import configure_media_encoder
+from fsq_androidworld_eval.android_transport import create_environment
 
 
 @dataclass(frozen=True)
@@ -285,81 +285,12 @@ def restore_shared_assets(env: interface.AsyncEnv, project: Path, app_names: tup
     return result
 
 
-@dataclass
-class _GetterLease:
-    payload: bytes
-    original: Callable[[], bytes]
-    users: int = 0
-
-
-_getter_lease: _GetterLease | None = None
-
-
-def _acquire_getter(payload: bytes) -> Callable[[], None]:
-    """Called under the environment lock; release is safe on every failure path."""
-    global _getter_lease
-    if _getter_lease is None:
-        _getter_lease = _GetterLease(
-            payload=payload,
-            original=a11y_grpc_wrapper._get_accessibility_forwarder_apk,
-        )
-        a11y_grpc_wrapper._get_accessibility_forwarder_apk = lambda: payload
-    elif _getter_lease.payload != payload:
-        raise ArtifactError("Cannot mix different helper APKs in live environments")
-    lease = _getter_lease
-    lease.users += 1
-    released = False
-
-    def release() -> None:
-        nonlocal released
-        global _getter_lease
-        with _ENVIRONMENT_LOCK:
-            if released:
-                return
-            released = True
-            lease.users -= 1
-            if lease.users == 0:
-                a11y_grpc_wrapper._get_accessibility_forwarder_apk = lease.original
-                _getter_lease = None
-
-    return release
-
-
-@contextmanager
-def _capture_construction(owners: list[Any]) -> Iterator[None]:
-    """Retain completed owners even if a later official constructor raises.
-
-    Failures inside loader.load or the a11y wrapper's own constructor can precede
-    their return; upstream does not expose those private partial objects.
-    """
-    loader = android_world_controller.loader
-    original_load = loader.load
-    original_wrap = android_world_controller.apply_a11y_forwarder_app_wrapper
-
-    def load(*args: Any, **kwargs: Any) -> Any:
-        owner = original_load(*args, **kwargs)
-        owners.append(owner)
-        return owner
-
-    def wrap(*args: Any, **kwargs: Any) -> Any:
-        owner = original_wrap(*args, **kwargs)
-        owners.append(owner)
-        return owner
-
-    loader.load = load
-    android_world_controller.apply_a11y_forwarder_app_wrapper = wrap
-    try:
-        yield
-    finally:
-        android_world_controller.apply_a11y_forwarder_app_wrapper = original_wrap
-        loader.load = original_load
-
 
 def close_environment(env: interface.AsyncEnv) -> None:
     """Run official controller cleanup without AsyncAndroidEnv's suppression.
 
-    Environments returned by load_environment release their APK adapter even if
-    controller cleanup raises. Callers must treat such an exception as failure.
+    Callers must treat controller cleanup exceptions as failure; device state is
+    not restored by closing the environment.
     """
     env.controller.close()
 
@@ -382,64 +313,6 @@ def _push_database_file(controller: Any, local_path: str, remote_path: str, time
     )
 
 
-def _own_controller_lifetime(env: interface.AsyncEnv, owners: list[Any], release: Callable[[], None]) -> None:
-    """Close retired refresh owners and never mistake a failed refresh for cleanup."""
-    controller = env.controller
-    original_close = controller.close
-    original_refresh = getattr(controller, "refresh_env", None)
-    closed: set[int] = set()
-    refresh_errors: list[BaseException] = []
-
-    def mark_closed(owner: Any) -> None:
-        while owner is not None and id(owner) not in closed:
-            closed.add(id(owner))
-            owner = getattr(owner, "_env", None)
-
-    def refresh() -> None:
-        with _ENVIRONMENT_LOCK:
-            previous = getattr(controller, "_env", None)
-            try:
-                with _capture_construction(owners):
-                    original_refresh()
-                if previous is not None and previous is not getattr(controller, "_env", None):
-                    previous.close()
-                    mark_closed(previous)
-            except BaseException as error:
-                refresh_errors.append(error)
-                raise
-
-    def close() -> None:
-        errors = list(refresh_errors)
-        try:
-            current = getattr(controller, "_env", None)
-            try:
-                original_close()
-                mark_closed(current)
-            except BaseException as error:
-                errors.append(error)
-            # A wrapper failure must not prevent independent raw-owner cleanup.
-            for owner in reversed(owners):
-                if id(owner) in closed:
-                    continue
-                try:
-                    owner.close()
-                    mark_closed(owner)
-                except BaseException as error:
-                    errors.append(error)
-        finally:
-            release()
-        if len(errors) == 1:
-            raise errors[0]
-        if errors:
-            raise BaseExceptionGroup("Environment owner cleanup failed", errors)
-
-    controller.close = close
-    controller.push_file = lambda local_db_file_path, remote_db_file_path, timeout_sec=None: _push_database_file(
-        controller, local_db_file_path, remote_db_file_path, timeout_sec,
-    )
-    if original_refresh is not None:
-        controller.refresh_env = refresh
-
 
 def load_environment(
     *,
@@ -458,37 +331,19 @@ def load_environment(
         raise ArtifactError("Helper APK changed after artifact verification")
     configure_media_encoder()
     with _ENVIRONMENT_LOCK:
-        release = _acquire_getter(payload)
-        owners: list[Any] = []
-        env: interface.AsyncEnv | None = None
+        env = create_environment(console_port, adb_path, grpc_port, payload)
+        env.controller.push_file = lambda local_db_file_path, remote_db_file_path, timeout_sec=None: _push_database_file(
+            env.controller, local_db_file_path, remote_db_file_path, timeout_sec,
+        )
         try:
-            with _capture_construction(owners):
-                env = env_launcher._get_env(console_port, adb_path, grpc_port)
-            _own_controller_lifetime(env, owners, release)
-            env_launcher.setup_env(
-                env, emulator_setup=False, freeze_datetime=freeze_datetime
-            )
+            env_launcher.setup_env(env, emulator_setup=False, freeze_datetime=freeze_datetime)
             return env
         except BaseException as error:
-            cleanup_errors: list[BaseException] = []
-            if env is not None:
-                try:
-                    close_environment(env)
-                except BaseException as cleanup_error:
-                    cleanup_errors.append(cleanup_error)
-            else:
-                # Raw AndroidEnv.close is idempotent. Explicitly try it as well
-                # if outer wrapper cleanup raises before reaching its raw owner.
-                for owner in reversed(owners):
-                    try:
-                        owner.close()
-                    except BaseException as cleanup_error:
-                        cleanup_errors.append(cleanup_error)
-            release()
-            if cleanup_errors:
+            try:
+                close_environment(env)
+            except BaseException as cleanup_error:
                 raise BaseExceptionGroup(
-                    "Environment initialization and cleanup failed",
-                    [error, *cleanup_errors],
+                    "Environment initialization and cleanup failed", [error, cleanup_error],
                 ) from None
             raise
 

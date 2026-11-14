@@ -212,22 +212,14 @@ def _appium_session_hashes(
     except url_error.HTTPError as exc:
         if exc.code != 404 or adb_path is None or serial is None:
             raise
+        from fsq_androidworld_eval.android_transport import scoped_adb_output
+        table = scoped_adb_output(adb_path, serial, "shell", "ps", "-A", "-o", "PID,NAME")
+        packages = {"io.appium.uiautomator2.server", "io.appium.uiautomator2.server.test"}
         processes = []
-        for package in (
-            "io.appium.uiautomator2.server",
-            "io.appium.uiautomator2.server.test",
-        ):
-            completed = subprocess.run(
-                [adb_path, "-s", serial, "shell", "pidof", package],
-                capture_output=True,
-                text=True,
-                check=False,
-            )
-            if completed.returncode not in (0, 1):
-                raise RuntimeError(
-                    f"failed to inspect Appium process {package}: {completed.stderr.strip()}"
-                )
-            processes.extend(f"{package}:{pid}" for pid in completed.stdout.split())
+        for line in table.splitlines():
+            fields = line.split()
+            if len(fields) == 2 and fields[0].isdecimal() and fields[1] in packages:
+                processes.append(f"{fields[1]}:{fields[0]}")
         return sorted(hashlib.sha256(value.encode()).hexdigest() for value in processes)
     sessions = payload.get("value") if isinstance(payload, dict) else None
     if not isinstance(sessions, list):

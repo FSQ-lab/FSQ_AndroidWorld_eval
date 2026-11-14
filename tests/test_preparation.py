@@ -167,13 +167,18 @@ def recorder_device(tmp_path: Path, monkeypatch):
     monkeypatch.setattr(preparation, "_adb", adb)
     monkeypatch.setattr(preparation, "_request_json", lambda url: {"value": {"build": {"version": "3.7.0"}}})
     monkeypatch.setattr(preparation, "_appium_session_hashes", lambda *args: [])
-    monkeypatch.setattr(preparation, "load_environment", lambda **kwargs: SimpleNamespace(controller=SimpleNamespace(close=lambda: state.update(closed=True))))
+    monkeypatch.setattr(preparation, "load_environment", lambda **kwargs: SimpleNamespace(controller=SimpleNamespace(
+        close=lambda: state.update(closed=True), transport=SimpleNamespace(launches=[]),
+    )))
+    monkeypatch.setattr(preparation, "launch_package", lambda controller, package: (package + "/.Main", b"Status: ok"))
     monkeypatch.setattr(preparation.adb_utils, "issue_generic_request", lambda *args: SimpleNamespace(generic=SimpleNamespace(output=state["adbOutput"])))
     monkeypatch.setattr(preparation.adb_utils, "press_home_button", lambda env: None)
     monkeypatch.setattr(preparation.adb_utils, "set_root_if_needed", lambda env: None)
     monkeypatch.setattr(preparation.env_launcher, "setup_env", lambda *args, **kwargs: None)
     monkeypatch.setattr(preparation.device_setup, "get_installed_packages", lambda env: {"com.dimowner.audiorecorder"})
-    monkeypatch.setattr(preparation.device_setup, "setup_app", lambda *args: state.update(setupStarted=True))
+    app = preparation.device_setup.get_app_mapping("audio recorder")
+    monkeypatch.setattr(app, "setup", lambda env: state.update(setupStarted=True))
+    monkeypatch.setattr(preparation.app_snapshot, "save_snapshot", lambda *args: None)
 
     def restore_snapshot(*args):
         if state["restoreError"] is not None:
@@ -279,7 +284,7 @@ def test_vlc_preparation_requests_coexistence_and_refuses_unconfirmed_sessions(t
     import ast
     from appium import webdriver
 
-    state = {"requests": [], "quit": 0, "activated": 0, "snapshots": 0}
+    state = {"requests": [], "quit": 0, "snapshots": 0}
 
     class Driver:
         session_id = "preparation-session"
@@ -287,14 +292,8 @@ def test_vlc_preparation_requests_coexistence_and_refuses_unconfirmed_sessions(t
         current_package = "org.videolan.vlc"
         current_activity = ".gui.MainActivity"
 
-        def activate_app(self, package):
-            state["activated"] += 1
-
         def find_elements(self, *args):
             return []
-
-        def terminate_app(self, package):
-            pass
 
         def quit(self):
             state["quit"] += 1
@@ -323,6 +322,8 @@ def test_vlc_preparation_requests_coexistence_and_refuses_unconfirmed_sessions(t
     monkeypatch.setattr(preparation, "_appium_session_hashes", lambda *args: [])
     monkeypatch.setattr(preparation, "_vlc_startup_state", lambda *args: {"onboardingCompleted": True, "allFilesAuthorized": True})
     monkeypatch.setattr(preparation.app_snapshot, "save_snapshot", lambda *args: state.update(snapshots=state["snapshots"] + 1))
+    monkeypatch.setattr(preparation, "launch_package", lambda *args: None)
+    monkeypatch.setattr(preparation.adb_utils, "close_app", lambda *args: None)
     target = {"serial": "emulator-5554", "appiumUrl": "http://preparation"}
     if confirmed:
         proof = preparation._complete_vlc_setup(SimpleNamespace(controller=object()), tmp_path, target, "adb")
@@ -331,6 +332,21 @@ def test_vlc_preparation_requests_coexistence_and_refuses_unconfirmed_sessions(t
     else:
         with pytest.raises(RuntimeError, match="did not confirm accessibility"):
             preparation._complete_vlc_setup(SimpleNamespace(controller=object()), tmp_path, target, "adb")
-        assert state["activated"] == state["snapshots"] == 0
+        assert state["snapshots"] == 0
     assert state["quit"] == 1
     assert state["requests"][0][SESSION_ACCESSIBILITY_CONFIG["capability"]] is True
+
+
+def test_official_setup_valueerror_stops_before_snapshot_and_later_stages(recorder_device, monkeypatch):
+    manifest_path, report_path, state = recorder_device
+    snapshots = []
+    app = preparation.device_setup.get_app_mapping("audio recorder")
+    def fail(env):
+        raise ValueError("original setup failure")
+    monkeypatch.setattr(app, "setup", fail)
+    monkeypatch.setattr(preparation.app_snapshot, "save_snapshot", lambda *args: snapshots.append(args))
+    report = preparation.prepare_device(manifest_path, report_path, "adb")
+    assert report["qualified"] is False
+    assert report["error"] == {"type": "ValueError", "message": "original setup failure"}
+    assert snapshots == [] and report["snapshotRestores"] == [] and report["apps"] == []
+    assert state["closed"] is True

@@ -97,14 +97,10 @@ def test_appium_session_probe_falls_back_to_uiautomator2_processes(monkeypatch) 
     def request_json(url: str, *, method: str = "GET"):
         raise url_error.HTTPError(url, 404, "not found", None, None)
 
-    responses = iter(
-        [
-            subprocess.CompletedProcess([], 0, stdout="4312\n", stderr=""),
-            subprocess.CompletedProcess([], 1, stdout="", stderr=""),
-        ]
-    )
+    from fsq_androidworld_eval import android_transport
     monkeypatch.setattr(runner, "_request_json", request_json)
-    monkeypatch.setattr(runner.subprocess, "run", lambda *args, **kwargs: next(responses))
+    monkeypatch.setattr(android_transport, "scoped_adb_output", lambda *a, **k:
+                        "PID NAME\n4312 io.appium.uiautomator2.server\n52 unrelated.process\n")
 
     assert runner._appium_session_hashes("http://appium", "adb", "emulator") == [
         hashlib.sha256(b"io.appium.uiautomator2.server:4312").hexdigest()

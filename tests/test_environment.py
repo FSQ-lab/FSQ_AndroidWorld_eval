@@ -230,89 +230,46 @@ def test_damaged_artifacts_fail_before_loader_or_device_mutation(artifacts, monk
         content[0] ^= 1
         path.write_bytes(content)
     monkeypatch.setattr(environment.url_request, "urlopen", _forbid_network)
-    monkeypatch.setattr(environment.env_launcher, "_get_env", _forbid_network)
-    original_getter = environment.a11y_grpc_wrapper._get_accessibility_forwarder_apk
+    monkeypatch.setattr(environment, "create_environment", _forbid_network)
 
     with pytest.raises(environment.ArtifactError):
         environment.artifact_identity(artifacts.project)
     with pytest.raises(environment.ArtifactError):
         _load(artifacts.project)
 
-    assert environment.a11y_grpc_wrapper._get_accessibility_forwarder_apk is original_getter
     assert (not path.exists()) if damage == "missing" else path.read_bytes() != artifacts.values[spec.name]
 
 
 @pytest.fixture
 def offline_controllers(monkeypatch):
     controllers = []
-    frozen = []
 
     class Controller:
         def __init__(self):
-            self.installed = []
             self.closed = False
             self.close_error = None
-            self.refresh_env()
-
-        def execute_adb_call(self, request):
-            # Execute the real official APK request construction, not a byte echo.
-            self.installed.append(request.install_apk.blob.contents)
-            return adb_pb2.AdbResponse(status=adb_pb2.AdbResponse.Status.OK)
-
-        def refresh_env(self):
-            wrapper = object.__new__(environment.a11y_grpc_wrapper.A11yGrpcWrapper)
-            wrapper._env = self
-            wrapper._install_a11y_forwarding_apk()
 
         def close(self):
             self.closed = True
             if self.close_error is not None:
                 raise self.close_error
 
-    def controller(*args, **kwargs):
-        instance = Controller()
-        controllers.append(instance)
-        return instance
+    def create(*args, **kwargs):
+        controller = Controller()
+        controllers.append(controller)
+        return interface.AsyncAndroidEnv(controller)
 
-    monkeypatch.setattr(environment.android_world_controller, "get_controller", controller)
+    monkeypatch.setattr(environment, "create_environment", create)
     monkeypatch.setattr(environment.env_launcher, "_increase_file_descriptor_limit", lambda: None)
-    monkeypatch.setattr(environment.env_launcher.datetime_utils, "setup_datetime", lambda value: frozen.append(value))
+    monkeypatch.setattr(environment.env_launcher.datetime_utils, "setup_datetime", lambda value: None)
     monkeypatch.setattr(environment.env_launcher.setup, "setup_apps", _forbid_network)
     monkeypatch.setattr(environment.url_request, "urlopen", _forbid_network)
-    return SimpleNamespace(controllers=controllers, frozen=frozen)
+    return SimpleNamespace(controllers=controllers)
 
 
-def test_repeated_offline_creation_and_refresh_install_pinned_real_cache_bytes(artifacts, offline_controllers):
-    original_getter = environment.a11y_grpc_wrapper._get_accessibility_forwarder_apk
-    for _ in range(3):
-        env = _load(artifacts.project)
-        try:
-            assert isinstance(env, interface.AsyncAndroidEnv)
-            env.controller.refresh_env()
-            assert env.controller.installed == [artifacts.payload, artifacts.payload]
-        finally:
-            environment.close_environment(env)
-        assert env.controller.closed
-        assert environment.a11y_grpc_wrapper._get_accessibility_forwarder_apk is original_getter
-    assert offline_controllers.frozen == []
 
 
-def test_overlapping_environments_keep_adapter_until_last_close(artifacts, offline_controllers):
-    original_getter = environment.a11y_grpc_wrapper._get_accessibility_forwarder_apk
-    first = _load(artifacts.project)
-    second = _load(artifacts.project, freeze_datetime=True)
-    try:
-        environment.close_environment(first)
-        second.controller.refresh_env()
-        assert second.controller.installed[-1] == artifacts.payload
-        assert offline_controllers.frozen == [second.controller]
-    finally:
-        environment.close_environment(second)
-    assert environment.a11y_grpc_wrapper._get_accessibility_forwarder_apk is original_getter
-
-
-def test_setup_failure_closes_official_environment_and_restores_adapter(artifacts, offline_controllers, monkeypatch):
-    original_getter = environment.a11y_grpc_wrapper._get_accessibility_forwarder_apk
+def test_setup_failure_closes_official_environment(artifacts, offline_controllers, monkeypatch):
 
     def fail(controller):
         raise ValueError("datetime setup failed")
@@ -321,20 +278,16 @@ def test_setup_failure_closes_official_environment_and_restores_adapter(artifact
     with pytest.raises(ValueError, match="datetime setup failed"):
         _load(artifacts.project, freeze_datetime=True)
     assert offline_controllers.controllers[0].closed
-    assert environment.a11y_grpc_wrapper._get_accessibility_forwarder_apk is original_getter
 
 
-def test_close_failure_propagates_and_still_releases_adapter(artifacts, offline_controllers):
-    original_getter = environment.a11y_grpc_wrapper._get_accessibility_forwarder_apk
+def test_close_failure_propagates(artifacts, offline_controllers):
     env = _load(artifacts.project)
     env.controller.close_error = RuntimeError("controller cleanup failed")
     with pytest.raises(RuntimeError, match="controller cleanup failed"):
         environment.close_environment(env)
-    assert environment.a11y_grpc_wrapper._get_accessibility_forwarder_apk is original_getter
 
 
 def test_setup_and_cleanup_failures_are_both_preserved(artifacts, offline_controllers, monkeypatch):
-    original_getter = environment.a11y_grpc_wrapper._get_accessibility_forwarder_apk
 
     def fail(controller):
         controller.close_error = RuntimeError("cleanup evidence")
@@ -344,28 +297,6 @@ def test_setup_and_cleanup_failures_are_both_preserved(artifacts, offline_contro
     with pytest.raises(ExceptionGroup) as failure:
         _load(artifacts.project, freeze_datetime=True)
     assert [str(error) for error in failure.value.exceptions] == ["setup evidence", "cleanup evidence"]
-    assert environment.a11y_grpc_wrapper._get_accessibility_forwarder_apk is original_getter
-
-
-def test_controller_constructor_failure_closes_captured_raw_owner(artifacts, monkeypatch):
-    raw = SimpleNamespace(closed=False)
-    raw.close = lambda: setattr(raw, "closed", True)
-    loader = environment.android_world_controller.loader
-    monkeypatch.setattr(loader, "load", lambda config: raw)
-    original_load = loader.load
-    monkeypatch.setattr(environment.android_world_controller, "_TASK_PATH", str(artifacts.project / "default.textproto"))
-    original_getter = environment.a11y_grpc_wrapper._get_accessibility_forwarder_apk
-
-    def fail(owner):
-        assert owner is raw
-        raise RuntimeError("wrapper construction failed")
-
-    monkeypatch.setattr(environment.android_world_controller, "AndroidWorldController", fail)
-    with pytest.raises(RuntimeError, match="wrapper construction failed"):
-        _load(artifacts.project)
-    assert raw.closed
-    assert loader.load is original_load
-    assert environment.a11y_grpc_wrapper._get_accessibility_forwarder_apk is original_getter
 
 
 def test_local_app_data_uses_verified_project_files_and_rejects_new_corruption(artifacts, monkeypatch):
@@ -445,122 +376,6 @@ def test_strict_snapshot_success_keeps_official_result_and_restores_nested_hooks
     assert environment.app_snapshot.file_utils.clear_directory is original_clear
 
 
-def test_reset_failure_closes_completed_wrapper_and_raw_owner(artifacts, monkeypatch):
-    raw = SimpleNamespace(closed=False)
-    raw.close = lambda: setattr(raw, "closed", True)
-    wrapper = SimpleNamespace(closed=False)
-
-    def close_wrapper():
-        wrapper.closed = True
-        raw.close()
-
-    def reset():
-        raise RuntimeError("initial wrapper reset failed")
-
-    wrapper.close = close_wrapper
-    wrapper.reset = reset
-    monkeypatch.setattr(environment.android_world_controller.loader, "load", lambda config: raw)
-    monkeypatch.setattr(
-        environment.android_world_controller, "apply_a11y_forwarder_app_wrapper",
-        lambda owner, install: wrapper,
-    )
-    monkeypatch.setattr(
-        environment.android_world_controller, "_TASK_PATH",
-        str(artifacts.project / "default.textproto"),
-    )
-    original_getter = environment.a11y_grpc_wrapper._get_accessibility_forwarder_apk
-
-    with pytest.raises(RuntimeError, match="initial wrapper reset failed"):
-        _load(artifacts.project)
-
-    assert wrapper.closed
-    assert raw.closed
-    assert environment.a11y_grpc_wrapper._get_accessibility_forwarder_apk is original_getter
-
-
-def test_failed_second_creation_does_not_remove_first_environment_adapter(artifacts, offline_controllers, monkeypatch):
-    original_getter = environment.a11y_grpc_wrapper._get_accessibility_forwarder_apk
-    first = _load(artifacts.project)
-
-    def fail(controller):
-        raise ValueError("second setup failed")
-
-    monkeypatch.setattr(environment.env_launcher.datetime_utils, "setup_datetime", fail)
-    try:
-        with pytest.raises(ValueError, match="second setup failed"):
-            _load(artifacts.project, freeze_datetime=True)
-        first.controller.refresh_env()
-        assert first.controller.installed == [artifacts.payload, artifacts.payload]
-        assert offline_controllers.controllers[1].closed
-    finally:
-        environment.close_environment(first)
-    assert environment.a11y_grpc_wrapper._get_accessibility_forwarder_apk is original_getter
-
-
-@pytest.mark.parametrize("retired_close_fails", [False, True])
-def test_official_refresh_closes_retired_and_current_raw_owners(artifacts, monkeypatch, retired_close_fails):
-    raw_owners = []
-    wrappers = []
-    config = SimpleNamespace(
-        emulator_launcher=SimpleNamespace(emulator_console_port=5554, grpc_port=8554),
-        adb_controller=SimpleNamespace(adb_path="fixture-adb"),
-    )
-
-    class Raw:
-        def __init__(self):
-            self.closed = False
-            self._coordinator = SimpleNamespace(_simulator=SimpleNamespace(_config=config))
-
-        def close(self):
-            self.closed = True
-
-    class Wrapper:
-        def __init__(self, raw):
-            self._env = raw
-            self.fail_close = False
-
-        def __getattr__(self, name):
-            return getattr(self._env, name)
-
-        def reset(self):
-            return None
-
-        def close(self):
-            if self.fail_close:
-                raise RuntimeError("retired wrapper close failed")
-            self._env.close()
-
-    def load(config):
-        raw = Raw()
-        raw_owners.append(raw)
-        return raw
-
-    def wrap(raw, install):
-        wrapper = Wrapper(raw)
-        wrappers.append(wrapper)
-        return wrapper
-
-    monkeypatch.setattr(environment.android_world_controller.loader, "load", load)
-    monkeypatch.setattr(environment.android_world_controller, "apply_a11y_forwarder_app_wrapper", wrap)
-    monkeypatch.setattr(environment.android_world_controller, "_TASK_PATH", str(artifacts.project / "default.textproto"))
-    monkeypatch.setattr(environment.env_launcher, "_increase_file_descriptor_limit", lambda: None)
-    original_getter = environment.a11y_grpc_wrapper._get_accessibility_forwarder_apk
-    env = _load(artifacts.project)
-    wrappers[0].fail_close = retired_close_fails
-    if retired_close_fails:
-        with pytest.raises(RuntimeError, match="retired wrapper close failed"):
-            env.controller.refresh_env()
-        with pytest.raises(ExceptionGroup) as cleanup:
-            environment.close_environment(env)
-        assert str(cleanup.value.exceptions[0]) == "retired wrapper close failed"
-    else:
-        env.controller.refresh_env()
-        assert raw_owners[0].closed
-        assert not raw_owners[1].closed
-        environment.close_environment(env)
-    assert len(raw_owners) == 2
-    assert all(raw.closed for raw in raw_owners)
-    assert environment.a11y_grpc_wrapper._get_accessibility_forwarder_apk is original_getter
 
 
 @pytest.mark.parametrize("corrupt_copy", [False, True])
