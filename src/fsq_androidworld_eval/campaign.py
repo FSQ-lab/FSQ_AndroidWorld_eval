@@ -28,6 +28,10 @@ Revision 15 additionally binds the public initialized task reference-clock conte
 to manifests/results without changing goals, parameters, budgets or evaluators.
 All bounded-submission and accessibility protections continue to apply. Fresh
 source/prompt identities require new qualification, rehearsal and calibration.
+Explicit current_stack preparation pins a published wheel, its installed package
+and Skills, r15 and OMP 18.18.3; only named Runtime fields may migrate. All other
+frozen identities and task specifications remain mandatory. No migration repairs
+dependencies, accesses a device, or reuses historical readiness/calibration gates.
 """
 
 from __future__ import annotations
@@ -58,6 +62,7 @@ from fsq_androidworld_eval.preparation import attest_device, prepare_device
 from fsq_androidworld_eval.lifecycle import TIME_BUDGET_PROTOCOL, episode_time_budget
 from fsq_androidworld_eval.submission import ANSWER_SUBMISSION_PROTOCOL
 from fsq_androidworld_eval.task_time import TASK_TIME_CONTEXT_PROTOCOL, task_time_provenance_valid
+from fsq_androidworld_eval.runtime_migration import load_migration, verify_release
 from fsq_androidworld_eval.environment import artifact_identity, prepare_artifacts
 from fsq_androidworld_eval.rehearsal import REHEARSAL_POLICY, run_rehearsal, validate_report
 from fsq_androidworld_eval.host_prerequisites import media_encoder_identity, probe_host_media
@@ -373,8 +378,11 @@ def build_manifest(
     calibration_campaign_dir: Path | None = None,
     inherit_manifest: Path | None = None,
     environment_mode_report: Path | None = None,
+    runtime_migration: Path | None = None,
 ) -> dict[str, Any]:
     project = (project or Path.cwd()).resolve()
+    if runtime_migration is not None and inherit_manifest is None:
+        raise ValueError("runtime migration requires the exact inherited task manifest")
     if inherit_manifest is not None:
         source, provenance = inherited_source(inherit_manifest)
         mode = _environment_mode_report(environment_mode_report, source["target"]) if environment_mode_report is not None else None
@@ -385,7 +393,12 @@ def build_manifest(
         if kind == "full" and calibration_campaign_dir is None:
             raise ValueError("full campaign requires qualified calibration evidence")
         runtime_identity = _runtime_identity(project)
-        validate_inherited_runtime(source, runtime_identity)
+        migration = load_migration(runtime_migration) if runtime_migration is not None else None
+        validate_inherited_runtime(source, runtime_identity, migration)
+        if migration is not None:
+            if HARNESS_REVISION != 15:
+                raise ValueError("current_stack migration requires Harness r15")
+            verify_release(project, migration)
         current_artifacts = artifact_identity(project)
         if not _inherited_environment_valid(source["protocol"]["environmentArtifacts"], current_artifacts):
             raise ValueError("inherited environment may replace only the named accessibility forwarder")
@@ -412,6 +425,8 @@ def build_manifest(
             "taskTimeContext": dict(TASK_TIME_CONTEXT_PROTOCOL),
             "environmentArtifacts": current_artifacts,
         })
+        if migration is not None:
+            manifest["protocol"]["runtimeMigration"] = migration
         manifest["invalidRules"]["cleanupFailure"] = (
             "Preserve original cleanup and reward; continue only after verified recovery, "
             "otherwise pause for coordinated recovery without resuming this campaign."
@@ -565,8 +580,10 @@ def write_manifest(
     calibration_campaign_dir: Path | None = None,
     inherit_manifest: Path | None = None,
     environment_mode_report: Path | None = None,
+    runtime_migration: Path | None = None,
 ) -> None:
-    manifest = build_manifest(campaign_id, kind, project, calibration_campaign_dir, inherit_manifest, environment_mode_report)
+    manifest = build_manifest(campaign_id, kind, project, calibration_campaign_dir, inherit_manifest,
+                              environment_mode_report, runtime_migration)
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("x", encoding="utf-8") as stream:
         stream.write(json.dumps(manifest, indent=2, sort_keys=True) + "\n")
@@ -639,6 +656,11 @@ def _load_manifest(path: Path, project: Path | None = None) -> dict[str, Any]:
             "allowedTargets": list(ALLOWED_AGENT_TARGETS),
         },
     }
+    migration = protocol.get("runtimeMigration")
+    if "runtimeMigration" in protocol:
+        if migration is None or manifest.get("inheritedManifest") is None or HARNESS_REVISION != 15:
+            raise ValueError("runtime migration requires inherited current_stack r15 provenance")
+        expected["runtimeMigration"] = migration
     mismatches = {
         key: {"manifest": protocol.get(key), "runtime": value}
         for key, value in expected.items()
@@ -655,7 +677,9 @@ def _load_manifest(path: Path, project: Path | None = None) -> dict[str, Any]:
         expected_tasks = inherited_tasks(source, CALIBRATION_TASKS if kind == "calibration" else None)
         if provenance != expected_provenance or tasks != expected_tasks:
             raise ValueError("inherited source provenance or exact task specs mismatch")
-        validate_inherited_runtime(source, protocol.get("runtimeIdentity", {}))
+        validate_inherited_runtime(source, protocol.get("runtimeIdentity", {}), migration)
+        if migration is not None:
+            verify_release(project, migration)
         frozen_protocol = {key: value for key, value in source["protocol"].items()
                            if key not in {"harnessRevision", "runtimeIdentity", "promptTemplateSha256", "environmentArtifacts"}}
         if any(protocol.get(key) != value for key, value in frozen_protocol.items()):
@@ -1512,6 +1536,7 @@ def build_parser() -> argparse.ArgumentParser:
     prepare.add_argument("--calibration-campaign-dir")
     prepare.add_argument("--inherit-manifest", help="copy exact specs from the authorized frozen r11 full manifest")
     prepare.add_argument("--environment-mode-report", help="bind fresh headless/backend evidence to the target identity")
+    prepare.add_argument("--runtime-migration", help="explicit current_stack release and exact Runtime approval JSON; requires --inherit-manifest")
     qualify = subparsers.add_parser("qualify")
     qualify.add_argument("--manifest", required=True)
     qualify.add_argument("--output", required=True)
@@ -1553,6 +1578,7 @@ def main() -> None:
             else None,
             Path(args.inherit_manifest).resolve() if args.inherit_manifest else None,
             Path(args.environment_mode_report).resolve() if args.environment_mode_report else None,
+            Path(args.runtime_migration).resolve() if args.runtime_migration else None,
         )
         return
     if args.command == "qualify":

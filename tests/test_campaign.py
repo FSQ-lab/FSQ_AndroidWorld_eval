@@ -25,12 +25,13 @@ from fsq_androidworld_eval.runner import _sha256, _task
 from fsq_androidworld_eval.lifecycle import TIME_BUDGET_PROTOCOL, episode_time_budget
 from fsq_androidworld_eval.appium_proxy import SESSION_ACCESSIBILITY_CONFIG
 
-FROZEN_SOURCE = Path(__file__).resolve().parents[1] / "campaigns/amkernel-3388314-r11-timeout300-full-20261106T142607Z/manifest.json"
+FROZEN_SOURCE = Path(__file__).with_name("fixtures") / "inherited_campaign.json"
 
 
 @pytest.fixture(autouse=True)
-def isolated_artifact_identity(monkeypatch):
+def isolated_artifact_identity(monkeypatch, inherited_campaign):
     from fsq_androidworld_eval import campaign
+    monkeypatch.setattr(sys.modules[__name__], "FROZEN_SOURCE", inherited_campaign)
 
     source = json.loads(FROZEN_SOURCE.read_text())
     runtime = json.loads(json.dumps(source["protocol"]["runtimeIdentity"]))

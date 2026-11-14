@@ -13,6 +13,7 @@ from pathlib import Path
 from typing import Any
 
 from fsq_androidworld_eval.runner import _sha256
+from fsq_androidworld_eval.runtime_migration import validate_migration
 
 CAMPAIGN_CONTINUATION = {
     "version": 2,
@@ -50,8 +51,13 @@ def inherited_source(path: Path) -> tuple[dict[str, Any], dict[str, Any]]:
     }
 
 
-def validate_inherited_runtime(source: dict[str, Any], observed: dict[str, Any]) -> None:
-    """Only this revision's harness source may differ from the frozen Runtime."""
+def validate_inherited_runtime(
+    source: dict[str, Any], observed: dict[str, Any], migration: dict[str, Any] | None = None,
+) -> None:
+    """Keep old inheritance frozen; allow only an explicitly pinned current stack."""
+    if migration is not None:
+        validate_migration(source["protocol"]["runtimeIdentity"], observed, migration)
+        return
     expected = source["protocol"]["runtimeIdentity"]
     frozen = {key: value for key, value in expected.items() if key != "harnessSourceSha256"}
     current = {key: value for key, value in observed.items() if key != "harnessSourceSha256"}

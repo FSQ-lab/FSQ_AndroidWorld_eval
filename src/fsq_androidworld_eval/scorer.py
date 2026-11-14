@@ -1,7 +1,7 @@
 """Read frozen r12/r13/r14 scores unchanged; r15 binds task-clock context.
 
-Revisions 14 and 15 retain the explicitly named accessibility-forwarder cutover;
-all task specs, other environment assets and non-Harness runtime bytes stay frozen.
+Revisions 14 and 15 retain the explicitly named accessibility-forwarder cutover.
+Runtime bytes stay frozen unless an explicit current_stack release approval is bound.
 Request defaults never substitute for confirmed returned capability evidence.
 Revision 15 also requires the initialized public reference-clock protocol/context,
 while retaining bounded business receipts and all coexistence evidence gates.
@@ -23,6 +23,7 @@ from fsq_androidworld_eval.lifecycle import TIME_BUDGET_PROTOCOL, episode_time_b
 from fsq_androidworld_eval.omp_supervisor import termination_reason
 from fsq_androidworld_eval.submission import ANSWER_SUBMISSION_PROTOCOL, parse_submission
 from fsq_androidworld_eval.task_time import TASK_TIME_CONTEXT_PROTOCOL, task_time_provenance_valid
+from fsq_androidworld_eval.runtime_migration import validate_migration
 
 
 TERMINATION_POLICY = {
@@ -682,10 +683,20 @@ def continuation_audit(manifest: dict[str, Any], campaign_dir: Path) -> dict[str
     for key, value in source.get("protocol", {}).items():
         if key not in permitted_changes and protocol.get(key) != value:
             problem(f"frozen_protocol_mismatch:{key}")
-    frozen_runtime = {key: value for key, value in source.get("protocol", {}).get("runtimeIdentity", {}).items() if key != "harnessSourceSha256"}
-    observed_runtime = {key: value for key, value in protocol.get("runtimeIdentity", {}).items() if key != "harnessSourceSha256"}
-    if frozen_runtime != observed_runtime:
-        problem("frozen_runtime_identity_mismatch")
+    migration = protocol.get("runtimeMigration")
+    if "runtimeMigration" in protocol:
+        try:
+            if protocol.get("harnessRevision") != 15:
+                raise ValueError("current_stack requires r15")
+            validate_migration(source.get("protocol", {}).get("runtimeIdentity", {}),
+                               protocol.get("runtimeIdentity", {}), migration)
+        except (ValueError, OSError, TypeError, KeyError):
+            problem("current_stack_runtime_migration_mismatch")
+    else:
+        frozen_runtime = {key: value for key, value in source.get("protocol", {}).get("runtimeIdentity", {}).items() if key != "harnessSourceSha256"}
+        observed_runtime = {key: value for key, value in protocol.get("runtimeIdentity", {}).items() if key != "harnessSourceSha256"}
+        if frozen_runtime != observed_runtime:
+            problem("frozen_runtime_identity_mismatch")
     target = manifest.get("target", {})
     if {key: value for key, value in target.items() if key != "environmentMode"} != source.get("target"):
         problem("frozen_target_identity_mismatch")

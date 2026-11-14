@@ -546,7 +546,7 @@ def _attach_accessibility(record: dict) -> None:
     }
 
 
-def _r12_fixture(tmp_path: Path, monkeypatch: pytest.MonkeyPatch, kind: str = "calibration", *, version: int = 2, revision: int = 12) -> tuple[Path, dict, list[dict]]:
+def _r12_fixture(tmp_path: Path, monkeypatch: pytest.MonkeyPatch, kind: str = "calibration", *, version: int = 2, revision: int = 12, current_stack: bool = False) -> tuple[Path, dict, list[dict]]:
     """Synthetic frozen artifacts, not suite-generated benchmark parameters."""
     from fsq_androidworld_eval import scorer
 
@@ -562,6 +562,11 @@ def _r12_fixture(tmp_path: Path, monkeypatch: pytest.MonkeyPatch, kind: str = "c
             "skill://amkernel", "xd://mcp__amkernel_python_exec", "xd://report_issue",
         ]},
     })
+    if current_stack:
+        source_protocol["runtimeIdentity"].update(
+            skillRuntimeVersion="frozen-runtime", ompVersion="omp/18.12.6",
+            pythonVersion="fixture-python", harnessSourceSha256="a" * 64,
+        )
     if revision in {14, 15}:
         source_protocol["environmentArtifacts"] = {"schemaVersion": 1, "cacheDirectory": ".cache/androidworld-assets", "artifacts": [
             {"name": SESSION_ACCESSIBILITY_CONFIG["inheritedForwarderArtifactName"],
@@ -579,11 +584,34 @@ def _r12_fixture(tmp_path: Path, monkeypatch: pytest.MonkeyPatch, kind: str = "c
     source_path.write_text(json.dumps(source))
     source_hash = hashlib.sha256(source_path.read_bytes()).hexdigest()
     monkeypatch.setattr(scorer, "INHERITED_MANIFEST_SHA256", source_hash)
+    migration = None
+    if current_stack:
+        from zipfile import ZipFile
+        from fsq_androidworld_eval import runtime_migration
+
+        monkeypatch.setattr(runtime_migration, "SOURCE_MANIFEST_SHA256", source_hash)
+        artifact = tmp_path / "fixture-release.whl"
+        with ZipFile(artifact, "w") as wheel:
+            wheel.writestr("amkernel-test.dist-info/METADATA", "Name: amkernel\nVersion: 0.0.0+test\n")
+        target_runtime = {**source_protocol["runtimeIdentity"], "amkernelVersion": "0.0.0+test",
+                          "skillRuntimeVersion": "0.0.0+test", "ompVersion": "omp/18.18.3"}
+        approval_path = tmp_path / "current-stack.json"
+        approval_path.write_text(json.dumps({
+            "schemaVersion": 1, "comparison": "current_stack", "harnessRevision": 15,
+            "sourceManifestSha256": source_hash, "runtimeIdentity": target_runtime,
+            "release": {"version": "0.0.0+test", "artifactUrl": "https://example.invalid/release.whl",
+                        "artifactPath": str(artifact), "artifactSha256": hashlib.sha256(artifact.read_bytes()).hexdigest(),
+                        "sourceCommit": "b" * 40, "runtime": {"pythonVersion": "fixture-python",
+                        "dependencies": [{"name": "amkernel", "version": "0.0.0+test"}]}},
+        }))
+        migration = runtime_migration.load_migration(approval_path)
 
     def emit(root: Path, campaign_kind: str) -> tuple[dict, list[dict]]:
         root.mkdir(parents=True)
         protocol = {**source_protocol, "harnessRevision": revision,
                     "campaignContinuation": {**scorer.CONTINUATION_PROTOCOL, "version": version}}
+        if migration is not None:
+            protocol.update(runtimeMigration=migration, runtimeIdentity=migration["approval"]["runtimeIdentity"])
         if revision in {13, 14, 15}:
             from fsq_androidworld_eval.submission import ANSWER_SUBMISSION_PROTOCOL
             protocol.update(answerSubmission=ANSWER_SUBMISSION_PROTOCOL, promptTemplateSha256="bounded-submission-prompt")
@@ -637,7 +665,7 @@ def _r12_fixture(tmp_path: Path, monkeypatch: pytest.MonkeyPatch, kind: str = "c
             record.update({
                 "schemaVersion": 3, "androidWorld": {"revision": protocol["androidWorldRevision"]},
                 "startedAtUnix": 2.1 + 2 * index, "completedAtUnix": 2.9 + 2 * index,
-                "amkernel": {"version": "frozen-runtime"}, "target": manifest["target"],
+                "amkernel": {"version": protocol["runtimeIdentity"]["amkernelVersion"]}, "target": manifest["target"],
                 "task": {"name": name, "params": task["params"], "paramsSha256": task["paramsSha256"], "complexity": task["complexity"]},
                 "protocol": {**protocol, "readinessIdentitySha256": readiness["identitySha256"]},
                 "budget": {"pythonExecCalls": 1, "advisory": 20, "affectsOfficialReward": False},
@@ -1468,3 +1496,35 @@ def test_r15_full_score_keeps_private_calibration_receipts_in_its_gate(tmp_path,
     assert changed["qualified"] is False
     assert changed["calibrationGateSatisfied"] is False
     assert changed["officialScore"] is None
+
+
+@pytest.mark.parametrize("kind", ["calibration", "full"])
+def test_current_stack_score_preserves_reward_and_rejects_replaced_release(tmp_path, monkeypatch, kind):
+    root, manifest, _ = _r12_fixture(tmp_path, monkeypatch, kind, revision=15, current_stack=True)
+    result = recalculate(root / "manifest.json", root)
+    assert result["qualified"] is True
+    assert result["officialRewardSum"] == len(manifest["tasks"])
+    if kind == "full":
+        assert result["fullValidScore"] == 1.0
+        assert result["officialScore"] is None
+    artifact = Path(manifest["protocol"]["runtimeMigration"]["approval"]["release"]["artifactPath"])
+    artifact.write_bytes(b"replaced release")
+    rejected = recalculate(root / "manifest.json", root)
+    assert rejected["qualified"] is False
+    assert rejected["fullValidScore"] is None
+    assert rejected["officialRewardSum"] == result["officialRewardSum"]
+    assert "current_stack_runtime_migration_mismatch" in rejected["coverageAudit"]["errors"]
+
+
+def test_current_stack_approval_cannot_repin_unrelated_runtime_for_scoring(tmp_path, monkeypatch):
+    root, manifest, _ = _r12_fixture(tmp_path, monkeypatch, revision=15, current_stack=True)
+    migration = manifest["protocol"]["runtimeMigration"]
+    migration["approval"]["runtimeIdentity"]["pythonVersion"] = "unapproved-python"
+    approval_path = Path(migration["path"])
+    approval_path.write_text(json.dumps(migration["approval"]))
+    from fsq_androidworld_eval.runtime_migration import load_migration
+    manifest["protocol"]["runtimeMigration"] = load_migration(approval_path)
+    (root / "manifest.json").write_text(json.dumps(manifest))
+    result = recalculate(root / "manifest.json", root)
+    assert result["qualified"] is False
+    assert "current_stack_runtime_migration_mismatch" in result["coverageAudit"]["errors"]
